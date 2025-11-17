@@ -1,0 +1,72 @@
+# FTPS Server Systemd Service File
+# 
+# Installation Instructions:
+# 1. Copy this file to /etc/systemd/system/ftps-server.service
+# 2. Edit paths and user as needed
+# 3. Run: sudo systemctl daemon-reload
+# 4. Run: sudo systemctl enable ftps-server
+# 5. Run: sudo systemctl start ftps-server
+#
+# View status: sudo systemctl status ftps-server
+# View logs:   sudo journalctl -u ftps-server -f
+
+[Unit]
+Description=FTPS Server with NLog
+After=network.target
+Documentation=file:///opt/ftps-server/README_Enhanced.md
+
+[Service]
+Type=simple
+User=ftpuser
+Group=ftpuser
+WorkingDirectory=/opt/ftps-server
+ExecStart=/usr/bin/dotnet /opt/ftps-server/FtpsServer.dll
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitBurst=5
+StartLimitIntervalSec=60
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/ftps-server/ftproot /opt/ftps-server/logs
+
+# Resource limits
+LimitNOFILE=65536
+MemoryLimit=1G
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ftps-server
+
+# Environment
+Environment="DOTNET_ENVIRONMENT=Production"
+Environment="ASPNETCORE_ENVIRONMENT=Production"
+
+[Install]
+WantedBy=multi-user.target
+
+# NOTES:
+# 
+# Create ftpuser account:
+#   sudo useradd -r -s /bin/false -d /opt/ftps-server ftpuser
+#
+# Set permissions:
+#   sudo chown -R ftpuser:ftpuser /opt/ftps-server
+#
+# Allow binding to privileged ports (if using port 21):
+#   sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/dotnet
+#
+# View real-time logs:
+#   sudo journalctl -u ftps-server -f
+#
+# Stop service:
+#   sudo systemctl stop ftps-server
+#
+# Disable service:
+#   sudo systemctl disable ftps-server

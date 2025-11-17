@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/FIles/">
+    <File Path="../LICENSE" />
+    <File Path="../PROJECT_SUMMARY.md" />
+    <File Path="../QUICKSTART.md" />
+    <File Path="../README.md" />
+  </Folder>
+  <Project Path="FtpsServerConsole/FtpsServerConsole.csproj" />
+  <Project Path="FtpsServerLibrary/FtpsServerLibrary.csproj" Id="11bedc33-7b62-4588-8396-28d9907cf3a7" />
+</Solution>
