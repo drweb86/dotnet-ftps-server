@@ -87,7 +87,7 @@ dotnet run -- --port 2121 --user myuser:mypass:/home:RWDCXN
 ## 📊 Monitoring
 
 **View logs:**
-- Location: `logs/ftps-YYYY-MM-DD.log`
+- Location: `%AppData%/FtpsServerConsole/logs/ftps-YYYY-MM-DD.log`
 - Real-time: Console shows colored output
 
 **Check connections:**
@@ -121,7 +121,7 @@ dotnet run -- --port 2121 --user myuser:mypass:/home:RWDCXN
 
 ## 📚 Full Documentation
 
-See `README_Enhanced.md` for:
+See `README.md` for:
 - Complete command-line options
 - Advanced configuration
 - User permission system
@@ -138,11 +138,7 @@ See `README_Enhanced.md` for:
   "RootFolder": "/public",
   "Permissions": {
     "Read": true,
-    "Write": false,
-    "Delete": false,
-    "CreateDirectory": false,
-    "DeleteDirectory": false,
-    "Rename": false
+    "Write": false
   }
 }
 ```
@@ -155,11 +151,7 @@ See `README_Enhanced.md` for:
   "RootFolder": "/uploads",
   "Permissions": {
     "Read": false,
-    "Write": true,
-    "Delete": false,
-    "CreateDirectory": true,
-    "DeleteDirectory": false,
-    "Rename": false
+    "Write": true
   }
 }
 ```
@@ -172,11 +164,7 @@ See `README_Enhanced.md` for:
   "RootFolder": "/users/john",
   "Permissions": {
     "Read": true,
-    "Write": true,
-    "Delete": true,
-    "CreateDirectory": true,
-    "DeleteDirectory": true,
-    "Rename": true
+    "Write": true
   }
 }
 ```
@@ -209,9 +197,8 @@ When using command-line `--user` option:
 | N | Rename | RNFR/RNTO (rename) |
 
 **Examples:**
-- `RWDCXN` = Full access (all permissions)
+- `RW` = Full access (all permissions)
 - `R` = Read-only (download and list only)
-- `RWC` = Read, write, create folders (no delete)
 - `W` = Write-only (upload only, can't see files)
 
 ## 🎨 Example Commands
@@ -238,4 +225,4 @@ dotnet run -- --ip 0.0.0.0
 
 ---
 
-**Need more help?** See `README_Enhanced.md` for comprehensive documentation!
+**Need more help?** See `README.md` for comprehensive documentation!

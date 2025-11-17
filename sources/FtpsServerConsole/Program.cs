@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
@@ -9,32 +5,11 @@ using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
+using FtpsServerLibrary;
 using NLog;
 
 namespace FtpsServer
 {
-
-    public class UserAccount
-    {
-        public string Username { get; set; } = "";
-        public string Password { get; set; } = "";
-        public string RootFolder { get; set; } = "/";
-        public UserPermissions Permissions { get; set; } = new UserPermissions();
-    }
-
-    public class UserPermissions
-    {
-        public bool Read { get; set; } = true;
-        public bool Write { get; set; } = true;
-    }
-
-    public class LoggingSettings
-    {
-        public string LogLevel { get; set; } = "Information";
-        public bool LogToFile { get; set; } = true;
-        public bool LogToConsole { get; set; } = true;
-    }
 
     class Program
     {
@@ -282,14 +257,15 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
 
             if (config.Users.Count == 0)
             {
-                Logger.Warn("No users configured. Adding default admin user.");
-                config.Users.Add(new UserAccount
-                {
-                    Username = "admin",
-                    Password = "admin",
-                    RootFolder = "/",
-                    Permissions = new UserPermissions()
-                });
+                Logger.Warn("No users configured.");
+                return false;
+                //config.Users.Add(new UserAccount
+                //{
+                //    Username = "admin",
+                //    Password = "admin",
+                //    RootFolder = "/",
+                //    Permissions = new UserPermissions()
+                //});
             }
 
             if (!string.IsNullOrEmpty(config.ServerSettings.CertificatePath))
