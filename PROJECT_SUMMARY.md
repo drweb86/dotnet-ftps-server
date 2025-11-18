@@ -81,8 +81,7 @@ Edit `appsettings.json`:
 {
   "ServerSettings": {
     "IpAddress": "127.0.0.1",
-    "Port": 21990,
-    "RootDirectory": "./ftproot"
+    "Port": 21990
   },
   "Users": [
     {

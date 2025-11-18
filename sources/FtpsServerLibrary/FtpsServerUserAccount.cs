@@ -1,9 +1,9 @@
 namespace FtpsServerLibrary;
 
-public class UserAccount
+public class FtpsServerUserAccount
 {
     public string Username { get; set; } = "";
     public string Password { get; set; } = "";
     public string RootFolder { get; set; } = "/";
-    public UserPermissions Permissions { get; set; } = new UserPermissions();
+    public FtpsServerUserPermissions Permissions { get; set; } = new FtpsServerUserPermissions();
 }

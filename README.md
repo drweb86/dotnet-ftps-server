@@ -114,11 +114,9 @@ Create or edit `appsettings.json`:
   "ServerSettings": {
     "IpAddress": "127.0.0.1",
     "Port": 21990,
-    "RootDirectory": "./ftproot",
     "CertificatePath": "server.pfx",
     "CertificatePassword": "yourpassword",
-    "MaxConnections": 10,
-    "EnableTls": true
+    "MaxConnections": 10
   },
   "Users": [
     {
@@ -162,9 +160,9 @@ Create or edit `appsettings.json`:
     }
   ],
   "Logging": {
-    "LogLevel": "Information",
-    "LogToFile": true,
-    "LogToConsole": true
+    "LogLevel": {
+      "Default": "Information"
+    }
   }
 }
 ```
@@ -179,7 +177,6 @@ dotnet run -- [options]
 --config <path>              # Path to JSON configuration file
 --ip <address>               # IP address to bind (default: 127.0.0.1)
 --port <number>              # Port number (default: 21990)
---root <path>                # Root directory path (default: ./ftproot)
 --cert <path>                # Certificate file path (.pfx)
 --certpass <password>        # Certificate password
 --user <name:pass:folder:permissions>  # Add user
@@ -225,7 +222,6 @@ dotnet run -- --config appsettings.json
 dotnet run -- \
   --ip 0.0.0.0 \
   --port 2121 \
-  --root /var/ftp \
   --cert /path/to/cert.pfx \
   --certpass mypassword \
   --user admin:adminpass:/home/admin:RWDCXN \

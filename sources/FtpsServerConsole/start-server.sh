@@ -110,7 +110,6 @@ show_help() {
     echo "  --config <path>              Path to JSON configuration file"
     echo "  --ip <address>               IP address to bind"
     echo "  --port <number>              Port number"
-    echo "  --root <path>                Root directory path"
     echo "  --cert <path>                Certificate file path (.pfx)"
     echo "  --certpass <password>        Certificate password"
     echo "  --user <name:pass:folder:perms>  Add user"

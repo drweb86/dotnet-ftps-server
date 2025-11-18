@@ -1,6 +1,6 @@
 namespace FtpsServerLibrary;
 
-public class UserPermissions
+public class FtpsServerUserPermissions
 {
     public bool Read { get; set; } = true;
     public bool Write { get; set; } = true;
