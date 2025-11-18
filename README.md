@@ -12,22 +12,6 @@ A complete FTPS (FTP over TLS) server implementation in C# with advanced logging
 - **Per-User Root Folders**: Isolated directories for each user
 - **Flexible Configuration**: Command-line arguments and JSON config file support
 
-### File Operations
-- Upload files (STOR)
-- Download files (RETR)
-- Delete files (DELE)
-- Rename files (RNFR/RNTO)
-- Get file size (SIZE)
-- Get modification time (MDTM)
-
-### Directory Operations
-- Create directories (MKD)
-- Delete directories (RMD)
-- Change directory (CWD)
-- List directory contents (LIST, NLST)
-- Print working directory (PWD)
-- Navigate to parent (CDUP)
-
 ### Security Features
 - Path traversal protection
 - Per-user root directory isolation
@@ -36,31 +20,14 @@ A complete FTPS (FTP over TLS) server implementation in C# with advanced logging
 - Failed login attempt logging
 - Comprehensive audit logging
 
-## Project Structure
-
-```
-FtpsServer/
-├── Program.cs              # Main application with configuration parsing
-├── FtpsServer.csproj       # Project file with NLog dependency
-├── NLog.config             # NLog configuration
-├── appsettings.json        # Server configuration file (optional)
-├── logs/                   # Log files directory (created automatically)
-└── ftproot/                # FTP root directory (created automatically)
-```
-
 ## Installation & Setup
 
 ### Prerequisites
-- .NET 6.0 SDK or later
+
+- .NET 10.0 SDK
 - Windows, Linux, or macOS
 
 ### 1. Clone or Download Files
-
-Place all files in a directory:
-- Program.cs
-- FtpsServer.csproj
-- NLog.config
-- appsettings.json (optional)
 
 ### 2. Build the Project
 
@@ -485,7 +452,6 @@ sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/share/dotnet/dotnet
 - [ ] Use proper CA-signed certificate (not self-signed)
 - [ ] Use strong passwords (12+ characters, mixed case, numbers, symbols)
 - [ ] Restrict IP addresses via firewall
-- [ ] Enable TLS/SSL (never disable)
 - [ ] Use non-standard port (not 21)
 - [ ] Run as non-privileged user
 - [ ] Enable log rotation
@@ -501,7 +467,6 @@ sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/share/dotnet/dotnet
     "IpAddress": "0.0.0.0",
     "Port": 2121,
     "MaxConnections": 50,
-    "EnableTls": true,
     "CertificatePath": "/etc/ftps/certificate.pfx"
   }
 }
