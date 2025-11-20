@@ -1,7 +1,8 @@
-using System.Net;
-using System.Text.Json;
 using FtpsServerLibrary;
 using NLog;
+using System.Net;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace FtpsServerConsole;
 
@@ -154,7 +155,11 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
     {
         PropertyNameCaseInsensitive = true,
         ReadCommentHandling = JsonCommentHandling.Skip,
-        AllowTrailingCommas = true
+        AllowTrailingCommas = true,
+        Converters =
+        {
+            new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+        }
     };
 
     static FtpsServerConfiguration? LoadFromJson(string path)
