@@ -128,15 +128,19 @@ Options:
   Used when certstorename, certstorelocation and certstoresubject are together specified.
   Optional parameter.
 
-  --user <name:pass:folder:permissions>    Add user
-                               Permissions format: RW (Read,Write)
-                               Example: admin:pass123:/home/admin:RWDCDR
+  --user admin|admin|F:\ftp server\admin|RW
+  User with login admin and password admin with foilder F:\ftp server\admin with Read and Write permissions.
 
+  --user reader|read123|F:\ftp server\reader|R
+  User with login admin and password read123 with foilder F:\ftp server\reader with Read permission.
+
+  --user dropbox|dropbox123|F:\ftp server\dropbox|W
+  User with login admin and password dropbox123 with foilder F:\ftp server\dropbox with Write permission.
 
 Examples:
-  ftps-server --config appsettings.json
-  ftps-server --ip 0.0.0.0 --port 21
-  ftps-server --user admin:pass123:/home/admin:RW --user guest:guest:/public:R
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121
+  ftps-server --user admin|admin|F:\ftp server\admin|RW
   ftps-server --cert server.pfx --certpass mypassword
 
 If no arguments are provided, the server looks for 'appsettings.json' in the current directory.
@@ -266,7 +270,7 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
                 case "--user":
                     if (i + 1 < args.Length)
                     {
-                        var userInfo = args[++i].Split(':');
+                        var userInfo = args[++i].Split('|');
                         if (userInfo.Length == 3)
                         {
                             var user = new FtpsServerUserAccount

@@ -1,7 +1,18 @@
 ﻿## Enhanced C# FTPS .Net 10 Server & Library
 
 A FTPS (FTP over TLS) server implementation in C# with advanced logging, user permissions, and flexible configuration options.
-Project is splitted into Console and Library.
+Project is splitted into Console and Library. Aimed for all platforms.
+
+This is a sample implementation provided for:
+- ✅ Learning and education
+- ✅ Internal corporate use
+- ✅ Personal projects
+- ✅ Modification and customization
+
+Not recommended for:
+- ⚠️ Internet-facing production without security review
+- ⚠️ Mission-critical systems without testing
+- ⚠️ Compliance-required environments without audit
 
 ## Features
 
@@ -12,6 +23,11 @@ Project is splitted into Console and Library.
 ✅ **TLS/SSL Encryption** - Secure FTPS connections
 ✅ **Full FTP Protocol** - All standard FTP commands supported
 ✅ **Path Security** - Protection against directory traversal attacks
+
+### Prerequisites
+
+- .NET 10.0 SDK
+- Windows, Linux, or macOS
 
 ## ⚙️ Configuration Methods
 
@@ -36,22 +52,25 @@ Having configuration file is optional.
   },
   "Users": [
     {
-      "Username": "admin",
-      "Password": "password123",
-      "RootFolder": "c:\admin ftp folder",
-      "Permissions": {
-        "Read": true,
-        "Write": true
-      }
+      "Login": "admin",
+      "Password": "admin",
+      "Folder": "F:\\ftp server\\admin",
+      "Read": true,
+      "Write": true
     },
     {
-      "Username": "reader",
-      "Password": "read1",
-      "RootFolder": "c:\reader folder",
-      "Permissions": {
-        "Read": true,
-        "Write": false
-      }
+      "Login": "reader",
+      "Password": "read123",
+      "Folder": "F:\\ftp server\\reader",
+      "Read": true,
+      "Write": false
+    },
+    {
+      "Login": "dropbox",
+      "Password": "dropbox123",
+      "Folder": "F:\\ftp server\\dropbox",
+      "Read": false,
+      "Write": true
     }
   ]
 }
@@ -67,6 +86,13 @@ Having configuration file is optional.
 | ServerSettings.CertificateStoreName     | No        |               | Certificate store name. Possible values: AuthRoot, CertificateAuthority, My, Root, TrustedPublisher. Used when CertificateStoreName, CertificateStoreLocation and CertificateStoreSubject are together specified. |
 | ServerSettings.CertificateStoreLocation | No        |               | Certificate store location. Possible values: CurrentUser, LocalMachine. Used when CertificateStoreName, CertificateStoreLocation and CertificateStoreSubject are together specified.                              |
 | ServerSettings.CertificateStoreSubject  | No        |               | Certificate store subject by which certificate will be searched in certificate store and location. Used when CertificateStoreName, CertificateStoreLocation and CertificateStoreSubject are together specified.   |
+| Users[].Login                           | Yes       |               | User's login.                                                                   |
+| Users[].Password                        | Yes       |               | User's password.                                                                |
+| Users[].Folder                          | Yes       |               | User's login.                                                                   |
+| Users[].Read                            | Yes       |               | Can user read folder contents and download files.                               |
+| Users[].Write                           | Yes       |               | Can user create, upload, write, delete, rename operations on files and folders. |
+
+If certificate is not specified, self-signed certificate will be created and stored in %appdata%\FtpsServerLibrary\Certificates.
 
 ### Method 2: Command-Line Arguments
 
@@ -82,8 +108,9 @@ dotnet run -- \
   --certstorename My \
   --certstorelocation CurrentUser \
   --certstoresubject "ftps server store subject" \
-  --user admin:pass123:/home/admin:RW \
-  --user guest:guest:/public:R
+  --user admin|admin|F:\\ftp server\\admin|RW \
+  --user reader|read123|F:\\ftp server\\reader|R \
+  --user dropbox|dropbox123|F:\\ftp server\\dropbox|W
 
 ```
 
@@ -99,6 +126,11 @@ dotnet run -- \
 | --certstorename My                             | No        |                                                   | Certificate store name. Possible values: AuthRoot, CertificateAuthority, My, Root, TrustedPublisher. Used when certstorename, certstorelocation and certstoresubject are together specified. |
 | --certstorelocation CurrentUser                | No        |                                                   | Certificate store location. Possible values: CurrentUser, LocalMachine. Used when certstorename, certstorelocation and certstoresubject are together specified.                              |
 | --certstoresubject "ftps server store subject" | No        |                                                   | Certificate store subject by which certificate will be searched in certificate store and location. Used when certstorename, certstorelocation and certstoresubject are together specified.   |
+| `--user admin|admin|F:\\ftp server\\admin|RW`         |  |  | User with login admin and password admin with foilder F:\ftp server\admin with Read and Write permissions. |
+| `--user reader|read123|F:\\ftp server\\reader|R`      |  |  | User with login admin and password read123 with foilder F:\ftp server\reader with Read permission.         |
+| `--user dropbox|dropbox123|F:\\ftp server\\dropbox|W` |  |  | User with login admin and password dropbox123 with foilder F:\ftp server\dropbox with Write permission.    |
+
+If certificate is not specified, self-signed certificate will be created and stored in %appdata%\FtpsServerLibrary\Certificates.
 
 ### Method 3: Mix Both
 
@@ -106,6 +138,33 @@ dotnet run -- \
 # JSON provides base config, CLI overrides specific settings
 dotnet run -- --config production.json --port 3000
 ```
+
+## 📊 Monitoring
+
+**Log Locations:**
+- Location: `%AppData%/ftps-server/logs/ftps-YYYY-MM-DD.log`
+- Real-time: Console shows colored output
+- Archives: `logs/archives/` (30-day retention)
+
+**What's Logged:**
+- ✅ Client connections/disconnections
+- ✅ Authentication attempts (success/failure)
+- ✅ File operations (upload/download/delete)
+- ✅ Directory operations (create/delete/rename)
+- ✅ Permission denials
+- ✅ Errors and exceptions
+
+**Sample Log Entry:**
+```
+2024-01-15 10:30:15.1234|INFO|Client connected: 192.168.1.100:54321 (Active: 1)
+2024-01-15 10:30:16.2345|INFO|[192.168.1.100:54321] User logged in: admin
+2024-01-15 10:30:18.3456|INFO|[192.168.1.100:54321] Uploading: /documents/report.pdf
+2024-01-15 10:30:20.4567|INFO|[192.168.1.100:54321] Upload complete: /documents/report.pdf (2.5 MB)
+```
+
+**Check connections:**
+- Console shows: `Client connected: IP:PORT (Active: N)`
+
 
 
 
@@ -179,44 +238,6 @@ chmod +x start-server.sh
 ```
 
 
-
-## 🔐 Permission System
-
-Each user can be assigned these permissions:
-
-| Flag | Permission |
-|------|------------|
-| R    | Read       |
-| W    | Write      |
-
-**Common Combinations:**
-- `R`  - Read-only (public downloads)
-- `RW` - Read and write
-- `W`  - Write-only (upload drop box)
-
-## 📊 Logging with NLog
-
-**Log Locations:**
-- Console: Real-time colored output
-- File: `logs/ftps-YYYY-MM-DD.log`
-- Archives: `logs/archives/` (30-day retention)
-
-**What's Logged:**
-- ✅ Client connections/disconnections
-- ✅ Authentication attempts (success/failure)
-- ✅ File operations (upload/download/delete)
-- ✅ Directory operations (create/delete/rename)
-- ✅ Permission denials
-- ✅ Errors and exceptions
-
-**Sample Log Entry:**
-```
-2024-01-15 10:30:15.1234|INFO|Client connected: 192.168.1.100:54321 (Active: 1)
-2024-01-15 10:30:16.2345|INFO|[192.168.1.100:54321] User logged in: admin
-2024-01-15 10:30:18.3456|INFO|[192.168.1.100:54321] Uploading: /documents/report.pdf
-2024-01-15 10:30:20.4567|INFO|[192.168.1.100:54321] Upload complete: /documents/report.pdf (2.5 MB)
-```
-
 ## 🔧 Customization Examples
 
 ### Example 1: Corporate FTP Server
@@ -267,15 +288,6 @@ dotnet run -- \
 }
 ```
 
-## 🛡️ Security Features
-
-1. **Path Traversal Protection** - Users cannot access files outside their root folder
-2. **TLS Encryption** - All connections can be encrypted
-3. **Per-User Permissions** - Granular control over operations
-4. **Failed Login Logging** - Track authentication attempts
-5. **Audit Trail** - Complete logging of all operations
-6. **Connection Limits** - Prevent DOS attacks
-7. **Certificate Support** - Custom SSL certificates
 
 ## 📈 Production Deployment
 
@@ -377,159 +389,9 @@ curl -k --ftp-ssl -u admin:password123 ftp://0.0.0.0:2121/file.txt -o file.txt
 curl -k --ftp-ssl -u admin:password123 -T file.txt ftp://0.0.0.0:2121/
 ```
 
-## 📚 Documentation Guide
 
-1. **New to the project?** → Start with `QUICKSTART.md`
-2. **Setting up for production?** → Read `README_Enhanced.md`
-3. **Need reference?** → Check `README.md`
-4. **Want to customize?** → Edit `appsettings.json` and review examples
-5. **Troubleshooting?** → Check logs in `logs/` directory
-
-## 🎯 Use Case Scenarios
-
-### Scenario 1: Small Business File Sharing
-- **Users**: Employees with personal folders
-- **Config**: Per-user root folders with full permissions
-- **Security**: TLS enabled, strong passwords, internal network only
-
-### Scenario 2: Customer Upload Portal
-- **Users**: Single upload account, admin account
-- **Config**: Upload user has write-only, admin has full access
-- **Security**: Public-facing, strong TLS, separate upload folder
-
-### Scenario 3: Software Distribution
-- **Users**: Single read-only account
-- **Config**: Public read access to download folder
-- **Security**: TLS optional, but recommended
-
-### Scenario 4: Department File Server
-- **Users**: Multiple departments with isolated folders
-- **Config**: Each department has own folder and permissions
-- **Security**: TLS enabled, audit logging, internal network
-
-## 🔄 Migration from Old Server
-
-If you have an existing FTP server:
-
-1. **Copy files** to new root directory (`./ftproot`)
-2. **Create users** in `appsettings.json` matching old accounts
-3. **Test locally** before switching over
-4. **Update client configurations** to new server IP/port
-5. **Monitor logs** for any issues during transition
-
-## 📞 Support Resources
-
-- **Configuration Issues**: Review `appsettings.json` examples
-- **Connection Problems**: Check firewall and certificate
-- **Permission Errors**: Review user permissions in config
-- **Performance Issues**: Check logs and increase MaxConnections
-- **Security Concerns**: Review security section in README_Enhanced.md
-
-## 🏆 Best Practices
-
-1. ✅ Always use TLS in production
-2. ✅ Change default passwords immediately
-3. ✅ Use strong passwords (12+ characters)
-4. ✅ Regularly review logs for suspicious activity
-5. ✅ Keep .NET runtime updated
-6. ✅ Backup configuration files
-7. ✅ Set appropriate file system permissions
-8. ✅ Use firewall rules to restrict access
-9. ✅ Monitor disk space for uploads
-10. ✅ Implement regular backups
-
-## 🆚 Comparison with Alternatives
-
-| Feature | This Server | FileZilla Server | vsftpd | ProFTPD |
-|---------|-------------|------------------|---------|---------|
-| Platform | Cross-platform | Windows | Linux | Linux |
-| Language | C# | C++ | C | C |
-| GUI | No (CLI) | Yes | No | No |
-| TLS/SSL | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Logging | NLog | Built-in | Syslog | Syslog |
-| Config | JSON/CLI | GUI/XML | Config file | Config file |
-| Permissions | Per-user granular | Per-user | System | System |
-| Customizable | ✅ Full source | Limited | Limited | Limited |
-
-## 🔮 Future Enhancements (Ideas)
-
-- [ ] Web-based admin panel
-- [ ] SFTP support (SSH File Transfer)
-- [ ] Database user storage
-- [ ] Bandwidth throttling
-- [ ] Quota management
-- [ ] Virtual folders
-- [ ] Active Directory integration
-- [ ] Two-factor authentication
-- [ ] API for user management
-- [ ] Metrics and statistics dashboard
-
-## ⚖️ License & Usage
-
-This is a sample implementation provided for:
-- ✅ Learning and education
-- ✅ Internal corporate use
-- ✅ Personal projects
-- ✅ Modification and customization
-
-Not recommended for:
-- ⚠️ Internet-facing production without security review
-- ⚠️ Mission-critical systems without testing
-- ⚠️ Compliance-required environments without audit
-
-## 🙏 Acknowledgments
-
-Built using:
-- **.NET 6.0+** - Microsoft's cross-platform framework
-- **NLog** - Leading .NET logging library
-- **System.Net** - Built-in networking libraries
-
-## 📋 Checklist Before Going Live
-
-- [ ] Certificate configured (not self-signed)
-- [ ] Strong passwords set
-- [ ] Firewall rules configured
-- [ ] Logging enabled and monitored
-- [ ] Backup strategy in place
-- [ ] Tested with actual FTP clients
-- [ ] User permissions reviewed
-- [ ] Security audit completed
-- [ ] Documentation updated for your team
-- [ ] Monitoring configured
-
----
-
-**Ready to get started?** Open `QUICKSTART.md` for a 5-minute setup guide!
-
-**Need detailed help?** See `README_Enhanced.md` for comprehensive documentation!
-
-**Questions?** Check the logs in `logs/` directory for detailed information about any issues.
-
-
-## Features
-
-### Core Features
-- **Authentication**: Username and password login with per-user permissions
-- **TLS/SSL Encryption**: Secure control and data connections (AUTH TLS)
-- **Advanced Logging**: Using NLog with file and console output
-- **User Permissions**: Granular control (Read, Write, Delete, CreateDir, DeleteDir, Rename)
-- **Per-User Root Folders**: Isolated directories for each user
-- **Flexible Configuration**: Command-line arguments and JSON config file support
-
-### Security Features
-- Path traversal protection
-- Per-user root directory isolation
-- Granular permission system
-- TLS/SSL encryption support
-- Failed login attempt logging
-- Comprehensive audit logging
 
 ## Installation & Setup
-
-### Prerequisites
-
-- .NET 10.0 SDK
-- Windows, Linux, or macOS
 
 ### 1. Clone or Download Files
 
@@ -654,33 +516,6 @@ dotnet run -- [options]
 --help                       # Show help message
 ```
 
-### User Permission Format
-
-When adding users via command line, use this format:
-```
---user username:password:rootfolder:permissions
-```
-
-**Permission flags:**
-- `R` = Read
-- `W` = Write
-- `D` = Delete files
-- `C` = Create directories
-- `X` = Delete directories  
-- `N` = Rename files/directories
-
-**Examples:**
-```bash
-# Full permissions
---user admin:pass123:/home/admin:RWDCXN
-
-# Read-only user
---user guest:guest:/public:R
-
-# Read and write, but no delete
---user user:pass:/users/user:RWC
-```
-
 ### Configuration Examples
 
 **Example 1: Basic Setup with JSON**
@@ -709,58 +544,6 @@ dotnet run -- --config appsettings.json --port 3000 --user newuser:newpass:/temp
 ```bash
 dotnet run -- --user admin:admin:/home:RWDCXN
 ```
-
-## Logging
-
-The server uses **NLog** for comprehensive logging.
-
-### Log Locations
-
-- **Console**: Real-time colored output
-- **File**: `logs/ftps-YYYY-MM-DD.log`
-- **Archives**: `logs/archives/` (automatic daily rotation, 30-day retention)
-
-### Log Levels
-
-Configured in `NLog.config`:
-- **Debug**: All FTP commands and responses
-- **Info**: Connection events, authentication, file operations
-- **Warn**: Failed login attempts, permission denials
-- **Error**: Command errors, transfer failures
-- **Fatal**: Server startup/shutdown errors
-
-### Sample Log Output
-
-```
-2024-01-15 10:30:15.1234|INFO|Client connected: 192.168.1.100:54321 (Active: 1)
-2024-01-15 10:30:16.2345|INFO|[192.168.1.100:54321] User logged in: admin
-2024-01-15 10:30:18.3456|INFO|[192.168.1.100:54321] Uploading: /documents/report.pdf
-2024-01-15 10:30:20.4567|INFO|[192.168.1.100:54321] Upload complete: /documents/report.pdf (2.5 MB)
-```
-
-### Customizing Logging
-
-Edit `NLog.config` to customize:
-```xml
-<rules>
-  <!-- Change minlevel to control verbosity -->
-  <logger name="*" minlevel="Info" writeTo="logfile" />
-  <logger name="*" minlevel="Info" writeTo="coloredConsole" />
-</rules>
-```
-
-## User Permissions Explained
-
-Each user can have the following permissions:
-
-| Permission | Description | FTP Commands Affected |
-|------------|-------------|----------------------|
-| **Read** | List and download files | LIST, NLST, RETR, SIZE, MDTM |
-| **Write** | Upload files | STOR |
-| **Delete** | Delete files | DELE |
-| **CreateDirectory** | Create folders | MKD, XMKD |
-| **DeleteDirectory** | Delete folders | RMD, XRMD |
-| **Rename** | Rename files/folders | RNFR, RNTO |
 
 ### Permission Scenarios
 
@@ -1236,15 +1019,6 @@ dotnet run -- --port 2121 --user myuser:mypass:/home:RWDCXN
 # Then choose option 3 for command-line setup
 ```
 
-## 📊 Monitoring
-
-**View logs:**
-- Location: `%AppData%/ftps-server/logs/ftps-YYYY-MM-DD.log`
-- Real-time: Console shows colored output
-
-**Check connections:**
-- Console shows: `Client connected: IP:PORT (Active: N)`
-
 ## 🔒 Security Notes
 
 ⚠️ **Important for Production:**
@@ -1332,26 +1106,6 @@ See `README.md` for:
 
 1. Check console output for errors
 2. Review logs in `logs/` folder
-3. Read `README_Enhanced.md` for details
-4. Verify configuration in `appsettings.json`
-
-## 🔑 Permission Flags Quick Reference
-
-When using command-line `--user` option:
-
-| Flag | Permission | FTP Commands |
-|------|------------|--------------|
-| R | Read | LIST, RETR, SIZE |
-| W | Write | STOR (upload) |
-| D | Delete | DELE (delete files) |
-| C | Create Dirs | MKD (make directory) |
-| X | Delete Dirs | RMD (remove directory) |
-| N | Rename | RNFR/RNTO (rename) |
-
-**Examples:**
-- `RW` = Full access (all permissions)
-- `R` = Read-only (download and list only)
-- `W` = Write-only (upload only, can't see files)
 
 ## 🎨 Example Commands
 
@@ -1374,7 +1128,3 @@ dotnet run -- --cert mycert.pfx --certpass mypassword
 ```bash
 dotnet run -- --ip 0.0.0.0
 ```
-
----
-
-**Need more help?** See `README.md` for comprehensive documentation!
