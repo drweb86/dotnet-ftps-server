@@ -1,3 +1,4 @@
+using System.IO;
 using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
@@ -24,7 +25,7 @@ class FtpsServerClientSession(
     private string? _username;
     private FtpsServerUserAccount? _currentUser;
     private bool _isAuthenticated;
-    private string _currentDirectory = "/";
+    private FtpsServerVirtualPath? _currentPath;
     private string? _renameFrom;
 
     private TcpListener? _dataListener;
@@ -202,7 +203,7 @@ class FtpsServerClientSession(
         {
             _currentUser = user;
             _isAuthenticated = true;
-            _currentDirectory = user.RootFolder;
+            _currentPath = new FtpsServerVirtualPath("/");
 
             _log.Info($"[{_clientAddress}] User logged in: {_username}");
             await SendResponseAsync(230, "User logged in");
@@ -280,7 +281,7 @@ class FtpsServerClientSession(
             return;
         }
 
-        await SendResponseAsync(257, $"\"{_currentDirectory}\" is current directory");
+        await SendResponseAsync(257, $"\"{_currentPath?.ToString()}\" is current directory");
     }
 
     private async Task HandleCwdAsync(string directory)
@@ -291,46 +292,38 @@ class FtpsServerClientSession(
             return;
         }
 
-        var newPath = ResolvePath(directory);
-        var fullPath = GetFullPath(newPath);
+        var path = ResolveVirtualPath(directory);
+        try
+        {
+            var fullPath = ResolveFullPath(directory);
 
-        if (Directory.Exists(fullPath))
-        {
-            _currentDirectory = newPath;
-            _log.Debug($"[{_clientAddress}] Changed directory to: {_currentDirectory}");
-            await SendResponseAsync(250, "Directory changed");
+            if (Directory.Exists(fullPath))
+            {
+                _currentPath = path;
+                _log.Debug($"[{_clientAddress}] Changed directory to: {_currentPath}");
+                await SendResponseAsync(250, "Directory changed");
+            }
+            else
+            {
+                await SendResponseAsync(550, "Directory not found");
+            }
         }
-        else
+        catch (UnauthorizedAccessException e)
         {
+            _log.Error(e, $"[{_clientAddress}] Attempt to change directory to: {directory}");
             await SendResponseAsync(550, "Directory not found");
         }
     }
 
     private async Task HandleCdupAsync()
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Read))
+        if (!CheckAuthentication() || !CheckPermission(p => p.Read) || _currentPath is null)
         {
             await SendResponseAsync(550, "Permission denied");
             return;
         }
 
-        if (_currentDirectory != _currentUser!.RootFolder)
-        {
-            var parent = Path.GetDirectoryName(_currentDirectory.TrimEnd('/').Replace('/', Path.DirectorySeparatorChar));
-            if (parent != null)
-            {
-                _currentDirectory = parent.Replace(Path.DirectorySeparatorChar, '/');
-                if (!_currentDirectory.StartsWith('/'))
-                    _currentDirectory = "/" + _currentDirectory;
-                
-                // Ensure we don't go above user's root
-                if (!_currentDirectory.StartsWith(_currentUser.RootFolder))
-                {
-                    _currentDirectory = _currentUser.RootFolder;
-                }
-            }
-        }
-
+        _currentPath = _currentPath.GoUp();
         await SendResponseAsync(250, "Directory changed");
     }
 
@@ -342,18 +335,18 @@ class FtpsServerClientSession(
             return;
         }
 
-        var newPath = ResolvePath(directory);
-        var fullPath = GetFullPath(newPath);
+        var path = ResolveVirtualPath(directory);
+        var fullPath = ResolveFullPath(directory);
 
         try
         {
             Directory.CreateDirectory(fullPath);
-            _log.Info($"[{_clientAddress}] Created directory: {newPath}");
-            await SendResponseAsync(257, $"\"{newPath}\" created");
+            _log.Info($"[{_clientAddress}] Created directory: {path}");
+            await SendResponseAsync(257, $"\"{path}\" created");
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Failed to create directory: {newPath}");
+            _log.Error(ex, $"[{_clientAddress}] Failed to create directory: {fullPath}");
             await SendResponseAsync(550, $"Cannot create directory: {ex.Message}");
         }
     }
@@ -366,15 +359,15 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolvePath(directory);
-        var fullPath = GetFullPath(path);
+        var path = ResolveVirtualPath(directory);
+        var fullPath = ResolveFullPath(directory);
 
         try
         {
             if (Directory.Exists(fullPath))
             {
                 Directory.Delete(fullPath, true);
-                _log.Info($"[{_clientAddress}] Deleted directory: {path}");
+                _log.Info($"[{_clientAddress}] Deleted directory: {fullPath}");
                 await SendResponseAsync(250, "Directory removed");
             }
             else
@@ -384,7 +377,7 @@ class FtpsServerClientSession(
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Failed to delete directory: {path}");
+            _log.Error(ex, $"[{_clientAddress}] Failed to delete directory: {fullPath}");
             await SendResponseAsync(550, $"Cannot remove directory: {ex.Message}");
         }
     }
@@ -397,15 +390,15 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolvePath(filename);
-        var fullPath = GetFullPath(path);
+        var path = ResolveVirtualPath(filename);
+        var fullPath = ResolveFullPath(filename);
 
         try
         {
             if (File.Exists(fullPath))
             {
                 File.Delete(fullPath);
-                _log.Info($"[{_clientAddress}] Deleted file: {path}");
+                _log.Info($"[{_clientAddress}] Deleted file: {fullPath}");
                 await SendResponseAsync(250, "File deleted");
             }
             else
@@ -415,7 +408,7 @@ class FtpsServerClientSession(
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Failed to delete file: {path}");
+            _log.Error(ex, $"[{_clientAddress}] Failed to delete file: {fullPath}");
             await SendResponseAsync(550, $"Cannot delete file: {ex.Message}");
         }
     }
@@ -428,8 +421,8 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolvePath(filename);
-        var fullPath = GetFullPath(path);
+        var path = ResolveVirtualPath(filename);
+        var fullPath = ResolveFullPath(filename);
 
         if (File.Exists(fullPath) || Directory.Exists(fullPath))
         {
@@ -456,8 +449,8 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolvePath(filename);
-        var fullPath = GetFullPath(path);
+        var path = ResolveVirtualPath(filename);
+        var fullPath = ResolveFullPath(filename);
 
         try
         {
@@ -480,7 +473,7 @@ class FtpsServerClientSession(
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Rename failed");
+            _log.Error(ex, $"[{_clientAddress}] Rename {_renameFrom}->{fullPath} failed");
             await SendResponseAsync(550, $"Rename failed: {ex.Message}");
         }
         finally
@@ -527,7 +520,7 @@ class FtpsServerClientSession(
 
     private async Task HandleListAsync(string path)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Read))
+        if (!CheckAuthentication() || !CheckPermission(p => p.Read) || _currentPath is null || _currentUser is null)
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -551,8 +544,8 @@ class FtpsServerClientSession(
             return;
         }
 
-        var targetPath = string.IsNullOrEmpty(path) ? _currentDirectory : ResolvePath(path);
-        var fullPath = GetFullPath(targetPath);
+        var targetPath = string.IsNullOrEmpty(path) ? _currentPath : ResolveVirtualPath(path);
+        var fullPath = targetPath.GetRealPath(_currentUser.RootFolder);
 
         await SendResponseAsync(150, "Opening data connection");
 
@@ -613,7 +606,7 @@ class FtpsServerClientSession(
 
     private async Task HandleNlstAsync(string path)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Read))
+        if (!CheckAuthentication() || !CheckPermission(p => p.Read) || _currentPath is null || _currentUser is null)
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -637,8 +630,8 @@ class FtpsServerClientSession(
             return;
         }
 
-        var targetPath = string.IsNullOrEmpty(path) ? _currentDirectory : ResolvePath(path);
-        var fullPath = GetFullPath(targetPath);
+        var targetPath = string.IsNullOrEmpty(path) ? _currentPath : ResolveVirtualPath(path);
+        var fullPath = targetPath.GetRealPath(_currentUser.RootFolder);
 
         await SendResponseAsync(150, "Opening data connection");
 
@@ -713,8 +706,8 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolvePath(filename);
-        var fullPath = GetFullPath(path);
+        var path = ResolveVirtualPath(filename);
+        var fullPath = ResolveFullPath(filename);
 
         if (!File.Exists(fullPath))
         {
@@ -791,8 +784,8 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolvePath(filename);
-        var fullPath = GetFullPath(path);
+        var path = ResolveVirtualPath(filename);
+        var fullPath = ResolveFullPath(filename);
 
         _log.Info($"[{_clientAddress}] Uploading: {path}");
 
@@ -844,8 +837,7 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolvePath(filename);
-        var fullPath = GetFullPath(path);
+        var fullPath = ResolveFullPath(filename);
 
         try
         {
@@ -874,8 +866,7 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolvePath(filename);
-        var fullPath = GetFullPath(path);
+        var fullPath = ResolveFullPath(filename);
 
         try
         {
@@ -921,83 +912,23 @@ class FtpsServerClientSession(
         return check(_currentUser.Permissions);
     }
 
-    private string ResolvePath(string path)
+    private FtpsServerVirtualPath ResolveVirtualPath(string path)
     {
-        if (string.IsNullOrEmpty(path))
-            return _currentDirectory;
+        if (_currentPath is null)
+            return new FtpsServerVirtualPath("/");
 
-        if (path.StartsWith('/'))
-        {
-            // Absolute path - make relative to user's root
-            if (!path.StartsWith(_currentUser!.RootFolder))
-            {
-                path = _currentUser.RootFolder.TrimEnd('/') + "/" + path.TrimStart('/');
-            }
-            return path;
-        }
-
-        // Relative path
-        var current = _currentDirectory.TrimEnd('/');
-        var resolved = $"{current}/{path}".Replace("//", "/");
-        
-        // Normalize path
-        var parts = resolved.Split('/', StringSplitOptions.RemoveEmptyEntries).ToList();
-        for (int i = 0; i < parts.Count; i++)
-        {
-            if (parts[i] == "..")
-            {
-                if (i > 0)
-                {
-                    parts.RemoveAt(i);
-                    parts.RemoveAt(i - 1);
-                    i -= 2;
-                }
-            }
-            else if (parts[i] == ".")
-            {
-                parts.RemoveAt(i);
-                i--;
-            }
-        }
-
-        resolved = "/" + string.Join("/", parts);
-        
-        // Ensure within user's root
-        if (!resolved.StartsWith(_currentUser!.RootFolder))
-        {
-            resolved = _currentUser.RootFolder;
-        }
-
-        return resolved;
+        return _currentPath.Append(path);
     }
 
-    private string GetFullPath(string virtualPath)
+    private string ResolveFullPath(string virtualPath)
     {
-        var root = _currentUser?.RootFolder;
+        if (_currentPath is null ||
+            _currentUser is null)
+            return string.Empty;
 
-        if (string.IsNullOrEmpty(root))
-            throw new UnauthorizedAccessException("Access denied");
-
-        var relativePath = virtualPath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar);
-        var fullPath = Path.Combine(root, relativePath);
-
-        // Security check
-        var normalizedPath = Path.GetFullPath(fullPath);
-        if (!normalizedPath.StartsWith(root))
-        {
-            throw new UnauthorizedAccessException("Access denied");
-        }
-
-        // Check if within user's root
-        var userRoot = Path.Combine(root, _currentUser!.RootFolder.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
-        var normalizedUserRoot = Path.GetFullPath(userRoot);
-        
-        if (!normalizedPath.StartsWith(normalizedUserRoot))
-        {
-            throw new UnauthorizedAccessException("Access denied - outside user root");
-        }
-
-        return normalizedPath;
+        return _currentPath
+            .Append(virtualPath)
+            .GetRealPath(_currentUser.RootFolder);
     }
 
     private async Task SendResponseAsync(int code, string message)
