@@ -38,14 +38,15 @@ public class FtpsServer
     {
         try
         {
-            _listener = new TcpListener(
-                IPAddress.Parse(_config.ServerSettings.IpAddress),
-                _config.ServerSettings.Port);
+            var actualIp = _config.ServerSettings.Ip ?? "0.0.0.0";
+            var actualPort = _config.ServerSettings.Port ?? 2121;
+
+            _listener = new TcpListener(IPAddress.Parse(actualIp), actualPort);
             
             _listener.Start();
             _isRunning = true;
 
-            _log.Info($"Server started successfully on {_config.ServerSettings.IpAddress}:{_config.ServerSettings.Port}");
+            _log.Info($"Server started successfully on {actualIp}:{actualPort}");
 
             _ = Task.Run(AcceptClientsAsync);
         }

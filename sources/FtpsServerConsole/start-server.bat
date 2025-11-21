@@ -92,9 +92,7 @@ echo   --certpass ^<password^>        Certificate password
 echo   --user ^<name:pass:folder:perms^>  Add user
 echo.
 echo User permission format: username:password:folder:RWDCXN
-echo   R = Read, W = Write, D = Delete
-echo   C = Create directories, X = Delete directories
-echo   N = Rename files/directories
+echo   R = Read, W = Write
 echo.
 echo Examples:
 echo   --user admin:pass123:/home/admin:RWDCXN

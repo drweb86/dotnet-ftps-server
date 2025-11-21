@@ -1,8 +1,6 @@
 <Solution>
   <Folder Name="/FIles/">
     <File Path="../LICENSE" />
-    <File Path="../PROJECT_SUMMARY.md" />
-    <File Path="../QUICKSTART.md" />
     <File Path="../README.md" />
   </Folder>
   <Project Path="FtpsServerConsole/FtpsServerConsole.csproj" />

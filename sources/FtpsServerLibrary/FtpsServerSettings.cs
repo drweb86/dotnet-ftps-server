@@ -4,8 +4,24 @@ namespace FtpsServerLibrary;
 
 public class FtpsServerSettings
 {
-    public string IpAddress { get; set; } = "127.0.0.1";
-    public int Port { get; set; } = 21990;
+    /// <summary>
+    /// The IP address server will be listening to.
+    /// Optional parameter.
+    /// Default value: 0.0.0.0.
+    /// 0.0.0.0 - listen on every available network interface.
+    /// </summary>
+    public string? Ip { get; set; } = "0.0.0.0";
+
+    /// <summary>
+    /// The Port for server to listen to.
+    /// Optional parameter.
+    /// Default value: 2121.
+    /// </summary>
+    public int? Port { get; set; } = 2121;
+
+
+
+
     public int MaxConnections { get; set; } = 10;
 
     /// <summary>

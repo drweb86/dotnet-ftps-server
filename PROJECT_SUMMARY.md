@@ -90,11 +90,7 @@ Edit `appsettings.json`:
       "RootFolder": "/",
       "Permissions": {
         "Read": true,
-        "Write": true,
-        "Delete": true,
-        "CreateDirectory": true,
-        "DeleteDirectory": true,
-        "Rename": true
+        "Write": true
       }
     }
   ]

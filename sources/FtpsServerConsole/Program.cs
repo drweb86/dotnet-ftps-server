@@ -37,7 +37,7 @@ class Program
             
             _logger.Info("═══════════════════════════════════════════════════════");
             _logger.Info($"FTPS Server Starting...");
-            _logger.Info($"IP Address: {config.ServerSettings.IpAddress}");
+            _logger.Info($"IP Address: {config.ServerSettings.Ip}");
             _logger.Info($"Port: {config.ServerSettings.Port}");
             _logger.Info($"Users Configured: {config.Users.Count}");
             _logger.Info("═══════════════════════════════════════════════════════");
@@ -78,13 +78,23 @@ class Program
     {
         Console.WriteLine(@"
 Usage:
-  FtpsServer [options]
-  FtpsServer --config <path-to-json>
+  ftps-server [options]
+  ftps-server --config <path-to-json>
 
 Options:
   --config <path>              Path to JSON configuration file
-  --ip <address>               IP address to bind (default: 127.0.0.1)
-  --port <number>              Port number (default: 21990)
+
+  --ip <address>
+  The IP address server will be listening to.
+  Optional parameter.
+  Default value: 0.0.0.0.
+  0.0.0.0 - listen on every available network interface.
+
+  --port <number>
+  The Port for server to listen to.
+  Optional parameter.
+  Default value: 2121.
+
   --cert <path>                Certificate file path (.pfx)
   --certpass <password>        Certificate password
   --user <name:pass:folder:permissions>    Add user
@@ -93,10 +103,10 @@ Options:
   --help                       Show this help message
 
 Examples:
-  FtpsServer --config appsettings.json
-  FtpsServer --ip 0.0.0.0 --port 21
-  FtpsServer --user admin:pass123:/home/admin:RWDCDR --user guest:guest:/public:R
-  FtpsServer --cert server.pfx --certpass mypassword
+  ftps-server --config appsettings.json
+  ftps-server --ip 0.0.0.0 --port 21
+  ftps-server --user admin:pass123:/home/admin:RW --user guest:guest:/public:R
+  ftps-server --cert server.pfx --certpass mypassword
 
 If no arguments are provided, the server looks for 'appsettings.json' in the current directory.
 ");
@@ -184,7 +194,7 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
             {
                 case "--ip":
                     if (i + 1 < args.Length)
-                        config.ServerSettings.IpAddress = args[++i];
+                        config.ServerSettings.Ip = args[++i];
                     break;
 
                 case "--port":
@@ -242,9 +252,9 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
             return false;
         }
 
-        if (!IPAddress.TryParse(config.ServerSettings.IpAddress, out _))
+        if (!IPAddress.TryParse(config.ServerSettings.Ip, out _))
         {
-            _logger.Error($"Invalid IP address: {config.ServerSettings.IpAddress}");
+            _logger.Error($"Invalid IP address: {config.ServerSettings.Ip}");
             return false;
         }
 

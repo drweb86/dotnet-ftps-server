@@ -87,7 +87,7 @@ dotnet run -- --port 2121 --user myuser:mypass:/home:RWDCXN
 ## 📊 Monitoring
 
 **View logs:**
-- Location: `%AppData%/FtpsServerConsole/logs/ftps-YYYY-MM-DD.log`
+- Location: `%AppData%/ftps-server/logs/ftps-YYYY-MM-DD.log`
 - Real-time: Console shows colored output
 
 **Check connections:**
