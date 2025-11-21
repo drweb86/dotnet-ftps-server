@@ -198,7 +198,7 @@ class FtpsServerClientSession(
             return;
         }
 
-        var user = _users.FirstOrDefault(u => u.Username == _username);
+        var user = _users.FirstOrDefault(u => u.Login == _username);
         if (user != null && user.Password == password)
         {
             _currentUser = user;
@@ -286,7 +286,7 @@ class FtpsServerClientSession(
 
     private async Task HandleCwdAsync(string directory)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Read))
+        if (!CheckAuthentication() || !CheckPermission(true, false))
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -317,7 +317,7 @@ class FtpsServerClientSession(
 
     private async Task HandleCdupAsync()
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Read) || _currentPath is null)
+        if (!CheckAuthentication() || !CheckPermission(true, false) || _currentPath is null)
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -329,7 +329,7 @@ class FtpsServerClientSession(
 
     private async Task HandleMkdAsync(string directory)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Write))
+        if (!CheckAuthentication() || !CheckPermission(false, true))
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -353,7 +353,7 @@ class FtpsServerClientSession(
 
     private async Task HandleRmdAsync(string directory)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Write))
+        if (!CheckAuthentication() || !CheckPermission(false, true))
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -384,7 +384,7 @@ class FtpsServerClientSession(
 
     private async Task HandleDeleAsync(string filename)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Write))
+        if (!CheckAuthentication() || !CheckPermission(false, true))
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -415,7 +415,7 @@ class FtpsServerClientSession(
 
     private async Task HandleRnfrAsync(string filename)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Write))
+        if (!CheckAuthentication() || !CheckPermission(false, true))
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -437,7 +437,7 @@ class FtpsServerClientSession(
 
     private async Task HandleRntoAsync(string filename)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Write))
+        if (!CheckAuthentication() || !CheckPermission(false, true))
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -520,7 +520,7 @@ class FtpsServerClientSession(
 
     private async Task HandleListAsync(string path)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Read) || _currentPath is null || _currentUser is null)
+        if (!CheckAuthentication() || !CheckPermission(true, false) || _currentPath is null || _currentUser is null)
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -545,7 +545,7 @@ class FtpsServerClientSession(
         }
 
         var targetPath = string.IsNullOrEmpty(path) ? _currentPath : ResolveVirtualPath(path);
-        var fullPath = targetPath.GetRealPath(_currentUser.RootFolder);
+        var fullPath = targetPath.GetRealPath(_currentUser.Folder);
 
         await SendResponseAsync(150, "Opening data connection");
 
@@ -606,7 +606,7 @@ class FtpsServerClientSession(
 
     private async Task HandleNlstAsync(string path)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Read) || _currentPath is null || _currentUser is null)
+        if (!CheckAuthentication() || !CheckPermission(true, false) || _currentPath is null || _currentUser is null)
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -631,7 +631,7 @@ class FtpsServerClientSession(
         }
 
         var targetPath = string.IsNullOrEmpty(path) ? _currentPath : ResolveVirtualPath(path);
-        var fullPath = targetPath.GetRealPath(_currentUser.RootFolder);
+        var fullPath = targetPath.GetRealPath(_currentUser.Folder);
 
         await SendResponseAsync(150, "Opening data connection");
 
@@ -682,7 +682,7 @@ class FtpsServerClientSession(
 
     private async Task HandleRetrAsync(string filename)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Read))
+        if (!CheckAuthentication() || !CheckPermission(true, false))
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -760,7 +760,7 @@ class FtpsServerClientSession(
 
     private async Task HandleStorAsync(string filename)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Write))
+        if (!CheckAuthentication() || !CheckPermission(false, true))
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -831,7 +831,7 @@ class FtpsServerClientSession(
 
     private async Task HandleSizeAsync(string filename)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Read))
+        if (!CheckAuthentication() || !CheckPermission(true, false))
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -860,7 +860,7 @@ class FtpsServerClientSession(
 
     private async Task HandleMdtmAsync(string filename)
     {
-        if (!CheckAuthentication() || !CheckPermission(p => p.Read))
+        if (!CheckAuthentication() || !CheckPermission(true, false))
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -905,11 +905,12 @@ class FtpsServerClientSession(
         return _isAuthenticated && _currentUser != null;
     }
 
-    private bool CheckPermission(Func<FtpsServerUserPermissions, bool> check)
+    private bool CheckPermission(bool read, bool write)
     {
         if (_currentUser == null)
             return false;
-        return check(_currentUser.Permissions);
+        return ( read ? _currentUser.Read : true ) &&
+            (write ? _currentUser.Write : true);
     }
 
     private FtpsServerVirtualPath ResolveVirtualPath(string path)
@@ -928,7 +929,7 @@ class FtpsServerClientSession(
 
         return _currentPath
             .Append(virtualPath)
-            .GetRealPath(_currentUser.RootFolder);
+            .GetRealPath(_currentUser.Folder);
     }
 
     private async Task SendResponseAsync(int code, string message)

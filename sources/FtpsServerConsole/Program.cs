@@ -1,6 +1,7 @@
 using FtpsServerLibrary;
 using NLog;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -82,7 +83,12 @@ Usage:
   ftps-server --config <path-to-json>
 
 Options:
-  --config <path>              Path to JSON configuration file
+
+  --help
+  Show this help message.
+
+  --config <path to configuration json>
+  Path to JSON configuration file.
 
   --ip <address>
   The IP address server will be listening to.
@@ -95,12 +101,37 @@ Options:
   Optional parameter.
   Default value: 2121.
 
-  --cert <path>                Certificate file path (.pfx)
-  --certpass <password>        Certificate password
+  Certificate source:
+
+  --cert <path to pfx, pem or der file>
+  PEM, DER or PKCS#12 PFX file.
+  Optional parameter.
+  PFX file is opened with CertificatePassword (if specified).
+  
+  --certpass <password>
+  Certificate password.
+  Optional parameter.
+  When specified, will be used for opening certificate from cert argument.
+  
+  --certstorename <store name>
+  Certificate store name. Possible values: AuthRoot, CertificateAuthority, My, Root, TrustedPublisher.
+  Optional parameter.
+  Used when certstorename, certstorelocation and certstoresubject are together specified.
+
+  --certstorelocation <user>
+  Certificate store name. Possible values: AuthRoot, CertificateAuthority, My, Root, TrustedPublisher.
+  Used when certstorename, certstorelocation and certstoresubject are together specified.
+  Optional parameter.
+
+  --certstoresubject <store subject>
+  Certificate store subject by which certificate will be searched in certificate store and location. 
+  Used when certstorename, certstorelocation and certstoresubject are together specified.
+  Optional parameter.
+
   --user <name:pass:folder:permissions>    Add user
                                Permissions format: RW (Read,Write)
                                Example: admin:pass123:/home/admin:RWDCDR
-  --help                       Show this help message
+
 
 Examples:
   ftps-server --config appsettings.json
@@ -202,6 +233,11 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
                         config.ServerSettings.Port = port;
                     break;
 
+                case "--maxconnections":
+                    if (i + 1 < args.Length && int.TryParse(args[++i], out int maxConnections))
+                        config.ServerSettings.MaxConnections = maxConnections;
+                    break;
+
                 case "--cert":
                     if (i + 1 < args.Length)
                         config.ServerSettings.CertificatePath = args[++i];
@@ -212,18 +248,34 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
                         config.ServerSettings.CertificatePassword = args[++i];
                     break;
 
+                case "--certstorename":
+                    if (i + 1 < args.Length && Enum.TryParse<StoreName>(args[++i], out var storeName))
+                        config.ServerSettings.CertificateStoreName = storeName;
+                    break;
+
+                case "--certstorelocation":
+                    if (i + 1 < args.Length && Enum.TryParse<StoreLocation>(args[++i], out var storeLocation))
+                        config.ServerSettings.CertificateStoreLocation = storeLocation;
+                    break;
+
+                case "--certstoresubject":
+                    if (i + 1 < args.Length)
+                        config.ServerSettings.CertificateStoreSubject = args[++i];
+                    break;
+
                 case "--user":
                     if (i + 1 < args.Length)
                     {
                         var userInfo = args[++i].Split(':');
-                        if (userInfo.Length >= 2)
+                        if (userInfo.Length == 3)
                         {
                             var user = new FtpsServerUserAccount
                             {
-                                Username = userInfo[0],
+                                Login = userInfo[0],
                                 Password = userInfo[1],
-                                RootFolder = userInfo.Length > 2 ? userInfo[2] : "/",
-                                Permissions = userInfo.Length > 3 ? ParsePermissions(userInfo[3]) : new FtpsServerUserPermissions()
+                                Folder = userInfo[2],
+                                Read = userInfo[3].ToUpper().Contains('R'),
+                                Write = userInfo[3].ToUpper().Contains('W'),
                             };
                             config.Users.Add(user);
                         }
@@ -235,24 +287,21 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
         return config;
     }
 
-    static FtpsServerUserPermissions ParsePermissions(string permString)
-    {
-        return new FtpsServerUserPermissions
-        {
-            Read = permString.Contains('R'),
-            Write = permString.Contains('W'),
-        };
-    }
-
     static bool ValidateConfiguration(FtpsServerConfiguration config)
     {
-        if (config.ServerSettings.Port < 1 || config.ServerSettings.Port > 65535)
+        if (config.ServerSettings.Port.HasValue && config.ServerSettings.Port < 1 || config.ServerSettings.Port > 65535)
         {
             _logger.Error($"Invalid port number: {config.ServerSettings.Port}");
             return false;
         }
 
-        if (!IPAddress.TryParse(config.ServerSettings.Ip, out _))
+        if (config.ServerSettings.MaxConnections.HasValue && config.ServerSettings.MaxConnections.Value < 1)
+        {
+            _logger.Error($"Invalid maximum connections number: {config.ServerSettings.MaxConnections}");
+            return false;
+        }
+
+        if (config.ServerSettings.Ip != null && !IPAddress.TryParse(config.ServerSettings.Ip, out _))
         {
             _logger.Error($"Invalid IP address: {config.ServerSettings.Ip}");
             return false;
@@ -262,13 +311,6 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
         {
             _logger.Warn("No users configured.");
             return false;
-            //config.Users.Add(new UserAccount
-            //{
-            //    Username = "admin",
-            //    Password = "admin",
-            //    RootFolder = "/",
-            //    Permissions = new UserPermissions()
-            //});
         }
 
         if (!string.IsNullOrEmpty(config.ServerSettings.CertificatePath))

@@ -22,11 +22,11 @@ public class FtpsServer
         // Create user directories
         foreach (var user in _config.Users)
         {
-            var userPath = user.RootFolder.TrimStart('/');
+            var userPath = user.Folder.TrimStart('/');
             if (!Directory.Exists(userPath))
             {
                 Directory.CreateDirectory(userPath);
-                _log.Info($"Created user directory for {user.Username}: {userPath}");
+                _log.Info($"Created user directory for {user.Login}: {userPath}");
             }
         }
 
@@ -72,8 +72,9 @@ public class FtpsServer
             {
                 var client = await _listener!.AcceptTcpClientAsync();
                 var endpoint = client.Client.RemoteEndPoint;
-                
-                if (_activeConnections >= _config.ServerSettings.MaxConnections)
+
+                var actualMaxConnections = _config.ServerSettings.MaxConnections ?? 10;
+                if (_activeConnections >= actualMaxConnections)
                 {
                     _log.Warn($"Connection rejected from {endpoint}: Max connections reached");
                     client.Close();
@@ -171,31 +172,29 @@ public class FtpsServer
         {
             _log.Info($"Loading certificate from Certificate Store StoreName={_config.ServerSettings.CertificateStoreName} Location={_config.ServerSettings.CertificateStoreLocation} Subject={_config.ServerSettings.CertificateStoreSubject}");
 
-            using (var store = new X509Store(_config.ServerSettings.CertificateStoreName.Value, _config.ServerSettings.CertificateStoreLocation.Value))
-            {
-                store.Open(OpenFlags.ReadOnly);
-                var certs = store.Certificates.Find(
-                    X509FindType.FindBySubjectName,
-                    _config.ServerSettings.CertificateStoreSubject,
-                    false);
+            using var store = new X509Store(_config.ServerSettings.CertificateStoreName.Value, _config.ServerSettings.CertificateStoreLocation.Value);
+            store.Open(OpenFlags.ReadOnly);
+            var certs = store.Certificates.Find(
+                X509FindType.FindBySubjectName,
+                _config.ServerSettings.CertificateStoreSubject,
+                false);
 
-                if (certs.Count == 1)
-                {
-                    _log.Info($"Certificate was found.");
-                    return certs[0];
-                }
-                if (certs.Count > 1)
-                {
-                    var exception = new InvalidDataException($"More than 1 certificate found!");
-                    _log.Fatal(exception, exception.Message);
-                    throw exception;
-                }
-                else
-                {
-                    var exception = new InvalidDataException($"No certificates found!");
-                    _log.Fatal(exception, exception.Message);
-                    throw exception;
-                }
+            if (certs.Count == 1)
+            {
+                _log.Info($"Certificate was found.");
+                return certs[0];
+            }
+            if (certs.Count > 1)
+            {
+                var exception = new InvalidDataException($"More than 1 certificate found!");
+                _log.Fatal(exception, exception.Message);
+                throw exception;
+            }
+            else
+            {
+                var exception = new InvalidDataException($"No certificates found!");
+                _log.Fatal(exception, exception.Message);
+                throw exception;
             }
         }
 
@@ -205,31 +204,29 @@ public class FtpsServer
 
     private static X509Certificate2 CreateSelfSignedServerCertificate(string password)
     {
-        SubjectAlternativeNameBuilder sanBuilder = new SubjectAlternativeNameBuilder();
+        SubjectAlternativeNameBuilder sanBuilder = new();
         sanBuilder.AddIpAddress(IPAddress.Loopback);
         sanBuilder.AddIpAddress(IPAddress.IPv6Loopback);
         sanBuilder.AddDnsName("localhost");
         sanBuilder.AddDnsName(Environment.MachineName);
 
-        X500DistinguishedName distinguishedName = new X500DistinguishedName($"CN=FtpsServerLibrary-SelfSigned-Certificates");
+        X500DistinguishedName distinguishedName = new($"CN=FtpsServerLibrary-SelfSigned-Certificates");
 
-        using (RSA rsa = RSA.Create(2048))
-        {
-            var request = new CertificateRequest(distinguishedName, rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+        using RSA rsa = RSA.Create(2048);
+        var request = new CertificateRequest(distinguishedName, rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 
-            request.CertificateExtensions.Add(
-                new X509KeyUsageExtension(X509KeyUsageFlags.DataEncipherment | X509KeyUsageFlags.KeyEncipherment | X509KeyUsageFlags.DigitalSignature, false));
+        request.CertificateExtensions.Add(
+            new X509KeyUsageExtension(X509KeyUsageFlags.DataEncipherment | X509KeyUsageFlags.KeyEncipherment | X509KeyUsageFlags.DigitalSignature, false));
 
 
-            request.CertificateExtensions.Add(
-               new X509EnhancedKeyUsageExtension(
-                   new OidCollection { new Oid("1.3.6.1.5.5.7.3.1") }, false));
+        request.CertificateExtensions.Add(
+           new X509EnhancedKeyUsageExtension(
+               [new Oid("1.3.6.1.5.5.7.3.1")], false));
 
-            request.CertificateExtensions.Add(sanBuilder.Build());
+        request.CertificateExtensions.Add(sanBuilder.Build());
 
-            var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)), new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
-            return X509CertificateLoader.LoadPkcs12(certificate.Export(X509ContentType.Pfx, password), password, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
-        }
+        var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)), new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
+        return X509CertificateLoader.LoadPkcs12(certificate.Export(X509ContentType.Pfx, password), password, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
     }
 
     private X509Certificate2 GetOrCreateCertificate(FtpsServerSettings ftpsServerSettings)

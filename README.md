@@ -5,7 +5,7 @@ Project is splitted into Console and Library.
 
 ## Features
 
-✅ **JSON File Configuration**.
+✅ **JSON File Configuration**
 ✅ **Command-Line Arguments** - Override any setting via CLI
 ✅ **User Permissions** - Granular control over Read/Write operations
 ✅ **Per-User Root Folders** - Isolated directories for each user
@@ -17,47 +17,88 @@ Project is splitted into Console and Library.
 
 ### Method 1: JSON File
 
+You can place `appsettings.json` file near executable (example can be taken from text below or `appsettings-example.json`).
+Aternatively you can specify `--config some-configuiration.json`.
+Having configuration file is optional.
+
 `appsettings.json`:
 ```json
 {
   "ServerSettings": {
     "Ip": "0.0.0.0",
-    "Port": 2121
+    "Port": 2121,
+    "MaxConnections": 10,
+    "CertificatePath": "certificate.pfx",
+    "CertificatePassword": "password",
+    "CertificateStoreName": "My",
+    "CertificateStoreLocation": "CurrentUser",
+    "CertificateStoreSubject": "ftps server store subject"
   },
   "Users": [
     {
       "Username": "admin",
       "Password": "password123",
-      "RootFolder": "/",
+      "RootFolder": "c:\admin ftp folder",
       "Permissions": {
         "Read": true,
         "Write": true
+      }
+    },
+    {
+      "Username": "reader",
+      "Password": "read1",
+      "RootFolder": "c:\reader folder",
+      "Permissions": {
+        "Read": true,
+        "Write": false
       }
     }
   ]
 }
 ```
 
-| Parameter           | Required  | Default value | Remarks                                                                                              |
-|---------------------|-----------|---------------|------------------------------------------------------------------------------------------------------|
-| ServerSettings.Ip   | No        | 0.0.0.0       | The IP address server will be listening to. 0.0.0.0 - listen on every available network interface.   |
-| ServerSettings.Port | No        | 2121          | The Port for server to listen to. Optional parameter.                                                |
+| Parameter                               | Required  | Default value | Remarks                                                                                                                 |
+|-----------------------------------------|-----------|---------------|-------------------------------------------------------------------------------------------------------------------------|
+| ServerSettings.Ip                       | No        | 0.0.0.0       | The IP address server will be listening to. 0.0.0.0 - listen on every available network interface.                      |
+| ServerSettings.Port                     | No        | 2121          | The Port for server to listen to.                                                                                       |
+| ServerSettings.MaxConnections           | No        | 10            | Maximum number of simultaneous server connections.                                                                      |
+| ServerSettings.CertificatePath          | No        |               | PEM, DER or PKCS#12 PFX file. PFX file is opened with CertificatePassword (if specified).                               |
+| ServerSettings.CertificatePassword      | No        |               | Certificate password. When specified, will be used for opening certificate from CertificatePath.                        |
+| ServerSettings.CertificateStoreName     | No        |               | Certificate store name. Possible values: AuthRoot, CertificateAuthority, My, Root, TrustedPublisher. Used when CertificateStoreName, CertificateStoreLocation and CertificateStoreSubject are together specified. |
+| ServerSettings.CertificateStoreLocation | No        |               | Certificate store location. Possible values: CurrentUser, LocalMachine. Used when CertificateStoreName, CertificateStoreLocation and CertificateStoreSubject are together specified.                              |
+| ServerSettings.CertificateStoreSubject  | No        |               | Certificate store subject by which certificate will be searched in certificate store and location. Used when CertificateStoreName, CertificateStoreLocation and CertificateStoreSubject are together specified.   |
 
 ### Method 2: Command-Line Arguments
 
 ```bash
-dotnet run -- --ip 0.0.0.0  \
+dotnet run -- \
+  --help \
+  --config <path to configuration json> \
+  --ip 0.0.0.0  \
   --port 2121 \
+  --maxconnections 10 \
+  --cert server.pfx \
+  --certpass mypassword \
+  --certstorename My \
+  --certstorelocation CurrentUser \
+  --certstoresubject "ftps server store subject" \
   --user admin:pass123:/home/admin:RW \
-  --user guest:guest:/public:R \
-  --cert server.pfx --certpass mypassword
+  --user guest:guest:/public:R
+
 ```
 
-| Command line argument        | Required  | Default value | Remarks                                                                                              |
-|------------------------------|-----------|---------------|------------------------------------------------------------------------------------------------------|
-| --ip 0.0.0.0                 | No        | 0.0.0.0       | The IP address server will be listening to. 0.0.0.0 - listen on every available network interface.   |
-| --port 2121                  | No        | 2121          | The Port for server to listen to.                                                                    |
-
+| Command line argument                          | Required  | Default value                                     | Remarks                                                                                              |
+|------------------------------------------------|-----------|---------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| --help                                         | No        |                                                   | Show the help message.                                                                               |
+| --config configuration.json                    | No        | appsettings.json near executable file (if exists) | Path to JSON configuration file.                                                                     |
+| --ip 0.0.0.0                                   | No        | 0.0.0.0                                           | The IP address server will be listening to. 0.0.0.0 - listen on every available network interface.   |
+| --port 2121                                    | No        | 2121                                              | The Port for server to listen to.                                                                    |
+| --maxconnections 10                            | No        | 10                                                | Maximum number of simultaneous server connections.                                                   |
+| --cert file.pfx                                | No        |                                                   | PEM, DER or PKCS#12 PFX file. PFX file is opened with certpass (if specified).                       |
+| --certpass password                            | No        |                                                   | Certificate password. When specified, will be used for opening certificate from cert.                |
+| --certstorename My                             | No        |                                                   | Certificate store name. Possible values: AuthRoot, CertificateAuthority, My, Root, TrustedPublisher. Used when certstorename, certstorelocation and certstoresubject are together specified. |
+| --certstorelocation CurrentUser                | No        |                                                   | Certificate store location. Possible values: CurrentUser, LocalMachine. Used when certstorename, certstorelocation and certstoresubject are together specified.                              |
+| --certstoresubject "ftps server store subject" | No        |                                                   | Certificate store subject by which certificate will be searched in certificate store and location. Used when certstorename, certstorelocation and certstoresubject are together specified.   |
 
 ### Method 3: Mix Both
 
@@ -149,11 +190,9 @@ Each user can be assigned these permissions:
 | W    | Write      |
 
 **Common Combinations:**
-- `RWDCXN` - Full access (admin users)
-- `R` - Read-only (public downloads)
-- `RW` - Read and write, no delete
-- `RWC` - Read, write, create directories
-- `W` - Write-only (upload drop box)
+- `R`  - Read-only (public downloads)
+- `RW` - Read and write
+- `W`  - Write-only (upload drop box)
 
 ## 📊 Logging with NLog
 

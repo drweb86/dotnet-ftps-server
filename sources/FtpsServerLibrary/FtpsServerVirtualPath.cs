@@ -5,7 +5,7 @@ namespace FtpsServerLibrary;
 class FtpsServerVirtualPath
 {
     private readonly List<string> _segments;
-    private const char Delimiter = '/';
+    private const char _delimiter = '/';
 
     public bool IsAbsolute { get; private set; }
 
@@ -38,10 +38,10 @@ class FtpsServerVirtualPath
             return;
         }
 
-        IsAbsolute = path.StartsWith(Delimiter.ToString());
+        IsAbsolute = path.StartsWith(_delimiter.ToString());
 
         // Split by delimiter and process segments
-        string[] parts = path.Split(new[] { Delimiter }, StringSplitOptions.RemoveEmptyEntries);
+        string[] parts = path.Split([_delimiter], StringSplitOptions.RemoveEmptyEntries);
 
         foreach (string part in parts)
         {
@@ -84,12 +84,12 @@ class FtpsServerVirtualPath
             return IsAbsolute ? "/" : ".";
         }
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
 
         if (IsAbsolute)
-            sb.Append(Delimiter);
+            sb.Append(_delimiter);
 
-        sb.Append(string.Join(Delimiter.ToString(), _segments));
+        sb.Append(string.Join(_delimiter.ToString(), _segments));
 
         return sb.ToString();
     }
@@ -105,15 +105,15 @@ class FtpsServerVirtualPath
             return new FtpsServerVirtualPath(_segments, IsAbsolute);
 
         // If appending an absolute path, it replaces the current path
-        if (path.StartsWith(Delimiter.ToString()))
+        if (path.StartsWith(_delimiter.ToString()))
         {
             return new FtpsServerVirtualPath(path);
         }
 
         // Create a combined path
         string combinedPath = ToString();
-        if (!combinedPath.EndsWith(Delimiter.ToString()) && combinedPath != ".")
-            combinedPath += Delimiter;
+        if (!combinedPath.EndsWith(_delimiter.ToString()) && combinedPath != ".")
+            combinedPath += _delimiter;
         combinedPath += path;
 
         return new FtpsServerVirtualPath(combinedPath);
@@ -168,7 +168,7 @@ class FtpsServerVirtualPath
 
         // Remove leading / for absolute virtual paths when combining with base
         if (IsAbsolute && virtualPathStr.StartsWith("/"))
-            virtualPathStr = virtualPathStr.Substring(1);
+            virtualPathStr = virtualPathStr[1..];
 
         // Replace / with system directory separator
         virtualPathStr = virtualPathStr.Replace('/', Path.DirectorySeparatorChar);
@@ -181,9 +181,9 @@ class FtpsServerVirtualPath
         // Get the full normalized path
         string fullPath = Path.GetFullPath(combinedPath);
         if (basePath.Contains('\\'))
-            fullPath.Replace('\\', '/');
+            fullPath = fullPath.Replace('\\', '/');
         else
-            fullPath.Replace('/', '\\');
+            fullPath = fullPath.Replace('/', '\\');
 
         // Security check: ensure the result is within the base path
         if (!fullPath.StartsWith(normalizedBase, StringComparison.OrdinalIgnoreCase))
@@ -211,66 +211,5 @@ class FtpsServerVirtualPath
         {
             return false;
         }
-    }
-
-    /// <summary>
-    /// Gets the segments of the path.
-    /// </summary>
-    public IReadOnlyList<string> Segments => _segments.AsReadOnly();
-
-    /// <summary>
-    /// Gets the file or directory name (last segment).
-    /// </summary>
-    public string Name => _segments.Count > 0 ? _segments[_segments.Count - 1] : string.Empty;
-
-    /// <summary>
-    /// Gets the parent directory path.
-    /// </summary>
-    public FtpsServerVirtualPath Parent
-    {
-        get
-        {
-            if (_segments.Count == 0)
-                return IsAbsolute ? new FtpsServerVirtualPath("/") : new FtpsServerVirtualPath(".");
-
-            var parentSegments = _segments.Take(_segments.Count - 1).ToList();
-            return new FtpsServerVirtualPath(parentSegments, IsAbsolute);
-        }
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (obj is FtpsServerVirtualPath other)
-        {
-            return ToString() == other.ToString();
-        }
-        return false;
-    }
-
-    public override int GetHashCode()
-    {
-        return ToString().GetHashCode();
-    }
-
-    public static bool operator ==(FtpsServerVirtualPath left, FtpsServerVirtualPath right)
-    {
-        if (ReferenceEquals(left, null))
-            return ReferenceEquals(right, null);
-        return left.Equals(right);
-    }
-
-    public static bool operator !=(FtpsServerVirtualPath left, FtpsServerVirtualPath right)
-    {
-        return !(left == right);
-    }
-
-    /// <summary>
-    /// Combines two paths using the / operator.
-    /// </summary>
-    public static FtpsServerVirtualPath operator /(FtpsServerVirtualPath? left, string right)
-    {
-        if (left is null)
-            throw new ArgumentNullException(nameof(left));
-        return left.Append(right);
     }
 }
