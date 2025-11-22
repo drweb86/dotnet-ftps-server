@@ -2,6 +2,7 @@ using System.IO;
 using System.Net;
 using System.Net.Security;
 using System.Net.Sockets;
+using System.Runtime;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -568,6 +569,15 @@ class FtpsServerClientSession(
                 {
                     if (Directory.Exists(fullPath))
                     {
+                        var dirInfo = new DirectoryInfo(fullPath);
+                        var now = dirInfo.LastWriteTime.ToString("MMM dd HH:mm");
+                        await dataWriter.WriteLineAsync($"drwxr-xr-x 1 owner group               0 {now} .");
+
+                        var parentInfo = dirInfo.Parent;
+                        var parentTime = parentInfo?.LastWriteTime.ToString("MMM dd HH:mm") ?? now;
+                        await dataWriter.WriteLineAsync($"drwxr-xr-x 1 owner group               0 {parentTime} ..");
+
+
                         var entries = Directory.GetFileSystemEntries(fullPath);
                         _log.Debug($"[{_clientAddress}] Listing {entries.Length} items from: {targetPath}");
 

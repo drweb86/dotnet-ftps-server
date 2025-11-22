@@ -181,9 +181,10 @@ class FtpsServerVirtualPath
         // Get the full normalized path
         string fullPath = Path.GetFullPath(combinedPath);
         if (basePath.Contains('\\'))
-            fullPath = fullPath.Replace('\\', '/');
-        else
             fullPath = fullPath.Replace('/', '\\');
+        else
+            fullPath = fullPath.Replace('\\', '/');
+
 
         // Security check: ensure the result is within the base path
         if (!fullPath.StartsWith(normalizedBase, StringComparison.OrdinalIgnoreCase))

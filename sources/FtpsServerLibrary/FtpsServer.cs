@@ -22,7 +22,10 @@ public class FtpsServer
         // Create user directories
         foreach (var user in _config.Users)
         {
+            user.Folder = new DirectoryInfo(user.Folder).FullName;
+
             var userPath = user.Folder.TrimStart('/');
+            _log.Info($"User {user.Login} directory {userPath}");
             if (!Directory.Exists(userPath))
             {
                 Directory.CreateDirectory(userPath);

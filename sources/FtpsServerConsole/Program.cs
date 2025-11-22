@@ -38,12 +38,10 @@ class Program
             // Create and start server
             var server = new FtpsServer(new Log(), config);
             
-            _logger.Info("═══════════════════════════════════════════════════════");
             _logger.Info($"FTPS Server Starting...");
             _logger.Info($"IP Address: {config.ServerSettings.Ip}");
             _logger.Info($"Port: {config.ServerSettings.Port}");
             _logger.Info($"Users Configured: {config.Users.Count}");
-            _logger.Info("═══════════════════════════════════════════════════════");
             
             server.Start();
             
@@ -268,7 +266,7 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
                     if (i + 1 < args.Length)
                     {
                         var userInfo = args[++i].Split('#');
-                        if (userInfo.Length == 3)
+                        if (userInfo.Length == 4)
                         {
                             var user = new FtpsServerUserAccount
                             {

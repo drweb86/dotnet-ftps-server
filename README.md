@@ -91,7 +91,7 @@ Having configuration file is optional.
 | Users[].Read                            | Yes       |               | Can user read folder contents and download files.                               |
 | Users[].Write                           | Yes       |               | Can user create, upload, write, delete, rename operations on files and folders. |
 
-If certificate is not specified, self-signed certificate will be created and stored in %appdata%\FtpsServerLibrary\Certificates.
+If certificate is not specified, self-signed certificate will be created and stored in %localappdata%\FtpsServerLibrary\Certificates.
 
 ### Method 2: Command-Line Arguments
 
@@ -129,7 +129,7 @@ dotnet run -- \
 | --user reader#read123#F:\\ftp server\\reader#R      |  |  | User with login admin and password read123 with foilder F:\ftp server\reader with Read permission.         |
 | --user dropbox#dropbox123#F:\\ftp server\\dropbox#W |  |  | User with login admin and password dropbox123 with foilder F:\ftp server\dropbox with Write permission.    |
 
-If certificate is not specified, self-signed certificate will be created and stored in %appdata%\FtpsServerLibrary\Certificates.
+If certificate is not specified, self-signed certificate will be created and stored in %localappdata%\FtpsServerLibrary\Certificates.
 
 ### Method 3: Mix Both
 
