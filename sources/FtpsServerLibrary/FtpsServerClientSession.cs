@@ -28,6 +28,7 @@ class FtpsServerClientSession(
     private bool _isAuthenticated;
     private FtpsServerVirtualPath? _currentPath;
     private string? _renameFrom;
+    private Encoding _currentEncoding = Encoding.GetEncoding("ISO-8859-1");
 
     private TcpListener? _dataListener;
     private string _transferMode = "I"; // A = ASCII, I = Binary
@@ -42,10 +43,11 @@ class FtpsServerClientSession(
         try
         {
             _controlStream = _controlClient.GetStream();
-            _reader = new StreamReader(_controlStream, Encoding.UTF8);
-            _writer = new StreamWriter(_controlStream, Encoding.UTF8) { AutoFlush = true };
+            RecreateReaderWriter();
 
             await SendResponseAsync(220, "FTPS Server Ready");
+            if (_reader is null)
+                return;
 
             string? line;
             while ((line = await _reader.ReadLineAsync()) != null)
@@ -158,7 +160,7 @@ class FtpsServerClientSession(
                     await HandleFeatAsync();
                     break;
                 case "OPTS":
-                    await SendResponseAsync(200, "OK");
+                    await HandleOptsAsync(argument);
                     break;
                 case "NOOP":
                     await SendResponseAsync(200, "OK");
@@ -182,6 +184,39 @@ class FtpsServerClientSession(
             _log.Error(ex, $"[{_clientAddress}] Command error: {command}");
             await SendResponseAsync(550, $"Error: {ex.Message}");
         }
+    }
+
+    private void RecreateReaderWriter()
+    {
+        if (_controlStream is null)
+            return;
+        _reader = new StreamReader(_controlStream, _currentEncoding, leaveOpen: true);
+        _writer = new StreamWriter(_controlStream, _currentEncoding) { AutoFlush = true };
+    }
+
+    private async Task HandleOptsAsync(string argument)
+    {
+        var args = argument.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (args.Length >= 1 && args[0].Equals("UTF8", StringComparison.OrdinalIgnoreCase))
+        {
+            if (args.Length == 1 || args[1].Equals("ON", StringComparison.OrdinalIgnoreCase))
+            {
+                _currentEncoding = Encoding.UTF8;
+                RecreateReaderWriter();
+                await SendResponseAsync(200, "UTF8 mode enabled");
+                return;
+            }
+            else if (args[1].Equals("OFF", StringComparison.OrdinalIgnoreCase))
+            {
+                _currentEncoding = Encoding.GetEncoding("ISO-8859-1");
+                RecreateReaderWriter();
+                await SendResponseAsync(200, "UTF8 mode disabled");
+                return;
+            }
+        }
+
+        await SendResponseAsync(501, "Invalid OPTS command");
     }
 
     private async Task HandleUserAsync(string username)
