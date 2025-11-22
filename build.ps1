@@ -83,13 +83,13 @@ if ($LastExitCode -ne 0)
 	Exit 1
 }
 
-rem Write-Output "Setup..."
-rem & "C:\Program Files (x86)\NSIS\Bin\makensis.exe" "/DPRODUCT_VERSION=$version" "setup.nsi"
-rem if ($LastExitCode -ne 0)
-rem {
-rem 	Write-Error "Fail." 
-rem 	Exit 1
-rem }
+# Write-Output "Setup..."
+# & "C:\Program Files (x86)\NSIS\Bin\makensis.exe" "/DPRODUCT_VERSION=$version" "setup.nsi"
+# if ($LastExitCode -ne 0)
+# {
+# 	Write-Error "Fail." 
+# 	Exit 1
+# }
 
 Write-Output "Pack binaries"
 & "c:\Program Files\7-Zip\7z.exe" a -y ".\Output\FtpsServer_v$($version)_win-binaries.7z" ".\Output\publish\*" -mx9 -t7z -m0=lzma2 -ms=on -sccUTF-8 -ssw
@@ -107,17 +107,17 @@ if ($LastExitCode -ne 0)
 	Exit 1
 }
 
-rem Write-Output "Prepare ubuntu"
-rem & ".\tools\Template-Copy.ps1"`
-rem     -TemplateFilePath "tools\ubuntu-install-template.sh" `
-rem     -DestinationFilePath "ubuntu-install.sh" `
-rem     -Replacements @{ 'APP_VERSION_STRING' = $version }	
+# Write-Output "Prepare ubuntu"
+# & ".\tools\Template-Copy.ps1"`
+#     -TemplateFilePath "tools\ubuntu-install-template.sh" `
+#     -DestinationFilePath "ubuntu-install.sh" `
+#     -Replacements @{ 'APP_VERSION_STRING' = $version }	
 
 Write-Output "The following artefacts are produced. Release them"
 Get-ChildItem ".\Output"
 
-rem Write-Output "The following artefacts are produced. Release to win-get."
-rem Get-ChildItem ".\Output" *.exe | Get-FileHash
+# Write-Output "The following artefacts are produced. Release to win-get."
+# Get-ChildItem ".\Output" *.exe | Get-FileHash
 
 Write-Output "A. Release files were put into win-get repo fork. Release it"
-rem Write-Output "B. Commit changed ubuntu-install to main repository."
+# Write-Output "B. Commit changed ubuntu-install to main repository."
