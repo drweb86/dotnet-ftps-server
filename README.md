@@ -1,7 +1,7 @@
 ﻿## Enhanced C# FTPS .Net 10 Server & Library
 
 A FTPS (FTP over TLS) server implementation in C# with advanced logging, user permissions, and flexible configuration options.
-Project is splitted into Console and Library. Aimed for all platforms.
+Project is splitted into Console and Library. Aimed for Windows, Linux, or macOS platforms.
 
 This is a sample implementation provided for:
 - ✅ Learning and education
@@ -24,12 +24,11 @@ Not recommended for:
 ✅ **Full FTP Protocol** - All standard FTP commands supported
 ✅ **Path Security** - Protection against directory traversal attacks
 
-### Prerequisites
+## Prerequisites
 
-- .NET 10.0 SDK
-- Windows, Linux, or macOS
+- .NET 10.0 SDK.
 
-## ⚙️ Configuration Methods
+## ⚙️ Configuration
 
 ### Method 1: JSON File
 
@@ -139,90 +138,27 @@ If certificate is not specified, self-signed certificate will be created and sto
 dotnet run -- --config production.json --port 3000
 ```
 
-## 📊 Monitoring
+## 🚀 Run
 
-**Log Locations:**
-- Location: `%AppData%/ftps-server/logs/ftps-YYYY-MM-DD.log`
-- Real-time: Console shows colored output
-- Archives: `logs/archives/` (30-day retention)
+a. Download server sources and extract it to some folder.
 
-**What's Logged:**
-- ✅ Client connections/disconnections
-- ✅ Authentication attempts (success/failure)
-- ✅ File operations (upload/download/delete)
-- ✅ Directory operations (create/delete/rename)
-- ✅ Permission denials
-- ✅ Errors and exceptions
+b. Install Microsoft .Net 10 SDK.
 
-**Sample Log Entry:**
-```
-2024-01-15 10:30:15.1234|INFO|Client connected: 192.168.1.100:54321 (Active: 1)
-2024-01-15 10:30:16.2345|INFO|[192.168.1.100:54321] User logged in: admin
-2024-01-15 10:30:18.3456|INFO|[192.168.1.100:54321] Uploading: /documents/report.pdf
-2024-01-15 10:30:20.4567|INFO|[192.168.1.100:54321] Upload complete: /documents/report.pdf (2.5 MB)
+c. Open terminal.
+
+d. Navigate to extracted sources folder.
+
+e. Restore NUGet packages
+
+```bash
+dotnet restore
 ```
 
-**Check connections:**
-- Console shows: `Client connected: IP:PORT (Active: N)`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## 📁 File Listing
-
-### Scripts
-
-| File                  | Description                      | Platform    |
-|-----------------------|----------------------------------|-------------|
-| `start-server.bat`    | Interactive Windows launcher     | Windows     |
-| `start-server.sh`     | Interactive Linux/macOS launcher | Linux/macOS |
-| `ftps-server.service` | Systemd service template         | Linux       |
-
-
-
-
-
-
-
-
-
-
+c. Run 
+ a 
 ## 🚀 Quick Start
 
-### Windows (PowerShell)
-```powershell
-# Generate certificate
-New-SelfSignedCertificate -DnsName "localhost" -CertStoreLocation "Cert:\CurrentUser\My"
-
-# Build and run
-dotnet restore
-dotnet run
-```
-
-### Linux/macOS
 ```bash
-# Generate certificate
-./start-server.sh  # Choose option 4
-
-# Build and run
 dotnet restore
 dotnet run
 ```
@@ -235,57 +171,6 @@ start-server.bat
 # Linux/macOS
 chmod +x start-server.sh
 ./start-server.sh
-```
-
-
-## 🔧 Customization Examples
-
-### Example 1: Corporate FTP Server
-```json
-{
-  "ServerSettings": {
-    "IpAddress": "0.0.0.0",
-    "Port": 21,
-    "MaxConnections": 100
-  },
-  "Users": [
-    {
-      "Username": "sales",
-      "RootFolder": "/departments/sales",
-      "Permissions": { "Read": true, "Write": true }
-    },
-    {
-      "Username": "finance",
-      "RootFolder": "/departments/finance",
-      "Permissions": { "Read": true, "Write": true }
-    }
-  ]
-}
-```
-
-### Example 2: Public Download Server
-```bash
-dotnet run -- \
-  --ip 0.0.0.0 \
-  --port 21 \
-  --user guest:public:/downloads:R
-```
-
-### Example 3: File Upload Drop Box
-```json
-{
-  "Users": [
-    {
-      "Username": "uploader",
-      "RootFolder": "/uploads",
-      "Permissions": {
-        "Read": false,
-        "Write": true,
-        "CreateDirectory": true
-      }
-    }
-  ]
-}
 ```
 
 
@@ -312,6 +197,140 @@ COPY publish/ .
 EXPOSE 2121
 ENTRYPOINT ["dotnet", "FtpsServer.dll"]
 ```
+
+
+## 📊 Monitoring
+
+**Log Locations:**
+- Location: `%AppData%/ftps-server/logs/ftps-YYYY-MM-DD.log`
+- Real-time: Console shows colored output
+- Archives: `logs/archives/` (30-day retention)
+
+**What's Logged:**
+- ✅ Client connections/disconnections
+- ✅ Authentication attempts (success/failure)
+- ✅ File operations (upload/download/delete)
+- ✅ Directory operations (create/delete/rename)
+- ✅ Permission denials
+- ✅ Errors and exceptions
+
+**Sample Log Entry:**
+```
+2024-01-15 10:30:15.1234|INFO|Client connected: 192.168.1.100:54321 (Active: 1)
+2024-01-15 10:30:16.2345|INFO|[192.168.1.100:54321] User logged in: admin
+2024-01-15 10:30:18.3456|INFO|[192.168.1.100:54321] Uploading: /documents/report.pdf
+2024-01-15 10:30:20.4567|INFO|[192.168.1.100:54321] Upload complete: /documents/report.pdf (2.5 MB)
+```
+
+**Check connections:**
+- Console shows: `Client connected: IP:PORT (Active: N)`
+
+## 🎯 Use Cases
+
+- 1. Public Download Server (Read-Only)
+- 2. File Upload Drop Box
+- 3. Personal User Workspace
+
+## Generate Self-Signed Certificate
+
+Library will generate self-signed certificate, if no certificate source options are specified.
+But you can also generate self-signed certificate on your own.
+
+### Windows (PowerShell)
+
+```powershell
+# Generate certificate
+New-SelfSignedCertificate -DnsName "localhost" -CertStoreLocation "Cert:\CurrentUser\My"
+```
+
+### Linux/macOS
+
+You can do this via provided script
+
+```bash
+# Generate certificate
+./start-server.sh  # Choose option 4
+```
+
+or via OpenSSL:
+
+```bash
+openssl req -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 365 -nodes -subj "/CN=localhost"
+openssl pkcs12 -export -out server.pfx -inkey server.key -in server.crt -password pass:yourpassword
+```
+
+## Connecting to the Server
+
+### Using FileZilla
+
+1. Open FileZilla
+2. Go to **File → Site Manager**
+3. Click **New Site**
+4. Configure:
+   - **Protocol**: FTP - File Transfer Protocol
+   - **Host**: 127.0.0.1 (or your server IP)
+   - **Port**: 2121 (or your configured port)
+   - **Encryption**: Require explicit FTP over TLS
+   - **Logon Type**: Normal
+   - **User**: admin (or your username)
+   - **Password**: password123 (or your password)
+5. Click **Connect**
+
+### Using WinSCP (Windows)
+
+1. New Site
+2. File protocol: **FTP**
+3. Encryption: **TLS/SSL Explicit encryption**
+4. Host name: **127.0.0.1**
+5. Port number: **2121**
+6. User name: **admin** (or your username)
+7. Password: **password123** (or your password)
+8. Click **Login**
+
+### Using lftp (Linux/macOS)
+
+```bash
+lftp -u admin,password123 -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate no" 0.0.0.0:2121
+```
+
+### Using Command Line (curl)
+
+```bash
+# List files
+curl -k --ftp-ssl -u admin:password123 ftp://0.0.0.0:2121/ --list-only
+
+# Download file
+curl -k --ftp-ssl -u admin:password123 ftp://0.0.0.0:2121/file.txt -o file.txt
+
+# Upload file
+curl -k --ftp-ssl -u admin:password123 -T file.txt ftp://0.0.0.0:2121/
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 🔍 Monitoring & Troubleshooting
 
@@ -357,68 +376,6 @@ sudo dotnet run
 sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/dotnet
 ```
 
-## 🌐 Connecting to Server
-
-### FileZilla
-1. Protocol: FTP
-2. Host: 0.0.0.0
-3. Port: 2121
-4. Encryption: Require explicit FTP over TLS
-5. User: admin
-6. Password: password123
-
-### WinSCP
-1. File protocol: FTP
-2. Encryption: TLS/SSL Explicit encryption
-3. Configure host, port, username, password
-
-### Command Line (lftp)
-```bash
-lftp -u admin,password123 -e "set ftp:ssl-force true; set ssl:verify-certificate no" 0.0.0.0:2121
-```
-
-### cURL
-```bash
-# List files
-curl -k --ftp-ssl -u admin:password123 ftp://0.0.0.0:2121/
-
-# Download
-curl -k --ftp-ssl -u admin:password123 ftp://0.0.0.0:2121/file.txt -o file.txt
-
-# Upload
-curl -k --ftp-ssl -u admin:password123 -T file.txt ftp://0.0.0.0:2121/
-```
-
-
-
-## Installation & Setup
-
-### 1. Clone or Download Files
-
-### 2. Build the Project
-
-```bash
-dotnet restore
-dotnet build -c Release
-```
-
-Or build directly:
-```bash
-dotnet build
-```
-
-### 3. Generate SSL Certificate
-
-**Windows (PowerShell - Run as Administrator):**
-```powershell
-New-SelfSignedCertificate -DnsName "localhost" -CertStoreLocation "Cert:\CurrentUser\My" -NotAfter (Get-Date).AddYears(10)
-```
-
-**Linux/macOS (OpenSSL):**
-```bash
-openssl req -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 365 -nodes -subj "/CN=localhost"
-openssl pkcs12 -export -out server.pfx -inkey server.key -in server.crt -password pass:yourpassword
-```
 
 ### 4. Run the Server
 
@@ -436,214 +393,7 @@ dotnet run -- --config myconfig.json
 dotnet run -- --cert server.pfx --certpass yourpassword
 ```
 
-## Configuration
 
-### Option 1: JSON Configuration File (Recommended)
-
-Create or edit `appsettings.json`:
-
-```json
-{
-  "ServerSettings": {
-    "IpAddress": "0.0.0.0",
-    "Port": 2121,
-    "CertificatePath": "server.pfx",
-    "CertificatePassword": "yourpassword",
-    "MaxConnections": 10
-  },
-  "Users": [
-    {
-      "Username": "admin",
-      "Password": "password123",
-      "RootFolder": "/",
-      "Permissions": {
-        "Read": true,
-        "Write": true,
-        "Delete": true,
-        "CreateDirectory": true,
-        "DeleteDirectory": true,
-        "Rename": true
-      }
-    },
-    {
-      "Username": "readonly",
-      "Password": "readonly123",
-      "RootFolder": "/public",
-      "Permissions": {
-        "Read": true,
-        "Write": false,
-        "Delete": false,
-        "CreateDirectory": false,
-        "DeleteDirectory": false,
-        "Rename": false
-      }
-    },
-    {
-      "Username": "user",
-      "Password": "user123",
-      "RootFolder": "/users/user",
-      "Permissions": {
-        "Read": true,
-        "Write": true,
-        "Delete": true,
-        "CreateDirectory": true,
-        "DeleteDirectory": true,
-        "Rename": true
-      }
-    }
-  ],
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information"
-    }
-  }
-}
-```
-
-### Option 2: Command-Line Arguments
-
-```bash
-# General syntax
-dotnet run -- [options]
-
-# Available options:
---config <path>              # Path to JSON configuration file
---ip <address>               # IP address to bind (default: 0.0.0.0)
---port <number>              # Port number (default: 2121)
---cert <path>                # Certificate file path (.pfx)
---certpass <password>        # Certificate password
---user <name:pass:folder:permissions>  # Add user
---help                       # Show help message
-```
-
-### Configuration Examples
-
-**Example 1: Basic Setup with JSON**
-```bash
-dotnet run -- --config appsettings.json
-```
-
-**Example 2: All Command-Line Options**
-```bash
-dotnet run -- \
-  --ip 0.0.0.0 \
-  --port 2121 \
-  --cert /path/to/cert.pfx \
-  --certpass mypassword \
-  --user admin:adminpass:/home/admin:RWDCXN \
-  --user user1:user1pass:/users/user1:RWCN \
-  --user readonly:readpass:/public:R
-```
-
-**Example 3: Mix JSON and Command-Line (CLI overrides JSON)**
-```bash
-dotnet run -- --config appsettings.json --port 3000 --user newuser:newpass:/temp:RW
-```
-
-**Example 4: Minimal Setup**
-```bash
-dotnet run -- --user admin:admin:/home:RWDCXN
-```
-
-### Permission Scenarios
-
-**Full Access Admin:**
-```json
-{
-  "Username": "admin",
-  "Password": "admin123",
-  "RootFolder": "/",
-  "Permissions": {
-    "Read": true,
-    "Write": true,
-    "Delete": true,
-    "CreateDirectory": true,
-    "DeleteDirectory": true,
-    "Rename": true
-  }
-}
-```
-
-**Read-Only User:**
-```json
-{
-  "Username": "readonly",
-  "Password": "view123",
-  "RootFolder": "/public",
-  "Permissions": {
-    "Read": true,
-    "Write": false,
-    "Delete": false,
-    "CreateDirectory": false,
-    "DeleteDirectory": false,
-    "Rename": false
-  }
-}
-```
-
-**Upload-Only User (for submissions):**
-```json
-{
-  "Username": "uploader",
-  "Password": "upload123",
-  "RootFolder": "/uploads",
-  "Permissions": {
-    "Read": false,
-    "Write": true,
-    "Delete": false,
-    "CreateDirectory": true,
-    "DeleteDirectory": false,
-    "Rename": false
-  }
-}
-```
-
-## Connecting to the Server
-
-### Using FileZilla
-
-1. Open FileZilla
-2. Go to **File → Site Manager**
-3. Click **New Site**
-4. Configure:
-   - **Protocol**: FTP - File Transfer Protocol
-   - **Host**: 0.0.0.0 (or your server IP)
-   - **Port**: 2121 (or your configured port)
-   - **Encryption**: Require explicit FTP over TLS
-   - **Logon Type**: Normal
-   - **User**: admin (or your username)
-   - **Password**: password123 (or your password)
-5. Click **Connect**
-
-### Using WinSCP (Windows)
-
-1. New Site
-2. File protocol: **FTP**
-3. Encryption: **TLS/SSL Explicit encryption**
-4. Host name: **0.0.0.0**
-5. Port number: **2121**
-6. User name: **admin**
-7. Password: **password123**
-8. Click **Login**
-
-### Using lftp (Linux/macOS)
-
-```bash
-lftp -u admin,password123 -e "set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate no" 0.0.0.0:2121
-```
-
-### Using Command Line (curl)
-
-```bash
-# List files
-curl -k --ftp-ssl -u admin:password123 ftp://0.0.0.0:2121/ --list-only
-
-# Download file
-curl -k --ftp-ssl -u admin:password123 ftp://0.0.0.0:2121/file.txt -o file.txt
-
-# Upload file
-curl -k --ftp-ssl -u admin:password123 -T file.txt ftp://0.0.0.0:2121/
-```
 
 ## Monitoring & Management
 
@@ -667,14 +417,6 @@ grep "Failed login" logs/*.log
 # View user activity
 grep "admin" logs/ftps-$(date +%Y-%m-%d).log
 ```
-
-### Security Monitoring
-
-Important events to monitor:
-- Failed login attempts
-- Permission denied errors
-- Unusual file operations
-- Connection from unexpected IPs
 
 ## Troubleshooting
 
@@ -734,31 +476,6 @@ sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/share/dotnet/dotnet
 
 ## Production Deployment
 
-### Security Checklist
-
-- [ ] Use proper CA-signed certificate (not self-signed)
-- [ ] Use strong passwords (12+ characters, mixed case, numbers, symbols)
-- [ ] Restrict IP addresses via firewall
-- [ ] Use non-standard port (not 21)
-- [ ] Run as non-privileged user
-- [ ] Enable log rotation
-- [ ] Monitor failed login attempts
-- [ ] Regular security updates
-- [ ] Backup configuration and data
-
-### Recommended Settings
-
-```json
-{
-  "ServerSettings": {
-    "IpAddress": "0.0.0.0",
-    "Port": 2121,
-    "MaxConnections": 50,
-    "CertificatePath": "/etc/ftps/certificate.pfx"
-  }
-}
-```
-
 ### Running as a Service
 
 **Linux (systemd):**
@@ -796,164 +513,7 @@ nssm install FtpsServer "C:\Program Files\dotnet\dotnet.exe" "C:\ftps\FtpsServer
 nssm start FtpsServer
 ```
 
-### Performance Tuning
 
-- Increase MaxConnections for high-traffic servers
-- Use SSD storage for better I/O performance
-- Monitor memory usage and adjust as needed
-- Consider dedicated network interface
-- Use log rotation to manage disk space
-
-## Advanced Usage
-
-### Multiple Root Directories Per User
-
-Each user can have their own isolated directory:
-
-```json
-{
-  "Users": [
-    {
-      "Username": "user1",
-      "RootFolder": "/users/user1"
-    },
-    {
-      "Username": "user2",
-      "RootFolder": "/users/user2"
-    }
-  ]
-}
-```
-
-### Shared and Private Directories
-
-```json
-{
-  "Users": [
-    {
-      "Username": "admin",
-      "RootFolder": "/"
-    },
-    {
-      "Username": "sales",
-      "RootFolder": "/departments/sales"
-    },
-    {
-      "Username": "public",
-      "RootFolder": "/public",
-      "Permissions": { "Read": true, "Write": false }
-    }
-  ]
-}
-```
-
-### Audit Logging
-
-All operations are logged. Parse logs for auditing:
-
-```bash
-# Files uploaded today
-grep "Upload complete" logs/ftps-$(date +%Y-%m-%d).log
-
-# Files deleted
-grep "Deleted file" logs/*.log
-
-# User activity
-grep "User logged in: admin" logs/*.log
-
-# Failed operations
-grep "Permission denied\|failed\|error" logs/*.log
-```
-
-## Supported FTP Commands
-
-| Command | Description | Requires Auth |
-|---------|-------------|---------------|
-| USER | Username | No |
-| PASS | Password | No |
-| AUTH | Enable TLS | No |
-| PBSZ | Protection buffer | Yes |
-| PROT | Protection level | Yes |
-| PWD/XPWD | Print directory | Yes |
-| CWD/XCWD | Change directory | Yes |
-| CDUP/XCUP | Parent directory | Yes |
-| MKD/XMKD | Create directory | Yes |
-| RMD/XRMD | Remove directory | Yes |
-| DELE | Delete file | Yes |
-| RNFR | Rename from | Yes |
-| RNTO | Rename to | Yes |
-| TYPE | Transfer type | Yes |
-| PASV | Passive mode | Yes |
-| LIST | List files (detailed) | Yes |
-| NLST | List files (names) | Yes |
-| RETR | Download file | Yes |
-| STOR | Upload file | Yes |
-| SIZE | Get file size | Yes |
-| MDTM | Modification time | Yes |
-| SYST | System info | Yes |
-| FEAT | Feature list | Yes |
-| OPTS | Options | Yes |
-| NOOP | No operation | Yes |
-| QUIT | Disconnect | No |
-
-## Dependencies
-
-This project uses **NLog** for logging:
-- **NLog** (v5.2.8): Advanced .NET logging library
-- **NLog.Extensions.Logging** (v5.3.8): Integration extensions
-
-These are the only external dependencies. All other functionality uses built-in .NET libraries.
-
-## License
-
-This is a sample implementation for educational and internal use purposes.
-
-## Support & Contributing
-
-For issues, questions, or contributions:
-1. Check the logs first
-2. Review this documentation
-3. Test with FileZilla or another standard client
-4. Ensure configuration is correct
-
-## Alternatives
-
-For production environments, consider:
-- **FileZilla Server**: Full-featured, GUI-based
-- **ProFTPD**: Linux FTP server with TLS
-- **vsftpd**: Very secure FTP daemon
-- **SFTP (SSH)**: More secure than FTPS for many use cases
-
-## Version History
-
-- **2.0**: Added NLog logging, command-line arguments, JSON config, user permissions
-- **1.0**: Basic FTPS server with authentication
-
----
-
-**Note**: This server is designed for internal use and development purposes. For production internet-facing deployments, perform a thorough security review and consider using established FTP server software with regular security updates.
-
-# FTPS Server - Quick Start Guide
-
-## 🚀 Quick Setup (5 minutes)
-
-### Windows
-
-1. **Extract all files** to a folder (e.g., `C:\FtpsServer\`)
-
-2. **Open PowerShell as Administrator** and run:
-   ```powershell
-   New-SelfSignedCertificate -DnsName "localhost" -CertStoreLocation "Cert:\CurrentUser\My"
-   ```
-
-3. **Double-click** `start-server.bat` and choose option 1
-
-4. **Connect** with FileZilla:
-   - Host: `0.0.0.0`
-   - Port: `2121`
-   - User: `admin`
-   - Password: `password123`
-   - Encryption: Require explicit FTP over TLS
 
 ### Linux/macOS
 
@@ -970,63 +530,6 @@ For production environments, consider:
    ```bash
    lftp -u admin,password123 -e "set ftp:ssl-force true; set ssl:verify-certificate no" 0.0.0.0:2121
    ```
-
-## 📋 Files Included
-
-| File | Description |
-|------|-------------|
-| `Program.cs` | Main server code |
-| `FtpsServer.csproj` | Project file with NLog dependency |
-| `NLog.config` | Logging configuration |
-| `appsettings.json` | Server configuration (users, ports, etc.) |
-| `start-server.bat` | Windows startup script |
-| `start-server.sh` | Linux/macOS startup script |
-| `README_Enhanced.md` | Complete documentation |
-| `QUICKSTART.md` | This file |
-
-## ⚙️ Default Configuration
-
-**Server:**
-- IP: `0.0.0.0` (localhost)
-- Port: `2121`
-- Root: `./ftproot` (created automatically)
-
-**Users:**
-| Username | Password | Folder | Permissions |
-|----------|----------|--------|-------------|
-| admin | password123 | / | Full access |
-| readonly | readonly123 | /public | Read only |
-| user | user123 | /users/user | Full access |
-
-## 🔧 Customization
-
-### Quick Config Changes
-
-Edit `appsettings.json` to change:
-- Port number
-- User accounts
-- Permissions
-- Root directories
-
-### Command-Line Override
-
-```bash
-# Windows
-dotnet run -- --port 2121 --user myuser:mypass:/home:RWDCXN
-
-# Linux/macOS
-./start-server.sh
-# Then choose option 3 for command-line setup
-```
-
-## 🔒 Security Notes
-
-⚠️ **Important for Production:**
-1. Change default passwords immediately
-2. Use a proper CA-signed certificate
-3. Don't expose to the internet without firewall rules
-4. Review user permissions carefully
-5. Monitor logs regularly
 
 ## 🐛 Troubleshooting
 
@@ -1045,86 +548,3 @@ dotnet run -- --port 2121 --user myuser:mypass:/home:RWDCXN
 - Verify server is running: `netstat -an | grep 2121`
 - Try telnet test: `telnet 0.0.0.0 2121`
 
-## 📚 Full Documentation
-
-See `README.md` for:
-- Complete command-line options
-- Advanced configuration
-- User permission system
-- Production deployment guide
-- Security best practices
-
-## 🎯 Common Use Cases
-
-### 1. Public Download Server (Read-Only)
-```json
-{
-  "Username": "guest",
-  "Password": "guest",
-  "RootFolder": "/public",
-  "Permissions": {
-    "Read": true,
-    "Write": false
-  }
-}
-```
-
-### 2. File Upload Drop Box
-```json
-{
-  "Username": "uploader",
-  "Password": "upload123",
-  "RootFolder": "/uploads",
-  "Permissions": {
-    "Read": false,
-    "Write": true
-  }
-}
-```
-
-### 3. Personal User Workspace
-```json
-{
-  "Username": "john",
-  "Password": "john123",
-  "RootFolder": "/users/john",
-  "Permissions": {
-    "Read": true,
-    "Write": true
-  }
-}
-```
-
-## 💡 Tips
-
-- **Testing:** Always test locally before exposing to network
-- **Logging:** Set `minlevel="Debug"` in NLog.config for troubleshooting
-- **Backup:** Keep a backup of `appsettings.json` and certificates
-- **Updates:** Check for .NET security updates regularly
-
-## 🆘 Getting Help
-
-1. Check console output for errors
-2. Review logs in `logs/` folder
-
-## 🎨 Example Commands
-
-**Start with custom port:**
-```bash
-dotnet run -- --port 2121
-```
-
-**Add multiple users:**
-```bash
-dotnet run -- --user admin:pass1:/admin:RWDCXN --user guest:pass2:/public:R
-```
-
-**Use custom certificate:**
-```bash
-dotnet run -- --cert mycert.pfx --certpass mypassword
-```
-
-**Bind to all interfaces:**
-```bash
-dotnet run -- --ip 0.0.0.0
-```
