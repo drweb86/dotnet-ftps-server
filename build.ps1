@@ -62,7 +62,7 @@ ForEach ($platform in $platforms)
 		"/p:AssemblyVersion=$version" `
 		"--runtime=$($platform.CoreRuntimeWindows)" `
 		/p:Configuration=Release `
-		"/p:PublishDir=../Output/publish/$($platform.CoreRuntimeFolderPrefix)" `
+		"/p:PublishDir=../../Output/publish/$($platform.CoreRuntimeFolderPrefix)" `
 		/p:PublishReadyToRun=false `
 		/p:RunAnalyzersDuringBuild=False `
 		--self-contained true `
@@ -76,7 +76,8 @@ ForEach ($platform in $platforms)
 cd ..
 
 Write-Output "Prepare to pack binaries"
-Copy-Item ".\README.md" ".\Output\publish\README.md"
+ls
+Copy-Item ".\README.md" -Destination ".\Output\publish"
 if ($LastExitCode -ne 0)
 {
 	Write-Error "Fail." 

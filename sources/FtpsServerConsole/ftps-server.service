@@ -11,7 +11,7 @@
 # View logs:   sudo journalctl -u ftps-server -f
 
 [Unit]
-Description=FTPS Server with NLog
+Description=FTPS Server
 After=network.target
 Documentation=file:///opt/ftps-server/README_Enhanced.md
 

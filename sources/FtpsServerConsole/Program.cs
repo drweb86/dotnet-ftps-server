@@ -1,6 +1,8 @@
 using FtpsServerLibrary;
 using NLog;
+using System.Globalization;
 using System.Net;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -65,14 +67,9 @@ class Program
 
     static void ShowBanner()
     {
-        Console.WriteLine(@"
-╔═══════════════════════════════════════════════════════╗
-║                                                       ║
-║              FTPS Server with NLog                    ║
-║              Version 2.0                              ║
-║                                                       ║
-╚═══════════════════════════════════════════════════════╝
-");
+        var version = Assembly.GetExecutingAssembly().GetName().Version ?? throw new InvalidProgramException("Failed to get assembly from !");
+        var copyright = string.Format(CultureInfo.CurrentUICulture, "FTPS Server {0} : Copyright (c) 2025-{1} Siarhei Kuchuk", version, DateTime.Now.Year);
+        Console.WriteLine(copyright);
     }
 
     static void ShowHelp()
@@ -128,19 +125,19 @@ Options:
   Used when certstorename, certstorelocation and certstoresubject are together specified.
   Optional parameter.
 
-  --user admin|admin|F:\ftp server\admin|RW
+  --user admin#admin#F:\ftp server\admin#RW
   User with login admin and password admin with foilder F:\ftp server\admin with Read and Write permissions.
 
-  --user reader|read123|F:\ftp server\reader|R
+  --user reader#read123#F:\ftp server\reader#R
   User with login admin and password read123 with foilder F:\ftp server\reader with Read permission.
 
-  --user dropbox|dropbox123|F:\ftp server\dropbox|W
+  --user dropbox#dropbox123#F:\ftp server\dropbox#W
   User with login admin and password dropbox123 with foilder F:\ftp server\dropbox with Write permission.
 
 Examples:
   ftps-server --config settings.json
   ftps-server --ip 0.0.0.0 --port 2121
-  ftps-server --user admin|admin|F:\ftp server\admin|RW
+  ftps-server --user admin#admin#F:\ftp server\admin#RW
   ftps-server --cert server.pfx --certpass mypassword
 
 If no arguments are provided, the server looks for 'appsettings.json' in the current directory.
@@ -270,7 +267,7 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
                 case "--user":
                     if (i + 1 < args.Length)
                     {
-                        var userInfo = args[++i].Split('|');
+                        var userInfo = args[++i].Split('#');
                         if (userInfo.Length == 3)
                         {
                             var user = new FtpsServerUserAccount

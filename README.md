@@ -107,9 +107,9 @@ dotnet run -- \
   --certstorename My \
   --certstorelocation CurrentUser \
   --certstoresubject "ftps server store subject" \
-  --user admin|admin|F:\\ftp server\\admin|RW \
-  --user reader|read123|F:\\ftp server\\reader|R \
-  --user dropbox|dropbox123|F:\\ftp server\\dropbox|W
+  --user admin#admin#F:\ftp server\admin#RW \
+  --user reader#read123#F:\ftp server\reader#R \
+  --user dropbox#dropbox123#F:\ftp server\dropbox#W
 
 ```
 
@@ -125,9 +125,9 @@ dotnet run -- \
 | --certstorename My                             | No        |                                                   | Certificate store name. Possible values: AuthRoot, CertificateAuthority, My, Root, TrustedPublisher. Used when certstorename, certstorelocation and certstoresubject are together specified. |
 | --certstorelocation CurrentUser                | No        |                                                   | Certificate store location. Possible values: CurrentUser, LocalMachine. Used when certstorename, certstorelocation and certstoresubject are together specified.                              |
 | --certstoresubject "ftps server store subject" | No        |                                                   | Certificate store subject by which certificate will be searched in certificate store and location. Used when certstorename, certstorelocation and certstoresubject are together specified.   |
-| --user admin\|admin\|F:\\ftp server\\admin\|RW         |  |  | User with login admin and password admin with foilder F:\ftp server\admin with Read and Write permissions. |
-| --user reader\|read123\|F:\\ftp server\\reader\|R      |  |  | User with login admin and password read123 with foilder F:\ftp server\reader with Read permission.         |
-| --user dropbox\|dropbox123\|F:\\ftp server\\dropbox\|W |  |  | User with login admin and password dropbox123 with foilder F:\ftp server\dropbox with Write permission.    |
+| --user admin#admin#F:\\ftp server\\admin#RW         |  |  | User with login admin and password admin with foilder F:\ftp server\admin with Read and Write permissions. |
+| --user reader#read123#F:\\ftp server\\reader#R      |  |  | User with login admin and password read123 with foilder F:\ftp server\reader with Read permission.         |
+| --user dropbox#dropbox123#F:\\ftp server\\dropbox#W |  |  | User with login admin and password dropbox123 with foilder F:\ftp server\dropbox with Write permission.    |
 
 If certificate is not specified, self-signed certificate will be created and stored in %appdata%\FtpsServerLibrary\Certificates.
 
@@ -384,7 +384,7 @@ sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/dotnet
 dotnet run
 
 # Using command-line arguments
-dotnet run -- --ip 0.0.0.0 --port 2121 --user admin:pass123:/home/admin:RWDCNX
+dotnet run -- --ip 0.0.0.0 --port 2121 --user admin#pass123#/home/admin#RW
 
 # Using custom config file
 dotnet run -- --config myconfig.json
