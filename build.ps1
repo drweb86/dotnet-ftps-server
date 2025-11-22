@@ -7,31 +7,12 @@ $ErrorActionPreference = "Stop"
 
 Write-Output "Deleting everything untracked/non commited."
 pause
-Set-Location ..
+
 git clean -ffdx
 if ($LastExitCode -ne 0)
 {
 	Write-Error "Fail." 
 	Set-Location sources
-	Exit 1
-}
-Set-Location sources
-
-Write-Output "Sorting resources..."
-Set-Location tools\ResxSorter
-dotnet run --property WarningLevel=0
-if ($LastExitCode -ne 0)
-{
-	Write-Error "Fail." 
-	Exit 1
-}
-Set-Location ../..
-
-Write-Output "Run tests..."
-& dotnet test
-if ($LastExitCode -ne 0)
-{
-	Write-Error "Fail." 
 	Exit 1
 }
 
@@ -44,9 +25,9 @@ if ($LastExitCode -ne 0)
 }
 
 Write-Output "Clear Output folder..."
-if (Test-Path "..\Output")
+if (Test-Path ".\Output")
 {
-	Remove-Item "..\Output" -Confirm:$false -Recurse:$true
+	Remove-Item ".\Output" -Confirm:$false -Recurse:$true
 	if ($LastExitCode -ne 0)
 	{
 		Write-Error "Fail." 
@@ -69,7 +50,7 @@ class BuildInfo {
 $platforms = New-Object System.Collections.ArrayList
 [void]$platforms.Add([BuildInfo]::new("win-x64", "x64"))
 [void]$platforms.Add([BuildInfo]::new("win-arm64", "arm64"))
-
+cd sources
 ForEach ($platform in $platforms)
 {
 	Write-Output "Platform: $($platform.CoreRuntimeWindows)"
@@ -81,7 +62,7 @@ ForEach ($platform in $platforms)
 		"/p:AssemblyVersion=$version" `
 		"--runtime=$($platform.CoreRuntimeWindows)" `
 		/p:Configuration=Release `
-		"/p:PublishDir=../../Output/publish/$($platform.CoreRuntimeFolderPrefix)" `
+		"/p:PublishDir=../Output/publish/$($platform.CoreRuntimeFolderPrefix)" `
 		/p:PublishReadyToRun=false `
 		/p:RunAnalyzersDuringBuild=False `
 		--self-contained true `
@@ -92,26 +73,26 @@ ForEach ($platform in $platforms)
 		Exit 1
 	}
 }
-
+cd ..
 
 Write-Output "Prepare to pack binaries"
-Copy-Item "..\help\Readme.Binaries.md" "..\Output\publish\README.md"
+Copy-Item ".\README.md" ".\Output\publish\README.md"
 if ($LastExitCode -ne 0)
 {
 	Write-Error "Fail." 
 	Exit 1
 }
 
-Write-Output "Setup..."
-& "C:\Program Files (x86)\NSIS\Bin\makensis.exe" "/DPRODUCT_VERSION=$version" "setup.nsi"
-if ($LastExitCode -ne 0)
-{
-	Write-Error "Fail." 
-	Exit 1
-}
+rem Write-Output "Setup..."
+rem & "C:\Program Files (x86)\NSIS\Bin\makensis.exe" "/DPRODUCT_VERSION=$version" "setup.nsi"
+rem if ($LastExitCode -ne 0)
+rem {
+rem 	Write-Error "Fail." 
+rem 	Exit 1
+rem }
 
 Write-Output "Pack binaries"
-& "c:\Program Files\7-Zip\7z.exe" a -y "..\Output\BUtil_v$($version)_win-binaries.7z" "..\Output\publish\*" -mx9 -t7z -m0=lzma2 -ms=on -sccUTF-8 -ssw
+& "c:\Program Files\7-Zip\7z.exe" a -y ".\Output\FtpsServer_v$($version)_win-binaries.7z" ".\Output\publish\*" -mx9 -t7z -m0=lzma2 -ms=on -sccUTF-8 -ssw
 if ($LastExitCode -ne 0)
 {
 	Write-Error "Fail." 
@@ -119,26 +100,24 @@ if ($LastExitCode -ne 0)
 }
 
 Write-Output "Clear binaries"
-Remove-Item "..\Output\publish" -Confirm:$false -Recurse:$true
+Remove-Item ".\Output\publish" -Confirm:$false -Recurse:$true
 if ($LastExitCode -ne 0)
 {
 	Write-Error "Fail." 
 	Exit 1
 }
 
-& "$PSScriptRoot\winget-pkgs.ps1"
-
-Write-Output "Prepare ubuntu"
-& ".\tools\Template-Copy.ps1"`
-    -TemplateFilePath "tools\ubuntu-install-template.sh" `
-    -DestinationFilePath "ubuntu-install.sh" `
-    -Replacements @{ 'APP_VERSION_STRING' = $version }	
+rem Write-Output "Prepare ubuntu"
+rem & ".\tools\Template-Copy.ps1"`
+rem     -TemplateFilePath "tools\ubuntu-install-template.sh" `
+rem     -DestinationFilePath "ubuntu-install.sh" `
+rem     -Replacements @{ 'APP_VERSION_STRING' = $version }	
 
 Write-Output "The following artefacts are produced. Release them"
-Get-ChildItem "..\Output"
+Get-ChildItem ".\Output"
 
-Write-Output "The following artefacts are produced. Release to win-get."
-Get-ChildItem "..\Output" *.exe | Get-FileHash
+rem Write-Output "The following artefacts are produced. Release to win-get."
+rem Get-ChildItem ".\Output" *.exe | Get-FileHash
 
 Write-Output "A. Release files were put into win-get repo fork. Release it"
-Write-Output "B. Commit changed ubuntu-install to main repository."
+rem Write-Output "B. Commit changed ubuntu-install to main repository."
