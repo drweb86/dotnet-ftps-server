@@ -14,6 +14,14 @@
     <RepositoryUrl>https://github.com/drweb86/dotnet-ftps-server</RepositoryUrl>
     <PackageTags>c#;dotnet;ftps server;ftps</PackageTags>
     <PackageReleaseNotes>Initial version</PackageReleaseNotes>
+    <PackageReadmeFile>README_NUGET.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README_NUGET.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

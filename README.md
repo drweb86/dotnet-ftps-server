@@ -91,7 +91,7 @@ Having configuration file is optional.
 | ServerSettings.CertificateStoreSubject  | No        |               | Certificate store subject by which certificate will be searched in certificate store and location. Used when CertificateStoreName, CertificateStoreLocation and CertificateStoreSubject are together specified.   |
 | Users[].Login                           | Yes       |               | User's login.                                                                   |
 | Users[].Password                        | Yes       |               | User's password.                                                                |
-| Users[].Folder                          | Yes       |               | User's login.                                                                   |
+| Users[].Folder                          | Yes       |               | User's folder.                                                                  |
 | Users[].Read                            | Yes       |               | Can user read folder contents and download files.                               |
 | Users[].Write                           | Yes       |               | Can user create, upload, write, delete, rename operations on files and folders. |
 

@@ -65,7 +65,7 @@ if ($LastExitCode -ne 0)
 }
 
 Write-Output "Publish Nuget"
-$nugetKeyFile=../nuget-api-key.key
+$nugetKeyFile="..\nuget-api-key.key"
 if (-not (Test-Path $nugetKeyFile))
 {
 	Write-Error "File $nugetKeyFile is missing!"
@@ -77,7 +77,7 @@ $nugetKey = Get-Content $nugetKeyFile -First 1
     --api-key $nugetKey `
     --source https://api.nuget.org/v3/index.json
 
-if (-not (Test-Path $nugetKeyFile))
+if ($LastExitCode -ne 0)
 {
 	Write-Error "Fail." 
 	Exit 1
