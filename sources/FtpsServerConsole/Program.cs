@@ -123,19 +123,19 @@ Options:
   Used when certstorename, certstorelocation and certstoresubject are together specified.
   Optional parameter.
 
-  --user admin#admin#F:\ftp server\admin#RW
+  --user ""admin#admin#F:\ftp server\admin#RW""
   User with login admin and password admin with foilder F:\ftp server\admin with Read and Write permissions.
 
-  --user reader#read123#F:\ftp server\reader#R
+  --user ""reader#read123#F:\ftp server\reader#R""
   User with login admin and password read123 with foilder F:\ftp server\reader with Read permission.
 
-  --user dropbox#dropbox123#F:\ftp server\dropbox#W
+  --user ""dropbox#dropbox123#F:\ftp server\dropbox#W""
   User with login admin and password dropbox123 with foilder F:\ftp server\dropbox with Write permission.
 
 Examples:
   ftps-server --config settings.json
   ftps-server --ip 0.0.0.0 --port 2121
-  ftps-server --user admin#admin#F:\ftp server\admin#RW
+  ftps-server --user ""admin#admin#F:\ftp server\admin#RW""
   ftps-server --cert server.pfx --certpass mypassword
 
 If no arguments are provided, the server looks for 'appsettings.json' in the current directory.

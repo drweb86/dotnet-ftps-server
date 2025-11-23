@@ -35,40 +35,52 @@ if (Test-Path ".\Output")
 	}
 }
 
-class BuildInfo {
-    [string]$CoreRuntimeWindows
-	[string]$CoreRuntimeFolderPrefix
+Write-Output "Getting nuget..."
 
-    BuildInfo(
-		[string]$CoreRuntimeWindows,
-		[string]$CoreRuntimeFolderPrefix) {
-        $this.CoreRuntimeWindows = $CoreRuntimeWindows
-		$this.CoreRuntimeFolderPrefix = $CoreRuntimeFolderPrefix
-    }
-}
-
-$platforms = New-Object System.Collections.ArrayList
-[void]$platforms.Add([BuildInfo]::new("win-x64", "x64"))
-[void]$platforms.Add([BuildInfo]::new("win-arm64", "arm64"))
-
-ForEach ($platform in $platforms)
+$nugetApp="$env:TEMP\nuget-packager\nuget.exe"
+if (-not (Test-Path $nugetApp))
 {
-	Write-Output "Platform: $($platform.CoreRuntimeWindows)"
+	md "$env:TEMP\nuget-packager"
 
-	Write-Output "Publish..."
-	& nuget pack sources\FtpsServerLibrary\FtpsServerLibrary.csproj `
-		-NonInteractive `
-		-OutputDirectory=output\nuget-package `
-		"-Version=$version" `
-		"/p:InformationalVersion=$version" `
-		"/p:VersionPrefix=$version" `
-		"/p:Version=$version" `
-		"/p:AssemblyVersion=$version" `
-		/p:Configuration=Release
-	if ($LastExitCode -ne 0)
-	{
-		Write-Error "Fail." 
-		Exit 1
-	}
+	Write-Output "Downloading nuget..."
+	Invoke-WebRequest https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile "$nugetApp"
+	Unblock-File $nugetApp
 }
 
+Write-Output "Build Nuget"
+& dotnet `
+	pack sources\FtpsServerLibrary\FtpsServerLibrary.csproj `
+	-c Release `
+	-o output\nuget-package `
+	/p:InformationalVersion=$version `
+	/p:VersionPrefix=$version `
+	/p:Version=$version `
+	/p:AssemblyVersion=$version `
+	/p:Configuration=Release
+
+if ($LastExitCode -ne 0)
+{
+	Write-Error "Fail." 
+	Exit 1
+}
+
+Write-Output "Publish Nuget"
+$nugetKeyFile=../nuget-api-key.key
+if (-not (Test-Path $nugetKeyFile))
+{
+	Write-Error "File $nugetKeyFile is missing!"
+	Exit 1
+}
+
+$nugetKey = Get-Content $nugetKeyFile -First 1
+& dotnet nuget push output\nuget-package\Siarhei_Kuchuk.FtpsServerLibrary.$version.nupkg `
+    --api-key $nugetKey `
+    --source https://api.nuget.org/v3/index.json
+
+if (-not (Test-Path $nugetKeyFile))
+{
+	Write-Error "Fail." 
+	Exit 1
+}
+
+Write-Output "Success."
