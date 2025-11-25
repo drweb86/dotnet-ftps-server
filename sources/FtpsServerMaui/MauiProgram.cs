@@ -53,11 +53,6 @@ namespace FtpsServerMaui
             builder.Services.AddTransient<AdvancedSetupPage>();
             builder.Services.AddTransient<UserEditorPage>();
 
-            builder.Services.AddSingleton<ProjectRepository>();
-            builder.Services.AddSingleton<TaskRepository>();
-            builder.Services.AddSingleton<CategoryRepository>();
-            builder.Services.AddSingleton<TagRepository>();
-            builder.Services.AddSingleton<SeedDataService>();
             builder.Services.AddSingleton<ModalErrorHandler>();
             builder.Services.AddSingleton<MainPageModel>();
 
