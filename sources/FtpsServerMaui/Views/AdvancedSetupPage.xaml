@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:FtpsServerMaui.ViewModels"
+             x:Class="FtpsServerMaui.Views.AdvancedSetupPage"
+             x:DataType="viewModels:AdvancedSetupViewModel"
+             Title="Advanced Setup">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Advanced FTPS Server Configuration" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10"/>
+
+            <!-- Server Settings Section -->
+            <Border StrokeThickness="2" 
+                    Stroke="{StaticResource Primary}"
+                    Padding="15"
+                    StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Server Settings" FontSize="18" FontAttributes="Bold"/>
+
+                    <!-- IP Address -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="IP Address" FontAttributes="Bold"/>
+                        <Entry Text="{Binding Ip}"
+                               Placeholder="0.0.0.0"/>
+                        <Label Text="0.0.0.0 = Listen on all interfaces" 
+                               FontSize="12"
+                               TextColor="Gray"/>
+                    </VerticalStackLayout>
+
+                    <!-- Port -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Port" FontAttributes="Bold"/>
+                        <Entry Text="{Binding Port}"
+                               Keyboard="Numeric"/>
+                    </VerticalStackLayout>
+
+                    <!-- Max Connections -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Maximum Connections" FontAttributes="Bold"/>
+                        <Entry Text="{Binding MaxConnections}"
+                               Keyboard="Numeric"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Certificate Settings Section -->
+            <Border StrokeThickness="2" 
+                    Stroke="{StaticResource Primary}"
+                    Padding="15"
+                    StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Certificate Settings" FontSize="18" FontAttributes="Bold"/>
+
+                    <!-- Use Self-Signed Certificate -->
+                    <HorizontalStackLayout Spacing="10">
+                        <CheckBox IsChecked="{Binding UseSelfSignedCertificate}"/>
+                        <Label Text="Use Self-Signed Certificate (Auto-Generated)" 
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <!-- Certificate Path -->
+                    <VerticalStackLayout Spacing="5" 
+                                        IsVisible="{Binding UseSelfSignedCertificate, Converter={StaticResource InvertedBoolConverter}}">
+                        <Label Text="Certificate Path (.pfx, .pem, .der)" FontAttributes="Bold"/>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Entry Grid.Column="0"
+                                   Text="{Binding CertificatePath}"
+                                   Placeholder="Select certificate file"/>
+                            <Button Grid.Column="1"
+                                    Text="Browse"
+                                    Command="{Binding BrowseCertificateCommand}"
+                                    Margin="5,0,0,0"/>
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <!-- Certificate Password -->
+                    <VerticalStackLayout Spacing="5"
+                                        IsVisible="{Binding UseSelfSignedCertificate, Converter={StaticResource InvertedBoolConverter}}">
+                        <Label Text="Certificate Password (if required)" FontAttributes="Bold"/>
+                        <Entry Text="{Binding CertificatePassword}"
+                               Placeholder="Enter password"
+                               IsPassword="True"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Users Section -->
+            <Border StrokeThickness="2" 
+                    Stroke="{StaticResource Primary}"
+                    Padding="15"
+                    StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="User Accounts" FontSize="18" FontAttributes="Bold"/>
+
+                    <!-- User List -->
+                    <CollectionView ItemsSource="{Binding Users}"
+                                    SelectedItem="{Binding SelectedUser}"
+                                    SelectionMode="Single"
+                                    HeightRequest="200">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border StrokeThickness="1"
+                                        Stroke="LightGray"
+                                        Padding="10"
+                                        Margin="0,5"
+                                        StrokeShape="RoundRectangle 5">
+                                    <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="10">
+                                        <Label Grid.Column="0" 
+                                               Text="👤" 
+                                               FontSize="20"
+                                               VerticalOptions="Center"/>
+                                        <VerticalStackLayout Grid.Column="1">
+                                            <Label Text="{Binding Username}" 
+                                                   FontAttributes="Bold"/>
+                                            <Label Text="{Binding Folder}" 
+                                                   FontSize="12"
+                                                   TextColor="Gray"/>
+                                        </VerticalStackLayout>
+                                        <Label Grid.Column="2"
+                                               Text="📖"
+                                               IsVisible="{Binding ReadPermission}"
+                                               VerticalOptions="Center"
+                                               ToolTipProperties.Text="Read Permission"/>
+                                        <Label Grid.Column="3"
+                                               Text="✏️"
+                                               IsVisible="{Binding WritePermission}"
+                                               VerticalOptions="Center"
+                                               ToolTipProperties.Text="Write Permission"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <!-- User Management Buttons -->
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                        <Button Grid.Column="0"
+                                Text="Add User"
+                                Command="{Binding AddUserCommand}"
+                                BackgroundColor="Green"/>
+                        <Button Grid.Column="1"
+                                Text="Edit User"
+                                Command="{Binding EditUserCommand}"
+                                BackgroundColor="Orange"/>
+                        <Button Grid.Column="2"
+                                Text="Delete User"
+                                Command="{Binding DeleteUserCommand}"
+                                BackgroundColor="Red"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Start Button -->
+            <Button Text="Start FTPS Server"
+                    Command="{Binding StartServerCommand}"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    FontSize="18"
+                    Padding="15"
+                    Margin="0,10,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

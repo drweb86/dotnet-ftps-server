@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:FtpsServerMaui.ViewModels"
+             x:Class="FtpsServerMaui.Views.SimpleSetupPage"
+             x:DataType="viewModels:SimpleSetupViewModel"
+             Title="Simple Setup">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Quick Start FTPS Server" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10"/>
+
+            <Label Text="This mode creates a server with a single user and self-signed certificate. Perfect for quick testing and personal use."
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Gray"
+                   Margin="0,0,0,20"/>
+
+            <!-- Username -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Username" FontAttributes="Bold"/>
+                <Entry Text="{Binding Username}"
+                       Placeholder="Enter username"/>
+            </VerticalStackLayout>
+
+            <!-- Password -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Password" FontAttributes="Bold"/>
+                <Entry Text="{Binding Password}"
+                       Placeholder="Enter password"
+                       IsPassword="True"/>
+            </VerticalStackLayout>
+
+            <!-- Port -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Port" FontAttributes="Bold"/>
+                <Entry Text="{Binding Port}"
+                       Placeholder="2121"
+                       Keyboard="Numeric"/>
+                <Label Text="Default: 2121 (standard FTP is 21)" 
+                       FontSize="12"
+                       TextColor="Gray"/>
+            </VerticalStackLayout>
+
+            <!-- Root Folder -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Root Folder" FontAttributes="Bold"/>
+                <Grid ColumnDefinitions="*,Auto">
+                    <Entry Grid.Column="0"
+                           Text="{Binding RootFolder}"
+                           Placeholder="Select or enter folder path"/>
+                    <Button Grid.Column="1"
+                            Text="Browse"
+                            Command="{Binding BrowseFolderCommand}"
+                            Margin="5,0,0,0"/>
+                </Grid>
+                <Label Text="This folder will be accessible via FTP" 
+                       FontSize="12"
+                       TextColor="Gray"/>
+            </VerticalStackLayout>
+
+            <!-- Permissions Info -->
+            <Border StrokeThickness="1"
+                    Stroke="LightGray"
+                    Background="{AppThemeBinding Light=#F5F5F5, Dark=#2A2A2A}"
+                    Padding="15"
+                    StrokeShape="RoundRectangle 8">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="ℹ️ Default Settings:" FontAttributes="Bold"/>
+                    <Label Text="• Read Permission: Enabled"/>
+                    <Label Text="• Write Permission: Enabled"/>
+                    <Label Text="• Listening on: All interfaces (0.0.0.0)"/>
+                    <Label Text="• Certificate: Self-signed (auto-generated)"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Start Button -->
+            <Button Text="Start FTPS Server"
+                    Command="{Binding StartServerCommand}"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    FontSize="18"
+                    Padding="15"
+                    Margin="0,20,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
