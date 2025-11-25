@@ -23,13 +23,6 @@ namespace FtpsServerMaui
     					handler.PlatformView.SingleSelectionFollowsFocus = false;
     				});
 
-    				Microsoft.Maui.Handlers.ContentViewHandler.Mapper.AppendToMapping(nameof(Pages.Controls.CategoryChart), (handler, view) =>
-    				{
-    					if (view is Pages.Controls.CategoryChart && handler.PlatformView is Microsoft.Maui.Platform.ContentPanel contentPanel)
-    					{
-    						contentPanel.IsTabStop = true;
-    					}
-    				});
 #endif
                 })
                 .ConfigureFonts(fonts =>
@@ -67,11 +60,6 @@ namespace FtpsServerMaui
             builder.Services.AddSingleton<SeedDataService>();
             builder.Services.AddSingleton<ModalErrorHandler>();
             builder.Services.AddSingleton<MainPageModel>();
-            builder.Services.AddSingleton<ProjectListPageModel>();
-            builder.Services.AddSingleton<ManageMetaPageModel>();
-
-            builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
-            builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
 
             Routing.RegisterRoute(nameof(SimpleSetupPage), typeof(SimpleSetupPage));
             Routing.RegisterRoute(nameof(AdvancedSetupPage), typeof(AdvancedSetupPage));
