@@ -16,13 +16,13 @@ Not recommended for:
 
 ## Features
 
-✅ **JSON File Configuration**
-✅ **Command-Line Arguments** - Override any setting via CLI
-✅ **User Permissions** - Granular control over Read/Write operations
-✅ **Per-User Root Folders** - Isolated directories for each user
-✅ **TLS/SSL Encryption** - Secure FTPS connections
-✅ **Full FTP Protocol** - All standard FTP commands supported
-✅ **Path Security** - Protection against directory traversal attacks
+- ✅ **JSON File Configuration**
+- ✅ **Command-Line Arguments** - Override any setting via CLI
+- ✅ **User Permissions** - Granular control over Read/Write operations
+- ✅ **Per-User Root Folders** - Isolated directories for each user
+- ✅ **TLS/SSL Encryption** - Secure FTPS connections
+- ✅ **Full FTP Protocol** - All standard FTP commands supported
+- ✅ **Path Security** - Protection against directory traversal attacks
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ Not recommended for:
 
 ## Library
 
-Can be found in nuget package manager: https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary .
+Can be found in nuget package manager: https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary . Examples of code and configuration is described there.
 
 ## ⚙️ Configuration
 

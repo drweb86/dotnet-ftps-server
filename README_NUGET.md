@@ -1,6 +1,10 @@
-﻿## Enhanced C# FTPS .Net 10 Server & Library
+﻿## Open-source C# FTPS .Net 10 Library
 
-A FTPS (FTP over TLS) server implementation in C# with logging, user permissions, and flexible configuration options. Aimed for Windows, Linux, or macOS platforms. Does not have dependencies.
+A FTPS (FTP over TLS) server implementation in C# with logging, user permissions, and flexible configuration options. Aimed for Windows, Linux, Android and macOS platforms.
+
+Does not have dependencies.
+
+Uses permissive license MIT.
 
 This is a sample implementation provided for:
 - ✅ Learning and education
@@ -15,15 +19,11 @@ Not recommended for:
 
 ## Features
 
-✅ **User Permissions** - Granular control over Read/Write operations
-✅ **Per-User Root Folders** - Isolated directories for each user
-✅ **TLS/SSL Encryption** - Secure FTPS connections
-✅ **Full FTP Protocol** - All standard FTP commands supported
-✅ **Path Security** - Protection against directory traversal attacks
-
-## Prerequisites
-
-- .NET 10.0 SDK.
+- ✅ **User Permissions** - Granular control over Read/Write operations
+- ✅ **Per-User Root Folders** - Isolated directories for each user
+- ✅ **TLS/SSL Encryption** - Secure FTPS connections
+- ✅ **Full FTP Protocol** - All standard FTP commands supported
+- ✅ **Path Security** - Protection against directory traversal attacks
 
 ## ⚙️ Configuration
 
