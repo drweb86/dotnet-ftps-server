@@ -49,7 +49,7 @@ public class FtpsServer
             _listener.Start();
             _isRunning = true;
 
-            _log.Info($"Server started successfully on {actualIp}:{actualPort}");
+            _log.Info($"FTPS Server started successfully on {actualIp}:{actualPort} (Explicit encryption)");
 
             _ = Task.Run(AcceptClientsAsync);
         }

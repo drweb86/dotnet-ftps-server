@@ -42,7 +42,8 @@ class Program
             _logger.Info($"IP Address: {config.ServerSettings.Ip}");
             _logger.Info($"Port: {config.ServerSettings.Port}");
             _logger.Info($"Users Configured: {config.Users.Count}");
-            
+            _logger.Info($"Encryption: Explicit");
+
             server.Start();
             
             Console.WriteLine("\nPress 'Q' to stop the server...");

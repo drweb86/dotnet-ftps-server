@@ -22,12 +22,14 @@ class FtpsServerClientSession(
     private Stream? _controlStream;
     private StreamReader? _reader;
     private StreamWriter? _writer;
+    private SslStream? _sslStream;
 
     private string? _username;
     private FtpsServerUserAccount? _currentUser;
     private bool _isAuthenticated;
     private FtpsServerVirtualPath? _currentPath;
     private string? _renameFrom;
+    private readonly Encoding _initialEncoding = Encoding.GetEncoding("ISO-8859-1");
     private Encoding _currentEncoding = Encoding.GetEncoding("ISO-8859-1");
 
     private TcpListener? _dataListener;
@@ -202,15 +204,42 @@ class FtpsServerClientSession(
         {
             if (args.Length == 1 || args[1].Equals("ON", StringComparison.OrdinalIgnoreCase))
             {
-                _currentEncoding = Encoding.UTF8;
-                RecreateReaderWriter();
+                // Enable UTF-8 mode
+                _currentEncoding = new UTF8Encoding(false); // Don't emit UTF-8 BOM
+
+                // Recreate writer with new encoding
+                if (_controlStream != null)
+                {
+                    _writer = new StreamWriter(_controlStream, _currentEncoding)
+                    {
+                        AutoFlush = true,
+                        NewLine = "\r\n" // Ensure proper FTP line endings
+                    };
+
+                    // Note: We don't recreate the reader here to avoid losing buffered commands
+                    // The reader will continue to use its current encoding until we process
+                    // the next command, at which point it will read from the new writer's buffer
+                }
+
                 await SendResponseAsync(200, "UTF8 mode enabled");
+                _reader.Dispose();
+                _reader = new StreamReader(_controlStream, _currentEncoding, leaveOpen: true);
                 return;
             }
             else if (args[1].Equals("OFF", StringComparison.OrdinalIgnoreCase))
             {
+                // Revert to ISO-8859-1
                 _currentEncoding = Encoding.GetEncoding("ISO-8859-1");
-                RecreateReaderWriter();
+
+                if (_controlStream != null)
+                {
+                    _writer = new StreamWriter(_controlStream, _currentEncoding)
+                    {
+                        AutoFlush = true,
+                        NewLine = "\r\n"
+                    };
+                }
+
                 await SendResponseAsync(200, "UTF8 mode disabled");
                 return;
             }
@@ -266,12 +295,13 @@ class FtpsServerClientSession(
 
             try
             {
-                var sslStream = new SslStream(_controlStream!, false);
-                await sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
+                _sslStream = new SslStream(_controlStream!, false);
+                await _sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
 
-                _controlStream = sslStream;
-                _reader = new StreamReader(_controlStream, Encoding.ASCII);
-                _writer = new StreamWriter(_controlStream, Encoding.ASCII) { AutoFlush = true };
+                _controlStream = _sslStream;
+
+                // Recreate reader/writer to use the encrypted stream with proper encoding
+                RecreateReaderWriter();
 
                 _log.Info($"[{_clientAddress}] TLS enabled on control connection");
             }
@@ -935,14 +965,27 @@ class FtpsServerClientSession(
 
     private async Task HandleFeatAsync()
     {
-        await _writer!.WriteLineAsync("211-Features:");
-        await _writer.WriteLineAsync(" AUTH TLS");
-        await _writer.WriteLineAsync(" PBSZ");
-        await _writer.WriteLineAsync(" PROT");
-        await _writer.WriteLineAsync(" SIZE");
-        await _writer.WriteLineAsync(" MDTM");
-        await _writer.WriteLineAsync(" UTF8");
-        await _writer.WriteLineAsync("211 End");
+        // Store the feature lines in a list
+        var featureLines = new List<string>
+        {
+            "211-Features:",
+            " AUTH TLS",
+            " PBSZ",
+            " PROT",
+            " SIZE",
+            " MDTM",
+            " UTF8",
+            "211 End"
+        };
+
+        // Write each line using the current encoding
+        foreach (var line in featureLines)
+        {
+            await _writer!.WriteLineAsync(line);
+        }
+
+        // Make sure everything is flushed
+        await _writer!.FlushAsync();
     }
 
     private bool CheckAuthentication()
@@ -954,7 +997,7 @@ class FtpsServerClientSession(
     {
         if (_currentUser == null)
             return false;
-        return ( read ? _currentUser.Read : true ) &&
+        return (read ? _currentUser.Read : true) &&
             (write ? _currentUser.Write : true);
     }
 
@@ -981,6 +1024,10 @@ class FtpsServerClientSession(
     {
         var response = $"{code} {message}";
         _log.Debug($"[{_clientAddress}] << {response}");
-        await _writer!.WriteLineAsync(response);
+
+        // Use WriteAsync with the current encoding
+        var bytes = _currentEncoding.GetBytes(response + "\r\n");
+        await _controlStream!.WriteAsync(bytes);
+        await _controlStream.FlushAsync();
     }
 }
