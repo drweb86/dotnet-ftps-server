@@ -5,25 +5,6 @@ Clear-Host
 Write-Output "Version is $version"
 $ErrorActionPreference = "Stop"
 
-Write-Output "Deleting everything untracked/non commited."
-pause
-
-git clean -ffdx
-if ($LastExitCode -ne 0)
-{
-	Write-Error "Fail." 
-	Set-Location sources
-	Exit 1
-}
-
-Write-Output "Clear bin/obj folders..."
-Get-ChildItem .\ -include bin,obj -Recurse | ForEach-Object ($_) { Remove-Item $_.FullName -Force -Recurse }
-if ($LastExitCode -ne 0)
-{
-	Write-Error "Fail." 
-	Exit 1
-}
-
 Write-Output "Clear Output folder..."
 if (Test-Path ".\Output")
 {
