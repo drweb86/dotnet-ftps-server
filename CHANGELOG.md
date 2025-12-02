@@ -1,4 +1,4 @@
-# 2025.12.02
+# 2025.12.2
 
 ## New Features
 - Add compatibility with FluentFtp

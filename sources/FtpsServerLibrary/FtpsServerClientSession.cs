@@ -222,8 +222,9 @@ class FtpsServerClientSession(
                 }
 
                 await SendResponseAsync(200, "UTF8 mode enabled");
-                _reader.Dispose();
-                _reader = new StreamReader(_controlStream, _currentEncoding, leaveOpen: true);
+                _reader?.Dispose();
+                if (_controlStream is not null)
+                    _reader = new StreamReader(_controlStream, _currentEncoding, leaveOpen: true);
                 return;
             }
             else if (args[1].Equals("OFF", StringComparison.OrdinalIgnoreCase))
@@ -425,7 +426,6 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(directory);
         var fullPath = ResolveFullPath(directory);
 
         try
@@ -456,7 +456,6 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(filename);
         var fullPath = ResolveFullPath(filename);
 
         try
@@ -487,7 +486,6 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(filename);
         var fullPath = ResolveFullPath(filename);
 
         if (File.Exists(fullPath) || Directory.Exists(fullPath))
@@ -515,7 +513,6 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(filename);
         var fullPath = ResolveFullPath(filename);
 
         try
@@ -997,8 +994,10 @@ class FtpsServerClientSession(
     {
         if (_currentUser == null)
             return false;
+#pragma warning disable IDE0075 // Simplify conditional expression
         return (read ? _currentUser.Read : true) &&
             (write ? _currentUser.Write : true);
+#pragma warning restore IDE0075 // Simplify conditional expression
     }
 
     private FtpsServerVirtualPath ResolveVirtualPath(string path)

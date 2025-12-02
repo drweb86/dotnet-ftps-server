@@ -11,10 +11,9 @@ class FtpsServerVirtualPath
 
     public FtpsServerVirtualPath(string path)
     {
-        if (path == null)
-            throw new ArgumentNullException(nameof(path));
+        ArgumentNullException.ThrowIfNull(path);
 
-        _segments = new List<string>();
+        _segments = [];
         ParsePath(path);
     }
 
@@ -126,8 +125,7 @@ class FtpsServerVirtualPath
     /// <returns>A new VirtualPath instance with the appended path.</returns>
     public FtpsServerVirtualPath Append(FtpsServerVirtualPath? virtualPath)
     {
-        if (virtualPath is null)
-            throw new ArgumentNullException(nameof(virtualPath));
+        ArgumentNullException.ThrowIfNull(virtualPath);
 
         return Append(virtualPath.ToString());
     }
@@ -167,7 +165,7 @@ class FtpsServerVirtualPath
         string virtualPathStr = ToString();
 
         // Remove leading / for absolute virtual paths when combining with base
-        if (IsAbsolute && virtualPathStr.StartsWith("/"))
+        if (IsAbsolute && virtualPathStr.StartsWith('/'))
             virtualPathStr = virtualPathStr[1..];
 
         // Replace / with system directory separator
