@@ -93,7 +93,7 @@ public partial class AdvancedSetupViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error", $"Failed to select certificate: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync("Error", $"Failed to select certificate: {ex.Message}", "OK");
         }
     }
 
@@ -108,7 +108,7 @@ public partial class AdvancedSetupViewModel : ObservableObject
     {
         if (SelectedUser == null)
         {
-            await Shell.Current.DisplayAlert("Info", "Please select a user to edit", "OK");
+            await Shell.Current.DisplayAlertAsync("Info", "Please select a user to edit", "OK");
             return;
         }
 
@@ -125,11 +125,11 @@ public partial class AdvancedSetupViewModel : ObservableObject
     {
         if (SelectedUser == null)
         {
-            await Shell.Current.DisplayAlert("Info", "Please select a user to delete", "OK");
+            await Shell.Current.DisplayAlertAsync("Info", "Please select a user to delete", "OK");
             return;
         }
 
-        var confirm = await Shell.Current.DisplayAlert("Confirm",
+        var confirm = await Shell.Current.DisplayAlertAsync("Confirm",
             $"Are you sure you want to delete user '{SelectedUser.Username}'?",
             "Yes", "No");
 
@@ -145,13 +145,13 @@ public partial class AdvancedSetupViewModel : ObservableObject
     {
         if (Users.Count == 0)
         {
-            await Shell.Current.DisplayAlert("Error", "At least one user is required", "OK");
+            await Shell.Current.DisplayAlertAsync("Error", "At least one user is required", "OK");
             return;
         }
 
         if (!UseSelfSignedCertificate && string.IsNullOrWhiteSpace(CertificatePath))
         {
-            await Shell.Current.DisplayAlert("Error", "Certificate path is required when not using self-signed certificate", "OK");
+            await Shell.Current.DisplayAlertAsync("Error", "Certificate path is required when not using self-signed certificate", "OK");
             return;
         }
 
@@ -174,14 +174,28 @@ public partial class AdvancedSetupViewModel : ObservableObject
         {
             await _ftpsService.StartServerAsync(configuration);
             await _configService.SaveConfigurationAsync(configuration);
-            await Shell.Current.DisplayAlert("Success",
-                $"FTPS Server started on {Ip}:{Port}",
+            await Shell.Current.DisplayAlertAsync("Success",
+                $"FTPS Server started!\n\nConnect using:\nHost: {await GetLocalIpAddress()}\nPort: {Port}\nEncryption mode: Explicit",
                 "OK");
             await Shell.Current.GoToAsync("..");
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error", $"Failed to start server: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync("Error", $"Failed to start server: {ex.Message}", "OK");
+        }
+    }
+
+    private async Task<string> GetLocalIpAddress()
+    {
+        try
+        {
+            var addresses = await System.Net.Dns.GetHostAddressesAsync(System.Net.Dns.GetHostName());
+            var ipv4 = addresses.FirstOrDefault(ip => ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+            return ipv4?.ToString() ?? "localhost";
+        }
+        catch
+        {
+            return "localhost";
         }
     }
 

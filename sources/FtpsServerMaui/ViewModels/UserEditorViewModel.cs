@@ -7,9 +7,9 @@ using FtpsServerMaui.Services;
 namespace FtpsServerMaui.ViewModels;
 
 [QueryProperty(nameof(EditingUser), "EditingUser")]
-public partial class UserEditorViewModel : ObservableObject
+public partial class UserEditorViewModel(IUserEditorService userEditorService) : ObservableObject
 {
-    private readonly IUserEditorService _userEditorService;
+    private readonly IUserEditorService _userEditorService = userEditorService;
     private UserConfiguration? _originalUser;
 
     [ObservableProperty]
@@ -32,11 +32,6 @@ public partial class UserEditorViewModel : ObservableObject
 
     [ObservableProperty]
     private bool _isEditMode;
-
-    public UserEditorViewModel(IUserEditorService userEditorService)
-    {
-        _userEditorService = userEditorService;
-    }
 
     partial void OnEditingUserChanged(UserConfiguration? value)
     {
@@ -72,19 +67,19 @@ public partial class UserEditorViewModel : ObservableObject
     {
         if (string.IsNullOrWhiteSpace(Username))
         {
-            await Shell.Current.DisplayAlert("Error", "Username is required", "OK");
+            await Shell.Current.DisplayAlertAsync("Error", "Username is required", "OK");
             return;
         }
 
         if (string.IsNullOrWhiteSpace(Password))
         {
-            await Shell.Current.DisplayAlert("Error", "Password is required", "OK");
+            await Shell.Current.DisplayAlertAsync("Error", "Password is required", "OK");
             return;
         }
 
         if (string.IsNullOrWhiteSpace(Folder))
         {
-            await Shell.Current.DisplayAlert("Error", "Folder is required", "OK");
+            await Shell.Current.DisplayAlertAsync("Error", "Folder is required", "OK");
             return;
         }
 
@@ -97,7 +92,7 @@ public partial class UserEditorViewModel : ObservableObject
             }
             catch (Exception ex)
             {
-                await Shell.Current.DisplayAlert("Error", $"Failed to create directory: {ex.Message}", "OK");
+                await Shell.Current.DisplayAlertAsync("Error", $"Failed to create directory: {ex.Message}", "OK");
                 return;
             }
         }

@@ -74,7 +74,7 @@ public partial class MainViewModel : ObservableObject
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Error", $"Failed to stop server: {ex.Message}", "OK");
+            await Shell.Current.DisplayAlertAsync("Error", $"Failed to stop server: {ex.Message}", "OK");
         }
     }
 

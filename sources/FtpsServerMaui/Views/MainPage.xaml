@@ -57,7 +57,7 @@
                     <Button Text="Advanced Setup"
                             Command="{Binding OpenAdvancedSetupCommand}"
                             IsEnabled="{Binding IsServerRunning, Converter={StaticResource InvertedBoolConverter}}"
-                            BackgroundColor="{StaticResource Secondary}"/>
+                            BackgroundColor="{StaticResource Primary}"/>
                 </VerticalStackLayout>
             </Border>
 

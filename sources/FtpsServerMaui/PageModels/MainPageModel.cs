@@ -4,11 +4,11 @@ using FtpsServerMaui.Models;
 
 namespace FtpsServerMaui.PageModels
 {
-    public partial class MainPageModel : ObservableObject, IProjectTaskPageModel
+    public partial class MainPageModel(ModalErrorHandler errorHandler) : ObservableObject, IProjectTaskPageModel
     {
         private bool _isNavigatedTo;
         private bool _dataLoaded;
-        private readonly ModalErrorHandler _errorHandler;
+        private readonly ModalErrorHandler _errorHandler = errorHandler;
 
         [ObservableProperty]
         private List<Brush> _todoCategoryColors = [];
@@ -22,11 +22,6 @@ namespace FtpsServerMaui.PageModels
         [ObservableProperty]
         private string _today = DateTime.Now.ToString("dddd, MMM d");
 
-        public MainPageModel(ModalErrorHandler errorHandler)
-        {
-            _errorHandler = errorHandler;
-        }
-
         private async Task LoadData()
         {
             try
@@ -39,21 +34,6 @@ namespace FtpsServerMaui.PageModels
             {
                 IsBusy = false;
             }
-        }
-
-        private async Task InitData()
-        {
-            // TODO: seed data
-
-            bool isSeeded = Preferences.Default.ContainsKey("is_seeded");
-
-            if (!isSeeded)
-            {
-                // TODO: seed data
-            }
-
-            Preferences.Default.Set("is_seeded", true);
-            await Refresh();
         }
 
         [RelayCommand]
@@ -87,7 +67,6 @@ namespace FtpsServerMaui.PageModels
         {
             if (!_dataLoaded)
             {
-                await InitData();
                 _dataLoaded = true;
                 await Refresh();
             }

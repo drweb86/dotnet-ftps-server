@@ -3,9 +3,9 @@ using FtpsServerMaui.Models;
 
 namespace FtpsServerMaui.Services;
 
-public class FtpsService : IFtpsService
+public class FtpsService(ILogService logService) : IFtpsService
 {
-    private readonly ILogService _logService;
+    private readonly ILogService _logService = logService;
     private FtpsServer? _server;
     private bool _isRunning;
 
@@ -23,11 +23,6 @@ public class FtpsService : IFtpsService
     }
 
     public event EventHandler<bool>? ServerStateChanged;
-
-    public FtpsService(ILogService logService)
-    {
-        _logService = logService;
-    }
 
     public Task StartServerAsync(ServerConfiguration configuration)
     {

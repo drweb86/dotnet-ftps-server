@@ -1,9 +1,15 @@
 # 2025.12.2
+(unpublished)
+
+## Bug Fixes
+- MAUI: fix load settings for simple setup.
+
+# 2025.12.2
 
 ## New Features
-- Add compatibility with FluentFtp
+- Library: Add compatibility with FluentFtp
 
 # 2025.11.22
 
 ## New Features
-- First release to windows.
+- Library: First release to windows.
