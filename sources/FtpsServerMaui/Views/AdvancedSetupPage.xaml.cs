@@ -1,4 +1,3 @@
-using FtpsServerMaui.Models;
 using FtpsServerMaui.ViewModels;
 
 namespace FtpsServerMaui.Views;

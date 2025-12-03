@@ -5,26 +5,56 @@ namespace FtpsServerMaui.Models;
 
 public partial class ServerConfiguration : ObservableObject
 {
-    [ObservableProperty]
     private string _ip = "0.0.0.0";
 
-    [ObservableProperty]
+    public string Ip
+    {
+        get => _ip;
+        set => SetProperty(ref _ip, value);
+    }
+
     private int _port = 2121;
 
-    [ObservableProperty]
+    public int Port
+    {
+        get => _port;
+        set => SetProperty(ref _port, value);
+    }
+
     private int _maxConnections = 10;
+    public int MaxConnections
+    {
+        get => _maxConnections;
+        set => SetProperty(ref _maxConnections, value);
+    }
 
-    [ObservableProperty]
     private string? _certificatePath;
+    public string? CertificatePath
+    {
+        get => _certificatePath;
+        set => SetProperty(ref _certificatePath, value);
+    }
 
-    [ObservableProperty]
     private string? _certificatePassword;
+    public string? CertificatePassword
+    {
+        get => _certificatePassword;
+        set => SetProperty(ref _certificatePassword, value);
+    }
 
-    [ObservableProperty]
     private bool _useSelfSignedCertificate = true;
+    public bool UseSelfSignedCertificate
+    {
+        get => _useSelfSignedCertificate;
+        set => SetProperty(ref _useSelfSignedCertificate, value);
+    }
 
-    [ObservableProperty]
-    private ObservableCollection<UserConfiguration> _users = new();
+    private ObservableCollection<UserConfiguration> _users = [];
+    public ObservableCollection<UserConfiguration> Users
+    {
+        get => _users;
+        set => SetProperty(ref _users, value);
+    }
 
     public ServerConfiguration()
     {

@@ -18,10 +18,10 @@ namespace FtpsServerMaui
                 .ConfigureMauiHandlers(handlers =>
                 {
 #if WINDOWS
-    				Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler.Mapper.AppendToMapping("KeyboardAccessibleCollectionView", (handler, view) =>
-    				{
-    					handler.PlatformView.SingleSelectionFollowsFocus = false;
-    				});
+                    Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler.Mapper.AppendToMapping("KeyboardAccessibleCollectionView", (handler, view) =>
+                    {
+                        handler.PlatformView.SingleSelectionFollowsFocus = false;
+                    });
 
 #endif
                 })
@@ -34,8 +34,8 @@ namespace FtpsServerMaui
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
-    		builder.Services.AddLogging(configure => configure.AddDebug());
+            builder.Logging.AddDebug();
+            builder.Services.AddLogging(configure => configure.AddDebug());
 #endif
 
             builder.Services.AddSingleton<IFtpsService, FtpsService>();
@@ -54,7 +54,6 @@ namespace FtpsServerMaui
             builder.Services.AddTransient<UserEditorPage>();
 
             builder.Services.AddSingleton<ModalErrorHandler>();
-            builder.Services.AddSingleton<MainPageModel>();
 
             Routing.RegisterRoute(nameof(SimpleSetupPage), typeof(SimpleSetupPage));
             Routing.RegisterRoute(nameof(AdvancedSetupPage), typeof(AdvancedSetupPage));

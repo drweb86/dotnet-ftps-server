@@ -2,7 +2,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FtpsServerMaui.Helpers;
 using FtpsServerMaui.Models;
-using FtpsServerMaui.Services;
 
 namespace FtpsServerMaui.ViewModels;
 
@@ -11,17 +10,33 @@ public partial class SimpleSetupViewModel : ObservableObject
     private readonly IFtpsService _ftpsService;
     private readonly IConfigurationService _configService;
 
-    [ObservableProperty]
     private string _username = "ftpuser";
+    public string Username
+    {
+        get => _username;
+        set => SetProperty(ref _username, value);
+    }
 
-    [ObservableProperty]
     private string _password = "ftppass";
+    public string Password
+    {
+        get => _password;
+        set => SetProperty(ref _password, value);
+    }
 
-    [ObservableProperty]
     private string _rootFolder = string.Empty;
+    public string RootFolder
+    {
+        get => _rootFolder;
+        set => SetProperty(ref _rootFolder, value);
+    }
 
-    [ObservableProperty]
     private int _port = 2121;
+    public int Port
+    {
+        get => _port;
+        set => SetProperty(ref _port, value);
+    }
 
     public SimpleSetupViewModel(IFtpsService ftpsService, IConfigurationService configService)
     {
@@ -68,8 +83,8 @@ public partial class SimpleSetupViewModel : ObservableObject
         catch (Exception)
         {
             // Folder picker might not be available on all platforms
-            await Shell.Current.DisplayAlertAsync("Info", 
-                "Please enter the folder path manually. Default folder will be used if empty.", 
+            await Shell.Current.DisplayAlertAsync("Info",
+                "Please enter the folder path manually. Default folder will be used if empty.",
                 "OK");
         }
     }
@@ -129,8 +144,8 @@ public partial class SimpleSetupViewModel : ObservableObject
         {
             await _ftpsService.StartServerAsync(configuration);
             await _configService.SaveConfigurationAsync(configuration);
-            await Shell.Current.DisplayAlertAsync("Success", 
-                $"FTPS Server started!\n\nConnect using:\nHost: {await GetLocalIpAddress()}\nPort: {Port}\nUsername: {Username}\nPassword: {Password}\nEncryption mode: Explicit", 
+            await Shell.Current.DisplayAlertAsync("Success",
+                $"FTPS Server started!\n\nConnect using:\nHost: {await GetLocalIpAddress()}\nPort: {Port}\nUsername: {Username}\nPassword: {Password}\nEncryption mode: Explicit",
                 "OK");
             await Shell.Current.GoToAsync("..");
         }

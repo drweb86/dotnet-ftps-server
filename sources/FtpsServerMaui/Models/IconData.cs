@@ -1,5 +1,3 @@
-using System;
-
 namespace FtpsServerMaui.Models
 {
     public class IconData

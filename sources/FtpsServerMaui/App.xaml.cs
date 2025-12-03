@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace FtpsServerMaui
+﻿namespace FtpsServerMaui
 {
     public partial class App : Application
     {

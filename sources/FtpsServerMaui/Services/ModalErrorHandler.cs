@@ -1,32 +1,32 @@
 namespace FtpsServerMaui.Services;
 
+/// <summary>
+/// Modal Error Handler.
+/// </summary>
+public class ModalErrorHandler : IErrorHandler
+{
+    SemaphoreSlim _semaphore = new(1, 1);
+
     /// <summary>
-    /// Modal Error Handler.
+    /// Handle error in UI.
     /// </summary>
-    public class ModalErrorHandler : IErrorHandler
+    /// <param name="ex">Exception.</param>
+    public void HandleError(Exception ex)
     {
-        SemaphoreSlim _semaphore = new(1, 1);
+        DisplayAlertAsync(ex).FireAndForgetSafeAsync();
+    }
 
-        /// <summary>
-        /// Handle error in UI.
-        /// </summary>
-        /// <param name="ex">Exception.</param>
-        public void HandleError(Exception ex)
+    async Task DisplayAlertAsync(Exception ex)
+    {
+        try
         {
-            DisplayAlertAsync(ex).FireAndForgetSafeAsync();
+            await _semaphore.WaitAsync();
+            if (Shell.Current is Shell shell)
+                await shell.DisplayAlertAsync("Error", ex.Message, "OK");
         }
-
-        async Task DisplayAlertAsync(Exception ex)
+        finally
         {
-            try
-            {
-                await _semaphore.WaitAsync();
-                if (Shell.Current is Shell shell)
-                    await shell.DisplayAlertAsync("Error", ex.Message, "OK");
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
+            _semaphore.Release();
         }
     }
+}

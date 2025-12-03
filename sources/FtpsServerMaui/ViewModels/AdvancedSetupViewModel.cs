@@ -1,41 +1,72 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FtpsServerMaui.Models;
-using FtpsServerMaui.Services;
 using FtpsServerMaui.Views;
 using System.Collections.ObjectModel;
 
 namespace FtpsServerMaui.ViewModels;
 
-public partial class AdvancedSetupViewModel : ObservableObject
+public partial class AdvancedSetupViewModel : CrossPlatformObservableObject
 {
     private readonly IFtpsService _ftpsService;
     private readonly IConfigurationService _configService;
     private readonly IUserEditorService _userEditorService;
 
-    [ObservableProperty]
     private string _ip = "0.0.0.0";
+    public string Ip
+    {
+        get => _ip;
+        set => SetPropertyPlatformAgnostic(ref _ip, value);
+    }
 
-    [ObservableProperty]
     private int _port = 2121;
+    public int Port
+    {
+        get => _port;
+        set => SetPropertyPlatformAgnostic(ref _port, value);
+    }
 
-    [ObservableProperty]
     private int _maxConnections = 10;
+    public int MaxConnections
+    {
+        get => _maxConnections;
+        set => SetPropertyPlatformAgnostic(ref _maxConnections, value);
+    }
 
-    [ObservableProperty]
     private bool _useSelfSignedCertificate = true;
+    public bool UseSelfSignedCertificate
+    {
+        get => _useSelfSignedCertificate;
+        set => SetPropertyPlatformAgnostic(ref _useSelfSignedCertificate, value);
+    }
 
-    [ObservableProperty]
     private string _certificatePath = string.Empty;
+    public string CertificatePath
+    {
+        get => _certificatePath;
+        set => SetPropertyPlatformAgnostic(ref _certificatePath, value);
+    }
 
-    [ObservableProperty]
     private string _certificatePassword = string.Empty;
+    public string CertificatePassword
+    {
+        get => _certificatePassword;
+        set => SetPropertyPlatformAgnostic(ref _certificatePassword, value);
+    }
 
-    [ObservableProperty]
-    private ObservableCollection<UserConfiguration> _users = new();
+    private ObservableCollection<UserConfiguration> _users = [];
+    public ObservableCollection<UserConfiguration> Users
+    {
+        get => _users;
+        set => SetPropertyPlatformAgnostic(ref _users, value);
+    }
 
-    [ObservableProperty]
     private UserConfiguration? _selectedUser;
+    public UserConfiguration? SelectedUser
+    {
+        get => _selectedUser;
+        set => SetPropertyPlatformAgnostic(ref _selectedUser, value);
+    }
 
     public AdvancedSetupViewModel(IFtpsService ftpsService, IConfigurationService configService, IUserEditorService userEditorService)
     {
@@ -70,21 +101,23 @@ public partial class AdvancedSetupViewModel : ObservableObject
         }
     }
 
-    [RelayCommand]
-    private async Task BrowseCertificateAsync()
+    private readonly PickOptions _pickerOptions = new()
     {
-        try
-        {
-            var result = await FilePicker.PickAsync(new PickOptions
-            {
-                FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+        FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
                 {
                     { DevicePlatform.iOS, new[] { "public.item" } },
                     { DevicePlatform.Android, new[] { "*/*" } },
                     { DevicePlatform.WinUI, new[] { ".pfx", ".pem", ".der" } },
                     { DevicePlatform.macOS, new[] { "pfx", "pem", "der" } }
                 })
-            });
+    };
+
+    [RelayCommand]
+    private async Task BrowseCertificateAsync()
+    {
+        try
+        {
+            var result = await FilePicker.PickAsync(_pickerOptions);
 
             if (result != null)
             {
@@ -175,7 +208,7 @@ public partial class AdvancedSetupViewModel : ObservableObject
             await _ftpsService.StartServerAsync(configuration);
             await _configService.SaveConfigurationAsync(configuration);
             await Shell.Current.DisplayAlertAsync("Success",
-                $"FTPS Server started!\n\nConnect using:\nHost: {await GetLocalIpAddress()}\nPort: {Port}\nEncryption mode: Explicit",
+                $"FTPS Server started!\n\nConnect using:\nHost: {await AdvancedSetupViewModel.GetLocalIpAddress()}\nPort: {Port}\nEncryption mode: Explicit",
                 "OK");
             await Shell.Current.GoToAsync("..");
         }
@@ -185,7 +218,7 @@ public partial class AdvancedSetupViewModel : ObservableObject
         }
     }
 
-    private async Task<string> GetLocalIpAddress()
+    private static async Task<string> GetLocalIpAddress()
     {
         try
         {

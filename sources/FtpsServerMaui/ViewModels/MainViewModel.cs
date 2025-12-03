@@ -1,6 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using FtpsServerMaui.Services;
 using FtpsServerMaui.Views;
 using System.Collections.ObjectModel;
 
@@ -11,14 +10,27 @@ public partial class MainViewModel : ObservableObject
     private readonly IFtpsService _ftpsService;
     private readonly ILogService _logService;
 
-    [ObservableProperty]
     private bool _isServerRunning;
+    public bool IsServerRunning
+    {
+        get => _isServerRunning;
+        set => SetProperty(ref _isServerRunning, value);
+    }
 
-    [ObservableProperty]
     private string _serverStatus = "Stopped";
+    public string ServerStatus
+    {
+        get => _serverStatus;
+        set => SetProperty(ref _serverStatus, value);
+    }
 
-    [ObservableProperty]
-    private ObservableCollection<string> _logMessages = new();
+    private ObservableCollection<string> _logMessages = [];
+    public ObservableCollection<string> LogMessages
+    {
+        get => _logMessages;
+        set => SetProperty(ref _logMessages, value);
+    }
+
 
     public MainViewModel(IFtpsService ftpsService, ILogService logService)
     {
