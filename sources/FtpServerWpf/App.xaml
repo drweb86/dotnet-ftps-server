@@ -1,0 +1,208 @@
+<Application x:Class="FtpsServerApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Color Palette - Modern Dark Theme with Cyan Accents -->
+            <Color x:Key="PrimaryDark">#0F1419</Color>
+            <Color x:Key="SecondaryDark">#1A1F29</Color>
+            <Color x:Key="TertiaryDark">#252B37</Color>
+            <Color x:Key="AccentCyan">#00D9FF</Color>
+            <Color x:Key="AccentCyanHover">#33E1FF</Color>
+            <Color x:Key="AccentBlue">#0078D4</Color>
+            <Color x:Key="TextPrimary">#E8EAED</Color>
+            <Color x:Key="TextSecondary">#9CA3AF</Color>
+            <Color x:Key="Success">#10B981</Color>
+            <Color x:Key="Warning">#F59E0B</Color>
+            <Color x:Key="Error">#EF4444</Color>
+            <Color x:Key="BorderColor">#374151</Color>
+
+            <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}"/>
+            <SolidColorBrush x:Key="SecondaryDarkBrush" Color="{StaticResource SecondaryDark}"/>
+            <SolidColorBrush x:Key="TertiaryDarkBrush" Color="{StaticResource TertiaryDark}"/>
+            <SolidColorBrush x:Key="AccentCyanBrush" Color="{StaticResource AccentCyan}"/>
+            <SolidColorBrush x:Key="AccentCyanHoverBrush" Color="{StaticResource AccentCyanHover}"/>
+            <SolidColorBrush x:Key="AccentBlueBrush" Color="{StaticResource AccentBlue}"/>
+            <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}"/>
+            <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}"/>
+            <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource Success}"/>
+            <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource Warning}"/>
+            <SolidColorBrush x:Key="ErrorBrush" Color="{StaticResource Error}"/>
+            <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}"/>
+
+            <!-- Modern Button Style -->
+            <Style x:Key="ModernButton" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource AccentCyanBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource PrimaryDarkBrush}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="24,12"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="6"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource AccentCyanHoverBrush}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Secondary Button Style -->
+            <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
+                <Setter Property="Background" Value="{StaticResource TertiaryDarkBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{StaticResource BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource SecondaryDarkBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Modern TextBox Style -->
+            <Style x:Key="ModernTextBox" TargetType="TextBox">
+                <Setter Property="Background" Value="{StaticResource SecondaryDarkBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="12,10"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="6">
+                                <ScrollViewer x:Name="PART_ContentHost" 
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="{StaticResource AccentCyanBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Modern PasswordBox Style -->
+            <Style x:Key="ModernPasswordBox" TargetType="PasswordBox">
+                <Setter Property="Background" Value="{StaticResource SecondaryDarkBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="12,10"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="PasswordBox">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="6">
+                                <ScrollViewer x:Name="PART_ContentHost" 
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="{StaticResource AccentCyanBrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Modern CheckBox Style -->
+            <Style x:Key="ModernCheckBox" TargetType="CheckBox">
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="20" Height="20" 
+                                        Background="{StaticResource SecondaryDarkBrush}"
+                                        BorderBrush="{StaticResource BorderBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="4"
+                                        Margin="0,0,8,0">
+                                    <Path x:Name="CheckMark"
+                                          Data="M 0 5 L 4 9 L 10 0"
+                                          Stroke="{StaticResource AccentCyanBrush}"
+                                          StrokeThickness="2"
+                                          Visibility="Collapsed"
+                                          Margin="5"/>
+                                </Border>
+                                <ContentPresenter VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Modern ComboBox Style -->
+            <Style x:Key="ModernComboBox" TargetType="ComboBox">
+                <Setter Property="Background" Value="{StaticResource SecondaryDarkBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="12,10"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+
+            <!-- Label Style -->
+            <Style x:Key="ModernLabel" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="Margin" Value="0,0,0,6"/>
+                <Setter Property="FontWeight" Value="Medium"/>
+            </Style>
+
+            <!-- Card Style -->
+            <Style x:Key="Card" TargetType="Border">
+                <Setter Property="Background" Value="{StaticResource SecondaryDarkBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="12"/>
+                <Setter Property="Padding" Value="24"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
