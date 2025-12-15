@@ -5,12 +5,8 @@ namespace FtpsServerApp.Models
     public class AppSettings
     {
         public bool IsSimpleMode { get; set; } = true;
-        
-        // Simple Mode Settings
-        public string SimpleRootFolder { get; set; } = "";
-        public bool SimpleReadPermission { get; set; } = true;
-        public bool SimpleWritePermission { get; set; } = true;
-        
+        public UserAccount? SimpleModeUser { get; set; }
+
         // Advanced Mode Settings
         public string ServerIp { get; set; } = "0.0.0.0";
         public int ServerPort { get; set; } = 2121;

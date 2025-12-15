@@ -5,10 +5,10 @@
         Background="{StaticResource PrimaryDarkBrush}"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize">
-    
+
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
-        
+
         <Style x:Key="StatusIndicator" TargetType="Ellipse">
             <Setter Property="Width" Value="12"/>
             <Setter Property="Height" Value="12"/>
@@ -65,10 +65,23 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
-                <TextBlock Text="FTPS SERVER" 
-                           FontSize="32" 
+                <TextBlock FontSize="32" 
                            FontWeight="Bold"
-                           Foreground="{StaticResource TextPrimaryBrush}"/>
+                           Foreground="{StaticResource TextPrimaryBrush}">
+                    <Hyperlink x:Name="FtpsServerTitle" NavigateUri="https://github.com/drweb86/dotnet-ftps-server" RequestNavigate="Hyperlink_RequestNavigate">
+                        <Hyperlink.Style>
+                            <Style TargetType="Hyperlink">
+                                <Setter Property="TextDecorations" Value="None"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="TextDecorations" Value="Underline"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Hyperlink.Style>
+                        SIMPLE FTPS SERVER
+                    </Hyperlink>
+                </TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                     <Ellipse Style="{StaticResource StatusIndicator}" VerticalAlignment="Center"/>
                     <TextBlock x:Name="StatusText" 
@@ -118,15 +131,15 @@
                     <!-- Simple Mode Panel -->
                     <ScrollViewer x:Name="SimpleModePanel" 
                                   VerticalScrollBarVisibility="Auto">
-                        <StackPanel MaxWidth="600">
-                            <TextBlock Text="Quick Setup" 
+                        <StackPanel MaxWidth="600" Margin="0 0 20 0">
+                            <TextBlock Text="Quick Folder Share" 
                                        FontSize="20" 
                                        FontWeight="SemiBold"
                                        Foreground="{StaticResource TextPrimaryBrush}"
                                        Margin="0,0,0,20"/>
 
                             <!-- Root Folder -->
-                            <TextBlock Text="Root Folder" Style="{StaticResource ModernLabel}"/>
+                            <TextBlock Text="Folder" Style="{StaticResource ModernLabel}"/>
                             <Grid Margin="0,0,0,20">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -142,20 +155,21 @@
                                         Margin="12,0,0,0"
                                         Click="BrowseSimpleFolder_Click"/>
                             </Grid>
-
-                            <!-- Permissions -->
-                            <TextBlock Text="Permissions" Style="{StaticResource ModernLabel}"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                                <CheckBox x:Name="SimpleReadCheckBox" 
-                                          Content="Read" 
+                            <CheckBox x:Name="IsReadonlyCheckBox" 
+                                          Content="Readonly"
                                           Style="{StaticResource ModernCheckBox}"
                                           IsChecked="True"
-                                          Margin="0,0,24,0"/>
-                                <CheckBox x:Name="SimpleWriteCheckBox" 
-                                          Content="Write" 
-                                          Style="{StaticResource ModernCheckBox}"
-                                          IsChecked="True"/>
-                            </StackPanel>
+                                          Margin="0,0,0,20"/>
+
+                            <!-- Password -->
+                            <TextBlock TextWrapping="Wrap"
+                               Style="{StaticResource ModernLabel}">
+                                <Run Text="User "/>
+                                <Run Text="admin" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                <Run Text="Password"/>
+                            </TextBlock>
+
+                            <PasswordBox x:Name="AdminPasswordTextBox" Margin="0,0,0,20" Style="{StaticResource ModernPasswordBox}" />
 
                             <!-- Info Panel -->
                             <Border Background="{StaticResource TertiaryDarkBrush}"
@@ -170,19 +184,71 @@
                                                FontWeight="SemiBold"
                                                Foreground="{StaticResource AccentCyanBrush}"
                                                Margin="0,0,0,8"/>
+
                                     <TextBlock TextWrapping="Wrap"
-                                               FontSize="13"
-                                               Foreground="{StaticResource TextSecondaryBrush}">
-                                        <Run Text="• Default user: "/>
-                                        <Run Text="admin" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                        <LineBreak/>
-                                        <Run Text="• Default password: "/>
-                                        <Run Text="admin" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                        <LineBreak/>
+                                       FontSize="13"
+                                       Foreground="{StaticResource TextSecondaryBrush}">
+                                        <Run Text="• Server can be accessed from all networks by IPs: "/>
+                                    </TextBlock>
+                                    <ItemsControl x:Name="SimpleModeIps">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Margin="10,5">
+                                                    <StackPanel>
+                                                        <TextBlock TextWrapping="Wrap"
+                                                               FontSize="13"
+                                                               Foreground="{StaticResource TextSecondaryBrush}">
+    
+                                                                <Run Text="{Binding InterfaceType}"/>
+                                                                <Run Text="Network:"/>
+                                                                <Run Text="{Binding Name}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                                                <Run Text=" ("/>
+                                                                <Run Text="{Binding Description}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                                                <Run Text=")"/>
+                                                        </TextBlock>
+
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock TextWrapping="Wrap"
+                                                               FontSize="13"
+                                                               Foreground="{StaticResource TextSecondaryBrush}">
+                                                                <Run Text="IP Addresses: "/>
+                                                            </TextBlock>
+
+                                                            <ItemsControl ItemsSource="{Binding Addresses}">
+                                                                <ItemsControl.ItemsPanel>
+                                                                    <ItemsPanelTemplate>
+                                                                        <WrapPanel Orientation="Horizontal"/>
+                                                                    </ItemsPanelTemplate>
+                                                                </ItemsControl.ItemsPanel>
+                                                                <ItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <TextBlock Text="{Binding .}" 
+                                                                            TextWrapping="Wrap"
+                                                                            FontSize="13"
+                                                                            Foreground="{StaticResource TextPrimaryBrush}"
+                                                                            Margin="0 0 5 0"/>
+
+                                                                    </DataTemplate>
+                                                                </ItemsControl.ItemTemplate>
+                                                            </ItemsControl>
+                                                        </StackPanel>
+
+
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+
+                                    <TextBlock TextWrapping="Wrap"
+                                       FontSize="13"
+                                       Foreground="{StaticResource TextSecondaryBrush}">
+                                        
                                         <Run Text="• Port: "/>
                                         <Run Text="2121" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
                                         <LineBreak/>
-                                        <Run Text="• Listening on all network interfaces"/>
+                                        <Run Text="• User: "/>
+                                        <Run Text="admin" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
                                         <LineBreak/>
                                         <Run Text="• Self-signed certificate (auto-generated)"/>
                                     </TextBlock>
@@ -244,7 +310,7 @@
                                              IsChecked="True"
                                              Margin="0,0,0,12"
                                              Checked="CertificateSourceChanged"/>
-                                
+
                                 <RadioButton x:Name="FileCertButton" 
                                              Content="From File (.pfx, .pem, .der)" 
                                              GroupName="CertSource"
@@ -342,7 +408,7 @@
                                                                  PasswordChanged="UserPassword_Changed"/>
 
                                                     <!-- Folder -->
-                                                    <TextBlock Grid.Row="2" Text="Root Folder" Style="{StaticResource ModernLabel}"/>
+                                                    <TextBlock Grid.Row="2" Text="Folder" Style="{StaticResource ModernLabel}"/>
                                                     <Grid Grid.Row="2" Margin="0,24,0,12">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*"/>
