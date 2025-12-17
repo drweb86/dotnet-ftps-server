@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.NetworkInformation;
 
-namespace FtpsServerApp;
+namespace FtpsServerApp.Models;
 
 class NetworkInfo
 {

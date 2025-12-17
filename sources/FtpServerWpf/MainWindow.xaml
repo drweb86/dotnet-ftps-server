@@ -4,6 +4,7 @@
         Title="FTPS Server" Height="700" Width="1100"
         Background="{StaticResource PrimaryDarkBrush}"
         WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
         ResizeMode="CanResize">
 
     <Window.Resources>
@@ -130,46 +131,62 @@
                 <Grid Grid.Row="1">
                     <!-- Simple Mode Panel -->
                     <ScrollViewer x:Name="SimpleModePanel" 
-                                  VerticalScrollBarVisibility="Auto">
-                        <StackPanel MaxWidth="600" Margin="0 0 20 0">
-                            <TextBlock Text="Quick Folder Share" 
-                                       FontSize="20" 
-                                       FontWeight="SemiBold"
-                                       Foreground="{StaticResource TextPrimaryBrush}"
-                                       Margin="0,0,0,20"/>
+                                  VerticalScrollBarVisibility="Auto"
+                                  Visibility="Visible">
+                        <StackPanel>
+                            
+                                <Border Background="{StaticResource TertiaryDarkBrush}"
+BorderBrush="{StaticResource AccentCyanBrush}"
+BorderThickness="1"
+CornerRadius="8"
+Padding="16"
+Margin="10,20,10,0">
 
-                            <!-- Root Folder -->
-                            <TextBlock Text="Folder" Style="{StaticResource ModernLabel}"/>
-                            <Grid Margin="0,0,0,20">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBox x:Name="SimpleRootFolderTextBox" 
-                                         Grid.Column="0"
-                                         Style="{StaticResource ModernTextBox}"
-                                         IsReadOnly="True"/>
-                                <Button Grid.Column="1" 
-                                        Content="Browse" 
-                                        Style="{StaticResource SecondaryButton}"
-                                        Margin="12,0,0,0"
-                                        Click="BrowseSimpleFolder_Click"/>
-                            </Grid>
-                            <CheckBox x:Name="IsReadonlyCheckBox" 
-                                          Content="Readonly"
-                                          Style="{StaticResource ModernCheckBox}"
-                                          IsChecked="True"
-                                          Margin="0,0,0,20"/>
+                                <StackPanel>
 
-                            <!-- Password -->
-                            <TextBlock TextWrapping="Wrap"
-                               Style="{StaticResource ModernLabel}">
-                                <Run Text="User "/>
-                                <Run Text="admin" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                <Run Text="Password"/>
-                            </TextBlock>
+                                    <TextBlock Text="Quick Folder Share" 
+           FontSize="20" 
+           FontWeight="SemiBold"
+           Foreground="{StaticResource TextPrimaryBrush}"
+           Margin="0,0,0,20"/>
 
-                            <PasswordBox x:Name="AdminPasswordTextBox" Margin="0,0,0,20" Style="{StaticResource ModernPasswordBox}" />
+                                    <!-- Root Folder -->
+                                    <TextBlock Text="Folder" Style="{StaticResource ModernLabel}"/>
+                                    <Grid Margin="0,0,0,20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox x:Name="SimpleRootFolderTextBox" 
+             Grid.Column="0"
+             Style="{StaticResource ModernTextBox}"
+             IsReadOnly="True"/>
+                                        <Button Grid.Column="1" 
+            Content="Browse" 
+            Style="{StaticResource SecondaryButton}"
+            Margin="12,0,0,0"
+            Click="BrowseSimpleFolder_Click"/>
+                                    </Grid>
+                                    <CheckBox x:Name="IsReadonlyCheckBox" 
+              Content="Readonly"
+              Style="{StaticResource ModernCheckBox}"
+              IsChecked="True"
+              Margin="0,0,0,20"/>
+
+                                    <!-- Password -->
+                                    <TextBlock TextWrapping="Wrap"
+   Style="{StaticResource ModernLabel}">
+    <Run Text="User "/>
+    <Run Text="admin" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+    <Run Text="Password"/>
+                                    </TextBlock>
+
+                                    <TextBox x:Name="AdminPasswordTextBox" Margin="0,0,0,20" Style="{StaticResource ModernTextBox}" />
+
+                                </StackPanel>
+        </Border>
+                            
+                            
 
                             <!-- Info Panel -->
                             <Border Background="{StaticResource TertiaryDarkBrush}"
@@ -177,7 +194,7 @@
                                     BorderThickness="1"
                                     CornerRadius="8"
                                     Padding="16"
-                                    Margin="0,20,0,0">
+                                    Margin="10,20,10,0">
                                 <StackPanel>
                                     <TextBlock Text="ℹ️ Simple Mode Configuration" 
                                                FontSize="14"
@@ -258,52 +275,54 @@
                     </ScrollViewer>
 
                     <!-- Advanced Mode Panel -->
-                    <Grid x:Name="AdvancedModePanel" 
-                          Visibility="Collapsed">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="20"/>
-                            <ColumnDefinition Width="3*"/>
-                        </Grid.ColumnDefinitions>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  x:Name="AdvancedModePanel" 
+                                    Visibility="Collapsed">
+                        <StackPanel>
 
-                        <!-- Server Settings -->
-                        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
-                            <StackPanel>
-                                <TextBlock Text="Server Configuration" 
+
+                            <Border Background="{StaticResource TertiaryDarkBrush}"
+        BorderBrush="{StaticResource AccentCyanBrush}"
+        BorderThickness="1"
+        CornerRadius="8"
+        Padding="16"
+        Margin="10,20,10,0">
+                                <StackPanel>
+                                    <TextBlock Text="Server Configuration" 
                                            FontSize="18" 
                                            FontWeight="SemiBold"
                                            Foreground="{StaticResource TextPrimaryBrush}"
                                            Margin="0,0,0,20"/>
 
-                                <!-- IP Address -->
-                                <TextBlock Text="IP Address" Style="{StaticResource ModernLabel}"/>
-                                <TextBox x:Name="ServerIpTextBox" 
+                                    <!-- IP Address -->
+                                    <TextBlock Text="IP Address" Style="{StaticResource ModernLabel}"/>
+                                    <TextBox x:Name="ServerIpTextBox" 
                                          Text="0.0.0.0"
                                          Style="{StaticResource ModernTextBox}"
                                          Margin="0,0,0,16"/>
 
-                                <!-- Port -->
-                                <TextBlock Text="Port" Style="{StaticResource ModernLabel}"/>
-                                <TextBox x:Name="ServerPortTextBox" 
+                                    <!-- Port -->
+                                    <TextBlock Text="Port" Style="{StaticResource ModernLabel}"/>
+                                    <TextBox x:Name="ServerPortTextBox" 
                                          Text="2121"
                                          Style="{StaticResource ModernTextBox}"
                                          Margin="0,0,0,16"/>
 
-                                <!-- Max Connections -->
-                                <TextBlock Text="Max Connections" Style="{StaticResource ModernLabel}"/>
-                                <TextBox x:Name="MaxConnectionsTextBox" 
+                                    <!-- Max Connections -->
+                                    <TextBlock Text="Max Connections" Style="{StaticResource ModernLabel}"/>
+                                    <TextBox x:Name="MaxConnectionsTextBox" 
                                          Text="10"
                                          Style="{StaticResource ModernTextBox}"
                                          Margin="0,0,0,24"/>
 
-                                <!-- Certificate -->
-                                <TextBlock Text="Certificate Source" 
+                                    <!-- Certificate -->
+                                    <TextBlock Text="Certificate Source" 
                                            FontSize="18" 
                                            FontWeight="SemiBold"
                                            Foreground="{StaticResource TextPrimaryBrush}"
                                            Margin="0,0,0,16"/>
 
-                                <RadioButton x:Name="SelfSignedCertButton" 
+                                    <RadioButton x:Name="SelfSignedCertButton" 
                                              Content="Self-Signed (Auto-Generated)" 
                                              GroupName="CertSource"
                                              Foreground="{StaticResource TextPrimaryBrush}"
@@ -311,78 +330,82 @@
                                              Margin="0,0,0,12"
                                              Checked="CertificateSourceChanged"/>
 
-                                <RadioButton x:Name="FileCertButton" 
+                                    <RadioButton x:Name="FileCertButton" 
                                              Content="From File (.pfx, .pem, .der)" 
                                              GroupName="CertSource"
                                              Foreground="{StaticResource TextPrimaryBrush}"
                                              Margin="0,0,0,16"
                                              Checked="CertificateSourceChanged"/>
 
-                                <StackPanel x:Name="CertFilePanel" Visibility="Collapsed">
-                                    <TextBlock Text="Certificate File" Style="{StaticResource ModernLabel}"/>
-                                    <Grid Margin="0,0,0,12">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBox x:Name="CertPathTextBox" 
+                                    <StackPanel x:Name="CertFilePanel" Visibility="Collapsed">
+                                        <TextBlock Text="Certificate File" Style="{StaticResource ModernLabel}"/>
+                                        <Grid Margin="0,0,0,12">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox x:Name="CertPathTextBox" 
                                                  Grid.Column="0"
                                                  Style="{StaticResource ModernTextBox}"
                                                  IsReadOnly="True"/>
-                                        <Button Grid.Column="1" 
+                                            <Button Grid.Column="1" 
                                                 Content="Browse" 
                                                 Style="{StaticResource SecondaryButton}"
                                                 Margin="12,0,0,0"
                                                 Click="BrowseCertificate_Click"/>
-                                    </Grid>
+                                        </Grid>
 
-                                    <TextBlock Text="Password (if required)" Style="{StaticResource ModernLabel}"/>
-                                    <PasswordBox x:Name="CertPasswordBox" 
-                                                 Style="{StaticResource ModernPasswordBox}"
+                                        <TextBlock Text="Password (if required)" Style="{StaticResource ModernLabel}"/>
+                                        <TextBox x:Name="CertPasswordBox" 
+                                                 Style="{StaticResource ModernTextBox}"
                                                  Margin="0,0,0,16"/>
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                        </ScrollViewer>
+                            </Border>
 
-                        <!-- User Accounts -->
-                        <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
-                            <StackPanel>
-                                <Grid Margin="0,0,0,16">
-                                    <TextBlock Text="User Accounts" 
+                            <Border Background="{StaticResource TertiaryDarkBrush}"
+        BorderBrush="{StaticResource AccentCyanBrush}"
+        BorderThickness="1"
+        CornerRadius="8"
+        Padding="16"
+        Margin="10,20,10,0">
+                                <StackPanel >
+                                    <Grid Margin="0,0,0,16">
+                                        <TextBlock Text="Users" 
                                                FontSize="18" 
                                                FontWeight="SemiBold"
                                                Foreground="{StaticResource TextPrimaryBrush}"
                                                HorizontalAlignment="Left"
                                                VerticalAlignment="Center"/>
-                                    <Button Content="+ Add User" 
+                                        <Button Content="+ Add" 
                                             Style="{StaticResource SecondaryButton}"
                                             HorizontalAlignment="Right"
                                             Click="AddUser_Click"
                                             Padding="16,8"/>
-                                </Grid>
+                                    </Grid>
 
-                                <ItemsControl x:Name="UsersItemsControl">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border Background="{StaticResource TertiaryDarkBrush}"
+                                    <ItemsControl x:Name="UsersItemsControl">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Background="{StaticResource TertiaryDarkBrush}"
                                                     BorderBrush="{StaticResource BorderBrush}"
                                                     BorderThickness="1"
                                                     CornerRadius="8"
                                                     Padding="16"
                                                     Margin="0,0,0,16">
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="Auto"/>
-                                                        <RowDefinition Height="Auto"/>
-                                                        <RowDefinition Height="Auto"/>
-                                                        <RowDefinition Height="Auto"/>
-                                                        <RowDefinition Height="Auto"/>
-                                                    </Grid.RowDefinitions>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
 
-                                                    <!-- Username -->
-                                                    <Grid Grid.Row="0" Margin="0,0,0,12">
-                                                        <TextBlock Text="Username" Style="{StaticResource ModernLabel}"/>
-                                                        <Button Content="✕" 
+                                                        <!-- Username -->
+                                                        <Grid Grid.Row="0" Margin="0,0,0,12">
+                                                            <TextBlock Text="Username" Style="{StaticResource ModernLabel}"/>
+                                                            <Button Content="✕" 
                                                                 HorizontalAlignment="Right"
                                                                 VerticalAlignment="Top"
                                                                 Background="Transparent"
@@ -393,59 +416,55 @@
                                                                 Cursor="Hand"
                                                                 Click="RemoveUser_Click"
                                                                 Tag="{Binding}"/>
-                                                    </Grid>
-                                                    <TextBox Grid.Row="0" 
+                                                        </Grid>
+                                                        <TextBox Grid.Row="0" 
                                                              Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                              Style="{StaticResource ModernTextBox}"
                                                              Margin="0,24,0,12"/>
 
-                                                    <!-- Password -->
-                                                    <TextBlock Grid.Row="1" Text="Password" Style="{StaticResource ModernLabel}"/>
-                                                    <PasswordBox Grid.Row="1" 
-                                                                 Tag="{Binding}"
-                                                                 Style="{StaticResource ModernPasswordBox}"
+                                                        <!-- Password -->
+                                                        <TextBlock Grid.Row="1" Text="Password" Style="{StaticResource ModernLabel}"/>
+                                                        <TextBox Grid.Row="1" 
+                                                                 Style="{StaticResource ModernTextBox}"
                                                                  Margin="0,24,0,12"
-                                                                 PasswordChanged="UserPassword_Changed"/>
+                                                                 Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                                                    <!-- Folder -->
-                                                    <TextBlock Grid.Row="2" Text="Folder" Style="{StaticResource ModernLabel}"/>
-                                                    <Grid Grid.Row="2" Margin="0,24,0,12">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*"/>
-                                                            <ColumnDefinition Width="Auto"/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <TextBox Grid.Column="0"
+                                                        <!-- Folder -->
+                                                        <TextBlock Grid.Row="2" Text="Folder" Style="{StaticResource ModernLabel}"/>
+                                                        <Grid Grid.Row="2" Margin="0,24,0,12">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBox Grid.Column="0"
                                                                  Text="{Binding Folder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                  Style="{StaticResource ModernTextBox}"
                                                                  IsReadOnly="True"/>
-                                                        <Button Grid.Column="1" 
+                                                            <Button Grid.Column="1" 
                                                                 Content="Browse" 
                                                                 Style="{StaticResource SecondaryButton}"
                                                                 Margin="12,0,0,0"
                                                                 Click="BrowseUserFolder_Click"
                                                                 Tag="{Binding}"
                                                                 Padding="12,8"/>
-                                                    </Grid>
+                                                        </Grid>
 
-                                                    <!-- Permissions -->
-                                                    <TextBlock Grid.Row="3" Text="Permissions" Style="{StaticResource ModernLabel}"/>
-                                                    <StackPanel Grid.Row="4" Orientation="Horizontal">
-                                                        <CheckBox Content="Read" 
-                                                                  IsChecked="{Binding ReadPermission, Mode=TwoWay}"
+                                                        <!-- Permissions -->
+                                                        <StackPanel Grid.Row="3">
+                                                            <CheckBox Content="Readonly" 
+                                                                  IsChecked="{Binding ReadonlyPermission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                   Style="{StaticResource ModernCheckBox}"
                                                                   Margin="0,0,24,0"/>
-                                                        <CheckBox Content="Write" 
-                                                                  IsChecked="{Binding WritePermission, Mode=TwoWay}"
-                                                                  Style="{StaticResource ModernCheckBox}"/>
-                                                    </StackPanel>
-                                                </Grid>
-                                            </Border>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </Grid>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
                 </Grid>
             </Grid>
         </Border>

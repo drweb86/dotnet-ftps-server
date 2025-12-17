@@ -18,19 +18,4 @@ namespace FtpsServerApp.Models
         public string CertificatePath { get; set; } = "";
         public string CertificatePassword { get; set; } = "";
     }
-
-    public class UserAccount
-    {
-        public string Login { get; set; } = "";
-        public string Password { get; set; } = "";
-        public string Folder { get; set; } = "";
-        public bool ReadPermission { get; set; } = true;
-        public bool WritePermission { get; set; } = false;
-    }
-
-    public enum CertificateSourceType
-    {
-        SelfSigned,
-        FromFile
-    }
 }

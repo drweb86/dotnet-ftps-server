@@ -1,3 +1,4 @@
+using FtpsServerApp.Helpers;
 using FtpsServerApp.Models;
 using FtpsServerApp.Services;
 using FtpsServerLibrary;
@@ -18,7 +19,6 @@ namespace FtpsServerApp
     public partial class MainWindow : Window
     {
         private FtpsServer? _server;
-        private FtpsLogger? _logger;
         private AppSettings _settings;
         private ObservableCollection<UserAccount> _users;
         private bool _isServerRunning;
@@ -66,8 +66,8 @@ namespace FtpsServerApp
             // Load simple mode settings
             var user = _settings.SimpleModeUser;
             SimpleRootFolderTextBox.Text = user?.Folder ?? Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            AdminPasswordTextBox.Password = user?.Password;
-            IsReadonlyCheckBox.IsChecked = !(user?.WritePermission ?? true);
+            AdminPasswordTextBox.Text = user?.Password;
+            IsReadonlyCheckBox.IsChecked = user?.ReadonlyPermission ?? false;
 
             // Load advanced mode settings
             ServerIpTextBox.Text = _settings.ServerIp;
@@ -94,10 +94,9 @@ namespace FtpsServerApp
             _settings.SimpleModeUser = new UserAccount()
             {
                 Folder = SimpleRootFolderTextBox.Text,
-                ReadPermission = true,
-                WritePermission = IsReadonlyCheckBox.IsChecked != true,
+                ReadonlyPermission = IsReadonlyCheckBox.IsChecked == true,
                 Login = "admin",
-                Password = AdminPasswordTextBox.Password
+                Password = AdminPasswordTextBox.Text
             };
 
             // Advanced mode
@@ -111,7 +110,7 @@ namespace FtpsServerApp
                 ? CertificateSourceType.SelfSigned 
                 : CertificateSourceType.FromFile;
             _settings.CertificatePath = CertPathTextBox.Text;
-            _settings.CertificatePassword = CertPasswordBox.Password;
+            _settings.CertificatePassword = CertPasswordBox.Text;
 
             _settings.Users = _users.ToList();
 
@@ -200,8 +199,7 @@ namespace FtpsServerApp
                 Login = $"user{_users.Count + 1}",
                 Password = "password",
                 Folder = "",
-                ReadPermission = true,
-                WritePermission = false
+                ReadonlyPermission = false,
             };
             _users.Add(newUser);
         }
@@ -211,14 +209,6 @@ namespace FtpsServerApp
             if (sender is Button button && button.Tag is UserAccount user)
             {
                 _users.Remove(user);
-            }
-        }
-
-        private void UserPassword_Changed(object sender, RoutedEventArgs e)
-        {
-            if (sender is PasswordBox passwordBox && passwordBox.Tag is UserAccount user)
-            {
-                user.Password = passwordBox.Password;
             }
         }
 
@@ -240,8 +230,7 @@ namespace FtpsServerApp
             {
                 SaveSettings();
 
-                _logger = new FtpsLogger();
-                
+               
                 var config = new FtpsServerConfiguration();
 
                 if (SimpleModeButton.IsChecked == true)
@@ -254,7 +243,7 @@ namespace FtpsServerApp
                         return;
                     }
 
-                    if (string.IsNullOrWhiteSpace(AdminPasswordTextBox.Password))
+                    if (string.IsNullOrWhiteSpace(AdminPasswordTextBox.Text))
                     {
                         MessageBox.Show("Please select a password for default user 'admin'.", "Error",
                             MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -268,7 +257,7 @@ namespace FtpsServerApp
                     config.Users.Add(new FtpsServerUserAccount
                     {
                         Login = "admin",
-                        Password = AdminPasswordTextBox.Password,
+                        Password = AdminPasswordTextBox.Text,
                         Folder = SimpleRootFolderTextBox.Text,
                         Read = true,
                         Write = IsReadonlyCheckBox.IsChecked != true
@@ -300,7 +289,7 @@ namespace FtpsServerApp
                         }
 
                         config.ServerSettings.CertificatePath = CertPathTextBox.Text;
-                        config.ServerSettings.CertificatePassword = CertPasswordBox.Password;
+                        config.ServerSettings.CertificatePassword = CertPasswordBox.Text;
                     }
 
                     // Users
@@ -327,13 +316,13 @@ namespace FtpsServerApp
                             Login = user.Login,
                             Password = user.Password,
                             Folder = user.Folder,
-                            Read = user.ReadPermission,
-                            Write = user.WritePermission
+                            Read = true,
+                            Write = !user.ReadonlyPermission
                         });
                     }
                 }
 
-                _server = new FtpsServer(_logger, config);
+                _server = new FtpsServer(new FtpsLogger(), config);
                 _server.Start();
                 
                 IsServerRunning = true;
@@ -354,7 +343,6 @@ namespace FtpsServerApp
             {
                 _server?.Stop();
                 _server = null;
-                _logger = null;
                 IsServerRunning = false;
             }
             catch (Exception ex)

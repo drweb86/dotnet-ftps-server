@@ -1,8 +1,9 @@
-﻿using System.Net;
+﻿using FtpsServerApp.Models;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
-namespace FtpsServerApp;
+namespace FtpsServerApp.Helpers;
 
 internal static class NetworkHelper
 {
