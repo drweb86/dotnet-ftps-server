@@ -10,6 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="FtpsApp.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="FtpsApp.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Siarhei_Kuchuk.FtpsServerLibrary" Version="2025.12.2" />
   </ItemGroup>
 

@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,16 +40,19 @@ namespace FtpsServerApp
             _settings = SettingsManager.LoadSettings();
             _users = new ObservableCollection<UserAccount>(_settings.Users);
             UsersItemsControl.ItemsSource = _users;
-            
+
             LoadSettings();
             SimpleModeIps.ItemsSource = NetworkHelper.GetMyLocalIps();
             DataContext = this;
+
+            // Set menu item header with version
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            AboutMenuItem.Header = $"FTPS Server - {version}";
         }
 
-        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
+            Process.Start(new ProcessStartInfo("https://github.com/drweb86/dotnet-ftps-server") { UseShellExecute = true });
         }
 
         private void LoadSettings()
@@ -124,18 +128,15 @@ namespace FtpsServerApp
             if (AdvancedModePanel is null)
                 return;
 
-            FtpsServerTitle.Inlines.Clear();
             if (SimpleModeButton.IsChecked == true)
             {
                 SimpleModePanel.Visibility = Visibility.Visible;
                 AdvancedModePanel.Visibility = Visibility.Collapsed;
-                FtpsServerTitle.Inlines.Add("SIMPLE FTPS SERVER");
             }
             else
             {
                 SimpleModePanel.Visibility = Visibility.Collapsed;
                 AdvancedModePanel.Visibility = Visibility.Visible;
-                FtpsServerTitle.Inlines.Add("ADVANCED FTPS SERVER");
             }
         }
 
