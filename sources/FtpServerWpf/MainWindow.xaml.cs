@@ -1,15 +1,13 @@
-using FtpsServerApp.Helpers;
+using FtpsServerApp.Controls;
 using FtpsServerApp.Models;
 using FtpsServerApp.Services;
 using FtpsServerLibrary;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Xml.Linq;
 
 namespace FtpsServerApp
 {
@@ -30,6 +28,60 @@ namespace FtpsServerApp
             }
         }
 
+
+        public static readonly DependencyProperty PortProperty =
+            DependencyProperty.Register(nameof(Port), typeof(int), typeof(MainWindow),
+                new FrameworkPropertyMetadata(2121, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnPortChanged));
+
+        public static readonly DependencyProperty MaxConnectionsProperty =
+            DependencyProperty.Register(nameof(MaxConnections), typeof(int), typeof(MainWindow),
+                new FrameworkPropertyMetadata(10, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnMaxConnectionsChanged));
+
+        public static readonly DependencyProperty CertificateSourceProperty =
+            DependencyProperty.Register(nameof(CertificateSource), typeof(CertificateSourceType), typeof(MainWindow),
+                new FrameworkPropertyMetadata(CertificateSourceType.SelfSigned, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnCertificateSourceChanged));
+
+        public static readonly DependencyProperty CertificatePathProperty =
+            DependencyProperty.Register(nameof(CertificatePath), typeof(string), typeof(MainWindow),
+                new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnCertificatePathChanged));
+
+        public static readonly DependencyProperty CertificatePasswordProperty =
+            DependencyProperty.Register(nameof(CertificatePassword), typeof(string), typeof(MainWindow),
+                new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnCertificatePasswordChanged));
+
+
+        public int Port
+        {
+            get => (int)GetValue(PortProperty);
+            set => SetValue(PortProperty, value);
+        }
+
+        public int MaxConnections
+        {
+            get => (int)GetValue(MaxConnectionsProperty);
+            set => SetValue(MaxConnectionsProperty, value);
+        }
+
+        public CertificateSourceType CertificateSource
+        {
+            get => (CertificateSourceType)GetValue(CertificateSourceProperty);
+            set => SetValue(CertificateSourceProperty, value);
+        }
+
+        public string CertificatePath
+        {
+            get => (string)GetValue(CertificatePathProperty);
+            set => SetValue(CertificatePathProperty, value);
+        }
+
+        public string CertificatePassword
+        {
+            get => (string)GetValue(CertificatePasswordProperty);
+            set => SetValue(CertificatePasswordProperty, value);
+        }
+
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,55 +89,50 @@ namespace FtpsServerApp
             _users = new ObservableCollection<UserAccount>(_settings.Users);
             UsersItemsControl.ItemsSource = _users;
 
-            LoadSettings();
-            SimpleModeIps.ItemsSource = NetworkHelper.GetMyLocalIps();
-            PCName.Text = System.Environment.MachineName;
+            // Initialize DependencyProperties from settings
+            Port = _settings.ServerPort;
+            MaxConnections = _settings.MaxConnections;
+            CertificateSource = _settings.CertificateSource;
+            CertificatePath = _settings.CertificatePath;
+            CertificatePassword = _settings.CertificatePassword;
+
             DataContext = this;
         }
 
-        private void LoadSettings()
+        private static void OnPortChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ServerPortTextBox.Text = _settings.ServerPort.ToString();
-            MaxConnectionsTextBox.Text = _settings.MaxConnections.ToString();
+            var window = (MainWindow)d;
+            window._settings.ServerPort = (int)e.NewValue;
+        }
 
-            // Certificate settings
-            if (_settings.CertificateSource == CertificateSourceType.SelfSigned)
-            {
-                SelfSignedCertButton.IsChecked = true;
-            }
-            else
-            {
-                FileCertButton.IsChecked = true;
-                CertPathTextBox.Text = _settings.CertificatePath;
-            }
+        private static void OnMaxConnectionsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var window = (MainWindow)d;
+            window._settings.MaxConnections = (int)e.NewValue;
+        }
+
+        private static void OnCertificateSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var window = (MainWindow)d;
+            window._settings.CertificateSource = (CertificateSourceType)e.NewValue;
+        }
+
+        private static void OnCertificatePathChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var window = (MainWindow)d;
+            window._settings.CertificatePath = (string)e.NewValue;
+        }
+
+        private static void OnCertificatePasswordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var window = (MainWindow)d;
+            window._settings.CertificatePassword = (string)e.NewValue;
         }
 
         private void SaveSettings()
         {
-            if (int.TryParse(ServerPortTextBox.Text, out int port))
-                _settings.ServerPort = port;
-            if (int.TryParse(MaxConnectionsTextBox.Text, out int maxConn))
-                _settings.MaxConnections = maxConn;
-
-            _settings.CertificateSource = SelfSignedCertButton.IsChecked == true 
-                ? CertificateSourceType.SelfSigned 
-                : CertificateSourceType.FromFile;
-            _settings.CertificatePath = CertPathTextBox.Text;
-            _settings.CertificatePassword = CertPasswordBox.Text;
-
             _settings.Users = _users.ToList();
-
             SettingsManager.SaveSettings(_settings);
-        }
-
-        private void CertificateSourceChanged(object sender, RoutedEventArgs e)
-        {
-            if (CertFilePanel != null)
-            {
-                CertFilePanel.Visibility = FileCertButton.IsChecked == true 
-                    ? Visibility.Visible 
-                    : Visibility.Collapsed;
-            }
         }
 
         private void BrowseUserFolder_Click(object sender, RoutedEventArgs e)
@@ -101,20 +148,6 @@ namespace FtpsServerApp
                 {
                     user.Folder = dialog.FolderName;
                 }
-            }
-        }
-
-        private void BrowseCertificate_Click(object sender, RoutedEventArgs e)
-        {
-            var dialog = new OpenFileDialog
-            {
-                Filter = "Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*",
-                Title = "Select Certificate File"
-            };
-
-            if (dialog.ShowDialog() == true)
-            {
-                CertPathTextBox.Text = dialog.FileName;
             }
         }
 
@@ -156,35 +189,26 @@ namespace FtpsServerApp
             {
                 SaveSettings();
 
-               
                 var config = new FtpsServerConfiguration();
 
-                    // Advanced mode configuration
-                    config.ServerSettings.Ip = "0.0.0.0";
-                    
-                    if (int.TryParse(ServerPortTextBox.Text, out int port))
-                        config.ServerSettings.Port = port;
-                    else
-                        config.ServerSettings.Port = 2121;
+                // Server configuration
+                config.ServerSettings.Ip = "0.0.0.0";
+                config.ServerSettings.Port = _settings.ServerPort;
+                config.ServerSettings.MaxConnections = _settings.MaxConnections;
 
-                    if (int.TryParse(MaxConnectionsTextBox.Text, out int maxConn))
-                        config.ServerSettings.MaxConnections = maxConn;
-                    else
-                        config.ServerSettings.MaxConnections = 10;
-
-                    // Certificate configuration
-                    if (FileCertButton.IsChecked == true)
+                // Certificate configuration
+                if (_settings.CertificateSource == CertificateSourceType.FromFile)
+                {
+                    if (string.IsNullOrWhiteSpace(_settings.CertificatePath))
                     {
-                        if (string.IsNullOrWhiteSpace(CertPathTextBox.Text))
-                        {
-                            MessageBox.Show("Please select a certificate file.", "Error", 
-                                MessageBoxButton.OK, MessageBoxImage.Warning);
-                            return;
-                        }
-
-                        config.ServerSettings.CertificatePath = CertPathTextBox.Text;
-                        config.ServerSettings.CertificatePassword = CertPasswordBox.Text;
+                        MessageBox.Show("Please select a certificate file.", "Error",
+                            MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
                     }
+
+                    config.ServerSettings.CertificatePath = _settings.CertificatePath;
+                    config.ServerSettings.CertificatePassword = _settings.CertificatePassword;
+                }
 
                     // Users
                     if (_users.Count == 0)

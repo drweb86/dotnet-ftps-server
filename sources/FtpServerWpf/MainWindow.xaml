@@ -2,11 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:FtpsServerApp"
+        xmlns:controls="clr-namespace:FtpsServerApp.Controls"
         Title="FTPS Server" Height="700" Width="1100"
         Background="{StaticResource PrimaryDarkBrush}"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-
         ResizeMode="CanResize">
 
     <Window.Resources>
@@ -94,143 +94,12 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Orientation="Horizontal">
 
-
-                            <Border Background="{StaticResource TertiaryDarkBrush}"
-        BorderBrush="{StaticResource AccentCyanBrush}"
-        BorderThickness="1"
-        CornerRadius="8"
-        Padding="16"
-        Margin="10,20,10,0">
-                                <StackPanel>
-                                    <TextBlock Text="Server Configuration" 
-                                           FontSize="18" 
-                                           FontWeight="SemiBold"
-                                           Foreground="{StaticResource TextPrimaryBrush}"
-                                           Margin="0,0,0,20"/>
-
-                                <TextBlock Text="Address" Style="{StaticResource ModernLabel}"/>
-                                    
-                                        <TextBlock TextWrapping="Wrap"
-           FontSize="13"
-           Foreground="{StaticResource TextSecondaryBrush}">
-                                            <Run Text="Your PC can be accessed in LAN by its name or IP address."/>
-                                            <LineBreak />
-                                            <Run Text="Name: "/>
-                                             <Run x:Name="PCName" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                            <LineBreak />
-                                        </TextBlock>
-                                        <ItemsControl x:Name="SimpleModeIps">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Border Margin="10,5">
-                                                        <StackPanel>
-                                                            <TextBlock TextWrapping="Wrap"
-                                   FontSize="13"
-                                   Foreground="{StaticResource TextSecondaryBrush}">
-    
-                                    <Run Text="{Binding InterfaceType}"/>
-                                    <Run Text="Network:"/>
-                                    <Run Text="{Binding Name}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                    <Run Text=" ("/>
-                                    <Run Text="{Binding Description}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                    <Run Text=")"/>
-                                                            </TextBlock>
-
-                                                            <StackPanel Orientation="Horizontal">
-                                                                <TextBlock TextWrapping="Wrap"
-                                   FontSize="13"
-                                   Foreground="{StaticResource TextSecondaryBrush}">
-                                    <Run Text="IP Addresses: "/>
-                                                                </TextBlock>
-
-                                                                <ItemsControl ItemsSource="{Binding Addresses}">
-                                                                    <ItemsControl.ItemsPanel>
-                                                                        <ItemsPanelTemplate>
-                                                                            <WrapPanel Orientation="Horizontal"/>
-                                                                        </ItemsPanelTemplate>
-                                                                    </ItemsControl.ItemsPanel>
-                                                                    <ItemsControl.ItemTemplate>
-                                                                        <DataTemplate>
-                                                                            <TextBlock Text="{Binding .}" 
-                                                TextWrapping="Wrap"
-                                                FontSize="13"
-                                                Foreground="{StaticResource TextPrimaryBrush}"
-                                                Margin="0 0 5 0"/>
-
-                                                                        </DataTemplate>
-                                                                    </ItemsControl.ItemTemplate>
-                                                                </ItemsControl>
-                                                            </StackPanel>
-
-
-                                                        </StackPanel>
-                                                    </Border>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                               
-
-                                <!-- Port -->
-                                    <TextBlock Text="Port" Style="{StaticResource ModernLabel}"/>
-                                    <TextBox x:Name="ServerPortTextBox" 
-                                         Text="2121"
-                                         Style="{StaticResource ModernTextBox}"
-                                         Margin="0,0,0,16"/>
-
-                                    <!-- Max Connections -->
-                                    <TextBlock Text="Max Connections" Style="{StaticResource ModernLabel}"/>
-                                    <TextBox x:Name="MaxConnectionsTextBox" 
-                                         Text="10"
-                                         Style="{StaticResource ModernTextBox}"
-                                         Margin="0,0,0,24"/>
-
-                                    <!-- Certificate -->
-                                    <TextBlock Text="Certificate Source" 
-                                           FontSize="18" 
-                                           FontWeight="SemiBold"
-                                           Foreground="{StaticResource TextPrimaryBrush}"
-                                           Margin="0,0,0,16"/>
-
-                                    <RadioButton x:Name="SelfSignedCertButton" 
-                                             Content="Self-Signed (Auto-Generated)" 
-                                             GroupName="CertSource"
-                                             Foreground="{StaticResource TextPrimaryBrush}"
-                                             IsChecked="True"
-                                             Margin="0,0,0,12"
-                                             Checked="CertificateSourceChanged"/>
-
-                                    <RadioButton x:Name="FileCertButton" 
-                                             Content="From File (.pfx, .pem, .der)" 
-                                             GroupName="CertSource"
-                                             Foreground="{StaticResource TextPrimaryBrush}"
-                                             Margin="0,0,0,16"
-                                             Checked="CertificateSourceChanged"/>
-
-                                    <StackPanel x:Name="CertFilePanel" Visibility="Collapsed">
-                                        <TextBlock Text="Certificate File" Style="{StaticResource ModernLabel}"/>
-                                        <Grid Margin="0,0,0,12">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBox x:Name="CertPathTextBox" 
-                                                 Grid.Column="0"
-                                                 Style="{StaticResource ModernTextBox}"
-                                                 IsReadOnly="True"/>
-                                            <Button Grid.Column="1" 
-                                                Content="Browse" 
-                                                Style="{StaticResource SecondaryButton}"
-                                                Margin="12,0,0,0"
-                                                Click="BrowseCertificate_Click"/>
-                                        </Grid>
-
-                                        <TextBlock Text="Password (if required)" Style="{StaticResource ModernLabel}"/>
-                                        <TextBox x:Name="CertPasswordBox" 
-                                                 Style="{StaticResource ModernTextBox}"
-                                                 Margin="0,0,0,16"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </Border>
+                            <controls:ServerConfigurationControl x:Name="ServerConfig"
+                                                                 Port="{Binding Port, Mode=TwoWay}"
+                                                                 MaxConnections="{Binding MaxConnections, Mode=TwoWay}"
+                                                                 CertificateSource="{Binding CertificateSource, Mode=TwoWay}"
+                                                                 CertificatePath="{Binding CertificatePath, Mode=TwoWay}"
+                                                                 CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}"/>
 
                             <Border Background="{StaticResource TertiaryDarkBrush}"
         BorderBrush="{StaticResource AccentCyanBrush}"
