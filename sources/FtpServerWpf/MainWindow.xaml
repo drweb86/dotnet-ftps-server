@@ -1,7 +1,7 @@
 <Window x:Class="FtpsServerApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:commands="clr-namespace:FtpsServerApp.Commands"
+        xmlns:local="clr-namespace:FtpsServerApp"
         Title="FTPS Server" Height="700" Width="1100"
         Background="{StaticResource PrimaryDarkBrush}"
         WindowStartupLocation="CenterScreen"
@@ -11,9 +11,6 @@
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
-
-        <commands:AboutCommand x:Key="AboutCommand"/>
-        <commands:LicenseCommand x:Key="LicenseCommand"/>
 
         <Style x:Key="StatusIndicator" TargetType="Ellipse">
             <Setter Property="Width" Value="12"/>
@@ -58,24 +55,7 @@
     </Window.Resources>
 
     <DockPanel Margin="0">
-        <!-- Main Menu -->
-        <Menu DockPanel.Dock="Top"
-              Background="{StaticResource PrimaryDarkBrush}"
-              Foreground="{StaticResource TextPrimaryBrush}">
-            <MenuItem x:Name="AboutMenuItem"
-                      Header="FTPS Server"
-                      Command="{StaticResource AboutCommand}"
-                      Foreground="{StaticResource TextPrimaryBrush}"
-                      Padding="8,4">
-                <MenuItem.Icon>
-                    <Image Source="FtpsApp.png"  />
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="License"
-                      Command="{StaticResource LicenseCommand}"
-                      Foreground="{StaticResource TextPrimaryBrush}"
-                      Padding="8,4"/>
-        </Menu>
+        <local:MainMenuControl DockPanel.Dock="Top" />
 
         <Grid Margin="24">
             <Grid.RowDefinitions>
@@ -111,180 +91,8 @@
 
         <!-- Main Content -->
         <Border Grid.Row="1" Style="{StaticResource Card}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!-- Mode Selector -->
-                <StackPanel Grid.Row="0" Orientation="Horizontal" 
-                            HorizontalAlignment="Center" 
-                            Margin="0,0,0,24">
-                    <RadioButton x:Name="SimpleModeButton" 
-                                 Content="Simple Mode" 
-                                 Style="{StaticResource TabButton}"
-                                 IsChecked="True"
-                                 Checked="ModeChanged"/>
-                    <RadioButton x:Name="AdvancedModeButton" 
-                                 Content="Advanced Mode" 
-                                 Style="{StaticResource TabButton}"
-                                 Margin="8,0,0,0"
-                                 Checked="ModeChanged"/>
-                </StackPanel>
-
-                <!-- Content Area -->
-                <Grid Grid.Row="1">
-                    <!-- Simple Mode Panel -->
-                    <ScrollViewer x:Name="SimpleModePanel" 
-                                  VerticalScrollBarVisibility="Auto"
-                                  Visibility="Visible">
-                        <StackPanel>
-                            
-                                <Border Background="{StaticResource TertiaryDarkBrush}"
-BorderBrush="{StaticResource AccentCyanBrush}"
-BorderThickness="1"
-CornerRadius="8"
-Padding="16"
-Margin="10,20,10,0">
-
-                                <StackPanel>
-
-                                    <TextBlock Text="Quick Folder Share" 
-           FontSize="20" 
-           FontWeight="SemiBold"
-           Foreground="{StaticResource TextPrimaryBrush}"
-           Margin="0,0,0,20"/>
-
-                                    <!-- Root Folder -->
-                                    <TextBlock Text="Folder" Style="{StaticResource ModernLabel}"/>
-                                    <Grid Margin="0,0,0,20">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBox x:Name="SimpleRootFolderTextBox" 
-             Grid.Column="0"
-             Style="{StaticResource ModernTextBox}"
-             IsReadOnly="True"/>
-                                        <Button Grid.Column="1" 
-            Content="Browse" 
-            Style="{StaticResource SecondaryButton}"
-            Margin="12,0,0,0"
-            Click="BrowseSimpleFolder_Click"/>
-                                    </Grid>
-                                    <CheckBox x:Name="IsReadonlyCheckBox" 
-              Content="Readonly"
-              Style="{StaticResource ModernCheckBox}"
-              IsChecked="True"
-              Margin="0,0,0,20"/>
-
-                                    <!-- Password -->
-                                    <TextBlock TextWrapping="Wrap"
-   Style="{StaticResource ModernLabel}">
-    <Run Text="User "/>
-    <Run Text="admin" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-    <Run Text="Password"/>
-                                    </TextBlock>
-
-                                    <TextBox x:Name="AdminPasswordTextBox" Margin="0,0,0,20" Style="{StaticResource ModernTextBox}" />
-
-                                </StackPanel>
-        </Border>
-                            
-                            
-
-                            <!-- Info Panel -->
-                            <Border Background="{StaticResource TertiaryDarkBrush}"
-                                    BorderBrush="{StaticResource AccentCyanBrush}"
-                                    BorderThickness="1"
-                                    CornerRadius="8"
-                                    Padding="16"
-                                    Margin="10,20,10,0">
-                                <StackPanel>
-                                    <TextBlock Text="ℹ️ Simple Mode Configuration" 
-                                               FontSize="14"
-                                               FontWeight="SemiBold"
-                                               Foreground="{StaticResource AccentCyanBrush}"
-                                               Margin="0,0,0,8"/>
-
-                                    <TextBlock TextWrapping="Wrap"
-                                       FontSize="13"
-                                       Foreground="{StaticResource TextSecondaryBrush}">
-                                        <Run Text="• Server can be accessed from all networks by IPs: "/>
-                                    </TextBlock>
-                                    <ItemsControl x:Name="SimpleModeIps">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Border Margin="10,5">
-                                                    <StackPanel>
-                                                        <TextBlock TextWrapping="Wrap"
-                                                               FontSize="13"
-                                                               Foreground="{StaticResource TextSecondaryBrush}">
-    
-                                                                <Run Text="{Binding InterfaceType}"/>
-                                                                <Run Text="Network:"/>
-                                                                <Run Text="{Binding Name}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                                                <Run Text=" ("/>
-                                                                <Run Text="{Binding Description}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                                                <Run Text=")"/>
-                                                        </TextBlock>
-
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <TextBlock TextWrapping="Wrap"
-                                                               FontSize="13"
-                                                               Foreground="{StaticResource TextSecondaryBrush}">
-                                                                <Run Text="IP Addresses: "/>
-                                                            </TextBlock>
-
-                                                            <ItemsControl ItemsSource="{Binding Addresses}">
-                                                                <ItemsControl.ItemsPanel>
-                                                                    <ItemsPanelTemplate>
-                                                                        <WrapPanel Orientation="Horizontal"/>
-                                                                    </ItemsPanelTemplate>
-                                                                </ItemsControl.ItemsPanel>
-                                                                <ItemsControl.ItemTemplate>
-                                                                    <DataTemplate>
-                                                                        <TextBlock Text="{Binding .}" 
-                                                                            TextWrapping="Wrap"
-                                                                            FontSize="13"
-                                                                            Foreground="{StaticResource TextPrimaryBrush}"
-                                                                            Margin="0 0 5 0"/>
-
-                                                                    </DataTemplate>
-                                                                </ItemsControl.ItemTemplate>
-                                                            </ItemsControl>
-                                                        </StackPanel>
-
-
-                                                    </StackPanel>
-                                                </Border>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-
-                                    <TextBlock TextWrapping="Wrap"
-                                       FontSize="13"
-                                       Foreground="{StaticResource TextSecondaryBrush}">
-                                        
-                                        <Run Text="• Port: "/>
-                                        <Run Text="2121" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                        <LineBreak/>
-                                        <Run Text="• User: "/>
-                                        <Run Text="admin" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                        <LineBreak/>
-                                        <Run Text="• Self-signed certificate (auto-generated)"/>
-                                    </TextBlock>
-                                </StackPanel>
-                            </Border>
-                        </StackPanel>
-                    </ScrollViewer>
-
-                    <!-- Advanced Mode Panel -->
-                    <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                  x:Name="AdvancedModePanel" 
-                                    Visibility="Collapsed">
-                        <StackPanel>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Horizontal">
 
 
                             <Border Background="{StaticResource TertiaryDarkBrush}"
@@ -467,12 +275,94 @@ Margin="10,20,10,0">
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
+
+                                    <!-- Info Panel -->
+                            <Border Background="{StaticResource TertiaryDarkBrush}"
+                                    BorderBrush="{StaticResource AccentCyanBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="8"
+                                    Padding="16"
+                                    Margin="10,20,10,0">
+                                <StackPanel>
+                                    <TextBlock Text="ℹ️ Simple Mode Configuration" 
+                                               FontSize="14"
+                                               FontWeight="SemiBold"
+                                               Foreground="{StaticResource AccentCyanBrush}"
+                                               Margin="0,0,0,8"/>
+
+                                    <TextBlock TextWrapping="Wrap"
+                                       FontSize="13"
+                                       Foreground="{StaticResource TextSecondaryBrush}">
+                                        <Run Text="• Server can be accessed from all networks by IPs: "/>
+                                    </TextBlock>
+                                    <ItemsControl x:Name="SimpleModeIps">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Margin="10,5">
+                                                    <StackPanel>
+                                                        <TextBlock TextWrapping="Wrap"
+                                                               FontSize="13"
+                                                               Foreground="{StaticResource TextSecondaryBrush}">
+    
+                                                                <Run Text="{Binding InterfaceType}"/>
+                                                                <Run Text="Network:"/>
+                                                                <Run Text="{Binding Name}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                                                <Run Text=" ("/>
+                                                                <Run Text="{Binding Description}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                                                <Run Text=")"/>
+                                                        </TextBlock>
+
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock TextWrapping="Wrap"
+                                                               FontSize="13"
+                                                               Foreground="{StaticResource TextSecondaryBrush}">
+                                                                <Run Text="IP Addresses: "/>
+                                                            </TextBlock>
+
+                                                            <ItemsControl ItemsSource="{Binding Addresses}">
+                                                                <ItemsControl.ItemsPanel>
+                                                                    <ItemsPanelTemplate>
+                                                                        <WrapPanel Orientation="Horizontal"/>
+                                                                    </ItemsPanelTemplate>
+                                                                </ItemsControl.ItemsPanel>
+                                                                <ItemsControl.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <TextBlock Text="{Binding .}" 
+                                                                            TextWrapping="Wrap"
+                                                                            FontSize="13"
+                                                                            Foreground="{StaticResource TextPrimaryBrush}"
+                                                                            Margin="0 0 5 0"/>
+
+                                                                    </DataTemplate>
+                                                                </ItemsControl.ItemTemplate>
+                                                            </ItemsControl>
+                                                        </StackPanel>
+
+
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+
+                                    <TextBlock TextWrapping="Wrap"
+                                       FontSize="13"
+                                       Foreground="{StaticResource TextSecondaryBrush}">
+                                        
+                                        <Run Text="• Port: "/>
+                                        <Run Text="2121" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                        <LineBreak/>
+                                        <Run Text="• User: "/>
+                                        <Run Text="admin" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                        <LineBreak/>
+                                        <Run Text="• Self-signed certificate (auto-generated)"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
                                 </StackPanel>
                             </Border>
                         </StackPanel>
                     </ScrollViewer>
-                </Grid>
-            </Grid>
         </Border>
         </Grid>
     </DockPanel>

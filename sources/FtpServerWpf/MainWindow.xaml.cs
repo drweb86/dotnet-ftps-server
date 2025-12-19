@@ -7,7 +7,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -40,31 +39,10 @@ namespace FtpsServerApp
             LoadSettings();
             SimpleModeIps.ItemsSource = NetworkHelper.GetMyLocalIps();
             DataContext = this;
-
-            // Set menu item header with version
-            var version = Assembly.GetExecutingAssembly().GetName().Version;
-            AboutMenuItem.Header = $"FTPS Server - {version}";
         }
 
         private void LoadSettings()
         {
-            // Load mode
-            if (_settings.IsSimpleMode)
-            {
-                SimpleModeButton.IsChecked = true;
-            }
-            else
-            {
-                AdvancedModeButton.IsChecked = true;
-            }
-
-            // Load simple mode settings
-            var user = _settings.SimpleModeUser;
-            SimpleRootFolderTextBox.Text = user?.Folder ?? Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            AdminPasswordTextBox.Text = user?.Password;
-            IsReadonlyCheckBox.IsChecked = user?.ReadonlyPermission ?? false;
-
-            // Load advanced mode settings
             ServerIpTextBox.Text = _settings.ServerIp;
             ServerPortTextBox.Text = _settings.ServerPort.ToString();
             MaxConnectionsTextBox.Text = _settings.MaxConnections.ToString();
@@ -83,18 +61,6 @@ namespace FtpsServerApp
 
         private void SaveSettings()
         {
-            _settings.IsSimpleMode = SimpleModeButton.IsChecked == true;
-
-            // Simple mode
-            _settings.SimpleModeUser = new UserAccount()
-            {
-                Folder = SimpleRootFolderTextBox.Text,
-                ReadonlyPermission = IsReadonlyCheckBox.IsChecked == true,
-                Login = "admin",
-                Password = AdminPasswordTextBox.Text
-            };
-
-            // Advanced mode
             _settings.ServerIp = ServerIpTextBox.Text;
             if (int.TryParse(ServerPortTextBox.Text, out int port))
                 _settings.ServerPort = port;
@@ -112,25 +78,6 @@ namespace FtpsServerApp
             SettingsManager.SaveSettings(_settings);
         }
 
-        private void ModeChanged(object sender, RoutedEventArgs e)
-        {
-            if (SimpleModePanel is null)
-                return;
-            if (AdvancedModePanel is null)
-                return;
-
-            if (SimpleModeButton.IsChecked == true)
-            {
-                SimpleModePanel.Visibility = Visibility.Visible;
-                AdvancedModePanel.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                SimpleModePanel.Visibility = Visibility.Collapsed;
-                AdvancedModePanel.Visibility = Visibility.Visible;
-            }
-        }
-
         private void CertificateSourceChanged(object sender, RoutedEventArgs e)
         {
             if (CertFilePanel != null)
@@ -138,19 +85,6 @@ namespace FtpsServerApp
                 CertFilePanel.Visibility = FileCertButton.IsChecked == true 
                     ? Visibility.Visible 
                     : Visibility.Collapsed;
-            }
-        }
-
-        private void BrowseSimpleFolder_Click(object sender, RoutedEventArgs e)
-        {
-            var dialog = new OpenFolderDialog()
-            {
-                Title = "Select folder to share by FTPS",
-            };
-
-            if (dialog.ShowDialog() == true)
-            {
-                SimpleRootFolderTextBox.Text = dialog.FolderName;
             }
         }
 
@@ -225,38 +159,6 @@ namespace FtpsServerApp
                
                 var config = new FtpsServerConfiguration();
 
-                if (SimpleModeButton.IsChecked == true)
-                {
-                    // Simple mode configuration
-                    if (string.IsNullOrWhiteSpace(SimpleRootFolderTextBox.Text))
-                    {
-                        MessageBox.Show("Please select a folder to share.", "Error", 
-                            MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(AdminPasswordTextBox.Text))
-                    {
-                        MessageBox.Show("Please select a password for default user 'admin'.", "Error",
-                            MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
-                    }
-
-                    config.ServerSettings.Ip = "0.0.0.0";
-                    config.ServerSettings.Port = 2121;
-                    config.ServerSettings.MaxConnections = 10;
-
-                    config.Users.Add(new FtpsServerUserAccount
-                    {
-                        Login = "admin",
-                        Password = AdminPasswordTextBox.Text,
-                        Folder = SimpleRootFolderTextBox.Text,
-                        Read = true,
-                        Write = IsReadonlyCheckBox.IsChecked != true
-                    });
-                }
-                else
-                {
                     // Advanced mode configuration
                     config.ServerSettings.Ip = ServerIpTextBox.Text;
                     
@@ -312,7 +214,6 @@ namespace FtpsServerApp
                             Write = !user.ReadonlyPermission
                         });
                     }
-                }
 
                 _server = new FtpsServer(new FtpsLogger(), config);
                 _server.Start();
