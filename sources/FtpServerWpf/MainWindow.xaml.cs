@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml.Linq;
 
 namespace FtpsServerApp
 {
@@ -38,12 +39,12 @@ namespace FtpsServerApp
 
             LoadSettings();
             SimpleModeIps.ItemsSource = NetworkHelper.GetMyLocalIps();
+            PCName.Text = System.Environment.MachineName;
             DataContext = this;
         }
 
         private void LoadSettings()
         {
-            ServerIpTextBox.Text = _settings.ServerIp;
             ServerPortTextBox.Text = _settings.ServerPort.ToString();
             MaxConnectionsTextBox.Text = _settings.MaxConnections.ToString();
 
@@ -61,7 +62,6 @@ namespace FtpsServerApp
 
         private void SaveSettings()
         {
-            _settings.ServerIp = ServerIpTextBox.Text;
             if (int.TryParse(ServerPortTextBox.Text, out int port))
                 _settings.ServerPort = port;
             if (int.TryParse(MaxConnectionsTextBox.Text, out int maxConn))
@@ -160,7 +160,7 @@ namespace FtpsServerApp
                 var config = new FtpsServerConfiguration();
 
                     // Advanced mode configuration
-                    config.ServerSettings.Ip = ServerIpTextBox.Text;
+                    config.ServerSettings.Ip = "0.0.0.0";
                     
                     if (int.TryParse(ServerPortTextBox.Text, out int port))
                         config.ServerSettings.Port = port;

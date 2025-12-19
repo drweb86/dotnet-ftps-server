@@ -108,14 +108,69 @@
                                            Foreground="{StaticResource TextPrimaryBrush}"
                                            Margin="0,0,0,20"/>
 
-                                    <!-- IP Address -->
-                                    <TextBlock Text="IP Address" Style="{StaticResource ModernLabel}"/>
-                                    <TextBox x:Name="ServerIpTextBox" 
-                                         Text="0.0.0.0"
-                                         Style="{StaticResource ModernTextBox}"
-                                         Margin="0,0,0,16"/>
+                                <TextBlock Text="Address" Style="{StaticResource ModernLabel}"/>
+                                    
+                                        <TextBlock TextWrapping="Wrap"
+           FontSize="13"
+           Foreground="{StaticResource TextSecondaryBrush}">
+                                            <Run Text="Your PC can be accessed in LAN by its name or IP address."/>
+                                            <LineBreak />
+                                            <Run Text="Name: "/>
+                                             <Run x:Name="PCName" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                            <LineBreak />
+                                        </TextBlock>
+                                        <ItemsControl x:Name="SimpleModeIps">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Margin="10,5">
+                                                        <StackPanel>
+                                                            <TextBlock TextWrapping="Wrap"
+                                   FontSize="13"
+                                   Foreground="{StaticResource TextSecondaryBrush}">
+    
+                                    <Run Text="{Binding InterfaceType}"/>
+                                    <Run Text="Network:"/>
+                                    <Run Text="{Binding Name}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                    <Run Text=" ("/>
+                                    <Run Text="{Binding Description}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
+                                    <Run Text=")"/>
+                                                            </TextBlock>
 
-                                    <!-- Port -->
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock TextWrapping="Wrap"
+                                   FontSize="13"
+                                   Foreground="{StaticResource TextSecondaryBrush}">
+                                    <Run Text="IP Addresses: "/>
+                                                                </TextBlock>
+
+                                                                <ItemsControl ItemsSource="{Binding Addresses}">
+                                                                    <ItemsControl.ItemsPanel>
+                                                                        <ItemsPanelTemplate>
+                                                                            <WrapPanel Orientation="Horizontal"/>
+                                                                        </ItemsPanelTemplate>
+                                                                    </ItemsControl.ItemsPanel>
+                                                                    <ItemsControl.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <TextBlock Text="{Binding .}" 
+                                                TextWrapping="Wrap"
+                                                FontSize="13"
+                                                Foreground="{StaticResource TextPrimaryBrush}"
+                                                Margin="0 0 5 0"/>
+
+                                                                        </DataTemplate>
+                                                                    </ItemsControl.ItemTemplate>
+                                                                </ItemsControl>
+                                                            </StackPanel>
+
+
+                                                        </StackPanel>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                               
+
+                                <!-- Port -->
                                     <TextBlock Text="Port" Style="{StaticResource ModernLabel}"/>
                                     <TextBox x:Name="ServerPortTextBox" 
                                          Text="2121"
@@ -276,89 +331,7 @@
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
 
-                                    <!-- Info Panel -->
-                            <Border Background="{StaticResource TertiaryDarkBrush}"
-                                    BorderBrush="{StaticResource AccentCyanBrush}"
-                                    BorderThickness="1"
-                                    CornerRadius="8"
-                                    Padding="16"
-                                    Margin="10,20,10,0">
-                                <StackPanel>
-                                    <TextBlock Text="ℹ️ Simple Mode Configuration" 
-                                               FontSize="14"
-                                               FontWeight="SemiBold"
-                                               Foreground="{StaticResource AccentCyanBrush}"
-                                               Margin="0,0,0,8"/>
-
-                                    <TextBlock TextWrapping="Wrap"
-                                       FontSize="13"
-                                       Foreground="{StaticResource TextSecondaryBrush}">
-                                        <Run Text="• Server can be accessed from all networks by IPs: "/>
-                                    </TextBlock>
-                                    <ItemsControl x:Name="SimpleModeIps">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Border Margin="10,5">
-                                                    <StackPanel>
-                                                        <TextBlock TextWrapping="Wrap"
-                                                               FontSize="13"
-                                                               Foreground="{StaticResource TextSecondaryBrush}">
-    
-                                                                <Run Text="{Binding InterfaceType}"/>
-                                                                <Run Text="Network:"/>
-                                                                <Run Text="{Binding Name}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                                                <Run Text=" ("/>
-                                                                <Run Text="{Binding Description}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                                                <Run Text=")"/>
-                                                        </TextBlock>
-
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <TextBlock TextWrapping="Wrap"
-                                                               FontSize="13"
-                                                               Foreground="{StaticResource TextSecondaryBrush}">
-                                                                <Run Text="IP Addresses: "/>
-                                                            </TextBlock>
-
-                                                            <ItemsControl ItemsSource="{Binding Addresses}">
-                                                                <ItemsControl.ItemsPanel>
-                                                                    <ItemsPanelTemplate>
-                                                                        <WrapPanel Orientation="Horizontal"/>
-                                                                    </ItemsPanelTemplate>
-                                                                </ItemsControl.ItemsPanel>
-                                                                <ItemsControl.ItemTemplate>
-                                                                    <DataTemplate>
-                                                                        <TextBlock Text="{Binding .}" 
-                                                                            TextWrapping="Wrap"
-                                                                            FontSize="13"
-                                                                            Foreground="{StaticResource TextPrimaryBrush}"
-                                                                            Margin="0 0 5 0"/>
-
-                                                                    </DataTemplate>
-                                                                </ItemsControl.ItemTemplate>
-                                                            </ItemsControl>
-                                                        </StackPanel>
-
-
-                                                    </StackPanel>
-                                                </Border>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-
-                                    <TextBlock TextWrapping="Wrap"
-                                       FontSize="13"
-                                       Foreground="{StaticResource TextSecondaryBrush}">
-                                        
-                                        <Run Text="• Port: "/>
-                                        <Run Text="2121" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                        <LineBreak/>
-                                        <Run Text="• User: "/>
-                                        <Run Text="admin" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
-                                        <LineBreak/>
-                                        <Run Text="• Self-signed certificate (auto-generated)"/>
-                                    </TextBlock>
-                                </StackPanel>
-                            </Border>
+                            
                                 </StackPanel>
                             </Border>
                         </StackPanel>
