@@ -93,7 +93,7 @@
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="Padding" Value="8,6"/>
                 <Setter Property="FontSize" Value="14"/>
-                <Setter Property="MaxWidth" Value="600"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="TextBox">

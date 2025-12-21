@@ -1,4 +1,4 @@
-<UserControl x:Class="FtpsServerApp.MainMenuControl"
+﻿<UserControl x:Class="FtpsServerApp.MainMenuControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:commands="clr-namespace:FtpsServerApp.Commands">
@@ -6,23 +6,52 @@
     <UserControl.Resources>
         <commands:AboutCommand x:Key="AboutCommand"/>
         <commands:LicenseCommand x:Key="LicenseCommand"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
 
         <Style TargetType="MenuItem">
             <Setter Property="Padding" Value="8,4" />
-            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+            <Setter Property="Foreground"
+              Value="{StaticResource {x:Static SystemColors.MenuTextBrushKey}}"/>
         </Style>
+
     </UserControl.Resources>
 
-    <Menu Background="{StaticResource PrimaryDarkBrush}"
-          Foreground="{StaticResource TextPrimaryBrush}">
+    <Menu DockPanel.Dock="Left"
+              Background="{StaticResource PrimaryDarkBrush}"
+              Margin="8">
+
         <MenuItem x:Name="AboutMenuItem"
-                  Header="FTPS Server"
-                  Command="{StaticResource AboutCommand}">
+              Header="FTPS Server"
+              Foreground="{StaticResource TextPrimaryBrush}">
             <MenuItem.Icon>
-                <Image Source="FtpsApp.png" />
+                <Image Source="../FtpsApp.png" />
             </MenuItem.Icon>
+            <MenuItem.Items>
+                <MenuItem
+                    
+                    Header="Web-Site"
+                    Command="{StaticResource AboutCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="../FtpsApp.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="License" Command="{StaticResource LicenseCommand}" />
+            </MenuItem.Items>
         </MenuItem>
-        <MenuItem Header="License"
-                  Command="{StaticResource LicenseCommand}" />
+
+        
+
+        <MenuItem Header="⏵START"
+                  x:Name="PlayIcon"
+                  Foreground="Green"
+                  FontWeight="Bold"
+                  Click="StartStopButton_Click" />
+
+        <MenuItem Header="⏹ STOP"
+                  x:Name="StopIcon"
+                  Click="StartStopButton_Click"
+                  FontWeight="Bold"
+                  Foreground="PaleVioletRed"
+                  Visibility="Collapsed" />
     </Menu>
 </UserControl>

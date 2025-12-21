@@ -155,7 +155,7 @@ namespace FtpsServerApp
             }
         }
 
-        private void StartStopButton_Click(object sender, RoutedEventArgs e)
+        private void MainMenu_StartStopClicked(object sender, RoutedEventArgs e)
         {
             if (IsServerRunning)
             {
@@ -255,21 +255,7 @@ namespace FtpsServerApp
 
         private void UpdateServerStatus()
         {
-            Dispatcher.Invoke(() =>
-            {
-                if (IsServerRunning)
-                {
-                    StatusText.Text = "Server Running";
-                    StartStopButton.Content = "STOP SERVER";
-                    StartStopButton.Background = (System.Windows.Media.Brush)FindResource("ErrorBrush");
-                }
-                else
-                {
-                    StatusText.Text = "Server Stopped";
-                    StartStopButton.Content = "START SERVER";
-                    StartStopButton.Background = (System.Windows.Media.Brush)FindResource("AccentCyanBrush");
-                }
-            });
+            MainMenu.UpdateServerStatus(IsServerRunning);
         }
 
         protected override void OnClosed(EventArgs e)
