@@ -6,15 +6,10 @@ Write-Output "Version is $version"
 $ErrorActionPreference = "Stop"
 
 Write-Output "Clear Output folder..."
-if (Test-Path ".\Output")
-{
-	$fullPath = (Resolve-Path ".\Output").ProviderPath
-	[IO.Directory]::Delete($fullPath, $true)
-	if ($LastExitCode -ne 0)
-	{
-		Write-Error "Fail." 
-		Exit 1
-	}
+$outputPath=".\Output"; $retries=3
+while ($retries -gt 0 -and (Test-Path $outputPath)) {
+    Remove-Item $outputPath -Recurse -Force -ErrorAction SilentlyContinue
+    if (Test-Path $outputPath) { Start-Sleep 2; $retries-- }
 }
 
 class BuildInfo {

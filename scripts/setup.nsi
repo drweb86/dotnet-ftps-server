@@ -24,7 +24,7 @@ SetCompressor /FINAL /SOLID lzma
 
 ; MUI Settings
 !define MUI_ABORTWARNING
-!define MUI_ICON "sources\dotnet-ftps-server\sources\FtpServerWpf\icon.ico"
+!define MUI_ICON "..\sources\FtpsServerWindows\icon.ico"
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 
 ; Welcome page
