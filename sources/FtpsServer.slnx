@@ -5,6 +5,7 @@
     <File Path="../README.md" />
     <File Path="../README_NUGET.md" />
   </Folder>
+  <Project Path="FtpServerWpf/FtpServerWpf.csproj" />
   <Project Path="FtpsServerConsole/FtpsServerConsole.csproj" />
   <Project Path="FtpsServerLibrary/FtpsServerLibrary.csproj" Id="11bedc33-7b62-4588-8396-28d9907cf3a7" />
 </Solution>

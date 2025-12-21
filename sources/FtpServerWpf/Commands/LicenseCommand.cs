@@ -7,7 +7,9 @@ namespace FtpsServerApp.Commands
     {
         private const string LicenseUrl = "https://github.com/drweb86/dotnet-ftps-server/blob/main/sources/FtpServerWpf/LICENSE.md";
 
+        #pragma warning disable 67
         public event EventHandler? CanExecuteChanged;
+        #pragma warning restore 67
 
         public bool CanExecute(object? parameter)
         {

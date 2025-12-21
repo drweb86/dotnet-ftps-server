@@ -1,8 +1,9 @@
-# 2025.12.2
+# 2025.12.21
 (unpublished)
 
 ## Bug Fixes
 - MAUI: fix load settings for simple setup.
+- WPF: add windows app.
 
 # 2025.12.2
 

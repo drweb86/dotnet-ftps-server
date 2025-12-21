@@ -8,7 +8,8 @@ $ErrorActionPreference = "Stop"
 Write-Output "Clear Output folder..."
 if (Test-Path ".\Output")
 {
-	Remove-Item ".\Output" -Confirm:$false -Recurse:$true
+	$fullPath = (Resolve-Path ".\Output").ProviderPath
+	[IO.Directory]::Delete($fullPath, $true)
 	if ($LastExitCode -ne 0)
 	{
 		Write-Error "Fail." 
@@ -17,14 +18,14 @@ if (Test-Path ".\Output")
 }
 
 class BuildInfo {
-    [string]$CoreRuntimeWindows
-	[string]$CoreRuntimeFolderPrefix
+  [string]$CoreRuntimeWindows
+  [string]$CoreRuntimeFolderPrefix
 
     BuildInfo(
-		[string]$CoreRuntimeWindows,
-		[string]$CoreRuntimeFolderPrefix) {
+	[string]$CoreRuntimeWindows,
+	[string]$CoreRuntimeFolderPrefix) {
         $this.CoreRuntimeWindows = $CoreRuntimeWindows
-		$this.CoreRuntimeFolderPrefix = $CoreRuntimeFolderPrefix
+	$this.CoreRuntimeFolderPrefix = $CoreRuntimeFolderPrefix
     }
 }
 
