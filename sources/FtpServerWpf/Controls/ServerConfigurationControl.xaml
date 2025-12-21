@@ -10,7 +10,7 @@
             Padding="16"
             Margin="10,20,10,0">
         <StackPanel>
-            <TextBlock Text="Server Configuration"
+            <TextBlock Text="Host, Port, Certificate"
                        FontSize="18"
                        FontWeight="SemiBold"
                        Foreground="{StaticResource TextPrimaryBrush}"
@@ -73,66 +73,106 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <!-- Port -->
-            <TextBlock Text="Port" Style="{StaticResource ModernLabel}" Margin="0,16,0,0"/>
-            <controls:NumericUpDown x:Name="PortControl"
-                                    Minimum="2121"
-                                    Value="{Binding Port, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    Margin="0,0,0,16"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
-            <!-- Max Connections -->
-            <TextBlock Text="Max Connections" Style="{StaticResource ModernLabel}"/>
-            <controls:NumericUpDown x:Name="MaxConnectionsControl"
-                                    Minimum="2"
-                                    Value="{Binding MaxConnections, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    Margin="0,0,0,24"/>
+                <!-- Port -->
+                <TextBlock 
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Port" Style="{StaticResource ModernLabel}" 
+                    Margin="0,14,12,0"
+                />
+                <controls:NumericUpDown
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="0"
+                    x:Name="PortControl"
+                    Minimum="2121"
+                    Value="{Binding Port, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Margin="0,0,0,16"
+                />
 
-            <!-- Certificate -->
-            <TextBlock Text="Certificate Source"
-                       FontSize="18"
-                       FontWeight="SemiBold"
-                       Foreground="{StaticResource TextPrimaryBrush}"
-                       Margin="0,0,0,16"/>
+                <!-- Max Connections -->
+                <TextBlock 
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Margin="0,14,12,0"
+                    Text=" Max Connections"
+                    Style="{StaticResource ModernLabel}"/>
+                <controls:NumericUpDown x:Name="MaxConnectionsControl"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    Minimum="2"
+                    Value="{Binding MaxConnections, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Margin="0,0,0,16"/>
 
-            <RadioButton x:Name="SelfSignedCertButton"
-                         Content="Self-Signed (Auto-Generated)"
-                         GroupName="CertSource"
-                         Foreground="{StaticResource TextPrimaryBrush}"
-                         IsChecked="True"
-                         Margin="0,0,0,12"
-                         Checked="CertificateSourceChanged"/>
+                <!-- Certificate -->
+                <CheckBox 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="2"
+                    x:Name="SelfSignedCertButton"
+                    Content="Use Self-Signed Auto-Generated certficate"
+                    IsChecked="True"
+                    Style="{StaticResource ModernCheckBox}"
+                    Margin="0,0,12,16"
+                    Checked="CertificateSourceChanged"
+                    Unchecked="CertificateSourceChanged"
+                />
 
-            <RadioButton x:Name="FileCertButton"
-                         Content="From File (.pfx, .pem, .der)"
-                         GroupName="CertSource"
-                         Foreground="{StaticResource TextPrimaryBrush}"
-                         Margin="0,0,0,16"
-                         Checked="CertificateSourceChanged"/>
+                <TextBlock
+                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Margin="0,14,12,0"
+                    Text="Certificate File (.pfx, .pem, .der)" Style="{StaticResource ModernLabel}"/>
+                <TextBox x:Name="CertPathTextBox"
+                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    Style="{StaticResource ModernTextBox}"
+                    IsReadOnly="True"
+                    Margin="0,0,0,16"
+                />
+                <Button
+                    Grid.Column="2"
+                    Grid.Row="3"
+                    Content="Browse"
+                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Style="{StaticResource SecondaryButton}"
+                    Margin="12,0,0,16"
+                    Click="BrowseCertificate_Click"/>
 
-            <StackPanel x:Name="CertFilePanel" Visibility="Collapsed">
-                <TextBlock Text="Certificate File" Style="{StaticResource ModernLabel}"/>
-                <Grid Margin="0,0,0,12">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox x:Name="CertPathTextBox"
-                             Grid.Column="0"
-                             Style="{StaticResource ModernTextBox}"
-                             IsReadOnly="True"/>
-                    <Button Grid.Column="1"
-                            Content="Browse"
-                            Style="{StaticResource SecondaryButton}"
-                            Margin="12,0,0,0"
-                            Click="BrowseCertificate_Click"/>
-                </Grid>
 
-                <TextBlock Text="Password (if required)" Style="{StaticResource ModernLabel}"/>
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    Margin="0,14,12,0"
+                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Text="Certificate Password (if required)" Style="{StaticResource ModernLabel}"/>
                 <TextBox x:Name="CertPasswordBox"
-                         Style="{StaticResource ModernTextBox}"
-                         Text="{Binding CertificatePassword, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Margin="0,0,0,16"/>
-            </StackPanel>
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="4"
+                    Margin="0,0,0,16"
+                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Style="{StaticResource ModernTextBox}"
+                    Text="{Binding CertificatePassword, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 />
+            </Grid>
         </StackPanel>
     </Border>
 </UserControl>

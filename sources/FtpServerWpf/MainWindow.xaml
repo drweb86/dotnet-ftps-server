@@ -6,7 +6,6 @@
         Title="FTPS Server" Height="700" Width="1100"
         Background="{StaticResource PrimaryDarkBrush}"
         WindowStartupLocation="CenterScreen"
-        WindowState="Maximized"
         ResizeMode="CanResize">
 
     <Window.Resources>
@@ -57,40 +56,8 @@
     <DockPanel Margin="0">
         <local:MainMenuControl DockPanel.Dock="Top" />
 
-        <Grid Margin="24">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-        <!-- Header -->
-        <Grid Grid.Row="0" Margin="0,0,0,24">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-                <StackPanel Orientation="Horizontal" Margin="0,8,0,0" Grid.Column="0">
-                    <Ellipse Style="{StaticResource StatusIndicator}" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="StatusText" 
-                               Text="Server Stopped" 
-                               FontSize="14"
-                               Foreground="{StaticResource TextSecondaryBrush}"
-                               Margin="8,0,0,0"
-                               VerticalAlignment="Center"/>
-                </StackPanel>
-
-            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                <Button x:Name="StartStopButton" 
-                        Content="START SERVER" 
-                        Style="{StaticResource ModernButton}"
-                        Click="StartStopButton_Click"
-                        MinWidth="160"/>
-            </StackPanel>
-        </Grid>
-
         <!-- Main Content -->
-        <Border Grid.Row="1" Style="{StaticResource Card}">
+        <Border Style="{StaticResource Card}">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Orientation="Horizontal">
 
@@ -102,11 +69,11 @@
                                                                  CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}"/>
 
                             <Border Background="{StaticResource TertiaryDarkBrush}"
-        BorderBrush="{StaticResource AccentCyanBrush}"
-        BorderThickness="1"
-        CornerRadius="8"
-        Padding="16"
-        Margin="10,20,10,0">
+                            BorderBrush="{StaticResource AccentCyanBrush}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="16"
+                            Margin="10,20,10,0">
                                 <StackPanel >
                                     <Grid Margin="0,0,0,16">
                                         <TextBlock Text="Users" 
@@ -125,77 +92,7 @@
                                     <ItemsControl x:Name="UsersItemsControl">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <Border Background="{StaticResource TertiaryDarkBrush}"
-                                                    BorderBrush="{StaticResource BorderBrush}"
-                                                    BorderThickness="1"
-                                                    CornerRadius="8"
-                                                    Padding="16"
-                                                    Margin="0,0,0,16">
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="Auto"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                        </Grid.RowDefinitions>
-
-                                                        <!-- Username -->
-                                                        <Grid Grid.Row="0" Margin="0,0,0,12">
-                                                            <TextBlock Text="Username" Style="{StaticResource ModernLabel}"/>
-                                                            <Button Content="✕" 
-                                                                HorizontalAlignment="Right"
-                                                                VerticalAlignment="Top"
-                                                                Background="Transparent"
-                                                                Foreground="{StaticResource ErrorBrush}"
-                                                                BorderThickness="0"
-                                                                FontSize="16"
-                                                                Padding="8,0"
-                                                                Cursor="Hand"
-                                                                Click="RemoveUser_Click"
-                                                                Tag="{Binding}"/>
-                                                        </Grid>
-                                                        <TextBox Grid.Row="0" 
-                                                             Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                             Style="{StaticResource ModernTextBox}"
-                                                             Margin="0,24,0,12"/>
-
-                                                        <!-- Password -->
-                                                        <TextBlock Grid.Row="1" Text="Password" Style="{StaticResource ModernLabel}"/>
-                                                        <TextBox Grid.Row="1" 
-                                                                 Style="{StaticResource ModernTextBox}"
-                                                                 Margin="0,24,0,12"
-                                                                 Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
-                                                        <!-- Folder -->
-                                                        <TextBlock Grid.Row="2" Text="Folder" Style="{StaticResource ModernLabel}"/>
-                                                        <Grid Grid.Row="2" Margin="0,24,0,12">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="Auto"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <TextBox Grid.Column="0"
-                                                                 Text="{Binding Folder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                                 Style="{StaticResource ModernTextBox}"
-                                                                 IsReadOnly="True"/>
-                                                            <Button Grid.Column="1" 
-                                                                Content="Browse" 
-                                                                Style="{StaticResource SecondaryButton}"
-                                                                Margin="12,0,0,0"
-                                                                Click="BrowseUserFolder_Click"
-                                                                Tag="{Binding}"
-                                                                Padding="12,8"/>
-                                                        </Grid>
-
-                                                        <!-- Permissions -->
-                                                        <StackPanel Grid.Row="3">
-                                                            <CheckBox Content="Readonly" 
-                                                                  IsChecked="{Binding ReadonlyPermission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                                  Style="{StaticResource ModernCheckBox}"
-                                                                  Margin="0,0,24,0"/>
-                                                        </StackPanel>
-                                                    </Grid>
-                                                </Border>
+                                                <controls:UserItemControl RemoveUserRequested="UserItemControl_RemoveUserRequested"/>
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
@@ -203,9 +100,34 @@
                             
                                 </StackPanel>
                             </Border>
+
+                            <!-- Header -->
+                            <Grid Grid.Row="0" Margin="0,0,0,24">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0" Grid.Column="0">
+                                        <Ellipse Style="{StaticResource StatusIndicator}" VerticalAlignment="Center"/>
+                                        <TextBlock x:Name="StatusText" 
+                                                Text="Server Stopped" 
+                                                FontSize="14"
+                                                Foreground="{StaticResource TextSecondaryBrush}"
+                                                Margin="8,0,0,0"
+                                                VerticalAlignment="Center"/>
+                                    </StackPanel>
+
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Button x:Name="StartStopButton" 
+                                            Content="START SERVER" 
+                                            Style="{StaticResource ModernButton}"
+                                            Click="StartStopButton_Click"
+                                            MinWidth="160"/>
+                                </StackPanel>
+                            </Grid>
                         </StackPanel>
                     </ScrollViewer>
         </Border>
-        </Grid>
     </DockPanel>
 </Window>

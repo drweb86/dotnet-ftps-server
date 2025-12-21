@@ -36,7 +36,7 @@
                 <Setter Property="Background" Value="{StaticResource AccentCyanBrush}"/>
                 <Setter Property="Foreground" Value="{StaticResource PrimaryDarkBrush}"/>
                 <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Padding" Value="24,12"/>
+                <Setter Property="Padding" Value="20,8"/>
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="FontWeight" Value="SemiBold"/>
                 <Setter Property="Cursor" Value="Hand"/>
@@ -91,8 +91,9 @@
                 <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
                 <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="Padding" Value="12,10"/>
+                <Setter Property="Padding" Value="8,6"/>
                 <Setter Property="FontSize" Value="14"/>
+                <Setter Property="MaxWidth" Value="600"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="TextBox">
@@ -154,7 +155,7 @@
                 <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
                 <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="Padding" Value="12,10"/>
+                <Setter Property="Padding" Value="8,6"/>
                 <Setter Property="FontSize" Value="14"/>
             </Style>
 

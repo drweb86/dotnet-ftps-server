@@ -21,6 +21,10 @@ namespace FtpsServerApp.Controls
             DependencyProperty.Register(nameof(CertificateSource), typeof(CertificateSourceType), typeof(ServerConfigurationControl),
                 new FrameworkPropertyMetadata(CertificateSourceType.SelfSigned, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnCertificateSourceChanged));
 
+        public static readonly DependencyProperty CertificateUserProvidedVisibilityProperty =
+            DependencyProperty.Register(nameof(CertificateUserProvidedVisibility), typeof(Visibility), typeof(ServerConfigurationControl),
+                new FrameworkPropertyMetadata(Visibility.Hidden));
+
         public static readonly DependencyProperty CertificatePathProperty =
             DependencyProperty.Register(nameof(CertificatePath), typeof(string), typeof(ServerConfigurationControl),
                 new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnCertificatePathChanged));
@@ -44,7 +48,17 @@ namespace FtpsServerApp.Controls
         public CertificateSourceType CertificateSource
         {
             get => (CertificateSourceType)GetValue(CertificateSourceProperty);
-            set => SetValue(CertificateSourceProperty, value);
+            set
+            {
+                SetValue(CertificateSourceProperty, value);
+                CertificateUserProvidedVisibility = value == CertificateSourceType.FromFile ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        public Visibility CertificateUserProvidedVisibility
+        {
+            get => (Visibility)GetValue(CertificateUserProvidedVisibilityProperty);
+            set => SetValue(CertificateUserProvidedVisibilityProperty, value);
         }
 
         public string CertificatePath
@@ -92,12 +106,12 @@ namespace FtpsServerApp.Controls
             var control = (ServerConfigurationControl)d;
             var newValue = (CertificateSourceType)e.NewValue;
 
-            if (control.SelfSignedCertButton != null && control.FileCertButton != null)
+            if (control.SelfSignedCertButton != null && control.SelfSignedCertButton != null)
             {
                 if (newValue == CertificateSourceType.SelfSigned)
                     control.SelfSignedCertButton.IsChecked = true;
                 else
-                    control.FileCertButton.IsChecked = true;
+                    control.SelfSignedCertButton.IsChecked = false;
             }
         }
 
@@ -110,13 +124,6 @@ namespace FtpsServerApp.Controls
 
         private void CertificateSourceChanged(object sender, RoutedEventArgs e)
         {
-            if (CertFilePanel != null)
-            {
-                CertFilePanel.Visibility = FileCertButton.IsChecked == true
-                    ? Visibility.Visible
-                    : Visibility.Collapsed;
-            }
-
             if (SelfSignedCertButton.IsChecked == true)
                 CertificateSource = CertificateSourceType.SelfSigned;
             else

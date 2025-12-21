@@ -135,22 +135,6 @@ namespace FtpsServerApp
             SettingsManager.SaveSettings(_settings);
         }
 
-        private void BrowseUserFolder_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button button && button.Tag is UserAccount user)
-            {
-                var dialog = new OpenFolderDialog
-                {
-                    Title = $"Select folder to share for user {user.Login}",
-                };
-
-                if (dialog.ShowDialog() == true)
-                {
-                    user.Folder = dialog.FolderName;
-                }
-            }
-        }
-
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
             var newUser = new UserAccount
@@ -163,9 +147,9 @@ namespace FtpsServerApp
             _users.Add(newUser);
         }
 
-        private void RemoveUser_Click(object sender, RoutedEventArgs e)
+        private void UserItemControl_RemoveUserRequested(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.Tag is UserAccount user)
+            if (sender is FrameworkElement element && element.DataContext is UserAccount user)
             {
                 _users.Remove(user);
             }
