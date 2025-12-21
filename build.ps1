@@ -66,13 +66,13 @@ if ($LastExitCode -ne 0)
 	Exit 1
 }
 
-# Write-Output "Setup..."
-# & "C:\Program Files (x86)\NSIS\Bin\makensis.exe" "/DPRODUCT_VERSION=$version" "setup.nsi"
-# if ($LastExitCode -ne 0)
-# {
-# 	Write-Error "Fail." 
-# 	Exit 1
-# }
+Write-Output "Setup..."
+& "C:\Program Files (x86)\NSIS\Bin\makensis.exe" "/DPRODUCT_VERSION=$version" "./scripts/setup.nsi"
+if ($LastExitCode -ne 0)
+{
+	Write-Error "Fail." 
+	Exit 1
+}
 
 Write-Output "Pack binaries"
 & "c:\Program Files\7-Zip\7z.exe" a -y ".\Output\FtpsServer_v$($version)_win-binaries.7z" ".\Output\publish\*" -mx9 -t7z -m0=lzma2 -ms=on -sccUTF-8 -ssw
