@@ -1,7 +1,7 @@
 ﻿## Enhanced C# FTPS .Net 10 Server & Library
 
 A FTPS (FTP over TLS) server implementation in C# with advanced logging, user permissions, and flexible configuration options.
-Project is splitted into Console and Library. Aimed for Windows, Linux, or macOS platforms.
+Project is splitted into Windows UI + Console App and Library. Aimed for Windows, Linux, or macOS platforms.
 
 This is a sample implementation provided for:
 - ✅ Learning and education
@@ -32,7 +32,15 @@ Not recommended for:
 
 Can be found in nuget package manager: https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary . Examples of code and configuration is described there.
 
-## ⚙️ Configuration
+## Windows Server Application
+
+Tool can be obtained from Releases section. Supports ARM64 and X-64 platforms.
+
+<img width="1133" height="636" alt="image" src="https://github.com/user-attachments/assets/b0bd5787-3d0a-4dc7-b7f9-b0dada250008" />
+
+## ⚙️ Console Application Configuration
+
+Tool can be obtained from Releases section.
 
 ### Method 1: JSON File
 
