@@ -85,11 +85,11 @@ if ($LastExitCode -ne 0)
 	Exit 1
 }
 
-# Write-Output "Prepare ubuntu"
-# & ".\tools\Template-Copy.ps1"`
-#     -TemplateFilePath "tools\ubuntu-install-template.sh" `
-#     -DestinationFilePath "ubuntu-install.sh" `
-#     -Replacements @{ 'APP_VERSION_STRING' = $version }	
+Write-Output "Prepare ubuntu"
+& ".\scripts\Template-Copy.ps1"`
+    -TemplateFilePath "scripts\ubuntu-install-template.sh" `
+    -DestinationFilePath "scripts\ubuntu-install.sh" `
+    -Replacements @{ 'APP_VERSION_STRING' = $version }	
 
 Write-Output "The following artefacts are produced. Release them"
 Get-ChildItem ".\Output"
