@@ -15,9 +15,9 @@ public partial class UpdateCheckExpanderView : UserControl
         InitializeComponent();
         Visibility = Visibility.Collapsed;
 
-//#if RELEASE
+#if RELEASE
         _ = CheckForUpdates();
-//#endif
+#endif
     }
 
     private async Task CheckForUpdates()
