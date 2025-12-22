@@ -1,6 +1,10 @@
 # 2025.12.22
 (unreleased)
 
+## Changes
+
+- Windows App: default directory is desktop.
+
 ## New Features
 
 - Windows App: add NLogs

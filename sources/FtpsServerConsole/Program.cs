@@ -1,3 +1,4 @@
+using FtpsServerAppsShared.Services;
 using FtpsServerLibrary;
 using NLog;
 using System.Globalization;
@@ -67,7 +68,7 @@ class Program
     static void ShowBanner()
     {
         var version = Assembly.GetExecutingAssembly().GetName().Version ?? throw new InvalidProgramException("Failed to get assembly from !");
-        var copyright = string.Format(CultureInfo.CurrentUICulture, "FTPS Server {0} : Copyright (c) 2025-{1} Siarhei Kuchuk", version, DateTime.Now.Year);
+        var copyright = string.Format(CultureInfo.CurrentUICulture, CopyrightInfo.Copyright);
         Console.WriteLine(copyright);
     }
 

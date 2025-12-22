@@ -141,8 +141,8 @@ namespace FtpsServerApp
             var newUser = new UserAccount
             {
                 Login = $"user{_users.Count + 1}",
-                Password = "password",
-                Folder = "",
+                Password = $"password{_users.Count + 1}",
+                Folder = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
                 ReadonlyPermission = false,
             };
             _users.Add(newUser);
