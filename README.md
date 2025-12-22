@@ -32,6 +32,11 @@ Not recommended for:
 
 Can be found in nuget package manager: https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary . Examples of code and configuration is described there.
 
+## Windows and Console Applications
+
+**Log Locations:**
+- Location: `%AppData%/ftps-server/logs/ftps-YYYY-MM-DD.log`
+
 ## Windows Server Application
 
 Tool can be obtained from Releases section. Supports ARM64 and X-64 platforms.
