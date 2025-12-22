@@ -1,11 +1,12 @@
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Input;
 
 namespace FtpsServerApp.Commands
 {
-    public class LicenseCommand : ICommand
+    public class OpenLogsCommand : ICommand
     {
-        private const string LicenseUrl = "https://github.com/drweb86/dotnet-ftps-server/blob/main/LICENSE_APPLICATIONS.md";
+        private string Folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ftps-server", "logs");
 
         #pragma warning disable 67
         public event EventHandler? CanExecuteChanged;
@@ -18,7 +19,8 @@ namespace FtpsServerApp.Commands
 
         public void Execute(object? parameter)
         {
-            Process.Start(new ProcessStartInfo(LicenseUrl) { UseShellExecute = true });
+            Directory.CreateDirectory(Folder);
+            Process.Start(new ProcessStartInfo(Folder) { UseShellExecute = true });
         }
     }
 }

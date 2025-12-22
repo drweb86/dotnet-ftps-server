@@ -3,7 +3,7 @@ using System.Net.NetworkInformation;
 
 namespace FtpsServerApp.Models;
 
-class NetworkInfo
+public class NetworkInfo
 {
     public NetworkInfo(NetworkInterface networkInterface)
     {

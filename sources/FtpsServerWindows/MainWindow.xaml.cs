@@ -1,6 +1,7 @@
 using FtpsServerApp.Controls;
 using FtpsServerApp.Models;
 using FtpsServerApp.Services;
+using FtpsServerConsole;
 using FtpsServerLibrary;
 using Microsoft.Win32;
 using System;
@@ -223,7 +224,7 @@ namespace FtpsServerApp
                         });
                     }
 
-                _server = new FtpsServer(new FtpsLogger(), config);
+                _server = new FtpsServer(new Log(), config);
                 _server.Start();
                 
                 IsServerRunning = true;

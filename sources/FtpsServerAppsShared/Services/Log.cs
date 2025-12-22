@@ -3,7 +3,7 @@ using NLog;
 
 namespace FtpsServerConsole;
 
-class Log: IFtpsServerLog
+public class Log: IFtpsServerLog
 {
     private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 

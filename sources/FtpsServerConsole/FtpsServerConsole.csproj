@@ -9,20 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FtpsServerLibrary\FtpsServerLibrary.csproj" />
+    <None Remove="C:\Users\siarh\.nuget\packages\nlog.schema\6.0.6\contentFiles\any\any\NLog.xsd" />
   </ItemGroup>
 
   <ItemGroup>
-	<PackageReference Include="NLog" Version="6.0.6" />
-	<PackageReference Include="NLog.Extensions.Logging" Version="6.1.0" />
-	<PackageReference Include="NLog.Schema" Version="6.0.6" />
+    <ProjectReference Include="..\FtpsServerAppsShared\FtpsServerAppsShared.csproj" />
+    <ProjectReference Include="..\FtpsServerLibrary\FtpsServerLibrary.csproj" />
   </ItemGroup>
 	
 	<ItemGroup>
 		<None Update="appsettings-example.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="NLog.config">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="start-server.bat">

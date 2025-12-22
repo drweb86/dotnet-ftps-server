@@ -5,7 +5,7 @@ using System.Net.Sockets;
 
 namespace FtpsServerApp.Helpers;
 
-internal static class NetworkHelper
+public static class NetworkHelper
 {
     public static IEnumerable<NetworkInfo> GetMyLocalIps()
     {

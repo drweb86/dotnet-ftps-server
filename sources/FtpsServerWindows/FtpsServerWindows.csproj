@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FtpsServerAppsShared\FtpsServerAppsShared.csproj" />
     <ProjectReference Include="..\FtpsServerLibrary\FtpsServerLibrary.csproj" />
   </ItemGroup>
 

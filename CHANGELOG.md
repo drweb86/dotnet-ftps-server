@@ -1,3 +1,10 @@
+# 2025.12.22
+(unreleased)
+
+## New Features
+
+- Windows App: add NLogs
+
 # 2025.12.21
 
 Initial version of FTPS Server UI for Windows on WPF platform.

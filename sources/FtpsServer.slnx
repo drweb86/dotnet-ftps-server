@@ -5,7 +5,11 @@
     <File Path="../README.md" />
     <File Path="../README_NUGET.md" />
   </Folder>
-  <Project Path="FtpsServerWindows/FtpsServerWindows.csproj" />
+  <Folder Name="/Other/">
+    <File Path="../CHANGELOG.md" />
+  </Folder>
+  <Project Path="FtpsServerAppsShared/FtpsServerAppsShared.csproj" Id="8a7b4945-7a44-48a3-a5dc-ff411c3b6fc8" />
   <Project Path="FtpsServerConsole/FtpsServerConsole.csproj" />
   <Project Path="FtpsServerLibrary/FtpsServerLibrary.csproj" Id="11bedc33-7b62-4588-8396-28d9907cf3a7" />
+  <Project Path="FtpsServerWindows/FtpsServerWindows.csproj" />
 </Solution>

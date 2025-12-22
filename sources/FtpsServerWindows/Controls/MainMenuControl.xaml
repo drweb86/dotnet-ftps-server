@@ -6,6 +6,7 @@
     <UserControl.Resources>
         <commands:AboutCommand x:Key="AboutCommand"/>
         <commands:LicenseCommand x:Key="LicenseCommand"/>
+        <commands:OpenLogsCommand x:Key="OpenLogsCommand"/>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
 
         <Style TargetType="MenuItem">
@@ -39,7 +40,10 @@
             </MenuItem.Items>
         </MenuItem>
 
-        
+        <MenuItem Header="Logs"
+                  FontWeight="Bold"
+                  Foreground="{StaticResource TextPrimaryBrush}"
+                  Command="{StaticResource OpenLogsCommand}" />
 
         <MenuItem Header="⏵START"
                   x:Name="PlayIcon"
