@@ -5,7 +5,7 @@
 Open terminal, paste
 
 ```
-wget -O - https://raw.githubusercontent.com/drweb86/butil/master/sources/ubuntu-install.sh | bash
+wget -O - https://raw.githubusercontent.com/drweb86/dotnet-ftps-server/master/scripts/ubuntu-install.sh | bash
 ```
 
 ## Uninstallation
@@ -13,5 +13,5 @@ wget -O - https://raw.githubusercontent.com/drweb86/butil/master/sources/ubuntu-
 Open terminal, paste
 
 ```
-wget -O - https://raw.githubusercontent.com/drweb86/butil/master/sources/ubuntu-uninstall.sh | bash
+wget -O - https://raw.githubusercontent.com/drweb86/dotnet-ftps-server/master/scripts/ubuntu-uninstall.sh | bash
 ```
