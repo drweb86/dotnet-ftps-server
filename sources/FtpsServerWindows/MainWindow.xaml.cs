@@ -1,6 +1,6 @@
-using FtpsServerApp.Controls;
-using FtpsServerApp.Models;
-using FtpsServerApp.Services;
+using FtpsServerWindows.Controls;
+using FtpsServerWindows.Models;
+using FtpsServerWindows.Services;
 using FtpsServerConsole;
 using FtpsServerLibrary;
 using Microsoft.Win32;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace FtpsServerApp
+namespace FtpsServerWindows
 {
     public partial class MainWindow : Window
     {

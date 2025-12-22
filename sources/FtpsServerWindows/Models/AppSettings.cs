@@ -1,4 +1,4 @@
-namespace FtpsServerApp.Models;
+namespace FtpsServerWindows.Models;
 
 public class AppSettings
 {

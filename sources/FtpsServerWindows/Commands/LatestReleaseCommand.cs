@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace FtpsServerWindows.Commands;
 
-public class AboutCommand : ICommand
+public class LatestReleaseCommand : ICommand
 {
     #pragma warning disable 67
     public event EventHandler? CanExecuteChanged;
@@ -17,6 +17,6 @@ public class AboutCommand : ICommand
 
     public void Execute(object? parameter)
     {
-        Process.Start(new ProcessStartInfo(ApplicationLinks.AboutUrl) { UseShellExecute = true });
+        Process.Start(new ProcessStartInfo(ApplicationLinks.LatestRelease) { UseShellExecute = true });
     }
 }

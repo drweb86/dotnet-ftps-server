@@ -7,7 +7,8 @@
 
 ## New Features
 
-- Windows App: add NLogs
+- Windows App: add NLogs.
+- Windows App: check for updates.
 
 # 2025.12.21
 

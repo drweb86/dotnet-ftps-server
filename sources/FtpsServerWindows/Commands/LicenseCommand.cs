@@ -2,7 +2,7 @@ using FtpsServerAppsShared.Services;
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace FtpsServerApp.Commands;
+namespace FtpsServerWindows.Commands;
 
 public class LicenseCommand : ICommand
 {

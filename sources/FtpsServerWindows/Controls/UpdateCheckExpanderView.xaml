@@ -1,0 +1,31 @@
+<UserControl x:Class="FtpsServerWindows.Controls.UpdateCheckExpanderView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:FtpsServerWindows.Controls"
+			 xmlns:commands="clr-namespace:FtpsServerWindows.Commands"
+			 Visibility="Collapsed">
+	<UserControl.Resources>
+		<commands:LatestReleaseCommand x:Key="LatestReleaseCommand"/>
+	</UserControl.Resources>
+	<Expander IsExpanded="False" HorizontalAlignment="Stretch">
+		<Expander.Header>
+			<WrapPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+				<TextBlock
+					x:Name="updateNewsTitle"
+					TextWrapping="Wrap"
+					Margin="0,8,16,8"
+					VerticalAlignment="Center" />
+				<Button
+					Margin="0,8,16,8"
+					VerticalAlignment="Center"
+					Command="{StaticResource LatestReleaseCommand}"
+					Content="Download" />
+			</WrapPanel>
+		</Expander.Header>
+		<TextBlock
+			x:Name="updateNews"
+			TextWrapping="Wrap"
+			Margin="0,8,16,8"
+			VerticalAlignment="Center" />
+	</Expander>
+</UserControl>

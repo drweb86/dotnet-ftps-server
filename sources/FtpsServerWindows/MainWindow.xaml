@@ -1,8 +1,8 @@
-<Window x:Class="FtpsServerApp.MainWindow"
+<Window x:Class="FtpsServerWindows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:FtpsServerApp"
-        xmlns:controls="clr-namespace:FtpsServerApp.Controls"
+        xmlns:local="clr-namespace:FtpsServerWindows"
+        xmlns:controls="clr-namespace:FtpsServerWindows.Controls"
         Title="FTPS Server"
         Background="{StaticResource PrimaryDarkBrush}"
         MinWidth="1024"
@@ -50,6 +50,7 @@
         <local:MainMenuControl x:Name="MainMenu"
                                DockPanel.Dock="Top"
                                StartStopClicked="MainMenu_StartStopClicked" />
+        <controls:UpdateCheckExpanderView DockPanel.Dock="Top" />
 
         <!-- Main Content -->
         <Border Style="{StaticResource Card}">

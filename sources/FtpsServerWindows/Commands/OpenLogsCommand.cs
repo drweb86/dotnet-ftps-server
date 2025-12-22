@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Input;
 
-namespace FtpsServerApp.Commands;
+namespace FtpsServerWindows.Commands;
 
 public class OpenLogsCommand : ICommand
 {

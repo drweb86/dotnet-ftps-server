@@ -1,9 +1,9 @@
-using FtpsServerApp.Models;
+using FtpsServerWindows.Models;
 using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace FtpsServerApp.Controls
+namespace FtpsServerWindows.Controls
 {
     public partial class UserItemControl : UserControl
     {

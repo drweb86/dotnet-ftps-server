@@ -1,9 +1,9 @@
-using FtpsServerApp.Models;
+using FtpsServerWindows.Models;
 using System;
 using System.IO;
 using System.Text.Json;
 
-namespace FtpsServerApp.Services
+namespace FtpsServerWindows.Services
 {
     public class SettingsManager
     {

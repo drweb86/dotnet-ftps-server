@@ -1,7 +1,7 @@
-﻿<UserControl x:Class="FtpsServerApp.MainMenuControl"
+﻿<UserControl x:Class="FtpsServerWindows.MainMenuControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:commands="clr-namespace:FtpsServerApp.Commands">
+             xmlns:commands="clr-namespace:FtpsServerWindows.Commands">
 
     <UserControl.Resources>
         <commands:AboutCommand x:Key="AboutCommand"/>

@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace FtpsServerApp
+namespace FtpsServerWindows
 {
     public partial class App : Application
     {

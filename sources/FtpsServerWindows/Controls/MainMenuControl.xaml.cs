@@ -2,7 +2,7 @@ using FtpsServerAppsShared.Services;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace FtpsServerApp
+namespace FtpsServerWindows
 {
     public partial class MainMenuControl : UserControl
     {

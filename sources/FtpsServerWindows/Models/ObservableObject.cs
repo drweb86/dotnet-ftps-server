@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace FtpsServerApp.Models
+namespace FtpsServerWindows.Models
 {
     public abstract class ObservableObject : INotifyPropertyChanged
     {

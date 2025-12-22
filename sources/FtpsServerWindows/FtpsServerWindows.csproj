@@ -13,6 +13,7 @@
     <None Remove="FtpsApp.png" />
   </ItemGroup>
 
+
   <ItemGroup>
     <Resource Include="FtpsApp.png" />
   </ItemGroup>

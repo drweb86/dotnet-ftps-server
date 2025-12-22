@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Input;
 
-namespace FtpsServerApp.Commands
+namespace FtpsServerWindows.Commands
 {
     public class RelayCommand : ICommand
     {
