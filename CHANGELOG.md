@@ -9,6 +9,9 @@
 
 - Windows App: add NLogs.
 - Windows App: check for updates, possibility to get them.
+- Console App: add interactive configuration with possibility
+to save configuration into file so user might execute console
+and then manually input configuration and have it saved for future use.
 
 # 2025.12.21
 

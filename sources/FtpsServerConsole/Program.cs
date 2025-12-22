@@ -23,10 +23,19 @@ class Program
             // Parse configuration
             var config = LoadConfiguration(args);
             
-            if (config == null)
+            if (config == null || config.Users.Count == 0)
             {
                 ShowHelp();
-                return;
+
+                Console.WriteLine("\n--- Interactive Configuration ---");
+                Console.WriteLine("Press Enter to accept default values shown in [brackets]\n");
+
+                config = CreateInteractiveConfiguration();
+                if (config == null)
+                {
+                    _logger.Info("Configuration cancelled by user");
+                    return;
+                }
             }
 
             // Validate configuration
@@ -286,6 +295,191 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
         }
 
         return config;
+    }
+
+    static FtpsServerConfiguration? CreateInteractiveConfiguration()
+    {
+        try
+        {
+            var config = new FtpsServerConfiguration();
+
+            // IP Address
+            Console.Write($"IP Address [0.0.0.0]: ");
+            var ip = Console.ReadLine()?.Trim();
+            if (!string.IsNullOrEmpty(ip))
+            {
+                config.ServerSettings.Ip = ip;
+            }
+
+            // Port
+            Console.Write($"Port [2121]: ");
+            var portInput = Console.ReadLine()?.Trim();
+            if (!string.IsNullOrEmpty(portInput) && int.TryParse(portInput, out int port))
+            {
+                config.ServerSettings.Port = port;
+            }
+
+            // Certificate (optional)
+            Console.Write("Certificate path (optional, press Enter to skip): ");
+            var certPath = Console.ReadLine()?.Trim();
+            if (!string.IsNullOrEmpty(certPath))
+            {
+                config.ServerSettings.CertificatePath = certPath;
+
+                Console.Write("Certificate password (optional, press Enter to skip): ");
+                var certPass = Console.ReadLine()?.Trim();
+                if (!string.IsNullOrEmpty(certPass))
+                {
+                    config.ServerSettings.CertificatePassword = certPass;
+                }
+            }
+
+            // Users
+            Console.WriteLine("\n=== User Configuration ===");
+            Console.WriteLine("At least one user is required.");
+            Console.WriteLine("Permissions: R (Read), W (Write), RW (Read and Write)\n");
+
+            int userCount = 1;
+            while (true)
+            {
+                Console.WriteLine($"--- User {userCount} ---");
+
+                Console.Write("Username (or press Enter to finish): ");
+                var username = Console.ReadLine()?.Trim();
+
+                if (string.IsNullOrEmpty(username))
+                {
+                    if (config.Users.Count == 0)
+                    {
+                        Console.WriteLine("At least one user is required!\n");
+                        continue;
+                    }
+                    break;
+                }
+
+                Console.Write("Password: ");
+                var password = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(password))
+                {
+                    Console.WriteLine("Password cannot be empty!\n");
+                    continue;
+                }
+
+                Console.Write("Folder path: ");
+                var folder = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(folder))
+                {
+                    Console.WriteLine("Folder path cannot be empty!\n");
+                    continue;
+                }
+
+                if (!Directory.Exists(folder))
+                {
+                    Console.Write($"Directory '{folder}' does not exist. Create it? (y/n): ");
+                    var createDir = Console.ReadLine()?.Trim().ToLower();
+                    if (createDir == "y" || createDir == "yes")
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory(folder);
+                            Console.WriteLine($"Directory created: {folder}");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Failed to create directory: {ex.Message}\n");
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("User not added. Directory must exist.\n");
+                        continue;
+                    }
+                }
+
+                Console.Write("Permissions (R/W/RW) [RW]: ");
+                var permissions = Console.ReadLine()?.Trim().ToUpper();
+                if (string.IsNullOrEmpty(permissions))
+                {
+                    permissions = "RW";
+                }
+
+                var user = new FtpsServerUserAccount
+                {
+                    Login = username,
+                    Password = password,
+                    Folder = folder,
+                    Read = permissions.Contains('R'),
+                    Write = permissions.Contains('W'),
+                };
+
+                config.Users.Add(user);
+                Console.WriteLine($"User '{user.Login}' added successfully with {permissions} permissions.\n");
+                userCount++;
+            }
+
+            Console.WriteLine($"\nConfiguration complete! {config.Users.Count} user(s) configured.");
+
+            // Ask if user wants to save configuration
+            Console.Write("\nSave this configuration to a file? (y/n): ");
+            var saveConfig = Console.ReadLine()?.Trim().ToLower();
+            if (saveConfig == "y" || saveConfig == "yes")
+            {
+                Console.Write("Configuration file name [ftps-config.json]: ");
+                var fileName = Console.ReadLine()?.Trim();
+                if (string.IsNullOrEmpty(fileName))
+                {
+                    fileName = "ftps-config.json";
+                }
+
+                if (!fileName.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+                {
+                    fileName += ".json";
+                }
+
+                if (SaveConfigurationToFile(config, fileName))
+                {
+                    Console.WriteLine($"\nConfiguration saved to: {Path.GetFullPath(fileName)}");
+                    Console.WriteLine($"\nTo use this configuration later, run:");
+                    Console.WriteLine($"  ftps-server --config {fileName}");
+                }
+            }
+
+            return config;
+        }
+        catch (Exception ex)
+        {
+            _logger.Error(ex, "Error during interactive configuration");
+            Console.WriteLine($"Error: {ex.Message}");
+            return null;
+        }
+    }
+
+    static bool SaveConfigurationToFile(FtpsServerConfiguration config, string fileName)
+    {
+        try
+        {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                Converters =
+                {
+                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+                }
+            };
+
+            var json = JsonSerializer.Serialize(config, options);
+            File.WriteAllText(fileName, json);
+            _logger.Info($"Configuration saved to {fileName}");
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.Error(ex, $"Failed to save configuration to {fileName}");
+            Console.WriteLine($"Failed to save configuration: {ex.Message}");
+            return false;
+        }
     }
 
     static bool ValidateConfiguration(FtpsServerConfiguration config)
