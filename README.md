@@ -24,6 +24,8 @@ Features:
 
 Both tools can be obtained from Releases section. You can get then either in setup or binaries.
 
+[See Ubuntu](./Ubuntu.md)
+
 **Log Locations:**
 
 Location: `%AppData%/ftps-server/logs`
@@ -150,6 +152,28 @@ ftps-server.exe --config production.json --port 3000
 It will ask you for arguments interactively and will propose to create configuration file for future use.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Using Pre-made Scripts
 ```bash
 # Windows
@@ -159,8 +183,6 @@ start-server.bat
 chmod +x start-server.sh
 ./start-server.sh
 ```
-
-
 ## 📈 Production Deployment
 
 ### Linux (systemd)
