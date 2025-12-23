@@ -1,9 +1,10 @@
-# 2025.12.22
+# 2025.12.24
 (unreleased)
 
 ## Changes
 
 - Windows App: default directory is desktop.
+- Console App: default directory is desktop.
 
 ## New Features
 
@@ -12,6 +13,7 @@
 - Console App: add interactive configuration with possibility
 to save configuration into file so user might execute console
 and then manually input configuration and have it saved for future use.
+- Console App: add Ubuntu support.
 
 # 2025.12.21
 

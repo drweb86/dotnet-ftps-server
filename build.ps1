@@ -33,7 +33,7 @@ ForEach ($platform in $platforms)
 	Write-Output "Platform: $($platform.CoreRuntimeWindows)"
 
 	Write-Output "Publish..."
-	& dotnet publish "/p:InformationalVersion=$version" `
+	& dotnet publish FtpsServer.slnx "/p:InformationalVersion=$version" `
 		"/p:VersionPrefix=$version" `
 		"/p:Version=$version" `
 		"/p:AssemblyVersion=$version" `

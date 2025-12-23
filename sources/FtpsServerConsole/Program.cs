@@ -365,12 +365,12 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
                     continue;
                 }
 
-                Console.Write("Folder path: ");
+                var desktopDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                Console.Write($"Folder path: [{desktopDir}]");
                 var folder = Console.ReadLine()?.Trim();
                 if (string.IsNullOrEmpty(folder))
                 {
-                    Console.WriteLine("Folder path cannot be empty!\n");
-                    continue;
+                    folder = desktopDir;
                 }
 
                 if (!Directory.Exists(folder))
