@@ -24,7 +24,7 @@ public class FtpsServer
         {
             user.Folder = new DirectoryInfo(user.Folder).FullName;
 
-            var userPath = user.Folder.TrimStart('/');
+            var userPath = user.Folder;
             _log.Info($"User {user.Login} directory {userPath}");
             if (!Directory.Exists(userPath))
             {
