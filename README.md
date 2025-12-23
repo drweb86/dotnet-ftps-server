@@ -1,20 +1,8 @@
-﻿## Enhanced C# FTPS .Net 10 Server & Library
+﻿# C# .Net-Core 10 FTPS Server and Library
 
-A FTPS (FTP over TLS) server implementation in C# with advanced logging, user permissions, and flexible configuration options.
-Project is splitted into Windows UI + Console App and Library. Aimed for Windows, Linux, or macOS platforms.
+A .Net-Core 10 FTPS Server implementation. Has nuget Library (cross-platform, no dependencies, open-source permissive license), Console (Linux, Windows), UI (Windows x64, ARM64).
 
-This is a sample implementation provided for:
-- ✅ Learning and education
-- ✅ Internal corporate use
-- ✅ Personal projects
-- ✅ Modification and customization
-
-Not recommended for:
-- ⚠️ Internet-facing production without security review
-- ⚠️ Mission-critical systems without testing
-- ⚠️ Compliance-required environments without audit
-
-## Features
+Features:
 
 - ✅ **JSON File Configuration**
 - ✅ **Command-Line Arguments** - Override any setting via CLI
@@ -24,30 +12,35 @@ Not recommended for:
 - ✅ **Full FTP Protocol** - All standard FTP commands supported
 - ✅ **Path Security** - Protection against directory traversal attacks
 
-## Prerequisites
-
-- .NET 10.0 SDK.
-
 ## Library
 
-Can be found in nuget package manager: https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary . Examples of code and configuration is described there.
+[NUget](https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary)
 
-## Windows and Console Applications
+[Description](./README_NUGET.md)
+
+## Applications
+
+### Common
+
+Both tools can be obtained from Releases section. You can get then either in setup or binaries.
 
 **Log Locations:**
-- Location: `%AppData%/ftps-server/logs/ftps-YYYY-MM-DD.log`
 
-## Windows Server Application
+Location: `%AppData%/ftps-server/logs`
 
-Tool can be obtained from Releases section. Supports ARM64 and X-64 platforms.
+**Self-Signed Certificate Location**
+
+If certificate is not specified, self-signed certificate will be created and stored in %localappdata%\FtpsServerLibrary\Certificates.
+
+### UI (Windowx x64, ARM64)
 
 <img width="1133" height="636" alt="image" src="https://github.com/user-attachments/assets/b0bd5787-3d0a-4dc7-b7f9-b0dada250008" />
 
-## ⚙️ Console Application Configuration
+## ⚙️ Console
 
-Tool can be obtained from Releases section.
+A tool is named ```ftps-server.exe``` and available in binaries and comes with setup.
 
-### Method 1: JSON File
+### Console supports JSON file as configuration.
 
 You can place `appsettings.json` file near executable (example can be taken from text below or `appsettings-example.json`).
 Aternatively you can specify `--config some-configuiration.json`.
@@ -108,12 +101,10 @@ Having configuration file is optional.
 | Users[].Read                            | Yes       |               | Can user read folder contents and download files.                               |
 | Users[].Write                           | Yes       |               | Can user create, upload, write, delete, rename operations on files and folders. |
 
-If certificate is not specified, self-signed certificate will be created and stored in %localappdata%\FtpsServerLibrary\Certificates.
-
-### Method 2: Command-Line Arguments
+### Also you can run it without JSON configuiration file
 
 ```bash
-dotnet run -- \
+ftps-server.exe -- \
   --help \
   --config <path to configuration json> \
   --ip 0.0.0.0  \
@@ -146,39 +137,18 @@ dotnet run -- \
 | --user "reader#read123#F:\\ftp server\\reader#R"      |  |  | User with login admin and password read123 with foilder F:\ftp server\reader with Read permission.         |
 | --user "dropbox#dropbox123#F:\\ftp server\\dropbox#W" |  |  | User with login admin and password dropbox123 with foilder F:\ftp server\dropbox with Write permission.    |
 
-If certificate is not specified, self-signed certificate will be created and stored in %localappdata%\FtpsServerLibrary\Certificates.
 
-### Method 3: Mix Both
+### or even mix JSON file and arguments
 
 ```bash
 # JSON provides base config, CLI overrides specific settings
-dotnet run -- --config production.json --port 3000
+ftps-server.exe --config production.json --port 3000
 ```
 
-## 🚀 Run
+### and without arguments at all
 
-a. Download server sources and extract it to some folder.
+It will ask you for arguments interactively and will propose to create configuration file for future use.
 
-b. Install Microsoft .Net 10 SDK.
-
-c. Open terminal.
-
-d. Navigate to extracted sources folder.
-
-e. Restore NUGet packages
-
-```bash
-dotnet restore
-```
-
-c. Run 
- a 
-## 🚀 Quick Start
-
-```bash
-dotnet restore
-dotnet run
-```
 
 ### Using Pre-made Scripts
 ```bash
@@ -216,65 +186,12 @@ ENTRYPOINT ["dotnet", "FtpsServer.dll"]
 ```
 
 
-## 📊 Monitoring
-
-**Log Locations:**
-- Location: `%AppData%/ftps-server/logs/ftps-YYYY-MM-DD.log`
-- Real-time: Console shows colored output
-- Archives: `logs/archives/` (30-day retention)
-
-**What's Logged:**
-- ✅ Client connections/disconnections
-- ✅ Authentication attempts (success/failure)
-- ✅ File operations (upload/download/delete)
-- ✅ Directory operations (create/delete/rename)
-- ✅ Permission denials
-- ✅ Errors and exceptions
-
-**Sample Log Entry:**
-```
-2024-01-15 10:30:15.1234|INFO|Client connected: 192.168.1.100:54321 (Active: 1)
-2024-01-15 10:30:16.2345|INFO|[192.168.1.100:54321] User logged in: admin
-2024-01-15 10:30:18.3456|INFO|[192.168.1.100:54321] Uploading: /documents/report.pdf
-2024-01-15 10:30:20.4567|INFO|[192.168.1.100:54321] Upload complete: /documents/report.pdf (2.5 MB)
-```
-
-**Check connections:**
-- Console shows: `Client connected: IP:PORT (Active: N)`
-
 ## 🎯 Use Cases
 
 - 1. Public Download Server (Read-Only)
 - 2. File Upload Drop Box
 - 3. Personal User Workspace
 
-## Generate Self-Signed Certificate
-
-Library will generate self-signed certificate, if no certificate source options are specified.
-But you can also generate self-signed certificate on your own.
-
-### Windows (PowerShell)
-
-```powershell
-# Generate certificate
-New-SelfSignedCertificate -DnsName "localhost" -CertStoreLocation "Cert:\CurrentUser\My"
-```
-
-### Linux/macOS
-
-You can do this via provided script
-
-```bash
-# Generate certificate
-./start-server.sh  # Choose option 4
-```
-
-or via OpenSSL:
-
-```bash
-openssl req -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 365 -nodes -subj "/CN=localhost"
-openssl pkcs12 -export -out server.pfx -inkey server.key -in server.crt -password pass:yourpassword
-```
 
 ## Connecting to the Server
 
@@ -351,145 +268,32 @@ curl -k --ftp-ssl -u admin:password123 -T file.txt ftp://0.0.0.0:2121/
 
 ## 🔍 Monitoring & Troubleshooting
 
-### Check Server Status
-```bash
-# Is it running?
-netstat -an | grep 2121
-
-# View active connections
-grep "Client connected" logs/ftps-$(date +%Y-%m-%d).log
-
-# Failed logins
-grep "Failed login" logs/*.log
-
-# File uploads today
-grep "Upload complete" logs/ftps-$(date +%Y-%m-%d).log
-```
-
-### Common Issues
-
-**Port in use:**
-```bash
-# Find what's using the port
-netstat -ano | findstr :2121  # Windows
-lsof -i :2121                 # Linux/macOS
-
-# Use different port
-dotnet run -- --port 2121
-```
-
-**Certificate errors:**
-```bash
-# Generate new certificate
-openssl req -x509 -newkey rsa:4096 -keyout server.key -out server.crt -days 365 -nodes
-openssl pkcs12 -export -out server.pfx -inkey server.key -in server.crt
-```
-
-**Permission denied:**
-```bash
-# Linux - for ports < 1024
-sudo dotnet run
-# or
-sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/dotnet
-```
-
-
 ### 4. Run the Server
 
 ```bash
 # Using defaults (looks for appsettings.json)
-dotnet run
+ftps-server.exe
 
 # Using command-line arguments
-dotnet run -- --ip 0.0.0.0 --port 2121 --user admin#pass123#/home/admin#RW
+ftps-server.exe --ip 0.0.0.0 --port 2121 --user admin#pass123#/home/admin#RW
 
 # Using custom config file
-dotnet run -- --config myconfig.json
+ftps-server.exe --config myconfig.json
 
 # With certificate
-dotnet run -- --cert server.pfx --certpass yourpassword
-```
-
-
-
-## Monitoring & Management
-
-### Check Active Connections
-
-The server logs active connections in real-time:
-```
-Client connected: 192.168.1.100:54321 (Active: 1)
-Client disconnected: 192.168.1.100:54321 (Active: 0)
-```
-
-### View Logs
-
-```bash
-# View today's log
-tail -f logs/ftps-$(date +%Y-%m-%d).log
-
-# Search for failed logins
-grep "Failed login" logs/*.log
-
-# View user activity
-grep "admin" logs/ftps-$(date +%Y-%m-%d).log
+ftps-server.exe --cert server.pfx --certpass yourpassword
 ```
 
 ## Troubleshooting
 
-### Server Won't Start
-
-**Port already in use:**
-```
-Change port: --port 2121 or edit appsettings.json
-```
-
-**Certificate errors:**
-```bash
-# Verify certificate exists
-ls -la server.pfx
-
-# Check certificate validity
-openssl pkcs12 -info -in server.pfx -nodes
-```
-
-**Permission errors on Linux:**
-```bash
-# For ports < 1024, use sudo or capabilities
-sudo dotnet run
-# or
-sudo setcap CAP_NET_BIND_SERVICE=+eip /usr/share/dotnet/dotnet
-```
-
 ### Connection Issues
 
-**Client can't connect:**
-1. Check firewall rules
-2. Verify server is running: `netstat -an | grep 2121`
-3. Test locally first: `telnet 0.0.0.0 2121`
-4. Check logs for errors
+Linux has requirements for port to be above certain number.
 
-**TLS/SSL errors:**
-1. Ensure certificate is valid
-2. Client must support explicit TLS (AUTH TLS)
-3. Try with certificate validation disabled (testing only)
+To connect to VirtualBox, you have to do special configuration.
 
-**Passive mode failures:**
-1. Check if client can reach server IP
-2. Ensure data port range is accessible
-3. Configure firewall for passive mode
 
-### Permission Denied Errors
 
-**User can't access files:**
-1. Check user permissions in config
-2. Verify RootFolder exists
-3. Check filesystem permissions
-4. Review logs for specific operation denied
-
-**Can't go to directory:**
-- Users are restricted to their RootFolder
-- Check if path is within user's root
 
 ## Production Deployment
 
