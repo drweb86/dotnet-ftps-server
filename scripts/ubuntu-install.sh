@@ -3,7 +3,7 @@
 # Fail on first error.
 set -e
 
-version=2025.11.16
+version=2025.12.24
 
 sourceCodeInstallationDirectory=/usr/local/src/dotnet-ftps-server
 binariesInstallationDirectory=/usr/local/dotnet-ftps-server
@@ -19,7 +19,7 @@ echo
 wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
 chmod +x ./dotnet-install.sh
 ./dotnet-install.sh --channel 10.0
-echo
+sudo apt install dbus-x11
 
 echo
 echo Cleaning installation directories
@@ -42,12 +42,12 @@ echo
 echo Building
 echo
 cd ./sources
-sudo /root/.dotnet/dotnet publish /p:Version=${version} /p:AssemblyVersion=${version} -c Release --property:PublishDir=${binariesInstallationDirectory} --use-current-runtime --self-contained
+sudo /root/.dotnet/dotnet publish FtpsServer.Ubuntu.slnx /p:Version=${version} /p:AssemblyVersion=${version} -c Release --property:PublishDir=${binariesInstallationDirectory} --use-current-runtime --self-contained
 
 echo
 echo Prepare PNG icon for Gnome, ico files are not handled
 echo
-sudo cp "${sourceCodeInstallationDirectory}/help/Assets/Icon 120x120.png" "${binariesInstallationDirectory}/Icon 120x120.png"
+sudo cp "${sourceCodeInstallationDirectory}/sources/FtpsServerWindows/FtpsApp.png" "${binariesInstallationDirectory}/Icon.png"
 
 echo
 echo Prepare shortcut
@@ -57,22 +57,24 @@ temporaryShortcut=/tmp/FTPS.desktop
 sudo rm -f ${temporaryShortcut}
 cat > ${temporaryShortcut} << EOL
 [Desktop Entry]
-Encoding=UTF-8
 Version=${version}
 Name=FTPS
 GenericName=FTPS Server for file sharing
-Categories=FTPS
+Categories=Network;System;Utility;
 Comment=FTPS server for file sharing
+Keywords=ftp;sftp;file;transfer;server
 Type=Application
-Terminal=false
+Terminal=true
+Path=${binariesInstallationDirectory}
 Exec=${binariesInstallationDirectory}/ftps-server
-Icon=${binariesInstallationDirectory}/Icon 120x120.png
-StartupWMClass=ftps-server
+Icon=${binariesInstallationDirectory}/Icon.png
 EOL
-sudo chmod -R 775 ${temporaryShortcut}
 
-desktopDir=$(xdg-user-dir DESKTOP)
-declare -a shortcutLocations=("/usr/share/applications" "${desktopDir}")
+echo
+echo Prepare shortcut for All Users
+echo
+
+declare -a shortcutLocations=("/usr/share/applications")
 
 for shortcutLocation in "${shortcutLocations[@]}"
 do
@@ -84,8 +86,8 @@ echo Create shortcut in ${shortcutFile}
 echo
 
 sudo cp ${temporaryShortcut} "${shortcutFile}"
-sudo chmod -R 775 "${shortcutFile}"
-gio set "${shortcutFile}" metadata::trusted true
+sudo chmod a+x "${shortcutFile}"
+sudo dbus-launch gio set "${shortcutFile}" metadata::trusted true
 
 done
 
@@ -99,7 +101,7 @@ echo
 echo Binaries: ${binariesInstallationDirectory}
 echo Sources: ${sourceCodeInstallationDirectory}
 echo
-echo Shortcut on desktop and for quick search are provisioned.
+echo Shortcut for quick search is provisioned.
 echo Console tool: ${binariesInstallationDirectory}/ftps-server
 echo
 echo
