@@ -36,7 +36,7 @@ If certificate is not specified, self-signed certificate will be created and sto
 
 ### UI (Windowx x64, ARM64)
 
-<img width="1133" height="636" alt="image" src="https://github.com/user-attachments/assets/b0bd5787-3d0a-4dc7-b7f9-b0dada250008" />
+<img width="1109" height="614" alt="image" src="https://github.com/user-attachments/assets/da502ae9-01ae-4bfe-9619-653d6395067b" />
 
 ## ⚙️ Console
 
