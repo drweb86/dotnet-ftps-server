@@ -3,7 +3,7 @@
 # Fail on first error.
 set -e
 
-version=2025.12.24
+version=2025.12.25
 
 sourceCodeInstallationDirectory=/usr/local/src/dotnet-ftps-server
 binariesInstallationDirectory=/usr/local/dotnet-ftps-server
