@@ -34,11 +34,11 @@ Location: `%AppData%/ftps-server/logs`
 
 If certificate is not specified, self-signed certificate will be created and stored in %localappdata%\FtpsServerLibrary\Certificates.
 
-### *UI* (available for *Windowx x64 or ARM64* in *Installer*, *Binaries*)
+### **UI** (available for **Windowx x64 or ARM64** in **Installer**, **Binaries**)
 
 <img width="1109" height="614" alt="image" src="https://github.com/user-attachments/assets/da502ae9-01ae-4bfe-9619-653d6395067b" />
 
-## ⚙️ *Console* (available for *Windowx x64 or ARM64* in *Installer*, *Binaries*, for *Ubuntu 24* of any architecture in *Installation Script*)
+## ⚙️ **Console** (available for **Windowx x64 or ARM64** in **Installer**, **Binaries**, for **Ubuntu 24** of any architecture in **Installation Script**)
 
 ### Console supports JSON file as configuration.
 
