@@ -1,3 +1,4 @@
+using FtpsServerApp.Helpers;
 using FtpsServerAppsShared.Services;
 using FtpsServerLibrary;
 using NLog;
@@ -49,7 +50,19 @@ class Program
             var server = new FtpsServer(new Log(), config);
             
             _logger.Info($"FTPS Server Starting...");
-            _logger.Info($"IP Address: {config.ServerSettings.Ip}");
+            var ipAddress = config.ServerSettings.Ip == "0.0.0.0" ? "all" : config.ServerSettings.Ip;
+            _logger.Info($"IP Address: {ipAddress}");
+            if (config.ServerSettings.Ip == "0.0.0.0")
+            {
+                var nis = NetworkHelper.GetMyLocalIps();
+                foreach (var ni in nis)
+                {
+                    var ips = string.Join("; ", ni.Addresses);
+                    _logger.Info($"- {ni.InterfaceType} network '{ni.Name}' ({ni.Description}): {ips}");
+                }
+            }
+            _logger.Info($"You can connect to machine by its name {Environment.MachineName}");
+            
             _logger.Info($"Port: {config.ServerSettings.Port}");
             _logger.Info($"Users Configured: {config.Users.Count}");
             _logger.Info($"Encryption: Explicit");
