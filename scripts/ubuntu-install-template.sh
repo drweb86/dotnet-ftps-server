@@ -53,12 +53,16 @@ echo
 echo Prepare shortcut
 echo
 
-temporaryShortcut=/tmp/FTPS.desktop
-sudo rm -f ${temporaryShortcut}
-cat > ${temporaryShortcut} << EOL
+echo
+echo Prepare shortcut for Console
+echo
+
+temporaryShortcutConsole=/tmp/FTPS-console.desktop
+sudo rm -f ${temporaryShortcutConsole}
+cat > ${temporaryShortcutConsole} << EOL
 [Desktop Entry]
 Version=${version}
-Name=FTPS
+Name=FTPS Console
 GenericName=FTPS Server for file sharing
 Categories=Network;System;Utility;
 Comment=FTPS server for file sharing
@@ -69,27 +73,36 @@ Path=${binariesInstallationDirectory}
 Exec=${binariesInstallationDirectory}/ftps-server
 Icon=${binariesInstallationDirectory}/Icon.png
 EOL
+shortcutFileConsole=/usr/share/applications/FTPS-console.desktop
+sudo cp ${temporaryShortcutConsole} "${shortcutFileConsole}"
+sudo chmod a+x "${shortcutFileConsole}"
+sudo dbus-launch gio set "${shortcutFileConsole}" metadata::trusted true
 
 echo
-echo Prepare shortcut for All Users
+echo Prepare shortcut for UI
 echo
 
-declare -a shortcutLocations=("/usr/share/applications")
-
-for shortcutLocation in "${shortcutLocations[@]}"
-do
-
-shortcutFile=${shortcutLocation}/FTPS.desktop
-
-echo
-echo Create shortcut in ${shortcutFile}
-echo
-
-sudo cp ${temporaryShortcut} "${shortcutFile}"
-sudo chmod a+x "${shortcutFile}"
-sudo dbus-launch gio set "${shortcutFile}" metadata::trusted true
-
-done
+temporaryShortcutUI=/tmp/FTPS.desktop
+sudo rm -f ${temporaryShortcutUI}
+cat > ${temporaryShortcutUI} << EOL
+[Desktop Entry]
+Version=${version}
+Name=FTPS UI
+GenericName=FTPS Server for file sharing
+Categories=Network;System;Utility;
+Comment=FTPS server for file sharing
+Keywords=ftp;sftp;file;transfer;server
+Type=Application
+Terminal=false
+StartupWMClass=FtpsServerAvalonia.Desktop
+Path=${binariesInstallationDirectory}
+Exec=${binariesInstallationDirectory}/FtpsServerAvalonia.Desktop
+Icon=${binariesInstallationDirectory}/Icon.png
+EOL
+shortcutFileUI=/usr/share/applications/FTPS.desktop
+sudo cp ${temporaryShortcutUI} "${shortcutFileUI}"
+sudo chmod a+x "${shortcutFileUI}"
+sudo dbus-launch gio set "${shortcutFileUI}" metadata::trusted true
 
 echo
 echo
@@ -101,7 +114,10 @@ echo
 echo Binaries: ${binariesInstallationDirectory}
 echo Sources: ${sourceCodeInstallationDirectory}
 echo
-echo Shortcut for quick search is provisioned.
+echo Shortcuts for quick search is provisioned:
+echo     search menu for FTPS UI or FTPS Console.
+echo
+echo UI tool: ${binariesInstallationDirectory}/FtpsServerAvalonia.Desktop
 echo Console tool: ${binariesInstallationDirectory}/ftps-server
 echo
 echo
