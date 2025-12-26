@@ -1,8 +1,8 @@
-<UserControl x:Class="FtpsServerWindows.Controls.UserItemControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<UserControl x:Class="FtpsServerAvalonia.Controls.UserItemControl"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
     <Border Background="{StaticResource TertiaryDarkBrush}"
             BorderBrush="{StaticResource BorderBrush}"
@@ -30,59 +30,59 @@
                 Grid.Column="0"
                 Text="Username"
                 Margin="0,14,12,0"
-                Style="{StaticResource ModernLabel}" />
-            <TextBox 
+                Classes="ModernLabel" />
+            <TextBox
                 Grid.Row="1"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                Style="{StaticResource ModernTextBox}"
+                Classes="ModernTextBox"
                 Margin="0,0,0,16" />
 
             <!-- Password -->
-            <TextBlock 
+            <TextBlock
                 Grid.Row="2"
                 Grid.Column="0"
                 Text="Password"
                 Margin="0,14,12,0"
-                Style="{StaticResource ModernLabel}" />
+                Classes="ModernLabel" />
             <TextBox Grid.Row="2"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
-                Style="{StaticResource ModernTextBox}"
+                Classes="ModernTextBox"
                 Margin="0,0,0,16"
                 Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <!-- Folder -->
-            <TextBlock 
+            <TextBlock
                 Grid.Row="3"
                 Grid.Column="0"
                 Text="Folder"
                 Margin="0,14,12,0"
-                Style="{StaticResource ModernLabel}" />
-            <TextBox 
+                Classes="ModernLabel" />
+            <TextBox
                 Grid.Row="3"
                 Grid.Column="1"
                 Text="{Binding Folder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                Style="{StaticResource ModernTextBox}"
+                Classes="ModernTextBox"
                 Margin="0,0,0,16"
                 IsReadOnly="True" />
              <Button Grid.Row="3"
                 Grid.Column="2"
                 Content="Browse"
-                Style="{StaticResource SecondaryButton}"
+                Classes="SecondaryButton"
                 Margin="0,0,0,16"
                 Click="BrowseUserFolder_Click"
                 Padding="12,8" />
 
              <!-- Permissions -->
-             <CheckBox 
+             <CheckBox
                 Grid.Row="4"
                 Grid.Column="1"
                 Margin="0,0,0,16"
                 Content="Readonly"
                 IsChecked="{Binding ReadonlyPermission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                Style="{StaticResource ModernCheckBox}" />
+                Classes="ModernCheckBox" />
 
 
              <Button
@@ -90,7 +90,7 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
                 Content="Delete"
-                Style="{StaticResource SecondaryButton}"
+                Classes="SecondaryButton"
                 Foreground="{StaticResource ErrorBrush}"
                 Padding="8,0"
                 Click="RemoveUser_Click" />

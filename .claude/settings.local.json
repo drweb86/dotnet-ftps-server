@@ -14,7 +14,9 @@
       "Bash(for file in *.xaml)",
       "Bash(do mv \"$file\" \"$file%.xaml.axaml\")",
       "Bash(for file in *.xaml.cs)",
-      "Bash(do mv \"$file\" \"$file%.xaml.cs.axaml.cs\")"
+      "Bash(do mv \"$file\" \"$file%.xaml.cs.axaml.cs\")",
+      "Bash(wc:*)",
+      "Bash(cat:*)"
     ]
   }
 }

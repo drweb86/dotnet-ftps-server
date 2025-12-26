@@ -1,21 +1,19 @@
-﻿<UserControl x:Class="FtpsServerWindows.MainMenuControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<UserControl x:Class="FtpsServerAvalonia.Controls.MainMenuControl"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:commands="clr-namespace:FtpsServerWindows.Commands">
+             xmlns:commands="using:FtpsServerAvalonia.Commands">
 
     <UserControl.Resources>
         <commands:AboutCommand x:Key="AboutCommand"/>
         <commands:LicenseCommand x:Key="LicenseCommand"/>
         <commands:OpenLogsCommand x:Key="OpenLogsCommand"/>
-        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
-
-        <Style TargetType="MenuItem">
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="Foreground"
-              Value="{StaticResource {x:Static SystemColors.MenuTextBrushKey}}"/>
-        </Style>
-
     </UserControl.Resources>
+
+    <UserControl.Styles>
+        <Style Selector="MenuItem">
+            <Setter Property="Padding" Value="8,4" />
+        </Style>
+    </UserControl.Styles>
 
     <Menu DockPanel.Dock="Left"
               Background="{StaticResource PrimaryDarkBrush}"
@@ -25,7 +23,7 @@
               Header="FTPS Server"
               Foreground="{StaticResource TextPrimaryBrush}">
             <MenuItem.Icon>
-                <Image Source="../FtpsApp.png" />
+                <Image Source="../Assets/FtpsApp.png" />
             </MenuItem.Icon>
             <MenuItem.Items>
                 <MenuItem
@@ -33,7 +31,7 @@
                     Header="Web-Site"
                     Command="{StaticResource AboutCommand}">
                     <MenuItem.Icon>
-                        <Image Source="../FtpsApp.png" />
+                        <Image Source="../Assets/FtpsApp.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="License" Command="{StaticResource LicenseCommand}" />
@@ -56,6 +54,6 @@
                   Click="StartStopButton_Click"
                   FontWeight="Bold"
                   Foreground="PaleVioletRed"
-                  Visibility="Collapsed" />
+                  IsVisible="False" />
     </Menu>
 </UserControl>

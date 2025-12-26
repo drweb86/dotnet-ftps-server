@@ -32,7 +32,7 @@
     </Window.Styles>
 
     <DockPanel Margin="0">
-        <local:MainMenuControl x:Name="MainMenu"
+        <controls:MainMenuControl x:Name="MainMenu"
                                DockPanel.Dock="Top"
                                StartStopClicked="MainMenu_StartStopClicked" />
         <controls:UpdateCheckExpanderView DockPanel.Dock="Top" />

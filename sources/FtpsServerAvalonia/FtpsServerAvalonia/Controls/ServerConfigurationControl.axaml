@@ -1,7 +1,7 @@
-<UserControl x:Class="FtpsServerWindows.Controls.ServerConfigurationControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<UserControl x:Class="FtpsServerAvalonia.Controls.ServerConfigurationControl"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="clr-namespace:FtpsServerWindows.Controls">
+             xmlns:controls="using:FtpsServerAvalonia.Controls">
 
     <Border Background="{StaticResource TertiaryDarkBrush}"
             BorderBrush="{StaticResource AccentCyanBrush}"
@@ -16,7 +16,7 @@
                        Foreground="{StaticResource TextPrimaryBrush}"
                        Margin="0,0,0,20"/>
 
-            <TextBlock Text="Address" Style="{StaticResource ModernLabel}"/>
+            <TextBlock Text="Address" Classes="ModernLabel"/>
 
             <TextBlock TextWrapping="Wrap"
                        FontSize="13"
@@ -54,7 +54,7 @@
                                 <ItemsControl ItemsSource="{Binding Addresses}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <WrapPanel Orientation="Horizontal"/>
+                                            <StackPanel Orientation="Horizontal"/>
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
@@ -88,10 +88,10 @@
                 </Grid.RowDefinitions>
 
                 <!-- Port -->
-                <TextBlock 
+                <TextBlock
                     Grid.Column="0"
                     Grid.Row="0"
-                    Text="Port" Style="{StaticResource ModernLabel}" 
+                    Text="Port" Classes="ModernLabel"
                     Margin="0,14,12,0"
                 />
                 <controls:NumericUpDown
@@ -105,12 +105,12 @@
                 />
 
                 <!-- Max Connections -->
-                <TextBlock 
+                <TextBlock
                     Grid.Column="0"
                     Grid.Row="1"
                     Margin="0,14,12,0"
                     Text=" Max Connections"
-                    Style="{StaticResource ModernLabel}"/>
+                    Classes="ModernLabel"/>
                 <controls:NumericUpDown x:Name="MaxConnectionsControl"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
@@ -120,30 +120,30 @@
                     Margin="0,0,0,16"/>
 
                 <!-- Certificate -->
-                <CheckBox 
+                <CheckBox
                     Grid.Column="0"
                     Grid.ColumnSpan="3"
                     Grid.Row="2"
                     x:Name="SelfSignedCertButton"
                     Content="Use Self-Signed Auto-Generated certficate"
                     IsChecked="True"
-                    Style="{StaticResource ModernCheckBox}"
+                    Classes="ModernCheckBox"
                     Margin="0,0,12,16"
                     Checked="CertificateSourceChanged"
                     Unchecked="CertificateSourceChanged"
                 />
 
                 <TextBlock
-                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Grid.Column="0"
                     Grid.Row="3"
                     Margin="0,14,12,0"
-                    Text="Certificate File (.pfx, .pem, .der)" Style="{StaticResource ModernLabel}"/>
+                    Text="Certificate File (.pfx, .pem, .der)" Classes="ModernLabel"/>
                 <TextBox x:Name="CertPathTextBox"
-                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Grid.Column="1"
                     Grid.Row="3"
-                    Style="{StaticResource ModernTextBox}"
+                    Classes="ModernTextBox"
                     IsReadOnly="True"
                     Margin="0,0,0,16"
                 />
@@ -151,8 +151,8 @@
                     Grid.Column="2"
                     Grid.Row="3"
                     Content="Browse"
-                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Style="{StaticResource SecondaryButton}"
+                    IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Classes="SecondaryButton"
                     Margin="12,0,0,16"
                     Click="BrowseCertificate_Click"/>
 
@@ -161,15 +161,15 @@
                     Grid.Column="0"
                     Grid.Row="4"
                     Margin="0,14,12,0"
-                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Text="Certificate Password (if required)" Style="{StaticResource ModernLabel}"/>
+                    IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Text="Certificate Password (if required)" Classes="ModernLabel"/>
                 <TextBox x:Name="CertPasswordBox"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Grid.Row="4"
                     Margin="0,0,0,16"
-                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Style="{StaticResource ModernTextBox}"
+                    IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    Classes="ModernTextBox"
                     Text="{Binding CertificatePassword, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  />
             </Grid>

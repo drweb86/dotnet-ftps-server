@@ -167,7 +167,7 @@ namespace FtpsServerAvalonia
                 {
                     if (string.IsNullOrWhiteSpace(_settings.CertificatePath))
                     {
-                        await MessageBoxManager.GetMessageBoxStandard("Error", "Please select a certificate file.", ButtonEnum.Ok, Icon.Warning).ShowAsync();
+                        await MessageBoxManager.GetMessageBoxStandard("Error", "Please select a certificate file.", ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
                         return;
                     }
 
@@ -178,7 +178,7 @@ namespace FtpsServerAvalonia
                     // Users
                     if (_users.Count == 0)
                     {
-                        await MessageBoxManager.GetMessageBoxStandard("Error", "Please add at least one user.", ButtonEnum.Ok, Icon.Warning).ShowAsync();
+                        await MessageBoxManager.GetMessageBoxStandard("Error", "Please add at least one user.", ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
                         return;
                     }
 
@@ -188,7 +188,7 @@ namespace FtpsServerAvalonia
                             string.IsNullOrWhiteSpace(user.Password) ||
                             string.IsNullOrWhiteSpace(user.Folder))
                         {
-                            await MessageBoxManager.GetMessageBoxStandard("Error", $"User {user.Login} has incomplete information.", ButtonEnum.Ok, Icon.Warning).ShowAsync();
+                            await MessageBoxManager.GetMessageBoxStandard("Error", $"User {user.Login} has incomplete information.", ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
                             return;
                         }
 
@@ -209,7 +209,7 @@ namespace FtpsServerAvalonia
             }
             catch (Exception ex)
             {
-                await MessageBoxManager.GetMessageBoxStandard("Error", $"Failed to start server: {ex.Message}", ButtonEnum.Ok, Icon.Error).ShowAsync();
+                await MessageBoxManager.GetMessageBoxStandard("Error", $"Failed to start server: {ex.Message}", ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Error).ShowAsync();
                 IsServerRunning = false;
             }
         }
@@ -226,7 +226,7 @@ namespace FtpsServerAvalonia
             }
             catch (Exception ex)
             {
-                await MessageBoxManager.GetMessageBoxStandard("Error", $"Error stopping server: {ex.Message}", ButtonEnum.Ok, Icon.Error).ShowAsync();
+                await MessageBoxManager.GetMessageBoxStandard("Error", $"Error stopping server: {ex.Message}", ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Error).ShowAsync();
             }
         }
 

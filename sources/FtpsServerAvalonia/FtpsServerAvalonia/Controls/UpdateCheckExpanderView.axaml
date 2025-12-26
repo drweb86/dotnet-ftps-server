@@ -1,9 +1,9 @@
-<UserControl x:Class="FtpsServerWindows.Controls.UpdateCheckExpanderView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<UserControl x:Class="FtpsServerAvalonia.Controls.UpdateCheckExpanderView"
+             xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="clr-namespace:FtpsServerWindows.Controls"
-			 xmlns:commands="clr-namespace:FtpsServerWindows.Commands"
-			 Visibility="Collapsed"
+             xmlns:controls="using:FtpsServerAvalonia.Controls"
+			 xmlns:commands="using:FtpsServerAvalonia.Commands"
+			 IsVisible="False"
              Background="{StaticResource TertiaryDarkBrush}">
 	<UserControl.Resources>
 		<commands:LatestReleaseCommand x:Key="LatestReleaseCommand"/>
@@ -32,7 +32,7 @@
             Grid.Row="0"
             Grid.RowSpan="2"
             Grid.Column="1"
-			Style="{StaticResource SecondaryButton}"
+			Classes="SecondaryButton"
 			Margin="10,10,25,10"
 			VerticalAlignment="Center"
 			Command="{StaticResource LatestReleaseCommand}"
