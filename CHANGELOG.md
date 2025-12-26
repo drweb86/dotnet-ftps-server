@@ -1,3 +1,9 @@
+# 2025.12.26
+
+## New Features
+
+- Linux: Add UI application.
+
 # 2025.12.25
 
 ## New Features

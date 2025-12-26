@@ -29,7 +29,7 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 Text="Username"
-                Margin="0,14,12,0"
+                VerticalAlignment="Center"
                 Classes="ModernLabel" />
             <TextBox
                 Grid.Row="1"
@@ -37,20 +37,22 @@
                 Grid.ColumnSpan="2"
                 Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Classes="ModernTextBox"
-                Margin="0,0,0,16" />
+                VerticalAlignment="Center"
+                Margin="8 4 4 4" />
 
             <!-- Password -->
             <TextBlock
                 Grid.Row="2"
                 Grid.Column="0"
                 Text="Password"
-                Margin="0,14,12,0"
+                VerticalAlignment="Center"
                 Classes="ModernLabel" />
             <TextBox Grid.Row="2"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Classes="ModernTextBox"
-                Margin="0,0,0,16"
+                VerticalAlignment="Center"
+                Margin="8 4 4 4"
                 Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
             <!-- Folder -->
@@ -58,20 +60,21 @@
                 Grid.Row="3"
                 Grid.Column="0"
                 Text="Folder"
-                Margin="0,14,12,0"
+                VerticalAlignment="Center"
                 Classes="ModernLabel" />
             <TextBox
                 Grid.Row="3"
                 Grid.Column="1"
                 Text="{Binding Folder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Classes="ModernTextBox"
-                Margin="0,0,0,16"
+                VerticalAlignment="Center"
+                Margin="8 4 4 4"
                 IsReadOnly="True" />
              <Button Grid.Row="3"
                 Grid.Column="2"
                 Content="Browse"
                 Classes="SecondaryButton"
-                Margin="0,0,0,16"
+                Margin="8 4 4 4"
                 Click="BrowseUserFolder_Click"
                 Padding="12,8" />
 
@@ -79,7 +82,7 @@
              <CheckBox
                 Grid.Row="4"
                 Grid.Column="1"
-                Margin="0,0,0,16"
+                Margin="8,4,4,4"
                 Content="Readonly"
                 IsChecked="{Binding ReadonlyPermission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Classes="ModernCheckBox" />
@@ -89,10 +92,10 @@
                 Grid.Row="4"
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
+				Margin="0 8 0 0"
                 Content="Delete"
                 Classes="SecondaryButton"
                 Foreground="{StaticResource ErrorBrush}"
-                Padding="8,0"
                 Click="RemoveUser_Click" />
         </Grid>
     </Border>

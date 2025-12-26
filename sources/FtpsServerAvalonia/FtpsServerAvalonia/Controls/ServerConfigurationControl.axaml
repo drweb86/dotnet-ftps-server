@@ -91,44 +91,52 @@
                 <TextBlock
                     Grid.Column="0"
                     Grid.Row="0"
+					VerticalAlignment="Center"
                     Text="Port" Classes="ModernLabel"
-                    Margin="0,14,12,0"
                 />
-                <controls:NumericUpDown
+				<NumericUpDown
+                    Classes="ModernTextBox"
+                    Value="{Binding Port, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Minimum="2121"
+					Increment="1"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Grid.Row="0"
+					VerticalAlignment="Center"
                     x:Name="PortControl"
-                    Minimum="2121"
-                    Value="{Binding Port, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Margin="0,0,0,16"
+                    Margin="8 4 4 4"
                 />
 
                 <!-- Max Connections -->
                 <TextBlock
                     Grid.Column="0"
                     Grid.Row="1"
-                    Margin="0,14,12,0"
-                    Text=" Max Connections"
+					VerticalAlignment="Center"
+                    Text="Max Connections"
                     Classes="ModernLabel"/>
-                <controls:NumericUpDown x:Name="MaxConnectionsControl"
+                <NumericUpDown
+					x:Name="MaxConnectionsControl"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Grid.Row="1"
+					Increment="1"
+					Classes="ModernTextBox"
+    				VerticalAlignment="Center"
                     Minimum="2"
                     Value="{Binding MaxConnections, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Margin="0,0,0,16"/>
+                    Margin="8 4 4 4"/>
 
                 <!-- Certificate -->
                 <CheckBox
                     Grid.Column="0"
                     Grid.ColumnSpan="3"
                     Grid.Row="2"
+				    VerticalAlignment="Center"
                     x:Name="SelfSignedCertButton"
                     Content="Use Self-Signed Auto-Generated certficate"
                     IsChecked="True"
                     Classes="ModernCheckBox"
-                    Margin="0,0,12,16"
+                    Margin="0 4 4 4"
                     Checked="CertificateSourceChanged"
                     Unchecked="CertificateSourceChanged"
                 />
@@ -137,37 +145,40 @@
                     IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Grid.Column="0"
                     Grid.Row="3"
-                    Margin="0,14,12,0"
+					VerticalAlignment="Center"
                     Text="Certificate File (.pfx, .pem, .der)" Classes="ModernLabel"/>
                 <TextBox x:Name="CertPathTextBox"
                     IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Grid.Column="1"
                     Grid.Row="3"
+                    Margin="8 4 4 4"
+					VerticalAlignment="Center"
                     Classes="ModernTextBox"
                     IsReadOnly="True"
-                    Margin="0,0,0,16"
                 />
                 <Button
                     Grid.Column="2"
                     Grid.Row="3"
+					VerticalAlignment="Center"
                     Content="Browse"
                     IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Classes="SecondaryButton"
-                    Margin="12,0,0,16"
-                    Click="BrowseCertificate_Click"/>
+                    Click="BrowseCertificate_Click"
+					Margin="4" />
 
 
                 <TextBlock
                     Grid.Column="0"
                     Grid.Row="4"
-                    Margin="0,14,12,0"
+					VerticalAlignment="Center"
                     IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Text="Certificate Password (if required)" Classes="ModernLabel"/>
                 <TextBox x:Name="CertPasswordBox"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
+                    VerticalAlignment="Center"
                     Grid.Row="4"
-                    Margin="0,0,0,16"
+                    Margin="8 4 4 4"
                     IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Classes="ModernTextBox"
                     Text="{Binding CertificatePassword, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

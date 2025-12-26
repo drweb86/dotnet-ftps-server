@@ -41,7 +41,7 @@ namespace FtpsServerAvalonia.Controls
 
                 if (folders.Count > 0)
                 {
-                    user.Folder = folders[0].Path.LocalPath;
+                    user.Folder = folders[0].Path.LocalPath.TrimEnd('/', '\\');
                 }
             }
         }
