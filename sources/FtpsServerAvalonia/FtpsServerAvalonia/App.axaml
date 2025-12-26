@@ -1,0 +1,124 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="FtpsServerAvalonia.App"
+             RequestedThemeVariant="Dark">
+
+    <Application.Styles>
+        <FluentTheme />
+
+        <Style>
+            <Style.Resources>
+                <!-- Color Palette - Modern Dark Theme with Cyan Accents -->
+                <Color x:Key="PrimaryDark">#0F1419</Color>
+                <Color x:Key="SecondaryDark">#1A1F29</Color>
+                <Color x:Key="TertiaryDark">#252B37</Color>
+                <Color x:Key="AccentCyan">#00D9FF</Color>
+                <Color x:Key="AccentCyanHover">#33E1FF</Color>
+                <Color x:Key="AccentBlue">#0078D4</Color>
+                <Color x:Key="TextPrimary">#E8EAED</Color>
+                <Color x:Key="TextSecondary">#9CA3AF</Color>
+                <Color x:Key="Success">#10B981</Color>
+                <Color x:Key="Warning">#F59E0B</Color>
+                <Color x:Key="Error">#EF4444</Color>
+                <Color x:Key="BorderColor">#374151</Color>
+
+                <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}"/>
+                <SolidColorBrush x:Key="SecondaryDarkBrush" Color="{StaticResource SecondaryDark}"/>
+                <SolidColorBrush x:Key="TertiaryDarkBrush" Color="{StaticResource TertiaryDark}"/>
+                <SolidColorBrush x:Key="AccentCyanBrush" Color="{StaticResource AccentCyan}"/>
+                <SolidColorBrush x:Key="AccentCyanHoverBrush" Color="{StaticResource AccentCyanHover}"/>
+                <SolidColorBrush x:Key="AccentBlueBrush" Color="{StaticResource AccentBlue}"/>
+                <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}"/>
+                <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}"/>
+                <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource Success}"/>
+                <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource Warning}"/>
+                <SolidColorBrush x:Key="ErrorBrush" Color="{StaticResource Error}"/>
+                <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}"/>
+            </Style.Resources>
+        </Style>
+
+        <!-- Modern Button Style -->
+        <Style Selector="Button.ModernButton">
+            <Setter Property="Background" Value="{StaticResource AccentCyanBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryDarkBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+        <Style Selector="Button.ModernButton:pointerover">
+            <Setter Property="Background" Value="{StaticResource AccentCyanHoverBrush}"/>
+        </Style>
+        <Style Selector="Button.ModernButton:disabled">
+            <Setter Property="Opacity" Value="0.5"/>
+        </Style>
+
+        <!-- Secondary Button Style -->
+        <Style Selector="Button.SecondaryButton">
+            <Setter Property="Background" Value="{StaticResource TertiaryDarkBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="20,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+        <Style Selector="Button.SecondaryButton:pointerover">
+            <Setter Property="Background" Value="{StaticResource SecondaryDarkBrush}"/>
+        </Style>
+
+        <!-- Modern TextBox Style -->
+        <Style Selector="TextBox.ModernTextBox">
+            <Setter Property="Background" Value="{StaticResource SecondaryDarkBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style Selector="TextBox.ModernTextBox:focus">
+            <Setter Property="BorderBrush" Value="{StaticResource AccentCyanBrush}"/>
+        </Style>
+
+        <!-- Modern CheckBox Style -->
+        <Style Selector="CheckBox.ModernCheckBox">
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <!-- Modern ComboBox Style -->
+        <Style Selector="ComboBox.ModernComboBox">
+            <Setter Property="Background" Value="{StaticResource SecondaryDarkBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+
+        <!-- Label Style -->
+        <Style Selector="TextBlock.ModernLabel">
+            <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+
+        <!-- Card Style -->
+        <Style Selector="Border.Card">
+            <Setter Property="Background" Value="{StaticResource SecondaryDarkBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="24"/>
+        </Style>
+    </Application.Styles>
+</Application>

@@ -1,0 +1,54 @@
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Interactivity;
+using Avalonia.Platform.Storage;
+using FtpsServerAvalonia.Models;
+using System;
+using System.Linq;
+
+namespace FtpsServerAvalonia.Controls
+{
+    public partial class UserItemControl : UserControl
+    {
+        public static readonly RoutedEvent<RoutedEventArgs> RemoveUserRequestedEvent =
+            RoutedEvent.Register<UserItemControl, RoutedEventArgs>(
+                nameof(RemoveUserRequested),
+                RoutingStrategies.Bubble);
+
+        public event EventHandler<RoutedEventArgs> RemoveUserRequested
+        {
+            add => AddHandler(RemoveUserRequestedEvent, value);
+            remove => RemoveHandler(RemoveUserRequestedEvent, value);
+        }
+
+        public UserItemControl()
+        {
+            InitializeComponent();
+        }
+
+        private async void BrowseUserFolder_Click(object? sender, RoutedEventArgs e)
+        {
+            if (DataContext is UserAccount user)
+            {
+                var topLevel = TopLevel.GetTopLevel(this);
+                if (topLevel == null) return;
+
+                var folders = await topLevel.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
+                {
+                    Title = $"Select folder to share for user {user.Login}",
+                    AllowMultiple = false
+                });
+
+                if (folders.Count > 0)
+                {
+                    user.Folder = folders[0].Path.LocalPath;
+                }
+            }
+        }
+
+        private void RemoveUser_Click(object? sender, RoutedEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(RemoveUserRequestedEvent, this));
+        }
+    }
+}
