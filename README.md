@@ -1,6 +1,6 @@
 ﻿# C# .Net-Core 10 FTPS Server and Library
 
-A .Net-Core 10 FTPS Server implementation. Has nuget Library (cross-platform, no dependencies, open-source permissive license), Console (Linux, Windows), UI (Windows x64, ARM64).
+A .Net-Core 10 FTPS Server implementation. Has nuget Library (cross-platform, no dependencies, open-source permissive license), Console (Linux, Windows), UI (Windows x64 and ARM64, Ubuntu 24).
 
 Features:
 
@@ -34,7 +34,7 @@ Location: `%AppData%/ftps-server/logs`
 
 If certificate is not specified, self-signed certificate will be created and stored in %localappdata%\FtpsServerLibrary\Certificates.
 
-### **UI** (available for **Windowx x64 or ARM64** in **Installer**, **Binaries**)
+### **UI** (available for **Windowx x64 or ARM64** in **Installer**, **Binaries**, for **Ubuntu 24** of any architecture in **Installation Script**)
 
 <img width="1109" height="614" alt="image" src="https://github.com/user-attachments/assets/da502ae9-01ae-4bfe-9619-653d6395067b" />
 

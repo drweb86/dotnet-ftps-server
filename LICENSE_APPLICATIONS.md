@@ -1,1 +1,1 @@
-MIT or GPL or MS-PL.
+Apps are distributed under any OSI approved license up to your choice.
