@@ -14,13 +14,11 @@ echo
 echo Removing configuration files
 echo
 
-desktopDir=$(xdg-user-dir DESKTOP)
-
 echo
 echo Removing shortcuts
 echo
 sudo rm /usr/share/applications/FTPS.desktop
-sudo rm "${desktopDir}/FTPS.desktop"
+sudo rm /usr/share/applications/FTPS-console.desktop
 
 echo
 echo Application was uninstalled
