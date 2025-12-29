@@ -1,5 +1,7 @@
 ﻿# FTPS Server Console Application
 
+<img width="760" height="433" alt="image" src="https://github.com/user-attachments/assets/37f8d159-9188-4838-83d4-4ae1b64b7b65" />
+
 **Logs** are located at ```%AppData%/ftps-server/logs```
 
 **Self-Signed Certificate Location**
