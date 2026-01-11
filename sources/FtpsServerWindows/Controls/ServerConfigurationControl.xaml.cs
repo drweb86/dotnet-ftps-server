@@ -1,5 +1,6 @@
 using FtpsServerApp.Helpers;
 using FtpsServerWindows.Models;
+using FtpsServerWindows.Resources;
 using Microsoft.Win32;
 using System;
 using System.Windows;
@@ -134,8 +135,8 @@ namespace FtpsServerWindows.Controls
         {
             var dialog = new OpenFileDialog
             {
-                Filter = "Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*",
-                Title = "Select Certificate File"
+                Filter = Strings.ConfigCertFilter,
+                Title = Strings.ConfigSelectCertTitle
             };
 
             if (dialog.ShowDialog() == true)

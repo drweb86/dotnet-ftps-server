@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>Serveur FTPS</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>Utilisateurs</value>
+  </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>+ Ajouter</value>
+  </data>
+
+  <!-- Main Menu -->
+  <data name="MenuHeader" xml:space="preserve">
+    <value>Serveur FTPS</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>Site Web</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>Licence</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>Journaux</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>⏵DÉMARRER</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>⏹ ARRÊTER</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>Serveur FTPS - V{0}</value>
+  </data>
+
+  <!-- Server Configuration -->
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>Hôte, Port, Certificat</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>Votre PC peut être accessible sur le réseau local par son nom ou son adresse IP.</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>Nom : </value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>IP Réseau : </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>Réseau :</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>Adresses IP : </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> Connexions Max.</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>Utiliser un certificat auto-signé généré automatiquement</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>Parcourir</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>Fichier de Certificat (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>Mot de Passe du Certificat (si nécessaire)</value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>Sélectionner un Fichier de Certificat</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Fichiers de Certificat (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|Tous les Fichiers (*.*)|*.*</value>
+  </data>
+
+  <!-- User Item Control -->
+  <data name="UserUsername" xml:space="preserve">
+    <value>Nom d'Utilisateur</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>Mot de Passe</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>Dossier</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>Lecture Seule</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>Sélectionner le dossier à partager pour l'utilisateur {0}</value>
+  </data>
+
+  <!-- Update Check -->
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>Télécharger</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>Nouvelle version {0} disponible.</value>
+  </data>
+
+  <!-- Numeric Up/Down -->
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>Veuillez sélectionner un fichier de certificat.</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>Veuillez ajouter au moins un utilisateur.</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>L'utilisateur {0} a des informations incomplètes.</value>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>Échec du démarrage du serveur : {0}</value>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>Erreur lors de l'arrêt du serveur : {0}</value>
+  </data>
+</root>

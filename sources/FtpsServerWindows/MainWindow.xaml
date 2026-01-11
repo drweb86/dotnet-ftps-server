@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:FtpsServerWindows"
         xmlns:controls="clr-namespace:FtpsServerWindows.Controls"
-        Title="FTPS Server"
+        xmlns:res="clr-namespace:FtpsServerWindows.Resources"
+        Title="{x:Static res:Strings.AppTitle}"
         Background="{StaticResource PrimaryDarkBrush}"
         MinWidth="1024"
         ResizeMode="CanResize">
@@ -78,13 +79,13 @@
                             Grid.Column="1">
                         <StackPanel>
                             <Grid Margin="0,0,0,16">
-                                <TextBlock Text="Users"
+                                <TextBlock Text="{x:Static res:Strings.UsersTab}"
                                            FontSize="18"
                                            FontWeight="SemiBold"
                                            Foreground="{StaticResource TextPrimaryBrush}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"/>
-                                <Button Content="+ Add"
+                                <Button Content="{x:Static res:Strings.AddUserButton}"
                                         Style="{StaticResource SecondaryButton}"
                                         HorizontalAlignment="Right"
                                         Click="AddUser_Click"

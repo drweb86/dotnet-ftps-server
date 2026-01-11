@@ -2,8 +2,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="using:FtpsServerAvalonia"
         xmlns:controls="using:FtpsServerAvalonia.Controls"
+        xmlns:res="using:FtpsServerAvalonia.Resources"
         x:Class="FtpsServerAvalonia.MainWindow"
-        Title="FTPS Server"
+        Title="{x:Static res:Strings.AppTitle}"
         Background="{StaticResource PrimaryDarkBrush}"
         MinWidth="1024"
         CanResize="True">
@@ -63,13 +64,13 @@
                             Grid.Column="1">
                         <StackPanel>
                             <Grid Margin="0,0,0,16">
-                                <TextBlock Text="Users"
+                                <TextBlock Text="{x:Static res:Strings.UsersTab}"
                                            FontSize="18"
                                            FontWeight="SemiBold"
                                            Foreground="{StaticResource TextPrimaryBrush}"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"/>
-                                <Button Content="+ Add"
+                                <Button Content="{x:Static res:Strings.AddUserButton}"
                                         Classes="SecondaryButton"
                                         HorizontalAlignment="Right"
                                         Click="AddUser_Click"

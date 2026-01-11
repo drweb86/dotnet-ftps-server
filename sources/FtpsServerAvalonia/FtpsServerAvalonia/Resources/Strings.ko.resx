@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>FTPS 서버</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>사용자</value>
+  </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>+ 추가</value>
+  </data>
+
+  <!-- Main Menu -->
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS 서버</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>웹사이트</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>라이선스</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>로그</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>⏵시작</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>⏹ 중지</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS 서버 - V{0}</value>
+  </data>
+
+  <!-- Server Configuration -->
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>호스트, 포트, 인증서</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>주소</value>
+  </data>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>귀하의 PC는 LAN에서 이름 또는 IP 주소로 액세스할 수 있습니다.</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>이름: </value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>네트워크 IP: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>네트워크:</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>IP 주소: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> 최대 연결 수</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>자동 생성된 자체 서명 인증서 사용</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>찾아보기</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>인증서 파일 (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>인증서 비밀번호 (필요한 경우)</value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>인증서 파일 선택</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>인증서 파일 (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|모든 파일 (*.*)|*.*</value>
+  </data>
+
+  <!-- User Item Control -->
+  <data name="UserUsername" xml:space="preserve">
+    <value>사용자 이름</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>폴더</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>읽기 전용</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>사용자 {0}에 대해 공유할 폴더 선택</value>
+  </data>
+
+  <!-- Update Check -->
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>다운로드</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>새 버전 {0}을(를) 사용할 수 있습니다.</value>
+  </data>
+
+  <!-- Numeric Up/Down -->
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>오류</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>인증서 파일을 선택하세요.</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>최소 한 명의 사용자를 추가하세요.</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>사용자 {0}의 정보가 불완전합니다.</value>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>서버 시작 실패: {0}</value>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>서버 중지 오류: {0}</value>
+  </data>
+</root>

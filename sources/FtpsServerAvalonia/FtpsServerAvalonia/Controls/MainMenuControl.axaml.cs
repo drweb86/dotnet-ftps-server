@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using FtpsServerAppsShared.Services;
+using FtpsServerAvalonia.Resources;
 using System;
 
 namespace FtpsServerAvalonia.Controls
@@ -24,7 +25,7 @@ namespace FtpsServerAvalonia.Controls
 
             // Set menu item header with version
             var version = CopyrightInfo.Version;
-            AboutMenuItem.Header = "FTPS Server - V" + CopyrightInfo.Version.ToString(3);
+            AboutMenuItem.Header = string.Format(Strings.MenuAboutFormat, CopyrightInfo.Version.ToString(3));
         }
 
         private void StartStopButton_Click(object? sender, RoutedEventArgs e)

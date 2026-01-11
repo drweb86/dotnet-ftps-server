@@ -1,4 +1,5 @@
 using FtpsServerAppsShared.Services;
+using FtpsServerWindows.Resources;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,7 +23,7 @@ namespace FtpsServerWindows
 
             // Set menu item header with version
             var version = CopyrightInfo.Version;
-            AboutMenuItem.Header = "FTPS Server - V" + CopyrightInfo.Version.ToString(3); ;
+            AboutMenuItem.Header = string.Format(Strings.MenuAboutFormat, CopyrightInfo.Version.ToString(3));
         }
 
         private void StartStopButton_Click(object sender, RoutedEventArgs e)

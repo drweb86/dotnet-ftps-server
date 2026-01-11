@@ -4,6 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using FtpsServerApp.Helpers;
 using FtpsServerAvalonia.Models;
+using FtpsServerAvalonia.Resources;
 using System;
 using System.Linq;
 
@@ -124,7 +125,7 @@ namespace FtpsServerAvalonia.Controls
 
             var files = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
             {
-                Title = "Select Certificate File",
+                Title = Strings.ConfigSelectCertTitle,
                 AllowMultiple = false,
                 FileTypeFilter = new[]
                 {

@@ -16,7 +16,8 @@
       "Bash(for file in *.xaml.cs)",
       "Bash(do mv \"$file\" \"$file%.xaml.cs.axaml.cs\")",
       "Bash(wc:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(do basename \"$file\")"
     ]
   }
 }

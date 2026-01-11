@@ -1,4 +1,5 @@
 using FtpsServerAppsShared.Services;
+using FtpsServerWindows.Resources;
 using System;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -27,7 +28,7 @@ public partial class UpdateCheckExpanderView : UserControl
         if (update.HasUpdate)
         {
             this.updateNews.Text = update.Changes;
-            this.updateNewsTitle.Text = string.Format("New {0} version is available.", update.Version);
+            this.updateNewsTitle.Text = string.Format(Strings.UpdateAvailableFormat, update.Version);
             Visibility = Visibility.Visible;
         }
     }

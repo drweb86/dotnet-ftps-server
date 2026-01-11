@@ -1,4 +1,5 @@
 using FtpsServerWindows.Models;
+using FtpsServerWindows.Resources;
 using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,7 +32,7 @@ namespace FtpsServerWindows.Controls
             {
                 var dialog = new OpenFolderDialog
                 {
-                    Title = $"Select folder to share for user {user.Login}",
+                    Title = string.Format(Strings.UserSelectFolderFormat, user.Login),
                 };
 
                 if (dialog.ShowDialog() == true)

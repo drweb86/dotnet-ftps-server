@@ -1,7 +1,8 @@
 <UserControl x:Class="FtpsServerAvalonia.Controls.ServerConfigurationControl"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controls="using:FtpsServerAvalonia.Controls">
+             xmlns:controls="using:FtpsServerAvalonia.Controls"
+             xmlns:res="using:FtpsServerAvalonia.Resources">
 
     <Border Background="{StaticResource TertiaryDarkBrush}"
             BorderBrush="{StaticResource AccentCyanBrush}"
@@ -10,23 +11,23 @@
             Padding="16"
             Margin="10,0,20,20">
         <StackPanel>
-            <TextBlock Text="Host, Port, Certificate"
+            <TextBlock Text="{x:Static res:Strings.ConfigTitle}"
                        FontSize="18"
                        FontWeight="SemiBold"
                        Foreground="{StaticResource TextPrimaryBrush}"
                        Margin="0,0,0,20"/>
 
-            <TextBlock Text="Address" Classes="ModernLabel"/>
+            <TextBlock Text="{x:Static res:Strings.ConfigAddress}" Classes="ModernLabel"/>
 
             <TextBlock TextWrapping="Wrap"
                        FontSize="13"
                        Foreground="{StaticResource TextSecondaryBrush}">
-                <Run Text="Your PC can be accessed in LAN by its name or IP address."/>
+                <Run Text="{x:Static res:Strings.ConfigAccessInfo}"/>
                 <LineBreak />
-                <Run Text="Name: "/>
+                <Run Text="{x:Static res:Strings.ConfigName}"/>
                 <Run x:Name="PCName" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
                 <LineBreak />
-                <Run Text="Network IPs: "/>
+                <Run Text="{x:Static res:Strings.ConfigNetworkIPs}"/>
             </TextBlock>
 
             <ItemsControl x:Name="NetworkIpsControl">
@@ -37,7 +38,7 @@
                                        FontSize="13"
                                        Foreground="{StaticResource TextSecondaryBrush}">
                                 <Run Text="{Binding InterfaceType}"/>
-                                <Run Text="Network:"/>
+                                <Run Text="{x:Static res:Strings.ConfigNetwork}"/>
                                 <Run Text="{Binding Name}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
                                 <Run Text=" ("/>
                                 <Run Text="{Binding Description}" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"/>
@@ -48,7 +49,7 @@
                                 <TextBlock TextWrapping="Wrap"
                                            FontSize="13"
                                            Foreground="{StaticResource TextSecondaryBrush}">
-                                    <Run Text="IP Addresses: "/>
+                                    <Run Text="{x:Static res:Strings.ConfigIPAddresses}"/>
                                 </TextBlock>
 
                                 <ItemsControl ItemsSource="{Binding Addresses}">
@@ -92,7 +93,7 @@
                     Grid.Column="0"
                     Grid.Row="0"
 					VerticalAlignment="Center"
-                    Text="Port" Classes="ModernLabel"
+                    Text="{x:Static res:Strings.ConfigAddress}" Classes="ModernLabel"
                 />
 				<NumericUpDown
                     Classes="ModernTextBox"
@@ -112,7 +113,7 @@
                     Grid.Column="0"
                     Grid.Row="1"
 					VerticalAlignment="Center"
-                    Text="Max Connections"
+                    Text="{x:Static res:Strings.ConfigMaxConnections}"
                     Classes="ModernLabel"/>
                 <NumericUpDown
 					x:Name="MaxConnectionsControl"
@@ -133,7 +134,7 @@
                     Grid.Row="2"
 				    VerticalAlignment="Center"
                     x:Name="SelfSignedCertButton"
-                    Content="Use Self-Signed Auto-Generated certficate"
+                    Content="{x:Static res:Strings.ConfigUseSelfSigned}"
                     IsChecked="True"
                     Classes="ModernCheckBox"
                     Margin="0 4 4 4"
@@ -146,7 +147,7 @@
                     Grid.Column="0"
                     Grid.Row="3"
 					VerticalAlignment="Center"
-                    Text="Certificate File (.pfx, .pem, .der)" Classes="ModernLabel"/>
+                    Text="{x:Static res:Strings.ConfigCertFile}" Classes="ModernLabel"/>
                 <TextBox x:Name="CertPathTextBox"
                     IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Grid.Column="1"
@@ -160,7 +161,7 @@
                     Grid.Column="2"
                     Grid.Row="3"
 					VerticalAlignment="Center"
-                    Content="Browse"
+                    Content="{x:Static res:Strings.ConfigBrowse}"
                     IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Classes="SecondaryButton"
                     Click="BrowseCertificate_Click"
@@ -172,7 +173,7 @@
                     Grid.Row="4"
 					VerticalAlignment="Center"
                     IsVisible="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Text="Certificate Password (if required)" Classes="ModernLabel"/>
+                    Text="{x:Static res:Strings.ConfigCertPassword}" Classes="ModernLabel"/>
                 <TextBox x:Name="CertPasswordBox"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"

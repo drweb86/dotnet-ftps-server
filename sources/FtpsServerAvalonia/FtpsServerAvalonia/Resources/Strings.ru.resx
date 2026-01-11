@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>FTPS Сервер</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>+ Добавить</value>
+  </data>
+
+  <!-- Main Menu -->
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS Сервер</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>Веб-сайт</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>Лицензия</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>Журналы</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>⏵СТАРТ</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>⏹ СТОП</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS Сервер - V{0}</value>
+  </data>
+
+  <!-- Server Configuration -->
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>Хост, порт, сертификат</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>К вашему ПК можно получить доступ в локальной сети по имени или IP-адресу.</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>Имя: </value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>Сетевые IP: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>Сеть:</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>IP-адреса: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> Макс. подключений</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>Использовать самоподписанный автоматически созданный сертификат</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>Обзор</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>Файл сертификата (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>Пароль сертификата (если требуется)</value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>Выберите файл сертификата</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Файлы сертификатов (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|Все файлы (*.*)|*.*</value>
+  </data>
+
+  <!-- User Item Control -->
+  <data name="UserUsername" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>Папка</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>Только чтение</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>Выберите папку для пользователя {0}</value>
+  </data>
+
+  <!-- Update Check -->
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>Скачать</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>Доступна новая версия {0}.</value>
+  </data>
+
+  <!-- Numeric Up/Down -->
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>Пожалуйста, выберите файл сертификата.</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>Пожалуйста, добавьте хотя бы одного пользователя.</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>У пользователя {0} неполная информация.</value>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>Не удалось запустить сервер: {0}</value>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>Ошибка остановки сервера: {0}</value>
+  </data>
+</root>

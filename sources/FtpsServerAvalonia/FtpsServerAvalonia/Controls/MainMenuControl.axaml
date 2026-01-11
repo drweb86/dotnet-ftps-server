@@ -1,7 +1,8 @@
 ﻿<UserControl x:Class="FtpsServerAvalonia.Controls.MainMenuControl"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:commands="using:FtpsServerAvalonia.Commands">
+             xmlns:commands="using:FtpsServerAvalonia.Commands"
+             xmlns:res="using:FtpsServerAvalonia.Resources">
 
     <UserControl.Resources>
         <commands:AboutCommand x:Key="AboutCommand"/>
@@ -20,36 +21,36 @@
               Margin="8">
 
         <MenuItem x:Name="AboutMenuItem"
-              Header="FTPS Server"
+              Header="{x:Static res:Strings.MenuHeader}"
               Foreground="{StaticResource TextPrimaryBrush}">
             <MenuItem.Icon>
                 <Image Source="../Assets/FtpsApp.png" />
             </MenuItem.Icon>
             <MenuItem.Items>
                 <MenuItem
-                    
-                    Header="Web-Site"
+
+                    Header="{x:Static res:Strings.MenuWebSite}"
                     Command="{StaticResource AboutCommand}">
                     <MenuItem.Icon>
                         <Image Source="../Assets/FtpsApp.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="License" Command="{StaticResource LicenseCommand}" />
+                <MenuItem Header="{x:Static res:Strings.MenuLicense}" Command="{StaticResource LicenseCommand}" />
             </MenuItem.Items>
         </MenuItem>
 
-        <MenuItem Header="Logs"
+        <MenuItem Header="{x:Static res:Strings.MenuLogs}"
                   FontWeight="Bold"
                   Foreground="{StaticResource TextPrimaryBrush}"
                   Command="{StaticResource OpenLogsCommand}" />
 
-        <MenuItem Header="⏵START"
+        <MenuItem Header="{x:Static res:Strings.MenuStart}"
                   x:Name="PlayIcon"
                   Foreground="Green"
                   FontWeight="Bold"
                   Click="StartStopButton_Click" />
 
-        <MenuItem Header="⏹ STOP"
+        <MenuItem Header="{x:Static res:Strings.MenuStop}"
                   x:Name="StopIcon"
                   Click="StartStopButton_Click"
                   FontWeight="Bold"

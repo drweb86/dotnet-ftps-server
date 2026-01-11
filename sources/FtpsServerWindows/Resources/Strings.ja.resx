@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>FTPSサーバー</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>+ 追加</value>
+  </data>
+
+  <!-- Main Menu -->
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPSサーバー</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>ウェブサイト</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>ライセンス</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>ログ</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>⏵開始</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>⏹ 停止</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPSサーバー - V{0}</value>
+  </data>
+
+  <!-- Server Configuration -->
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>ホスト、ポート、証明書</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>アドレス</value>
+  </data>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>お使いのPCは、LAN内で名前またはIPアドレスでアクセスできます。</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>名前：</value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>ネットワークIP：</value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>ネットワーク：</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>IPアドレス：</value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> 最大接続数</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>自己署名の自動生成証明書を使用</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>参照</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>証明書ファイル (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>証明書パスワード（必要な場合）</value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>証明書ファイルを選択</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>証明書ファイル (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|すべてのファイル (*.*)|*.*</value>
+  </data>
+
+  <!-- User Item Control -->
+  <data name="UserUsername" xml:space="preserve">
+    <value>ユーザー名</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>フォルダ</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>読み取り専用</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>ユーザー {0} の共有フォルダを選択</value>
+  </data>
+
+  <!-- Update Check -->
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>ダウンロード</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>新しいバージョン {0} が利用可能です。</value>
+  </data>
+
+  <!-- Numeric Up/Down -->
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>証明書ファイルを選択してください。</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>少なくとも1人のユーザーを追加してください。</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>ユーザー {0} の情報が不完全です。</value>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>サーバーの起動に失敗しました：{0}</value>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>サーバーの停止エラー：{0}</value>
+  </data>
+</root>

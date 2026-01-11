@@ -1,6 +1,7 @@
 using FtpsServerWindows.Controls;
 using FtpsServerWindows.Models;
 using FtpsServerWindows.Services;
+using FtpsServerWindows.Resources;
 using FtpsServerConsole;
 using FtpsServerLibrary;
 using Microsoft.Win32;
@@ -186,7 +187,7 @@ namespace FtpsServerWindows
                 {
                     if (string.IsNullOrWhiteSpace(_settings.CertificatePath))
                     {
-                        MessageBox.Show("Please select a certificate file.", "Error",
+                        MessageBox.Show(Strings.ErrorSelectCertificate, Strings.ErrorTitle,
                             MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
@@ -198,18 +199,18 @@ namespace FtpsServerWindows
                     // Users
                     if (_users.Count == 0)
                     {
-                        MessageBox.Show("Please add at least one user.", "Error", 
+                        MessageBox.Show(Strings.ErrorAddUser, Strings.ErrorTitle,
                             MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
 
                     foreach (var user in _users)
                     {
-                        if (string.IsNullOrWhiteSpace(user.Login) || 
+                        if (string.IsNullOrWhiteSpace(user.Login) ||
                             string.IsNullOrWhiteSpace(user.Password) ||
                             string.IsNullOrWhiteSpace(user.Folder))
                         {
-                            MessageBox.Show($"User {user.Login} has incomplete information.", "Error", 
+                            MessageBox.Show(string.Format(Strings.ErrorIncompleteUserFormat, user.Login), Strings.ErrorTitle,
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                             return;
                         }
@@ -231,7 +232,7 @@ namespace FtpsServerWindows
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to start server: {ex.Message}", "Error", 
+                MessageBox.Show(string.Format(Strings.ErrorStartServerFormat, ex.Message), Strings.ErrorTitle,
                     MessageBoxButton.OK, MessageBoxImage.Error);
                 IsServerRunning = false;
             }
@@ -249,7 +250,7 @@ namespace FtpsServerWindows
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error stopping server: {ex.Message}", "Error", 
+                MessageBox.Show(string.Format(Strings.ErrorStopServerFormat, ex.Message), Strings.ErrorTitle,
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

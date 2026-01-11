@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="clr-namespace:FtpsServerWindows.Controls"
 			 xmlns:commands="clr-namespace:FtpsServerWindows.Commands"
+			 xmlns:res="clr-namespace:FtpsServerWindows.Resources"
 			 Visibility="Collapsed"
              Background="{StaticResource TertiaryDarkBrush}">
 	<UserControl.Resources>
@@ -36,7 +37,7 @@
 			Margin="10,10,25,10"
 			VerticalAlignment="Center"
 			Command="{StaticResource LatestReleaseCommand}"
-			Content="Download" />
+			Content="{x:Static res:Strings.UpdateDownload}" />
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
