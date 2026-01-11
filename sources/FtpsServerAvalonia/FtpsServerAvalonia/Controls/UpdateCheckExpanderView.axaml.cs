@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using FtpsServerAppsShared.Services;
+using FtpsServerAvalonia.Resources;
 using System.Threading.Tasks;
 
 namespace FtpsServerAvalonia.Controls;
@@ -23,7 +24,7 @@ public partial class UpdateCheckExpanderView : UserControl
         if (update.HasUpdate)
         {
             this.updateNews.Text = update.Changes;
-            this.updateNewsTitle.Text = string.Format("New {0} version is available.", update.Version);
+            this.updateNewsTitle.Text = string.Format(Strings.UpdateAvailableFormat, update.Version);
             IsVisible = true;
         }
     }

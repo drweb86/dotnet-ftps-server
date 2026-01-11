@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using FtpsServerAvalonia.Models;
+using FtpsServerAvalonia.Resources;
 using System;
 using System.Linq;
 
@@ -35,7 +36,7 @@ namespace FtpsServerAvalonia.Controls
 
                 var folders = await topLevel.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
                 {
-                    Title = $"Select folder to share for user {user.Login}",
+                    Title = string.Format(Strings.UserSelectFolderFormat, user.Login),
                     AllowMultiple = false
                 });
 
