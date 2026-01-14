@@ -1,6 +1,8 @@
+using Avalonia.Controls;
 using FtpsServerAppsShared.Services;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace FtpsServerAvalonia.Commands;
@@ -18,6 +20,8 @@ public class LatestReleaseCommand : ICommand
 
     public void Execute(object? parameter)
     {
-        Process.Start(new ProcessStartInfo(ApplicationLinks.LatestRelease) { UseShellExecute = true });
+        var launcher = TopLevel.GetTopLevel(App.Instance)?.Launcher;
+        if (launcher is not null)
+            launcher.LaunchUriAsync(new Uri(ApplicationLinks.LatestRelease));
     }
 }

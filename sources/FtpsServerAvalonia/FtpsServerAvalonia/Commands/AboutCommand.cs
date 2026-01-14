@@ -1,3 +1,4 @@
+using Avalonia.Controls;
 using FtpsServerAppsShared.Services;
 using System;
 using System.Diagnostics;
@@ -18,6 +19,8 @@ public class AboutCommand : ICommand
 
     public void Execute(object? parameter)
     {
-        Process.Start(new ProcessStartInfo(ApplicationLinks.AboutUrl) { UseShellExecute = true });
+        var launcher = TopLevel.GetTopLevel(App.Instance)?.Launcher;
+        if (launcher is not null)
+            launcher.LaunchUriAsync(new Uri(ApplicationLinks.AboutUrl));
     }
 }

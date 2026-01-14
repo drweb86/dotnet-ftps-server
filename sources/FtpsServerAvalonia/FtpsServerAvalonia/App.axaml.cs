@@ -7,6 +7,7 @@ namespace FtpsServerAvalonia;
 
 public partial class App : Application
 {
+    public static Visual? Instance { get; private set; }
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -16,11 +17,11 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow();
+            Instance = desktop.MainWindow = new MainWindow();
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
         {
-            singleView.MainView = new AndroidView();
+            Instance = singleView.MainView = new AndroidView();
         }
         base.OnFrameworkInitializationCompleted();
     }
