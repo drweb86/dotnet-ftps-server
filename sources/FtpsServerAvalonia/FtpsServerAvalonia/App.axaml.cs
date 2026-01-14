@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using FtpsServerAvalonia.Views;
 
 namespace FtpsServerAvalonia;
 
@@ -17,7 +18,10 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow();
         }
-
+        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
+        {
+            singleView.MainView = new AndroidView();
+        }
         base.OnFrameworkInitializationCompleted();
     }
 }
