@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using FtpsServerAvalonia.Controls;
@@ -17,8 +18,8 @@ namespace FtpsServerAvalonia.Views;
 public partial class AndroidView : UserControl
 {
     private FtpsServer? _server;
-    private AppSettings _settings;
-    private ObservableCollection<UserAccount> _users;
+    private readonly AppSettings _settings;
+    private readonly ObservableCollection<UserAccount> _users;
     private bool _isServerRunning;
 
     public bool IsServerRunning
@@ -44,8 +45,7 @@ public partial class AndroidView : UserControl
         set
         {
             _port = value;
-            if (_settings != null)
-                _settings.ServerPort = value;
+            _settings?.ServerPort = value;
         }
     }
 
@@ -55,8 +55,7 @@ public partial class AndroidView : UserControl
         set
         {
             _maxConnections = value;
-            if (_settings != null)
-                _settings.MaxConnections = value;
+            _settings?.MaxConnections = value;
         }
     }
 
@@ -66,8 +65,7 @@ public partial class AndroidView : UserControl
         set
         {
             _certificateSource = value;
-            if (_settings != null)
-                _settings.CertificateSource = value;
+            _settings?.CertificateSource = value;
         }
     }
 
@@ -77,8 +75,7 @@ public partial class AndroidView : UserControl
         set
         {
             _certificatePath = value;
-            if (_settings != null)
-                _settings.CertificatePath = value;
+            _settings?.CertificatePath = value;
         }
     }
 
@@ -88,8 +85,7 @@ public partial class AndroidView : UserControl
         set
         {
             _certificatePassword = value;
-            if (_settings != null)
-                _settings.CertificatePassword = value;
+            _settings?.CertificatePassword = value;
         }
     }
 
@@ -114,7 +110,7 @@ public partial class AndroidView : UserControl
 
     private void SaveSettings()
     {
-        _settings.Users = _users.ToList();
+        _settings.Users = [.. _users];
         SettingsManager.SaveSettings(_settings);
     }
 
@@ -203,7 +199,7 @@ public partial class AndroidView : UserControl
                     });
                 }
 
-            _server = new FtpsServer(new Log(), config);
+            _server = new FtpsServer(new StubLog(), config);
             _server.Start();
 
             IsServerRunning = true;

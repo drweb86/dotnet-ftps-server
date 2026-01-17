@@ -203,7 +203,7 @@ namespace FtpsServerAvalonia
                         });
                     }
 
-                _server = new FtpsServer(new Log(), config);
+                _server = new FtpsServer(new FileLog(), config);
                 _server.Start();
 
                 IsServerRunning = true;

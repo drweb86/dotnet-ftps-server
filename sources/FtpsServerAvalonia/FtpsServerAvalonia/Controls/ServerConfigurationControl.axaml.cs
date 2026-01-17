@@ -7,6 +7,7 @@ using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
 using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace FtpsServerAvalonia.Controls
 {
@@ -85,6 +86,9 @@ namespace FtpsServerAvalonia.Controls
                 PortControl.Value = Port;
                 MaxConnectionsControl.Value = MaxConnections;
             };
+
+            SelfSignedCertButton.IsVisible = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
+                RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         }
 
         protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)

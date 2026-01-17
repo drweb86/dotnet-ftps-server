@@ -5,7 +5,9 @@ using Avalonia.Platform.Storage;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
 using System;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace FtpsServerAvalonia.Controls
 {
@@ -42,7 +44,18 @@ namespace FtpsServerAvalonia.Controls
 
                 if (folders.Count > 0)
                 {
-                    user.Folder = folders[0].Path.LocalPath.TrimEnd('/', '\\');
+                    var folder = folders[0];
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
+                        RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    {
+                        user.Folder = folder.Path.LocalPath.TrimEnd('/', '\\');
+                    }
+                    else
+                    {
+                        var localPath = folder.TryGetLocalPath();
+                        user.Folder = folder.Path.LocalPath;
+                        var aaa = Directory.GetFiles(folder.Path.LocalPath);
+                    }
                 }
             }
         }

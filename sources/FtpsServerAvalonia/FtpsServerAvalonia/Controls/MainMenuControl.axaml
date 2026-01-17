@@ -41,6 +41,7 @@
 
         <MenuItem Header="{x:Static res:Strings.MenuLogs}"
                   FontWeight="Bold"
+				  x:Name="LogsMenuItem"
                   Foreground="{StaticResource TextPrimaryBrush}"
                   Command="{StaticResource OpenLogsCommand}" />
 

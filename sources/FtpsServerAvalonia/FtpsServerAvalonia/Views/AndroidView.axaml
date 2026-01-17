@@ -5,7 +5,7 @@
              xmlns:res="using:FtpsServerAvalonia.Resources"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d"
              x:Class="FtpsServerAvalonia.Views.AndroidView"
              Background="{StaticResource PrimaryDarkBrush}">
 
@@ -32,62 +32,53 @@
         </Style>
     </UserControl.Styles>
 
-    <DockPanel Margin="0">
-        <controls:MainMenuControl x:Name="MainMenu"
-                               DockPanel.Dock="Top"
-                               StartStopClicked="MainMenu_StartStopClicked" />
-        <controls:UpdateCheckExpanderView DockPanel.Dock="Top" />
+	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch">
+		<StackPanel HorizontalAlignment="Stretch">
+			<controls:MainMenuControl
+				x:Name="MainMenu"
+				DockPanel.Dock="Top"
+				StartStopClicked="MainMenu_StartStopClicked" />
 
-        <!-- Main Content -->
-        <Border Classes="Card">
-            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition SharedSizeGroup="A" />
-                        <ColumnDefinition SharedSizeGroup="A" />
-                    </Grid.ColumnDefinitions>
+			<controls:UpdateCheckExpanderView />
 
-                    <controls:ServerConfigurationControl x:Name="ServerConfig"
-                                                         Port="{Binding Port, Mode=TwoWay}"
-                                                         MaxConnections="{Binding MaxConnections, Mode=TwoWay}"
-                                                         CertificateSource="{Binding CertificateSource, Mode=TwoWay}"
-                                                         CertificatePath="{Binding CertificatePath, Mode=TwoWay}"
-                                                         CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}"
-                                                         Grid.Column="0" />
+			<controls:ServerConfigurationControl
+				x:Name="ServerConfig"
+				Port="{Binding Port, Mode=TwoWay}"
+				MaxConnections="{Binding MaxConnections, Mode=TwoWay}"
+				CertificateSource="{Binding CertificateSource, Mode=TwoWay}"
+				CertificatePath="{Binding CertificatePath, Mode=TwoWay}"
+				CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}" />
 
-                    <Border Background="{StaticResource TertiaryDarkBrush}"
-                            BorderBrush="{StaticResource AccentCyanBrush}"
-                            BorderThickness="1"
-                            CornerRadius="8"
-                            Padding="16"
-                            Margin="10,0,10,20"
-                            Grid.Column="1">
-                        <StackPanel>
-                            <Grid Margin="0,0,0,16">
-                                <TextBlock Text="{x:Static res:Strings.UsersTab}"
-                                           FontSize="18"
-                                           FontWeight="SemiBold"
-                                           Foreground="{StaticResource TextPrimaryBrush}"
-                                           HorizontalAlignment="Left"
-                                           VerticalAlignment="Center"/>
-                                <Button Content="{x:Static res:Strings.AddUserButton}"
-                                        Classes="SecondaryButton"
-                                        HorizontalAlignment="Right"
-                                        Click="AddUser_Click"
-                                        Padding="16,8"/>
-                            </Grid>
+			<Border Background="{StaticResource TertiaryDarkBrush}"
+					BorderBrush="{StaticResource AccentCyanBrush}"
+					BorderThickness="1"
+					CornerRadius="8"
+					Padding="16"
+					Margin="10,0,10,20">
+				<StackPanel>
+					<Grid Margin="0,0,0,16">
+						<TextBlock Text="{x:Static res:Strings.UsersTab}"
+								   FontSize="18"
+								   FontWeight="SemiBold"
+								   Foreground="{StaticResource TextPrimaryBrush}"
+								   HorizontalAlignment="Left"
+								   VerticalAlignment="Center"/>
+						<Button Content="{x:Static res:Strings.AddUserButton}"
+								Classes="SecondaryButton"
+								HorizontalAlignment="Right"
+								Click="AddUser_Click"
+								Padding="16,8"/>
+					</Grid>
 
-                            <ItemsControl x:Name="UsersItemsControl">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <controls:UserItemControl RemoveUserRequested="UserItemControl_RemoveUserRequested"/>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </StackPanel>
-                    </Border>
-                </Grid>
-            </ScrollViewer>
-        </Border>
-    </DockPanel>
+					<ItemsControl x:Name="UsersItemsControl">
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<controls:UserItemControl RemoveUserRequested="UserItemControl_RemoveUserRequested"/>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</StackPanel>
+			</Border>
+		</StackPanel>
+	</ScrollViewer>
 </UserControl>
