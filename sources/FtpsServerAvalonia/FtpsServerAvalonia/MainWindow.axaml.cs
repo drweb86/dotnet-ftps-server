@@ -2,23 +2,24 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using FtpsServerAvalonia.Controls;
 using FtpsServerAvalonia.Models;
-using FtpsServerAvalonia.Services;
 using FtpsServerAvalonia.Resources;
+using FtpsServerAvalonia.Services;
 using FtpsServerConsole;
 using FtpsServerLibrary;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Enums;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Enums;
+using System.Reactive;
 
 namespace FtpsServerAvalonia
 {
     public partial class MainWindow : Window
     {
         private FtpsServer? _server;
-        private AppSettings _settings;
-        private ObservableCollection<UserAccount> _users;
+        private readonly AppSettings _settings;
+        private readonly ObservableCollection<UserAccount> _users;
         private bool _isServerRunning;
 
         public bool IsServerRunning
@@ -44,8 +45,7 @@ namespace FtpsServerAvalonia
             set
             {
                 _port = value;
-                if (_settings != null)
-                    _settings.ServerPort = value;
+                _settings?.ServerPort = value;
             }
         }
 
@@ -55,8 +55,7 @@ namespace FtpsServerAvalonia
             set
             {
                 _maxConnections = value;
-                if (_settings != null)
-                    _settings.MaxConnections = value;
+                _settings?.MaxConnections = value;
             }
         }
 
@@ -66,8 +65,7 @@ namespace FtpsServerAvalonia
             set
             {
                 _certificateSource = value;
-                if (_settings != null)
-                    _settings.CertificateSource = value;
+                _settings?.CertificateSource = value;
             }
         }
 
@@ -77,8 +75,7 @@ namespace FtpsServerAvalonia
             set
             {
                 _certificatePath = value;
-                if (_settings != null)
-                    _settings.CertificatePath = value;
+                _settings?.CertificatePath = value;
             }
         }
 
@@ -88,8 +85,7 @@ namespace FtpsServerAvalonia
             set
             {
                 _certificatePassword = value;
-                if (_settings != null)
-                    _settings.CertificatePassword = value;
+                _settings?.CertificatePassword = value;
             }
         }
 
@@ -114,7 +110,7 @@ namespace FtpsServerAvalonia
 
         private void SaveSettings()
         {
-            _settings.Users = _users.ToList();
+            _settings.Users = [.. _users];
             SettingsManager.SaveSettings(_settings);
         }
 
@@ -203,8 +199,8 @@ namespace FtpsServerAvalonia
                         });
                     }
 
-                _server = new FtpsServer(new FileLog(), config);
-                _server.Start();
+                _server = new FtpsServer(new FileLog(), config, new FtpsServerFileSystemProvider());
+                await _server.StartAsync();
 
                 IsServerRunning = true;
             }

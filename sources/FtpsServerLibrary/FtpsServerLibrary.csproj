@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>Siarhei_Kuchuk.$(AssemblyName)</PackageId>
     <Title>Siarhei_Kuchuk.$(AssemblyName)</Title>
@@ -10,7 +9,7 @@
     <Company />
     <Description>A FTPS (FTP over TLS) server implementation in C# with logging, user permissions, and flexible configuration options. Aimed for Windows, Linux, or macOS platforms.</Description>
     <PackageProjectUrl>https://github.com/drweb86/dotnet-ftps-server</PackageProjectUrl>
-    <Copyright>(c) 2025-2025 Siarhei Kuchuk</Copyright>
+    <Copyright>(c) 2025-2026 Siarhei Kuchuk</Copyright>
     <RepositoryUrl>https://github.com/drweb86/dotnet-ftps-server</RepositoryUrl>
     <PackageTags>c#;dotnet;ftps server;ftps</PackageTags>
     <PackageReleaseNotes>Initial version</PackageReleaseNotes>

@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace FtpsServerLibrary;
 
 public interface IFtpsServerLog

@@ -1,44 +1,47 @@
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
 namespace FtpsServerLibrary;
 
 public class FtpsServer
 {
     private readonly FtpsServerConfiguration _config;
+    private readonly IFtpsServerFileSystemProvider _ftpsServerFileSystemProvider;
     private readonly IFtpsServerLog _log;
     private TcpListener? _listener;
     private bool _isRunning;
-    private readonly X509Certificate2 _serverCertificate;
+    private X509Certificate2? _serverCertificate;
     private int _activeConnections;
 
-    public FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config)
+    public FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtpsServerFileSystemProvider ftpsServerFileSystemProvider)
     {
         _log = log;
         _config = config;
+        _ftpsServerFileSystemProvider = ftpsServerFileSystemProvider;
+    }
+
+    public async Task StartAsync()
+    {
+        // Load certificate
+        _serverCertificate = await LoadCertificate();
 
         // Create user directories
         foreach (var user in _config.Users)
         {
-            user.Folder = new DirectoryInfo(user.Folder).FullName;
-
-            var userPath = user.Folder;
-            _log.Info($"User {user.Login} directory {userPath}");
-            if (!Directory.Exists(userPath))
+            user.Folder = await _ftpsServerFileSystemProvider.ResolveUserFolder(user.Folder);
+            _log.Info($"User {user.Login} directory {user.Folder}");
+            
+            if (!await _ftpsServerFileSystemProvider.DirectoryExists(user.Folder, []))
             {
-                Directory.CreateDirectory(userPath);
-                _log.Info($"Created user directory for {user.Login}: {userPath}");
+                await _ftpsServerFileSystemProvider.CreateDirectory(user.Folder, []);
+                _log.Info($"Created user directory for {user.Login}: {user.Folder}");
             }
         }
 
-        // Load certificate
-        _serverCertificate = LoadCertificate();
-    }
-
-    public void Start()
-    {
         try
         {
             var actualIp = _config.ServerSettings.Ip ?? "0.0.0.0";
@@ -116,12 +119,13 @@ public class FtpsServer
             _log,
             client,
             _config.Users,
-            _serverCertificate);
+            _serverCertificate,
+            _ftpsServerFileSystemProvider);
         
         await session.HandleAsync();
     }
 
-    private X509Certificate2 LoadCertificate()
+    private async Task<X509Certificate2> LoadCertificate()
     {
         if (_config.ServerSettings.X509Certificate is not null)
         {
@@ -145,10 +149,11 @@ public class FtpsServer
         {
             _log.Info($"Loading certificate from {_config.ServerSettings.CertificatePath}");
 
-            var extension = Path.GetExtension(_config.ServerSettings.CertificatePath);
+            var fileName = await _ftpsServerFileSystemProvider.GetFileName(_config.ServerSettings.CertificatePath);
+            var extension = System.IO.Path.GetExtension(fileName);
             if (extension is null)
             {
-                var exception = new InvalidDataException($"Certificate path extension {extension} is not recognizable! CertificatePath extension must end with .pem, .der, .pfx.");
+                var exception = new System.IO.InvalidDataException($"Certificate path extension {extension} is not recognizable! CertificatePath extension must end with .pem, .der, .pfx.");
                 _log.Fatal(exception, exception.Message);
                 throw exception;
             }
@@ -163,7 +168,7 @@ public class FtpsServer
                     return X509CertificateLoader.LoadPkcs12FromFile(_config.ServerSettings.CertificatePath, _config.ServerSettings.CertificatePassword);
 
                 default:
-                    var exception = new InvalidDataException($"Certificate path extension {extension} is not recognizable! CertificatePath extension must end with .pem, .der, .pfx.");
+                    var exception = new System.IO.InvalidDataException($"Certificate path extension {extension} is not recognizable! CertificatePath extension must end with .pem, .der, .pfx.");
                     _log.Fatal(exception, exception.Message);
                     throw exception;
             }
@@ -189,13 +194,13 @@ public class FtpsServer
             }
             if (certs.Count > 1)
             {
-                var exception = new InvalidDataException($"More than 1 certificate found!");
+                var exception = new System.IO.InvalidDataException($"More than 1 certificate found!");
                 _log.Fatal(exception, exception.Message);
                 throw exception;
             }
             else
             {
-                var exception = new InvalidDataException($"No certificates found!");
+                var exception = new System.IO.InvalidDataException($"No certificates found!");
                 _log.Fatal(exception, exception.Message);
                 throw exception;
             }
@@ -234,17 +239,17 @@ public class FtpsServer
 
     private X509Certificate2 GetOrCreateCertificate(FtpsServerSettings ftpsServerSettings)
     {
-        var directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        var directory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "FtpsServerLibrary",
             "Certificates");
-        Directory.CreateDirectory(directory);
+        System.IO.Directory.CreateDirectory(directory);
 
-        var certificateFile = Path.Combine(directory, "Self-Signed.pfx")!;
+        var certificateFile = System.IO.Path.Combine(directory, "Self-Signed.pfx")!;
         var password = ftpsServerSettings.CertificatePassword ?? "test";
 
         X509Certificate2? certificate = null;
 
-        if (File.Exists(certificateFile))
+        if (System.IO.File.Exists(certificateFile))
         {
             _log.Info($"Loading self-signed certificate from file {certificateFile}.");
             try
@@ -274,7 +279,7 @@ public class FtpsServer
         _log.Info($"Creating self-signed certificate for file {certificateFile}.");
         certificate = CreateSelfSignedServerCertificate(password);
         var pfxBytes = certificate.Export(X509ContentType.Pfx, password);
-        File.WriteAllBytes(certificateFile, pfxBytes);
+        System.IO.File.WriteAllBytes(certificateFile, pfxBytes);
 
         return certificate;
     }

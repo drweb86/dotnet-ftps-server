@@ -199,8 +199,8 @@ public partial class AndroidView : UserControl
                     });
                 }
 
-            _server = new FtpsServer(new StubLog(), config);
-            _server.Start();
+            _server = new FtpsServer(new StubLog(), config, new FtpsServerFileSystemProvider());
+            await _server.StartAsync();
 
             IsServerRunning = true;
         }
