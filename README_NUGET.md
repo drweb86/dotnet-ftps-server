@@ -62,8 +62,8 @@ var config = new FtpsServerConfiguration
         new FtpsServerUserAccount { Folder = @"c:\folder", Login = "admin", Password = "admin", Read = true, Write = true}
     ]
 };
-var server = new FtpsServer(new StubLog(), config);
-server.Start();
+var server = new FtpsServer(new StubLog(), config, new FtpsServerFileSystemProvider());
+await server.StartAsync();
 Console.WriteLine("Server is started at 0.0.0.0 listening on port 2121 with self-signed certificate");
 Console.ReadLine();
 server.Stop();

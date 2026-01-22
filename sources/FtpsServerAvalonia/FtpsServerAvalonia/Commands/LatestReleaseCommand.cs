@@ -21,7 +21,6 @@ public class LatestReleaseCommand : ICommand
     public void Execute(object? parameter)
     {
         var launcher = TopLevel.GetTopLevel(App.Instance)?.Launcher;
-        if (launcher is not null)
-            launcher.LaunchUriAsync(new Uri(ApplicationLinks.LatestRelease));
+        launcher?.LaunchUriAsync(new Uri(ApplicationLinks.LatestRelease));
     }
 }

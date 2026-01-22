@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Security;
@@ -29,11 +30,10 @@ class FtpsServerClientSession(
     private SslStream? _sslStream;
 
     private string? _username;
-    private FtpsServerUserAccount? _currentUser;
+    private FtpsServerUserAccount? _user;
     private bool _isAuthenticated;
-    private FtpsServerVirtualPath? _currentPath;
-    private string? _renameFrom;
-    private FtpsServerVirtualPath? _renameFromPath;
+    private FtpsServerVirtualPath _path = new();
+    private FtpsServerVirtualPath? _renameFrom;
     private Encoding _currentEncoding = Encoding.GetEncoding("ISO-8859-1");
 
     private TcpListener? _dataListener;
@@ -43,6 +43,22 @@ class FtpsServerClientSession(
 
     // FTPS data connection protection level
     private FtpsServerDataConnectionProtection _dataProtection = FtpsServerDataConnectionProtection.Clear;
+
+
+    private void Log(string command, string text)
+    {
+        _log.Info($"[{_user?.Login}] {command}: {text}");
+    }
+
+    private void LogError(Exception exception, string text)
+    {
+        _log.Error(exception, $"[{_user?.Login}]: {text}");
+    }
+
+    private void LogError(string text)
+    {
+        _log.Error(new Exception(text), $"[{_user?.Login}]: {text}");
+    }
 
     public async Task HandleAsync()
     {
@@ -271,9 +287,9 @@ class FtpsServerClientSession(
         var user = _users.FirstOrDefault(u => u.Login == _username);
         if (user != null && user.Password == password)
         {
-            _currentUser = user;
+            _user = user;
             _isAuthenticated = true;
-            _currentPath = new FtpsServerVirtualPath("/");
+            _path = new FtpsServerVirtualPath();
 
             _log.Info($"[{_clientAddress}] User logged in: {_username}");
             await SendResponseAsync(230, "User logged in");
@@ -352,7 +368,9 @@ class FtpsServerClientSession(
             return;
         }
 
-        await SendResponseAsync(257, $"\"{_currentPath?.ToString()}\" is current directory");
+        var currentDir = _path.ToFtpsPath();
+        Log("get current dir", currentDir);
+        await SendResponseAsync(257, $"\"{currentDir}\" is current directory");
     }
 
     private async Task HandleCwdAsync(string directory)
@@ -363,13 +381,13 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(directory);
+        var resultPath = _path.Append(directory);
+        Log("change directory", resultPath.ToFtpsPath());
         try
         {
-            if (await fileSystemProvider.DirectoryExists(_currentUser!.Folder, path.Segments))
+            if (await fileSystemProvider.DirectoryExists(_user!.Folder, resultPath.Segments))
             {
-                _currentPath = path;
-                _log.Debug($"[{_clientAddress}] Changed directory to: {_currentPath}");
+                _path = resultPath;
                 await SendResponseAsync(250, "Directory changed");
             }
             else
@@ -379,20 +397,22 @@ class FtpsServerClientSession(
         }
         catch (UnauthorizedAccessException e)
         {
-            _log.Error(e, $"[{_clientAddress}] Attempt to change directory to: {directory}");
+            LogError(e, $"[{_clientAddress}] Attempt to change directory to: {directory}");
             await SendResponseAsync(550, "Directory not found");
         }
     }
 
     private async Task HandleCdupAsync()
     {
-        if (!CheckAuthentication() || !CheckPermission(true, false) || _currentPath is null)
+        if (!CheckAuthentication() || !CheckPermission(true, false) || _path is null)
         {
             await SendResponseAsync(550, "Permission denied");
             return;
         }
 
-        _currentPath = _currentPath.GoUp();
+        _path = _path.GoUp();
+        var currentDir = _path.ToFtpsPath();
+        Log("change directory up", currentDir);
         await SendResponseAsync(250, "Directory changed");
     }
 
@@ -404,18 +424,18 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(directory);
-        var fullPath = ResolveFullPath(directory);
+        var path = _path.Append(directory);
+        var ftpsPath = path.ToFtpsPath();
+        Log("create directory", ftpsPath);
 
         try
         {
-            await fileSystemProvider.CreateDirectory(_currentUser!.Folder, path.Segments);
-            _log.Info($"[{_clientAddress}] Created directory: {path}");
-            await SendResponseAsync(257, $"\"{path}\" created");
+            await fileSystemProvider.CreateDirectory(_user!.Folder, path.Segments);
+            await SendResponseAsync(257, $"\"{ftpsPath}\" created");
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Failed to create directory: {fullPath}");
+            LogError(ex, $"Failed to create directory: {ftpsPath}");
             await SendResponseAsync(550, $"Cannot create directory: {ex.Message}");
         }
     }
@@ -428,25 +448,26 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(directory);
-        var fullPath = ResolveFullPath(directory);
+        var path = _path.Append(directory);
+        var ftpsPath = path.ToFtpsPath();
+        Log("delete directory", ftpsPath);
 
         try
         {
-            if (await fileSystemProvider.DirectoryExists(_currentUser!.Folder, path.Segments))
+            if (await fileSystemProvider.DirectoryExists(_user!.Folder, path.Segments))
             {
-                await fileSystemProvider.DirectoryDelete(_currentUser!.Folder, path.Segments);
-                _log.Info($"[{_clientAddress}] Deleted directory: {fullPath}");
+                await fileSystemProvider.DirectoryDelete(_user!.Folder, path.Segments);
                 await SendResponseAsync(250, "Directory removed");
             }
             else
             {
+                LogError("Failed to delete directory");
                 await SendResponseAsync(550, "Directory not found");
             }
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Failed to delete directory: {fullPath}");
+            LogError(ex, $"Failed to delete directory: {ftpsPath}");
             await SendResponseAsync(550, $"Cannot remove directory: {ex.Message}");
         }
     }
@@ -459,29 +480,30 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(filename);
-        var fullPath = ResolveFullPath(filename);
+        var path = _path.Append(filename);
+        var ftpsPath = path.ToFtpsPath();
+        Log("delete file", ftpsPath);
 
         try
         {
-            if (await fileSystemProvider.FileExists(_currentUser!.Folder, path.Segments))
+            if (await fileSystemProvider.FileExists(_user!.Folder, path.Segments))
             {
-                await fileSystemProvider.FileDelete(_currentUser!.Folder, path.Segments);
-
-                _log.Info($"[{_clientAddress}] Deleted file: {fullPath}");
+                await fileSystemProvider.FileDelete(_user!.Folder, path.Segments);
                 await SendResponseAsync(250, "File deleted");
             }
             else
             {
+                LogError("File not found");
                 await SendResponseAsync(550, "File not found");
             }
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Failed to delete file: {fullPath}");
+            LogError(ex, $"Failed to delete file: {ftpsPath}");
             await SendResponseAsync(550, $"Cannot delete file: {ex.Message}");
         }
     }
+
 
     private async Task HandleRnfrAsync(string filename)
     {
@@ -491,18 +513,20 @@ class FtpsServerClientSession(
             return;
         }
 
-        _renameFromPath = ResolveVirtualPath(filename);
-        var fullPath = ResolveFullPath(filename);
+        var path = _path.Append(filename);
+        var ftpsPath = path.ToFtpsPath();
+        Log("rename from", ftpsPath);
+        _renameFrom = path;
 
-        if (await fileSystemProvider.FileExists(_currentUser!.Folder, _renameFromPath.Segments) ||
-            await fileSystemProvider.DirectoryExists(_currentUser!.Folder, _renameFromPath.Segments))
+        if (await fileSystemProvider.FileExists(_user!.Folder, _renameFrom.Segments) ||
+            await fileSystemProvider.DirectoryExists(_user!.Folder, _renameFrom.Segments))
         {
-            _renameFrom = fullPath;
-            _renameFromPath = null;
             await SendResponseAsync(350, "Ready for RNTO");
         }
         else
         {
+            _renameFrom = null;
+            LogError("rename from file/directory does not exist");
             await SendResponseAsync(550, "File/directory not found");
         }
     }
@@ -515,37 +539,37 @@ class FtpsServerClientSession(
             return;
         }
 
-        if (string.IsNullOrEmpty(_renameFrom) || _renameFromPath is null)
+        if (_renameFrom is null)
         {
             await SendResponseAsync(503, "RNFR required first");
             return;
         }
 
-        var path = ResolveVirtualPath(filename);
-        var fullPath = ResolveFullPath(filename);
+        var path = _path.Append(filename);
+        var ftpsPath = path.ToFtpsPath();
+        Log("rename to", ftpsPath);
 
         try
         {
-            if (await fileSystemProvider.FileExists(_currentUser!.Folder, _renameFromPath.Segments))
+            if (await fileSystemProvider.FileExists(_user!.Folder, _renameFrom.Segments))
             {
-                await fileSystemProvider.FileMove(_currentUser!.Folder, _renameFromPath.Segments, path.Segments);
-                _log.Info($"[{_clientAddress}] Renamed file: {_renameFrom} -> {fullPath}");
+                await fileSystemProvider.FileMove(_user!.Folder, _renameFrom.Segments, path.Segments);
                 await SendResponseAsync(250, "File renamed");
             }
-            else if (await fileSystemProvider.DirectoryExists(_currentUser!.Folder, _renameFromPath.Segments))
+            else if (await fileSystemProvider.DirectoryExists(_user!.Folder, _renameFrom.Segments))
             {
-                await fileSystemProvider.DirectoryMove(_currentUser!.Folder, _renameFromPath.Segments, path.Segments);
-                _log.Info($"[{_clientAddress}] Renamed directory: {_renameFrom} -> {fullPath}");
+                await fileSystemProvider.DirectoryMove(_user!.Folder, _renameFrom.Segments, path.Segments);
                 await SendResponseAsync(250, "Directory renamed");
             }
             else
             {
+                LogError("rename to file/directory does not exist");
                 await SendResponseAsync(550, "Rename failed");
             }
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Rename {_renameFrom}->{fullPath} failed");
+            LogError(ex, "rename failed");
             await SendResponseAsync(550, $"Rename failed: {ex.Message}");
         }
         finally
@@ -590,9 +614,9 @@ class FtpsServerClientSession(
         await SendResponseAsync(227, response);
     }
 
-    private async Task HandleListAsync(string path)
+    private async Task HandleListAsync(string directory)
     {
-        if (!CheckAuthentication() || !CheckPermission(true, false) || _currentPath is null || _currentUser is null)
+        if (!CheckAuthentication() || !CheckPermission(true, false) || _path is null || _user is null)
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -616,7 +640,9 @@ class FtpsServerClientSession(
             return;
         }
 
-        var targetPath = string.IsNullOrEmpty(path) ? _currentPath : ResolveVirtualPath(path);
+        var path = _path.Append(directory ?? ".");
+        var ftpsPath = path.ToFtpsPath();
+        Log("get directory contents", ftpsPath);
 
         await SendResponseAsync(150, "Opening data connection");
 
@@ -637,11 +663,9 @@ class FtpsServerClientSession(
                 using (dataStream)
                 using (var dataWriter = new System.IO.StreamWriter(dataStream, Encoding.UTF8) { AutoFlush = true })
                 {
-                    if (await fileSystemProvider.DirectoryExists(_currentUser!.Folder, targetPath.Segments))
+                    if (await fileSystemProvider.DirectoryExists(_user!.Folder, path.Segments))
                     {
-                        var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_currentUser!.Folder, targetPath.Segments);
-                        _log.Debug($"[{_clientAddress}] Listing {entries.Count()} items from: {targetPath}");
-
+                        var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_user!.Folder, path.Segments);
                         foreach (var entry in entries)
                         {
                             var permissions = entry.IsDirectory ? "drwxr-xr-x" : "-rw-r--r--";
@@ -655,12 +679,11 @@ class FtpsServerClientSession(
                 }
             }
 
-            _log.Debug($"[{_clientAddress}] List transfer complete");
             await SendResponseAsync(226, "Transfer complete");
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] List failed");
+            LogError(ex, "List failed");
             await SendResponseAsync(550, $"List failed: {ex.Message}");
         }
         finally
@@ -671,9 +694,9 @@ class FtpsServerClientSession(
         }
     }
 
-    private async Task HandleNlstAsync(string path)
+    private async Task HandleNlstAsync(string directory)
     {
-        if (!CheckAuthentication() || !CheckPermission(true, false) || _currentPath is null || _currentUser is null)
+        if (!CheckAuthentication() || !CheckPermission(true, false) || _path is null || _user is null)
         {
             await SendResponseAsync(550, "Permission denied");
             return;
@@ -697,7 +720,9 @@ class FtpsServerClientSession(
             return;
         }
 
-        var targetPath = string.IsNullOrEmpty(path) ? _currentPath : ResolveVirtualPath(path);
+        var path = _path.Append(directory ?? ".");
+        var ftpsPath = path.ToFtpsPath();
+        Log("get directory contents 2", ftpsPath);
 
         await SendResponseAsync(150, "Opening data connection");
 
@@ -718,9 +743,9 @@ class FtpsServerClientSession(
                 using (dataStream)
                 using (var dataWriter = new System.IO.StreamWriter(dataStream, Encoding.UTF8) { AutoFlush = true })
                 {
-                    if (await fileSystemProvider.DirectoryExists(_currentUser.Folder, targetPath.Segments))
+                    if (await fileSystemProvider.DirectoryExists(_user.Folder, path.Segments))
                     {
-                        var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_currentUser!.Folder, targetPath.Segments);
+                        var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_user!.Folder, path.Segments);
 
                         foreach (var entry in entries)
                         {
@@ -734,7 +759,7 @@ class FtpsServerClientSession(
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] List failed");
+            LogError(ex, "List failed");
             await SendResponseAsync(550, $"List failed: {ex.Message}");
         }
         finally
@@ -771,17 +796,16 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(filename);
-        var fullPath = ResolveFullPath(filename);
+        var path = _path.Append(filename);
+        var ftpsPath = path.ToFtpsPath();
+        Log("download", ftpsPath);
 
-        if (!await fileSystemProvider.FileExists(_currentUser!.Folder, path.Segments))
+        if (!await fileSystemProvider.FileExists(_user!.Folder, path.Segments))
         {
             dataClient.Dispose();
             await SendResponseAsync(550, "File not found");
             return;
         }
-
-        _log.Info($"[{_clientAddress}] Downloading: {fullPath}");
 
         await SendResponseAsync(150, $"Opening data connection");
 
@@ -800,7 +824,7 @@ class FtpsServerClientSession(
                 }
 
                 using (dataStream)
-                using (var fileStream = await fileSystemProvider.FileOpenRead(_currentUser.Folder, path.Segments))
+                using (var fileStream = await fileSystemProvider.FileOpenRead(_user.Folder, path.Segments))
                 {
                     await fileStream.CopyToAsync(dataStream);
                 }
@@ -811,7 +835,7 @@ class FtpsServerClientSession(
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Download failed: {path}");
+            LogError(ex, $"Download failed: {ftpsPath}");
             await SendResponseAsync(550, $"Transfer failed: {ex.Message}");
         }
         finally
@@ -848,12 +872,11 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(filename);
-        var fullPath = ResolveFullPath(filename);
+        var path = _path.Append(filename);
+        var ftpsPath = path.ToFtpsPath();
+        Log("upload", ftpsPath);
 
-        _log.Info($"[{_clientAddress}] Uploading: {fullPath}");
-
-        await SendResponseAsync(150, $"Opening data connection for {fullPath}");
+        await SendResponseAsync(150, $"Opening data connection for {ftpsPath}");
 
         try
         {
@@ -870,18 +893,17 @@ class FtpsServerClientSession(
                 }
 
                 using (dataStream)
-                using (var fileStream = await fileSystemProvider.FileCreate(_currentUser!.Folder, path.Segments))
+                using (var fileStream = await fileSystemProvider.FileCreate(_user!.Folder, path.Segments))
                 {
                     await dataStream.CopyToAsync(fileStream);
                 }
             }
 
-            _log.Info($"[{_clientAddress}] Upload complete.");
             await SendResponseAsync(226, "Transfer complete");
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Upload failed: {fullPath}");
+            LogError(ex, $"Upload failed: {ftpsPath}");
             await SendResponseAsync(550, $"Transfer failed: {ex.Message}");
         }
         finally
@@ -900,13 +922,15 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(filename);
+        var path = _path.Append(filename);
+        var ftpsPath = path.ToFtpsPath();
+        Log("get size", ftpsPath);
 
         try
         {
-            if (await fileSystemProvider.FileExists(_currentUser!.Folder, path.Segments))
+            if (await fileSystemProvider.FileExists(_user!.Folder, path.Segments))
             {
-                var length = await fileSystemProvider.GetFileLength(_currentUser!.Folder, path.Segments);
+                var length = await fileSystemProvider.GetFileLength(_user!.Folder, path.Segments);
                 await SendResponseAsync(213, length.ToString());
             }
             else
@@ -916,8 +940,7 @@ class FtpsServerClientSession(
         }
         catch (Exception ex)
         {
-            var fullPath = ResolveFullPath(filename);
-            _log.Error(ex, $"[{_clientAddress}] {fullPath} SIZE command failed");
+            LogError(ex, $"{ftpsPath} SIZE command failed");
             await SendResponseAsync(550, $"Error: {ex.Message}");
         }
     }
@@ -930,13 +953,15 @@ class FtpsServerClientSession(
             return;
         }
 
-        var path = ResolveVirtualPath(filename);
+        var path = _path.Append(filename);
+        var ftpsPath = path.ToFtpsPath();
+        Log("get modified time", ftpsPath);
 
         try
         {
-            if (await fileSystemProvider.FileExists(_currentUser!.Folder, path.Segments))
+            if (await fileSystemProvider.FileExists(_user!.Folder, path.Segments))
             {
-                var lastWriteTimeUtc = await fileSystemProvider.GetFileLastWriteTimeUtc(_currentUser!.Folder, path.Segments);
+                var lastWriteTimeUtc = await fileSystemProvider.GetFileLastWriteTimeUtc(_user!.Folder, path.Segments);
                 var timestamp = lastWriteTimeUtc.ToString("yyyyMMddHHmmss");
                 await SendResponseAsync(213, timestamp);
             }
@@ -947,8 +972,7 @@ class FtpsServerClientSession(
         }
         catch (Exception ex)
         {
-            var fullPath = ResolveFullPath(filename);
-            _log.Error(ex, $"[{_clientAddress}] {fullPath} MDTM command failed");
+            LogError(ex, $"{ftpsPath} MDTM command failed");
             await SendResponseAsync(550, $"Error: {ex.Message}");
         }
     }
@@ -980,38 +1004,17 @@ class FtpsServerClientSession(
 
     private bool CheckAuthentication()
     {
-        return _isAuthenticated && _currentUser != null;
+        return _isAuthenticated && _user != null;
     }
 
     private bool CheckPermission(bool read, bool write)
     {
-        if (_currentUser == null)
+        if (_user == null)
             return false;
 #pragma warning disable IDE0075 // Simplify conditional expression
-        return (read ? _currentUser.Read : true) &&
-            (write ? _currentUser.Write : true);
+        return (read ? _user.Read : true) &&
+            (write ? _user.Write : true);
 #pragma warning restore IDE0075 // Simplify conditional expression
-    }
-
-    private FtpsServerVirtualPath ResolveVirtualPath(string path)
-    {
-        if (_currentPath is null)
-            return new FtpsServerVirtualPath(path);
-
-        return _currentPath.Append(path);
-    }
-
-    private string ResolveFullPath(string virtualPath)
-    {
-        if (_currentPath is null ||
-            _currentUser is null)
-            return string.Empty;
-
-        var result = _currentPath
-            .Append(virtualPath);
-
-        return fileSystemProvider
-            .GetRealPath(_currentUser.Folder, result.Segments);
     }
 
     private async Task SendResponseAsync(int code, string message)

@@ -15,7 +15,7 @@ class Program
 {
     private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         try
         {
@@ -47,7 +47,7 @@ class Program
             }
 
             // Create and start server
-            var server = new FtpsServer(new Log(), config);
+            var server = new FtpsServer(new FileLog(), config, new FtpsServerFileSystemProvider());
             
             _logger.Info($"FTPS Server Starting...");
             var ipAddress = config.ServerSettings.Ip == "0.0.0.0" ? "all" : config.ServerSettings.Ip;
@@ -67,7 +67,7 @@ class Program
             _logger.Info($"Users Configured: {config.Users.Count}");
             _logger.Info($"Encryption: Explicit");
 
-            server.Start();
+            await server.StartAsync();
             
             Console.WriteLine("\nPress 'Q' to stop the server...");
             while (Console.ReadKey(true).Key != ConsoleKey.Q) { }
@@ -90,7 +90,7 @@ class Program
     static void ShowBanner()
     {
         var version = Assembly.GetExecutingAssembly().GetName().Version ?? throw new InvalidProgramException("Failed to get assembly from !");
-        var copyright = string.Format(CultureInfo.CurrentUICulture, CopyrightInfo.Copyright);
+        var copyright = string.Format(CultureInfo.CurrentUICulture, "FTPS Server {0} : Copyright (c) 2025-{1} Siarhei Kuchuk", version, DateTime.Now.Year);
         Console.WriteLine(copyright);
     }
 
@@ -450,7 +450,7 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
                     fileName += ".json";
                 }
 
-                if (SaveConfigurationToFile(config, fileName))
+                if (SaveConfigurationToFile(config, fileName, GetOptions()))
                 {
                     Console.WriteLine($"\nConfiguration saved to: {Path.GetFullPath(fileName)}");
                     Console.WriteLine($"\nTo use this configuration later, run:");
@@ -468,20 +468,23 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
         }
     }
 
-    static bool SaveConfigurationToFile(FtpsServerConfiguration config, string fileName)
+    private static JsonSerializerOptions GetOptions()
     {
-        try
+        return new JsonSerializerOptions
         {
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                Converters =
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            Converters =
                 {
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
                 }
-            };
+        };
+    }
 
+    static bool SaveConfigurationToFile(FtpsServerConfiguration config, string fileName, JsonSerializerOptions options)
+    {
+        try
+        {
             var json = JsonSerializer.Serialize(config, options);
             File.WriteAllText(fileName, json);
             _logger.Info($"Configuration saved to {fileName}");

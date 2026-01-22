@@ -1,7 +1,11 @@
-﻿# 2025.01.14
+﻿# 2025.01.22
 (unpublished)
 
 ## New Features
+- Library: Possibility to implement own file system.
+
+## Changes
+- Library: code simplification.
 
 # 2025.01.11
 

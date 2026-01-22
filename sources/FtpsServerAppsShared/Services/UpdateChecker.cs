@@ -40,8 +40,8 @@ public static class UpdateChecker
                 .Replace("#", "");
 
             var bodyLines = body
-                .Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None)
-                .Where(line => !line.StartsWith("<") && !line.StartsWith("["))
+                .Split(["\r\n", "\r", "\n"], StringSplitOptions.None)
+                .Where(line => !line.StartsWith('<') && !line.StartsWith('['))
                 .ToList();
             // Remove leading empty lines
             while (bodyLines.Count > 0 && string.IsNullOrWhiteSpace(bodyLines[0]))

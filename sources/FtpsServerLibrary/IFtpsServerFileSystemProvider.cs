@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Enumeration;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,8 +28,6 @@ public interface IFtpsServerFileSystemProvider
     Task<string> GetFileName(string pickerFile);
 
     Task<IEnumerable<FtpsServerFileSystemEntry>> DirectoryGetFileSystemEntries(string userFolder, IEnumerable<string> parts);
-
-    string GetRealPath(string userFolder, params IEnumerable<string> parts);
     Task<string> ResolveUserFolder(string userFolder);
 }
 
@@ -137,7 +134,7 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
         return Task.FromResult(pickerFile);
     }
 
-    public string GetRealPath(string userFolder, params IEnumerable<string> parts)
+    private string GetRealPath(string userFolder, params IEnumerable<string> parts)
     {
         ArgumentNullException.ThrowIfNullOrEmpty(userFolder, nameof(userFolder));
 
@@ -190,7 +187,7 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
         var from = GetRealPath(userFolder, fromParts);
         var to = GetRealPath(userFolder, toParts);
 
-        File.Move(from, to);
+        Directory.Move(from, to);
 
         return Task.CompletedTask;
     }

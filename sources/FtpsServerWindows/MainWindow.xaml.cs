@@ -16,8 +16,8 @@ namespace FtpsServerWindows
     public partial class MainWindow : Window
     {
         private FtpsServer? _server;
-        private AppSettings _settings;
-        private ObservableCollection<UserAccount> _users;
+        private readonly AppSettings _settings;
+        private readonly ObservableCollection<UserAccount> _users;
         private bool _isServerRunning;
 
         public bool IsServerRunning
@@ -133,7 +133,7 @@ namespace FtpsServerWindows
 
         private void SaveSettings()
         {
-            _settings.Users = _users.ToList();
+            _settings.Users = [.. _users];
             SettingsManager.SaveSettings(_settings);
         }
 
@@ -157,7 +157,7 @@ namespace FtpsServerWindows
             }
         }
 
-        private void MainMenu_StartStopClicked(object sender, RoutedEventArgs e)
+        private async void MainMenu_StartStopClicked(object sender, RoutedEventArgs e)
         {
             if (IsServerRunning)
             {
@@ -165,11 +165,11 @@ namespace FtpsServerWindows
             }
             else
             {
-                StartServer();
+                await StartServer();
             }
         }
 
-        private void StartServer()
+        private async Task StartServer()
         {
             try
             {
@@ -225,8 +225,8 @@ namespace FtpsServerWindows
                         });
                     }
 
-                _server = new FtpsServer(new Log(), config);
-                _server.Start();
+                _server = new FtpsServer(new FileLog(), config, new FtpsServerFileSystemProvider());
+                await _server.StartAsync();
                 
                 IsServerRunning = true;
             }

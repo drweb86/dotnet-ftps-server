@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace FtpsServerLibrary;
 
+[DebuggerDisplay("{string.Join(\",\", _segments)}")]
 class FtpsServerVirtualPath(params IEnumerable<string> pathsOrSegments)
 {
     private readonly List<string> _segments = 
@@ -80,5 +82,10 @@ class FtpsServerVirtualPath(params IEnumerable<string> pathsOrSegments)
     public FtpsServerVirtualPath GoUp()
     {
         return Append("..");
+    }
+
+    public string ToFtpsPath()
+    {
+        return "/" + string.Join("/", Segments);
     }
 }
