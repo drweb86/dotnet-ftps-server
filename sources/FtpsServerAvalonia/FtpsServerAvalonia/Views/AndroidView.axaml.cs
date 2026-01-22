@@ -199,7 +199,10 @@ public partial class AndroidView : UserControl
                     });
                 }
 
-            _server = new FtpsServer(new StubLog(), config, new AndroidFtpsServerFileSystemProvider());
+            var topLevel = TopLevel.GetTopLevel(App.Instance);
+            if (topLevel is null)
+                return;
+            _server = new FtpsServer(new StubLog(), config, new AndroidFtpsServerFileSystemProvider(topLevel.StorageProvider));
             await _server.StartAsync();
 
             IsServerRunning = true;
