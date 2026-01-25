@@ -231,8 +231,8 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
         var isAndroid = !(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
                         RuntimeInformation.IsOSPlatform(OSPlatform.Linux));
         return X509CertificateLoader.LoadPkcs12(certificate.Export(X509ContentType.Pfx, password), password,
-            isAndroid 
-            ? X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable
+            isAndroid
+            ? X509KeyStorageFlags.Exportable
             : X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
     }
 

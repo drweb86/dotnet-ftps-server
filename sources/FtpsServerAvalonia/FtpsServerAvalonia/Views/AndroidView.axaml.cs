@@ -153,7 +153,7 @@ public partial class AndroidView : UserControl
         {
             Login = $"user{_users.Count + 1}",
             Password = $"password{_users.Count + 1}",
-            Folder = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
+            Folder = string.Empty,
             ReadonlyPermission = false,
         };
         _users.Add(newUser);

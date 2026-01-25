@@ -295,7 +295,7 @@ namespace FtpsServerAvalonia.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ⏵START.
+        ///   Looks up a localized string similar to [ START ].
         /// </summary>
         public static string MenuStart {
             get {
@@ -304,7 +304,7 @@ namespace FtpsServerAvalonia.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ⏹ STOP.
+        ///   Looks up a localized string similar to [ STOP ].
         /// </summary>
         public static string MenuStop {
             get {

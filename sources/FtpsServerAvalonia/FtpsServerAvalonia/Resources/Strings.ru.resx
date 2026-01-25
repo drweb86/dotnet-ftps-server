@@ -84,10 +84,10 @@
     <value>Журналы</value>
   </data>
   <data name="MenuStart" xml:space="preserve">
-    <value>⏵СТАРТ</value>
+    <value>[ СТАРТ ]</value>
   </data>
   <data name="MenuStop" xml:space="preserve">
-    <value>⏹ СТОП</value>
+    <value>[ СТОП ]</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Сервер - V{0}</value>

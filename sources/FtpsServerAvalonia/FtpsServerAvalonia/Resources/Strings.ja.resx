@@ -84,10 +84,10 @@
     <value>ログ</value>
   </data>
   <data name="MenuStart" xml:space="preserve">
-    <value>⏵開始</value>
+    <value>[ 開始 ]</value>
   </data>
   <data name="MenuStop" xml:space="preserve">
-    <value>⏹ 停止</value>
+    <value>[ 停止 ]</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPSサーバー - V{0}</value>

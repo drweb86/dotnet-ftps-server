@@ -84,10 +84,10 @@
     <value>日志</value>
   </data>
   <data name="MenuStart" xml:space="preserve">
-    <value>⏵启动</value>
+    <value>[ 启动 ]</value>
   </data>
   <data name="MenuStop" xml:space="preserve">
-    <value>⏹ 停止</value>
+    <value>[ 停止 ]</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS 服务器 - V{0}</value>

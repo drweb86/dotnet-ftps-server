@@ -84,10 +84,10 @@
     <value>Logs</value>
   </data>
   <data name="MenuStart" xml:space="preserve">
-    <value>⏵START</value>
+    <value>[ START ]</value>
   </data>
   <data name="MenuStop" xml:space="preserve">
-    <value>⏹ STOP</value>
+    <value>[ STOP ]</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>

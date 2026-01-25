@@ -84,10 +84,10 @@
     <value>Journaux</value>
   </data>
   <data name="MenuStart" xml:space="preserve">
-    <value>⏵DÉMARRER</value>
+    <value>[ DÉMARRER ]</value>
   </data>
   <data name="MenuStop" xml:space="preserve">
-    <value>⏹ ARRÊTER</value>
+    <value>[ ARRÊTER ]</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>Serveur FTPS - V{0}</value>

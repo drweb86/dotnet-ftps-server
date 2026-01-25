@@ -84,10 +84,10 @@
     <value>Registros</value>
   </data>
   <data name="MenuStart" xml:space="preserve">
-    <value>⏵INICIAR</value>
+    <value>[ INICIAR ]</value>
   </data>
   <data name="MenuStop" xml:space="preserve">
-    <value>⏹ PARAR</value>
+    <value>[ PARAR ]</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>Servidor FTPS - V{0}</value>
