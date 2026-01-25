@@ -85,6 +85,8 @@ if ($LastExitCode -ne 0)
 	Exit 1
 }
 
+& ./build-android.ps1
+
 Write-Output "The following artefacts are produced. Release them"
 Get-ChildItem ".\Output"
 

@@ -1,3 +1,5 @@
+Write-Output "Building for Android......................................"
+
 $version = Get-Content ".\CHANGELOG.md" -First 1
 $version = $version.Substring(2)
 
@@ -9,7 +11,7 @@ cd sources
 
 # "--runtime=$($platform.CoreRuntimeWindows)" `
 Write-Output "Publish..."
-& dotnet build FtpsServer.Android.slnx "/p:InformationalVersion=$version" `
+& dotnet publish FtpsServer.Android.slnx "/p:InformationalVersion=$version" `
 	"/p:VersionPrefix=$version" `
 	"/p:Version=$version" `
 	"/p:AssemblyVersion=$version" `
@@ -27,4 +29,9 @@ if ($LastExitCode -ne 0)
 }
 
 cd ..
+
+Write-Output "Copying APK files..."
+Copy-Item -Path "sources\FtpsServerAvalonia\FtpsServerAvalonia.Android\bin\Release\net10.0-android\*.apk" -Destination "Output" -Force
+
+Write-Output "Building for Android is completed......................."
 
