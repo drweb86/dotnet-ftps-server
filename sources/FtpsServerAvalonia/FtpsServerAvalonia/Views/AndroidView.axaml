@@ -32,8 +32,8 @@
         </Style>
     </UserControl.Styles>
 
-	<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch">
-		<StackPanel HorizontalAlignment="Stretch">
+	<ScrollViewer x:Name="MainScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch">
+		<StackPanel x:Name="ContentPanel" HorizontalAlignment="Stretch">
 			<controls:MainMenuControl
 				x:Name="MainMenu"
 				DockPanel.Dock="Top"

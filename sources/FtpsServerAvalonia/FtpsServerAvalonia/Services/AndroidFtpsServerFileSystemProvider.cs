@@ -248,10 +248,4 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
 
         return result;
     }
-
-    public async Task<string> ResolveUserFolder(string serializedFolderBookmark)
-    {
-        var folder = await GetRootFolder(serializedFolderBookmark);
-        return folder.Name;
-    }
 }

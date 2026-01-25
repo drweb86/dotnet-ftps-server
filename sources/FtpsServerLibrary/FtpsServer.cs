@@ -1,6 +1,8 @@
 using System;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -19,24 +21,23 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
 
     public async Task StartAsync()
     {
-        // Load certificate
-        _serverCertificate = await LoadCertificate();
-
-        // Create user directories
-        foreach (var user in _config.Users)
-        {
-            user.Folder = await _ftpsServerFileSystemProvider.ResolveUserFolder(user.Folder);
-            _log.Info($"User {user.Login} directory {user.Folder}");
-            
-            if (!await _ftpsServerFileSystemProvider.DirectoryExists(user.Folder, []))
-            {
-                await _ftpsServerFileSystemProvider.CreateDirectory(user.Folder, []);
-                _log.Info($"Created user directory for {user.Login}: {user.Folder}");
-            }
-        }
-
         try
         {
+            // Load certificate
+            _serverCertificate = await LoadCertificate();
+
+            // Create user directories
+            foreach (var user in _config.Users)
+            {
+                _log.Info($"User {user.Login} directory {user.Folder}");
+
+                if (!await _ftpsServerFileSystemProvider.DirectoryExists(user.Folder, []))
+                {
+                    await _ftpsServerFileSystemProvider.CreateDirectory(user.Folder, []);
+                    _log.Info($"Created user directory for {user.Login}: {user.Folder}");
+                }
+            }
+
             var actualIp = _config.ServerSettings.Ip ?? "0.0.0.0";
             var actualPort = _config.ServerSettings.Port ?? 2121;
 
@@ -227,7 +228,12 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
         request.CertificateExtensions.Add(sanBuilder.Build());
 
         var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)), new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
-        return X509CertificateLoader.LoadPkcs12(certificate.Export(X509ContentType.Pfx, password), password, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
+        var isAndroid = !(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
+                        RuntimeInformation.IsOSPlatform(OSPlatform.Linux));
+        return X509CertificateLoader.LoadPkcs12(certificate.Export(X509ContentType.Pfx, password), password,
+            isAndroid 
+            ? X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable
+            : X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
     }
 
     private X509Certificate2 GetOrCreateCertificate(FtpsServerSettings ftpsServerSettings)
@@ -247,7 +253,13 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
             _log.Info($"Loading self-signed certificate from file {certificateFile}.");
             try
             {
-                certificate = X509CertificateLoader.LoadPkcs12FromFile(certificateFile, password, X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
+                var isAndroid = !(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
+                        RuntimeInformation.IsOSPlatform(OSPlatform.Linux));
+
+                certificate = X509CertificateLoader.LoadPkcs12FromFile(certificateFile, password,
+                    isAndroid 
+                        ? X509KeyStorageFlags.Exportable
+                        : X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
 
                 // Check if certificate is still valid (with some buffer time)
                 if (certificate.NotAfter > DateTime.UtcNow.AddDays(7) &&
@@ -259,8 +271,9 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
                 // Certificate is expired or expiring soon
                 certificate.Dispose();
             }
-            catch
+            catch (Exception e)
             {
+                Trace.TraceError(e.Message);
                 // Certificate is corrupted or password changed
                 certificate?.Dispose();
             }

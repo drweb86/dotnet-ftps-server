@@ -1,6 +1,0 @@
-<Solution>
-  <Folder Name="/Shared/">
-    <File Path="../../CHANGELOG.md" />
-  </Folder>
-  <Project Path="FtpsServerMaui.csproj" />
-</Solution>

@@ -1,17 +1,18 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Platform;
 using Avalonia.Interactivity;
 using FtpsServerAvalonia.Controls;
 using FtpsServerAvalonia.Models;
-using FtpsServerAvalonia.Services;
 using FtpsServerAvalonia.Resources;
+using FtpsServerAvalonia.Services;
 using FtpsServerConsole;
 using FtpsServerLibrary;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Enums;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Enums;
 
 namespace FtpsServerAvalonia.Views;
 
@@ -104,8 +105,40 @@ public partial class AndroidView : UserControl
         CertificateSource = _settings.CertificateSource;
         CertificatePath = _settings.CertificatePath;
         CertificatePassword = _settings.CertificatePassword;
-
         DataContext = this;
+    }
+
+    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        base.OnAttachedToVisualTree(e);
+
+        var topLevel = TopLevel.GetTopLevel(this);
+        if (topLevel?.InsetsManager is { } insetsManager)
+        {
+            insetsManager.DisplayEdgeToEdgePreference = true;
+            insetsManager.IsSystemBarVisible = true;
+            insetsManager.SafeAreaChanged += OnSafeAreaChanged;
+
+            var SafeArea = insetsManager.SafeAreaPadding;
+            var height = topLevel.InputPane?.OccludedRect.Height;
+            // Apply initial safe area
+            UpdateSafeAreaPadding(insetsManager.SafeAreaPadding, height);
+        }
+    }
+
+    private void OnSafeAreaChanged(object? sender, SafeAreaChangedArgs e)
+    {
+        var topLevel = TopLevel.GetTopLevel(this);
+        if (topLevel is null)
+            return;
+        var height = topLevel.InputPane?.OccludedRect.Height;
+        UpdateSafeAreaPadding(e.SafeAreaPadding, height);
+    }
+
+    private void UpdateSafeAreaPadding(Thickness safeArea, double? height)
+    {
+        // Add padding to the content panel to account for keyboard and system bars
+        ContentPanel.Margin = new Thickness(0, safeArea.Top, 0, height ?? safeArea.Bottom);
     }
 
     private void SaveSettings()
@@ -241,8 +274,14 @@ public partial class AndroidView : UserControl
     }
 
     // UserControl doesn't have OnClosed, so we need to handle detachment differently
-    protected override void OnDetachedFromVisualTree(Avalonia.VisualTreeAttachmentEventArgs e)
+    protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
+        var topLevel = TopLevel.GetTopLevel(this);
+        if (topLevel?.InsetsManager is { } insetsManager)
+        {
+            insetsManager.SafeAreaChanged -= OnSafeAreaChanged;
+        }
+
         base.OnDetachedFromVisualTree(e);
         StopServer();
         SaveSettings();

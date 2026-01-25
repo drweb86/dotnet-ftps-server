@@ -28,7 +28,6 @@ public interface IFtpsServerFileSystemProvider
     Task<string> GetFileName(string pickerFile);
 
     Task<IEnumerable<FtpsServerFileSystemEntry>> DirectoryGetFileSystemEntries(string userFolder, IEnumerable<string> parts);
-    Task<string> ResolveUserFolder(string userFolder);
 }
 
 public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider

@@ -1,6 +1,8 @@
 <Solution>
   <Project Path="FtpsServerAppsShared/FtpsServerAppsShared.csproj" Id="8a7b4945-7a44-48a3-a5dc-ff411c3b6fc8" />
   <Project Path="FtpsServerAvalonia/FtpsServerAvalonia/FtpsServerAvalonia.csproj" />
-  <Project Path="FtpsServerAvalonia/FtpsServerAvalonia.Android/FtpsServerAvalonia.Android.csproj" />
+  <Project Path="FtpsServerAvalonia/FtpsServerAvalonia.Android/FtpsServerAvalonia.Android.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
   <Project Path="FtpsServerLibrary/FtpsServerLibrary.csproj" Id="11bedc33-7b62-4588-8396-28d9907cf3a7" />
 </Solution>
