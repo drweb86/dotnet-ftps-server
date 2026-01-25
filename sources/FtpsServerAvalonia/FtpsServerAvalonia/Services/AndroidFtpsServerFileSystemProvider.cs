@@ -61,10 +61,7 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
 
         var folder = await NavigateToFolder(serializedFolderBookmark, folderParts);
         var items = await folder.GetItemsAsync().ToListAsync();
-        var file = items.OfType<IStorageFile>().FirstOrDefault(f => f.Name == fileName);
-
-        if (file == null)
-            throw new FileNotFoundException($"File not found: {fileName}");
+        var file = items.OfType<IStorageFile>().FirstOrDefault(f => f.Name == fileName) ?? throw new FileNotFoundException($"File not found: {fileName}");
 
         return file;
     }
@@ -130,10 +127,7 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
         var toParentFolder = await NavigateToFolder(serializedFolderBookmark, toParentParts);
 
         // Create destination folder with the new name
-        var destFolder = await toParentFolder.CreateFolderAsync(newName);
-        if (destFolder == null)
-            throw new IOException($"Failed to create destination folder: {newName}");
-
+        var destFolder = await toParentFolder.CreateFolderAsync(newName) ?? throw new IOException($"Failed to create destination folder: {newName}");
         var items = await fromFolder
             .GetItemsAsync()
             .ToListAsync();
@@ -152,9 +146,7 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
         var toParentFolder = await NavigateToFolder(serializedFolderBookmark, toParentParts);
 
         // Create destination file with the new name
-        var destFile = await toParentFolder.CreateFileAsync(newName);
-        if (destFile == null)
-            throw new IOException($"Failed to create destination file: {newName}");
+        var destFile = await toParentFolder.CreateFileAsync(newName) ?? throw new IOException($"Failed to create destination file: {newName}");
 
         // Copy content from source to destination
         await using (var sourceStream = await fromFile.OpenReadAsync())
@@ -177,10 +169,7 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
         var folderParts = partsList.Take(partsList.Count - 1);
 
         var folder = await NavigateToFolder(serializedFolderBookmark, folderParts);
-        var file = await folder.CreateFileAsync(fileName);
-
-        if (file == null)
-            throw new IOException($"Failed to create file: {fileName}");
+        var file = await folder.CreateFileAsync(fileName) ?? throw new IOException($"Failed to create file: {fileName}");
 
         return await file.OpenWriteAsync();
     }
@@ -246,7 +235,7 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
             var properties = await item.GetBasicPropertiesAsync();
             var lastWriteTime = properties.DateModified?.DateTime ?? DateTime.Now;
 
-            if (item is IStorageFile file)
+            if (item is IStorageFile)
             {
                 var size = (long)(properties.Size ?? 0);
                 result.Add(new FtpsServerFileSystemEntry(item.Name, lastWriteTime, size, false));

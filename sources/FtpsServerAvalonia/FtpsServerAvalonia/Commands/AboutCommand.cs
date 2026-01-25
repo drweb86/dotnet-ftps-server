@@ -20,7 +20,6 @@ public class AboutCommand : ICommand
     public void Execute(object? parameter)
     {
         var launcher = TopLevel.GetTopLevel(App.Instance)?.Launcher;
-        if (launcher is not null)
-            launcher.LaunchUriAsync(new Uri(ApplicationLinks.AboutUrl));
+        launcher?.LaunchUriAsync(new Uri(ApplicationLinks.AboutUrl));
     }
 }
