@@ -5,8 +5,6 @@ using Avalonia.Platform.Storage;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
 using System;
-using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace FtpsServerAvalonia.Controls
@@ -49,12 +47,17 @@ namespace FtpsServerAvalonia.Controls
                         RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                     {
                         user.Folder = folder.Path.LocalPath.TrimEnd('/', '\\');
+                        user.FolderBookmark = string.Empty;
                     }
                     else
                     {
-                        var localPath = folder.TryGetLocalPath();
-                        user.Folder = folder.Path.LocalPath;
-                        var aaa = Directory.GetFiles(folder.Path.LocalPath);
+                        // Android - save bookmark for persistent access
+                        var bookmark = await folder.SaveBookmarkAsync();
+                        if (bookmark is not null)
+                        {
+                            user.Folder = folder.Name;
+                            user.FolderBookmark = bookmark;
+                        }
                     }
                 }
             }

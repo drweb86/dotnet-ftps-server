@@ -189,11 +189,16 @@ public partial class AndroidView : UserControl
                         return;
                     }
 
+                    // On Android, serialize the folder bookmark for the file system provider
+                    var folderValue = !string.IsNullOrEmpty(user.FolderBookmark)
+                        ? AndroidFolderBookmarkSerializer.Serialise(new AndroidFolderBookmark(user.Folder, user.FolderBookmark))
+                        : user.Folder;
+
                     config.Users.Add(new FtpsServerUserAccount
                     {
                         Login = user.Login,
                         Password = user.Password,
-                        Folder = user.Folder,
+                        Folder = folderValue,
                         Read = true,
                         Write = !user.ReadonlyPermission
                     });

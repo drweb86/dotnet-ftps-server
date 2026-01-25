@@ -9,33 +9,25 @@ using System.Threading.Tasks;
 
 namespace FtpsServerAvalonia.Services;
 
-public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
+public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvider) : IFtpsServerFileSystemProvider
 {
-    private readonly Dictionary<string, IStorageFolder> _folderCache = new();
-    private readonly IStorageProvider _storageProvider;
+    private readonly Dictionary<string, IStorageFolder> _folderCache = [];
+    private readonly IStorageProvider _storageProvider = storageProvider;
 
-    public AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvider)
+    private async Task<IStorageFolder> GetRootFolder(string serializedFolderBookmark)
     {
-        _storageProvider = storageProvider;
-    }
-
-    private async Task<IStorageFolder> GetRootFolder(string folderBookmark)
-    {
-        if (_folderCache.TryGetValue(folderBookmark, out var cachedFolder))
+        if (_folderCache.TryGetValue(serializedFolderBookmark, out var cachedFolder))
             return cachedFolder;
 
-        var folder = await _storageProvider.TryGetFolderFromPathAsync(new Uri(folderBookmark));
-
-        if (folder == null)
-            throw new DirectoryNotFoundException($"Cannot access folder: {folderBookmark}");
-
-        _folderCache[folderBookmark] = folder;
+        var bookmark = AndroidFolderBookmarkSerializer.Deserialise(serializedFolderBookmark);
+        var folder = await _storageProvider.OpenFolderBookmarkAsync(bookmark.Bookmark) ?? throw new DirectoryNotFoundException($"Cannot access folder: {serializedFolderBookmark}");
+        _folderCache[serializedFolderBookmark] = folder;
         return folder;
     }
 
-    private async Task<IStorageFolder> NavigateToFolder(string folderBookmark, IEnumerable<string> parts)
+    private async Task<IStorageFolder> NavigateToFolder(string serializedFolderBookmark, IEnumerable<string> parts)
     {
-        var currentFolder = await GetRootFolder(folderBookmark);
+        var currentFolder = await GetRootFolder(serializedFolderBookmark);
 
         foreach (var part in parts)
         {
@@ -51,18 +43,14 @@ public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
             }
 
             var items = await currentFolder.GetItemsAsync().ToListAsync();
-            var nextFolder = items.OfType<IStorageFolder>().FirstOrDefault(f => f.Name == part);
-
-            if (nextFolder == null)
-                throw new DirectoryNotFoundException($"Directory not found: {part}");
-
+            var nextFolder = items.OfType<IStorageFolder>().FirstOrDefault(f => f.Name == part) ?? throw new DirectoryNotFoundException($"Directory not found: {part}");
             currentFolder = nextFolder;
         }
 
         return currentFolder;
     }
 
-    private async Task<IStorageFile> NavigateToFile(string folderBookmark, IEnumerable<string> parts)
+    private async Task<IStorageFile> NavigateToFile(string serializedFolderBookmark, IEnumerable<string> parts)
     {
         var partsList = parts.ToList();
         if (partsList.Count == 0)
@@ -71,7 +59,7 @@ public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
         var fileName = partsList[^1];
         var folderParts = partsList.Take(partsList.Count - 1);
 
-        var folder = await NavigateToFolder(folderBookmark, folderParts);
+        var folder = await NavigateToFolder(serializedFolderBookmark, folderParts);
         var items = await folder.GetItemsAsync().ToListAsync();
         var file = items.OfType<IStorageFile>().FirstOrDefault(f => f.Name == fileName);
 
@@ -81,7 +69,7 @@ public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
         return file;
     }
 
-    public async Task CreateDirectory(string folderBookmark, IEnumerable<string> parts)
+    public async Task CreateDirectory(string serializedFolderBookmark, IEnumerable<string> parts)
     {
         var partsList = parts.ToList();
         if (partsList.Count == 0)
@@ -90,15 +78,15 @@ public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
         var newFolderName = partsList[^1];
         var parentParts = partsList.Take(partsList.Count - 1);
 
-        var parentFolder = await NavigateToFolder(folderBookmark, parentParts);
+        var parentFolder = await NavigateToFolder(serializedFolderBookmark, parentParts);
         await parentFolder.CreateFolderAsync(newFolderName);
     }
 
-    public async Task<bool> DirectoryExists(string folderBookmark, IEnumerable<string> parts)
+    public async Task<bool> DirectoryExists(string serializedFolderBookmark, IEnumerable<string> parts)
     {
         try
         {
-            await NavigateToFolder(folderBookmark, parts);
+            await NavigateToFolder(serializedFolderBookmark, parts);
             return true;
         }
         catch (DirectoryNotFoundException)
@@ -107,11 +95,11 @@ public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
         }
     }
 
-    public async Task<bool> FileExists(string folderBookmark, IEnumerable<string> parts)
+    public async Task<bool> FileExists(string serializedFolderBookmark, IEnumerable<string> parts)
     {
         try
         {
-            await NavigateToFile(folderBookmark, parts);
+            await NavigateToFile(serializedFolderBookmark, parts);
             return true;
         }
         catch (FileNotFoundException)
@@ -120,46 +108,66 @@ public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
         }
     }
 
-    public async Task DirectoryDelete(string folderBookmark, IEnumerable<string> parts)
+    public async Task DirectoryDelete(string serializedFolderBookmark, IEnumerable<string> parts)
     {
-        var folder = await NavigateToFolder(folderBookmark, parts);
+        var folder = await NavigateToFolder(serializedFolderBookmark, parts);
         await folder.DeleteAsync();
     }
 
-    public async Task FileDelete(string folderBookmark, IEnumerable<string> parts)
+    public async Task FileDelete(string serializedFolderBookmark, IEnumerable<string> parts)
     {
-        var file = await NavigateToFile(folderBookmark, parts);
+        var file = await NavigateToFile(serializedFolderBookmark, parts);
         await file.DeleteAsync();
     }
 
-    public async Task DirectoryMove(string folderBookmark, IEnumerable<string> fromParts, IEnumerable<string> toParts)
+    public async Task DirectoryMove(string serializedFolderBookmark, IEnumerable<string> fromParts, IEnumerable<string> toParts)
     {
-        var fromFolder = await NavigateToFolder(folderBookmark, fromParts);
+        var fromFolder = await NavigateToFolder(serializedFolderBookmark, fromParts);
 
         var toPartsList = toParts.ToList();
         var newName = toPartsList[^1];
         var toParentParts = toPartsList.Take(toPartsList.Count - 1);
-        var toParentFolder = await NavigateToFolder(folderBookmark, toParentParts);
+        var toParentFolder = await NavigateToFolder(serializedFolderBookmark, toParentParts);
 
-        await fromFolder.MoveAsync(toParentFolder);
+        // Create destination folder with the new name
+        var destFolder = await toParentFolder.CreateFolderAsync(newName);
+        if (destFolder == null)
+            throw new IOException($"Failed to create destination folder: {newName}");
 
-        // Note: Avalonia's IStorageFolder doesn't have a rename method directly
-        // The move operation should handle the rename if the destination has a different name
+        var items = await fromFolder
+            .GetItemsAsync()
+            .ToListAsync();
+
+        foreach (var item in items)
+            await item.MoveAsync(destFolder);
     }
 
-    public async Task FileMove(string folderBookmark, IEnumerable<string> fromParts, IEnumerable<string> toParts)
+    public async Task FileMove(string serializedFolderBookmark, IEnumerable<string> fromParts, IEnumerable<string> toParts)
     {
-        var fromFile = await NavigateToFile(folderBookmark, fromParts);
+        var fromFile = await NavigateToFile(serializedFolderBookmark, fromParts);
 
         var toPartsList = toParts.ToList();
         var newName = toPartsList[^1];
         var toParentParts = toPartsList.Take(toPartsList.Count - 1);
-        var toParentFolder = await NavigateToFolder(folderBookmark, toParentParts);
+        var toParentFolder = await NavigateToFolder(serializedFolderBookmark, toParentParts);
 
-        await fromFile.MoveAsync(toParentFolder);
+        // Create destination file with the new name
+        var destFile = await toParentFolder.CreateFileAsync(newName);
+        if (destFile == null)
+            throw new IOException($"Failed to create destination file: {newName}");
+
+        // Copy content from source to destination
+        await using (var sourceStream = await fromFile.OpenReadAsync())
+        await using (var destStream = await destFile.OpenWriteAsync())
+        {
+            await sourceStream.CopyToAsync(destStream);
+        }
+
+        // Delete the source file
+        await fromFile.DeleteAsync();
     }
 
-    public async Task<Stream> FileCreate(string folderBookmark, IEnumerable<string> parts)
+    public async Task<Stream> FileCreate(string serializedFolderBookmark, IEnumerable<string> parts)
     {
         var partsList = parts.ToList();
         if (partsList.Count == 0)
@@ -168,7 +176,7 @@ public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
         var fileName = partsList[^1];
         var folderParts = partsList.Take(partsList.Count - 1);
 
-        var folder = await NavigateToFolder(folderBookmark, folderParts);
+        var folder = await NavigateToFolder(serializedFolderBookmark, folderParts);
         var file = await folder.CreateFileAsync(fileName);
 
         if (file == null)
@@ -177,22 +185,22 @@ public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
         return await file.OpenWriteAsync();
     }
 
-    public async Task<Stream> FileOpenRead(string folderBookmark, IEnumerable<string> parts)
+    public async Task<Stream> FileOpenRead(string serializedFolderBookmark, IEnumerable<string> parts)
     {
-        var file = await NavigateToFile(folderBookmark, parts);
+        var file = await NavigateToFile(serializedFolderBookmark, parts);
         return await file.OpenReadAsync();
     }
 
-    public async Task<DateTime> GetFileLastWriteTimeUtc(string folderBookmark, IEnumerable<string> parts)
+    public async Task<DateTime> GetFileLastWriteTimeUtc(string serializedFolderBookmark, IEnumerable<string> parts)
     {
-        var file = await NavigateToFile(folderBookmark, parts);
+        var file = await NavigateToFile(serializedFolderBookmark, parts);
         var properties = await file.GetBasicPropertiesAsync();
         return properties.DateModified?.UtcDateTime ?? DateTime.UtcNow;
     }
 
-    public async Task<long> GetFileLength(string folderBookmark, IEnumerable<string> parts)
+    public async Task<long> GetFileLength(string serializedFolderBookmark, IEnumerable<string> parts)
     {
-        var file = await NavigateToFile(folderBookmark, parts);
+        var file = await NavigateToFile(serializedFolderBookmark, parts);
         var properties = await file.GetBasicPropertiesAsync();
         return (long)(properties.Size ?? 0);
     }
@@ -209,9 +217,9 @@ public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
         return Task.FromResult(Path.GetFileName(pickerFile));
     }
 
-    public async Task<IEnumerable<FtpsServerFileSystemEntry>> DirectoryGetFileSystemEntries(string folderBookmark, IEnumerable<string> parts)
+    public async Task<IEnumerable<FtpsServerFileSystemEntry>> DirectoryGetFileSystemEntries(string serializedFolderBookmark, IEnumerable<string> parts)
     {
-        var folder = await NavigateToFolder(folderBookmark, parts);
+        var folder = await NavigateToFolder(serializedFolderBookmark, parts);
         var result = new List<FtpsServerFileSystemEntry>();
 
         // Add current directory entry
@@ -252,9 +260,9 @@ public class AndroidFtpsServerFileSystemProvider : IFtpsServerFileSystemProvider
         return result;
     }
 
-    public async Task<string> ResolveUserFolder(string folderBookmark)
+    public async Task<string> ResolveUserFolder(string serializedFolderBookmark)
     {
-        var folder = await GetRootFolder(folderBookmark);
+        var folder = await GetRootFolder(serializedFolderBookmark);
         return folder.Name;
     }
 }

@@ -7,22 +7,15 @@ using System.Threading.Tasks;
 
 namespace FtpsServerLibrary;
 
-public class FtpsServer
+public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtpsServerFileSystemProvider ftpsServerFileSystemProvider)
 {
-    private readonly FtpsServerConfiguration _config;
-    private readonly IFtpsServerFileSystemProvider _ftpsServerFileSystemProvider;
-    private readonly IFtpsServerLog _log;
+    private readonly FtpsServerConfiguration _config = config;
+    private readonly IFtpsServerFileSystemProvider _ftpsServerFileSystemProvider = ftpsServerFileSystemProvider;
+    private readonly IFtpsServerLog _log = log;
     private TcpListener? _listener;
     private bool _isRunning;
     private X509Certificate2? _serverCertificate;
     private int _activeConnections;
-
-    public FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtpsServerFileSystemProvider ftpsServerFileSystemProvider)
-    {
-        _log = log;
-        _config = config;
-        _ftpsServerFileSystemProvider = ftpsServerFileSystemProvider;
-    }
 
     public async Task StartAsync()
     {
@@ -265,13 +258,11 @@ public class FtpsServer
 
                 // Certificate is expired or expiring soon
                 certificate.Dispose();
-                certificate = null;
             }
             catch
             {
                 // Certificate is corrupted or password changed
                 certificate?.Dispose();
-                certificate = null;
             }
         }
 

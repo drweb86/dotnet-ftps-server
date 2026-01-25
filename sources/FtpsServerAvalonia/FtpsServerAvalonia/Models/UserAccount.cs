@@ -5,6 +5,7 @@ public class UserAccount : ObservableObject
     private string _login = "";
     private string _password = "";
     private string _folder = "";
+    private string _folderBookmark = "";
     private bool _readonlyPermission = false;
 
     public string Login
@@ -23,6 +24,16 @@ public class UserAccount : ObservableObject
     {
         get => _folder;
         set => SetField(ref _folder, value);
+    }
+
+    /// <summary>
+    /// Bookmark string for Android SAF (Storage Access Framework) folder access.
+    /// This is used to persist folder access permissions across app restarts.
+    /// </summary>
+    public string FolderBookmark
+    {
+        get => _folderBookmark;
+        set => SetField(ref _folderBookmark, value);
     }
 
     public bool ReadonlyPermission
