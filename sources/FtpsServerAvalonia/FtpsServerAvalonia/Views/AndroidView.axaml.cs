@@ -8,8 +8,6 @@ using FtpsServerAvalonia.Resources;
 using FtpsServerAvalonia.Services;
 using FtpsServerConsole;
 using FtpsServerLibrary;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Enums;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -197,7 +195,7 @@ public partial class AndroidView : UserControl
             {
                 if (string.IsNullOrWhiteSpace(_settings.CertificatePath))
                 {
-                    await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, Strings.ErrorSelectCertificate, ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
+                    ShowError(Strings.ErrorSelectCertificate);
                     return;
                 }
 
@@ -205,22 +203,22 @@ public partial class AndroidView : UserControl
                 config.ServerSettings.CertificatePassword = _settings.CertificatePassword;
             }
 
-                // Users
-                if (_users.Count == 0)
+            // Users
+            if (_users.Count == 0)
+            {
+                ShowError(Strings.ErrorAddUser);
+                return;
+            }
+
+            foreach (var user in _users)
+            {
+                if (string.IsNullOrWhiteSpace(user.Login) ||
+                    string.IsNullOrWhiteSpace(user.Password) ||
+                    string.IsNullOrWhiteSpace(user.Folder))
                 {
-                    await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, Strings.ErrorAddUser, ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
+                    ShowError(string.Format(Strings.ErrorIncompleteUserFormat, user.Login));
                     return;
                 }
-
-                foreach (var user in _users)
-                {
-                    if (string.IsNullOrWhiteSpace(user.Login) ||
-                        string.IsNullOrWhiteSpace(user.Password) ||
-                        string.IsNullOrWhiteSpace(user.Folder))
-                    {
-                        await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, string.Format(Strings.ErrorIncompleteUserFormat, user.Login), ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
-                        return;
-                    }
 
                     // On Android, serialize the folder bookmark for the file system provider
                     var folderValue = !string.IsNullOrEmpty(user.FolderBookmark)
@@ -247,12 +245,12 @@ public partial class AndroidView : UserControl
         }
         catch (Exception ex)
         {
-            await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, string.Format(Strings.ErrorStartServerFormat, ex.Message), ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Error).ShowAsync();
+            ShowError(string.Format(Strings.ErrorStartServerFormat, ex.Message));
             IsServerRunning = false;
         }
     }
 
-    private async void StopServer()
+    private void StopServer()
     {
         if (!IsServerRunning)
             return;
@@ -264,13 +262,24 @@ public partial class AndroidView : UserControl
         }
         catch (Exception ex)
         {
-            await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, string.Format(Strings.ErrorStopServerFormat, ex.Message), ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Error).ShowAsync();
+            ShowError(string.Format(Strings.ErrorStopServerFormat, ex.Message));
         }
     }
 
     private void UpdateServerStatus()
     {
         MainMenu.UpdateServerStatus(IsServerRunning);
+    }
+
+    private void ShowError(string message)
+    {
+        ErrorText.Text = message;
+        ErrorBanner.IsVisible = true;
+    }
+
+    private void DismissError_Click(object sender, RoutedEventArgs e)
+    {
+        ErrorBanner.IsVisible = false;
     }
 
     // UserControl doesn't have OnClosed, so we need to handle detachment differently

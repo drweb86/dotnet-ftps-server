@@ -39,6 +39,30 @@
 				DockPanel.Dock="Top"
 				StartStopClicked="MainMenu_StartStopClicked" />
 
+			<Border x:Name="ErrorBanner"
+					Background="#D32F2F"
+					Padding="12,8"
+					Margin="10,5,10,5"
+					CornerRadius="4"
+					IsVisible="False">
+				<Grid ColumnDefinitions="*,Auto">
+					<TextBlock x:Name="ErrorText"
+							   Grid.Column="0"
+							   Foreground="White"
+							   FontSize="14"
+							   TextWrapping="Wrap"
+							   VerticalAlignment="Center"/>
+					<Button Grid.Column="1"
+							Content="X"
+							Background="Transparent"
+							Foreground="White"
+							FontWeight="Bold"
+							Padding="8,4"
+							Margin="8,0,0,0"
+							Click="DismissError_Click"/>
+				</Grid>
+			</Border>
+
 			<controls:UpdateCheckExpanderView />
 
 			<controls:ServerConfigurationControl
