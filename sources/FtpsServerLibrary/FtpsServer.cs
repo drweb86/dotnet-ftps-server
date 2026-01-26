@@ -238,9 +238,12 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
 
     private X509Certificate2 GetOrCreateCertificate(FtpsServerSettings ftpsServerSettings)
     {
+        var isAndroid = !(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
+                        RuntimeInformation.IsOSPlatform(OSPlatform.Linux));
+
         var directory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "FtpsServerLibrary",
-            "Certificates");
+            isAndroid ? "Certificates-Android-V1" : "Certificates");
         System.IO.Directory.CreateDirectory(directory);
 
         var certificateFile = System.IO.Path.Combine(directory, "Self-Signed.pfx")!;
@@ -253,11 +256,8 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
             _log.Info($"Loading self-signed certificate from file {certificateFile}.");
             try
             {
-                var isAndroid = !(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
-                        RuntimeInformation.IsOSPlatform(OSPlatform.Linux));
-
                 certificate = X509CertificateLoader.LoadPkcs12FromFile(certificateFile, password,
-                    isAndroid 
+                    isAndroid
                         ? X509KeyStorageFlags.Exportable
                         : X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
 

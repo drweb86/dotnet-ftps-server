@@ -31,8 +31,8 @@ if ($LastExitCode -ne 0)
 cd ..
 
 Write-Output "Copying APK files..."
-Copy-Item -Path "sources\FtpsServerAvalonia\FtpsServerAvalonia.Android\bin\Release\net10.0-android\com.SiarheiKuchuk.FtpsServer-Signed.apk" -Destination "Output" -Force
-Rename-Item -Path "Output\com.SiarheiKuchuk.FtpsServer-Signed.apk" -NewName "com.SiarheiKuchuk.FtpsServer-$version.apk"
+
+Move-Item -Path "sources\FtpsServerAvalonia\FtpsServerAvalonia.Android\bin\Release\net10.0-android\com.SiarheiKuchuk.FtpsServer-Signed.apk" -Destination "Output\com.SiarheiKuchuk.FtpsServer-$version.apk" -Force
 
 Write-Output "Building for Android is completed......................."
 
