@@ -83,6 +83,12 @@
   <data name="MenuLogs" xml:space="preserve">
     <value>ログ</value>
   </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>サーバーログ</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>クリア</value>
+  </data>
   <data name="MenuStart" xml:space="preserve">
     <value>[ 開始 ]</value>
   </data>
@@ -99,6 +105,9 @@
   </data>
   <data name="ConfigAddress" xml:space="preserve">
     <value>アドレス</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>ポート</value>
   </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>お使いのPCは、LAN内で名前またはIPアドレスでアクセスできます。</value>

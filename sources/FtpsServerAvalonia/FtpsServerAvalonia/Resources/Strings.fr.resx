@@ -83,6 +83,12 @@
   <data name="MenuLogs" xml:space="preserve">
     <value>Journaux</value>
   </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Journaux du Serveur</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
   <data name="MenuStart" xml:space="preserve">
     <value>[ DÉMARRER ]</value>
   </data>
@@ -99,6 +105,9 @@
   </data>
   <data name="ConfigAddress" xml:space="preserve">
     <value>Adresse</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>Port</value>
   </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>Votre PC peut être accessible sur le réseau local par son nom ou son adresse IP.</value>

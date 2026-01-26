@@ -83,6 +83,12 @@
   <data name="MenuLogs" xml:space="preserve">
     <value>Logs</value>
   </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Server Logs</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Clear</value>
+  </data>
   <data name="MenuStart" xml:space="preserve">
     <value>[ START ]</value>
   </data>
@@ -100,6 +106,9 @@
   </data>
   <data name="ConfigAddress" xml:space="preserve">
     <value>Address</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>Port</value>
   </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>Your PC can be accessed in LAN by its name or IP address.</value>

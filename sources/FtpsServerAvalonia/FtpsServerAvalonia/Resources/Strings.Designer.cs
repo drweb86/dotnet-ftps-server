@@ -79,6 +79,15 @@ namespace FtpsServerAvalonia.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string ClearLogs {
+            get {
+                return ResourceManager.GetString("ClearLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your PC can be accessed in LAN by its name or IP address..
         /// </summary>
         public static string ConfigAccessInfo {
@@ -178,6 +187,15 @@ namespace FtpsServerAvalonia.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Port.
+        /// </summary>
+        public static string ConfigPort {
+            get {
+                return ResourceManager.GetString("ConfigPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Certificate File.
         /// </summary>
         public static string ConfigSelectCertTitle {
@@ -255,6 +273,15 @@ namespace FtpsServerAvalonia.Resources {
         public static string ErrorTitle {
             get {
                 return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Logs.
+        /// </summary>
+        public static string LogsTab {
+            get {
+                return ResourceManager.GetString("LogsTab", resourceCulture);
             }
         }
         

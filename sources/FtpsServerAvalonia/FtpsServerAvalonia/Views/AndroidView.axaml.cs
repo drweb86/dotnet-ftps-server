@@ -6,7 +6,6 @@ using FtpsServerAvalonia.Controls;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
 using FtpsServerAvalonia.Services;
-using FtpsServerConsole;
 using FtpsServerLibrary;
 using System;
 using System.Collections.ObjectModel;
@@ -19,6 +18,8 @@ public partial class AndroidView : UserControl
     private FtpsServer? _server;
     private readonly AppSettings _settings;
     private readonly ObservableCollection<UserAccount> _users;
+    private readonly ObservableCollection<LogEntry> _logEntries;
+    private readonly UiLog? _uiLog;
     private bool _isServerRunning;
 
     public bool IsServerRunning
@@ -95,7 +96,20 @@ public partial class AndroidView : UserControl
         InitializeComponent();
         _settings = SettingsManager.LoadSettings();
         _users = new ObservableCollection<UserAccount>(_settings.Users);
+        _logEntries = [];
+        _uiLog = new UiLog(_logEntries);
+
         UsersItemsControl.ItemsSource = _users;
+        LogItemsControl.ItemsSource = _logEntries;
+
+        // Auto-scroll logs when new entries are added
+        _logEntries.CollectionChanged += (s, e) =>
+        {
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            {
+                LogScrollViewer.ScrollToEnd();
+            }
+        };
 
         // Initialize DependencyProperties from settings
         Port = _settings.ServerPort;
@@ -238,7 +252,7 @@ public partial class AndroidView : UserControl
             var topLevel = TopLevel.GetTopLevel(App.Instance);
             if (topLevel is null)
                 return;
-            _server = new FtpsServer(new StubLog(), config, new AndroidFtpsServerFileSystemProvider(topLevel.StorageProvider));
+            _server = new FtpsServer(_uiLog!, config, new AndroidFtpsServerFileSystemProvider(topLevel.StorageProvider));
             await _server.StartAsync();
 
             IsServerRunning = true;
@@ -280,6 +294,11 @@ public partial class AndroidView : UserControl
     private void DismissError_Click(object sender, RoutedEventArgs e)
     {
         ErrorBanner.IsVisible = false;
+    }
+
+    private void ClearLogs_Click(object sender, RoutedEventArgs e)
+    {
+        _logEntries.Clear();
     }
 
     // UserControl doesn't have OnClosed, so we need to handle detachment differently

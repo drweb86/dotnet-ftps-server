@@ -31,6 +31,15 @@ namespace FtpsServerAvalonia.Controls
         public static readonly StyledProperty<string> CertificatePasswordProperty =
             AvaloniaProperty.Register<ServerConfigurationControl, string>(nameof(CertificatePassword), defaultValue: string.Empty, defaultBindingMode: Avalonia.Data.BindingMode.TwoWay);
 
+        public static readonly StyledProperty<bool> ShowTitleProperty =
+            AvaloniaProperty.Register<ServerConfigurationControl, bool>(nameof(ShowTitle), defaultValue: true);
+
+        public bool ShowTitle
+        {
+            get => GetValue(ShowTitleProperty);
+            set => SetValue(ShowTitleProperty, value);
+        }
+
         public int Port
         {
             get => GetValue(PortProperty);

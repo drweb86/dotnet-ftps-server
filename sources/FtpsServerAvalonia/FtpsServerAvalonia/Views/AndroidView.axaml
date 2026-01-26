@@ -30,6 +30,20 @@
         <Style Selector="RadioButton.TabButton:pointerover">
             <Setter Property="Background" Value="{StaticResource TertiaryDarkBrush}"/>
         </Style>
+
+        <!-- Expander Styles for collapsible sections -->
+        <Style Selector="Expander.SectionExpander">
+            <Setter Property="Background" Value="{StaticResource TertiaryDarkBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AccentCyanBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="10,0,10,20"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+        <Style Selector="Expander.SectionExpander /template/ ToggleButton#PART_toggle">
+            <Setter Property="Padding" Value="16"/>
+        </Style>
     </UserControl.Styles>
 
 	<ScrollViewer x:Name="MainScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch">
@@ -65,34 +79,45 @@
 
 			<controls:UpdateCheckExpanderView />
 
-			<controls:ServerConfigurationControl
-				x:Name="ServerConfig"
-				Port="{Binding Port, Mode=TwoWay}"
-				MaxConnections="{Binding MaxConnections, Mode=TwoWay}"
-				CertificateSource="{Binding CertificateSource, Mode=TwoWay}"
-				CertificatePath="{Binding CertificatePath, Mode=TwoWay}"
-				CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}" />
+			<!-- Host, Port, Certificate Section (Collapsible) -->
+			<Expander Classes="SectionExpander" IsExpanded="True">
+				<Expander.Header>
+					<TextBlock Text="{x:Static res:Strings.ConfigTitle}"
+							   FontSize="18"
+							   FontWeight="SemiBold"
+							   Foreground="{StaticResource TextPrimaryBrush}"/>
+				</Expander.Header>
+				<controls:ServerConfigurationControl
+					x:Name="ServerConfig"
+					ShowTitle="False"
+					BorderThickness="0"
+					Margin="0"
+					Port="{Binding Port, Mode=TwoWay}"
+					MaxConnections="{Binding MaxConnections, Mode=TwoWay}"
+					CertificateSource="{Binding CertificateSource, Mode=TwoWay}"
+					CertificatePath="{Binding CertificatePath, Mode=TwoWay}"
+					CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}" />
+			</Expander>
 
-			<Border Background="{StaticResource TertiaryDarkBrush}"
-					BorderBrush="{StaticResource AccentCyanBrush}"
-					BorderThickness="1"
-					CornerRadius="8"
-					Padding="16"
-					Margin="10,0,10,20">
-				<StackPanel>
-					<Grid Margin="0,0,0,16">
+			<!-- Users Section (Collapsible) -->
+			<Expander Classes="SectionExpander" IsExpanded="True">
+				<Expander.Header>
+					<Grid HorizontalAlignment="Stretch">
 						<TextBlock Text="{x:Static res:Strings.UsersTab}"
 								   FontSize="18"
 								   FontWeight="SemiBold"
 								   Foreground="{StaticResource TextPrimaryBrush}"
 								   HorizontalAlignment="Left"
 								   VerticalAlignment="Center"/>
-						<Button Content="{x:Static res:Strings.AddUserButton}"
-								Classes="SecondaryButton"
-								HorizontalAlignment="Right"
-								Click="AddUser_Click"
-								Padding="16,8"/>
 					</Grid>
+				</Expander.Header>
+				<StackPanel Margin="0,8,0,0">
+					<Button Content="{x:Static res:Strings.AddUserButton}"
+							Classes="SecondaryButton"
+							HorizontalAlignment="Right"
+							Click="AddUser_Click"
+							Padding="16,8"
+							Margin="0,0,0,16"/>
 
 					<ItemsControl x:Name="UsersItemsControl">
 						<ItemsControl.ItemTemplate>
@@ -102,7 +127,51 @@
 						</ItemsControl.ItemTemplate>
 					</ItemsControl>
 				</StackPanel>
-			</Border>
+			</Expander>
+
+			<!-- Server Logs Section (Collapsible) -->
+			<Expander Classes="SectionExpander" IsExpanded="False">
+				<Expander.Header>
+					<Grid HorizontalAlignment="Stretch">
+						<TextBlock Text="{x:Static res:Strings.LogsTab}"
+								   FontSize="18"
+								   FontWeight="SemiBold"
+								   Foreground="{StaticResource TextPrimaryBrush}"
+								   HorizontalAlignment="Left"
+								   VerticalAlignment="Center"/>
+					</Grid>
+				</Expander.Header>
+				<StackPanel Margin="0,8,0,0">
+					<Button Content="{x:Static res:Strings.ClearLogs}"
+							Classes="SecondaryButton"
+							HorizontalAlignment="Right"
+							Click="ClearLogs_Click"
+							Padding="16,8"
+							Margin="0,0,0,8"/>
+
+					<Border Background="{StaticResource PrimaryDarkBrush}"
+							CornerRadius="4"
+							Padding="8"
+							MinHeight="200"
+							MaxHeight="400">
+						<ScrollViewer x:Name="LogScrollViewer"
+									  VerticalScrollBarVisibility="Auto"
+									  HorizontalScrollBarVisibility="Auto">
+							<ItemsControl x:Name="LogItemsControl">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<TextBlock Text="{Binding FormattedMessage}"
+												   Foreground="{Binding Color}"
+												   FontFamily="Consolas, Courier New, monospace"
+												   FontSize="12"
+												   Margin="0,2"/>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</ScrollViewer>
+					</Border>
+				</StackPanel>
+			</Expander>
 		</StackPanel>
 	</ScrollViewer>
 </UserControl>
