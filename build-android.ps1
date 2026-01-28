@@ -11,20 +11,37 @@ cd sources
 
 # "--runtime=$($platform.CoreRuntimeWindows)" `
 Write-Output "Publish..."
-& dotnet publish FtpsServer.Android.slnx "/p:InformationalVersion=$version" `
-	"/p:VersionPrefix=$version" `
-	"/p:Version=$version" `
-	"/p:AssemblyVersion=$version" `
-	/p:Configuration=Release `
-	"/p:PublishDir=../../Output/publish/Android" `
-	/p:PublishReadyToRun=false `
-	/p:RunAnalyzersDuringBuild=False `
-	--self-contained true `
-	--property WarningLevel=0
 
-if ($LastExitCode -ne 0)
-{
-	Write-Error "Fail." 
+$maxRetries = 3
+$retryCount = 0
+$success = $false
+
+while (-not $success -and $retryCount -lt $maxRetries) {
+	$retryCount++
+	Write-Output "Attempt $retryCount of $maxRetries..."
+
+	& dotnet publish FtpsServer.Android.slnx "/p:InformationalVersion=$version" `
+		"/p:VersionPrefix=$version" `
+		"/p:Version=$version" `
+		"/p:AssemblyVersion=$version" `
+		/p:Configuration=Release `
+		"/p:PublishDir=../../Output/publish/Android" `
+		/p:PublishReadyToRun=false `
+		/p:RunAnalyzersDuringBuild=False `
+		--self-contained true `
+		--property WarningLevel=0
+
+	if ($LastExitCode -eq 0) {
+		$success = $true
+	} elseif ($retryCount -lt $maxRetries) {
+		Write-Output "Build failed. Retrying in 2 seconds..."
+		Start-Sleep -Seconds 2
+	}
+}
+
+if (-not $success) {
+	Write-Error "Build failed after $maxRetries attempts."
+	cd ..
 	Exit 1
 }
 

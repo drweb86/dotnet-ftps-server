@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Security;
@@ -670,9 +670,10 @@ class FtpsServerClientSession(
                         {
                             var permissions = entry.IsDirectory ? "drwxr-xr-x" : "-rw-r--r--";
                             var size = entry.IsDirectory ? "0" : entry.Length.ToString();
-                            var modified = entry.LastWriteTime.ToString("MMM dd HH:mm");
+                            var modified = entry.LastWriteTime.ToString("MMM dd HH:mm", CultureInfo.InvariantCulture);
 
                             var line = $"{permissions} 1 owner group {size,15} {modified} {entry.FileName}";
+                            dataWriter.NewLine = "\r\n";
                             await dataWriter.WriteLineAsync(line);
                         }
                     }

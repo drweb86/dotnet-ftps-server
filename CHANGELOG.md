@@ -1,6 +1,9 @@
 ﻿# 2025.01.22
 (unpublished)
 
+## Bug Fixes
+- Library: On non-english locales dates were recorded encorrectly in List command, so users might see empty folders.
+
 ## New Features
 - Library: Possibility to implement own file system.
 

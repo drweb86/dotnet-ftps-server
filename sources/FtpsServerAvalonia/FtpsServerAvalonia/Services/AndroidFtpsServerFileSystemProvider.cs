@@ -184,7 +184,7 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
     {
         var file = await NavigateToFile(serializedFolderBookmark, parts);
         var properties = await file.GetBasicPropertiesAsync();
-        return properties.DateModified?.UtcDateTime ?? DateTime.UtcNow;
+        return properties.DateModified?.UtcDateTime ?? properties.DateCreated?.UtcDateTime ?? DateTime.UtcNow;
     }
 
     public async Task<long> GetFileLength(string serializedFolderBookmark, IEnumerable<string> parts)
@@ -213,18 +213,18 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
 
         // Add current directory entry
         var folderProperties = await folder.GetBasicPropertiesAsync();
-        result.Add(new FtpsServerFileSystemEntry(".", folderProperties.DateModified?.DateTime ?? DateTime.Now, 0, true));
+        result.Add(new FtpsServerFileSystemEntry(".", folderProperties.DateModified?.UtcDateTime ?? folderProperties.DateCreated?.UtcDateTime ?? DateTime.Now, 0, true));
 
         // Add parent directory entry
         var parent = await folder.GetParentAsync();
         if (parent != null)
         {
             var parentProperties = await parent.GetBasicPropertiesAsync();
-            result.Add(new FtpsServerFileSystemEntry("..", parentProperties.DateModified?.DateTime ?? DateTime.Now, 0, true));
+            result.Add(new FtpsServerFileSystemEntry("..", parentProperties.DateModified?.UtcDateTime ?? parentProperties.DateCreated?.UtcDateTime ?? DateTime.Now, 0, true));
         }
         else
         {
-            result.Add(new FtpsServerFileSystemEntry("..", folderProperties.DateModified?.DateTime ?? DateTime.Now, 0, true));
+            result.Add(new FtpsServerFileSystemEntry("..", folderProperties.DateModified?.UtcDateTime ?? folderProperties.DateCreated?.UtcDateTime ?? DateTime.Now, 0, true));
         }
 
         // Get all items in the folder
@@ -233,7 +233,7 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
         foreach (var item in items)
         {
             var properties = await item.GetBasicPropertiesAsync();
-            var lastWriteTime = properties.DateModified?.DateTime ?? DateTime.Now;
+            var lastWriteTime = properties.DateModified?.UtcDateTime ?? properties.DateCreated?.UtcDateTime ?? DateTime.UtcNow;
 
             if (item is IStorageFile)
             {

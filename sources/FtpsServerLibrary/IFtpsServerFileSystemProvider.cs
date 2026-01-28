@@ -103,8 +103,8 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
         if (parts.Any())
             parentFolderInfo = folderInfo.Parent ?? folderInfo;
 
-        result.Add(new FtpsServerFileSystemEntry(".", folderInfo.LastWriteTime, 0, true));
-        result.Add(new FtpsServerFileSystemEntry("..", parentFolderInfo.LastWriteTime, 0, true));
+        result.Add(new FtpsServerFileSystemEntry(".", folderInfo.LastWriteTimeUtc, 0, true));
+        result.Add(new FtpsServerFileSystemEntry("..", parentFolderInfo.LastWriteTimeUtc, 0, true));
 
 
         result.AddRange(Directory
@@ -115,12 +115,12 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
                 if (File.Exists(fullName))
                 {
                     var info = new FileInfo(x);
-                    return new FtpsServerFileSystemEntry(Path.GetFileName(x), info.LastWriteTime, info.Length, false);
+                    return new FtpsServerFileSystemEntry(Path.GetFileName(x), info.LastWriteTimeUtc, info.Length, false);
                 } 
                 else
                 {
                     var info = new DirectoryInfo(x);
-                    return new FtpsServerFileSystemEntry(Path.GetFileName(x), info.LastWriteTime, 0, true);
+                    return new FtpsServerFileSystemEntry(Path.GetFileName(x), info.LastWriteTimeUtc, 0, true);
                 }
             }));
 

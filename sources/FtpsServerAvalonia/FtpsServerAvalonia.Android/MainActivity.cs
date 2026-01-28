@@ -7,7 +7,7 @@ using Avalonia.Android;
 namespace FtpsServerAvalonia.Android;
 
 [Activity(
-    Label = "FtpsServerAvalonia.Android",
+    Label = "FTPS Server by Siarhei Kuchuk",
     Theme = "@style/MyTheme.NoActionBar",
     Icon = "@drawable/icon",
     MainLauncher = true,
