@@ -141,8 +141,7 @@
                     IsChecked="True"
                     Classes="ModernCheckBox"
                     Margin="0 4 4 4"
-                    Checked="CertificateSourceChanged"
-                    Unchecked="CertificateSourceChanged"
+                    Click="SelfSignedCertButton_Click"
                 />
 
 				<TextBlock

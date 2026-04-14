@@ -20,9 +20,12 @@ public class UiLog : IFtpsServerLog
     private readonly ObservableCollection<LogEntry> _logEntries;
     private const int MaxLogEntries = 500;
 
+    public static UiLog? Current { get; private set; }
+
     public UiLog(ObservableCollection<LogEntry> logEntries)
     {
         _logEntries = logEntries;
+        Current = this;
     }
 
     private void AddEntry(string level, string message, string color)

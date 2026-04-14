@@ -1,6 +1,5 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using FtpsServerAvalonia.Controls;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
 using FtpsServerAvalonia.Services;
@@ -10,8 +9,6 @@ using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reactive;
 
 namespace FtpsServerAvalonia
 {

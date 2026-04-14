@@ -17,6 +17,7 @@
     </UserControl.Styles>
 
     <Menu DockPanel.Dock="Left"
+		  WindowDecorationProperties.ElementRole="DecorationsElement"
               Background="{StaticResource PrimaryDarkBrush}"
               Margin="8">
 

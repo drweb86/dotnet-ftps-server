@@ -123,7 +123,7 @@ namespace FtpsServerAvalonia.Controls
             }
         }
 
-        private void CertificateSourceChanged(object? sender, RoutedEventArgs e)
+        private void SelfSignedCertButton_Click(object? sender, RoutedEventArgs e)
         {
             if (SelfSignedCertButton.IsChecked == true)
                 CertificateSource = CertificateSourceType.SelfSigned;
