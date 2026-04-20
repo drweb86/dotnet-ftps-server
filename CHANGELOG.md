@@ -1,14 +1,17 @@
-﻿# 2026.04.14
+﻿# 2026.04.20
 (unpublished)
 
 ## Bug Fixes
 - Library: On non-english locales dates were recorded encorrectly in List command, so users might see empty folders.
+- Fix application crash on F12 press.
+- Ubuntu: for specified certificate UI was not refreshing checkbox.
 
 ## New Features
 - Library: Possibility to implement own file system.
 
 ## Changes
 - Library: code simplification.
+- Upgrade Avalonia to V12
 
 # 2025.01.11
 

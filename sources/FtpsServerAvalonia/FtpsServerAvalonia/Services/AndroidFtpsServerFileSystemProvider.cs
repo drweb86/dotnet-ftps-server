@@ -165,7 +165,7 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
         if (partsList.Count == 0)
             throw new ArgumentException("File path is empty");
 
-        var fileName = partsList[^1];
+        var fileName = partsList[partsList.Count - 1];
         var folderParts = partsList.Take(partsList.Count - 1);
 
         var folder = await NavigateToFolder(serializedFolderBookmark, folderParts);

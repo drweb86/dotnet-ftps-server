@@ -10,17 +10,7 @@
         <commands:OpenLogsCommand x:Key="OpenLogsCommand"/>
     </UserControl.Resources>
 
-    <UserControl.Styles>
-        <Style Selector="MenuItem">
-            <Setter Property="Padding" Value="8,4" />
-        </Style>
-    </UserControl.Styles>
-
-    <Menu DockPanel.Dock="Left"
-		  WindowDecorationProperties.ElementRole="DecorationsElement"
-              Background="{StaticResource PrimaryDarkBrush}"
-              Margin="8">
-
+    <Menu WindowDecorationProperties.ElementRole="DecorationsElement" Margin="8">
         <MenuItem x:Name="AboutMenuItem"
               Header="{x:Static res:Strings.MenuHeader}"
               Foreground="{StaticResource TextPrimaryBrush}">
@@ -29,7 +19,6 @@
             </MenuItem.Icon>
             <MenuItem.Items>
                 <MenuItem
-
                     Header="{x:Static res:Strings.MenuWebSite}"
                     Command="{StaticResource AboutCommand}">
                     <MenuItem.Icon>

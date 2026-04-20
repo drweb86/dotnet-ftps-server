@@ -58,8 +58,13 @@ namespace FtpsServerAvalonia.Controls
             set
             {
                 SetValue(CertificateSourceProperty, value);
-                CertificateUserProvidedVisibility = value == CertificateSourceType.FromFile;
+                RefreshCertificateUserProvidedVisibility();
             }
+        }
+
+        private void RefreshCertificateUserProvidedVisibility()
+        {
+            CertificateUserProvidedVisibility = CertificateSource == CertificateSourceType.FromFile;
         }
 
         public bool CertificateUserProvidedVisibility
@@ -102,7 +107,7 @@ namespace FtpsServerAvalonia.Controls
 
         protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
         {
-            base.OnPropertyChanged(change);
+            
 
             if (change.Property == PortProperty && PortControl != null)
             {
@@ -116,11 +121,13 @@ namespace FtpsServerAvalonia.Controls
             {
                 var newValue = change.GetNewValue<CertificateSourceType>();
                 SelfSignedCertButton.IsChecked = newValue == CertificateSourceType.SelfSigned;
+                RefreshCertificateUserProvidedVisibility();
             }
             else if (change.Property == CertificatePathProperty && CertPathTextBox != null)
             {
                 CertPathTextBox.Text = change.GetNewValue<string>();
             }
+            base.OnPropertyChanged(change);
         }
 
         private void SelfSignedCertButton_Click(object? sender, RoutedEventArgs e)

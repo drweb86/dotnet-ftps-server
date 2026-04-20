@@ -91,6 +91,7 @@ namespace FtpsServerAvalonia
         public MainWindow()
         {
             InitializeComponent();
+            ExtendClientAreaToDecorationsHint = OperatingSystem.IsWindows() || OperatingSystem.IsMacOS() || OperatingSystem.IsLinux();
             _settings = SettingsManager.LoadSettings();
             _users = new ObservableCollection<UserAccount>(_settings.Users);
             UsersItemsControl.ItemsSource = _users;
@@ -169,32 +170,32 @@ namespace FtpsServerAvalonia
                     config.ServerSettings.CertificatePassword = _settings.CertificatePassword;
                 }
 
-                    // Users
-                    if (_users.Count == 0)
+                // Users
+                if (_users.Count == 0)
+                {
+                    await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, Strings.ErrorAddUser, ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
+                    return;
+                }
+
+                foreach (var user in _users)
+                {
+                    if (string.IsNullOrWhiteSpace(user.Login) ||
+                        string.IsNullOrWhiteSpace(user.Password) ||
+                        string.IsNullOrWhiteSpace(user.Folder))
                     {
-                        await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, Strings.ErrorAddUser, ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
+                        await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, string.Format(Strings.ErrorIncompleteUserFormat, user.Login), ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
                         return;
                     }
 
-                    foreach (var user in _users)
+                    config.Users.Add(new FtpsServerUserAccount
                     {
-                        if (string.IsNullOrWhiteSpace(user.Login) ||
-                            string.IsNullOrWhiteSpace(user.Password) ||
-                            string.IsNullOrWhiteSpace(user.Folder))
-                        {
-                            await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, string.Format(Strings.ErrorIncompleteUserFormat, user.Login), ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
-                            return;
-                        }
-
-                        config.Users.Add(new FtpsServerUserAccount
-                        {
-                            Login = user.Login,
-                            Password = user.Password,
-                            Folder = user.Folder,
-                            Read = true,
-                            Write = !user.ReadonlyPermission
-                        });
-                    }
+                        Login = user.Login,
+                        Password = user.Password,
+                        Folder = user.Folder,
+                        Read = true,
+                        Write = !user.ReadonlyPermission
+                    });
+                }
 
                 _server = new FtpsServer(new FileLog(), config, new FtpsServerFileSystemProvider());
                 await _server.StartAsync();
