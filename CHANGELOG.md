@@ -9,6 +9,7 @@
 ## New Features
 - Library: Possibility to implement own file system.
 - UI: Add some languages.
+- UI: add github actions for publishing
 
 ## Changes
 - Library: code simplification.
