@@ -11,7 +11,8 @@
 
 ## Changes
 - Library: code simplification.
-- Upgrade Avalonia to V12
+- Upgrade Avalonia to V12.
+- Library will fail on attempt of unencrypted transfer.
 
 # 2025.01.11
 

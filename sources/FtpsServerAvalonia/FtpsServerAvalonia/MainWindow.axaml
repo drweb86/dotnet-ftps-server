@@ -20,11 +20,11 @@
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
-		<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4 4 0 0">
+		<StackPanel Grid.Row="0" Orientation="Horizontal">
 			<controls:MainMenuControl x:Name="MainMenu" StartStopClicked="MainMenu_StartStopClicked" />
 		</StackPanel>
 
-		<DockPanel Margin="0" Grid.Row="1">
+		<DockPanel Grid.Row="1">
 			<controls:UpdateCheckExpanderView DockPanel.Dock="Top" />
 
 			<!-- Main Content -->

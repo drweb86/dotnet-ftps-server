@@ -628,6 +628,12 @@ class FtpsServerClientSession(
             return;
         }
 
+        if (!IsDataConnectionEncrypted())
+        {
+            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
+            return;
+        }
+
         // Accept connection BEFORE sending 150 response
         TcpClient dataClient;
         try
@@ -709,6 +715,12 @@ class FtpsServerClientSession(
             return;
         }
 
+        if (!IsDataConnectionEncrypted())
+        {
+            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
+            return;
+        }
+
         // Accept connection BEFORE sending 150 response
         TcpClient dataClient;
         try
@@ -785,6 +797,12 @@ class FtpsServerClientSession(
             return;
         }
 
+        if (!IsDataConnectionEncrypted())
+        {
+            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
+            return;
+        }
+
         // Accept connection BEFORE sending 150 response
         TcpClient dataClient;
         try
@@ -858,6 +876,12 @@ class FtpsServerClientSession(
         if (!_isPassiveMode || _dataListener == null)
         {
             await SendResponseAsync(425, "Use PASV first");
+            return;
+        }
+
+        if (!IsDataConnectionEncrypted())
+        {
+            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
             return;
         }
 
@@ -1006,6 +1030,11 @@ class FtpsServerClientSession(
     private bool CheckAuthentication()
     {
         return _isAuthenticated && _user != null;
+    }
+
+    private bool IsDataConnectionEncrypted()
+    {
+        return _certificate == null || _dataProtection == FtpsServerDataConnectionProtection.Protected;
     }
 
     private bool CheckPermission(bool read, bool write)
