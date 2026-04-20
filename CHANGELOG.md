@@ -1,5 +1,4 @@
 ﻿# 2026.04.20
-(unpublished)
 
 ## Bug Fixes
 - Library: On non-english locales dates were recorded encorrectly in List command, so users might see empty folders.
