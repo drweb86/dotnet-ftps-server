@@ -1,0 +1,51 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Architectures: amd64 arm64
+Codename: stable
+Components: main
+Date: Mon, 20 Apr 2026 20:53:35 +0000
+Description: FTPS Server APT Repository
+Label: FtpsServer
+Origin: FtpsServer
+Suite: stable
+MD5Sum:
+ 2b1e3d772a4478736700755b26839465              190 Release
+ 2fdb2a6377a25255ef433f795a14ace9              789 main/binary-amd64/Packages
+ 2f37c28a6030bf9d168d5c1aa2a3d58b              537 main/binary-amd64/Packages.gz
+ 61d9c1e9d27b5bc2b8acc4f001d74448              789 main/binary-arm64/Packages
+ 6c515709fc9cdb0f9bb842bea74b0365              536 main/binary-arm64/Packages.gz
+SHA1:
+ 330330255bbeb31e1bbdb907b7fa82ae955ff3a8              190 Release
+ a324ed4e4338a4ac5a8ecb3e2aa2b60a776ee30b              789 main/binary-amd64/Packages
+ 1a9d724e964c2a1627923bff519a9f2257bdd626              537 main/binary-amd64/Packages.gz
+ 637e4a4f5439a404b5e69e522e81652b2464c342              789 main/binary-arm64/Packages
+ 14abb7a63cc0f2967c52f9658a1bc5990423365b              536 main/binary-arm64/Packages.gz
+SHA256:
+ 39272d54d3abeab570f34b3cac46317f4c1b187aa8fa3d0e03d4ed135761c503              190 Release
+ 2699930ae7d31d5c5aa898c0b80c62e45a053b9aeb32c1ef136c323a3784b14b              789 main/binary-amd64/Packages
+ 198be867bba49e08d74a8d76c39d8a4c887c7ae470683f5724de1e67b4a51c48              537 main/binary-amd64/Packages.gz
+ 07ad43556b10ffa370cd873e0be0bbd2ef461c657230d6a047c9f1b1d10b3f29              789 main/binary-arm64/Packages
+ ddbd7a8a6429dac5b9df16113555820b21236eca64cc97b0c560b8006a0b71d5              536 main/binary-arm64/Packages.gz
+SHA512:
+ fd990464ccd7d5388d3b33678e5b9006d8b0b408aef5eabb0b2f2bcfdf4ef89556af275211413039bcdf22490b045f19134a118eea3336a0fb678c9c98cf7005              190 Release
+ 5a62f00da4a209486dfe3000c1064299d5153d9e61fcbfcffdabb14c18088144a9fa1a8baab077a1fad00c020bfd6af5193727faf66cc93fb4d615dd70a749fd              789 main/binary-amd64/Packages
+ b59d59dc15eb86d7785b09cff0b8d0499384841bbb80380616834f8d86f4933dc6af0b34d084e485756ec2445b248eefc6dd6a1f22f32a5bae499a999b18daa8              537 main/binary-amd64/Packages.gz
+ 25ceaf1751b7237f66258f92f38612d8e60d940c7ca611941fb2997a307500c4d6bc88152dae2c7f37db0759eb0f1dde044d5a80891bf76a004c06f6fcb5940e              789 main/binary-arm64/Packages
+ 9aaa42b0935709ea921e58a068658f4864d0e256cd706688f856464274964702caa3f8da9f91384d82164f05387cb030d1421c1c2011359ceb59e23b3e0406a7              536 main/binary-arm64/Packages.gz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEE327DYqOKv7n60hK2FDKdU16DZukFAmnmklEACgkQFDKdU16D
+ZunbaRAAp+2BZFKvepG3WDT6/vykLY8DczuIgiVpbJ1HogGoGydP/I/vC88KemAs
+G32qstYfPcHIf9LDR/gcunlps02oKRy4fdq+kGswv/pV7gXmhqsQ2POSDhzDauGc
+UdTN7A6gpTXtbWH7Ns1veIDsQQlWwobr+mXJhX35JGgrrJtfo/2xUglO7LE1Q/6G
+ePnYMz6ck/EMd76GU2nxZnxfMHSet5SaDoZtRs+HTAEsPEXzb8+yW3+IvfojFfO8
+0uRFn7YxIw/kVChGCwBHybbavwPogWA00/XO6Q0QjtYkr/NNH5mmPEpQVcbNfUmS
+B6Mh+eQpwMpAnimsmTzT1HJIFwN2Q2D9c83Gs0nRfPhyTeZnBOyMdwy8j563NoDz
+eFZNFkdXXmop+kN3ctcgJ3drC12SeBaXI59NqDb8DY/kZAG23hlMvmCN2K6Ikv59
+XwvadnYV2GKj6epnvbEyXL0cLjEDFRnS9FOwkZ0q7CcbqWXhAM3ZAsLs62noRA5h
+fhCyrNhIIdP99Q82X1SqXmppu9Gp5OsgY/csXcUWK/bJSmhkb4PekO38kedx+XEx
+jomI5R6va5UGZj/m8fnaqSgIxjME5fmWULhjdLZ7b7Tp3Ip7WxteWkHeIrwYHtaV
+P9t08Vzx9J9akvU+MU+bZXQzClJKaiWjpWRIUNJl9rEHZ3DYfWM=
+=7QlD
+-----END PGP SIGNATURE-----
