@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>FTPS சேவையகம்</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>பயனர்கள்</value>
+  </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>+ சேர்</value>
+  </data>
+
+  <!-- Main Menu -->
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS சேவையகம்</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>இணையதளம்</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>உரிமம்</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>பதிவுகள்</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>⏵தொடங்கு</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>⏹ நிறுத்து</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS சேவையகம் - V{0}</value>
+  </data>
+
+  <!-- Server Configuration -->
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>ஹோஸ்ட், போர்ட், சான்றிதழ்</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>முகவரி</value>
+  </data>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>உங்கள் கணினியை LAN-ல் அதன் பெயர் அல்லது IP முகவரி மூலம் அணுகலாம்.</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>பெயர்: </value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>நெட்வொர்க் IPகள்: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>நெட்வொர்க்:</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>IP முகவரிகள்: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> அதிகபட்ச இணைப்புகள்</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>சுய-கையொப்பமிட்ட தானியங்கி சான்றிதழைப் பயன்படுத்து</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>உலாவு</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>சான்றிதழ் கோப்பு (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>சான்றிதழ் கடவுச்சொல் (தேவைப்பட்டால்)</value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>சான்றிதழ் கோப்பைத் தேர்ந்தெடுக்கவும்</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
+  </data>
+
+  <!-- User Item Control -->
+  <data name="UserUsername" xml:space="preserve">
+    <value>பயனர்பெயர்</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>கடவுச்சொல்</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>கோப்புறை</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>படிக்க மட்டும்</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>நீக்கு</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>பயனர் {0} க்கு பகிர கோப்புறையைத் தேர்ந்தெடுக்கவும்</value>
+  </data>
+
+  <!-- Update Check -->
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>பதிவிறக்கு</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>புதிய {0} பதிப்பு கிடைக்கிறது.</value>
+  </data>
+
+  <!-- Numeric Up/Down -->
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>பிழை</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>சான்றிதழ் கோப்பைத் தேர்ந்தெடுக்கவும்.</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>குறைந்தது ஒரு பயனரையாவது சேர்க்கவும்.</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>பயனர் {0} தகவல் முழுமையடையவில்லை.</value>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>சேவையகத்தைத் தொடங்குவதில் தோல்வி: {0}</value>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>சேவையகத்தை நிறுத்துவதில் பிழை: {0}</value>
+  </data>
+</root>

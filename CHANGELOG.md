@@ -8,6 +8,7 @@
 
 ## New Features
 - Library: Possibility to implement own file system.
+- UI: Add some languages.
 
 ## Changes
 - Library: code simplification.

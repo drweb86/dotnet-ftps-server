@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>Người dùng</value>
+  </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>+ Thêm</value>
+  </data>
+
+  <!-- Main Menu -->
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>Trang web</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>Giấy phép</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>Nhật ký</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>⏵BẮT ĐẦU</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>⏹ DỪNG</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS Server - V{0}</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+
+  <!-- Server Configuration -->
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>Máy chủ, Cổng, Chứng chỉ</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>Máy tính của bạn có thể được truy cập trong mạng LAN bằng tên hoặc địa chỉ IP.</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>Tên: </value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>IP mạng: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>Mạng:</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>Địa chỉ IP: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> Kết nối tối đa</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>Sử dụng chứng chỉ tự ký được tạo tự động</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>Duyệt</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>Tệp chứng chỉ (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>Mật khẩu chứng chỉ (nếu cần)</value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>Chọn tệp chứng chỉ</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
+  </data>
+
+  <!-- User Item Control -->
+  <data name="UserUsername" xml:space="preserve">
+    <value>Tên đăng nhập</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>Chỉ đọc</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>Chọn thư mục chia sẻ cho người dùng {0}</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+
+  <!-- Update Check -->
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>Tải xuống</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>Đã có phiên bản {0} mới.</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+
+  <!-- Numeric Up/Down -->
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>Vui lòng chọn một tệp chứng chỉ.</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>Vui lòng thêm ít nhất một người dùng.</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>Người dùng {0} có thông tin không đầy đủ.</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>Không thể khởi động máy chủ: {0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>Lỗi khi dừng máy chủ: {0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+</root>

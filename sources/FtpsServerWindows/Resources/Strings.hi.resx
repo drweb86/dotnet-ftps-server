@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>उपयोगकर्ता</value>
+  </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>+ जोड़ें</value>
+  </data>
+
+  <!-- Main Menu -->
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>वेब-साइट</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>लाइसेंस</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>लॉग</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>⏵शुरू</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>⏹ रोकें</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS Server - V{0}</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+
+  <!-- Server Configuration -->
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>होस्ट, पोर्ट, प्रमाणपत्र</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>पता</value>
+  </data>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>आपके PC को LAN में उसके नाम या IP पते द्वारा एक्सेस किया जा सकता है।</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>नाम: </value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>नेटवर्क IP: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>नेटवर्क:</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>IP पते: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> अधिकतम कनेक्शन</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>स्व-हस्ताक्षरित स्वचालित रूप से जनरेट किया गया प्रमाणपत्र उपयोग करें</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>ब्राउज़</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>प्रमाणपत्र फ़ाइल (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>प्रमाणपत्र पासवर्ड (यदि आवश्यक हो)</value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>प्रमाणपत्र फ़ाइल चुनें</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
+  </data>
+
+  <!-- User Item Control -->
+  <data name="UserUsername" xml:space="preserve">
+    <value>उपयोगकर्ता नाम</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>पासवर्ड</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>फ़ोल्डर</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>केवल पठन</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>हटाएं</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>उपयोगकर्ता {0} के लिए साझा करने हेतु फ़ोल्डर चुनें</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+
+  <!-- Update Check -->
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>डाउनलोड</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>नया {0} संस्करण उपलब्ध है।</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+
+  <!-- Numeric Up/Down -->
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>त्रुटि</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>कृपया एक प्रमाणपत्र फ़ाइल चुनें।</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>कृपया कम से कम एक उपयोगकर्ता जोड़ें।</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>उपयोगकर्ता {0} की जानकारी अपूर्ण है।</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>सर्वर शुरू करने में विफल: {0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>सर्वर रोकने में त्रुटि: {0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+</root>
