@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>Foydalanuvchilar</value>
+  </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>+ Qo'shish</value>
+  </data>
+
+  <!-- Main Menu -->
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>Veb-sayt</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>Litsenziya</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>Jurnallar</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Server jurnallari</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Tozalash</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>[ BOSHLASH ]</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>[ TO'XTATISH ]</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS Server - V{0}</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+
+  <!-- Server Configuration -->
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>Host, Port, Sertifikat</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>Manzil</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>Kompyuteringizga LAN tarmog'ida uning nomi yoki IP manzili orqali kirish mumkin.</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>Nom: </value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>Tarmoq IP manzillari: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>Tarmoq:</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>IP manzillar: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> Maksimal ulanishlar</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>Avtomatik yaratilgan o'z-o'zini imzolagan sertifikatdan foydalanish</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>Ko'rish</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>Sertifikat fayli (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>Sertifikat paroli (agar talab qilinsa)</value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>Sertifikat faylini tanlash</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
+  </data>
+
+  <!-- User Item Control -->
+  <data name="UserUsername" xml:space="preserve">
+    <value>Foydalanuvchi nomi</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>Parol</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>Papka</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>Faqat o'qish</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>O'chirish</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>{0} foydalanuvchisi uchun ulashish papkasini tanlang</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+
+  <!-- Update Check -->
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>Yuklab olish</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>Yangi {0} versiyasi mavjud.</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+
+  <!-- Numeric Up/Down -->
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Xato</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>Iltimos, sertifikat faylini tanlang.</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>Iltimos, kamida bitta foydalanuvchi qo'shing.</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>{0} foydalanuvchisining ma'lumotlari to'liq emas.</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>Serverni ishga tushirib bo'lmadi: {0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>Serverni to'xtatishda xato: {0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+</root>

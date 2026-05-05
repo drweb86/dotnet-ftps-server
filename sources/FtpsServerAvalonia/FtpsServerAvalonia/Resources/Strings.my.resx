@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>အသုံးပြုသူများ</value>
+  </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>+ ထည့်ရန်</value>
+  </data>
+
+  <!-- Main Menu -->
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>ဝဘ်ဆိုက်</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>လိုင်စင်</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>မှတ်တမ်းများ</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>ဆာဗာ မှတ်တမ်းများ</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>ရှင်းလင်းရန်</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>[ စတင်ရန် ]</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>[ ရပ်တန့်ရန် ]</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS Server - V{0}</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+
+  <!-- Server Configuration -->
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>ဟောက်စ်၊ ပို့၊ လက်မှတ်</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>လိပ်စာ</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>ပို့</value>
+  </data>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>သင့်ကွန်ပျူတာကို LAN တွင် ၎င်း၏နာမည် သို့မဟုတ် IP လိပ်စာဖြင့် ဝင်ရောက်နိုင်သည်။</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>နာမည်: </value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>ကွန်ရက် IPs: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>ကွန်ရက်:</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>IP လိပ်စာများ: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> အများဆုံး ချိတ်ဆက်မှုများ</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>အလိုအလျောက် ထုတ်ပေးသော ကိုယ်တိုင်လက်မှတ်ထိုး လက်မှတ်ကို သုံးရန်</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>ရှာဖွေရန်</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>လက်မှတ်ဖိုင် (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>လက်မှတ် စကားဝှက် (လိုအပ်ပါက)</value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>လက်မှတ်ဖိုင် ရွေးချယ်ရန်</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
+  </data>
+
+  <!-- User Item Control -->
+  <data name="UserUsername" xml:space="preserve">
+    <value>အသုံးပြုသူအမည်</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>စကားဝှက်</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>ဖိုလ်ဒါ</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>ဖတ်ရုံသာ</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>ဖျက်ရန်</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>အသုံးပြုသူ {0} အတွက် မျှဝေရန် ဖိုလ်ဒါ ရွေးချယ်ပါ</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+
+  <!-- Update Check -->
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>ဒေါင်းလုတ်</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>ဗားရှင်း {0} အသစ် ရရှိနိုင်သည်။</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+
+  <!-- Numeric Up/Down -->
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>အမှား</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>ကျေးဇူးပြု၍ လက်မှတ်ဖိုင် ရွေးချယ်ပါ။</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>ကျေးဇူးပြု၍ အသုံးပြုသူ တစ်ဦးဦး ထည့်ပါ။</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>အသုံးပြုသူ {0} ၏ အချက်အလက် မပြည့်စုံပါ။</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>ဆာဗာ စတင်ရန် မအောင်မြင်ပါ: {0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>ဆာဗာ ရပ်တန့်ရာတွင် အမှား: {0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+</root>

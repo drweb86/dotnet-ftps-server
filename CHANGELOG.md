@@ -1,4 +1,10 @@
-﻿# 2026.04.20
+﻿# 2026.05.05
+(unpublished)
+
+## New Features
+- UI: add more languages.
+
+# 2026.04.20
 
 ## Bug Fixes
 - Library: On non-english locales dates were recorded encorrectly in List command, so users might see empty folders.

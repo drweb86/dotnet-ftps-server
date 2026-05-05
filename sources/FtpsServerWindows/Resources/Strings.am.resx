@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" msdata:Ordinal="5" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Main Window -->
+  <data name="AppTitle" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>ተጠቃሚዎች</value>
+  </data>
+  <data name="AddUserButton" xml:space="preserve">
+    <value>+ አክል</value>
+  </data>
+
+  <!-- Main Menu -->
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>ድህረ ገጽ</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>ፈቃድ</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>ምዝገባ</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>የሰርቨር ምዝገባ</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>አጽዳ</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>[ ጀምር ]</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>[ አቁም ]</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS Server - V{0}</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+
+  <!-- Server Configuration -->
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>አስተናጋጅ፣ ወደብ፣ ሰርተፊኬት</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>አድራሻ</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>ወደብ</value>
+  </data>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>ኮምፒውተርዎ በ LAN ውስጥ በስሙ ወይም በ IP አድራሻው ሊደረስ ይችላል።</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>ስም: </value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>የአውታረ መረብ IPs: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>አውታረ መረብ:</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>የ IP አድራሻዎች: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> ከፍተኛ ግንኙነቶች</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>በራስ የተፈረመ ራስ-የተፈጠረ ሰርተፊኬት ይጠቀሙ</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>ያስሱ</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>የሰርተፊኬት ፋይል (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>የሰርተፊኬት የሚስጥር ቃል (አስፈላጊ ከሆነ)</value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>የሰርተፊኬት ፋይል ይምረጡ</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
+  </data>
+
+  <!-- User Item Control -->
+  <data name="UserUsername" xml:space="preserve">
+    <value>የተጠቃሚ ስም</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>የሚስጥር ቃል</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>ፎልደር</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>ለማንበብ ብቻ</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>ሰርዝ</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>ለተጠቃሚ {0} ለማጋራት ፎልደር ይምረጡ</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+
+  <!-- Update Check -->
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>አውርድ</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>አዲስ {0} ስሪት ይገኛል።</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+
+  <!-- Numeric Up/Down -->
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+
+  <!-- Error Messages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>ስህተት</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>እባክዎ የሰርተፊኬት ፋይል ይምረጡ።</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>እባክዎ ቢያንስ አንድ ተጠቃሚ ያክሉ።</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>ተጠቃሚ {0} ያልተሟሉ መረጃዎች አሉት።</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>ሰርቨርን ማስጀመር አልተሳካም: {0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>ሰርቨርን ሲያቆሙ ስህተት: {0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+</root>

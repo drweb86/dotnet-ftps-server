@@ -1,31 +1,47 @@
 ﻿# FTPS Server UI Application
 
-Localized to the following languages:
+<details>
+<summary>Localized to 37 languages (click to expand)</summary>
 
-| Language | Code | Native Name |
-|----------|------|-------------|
-| Arabic | ar | العربية |
-| Bengali | bn | বাংলা |
-| Chinese Simplified | zh-Hans | 简体中文 |
-| French | fr | Français |
-| German | de | Deutsch |
-| Hindi | hi | हिन्दी |
-| Indonesian | id | Bahasa Indonesia |
-| Italian | it | Italiano |
-| Japanese | ja | 日本語 |
-| Korean | ko | 한국어 |
-| Marathi | mr | मराठी |
-| Nigerian Pidgin | pcm | Naijá |
-| Portuguese Brazilian | pt-BR | Português do Brasil |
-| Russian | ru | Русский |
-| Spanish | es | Español |
-| Tamil | ta | தமிழ் |
-| Telugu | te | తెలుగు |
-| Turkish | tr | Türkçe |
-| Ukrainian | uk | Українська |
-| Urdu | ur | اردو |
-| Vietnamese | vi | Tiếng Việt |
-| Yue Chinese | yue | 粵語 |
+- Amharic — አማርኛ
+- Arabic — العربية
+- Bengali — বাংলা
+- Burmese — မြန်မာဘာသာ
+- Chinese Simplified — 简体中文
+- French — Français
+- German — Deutsch
+- Hausa — Hausa
+- Hindi — हिन्दी
+- Igbo — Igbo
+- Indonesian — Bahasa Indonesia
+- Italian — Italiano
+- Japanese — 日本語
+- Kazakh — Қазақша
+- Korean — 한국어
+- Marathi — मराठी
+- Nepali — नेपाली
+- Nigerian Pidgin — Naijá
+- Oromo — Afaan Oromoo
+- Pashto — پښتو
+- Persian — فارسی
+- Polish — Polski
+- Portuguese Brazilian — Português do Brasil
+- Punjabi — ਪੰਜਾਬੀ
+- Russian — Русский
+- Spanish — Español
+- Swahili — Kiswahili
+- Tamil — தமிழ்
+- Telugu — తెలుగు
+- Thai — ภาษาไทย
+- Turkish — Türkçe
+- Ukrainian — Українська
+- Urdu — اردو
+- Uzbek — O'zbekcha
+- Vietnamese — Tiếng Việt
+- Yoruba — Yorùbá
+- Yue Chinese — 粵語
+
+</details>
 
 <img width="1109" height="614" alt="image" src="https://github.com/user-attachments/assets/da502ae9-01ae-4bfe-9619-653d6395067b" />
 
