@@ -4,6 +4,9 @@
 ## New Features
 - UI: add more languages.
 
+## Changes
+- UI: Update some libraries.
+
 # 2026.04.20
 
 ## Bug Fixes
