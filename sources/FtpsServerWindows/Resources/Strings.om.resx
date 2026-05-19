@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -58,78 +58,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-
   <!-- Main Window -->
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
-  <data name="UsersTab" xml:space="preserve">
-    <value>Fayyadamtoota</value>
+  <!-- Main Menu -->
+  <!-- Server Configuration -->
+  <!-- User Item Control -->
+  <!-- Update Check -->
+  <!-- Numeric Up/Down -->
+  <!-- Error Messages -->
+  <!-- Winget manifest field (DO NOT TRANSLATE) -->
+  <data name="_Technical_WingetLocale" xml:space="preserve">
+    <value>om-ET</value>
   </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Dabaluu</value>
   </data>
-
-  <!-- Main Menu -->
-  <data name="MenuHeader" xml:space="preserve">
+  <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
-  </data>
-  <data name="MenuWebSite" xml:space="preserve">
-    <value>Marsariitii</value>
-  </data>
-  <data name="MenuLicense" xml:space="preserve">
-    <value>Hayyama</value>
-  </data>
-  <data name="MenuLogs" xml:space="preserve">
-    <value>Galmee</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>Galmee Serveraa</value>
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>Haqi</value>
   </data>
-  <data name="MenuStart" xml:space="preserve">
-    <value>[ EEGALI ]</value>
-  </data>
-  <data name="MenuStop" xml:space="preserve">
-    <value>[ DHAABI ]</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
-    <comment>Format: {0} = version number</comment>
-  </data>
-
-  <!-- Server Configuration -->
-  <data name="ConfigTitle" xml:space="preserve">
-    <value>Hoostii, Poortii, Waraqaa Ragaa</value>
-  </data>
-  <data name="ConfigAddress" xml:space="preserve">
-    <value>Teessoo</value>
-  </data>
-  <data name="ConfigPort" xml:space="preserve">
-    <value>Poortii</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>Kompuuterri kee LAN keessatti maqaa isaa yookiin teessoo IP isaa fayyadamuun argamuu danda'a.</value>
   </data>
-  <data name="ConfigName" xml:space="preserve">
-    <value>Maqaa: </value>
-  </data>
-  <data name="ConfigNetworkIPs" xml:space="preserve">
-    <value>Network IPs: </value>
-  </data>
-  <data name="ConfigNetwork" xml:space="preserve">
-    <value>Netwoorki:</value>
-  </data>
-  <data name="ConfigIPAddresses" xml:space="preserve">
-    <value>Teessoolee IP: </value>
-  </data>
-  <data name="ConfigMaxConnections" xml:space="preserve">
-    <value> Walqunnamtii Heddumminaa</value>
-  </data>
-  <data name="ConfigUseSelfSigned" xml:space="preserve">
-    <value>Waraqaa ragaa mallatteeffame ofiin itti fayyadami</value>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>Teessoo</value>
   </data>
   <data name="ConfigBrowse" xml:space="preserve">
     <value>Barbaadi</value>
@@ -137,60 +90,38 @@
   <data name="ConfigCertFile" xml:space="preserve">
     <value>Faayilii Waraqaa Ragaa (.pfx, .pem, .der)</value>
   </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
+  </data>
   <data name="ConfigCertPassword" xml:space="preserve">
     <value>Jecha Darbii Waraqaa Ragaa (yoo barbaachise)</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>Teessoolee IP: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> Walqunnamtii Heddumminaa</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>Maqaa: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>Netwoorki:</value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>Network IPs: </value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>Poortii</value>
   </data>
   <data name="ConfigSelectCertTitle" xml:space="preserve">
     <value>Faayilii Waraqaa Ragaa Filadhu</value>
   </data>
-  <data name="ConfigCertFilter" xml:space="preserve">
-    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>Hoostii, Poortii, Waraqaa Ragaa</value>
   </data>
-
-  <!-- User Item Control -->
-  <data name="UserUsername" xml:space="preserve">
-    <value>Maqaa Fayyadamaa</value>
-  </data>
-  <data name="UserPassword" xml:space="preserve">
-    <value>Jecha Darbii</value>
-  </data>
-  <data name="UserFolder" xml:space="preserve">
-    <value>Dirree</value>
-  </data>
-  <data name="UserReadonly" xml:space="preserve">
-    <value>Dubbisuu qofa</value>
-  </data>
-  <data name="UserDelete" xml:space="preserve">
-    <value>Haqi</value>
-  </data>
-  <data name="UserSelectFolderFormat" xml:space="preserve">
-    <value>Dirree fayyadamaa {0} waliin qooduuf filadhu</value>
-    <comment>Format: {0} = username</comment>
-  </data>
-
-  <!-- Update Check -->
-  <data name="UpdateDownload" xml:space="preserve">
-    <value>Buusi</value>
-  </data>
-  <data name="UpdateAvailableFormat" xml:space="preserve">
-    <value>Vershinii haaraan {0} argama.</value>
-    <comment>Format: {0} = version number</comment>
-  </data>
-
-  <!-- Numeric Up/Down -->
-  <data name="NumericUp" xml:space="preserve">
-    <value>▲</value>
-  </data>
-  <data name="NumericDown" xml:space="preserve">
-    <value>▼</value>
-  </data>
-
-  <!-- Error Messages -->
-  <data name="ErrorTitle" xml:space="preserve">
-    <value>Dogoggora</value>
-  </data>
-  <data name="ErrorSelectCertificate" xml:space="preserve">
-    <value>Maaloo faayilii waraqaa ragaa filadhu.</value>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>Waraqaa ragaa mallatteeffame ofiin itti fayyadami</value>
   </data>
   <data name="ErrorAddUser" xml:space="preserve">
     <value>Maaloo fayyadamaa tokko yoo xiqqaate dabaluu.</value>
@@ -199,6 +130,9 @@
     <value>Fayyadamaan {0} odeeffannoo guutuu hin qabu.</value>
     <comment>Format: {0} = username</comment>
   </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>Maaloo faayilii waraqaa ragaa filadhu.</value>
+  </data>
   <data name="ErrorStartServerFormat" xml:space="preserve">
     <value>Server eegaluu hin dandeenye: {0}</value>
     <comment>Format: {0} = error message</comment>
@@ -206,5 +140,68 @@
   <data name="ErrorStopServerFormat" xml:space="preserve">
     <value>Dogoggora server dhaabuurratti: {0}</value>
     <comment>Format: {0} = error message</comment>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Dogoggora</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Galmee Serveraa</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS Server - V{0}</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS Server</value>
+  </data>
+  <data name="MenuLicense" xml:space="preserve">
+    <value>Hayyama</value>
+  </data>
+  <data name="MenuLogs" xml:space="preserve">
+    <value>Galmee</value>
+  </data>
+  <data name="MenuStart" xml:space="preserve">
+    <value>[ EEGALI ]</value>
+  </data>
+  <data name="MenuStop" xml:space="preserve">
+    <value>[ DHAABI ]</value>
+  </data>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>Marsariitii</value>
+  </data>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
+  </data>
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
+  </data>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>Vershinii haaraan {0} argama.</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>Buusi</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>Haqi</value>
+  </data>
+  <data name="UserFolder" xml:space="preserve">
+    <value>Dirree</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>Jecha Darbii</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>Dubbisuu qofa</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>Dirree fayyadamaa {0} waliin qooduuf filadhu</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>Fayyadamtoota</value>
+  </data>
+  <data name="UserUsername" xml:space="preserve">
+    <value>Maqaa Fayyadamaa</value>
   </data>
 </root>

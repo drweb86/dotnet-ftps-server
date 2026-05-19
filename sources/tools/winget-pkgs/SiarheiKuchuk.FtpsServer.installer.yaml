@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
+
+PackageIdentifier: SiarheiKuchuk.FtpsServer
+PackageVersion: APP_VERSION_STRING
+Platform:
+- Windows.Desktop
+InstallerType: nullsoft
+InstallModes:
+- interactive
+- silent
+- silentWithProgress
+UpgradeBehavior: uninstallPrevious
+ProductCode: FTPS Server
+ReleaseDate: 2001-01-01
+Installers:
+- InstallerUrl: https://github.com/drweb86/dotnet-ftps-server/releases/download/APP_VERSION_STRING/FtpsServerWindows_vAPP_VERSION_STRING.exe
+  Platform:
+    - Windows.Desktop
+  Architecture: arm64
+  InstallerSha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  Scope: user
+  InstallerSwitches:
+    Custom: /CLOSEAPPLICATIONS /CURRENTUSER /S
+- InstallerUrl: https://github.com/drweb86/dotnet-ftps-server/releases/download/APP_VERSION_STRING/FtpsServerWindows_vAPP_VERSION_STRING.exe
+  Platform:
+    - Windows.Desktop
+  Architecture: arm64
+  InstallerSha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  Scope: machine
+  InstallerSwitches:
+    Custom: /CLOSEAPPLICATIONS /ALLUSERS /S
+  ElevationRequirement: elevationRequired
+- InstallerUrl: https://github.com/drweb86/dotnet-ftps-server/releases/download/APP_VERSION_STRING/FtpsServerWindows_vAPP_VERSION_STRING.exe
+  Platform:
+    - Windows.Desktop
+  Architecture: x64
+  InstallerSha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  Scope: user
+  InstallerSwitches:
+    Custom: /CLOSEAPPLICATIONS /CURRENTUSER /S
+- InstallerUrl: https://github.com/drweb86/dotnet-ftps-server/releases/download/APP_VERSION_STRING/FtpsServerWindows_vAPP_VERSION_STRING.exe
+  Platform:
+    - Windows.Desktop
+  Architecture: x64
+  InstallerSha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  Scope: machine
+  InstallerSwitches:
+    Custom: /CLOSEAPPLICATIONS /ALLUSERS /S
+  ElevationRequirement: elevationRequired
+ManifestType: installer
+ManifestVersion: 1.12.0

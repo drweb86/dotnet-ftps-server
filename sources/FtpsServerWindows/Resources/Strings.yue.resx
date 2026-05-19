@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -58,24 +58,92 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-
   <!-- Main Window -->
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
-  <data name="UsersTab" xml:space="preserve">
-    <value>用戶</value>
+  <!-- Main Menu -->
+  <!-- Server Configuration -->
+  <!-- User Item Control -->
+  <!-- Update Check -->
+  <!-- Numeric Up/Down -->
+  <!-- Error Messages -->
+  <!-- Winget manifest field (DO NOT TRANSLATE) -->
+  <data name="_Technical_WingetLocale" xml:space="preserve">
+    <value>yue-HK</value>
   </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ 新增</value>
   </data>
-
-  <!-- Main Menu -->
-  <data name="MenuHeader" xml:space="preserve">
+  <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="MenuWebSite" xml:space="preserve">
-    <value>網站</value>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>你嘅電腦可以透過名稱或 IP 地址喺區域網絡入面存取。</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>瀏覽</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>證書檔案 (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>證書密碼（如需要）</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>IP 地址: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> 最大連接數</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>名稱: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>網絡:</value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>網絡 IP: </value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>揀選證書檔案</value>
+  </data>
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>主機、端口、證書</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>使用自簽自動產生嘅證書</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>請新增至少一個用戶。</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>用戶 {0} 嘅資料唔完整。</value>
+    <comment>Format: {0} = username</comment>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>請揀選一個證書檔案。</value>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>無法啟動伺服器：{0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>停止伺服器時出錯：{0}</value>
+    <comment>Format: {0} = error message</comment>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS Server - V{0}</value>
+    <comment>Format: {0} = version number</comment>
+  </data>
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS Server</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>授權條款</value>
@@ -89,113 +157,42 @@
   <data name="MenuStop" xml:space="preserve">
     <value>⏹ 停止</value>
   </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
-    <comment>Format: {0} = version number</comment>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>網站</value>
   </data>
-
-  <!-- Server Configuration -->
-  <data name="ConfigTitle" xml:space="preserve">
-    <value>主機、端口、證書</value>
+  <data name="NumericDown" xml:space="preserve">
+    <value>▼</value>
   </data>
-  <data name="ConfigAddress" xml:space="preserve">
-    <value>地址</value>
-  </data>
-  <data name="ConfigAccessInfo" xml:space="preserve">
-    <value>你嘅電腦可以透過名稱或 IP 地址喺區域網絡入面存取。</value>
-  </data>
-  <data name="ConfigName" xml:space="preserve">
-    <value>名稱: </value>
-  </data>
-  <data name="ConfigNetworkIPs" xml:space="preserve">
-    <value>網絡 IP: </value>
-  </data>
-  <data name="ConfigNetwork" xml:space="preserve">
-    <value>網絡:</value>
-  </data>
-  <data name="ConfigIPAddresses" xml:space="preserve">
-    <value>IP 地址: </value>
-  </data>
-  <data name="ConfigMaxConnections" xml:space="preserve">
-    <value> 最大連接數</value>
-  </data>
-  <data name="ConfigUseSelfSigned" xml:space="preserve">
-    <value>使用自簽自動產生嘅證書</value>
-  </data>
-  <data name="ConfigBrowse" xml:space="preserve">
-    <value>瀏覽</value>
-  </data>
-  <data name="ConfigCertFile" xml:space="preserve">
-    <value>證書檔案 (.pfx, .pem, .der)</value>
-  </data>
-  <data name="ConfigCertPassword" xml:space="preserve">
-    <value>證書密碼（如需要）</value>
-  </data>
-  <data name="ConfigSelectCertTitle" xml:space="preserve">
-    <value>揀選證書檔案</value>
-  </data>
-  <data name="ConfigCertFilter" xml:space="preserve">
-    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
-  </data>
-
-  <!-- User Item Control -->
-  <data name="UserUsername" xml:space="preserve">
-    <value>用戶名稱</value>
-  </data>
-  <data name="UserPassword" xml:space="preserve">
-    <value>密碼</value>
-  </data>
-  <data name="UserFolder" xml:space="preserve">
-    <value>資料夾</value>
-  </data>
-  <data name="UserReadonly" xml:space="preserve">
-    <value>唯讀</value>
-  </data>
-  <data name="UserDelete" xml:space="preserve">
-    <value>刪除</value>
-  </data>
-  <data name="UserSelectFolderFormat" xml:space="preserve">
-    <value>揀選要分享畀用戶 {0} 嘅資料夾</value>
-    <comment>Format: {0} = username</comment>
-  </data>
-
-  <!-- Update Check -->
-  <data name="UpdateDownload" xml:space="preserve">
-    <value>下載</value>
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
   </data>
   <data name="UpdateAvailableFormat" xml:space="preserve">
     <value>有新嘅 {0} 版本可以使用。</value>
     <comment>Format: {0} = version number</comment>
   </data>
-
-  <!-- Numeric Up/Down -->
-  <data name="NumericUp" xml:space="preserve">
-    <value>▲</value>
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>下載</value>
   </data>
-  <data name="NumericDown" xml:space="preserve">
-    <value>▼</value>
+  <data name="UserDelete" xml:space="preserve">
+    <value>刪除</value>
   </data>
-
-  <!-- Error Messages -->
-  <data name="ErrorTitle" xml:space="preserve">
-    <value>錯誤</value>
+  <data name="UserFolder" xml:space="preserve">
+    <value>資料夾</value>
   </data>
-  <data name="ErrorSelectCertificate" xml:space="preserve">
-    <value>請揀選一個證書檔案。</value>
+  <data name="UserPassword" xml:space="preserve">
+    <value>密碼</value>
   </data>
-  <data name="ErrorAddUser" xml:space="preserve">
-    <value>請新增至少一個用戶。</value>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>唯讀</value>
   </data>
-  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
-    <value>用戶 {0} 嘅資料唔完整。</value>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>揀選要分享畀用戶 {0} 嘅資料夾</value>
     <comment>Format: {0} = username</comment>
   </data>
-  <data name="ErrorStartServerFormat" xml:space="preserve">
-    <value>無法啟動伺服器：{0}</value>
-    <comment>Format: {0} = error message</comment>
+  <data name="UsersTab" xml:space="preserve">
+    <value>用戶</value>
   </data>
-  <data name="ErrorStopServerFormat" xml:space="preserve">
-    <value>停止伺服器時出錯：{0}</value>
-    <comment>Format: {0} = error message</comment>
+  <data name="UserUsername" xml:space="preserve">
+    <value>用戶名稱</value>
   </data>
 </root>

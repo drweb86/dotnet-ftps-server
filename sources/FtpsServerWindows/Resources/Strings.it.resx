@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -58,24 +58,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-
   <!-- Main Window -->
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
-  <data name="UsersTab" xml:space="preserve">
-    <value>Utenti</value>
+  <!-- Main Menu -->
+  <!-- Server Configuration -->
+  <!-- User Item Control -->
+  <!-- Update Check -->
+  <!-- Numeric Up/Down -->
+  <!-- Error Messages -->
+  <!-- Winget manifest field (DO NOT TRANSLATE) -->
+  <data name="_Technical_WingetLocale" xml:space="preserve">
+    <value>it-IT</value>
   </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Aggiungi</value>
   </data>
-
-  <!-- Main Menu -->
-  <data name="MenuHeader" xml:space="preserve">
+  <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="MenuWebSite" xml:space="preserve">
-    <value>Sito Web</value>
+  <data name="ConfigAccessInfo" xml:space="preserve">
+    <value>Il tuo PC è accessibile nella LAN tramite il suo nome o indirizzo IP.</value>
+  </data>
+  <data name="ConfigAddress" xml:space="preserve">
+    <value>Indirizzo</value>
+  </data>
+  <data name="ConfigBrowse" xml:space="preserve">
+    <value>Sfoglia</value>
+  </data>
+  <data name="ConfigCertFile" xml:space="preserve">
+    <value>File Certificato (.pfx, .pem, .der)</value>
+  </data>
+  <data name="ConfigCertFilter" xml:space="preserve">
+    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
+  </data>
+  <data name="ConfigCertPassword" xml:space="preserve">
+    <value>Password Certificato (se richiesta)</value>
+  </data>
+  <data name="ConfigIPAddresses" xml:space="preserve">
+    <value>Indirizzi IP: </value>
+  </data>
+  <data name="ConfigMaxConnections" xml:space="preserve">
+    <value> Connessioni Massime</value>
+  </data>
+  <data name="ConfigName" xml:space="preserve">
+    <value>Nome: </value>
+  </data>
+  <data name="ConfigNetwork" xml:space="preserve">
+    <value>Rete:</value>
+  </data>
+  <data name="ConfigNetworkIPs" xml:space="preserve">
+    <value>IP di Rete: </value>
+  </data>
+  <data name="ConfigSelectCertTitle" xml:space="preserve">
+    <value>Seleziona File Certificato</value>
+  </data>
+  <data name="ConfigTitle" xml:space="preserve">
+    <value>Host, Porta, Certificato</value>
+  </data>
+  <data name="ConfigUseSelfSigned" xml:space="preserve">
+    <value>Usa certificato autofirmato generato automaticamente</value>
+  </data>
+  <data name="ErrorAddUser" xml:space="preserve">
+    <value>Aggiungere almeno un utente.</value>
+  </data>
+  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
+    <value>L'utente {0} ha informazioni incomplete.</value>
+  </data>
+  <data name="ErrorSelectCertificate" xml:space="preserve">
+    <value>Selezionare un file certificato.</value>
+  </data>
+  <data name="ErrorStartServerFormat" xml:space="preserve">
+    <value>Impossibile avviare il server: {0}</value>
+  </data>
+  <data name="ErrorStopServerFormat" xml:space="preserve">
+    <value>Errore nell'arresto del server: {0}</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="MenuAboutFormat" xml:space="preserve">
+    <value>FTPS Server - V{0}</value>
+  </data>
+  <data name="MenuHeader" xml:space="preserve">
+    <value>FTPS Server</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>Licenza</value>
@@ -89,107 +153,40 @@
   <data name="MenuStop" xml:space="preserve">
     <value>⏹ FERMA</value>
   </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
-  </data>
-
-  <!-- Server Configuration -->
-  <data name="ConfigTitle" xml:space="preserve">
-    <value>Host, Porta, Certificato</value>
-  </data>
-  <data name="ConfigAddress" xml:space="preserve">
-    <value>Indirizzo</value>
-  </data>
-  <data name="ConfigAccessInfo" xml:space="preserve">
-    <value>Il tuo PC è accessibile nella LAN tramite il suo nome o indirizzo IP.</value>
-  </data>
-  <data name="ConfigName" xml:space="preserve">
-    <value>Nome: </value>
-  </data>
-  <data name="ConfigNetworkIPs" xml:space="preserve">
-    <value>IP di Rete: </value>
-  </data>
-  <data name="ConfigNetwork" xml:space="preserve">
-    <value>Rete:</value>
-  </data>
-  <data name="ConfigIPAddresses" xml:space="preserve">
-    <value>Indirizzi IP: </value>
-  </data>
-  <data name="ConfigMaxConnections" xml:space="preserve">
-    <value> Connessioni Massime</value>
-  </data>
-  <data name="ConfigUseSelfSigned" xml:space="preserve">
-    <value>Usa certificato autofirmato generato automaticamente</value>
-  </data>
-  <data name="ConfigBrowse" xml:space="preserve">
-    <value>Sfoglia</value>
-  </data>
-  <data name="ConfigCertFile" xml:space="preserve">
-    <value>File Certificato (.pfx, .pem, .der)</value>
-  </data>
-  <data name="ConfigCertPassword" xml:space="preserve">
-    <value>Password Certificato (se richiesta)</value>
-  </data>
-  <data name="ConfigSelectCertTitle" xml:space="preserve">
-    <value>Seleziona File Certificato</value>
-  </data>
-  <data name="ConfigCertFilter" xml:space="preserve">
-    <value>Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</value>
-  </data>
-
-  <!-- User Item Control -->
-  <data name="UserUsername" xml:space="preserve">
-    <value>Nome Utente</value>
-  </data>
-  <data name="UserPassword" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="UserFolder" xml:space="preserve">
-    <value>Cartella</value>
-  </data>
-  <data name="UserReadonly" xml:space="preserve">
-    <value>Sola Lettura</value>
-  </data>
-  <data name="UserDelete" xml:space="preserve">
-    <value>Elimina</value>
-  </data>
-  <data name="UserSelectFolderFormat" xml:space="preserve">
-    <value>Seleziona la cartella da condividere per l'utente {0}</value>
-  </data>
-
-  <!-- Update Check -->
-  <data name="UpdateDownload" xml:space="preserve">
-    <value>Scarica</value>
-  </data>
-  <data name="UpdateAvailableFormat" xml:space="preserve">
-    <value>La nuova versione {0} è disponibile.</value>
-  </data>
-
-  <!-- Numeric Up/Down -->
-  <data name="NumericUp" xml:space="preserve">
-    <value>▲</value>
+  <data name="MenuWebSite" xml:space="preserve">
+    <value>Sito Web</value>
   </data>
   <data name="NumericDown" xml:space="preserve">
     <value>▼</value>
   </data>
-
-  <!-- Error Messages -->
-  <data name="ErrorTitle" xml:space="preserve">
-    <value>Errore</value>
+  <data name="NumericUp" xml:space="preserve">
+    <value>▲</value>
   </data>
-  <data name="ErrorSelectCertificate" xml:space="preserve">
-    <value>Selezionare un file certificato.</value>
+  <data name="UpdateAvailableFormat" xml:space="preserve">
+    <value>La nuova versione {0} è disponibile.</value>
   </data>
-  <data name="ErrorAddUser" xml:space="preserve">
-    <value>Aggiungere almeno un utente.</value>
+  <data name="UpdateDownload" xml:space="preserve">
+    <value>Scarica</value>
   </data>
-  <data name="ErrorIncompleteUserFormat" xml:space="preserve">
-    <value>L'utente {0} ha informazioni incomplete.</value>
+  <data name="UserDelete" xml:space="preserve">
+    <value>Elimina</value>
   </data>
-  <data name="ErrorStartServerFormat" xml:space="preserve">
-    <value>Impossibile avviare il server: {0}</value>
+  <data name="UserFolder" xml:space="preserve">
+    <value>Cartella</value>
   </data>
-  <data name="ErrorStopServerFormat" xml:space="preserve">
-    <value>Errore nell'arresto del server: {0}</value>
+  <data name="UserPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="UserReadonly" xml:space="preserve">
+    <value>Sola Lettura</value>
+  </data>
+  <data name="UserSelectFolderFormat" xml:space="preserve">
+    <value>Seleziona la cartella da condividere per l'utente {0}</value>
+  </data>
+  <data name="UsersTab" xml:space="preserve">
+    <value>Utenti</value>
+  </data>
+  <data name="UserUsername" xml:space="preserve">
+    <value>Nome Utente</value>
   </data>
 </root>
