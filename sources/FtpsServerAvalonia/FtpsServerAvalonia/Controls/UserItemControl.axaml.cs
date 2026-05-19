@@ -68,18 +68,9 @@ namespace FtpsServerAvalonia.Controls
                         var items = await testFolder.GetItemsAsync().ToListAsync();
                         var item = items!.Single(x => x.Name == "subfolder file 2");
                         var props = await item.GetBasicPropertiesAsync();
-                        UiLog.Current?.Info($"Folder items: {props.DateModified} // {props.DateModified?.UtcDateTime} // {props.DateCreated} // {props.DateCreated?.UtcDateTime} ");
+                        UiLog.Current?.Info($"Folder items 2: Size={props.Size} // DateModified={props.DateModified} // DateModified.UtcDateTime={props.DateModified?.UtcDateTime} // DateCreated={props.DateCreated} // DateCreated.UtcDateTime={props.DateCreated?.UtcDateTime}");
+                        UiLog.Current?.Info("Avalonia versions: Avalonia=12.0.3, Avalonia.Android=12.0.3, Avalonia.Themes.Fluent=12.0.3, Avalonia.Fonts.Inter=12.0.3, Avalonia.Diagnostics=12.0.3, Avalonia.Desktop=12.0.3, Avalonia.iOS=12.0.3, Avalonia.Browser=12.0.3");
 
-                        // test 2
-                        var testFolder2 = await topLevel.StorageProvider.OpenFolderBookmarkAsync(bookmark);
-                        var subfolder2 = (await testFolder2.GetItemsAsync().ToListAsync()).Single(x => x.Name == "subfolder") as IStorageFolder;
-                        var file = await subfolder2.CreateFileAsync("subfolder file 3");
-                        await using (var stream = await file.OpenWriteAsync())
-                        {
-                            var bytes = System.Text.Encoding.UTF8.GetBytes("Test content written from FTPS Server");
-                            await stream.WriteAsync(bytes);
-                        }
-                        UiLog.Current?.Info($"Verify file created subfolder/subfolder file 3");
                     }
                 }
             }

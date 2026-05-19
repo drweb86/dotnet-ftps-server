@@ -1,5 +1,4 @@
-﻿# 2026.05.05
-(unpublished)
+﻿# 2026.05.19
 
 ## New Features
 - UI: add more languages.
