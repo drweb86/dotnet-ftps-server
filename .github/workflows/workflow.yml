@@ -206,3 +206,71 @@ jobs:
           git add -A
           git commit -m "APT repo for ${{ github.event.release.tag_name }}"
           git push --force origin gh-pages
+
+  update-winget:
+    needs: build-windows
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            sources/tools/winget-pkgs
+            sources/tools/ResxSorter
+            sources/FtpsServerWindows/Resources
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Generate winget locale files
+        working-directory: sources/tools/ResxSorter
+        run: dotnet run
+
+      - name: Create winget-pkgs branch
+        run: |
+          version="${{ needs.build-windows.outputs.version }}"
+          hash="${{ needs.build-windows.outputs.installer_hash }}"
+          release_date=$(echo "$version" | tr '.' '-')
+          current_year=$(date +%Y)
+
+          echo "Version: $version"
+          echo "Hash: $hash"
+          echo "Release date: $release_date"
+
+          git clone --depth 1 \
+            "https://x-access-token:${{ secrets.WINGET_FORK_PAT }}@github.com/drweb86/winget-pkgs.git" \
+            winget-fork
+          cd winget-fork
+          git checkout -b "ftps-server-${version}"
+
+          manifest_dir="manifests/s/SiarheiKuchuk/FtpsServer/${version}"
+          mkdir -p "$manifest_dir"
+
+          sed -e "s/APP_VERSION_STRING/$version/g" \
+              -e "s/2001-01-01/$release_date/g" \
+              -e "s/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/$hash/g" \
+              ../sources/tools/winget-pkgs/SiarheiKuchuk.FtpsServer.installer.yaml \
+              > "$manifest_dir/SiarheiKuchuk.FtpsServer.installer.yaml"
+
+          sed -e "s/APP_VERSION_STRING/$version/g" \
+              ../sources/tools/winget-pkgs/SiarheiKuchuk.FtpsServer.yaml \
+              > "$manifest_dir/SiarheiKuchuk.FtpsServer.yaml"
+
+          for locale_file in ../sources/tools/winget-pkgs/SiarheiKuchuk.FtpsServer.locale.*.yaml; do
+            filename=$(basename "$locale_file")
+            sed -e "s/APP_VERSION_STRING/$version/g" \
+                -e "s/CURRENT_YEAR/$current_year/g" \
+                "$locale_file" > "$manifest_dir/$filename"
+          done
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "FTPS Server $version"
+          git push -u origin "ftps-server-${version}"
+
+          echo ""
+          echo "Branch 'ftps-server-${version}' pushed to drweb86/winget-pkgs"
+          echo "Create PR at: https://github.com/microsoft/winget-pkgs/compare/master...drweb86:winget-pkgs:ftps-server-${version}"
