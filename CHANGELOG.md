@@ -1,4 +1,12 @@
-﻿# 2026.05.19
+﻿# 2026.05.29
+
+## New Features
+- Android app.
+
+## Changes
+- UI: Update some libraries.
+
+# 2026.05.19
 
 ## New Features
 - UI: add more languages.

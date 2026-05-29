@@ -60,17 +60,6 @@ namespace FtpsServerAvalonia.Controls
                             user.Folder = folder.Name;
                             user.FolderBookmark = bookmark;
                         }
-
-                        // ADD test code here.
-
-                        // test 1 - list of files.
-                        var testFolder = await topLevel.StorageProvider.OpenFolderBookmarkAsync(bookmark);
-                        var items = await testFolder.GetItemsAsync().ToListAsync();
-                        var item = items!.Single(x => x.Name == "subfolder file 2");
-                        var props = await item.GetBasicPropertiesAsync();
-                        UiLog.Current?.Info($"Folder items 2: Size={props.Size} // DateModified={props.DateModified} // DateModified.UtcDateTime={props.DateModified?.UtcDateTime} // DateCreated={props.DateCreated} // DateCreated.UtcDateTime={props.DateCreated?.UtcDateTime}");
-                        UiLog.Current?.Info("Avalonia versions: Avalonia=12.0.3, Avalonia.Android=12.0.3, Avalonia.Themes.Fluent=12.0.3, Avalonia.Fonts.Inter=12.0.3, Avalonia.Diagnostics=12.0.3, Avalonia.Desktop=12.0.3, Avalonia.iOS=12.0.3, Avalonia.Browser=12.0.3");
-
                     }
                 }
             }

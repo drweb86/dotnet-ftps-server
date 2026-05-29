@@ -6,7 +6,9 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:api.github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(awk '{print $NF}')"
+      "Bash(awk '{print $NF}')",
+      "Bash(powershell.exe -Command ' *)",
+      "Bash(powershell.exe -Command \"\\(Get-Item 'C:\\\\\\\\Users\\\\\\\\siarh\\\\\\\\.nuget\\\\\\\\packages\\\\\\\\avalonia.android\\\\\\\\12.0.3\\\\\\\\avalonia.android.12.0.3.nupkg'\\).LastWriteTime\")"
     ]
   }
 }

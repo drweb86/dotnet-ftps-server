@@ -77,3 +77,5 @@ class StubLog : IFtpsServerLog
     public void Warn(string message) { }
 }
 ```
+
+If you want support of Linux file system, it's available via Android File System provider, see source code of project. Its implemented for Avalonia backend.
