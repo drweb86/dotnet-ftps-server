@@ -143,6 +143,67 @@ jobs:
           gh release upload "${{ github.event.release.tag_name }}" "Output\FtpsServerWindows_v$v.exe" --clobber
           gh release upload "${{ github.event.release.tag_name }}" "Output\FtpsServer_v${v}_win-binaries.7z" --clobber
 
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Install Android workload
+        run: dotnet workload install android
+
+      - name: Get version
+        id: version
+        run: |
+          version=$(head -1 CHANGELOG.md | sed 's/^\xEF\xBB\xBF//' | sed 's/^# //')
+          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "Version: $version"
+
+      - name: Publish Android
+        working-directory: sources
+        run: |
+          v="${{ steps.version.outputs.version }}"
+          for attempt in 1 2 3; do
+            dotnet publish FtpsServer.Android.slnx \
+              "/p:InformationalVersion=$v" \
+              "/p:VersionPrefix=$v" \
+              "/p:Version=$v" \
+              "/p:AssemblyVersion=$v" \
+              /p:Configuration=Release \
+              /p:PublishReadyToRun=false \
+              /p:RunAnalyzersDuringBuild=False \
+              --self-contained true \
+              --property WarningLevel=0 && break
+            [ $attempt -lt 3 ] && echo "Build failed, retrying in 2s..." && sleep 2
+          done
+
+      - name: Stage APK
+        run: |
+          v="${{ steps.version.outputs.version }}"
+          mkdir -p Output
+          cp "sources/FtpsServerAvalonia/FtpsServerAvalonia.Android/bin/Release/net10.0-android/com.SiarheiKuchuk.FtpsServer-Signed.apk" \
+             "Output/com.SiarheiKuchuk.FtpsServer-${v}.apk"
+
+      - name: Upload Android artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-package
+          path: Output/*.apk
+
+      - name: Upload Android APK to GitHub Release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          v="${{ steps.version.outputs.version }}"
+          gh release upload "${{ github.event.release.tag_name }}" "Output/com.SiarheiKuchuk.FtpsServer-${v}.apk" --clobber
+
   update-apt-repo:
     needs: build-deb
     if: github.event_name == 'release'
