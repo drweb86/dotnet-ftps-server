@@ -1,4 +1,4 @@
-﻿# 2026.05.29
+# 2026.05.30
 
 ## New Features
 - Android app.
