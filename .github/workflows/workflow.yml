@@ -161,7 +161,7 @@ jobs:
       - name: Get version
         id: version
         run: |
-          version=$(head -1 CHANGELOG.md | cut -c3-)
+          version=$(head -1 CHANGELOG.md | sed 's/^\xEF\xBB\xBF//' | sed 's/^# //')
           echo "version=$version" >> $GITHUB_OUTPUT
           echo "Version: $version"
 
