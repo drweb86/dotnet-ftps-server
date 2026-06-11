@@ -1,5 +1,4 @@
 # 2026.06.11
-(unpublished)
 
 ## Changes
 - Android app is self-signed. Previously it was preventing installation of it to Android.
