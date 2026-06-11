@@ -17,7 +17,7 @@ Because it is self-signed and not installed from Google Play, Android will ask y
 4. Tap the downloaded APK in the browser download list, or open it from the Android `Downloads` app.
 5. If Android blocks the install, tap `Settings` and enable `Allow from this source` for the browser or file manager you used.
 6. Go back and tap `Install`.
-7. If Google Play Protect shows a warning for the self-signed APK, choose the option to install anyway if you trust this project.
+7. If Google Play Protect shows a warning for the self-signed APK, choose the option to install anyway if you trust this project. On Samsung devices click Details, Install anyway.
 
 ## Updating
 
