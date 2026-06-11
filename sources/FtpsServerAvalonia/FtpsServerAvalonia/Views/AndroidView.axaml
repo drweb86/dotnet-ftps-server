@@ -56,6 +56,16 @@
 				DockPanel.Dock="Top"
 				StartStopClicked="MainMenu_StartStopClicked" />
 
+			<Button x:Name="AndroidStartStopButton"
+					Content="{x:Static res:Strings.MenuStart}"
+					Classes="ModernButton"
+					HorizontalAlignment="Stretch"
+					HorizontalContentAlignment="Center"
+					MinHeight="56"
+					FontSize="18"
+					Margin="10,4,10,12"
+					Click="MainMenu_StartStopClicked" />
+
 			<Border x:Name="ErrorBanner"
 					Background="#D32F2F"
 					Padding="12,8"

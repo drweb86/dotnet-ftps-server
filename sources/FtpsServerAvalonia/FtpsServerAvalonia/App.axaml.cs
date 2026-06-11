@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using FtpsServerAvalonia.Services;
 using FtpsServerAvalonia.Views;
 
 namespace FtpsServerAvalonia;
@@ -8,6 +9,8 @@ namespace FtpsServerAvalonia;
 public partial class App : Application
 {
     public static Visual? Instance { get; private set; }
+    public static IAndroidKeepAwakeService? AndroidKeepAwakeService { get; set; }
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);

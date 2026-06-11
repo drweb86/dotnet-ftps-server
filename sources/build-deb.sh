@@ -23,7 +23,7 @@ for rid in "${!ARCH_MAP[@]}"; do
     deb_arch="${ARCH_MAP[$rid]}"
     publish_dir="$OUTPUT_DIR/staging/$deb_arch/publish"
     pkg_root="$OUTPUT_DIR/staging/$deb_arch/pkg"
-    deb_file="$OUTPUT_DIR/ftps-server_${version}_${deb_arch}.deb"
+    deb_file="$OUTPUT_DIR/ftpsserver_${version}_linux_${deb_arch}.deb"
 
     echo "========================================="
     echo "  Building $rid ($deb_arch)"

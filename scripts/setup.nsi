@@ -64,7 +64,7 @@ Var StartMenuFolder
 
 ; Installer attributes
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "..\Output\FtpsServerWindows_v${PRODUCT_VERSION}.exe"
+OutFile "..\Output\ftpsserver_${PRODUCT_VERSION}_windows_setup.exe"
 InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
 ShowInstDetails show
 ShowUnInstDetails show

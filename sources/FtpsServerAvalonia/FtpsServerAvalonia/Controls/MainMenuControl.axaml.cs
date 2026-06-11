@@ -14,6 +14,8 @@ namespace FtpsServerAvalonia.Controls
         public static readonly RoutedEvent<RoutedEventArgs> StartStopClickedEvent =
             RoutedEvent.Register<MainMenuControl, RoutedEventArgs>(nameof(StartStopClicked), RoutingStrategies.Bubble);
 
+        public bool ShowStartStopItems { get; set; } = true;
+
         public event EventHandler<RoutedEventArgs> StartStopClicked
         {
             add => AddHandler(StartStopClickedEvent, value);
@@ -41,6 +43,13 @@ namespace FtpsServerAvalonia.Controls
         {
             Dispatcher.UIThread.Post(() =>
             {
+                if (!ShowStartStopItems)
+                {
+                    PlayIcon.IsVisible = false;
+                    StopIcon.IsVisible = false;
+                    return;
+                }
+
                 if (isRunning)
                 {
                     PlayIcon.IsVisible = false;

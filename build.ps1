@@ -70,7 +70,7 @@ if ($LastExitCode -ne 0)
 }
 
 Write-Output "Pack binaries"
-& "c:\Program Files\7-Zip\7z.exe" a -y ".\Output\FtpsServer_v$($version)_win-binaries.7z" ".\Output\publish\*" -mx9 -t7z -m0=lzma2 -ms=on -sccUTF-8 -ssw
+& "c:\Program Files\7-Zip\7z.exe" a -y ".\Output\ftpsserver_$($version)_windows_archive.7z" ".\Output\publish\*" -mx9 -t7z -m0=lzma2 -ms=on -sccUTF-8 -ssw
 if ($LastExitCode -ne 0)
 {
 	Write-Error "Fail." 

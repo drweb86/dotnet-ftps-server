@@ -1,3 +1,13 @@
+# 2026.06.11
+(unpublished)
+
+## Changes
+- Android app is self-signed. Previously it was preventing installation of it to Android.
+- Naming of build artefacts was improved.
+
+## Bug Fixes
+- Android: prevent sleep during server running.
+
 # 2026.05.31
 
 ## New Features

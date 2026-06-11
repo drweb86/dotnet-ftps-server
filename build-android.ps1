@@ -49,7 +49,7 @@ cd ..
 
 Write-Output "Copying APK files..."
 
-Move-Item -Path "sources\FtpsServerAvalonia\FtpsServerAvalonia.Android\bin\Release\net10.0-android\com.SiarheiKuchuk.FtpsServer-Signed.apk" -Destination "Output\com.SiarheiKuchuk.FtpsServer-$version.apk" -Force
+Move-Item -Path "sources\FtpsServerAvalonia\FtpsServerAvalonia.Android\bin\Release\net10.0-android\com.SiarheiKuchuk.FtpsServer-Signed.apk" -Destination "Output\ftpsserver_$($version)_android.apk" -Force
 
 Write-Output "Building for Android is completed......................."
 

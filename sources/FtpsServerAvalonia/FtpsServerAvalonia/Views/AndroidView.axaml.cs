@@ -27,6 +27,9 @@ public partial class AndroidView : UserControl
         get => _isServerRunning;
         set
         {
+            if (_isServerRunning == value)
+                return;
+
             _isServerRunning = value;
             UpdateServerStatus();
         }
@@ -94,6 +97,9 @@ public partial class AndroidView : UserControl
     public AndroidView()
     {
         InitializeComponent();
+        MainMenu.ShowStartStopItems = false;
+        MainMenu.UpdateServerStatus(IsServerRunning);
+
         _settings = SettingsManager.LoadSettings();
         _users = new ObservableCollection<UserAccount>(_settings.Users);
         _logEntries = [];
@@ -283,6 +289,8 @@ public partial class AndroidView : UserControl
     private void UpdateServerStatus()
     {
         MainMenu.UpdateServerStatus(IsServerRunning);
+        AndroidStartStopButton.Content = IsServerRunning ? Strings.MenuStop : Strings.MenuStart;
+        App.AndroidKeepAwakeService?.SetKeepScreenOn(IsServerRunning);
     }
 
     private void ShowError(string message)
