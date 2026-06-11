@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Platform;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using FtpsServerAvalonia.Controls;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
@@ -289,7 +290,10 @@ public partial class AndroidView : UserControl
     private void UpdateServerStatus()
     {
         MainMenu.UpdateServerStatus(IsServerRunning);
-        AndroidStartStopButton.Content = IsServerRunning ? Strings.MenuStop : Strings.MenuStart;
+        AndroidStartStopText.Text = IsServerRunning ? Strings.MenuStop : Strings.MenuStart;
+        AndroidStartStopText.Foreground = IsServerRunning ? Brushes.PaleVioletRed : Brushes.Green;
+        AndroidStartStopIcon.Fill = IsServerRunning ? Brushes.PaleVioletRed : Brushes.Green;
+        AndroidStartStopIcon.Data = Geometry.Parse(IsServerRunning ? "M 0 0 H 18 V 18 H 0 Z" : "M 0 0 L 0 18 L 16 9 Z");
         App.AndroidKeepAwakeService?.SetKeepScreenOn(IsServerRunning);
     }
 

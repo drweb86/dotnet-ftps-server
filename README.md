@@ -25,9 +25,13 @@ Features:
 | [Library](./README_NUGET.md)   | [NUGet Package](https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary)  |
 | [UI for Windows and Ubuntu](./README_UI.md) |                                                                      |
 | [Console](./README_CONSOLE.md) |                                                                                   |
+| [Android](./README_ANDROID.md) |                                                                                   |
+| [Ubuntu](./Ubuntu.md) |                                                                                   |
+
+[Installation and uninstallation on Ubuntu](./Ubuntu.md)
+
+[Installation on Android](./README_ANDROID.md)
 
 [Connecting to the Server](./Connecting.md)
 
 [Troubleshooting](./Troubleshooting.md)
-
-[Installation and uninstallation on Ubuntu](./Ubuntu.md)

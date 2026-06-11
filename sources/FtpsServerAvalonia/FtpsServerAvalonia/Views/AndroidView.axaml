@@ -57,14 +57,35 @@
 				StartStopClicked="MainMenu_StartStopClicked" />
 
 			<Button x:Name="AndroidStartStopButton"
-					Content="{x:Static res:Strings.MenuStart}"
-					Classes="ModernButton"
+					Classes="SecondaryButton"
 					HorizontalAlignment="Stretch"
 					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
 					MinHeight="56"
-					FontSize="18"
+					Padding="16,0"
 					Margin="10,4,10,12"
-					Click="MainMenu_StartStopClicked" />
+					Click="MainMenu_StartStopClicked">
+				<Grid ColumnDefinitions="Auto,Auto"
+					  HorizontalAlignment="Center"
+					  VerticalAlignment="Center">
+					<Path x:Name="AndroidStartStopIcon"
+						  Grid.Column="0"
+						  Width="18"
+						  Height="18"
+						  Stretch="Uniform"
+						  Fill="Green"
+						  Data="M 0 0 L 0 18 L 16 9 Z"
+						  VerticalAlignment="Center"/>
+					<TextBlock x:Name="AndroidStartStopText"
+							   Grid.Column="1"
+							   Text="{x:Static res:Strings.MenuStart}"
+							   Foreground="Green"
+							   FontSize="18"
+							   FontWeight="Bold"
+							   Margin="10,0,0,0"
+							   VerticalAlignment="Center"/>
+				</Grid>
+			</Button>
 
 			<Border x:Name="ErrorBanner"
 					Background="#D32F2F"
