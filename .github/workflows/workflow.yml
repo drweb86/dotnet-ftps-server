@@ -108,7 +108,7 @@ jobs:
         shell: pwsh
         run: |
           $v = "${{ steps.version.outputs.version }}"
-          $hash = (Get-FileHash -Path "Output\FtpsServerWindows_v$v.exe" -Algorithm SHA256).Hash
+          $hash = (Get-FileHash -Path "Output\ftpsserver_${v}_windows_setup.exe" -Algorithm SHA256).Hash
           echo "hash=$hash" >> $env:GITHUB_OUTPUT
           echo "Installer SHA256: $hash"
 
@@ -117,7 +117,7 @@ jobs:
         run: |
           $v = "${{ steps.version.outputs.version }}"
           Push-Location "Output\publish"
-          & "C:\Program Files\7-Zip\7z.exe" a -y "..\FtpsServer_v${v}_win-binaries.7z" * -mx9 -t7z -m0=lzma2 -ms=on -sccUTF-8 -ssw
+          & "C:\Program Files\7-Zip\7z.exe" a -y "..\ftpsserver_${v}_windows_archive.7z" * -mx9 -t7z -m0=lzma2 -ms=on -sccUTF-8 -ssw
           if ($LASTEXITCODE -ne 0) { exit 1 }
           Pop-Location
 
@@ -140,8 +140,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           $v = "${{ steps.version.outputs.version }}"
-          gh release upload "${{ github.event.release.tag_name }}" "Output\FtpsServerWindows_v$v.exe" --clobber
-          gh release upload "${{ github.event.release.tag_name }}" "Output\FtpsServer_v${v}_win-binaries.7z" --clobber
+          gh release upload "${{ github.event.release.tag_name }}" "Output\ftpsserver_${v}_windows_setup.exe" --clobber
+          gh release upload "${{ github.event.release.tag_name }}" "Output\ftpsserver_${v}_windows_archive.7z" --clobber
 
   build-android:
     runs-on: ubuntu-latest
@@ -157,6 +157,24 @@ jobs:
 
       - name: Install Android workload
         run: dotnet workload install android
+
+      - name: Prepare Android signing key
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          missing=0
+          for name in ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_ALIAS ANDROID_KEY_PASSWORD; do
+            if [ -z "${!name}" ]; then
+              echo "$name secret is required to sign the release APK."
+              missing=1
+            fi
+          done
+          [ "$missing" -eq 0 ] || exit 1
+
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android-release.keystore
 
       - name: Get version
         id: version
@@ -180,6 +198,11 @@ jobs:
               /p:Configuration=Release \
               /p:PublishReadyToRun=false \
               /p:RunAnalyzersDuringBuild=False \
+              /p:AndroidKeyStore=true \
+              "/p:AndroidSigningKeyStore=${{ github.workspace }}/android-release.keystore" \
+              "/p:AndroidSigningStorePass=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" \
+              "/p:AndroidSigningKeyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" \
+              "/p:AndroidSigningKeyPass=${{ secrets.ANDROID_KEY_PASSWORD }}" \
               --self-contained true \
               --property WarningLevel=0; then
               success=true
@@ -201,7 +224,7 @@ jobs:
             exit 1
           fi
           echo "Using: $apk"
-          cp "$apk" "Output/com.SiarheiKuchuk.FtpsServer-${v}.apk"
+          cp "$apk" "Output/ftpsserver_${v}_android.apk"
 
       - name: Upload Android artifact
         uses: actions/upload-artifact@v4
@@ -215,7 +238,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           v="${{ steps.version.outputs.version }}"
-          gh release upload "${{ github.event.release.tag_name }}" "Output/com.SiarheiKuchuk.FtpsServer-${v}.apk" --clobber
+          gh release upload "${{ github.event.release.tag_name }}" "Output/ftpsserver_${v}_android.apk" --clobber
 
   update-apt-repo:
     needs: build-deb
