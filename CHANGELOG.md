@@ -1,3 +1,9 @@
+# 2026.06.23
+(unpublished)
+
+## Changes
+- UI: Update some libraries.
+
 # 2026.06.12
 
 ## Changes
