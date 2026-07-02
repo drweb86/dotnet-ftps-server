@@ -1,5 +1,10 @@
 # Android Installation
 
+Best way via Application Store:
+- [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver)  
+
+Manual process:
+
 The Android APK is self-signed and published as a release asset named:
 
 ```text
