@@ -1,0 +1,32 @@
+Architectures: amd64 arm64
+Codename: stable
+Components: main
+Date: Tue, 14 Jul 2026 23:19:59 +0000
+Description: FTPS Server APT Repository
+Label: FtpsServer
+Origin: FtpsServer
+Suite: stable
+MD5Sum:
+ 5f83ca6169245da1bc4857fcfbfa52f3              190 Release
+ 1a2b65714800b04d5485690b2767b86d              794 main/binary-amd64/Packages
+ acd8f2699956be74803a3df7b430fdb8              543 main/binary-amd64/Packages.gz
+ a090f5604e51b3c4e423feff8fadddd0              794 main/binary-arm64/Packages
+ 96ef22b1325c7a4c4066c348f91711cd              545 main/binary-arm64/Packages.gz
+SHA1:
+ 527a5688f6e24c2380b618d7d96b52e38deaafc7              190 Release
+ 4a9b4e9c3add29dcd97b74c540472c37742a3911              794 main/binary-amd64/Packages
+ 833bc6742ea8645bad7b959d4ddc5c22a73d9716              543 main/binary-amd64/Packages.gz
+ 4c528f8cc2fad730a070d7966a6717b07666efe0              794 main/binary-arm64/Packages
+ 09ae1d709f6587a7d8446d401508a9e090925f8c              545 main/binary-arm64/Packages.gz
+SHA256:
+ 0a3ca81a93111616836e9d7cc0bfb731e2a338d9a916504cb288198bdecc4eb9              190 Release
+ ead1b408d4de878f2d8b5ae3a989e1bd81235af42e770278162bba1cce2ded3d              794 main/binary-amd64/Packages
+ 8544cb704bb8261c505a4fcc510fc2f9558842ede1394c02039d378fb92e37e4              543 main/binary-amd64/Packages.gz
+ 15b877f96a5e491dedb3994c350e77a95073418aa0c3c42b748aa7eec9c178a6              794 main/binary-arm64/Packages
+ 1ef464087b0f72b4d25939aa2cebb1d725421ebaf9d80235f2779858aba18cc8              545 main/binary-arm64/Packages.gz
+SHA512:
+ 7232ed71022e1d8b4925158a5b9321ea3bbe22590cbc81a2ff91ee8f60650c9876b3d20638e5a9972715930ca81e620cf682f6dbf5e5450fab0387fa9772c19a              190 Release
+ d310a712b238a5617f14f045502018eff22c68fef23a7fbac77b4864f4751bf41fe5f11e923fdaa8ba55a782eece711bb429b9ff92feb56dd9533dfae1328241              794 main/binary-amd64/Packages
+ c24c0641fcf69bc90bcb6aa18dc687db1e622d833b627a5f864ac818190d2b03ae9291457643acd33d7d8fca0dc55d32fc761ada451be17b069ff020f11648ae              543 main/binary-amd64/Packages.gz
+ 782c0a64463d217c4375685f013c1da56d0f4df4aab4c9f0368f3c120f36f5505e2e56ff831caafb7a6525bda0c35c07e77cf7f47776597fa8e474887775ee01              794 main/binary-arm64/Packages
+ 55f24caa2eeb7c4bf6c86a7d9d5bcdf60b0fe44f40ac50bf94f85d44beb986cbabc096a3d1554e1bc50d2ced15e8275e4f42f63449ebb410ef4de226367ebaf4              545 main/binary-arm64/Packages.gz
