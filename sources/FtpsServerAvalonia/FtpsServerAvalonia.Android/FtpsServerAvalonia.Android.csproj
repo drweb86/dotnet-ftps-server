@@ -20,6 +20,8 @@
   <ItemGroup>
     <PackageReference Include="Avalonia.Android" />
     <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen" />
+    <!-- core-ktx duplicates AnimatorKt classes now included in core >= 1.16; exclude its aar from dexing -->
+    <PackageReference Include="Xamarin.AndroidX.Core.Core.Ktx" ExcludeAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
