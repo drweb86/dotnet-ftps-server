@@ -187,6 +187,7 @@ jobs:
         working-directory: sources
         run: |
           v="${{ steps.version.outputs.version }}"
+          app_version=$(echo "$v" | tr -d '.')
           success=false
           for attempt in 1 2 3; do
             echo "Attempt $attempt of 3..."
@@ -195,6 +196,8 @@ jobs:
               "/p:VersionPrefix=$v" \
               "/p:Version=$v" \
               "/p:AssemblyVersion=$v" \
+              "/p:ApplicationVersion=$app_version" \
+              "/p:ApplicationDisplayVersion=$v" \
               /p:Configuration=Release \
               /p:PublishReadyToRun=false \
               /p:RunAnalyzersDuringBuild=False \
