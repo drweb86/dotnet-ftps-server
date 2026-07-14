@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using FtpsServerAppsShared.Helpers;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
 using FtpsServerAvalonia.Services;
@@ -201,6 +202,9 @@ namespace FtpsServerAvalonia
                 await _server.StartAsync();
 
                 IsServerRunning = true;
+
+                if (_server.LoadedCertificate != null)
+                    CertInfoPanel.CertInfo = CertificateInfoHelper.GetInfo(_server.LoadedCertificate);
             }
             catch (Exception ex)
             {
@@ -218,6 +222,7 @@ namespace FtpsServerAvalonia
                 _server?.Stop();
                 _server = null;
                 IsServerRunning = false;
+                CertInfoPanel.CertInfo = null;
             }
             catch (Exception ex)
             {

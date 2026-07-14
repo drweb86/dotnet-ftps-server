@@ -189,4 +189,46 @@
   <data name="UserUsername" xml:space="preserve">
     <value>Nom d'Utilisateur</value>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>Copié !</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>Copier</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>Émetteur :</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>(identique au sujet — auto-signé)</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>Ce serveur utilise un certificat auto-signé. Les clients FTP peuvent afficher un avertissement de sécurité lors de la connexion. Si vous y êtes invité, comparez l'empreinte affichée dans votre client avec les valeurs ci-dessous avant d'accepter.</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>Avertissement de certificat</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>Certificat du serveur</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>Numéro de série :</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>Sujet :</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>Auto-signé</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>Type :</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>Valide :</value>
+  </data>
 </root>

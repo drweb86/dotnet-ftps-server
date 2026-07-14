@@ -55,20 +55,22 @@
 
         <!-- Main Content -->
         <Border Style="{StaticResource Card}">
-            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition SharedSizeGroup="A" />
                         <ColumnDefinition SharedSizeGroup="A" />
                     </Grid.ColumnDefinitions>
 
-                    <controls:ServerConfigurationControl x:Name="ServerConfig"
-                                                         Port="{Binding Port, Mode=TwoWay}"
-                                                         MaxConnections="{Binding MaxConnections, Mode=TwoWay}"
-                                                         CertificateSource="{Binding CertificateSource, Mode=TwoWay}"
-                                                         CertificatePath="{Binding CertificatePath, Mode=TwoWay}"
-                                                         CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}"
-                                                         Grid.Column="0" />
+                    <StackPanel Grid.Column="0">
+                        <controls:ServerConfigurationControl x:Name="ServerConfig"
+                                                             Port="{Binding Port, Mode=TwoWay}"
+                                                             MaxConnections="{Binding MaxConnections, Mode=TwoWay}"
+                                                             CertificateSource="{Binding CertificateSource, Mode=TwoWay}"
+                                                             CertificatePath="{Binding CertificatePath, Mode=TwoWay}"
+                                                             CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}" />
+                        <controls:ServerCertificateInfoControl x:Name="CertInfoPanel" />
+                    </StackPanel>
 
                     <Border Background="{StaticResource TertiaryDarkBrush}"
                             BorderBrush="{StaticResource AccentCyanBrush}"

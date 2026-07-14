@@ -189,4 +189,46 @@
   <data name="UserUsername" xml:space="preserve">
     <value>Username</value>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>E don copy!</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>Copy am</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>Who give am:</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>(same as subject — self-signed)</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>Dis server dey use self-signed certificate. FTP clients fit show security warning when dem dey connect. If dem ask you, compare the fingerprint wey your client show with the values wey dey below before you accept am.</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>Certificate Notice</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>Server Certificate</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>Serial number:</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>Subject:</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>Self-signed</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>Type:</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>Valid:</value>
+  </data>
 </root>

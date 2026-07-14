@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Platform;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using FtpsServerAppsShared.Helpers;
 using FtpsServerAvalonia.Controls;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
@@ -263,6 +264,9 @@ public partial class AndroidView : UserControl
             await _server.StartAsync();
 
             IsServerRunning = true;
+
+            if (_server.LoadedCertificate != null)
+                CertInfoPanel.CertInfo = CertificateInfoHelper.GetInfo(_server.LoadedCertificate);
         }
         catch (Exception ex)
         {
@@ -280,6 +284,7 @@ public partial class AndroidView : UserControl
             _server?.Stop();
             _server = null;
             IsServerRunning = false;
+            CertInfoPanel.CertInfo = null;
         }
         catch (Exception ex)
         {

@@ -1,4 +1,5 @@
 using FtpsServerApp.Helpers;
+using FtpsServerAppsShared.Helpers;
 using FtpsServerAppsShared.Services;
 using FtpsServerLibrary;
 using NLog;
@@ -68,7 +69,28 @@ class Program
             _logger.Info($"Encryption: Explicit");
 
             await server.StartAsync();
-            
+
+            if (server.LoadedCertificate != null)
+            {
+                var certInfo = CertificateInfoHelper.GetInfo(server.LoadedCertificate);
+                if (certInfo.IsSelfSigned)
+                {
+                    _logger.Warn("=== Certificate Notice ===");
+                    _logger.Warn("This server uses a self-signed certificate.");
+                    _logger.Warn("FTP clients may show a security warning when connecting.");
+                    _logger.Warn("If prompted, compare the fingerprint shown in your client with the values below before accepting.");
+                    _logger.Info("Server Certificate");
+                    _logger.Info("-------------------------------------------");
+                    _logger.Info($"Type:    Self-signed");
+                    _logger.Info($"Subject: {certInfo.Subject}");
+                    _logger.Info($"Issuer:  {certInfo.Issuer} (same as subject — self-signed)");
+                    _logger.Info($"Valid:   {certInfo.ValidFrom} to {certInfo.ValidTo}");
+                    _logger.Info($"Serial:  {certInfo.SerialNumber}");
+                    _logger.Info($"SHA-256: {certInfo.Sha256Fingerprint}");
+                    _logger.Info($"SHA-1:   {certInfo.Sha1Fingerprint}");
+                }
+            }
+
             Console.WriteLine("\nPress 'Q' to stop the server...");
             while (Console.ReadKey(true).Key != ConsoleKey.Q) { }
             

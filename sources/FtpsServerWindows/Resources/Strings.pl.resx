@@ -204,4 +204,46 @@
   <data name="UserUsername" xml:space="preserve">
     <value>Nazwa użytkownika</value>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>Skopiowano!</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>Kopiuj</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>Wystawca:</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>(taki sam jak podmiot — samopodpisany)</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>Ten serwer używa certyfikatu samopodpisanego. Klienci FTP mogą wyświetlać ostrzeżenie bezpieczeństwa podczas łączenia. Jeśli zostaniesz o to poproszony, porównaj odcisk palca widoczny w kliencie z poniższymi wartościami przed zaakceptowaniem.</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>Powiadomienie o certyfikacie</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>Certyfikat serwera</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>Numer seryjny:</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>Podmiot:</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>Samopodpisany</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>Typ:</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>Ważny:</value>
+  </data>
 </root>

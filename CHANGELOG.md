@@ -1,8 +1,8 @@
-# 2026.07.13
-(unpublished)
+# 2026.07.15
 
 ## Changes
 - UI: Update some libraries.
+- UI, console: Better handling of self-signed certificates.
 
 # 2026.06.12
 

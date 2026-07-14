@@ -207,4 +207,46 @@
     <value>ข้อผิดพลาดในการหยุดเซิร์ฟเวอร์: {0}</value>
     <comment>Format: {0} = error message</comment>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>คัดลอกแล้ว!</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>คัดลอก</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>ผู้ออกใบรับรอง:</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>(เหมือนกับหัวเรื่อง — ลงชื่อตนเอง)</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>เซิร์ฟเวอร์นี้ใช้ใบรับรองที่ลงชื่อตนเอง ไคลเอนต์ FTP อาจแสดงคำเตือนด้านความปลอดภัยเมื่อเชื่อมต่อ หากได้รับแจ้ง ให้เปรียบเทียบลายนิ้วมือที่แสดงในไคลเอนต์ของคุณกับค่าด้านล่างก่อนยอมรับ</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>การแจ้งเตือนใบรับรอง</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>ใบรับรองเซิร์ฟเวอร์</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>หมายเลขซีเรียล:</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>หัวเรื่อง:</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>ลงชื่อตนเอง</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>ประเภท:</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>ใช้ได้:</value>
+  </data>
 </root>

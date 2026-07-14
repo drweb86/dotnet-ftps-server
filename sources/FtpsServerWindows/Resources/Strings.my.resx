@@ -204,4 +204,46 @@
   <data name="UserUsername" xml:space="preserve">
     <value>အသုံးပြုသူအမည်</value>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>ကူးယူပြီးပါပြီ!</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>ကူးယူပါ</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>ထုတ်ပေးသူ:</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>(subject နှင့် တူညီသည် — ကိုယ်တိုင်လက်မှတ်ရေးထိုး)</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>ဤဆာဗာသည် ကိုယ်တိုင်လက်မှတ်ရေးထိုးထားသော လက်မှတ်ကို အသုံးပြုသည်။ FTP client များသည် ချိတ်ဆက်သောအခါ လုံခြုံရေးသတိပေးချက် ပြနိုင်သည်။ မေးမြန်းပါက လက်ခံမတိုင်မီ သင့် client တွင် ပြသသော fingerprint ကို အောက်ဖော်ပြပါ တန်ဖိုးများနှင့် နှိုင်းယှဉ်ပါ။</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>လက်မှတ် အကြောင်းကြားချက်</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>ဆာဗာ လက်မှတ်</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>စီရီယယ် နံပါတ်:</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>ဘာသာရပ်:</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>ကိုယ်တိုင်လက်မှတ်ရေးထိုး</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>အမျိုးအစား:</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>သက်တမ်းရှိသည်:</value>
+  </data>
 </root>

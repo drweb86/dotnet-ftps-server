@@ -1,0 +1,136 @@
+<UserControl x:Class="FtpsServerAvalonia.Controls.ServerCertificateInfoControl"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:res="using:FtpsServerAvalonia.Resources"
+             IsVisible="False">
+
+    <Border Background="{StaticResource TertiaryDarkBrush}"
+            BorderBrush="#F59E0B"
+            BorderThickness="1"
+            CornerRadius="8"
+            Padding="16"
+            Margin="10,0,20,20">
+        <StackPanel>
+
+            <!-- Warning notice -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                <TextBlock Text="⚠ "
+                           FontSize="15"
+                           FontWeight="Bold"
+                           Foreground="#F59E0B"
+                           VerticalAlignment="Center"/>
+                <TextBlock Text="{x:Static res:Strings.CertNoticeTitle}"
+                           FontSize="15"
+                           FontWeight="Bold"
+                           Foreground="#F59E0B"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+            <TextBlock Text="{x:Static res:Strings.CertNoticeMessage}"
+                       TextWrapping="Wrap"
+                       FontSize="12"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       Margin="0,0,0,12"/>
+
+            <Separator Background="{StaticResource AccentCyanBrush}"
+                       Opacity="0.4"
+                       Margin="0,0,0,10"/>
+
+            <!-- Certificate heading -->
+            <TextBlock Text="{x:Static res:Strings.CertSectionTitle}"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource TextPrimaryBrush}"
+                       Margin="0,0,0,2"/>
+            <TextBlock Text="-------------------------------------------"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       Margin="0,0,0,6"/>
+
+            <!-- Metadata table -->
+            <Grid Margin="0,0,0,8"
+                  ColumnDefinitions="Auto,Auto"
+                  RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           Text="{x:Static res:Strings.CertTypeLabel}"
+                           Foreground="{StaticResource TextSecondaryBrush}" Margin="0,2"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="CertType"
+                           Foreground="{StaticResource TextPrimaryBrush}" Margin="0,2" TextWrapping="Wrap"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                           Text="{x:Static res:Strings.CertSubjectLabel}"
+						   TextWrapping="Wrap"
+                           Foreground="{StaticResource TextSecondaryBrush}" Margin="0,2"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="CertSubject"
+                           Foreground="{StaticResource TextPrimaryBrush}" Margin="0,2" TextWrapping="Wrap"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0"
+                           Text="{x:Static res:Strings.CertIssuerLabel}"
+                           Foreground="{StaticResource TextSecondaryBrush}" Margin="0,2"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" x:Name="CertIssuer"
+						   TextWrapping="Wrap"
+                           Foreground="{StaticResource TextSecondaryBrush}" Margin="0,2"/>
+
+                <TextBlock Grid.Row="3" Grid.Column="0"
+                           Text="{x:Static res:Strings.CertValidLabel}"
+                           Foreground="{StaticResource TextSecondaryBrush}" Margin="0,2"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" x:Name="CertValid"
+						   TextWrapping="Wrap"
+                           Foreground="{StaticResource TextPrimaryBrush}" Margin="0,2"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="0"
+                           Text="{x:Static res:Strings.CertSerialLabel}"
+                           Foreground="{StaticResource TextSecondaryBrush}" Margin="0,2"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" x:Name="CertSerial"
+						   TextWrapping="Wrap"
+                           Foreground="{StaticResource TextPrimaryBrush}" Margin="0,2"/>
+            </Grid>
+
+            <Separator Background="{StaticResource AccentCyanBrush}"
+                       Opacity="0.4"
+                       Margin="0,0,0,8"/>
+
+            <!-- SHA-256 (prominent — most FTP clients show this) -->
+            <TextBlock Text="{x:Static res:Strings.CertSha256Label}"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimaryBrush}"
+                       Margin="0,0,0,4"/>
+            <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,10">
+                <SelectableTextBlock x:Name="Sha256Text"
+                         Grid.Column="0"
+                         FontWeight="Bold"
+                         TextWrapping="Wrap"
+                         Foreground="{StaticResource TextPrimaryBrush}"
+                         VerticalAlignment="Center"/>
+                <Button Grid.Column="1"
+                        x:Name="CopySha256Button"
+                        Content="{x:Static res:Strings.CertCopyButton}"
+                        Classes="SecondaryButton"
+                        Padding="10,4"
+                        Margin="8,0,0,0"
+                        Click="CopySha256_Click"/>
+            </Grid>
+
+            <!-- SHA-1 -->
+            <TextBlock Text="{x:Static res:Strings.CertSha1Label}"
+                       FontSize="12"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       Margin="0,0,0,4"/>
+            <Grid ColumnDefinitions="*,Auto">
+                <SelectableTextBlock x:Name="Sha1Text"
+                         Grid.Column="0"
+                         Foreground="{StaticResource TextSecondaryBrush}"
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Center"/>
+                <Button Grid.Column="1"
+                        x:Name="CopySha1Button"
+                        Content="{x:Static res:Strings.CertCopyButton}"
+                        Classes="SecondaryButton"
+                        Padding="10,4"
+                        Margin="8,0,0,0"
+                        Click="CopySha1_Click"/>
+            </Grid>
+
+        </StackPanel>
+    </Border>
+</UserControl>

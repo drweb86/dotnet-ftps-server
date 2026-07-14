@@ -189,4 +189,46 @@
   <data name="UserUsername" xml:space="preserve">
     <value>ユーザー名</value>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>コピーしました！</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>発行者：</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>（サブジェクトと同じ — 自己署名）</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>このサーバーは自己署名証明書を使用しています。FTPクライアントは接続時にセキュリティ警告を表示する場合があります。求められた場合は、承認する前にクライアントに表示されたフィンガープリントを以下の値と比較してください。</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>証明書に関するお知らせ</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>サーバー証明書</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>シリアル番号：</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>サブジェクト：</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>自己署名</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>種類：</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>有効期間：</value>
+  </data>
 </root>

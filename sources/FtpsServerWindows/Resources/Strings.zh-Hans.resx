@@ -189,4 +189,46 @@
   <data name="UserUsername" xml:space="preserve">
     <value>用户名</value>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>已复制！</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>颁发者：</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>（与主体相同 — 自签名）</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>此服务器使用自签名证书。FTP 客户端连接时可能会显示安全警告。如有提示，请在接受前将客户端显示的指纹与以下值进行比对。</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>证书通知</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>服务器证书</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>序列号：</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>主体：</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>自签名</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>类型：</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>有效期：</value>
+  </data>
 </root>

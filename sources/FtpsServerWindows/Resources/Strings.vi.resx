@@ -195,4 +195,46 @@
   <data name="UserUsername" xml:space="preserve">
     <value>Tên đăng nhập</value>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>Đã sao chép!</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>Nhà phát hành:</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>(giống chủ thể — tự ký)</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>Máy chủ này sử dụng chứng chỉ tự ký. Các máy khách FTP có thể hiển thị cảnh báo bảo mật khi kết nối. Nếu được nhắc, hãy so sánh dấu vân tay hiển thị trong máy khách của bạn với các giá trị bên dưới trước khi chấp nhận.</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>Thông báo chứng chỉ</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>Chứng chỉ máy chủ</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>Số serial:</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>Chủ thể:</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>Tự ký</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>Loại:</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>Hợp lệ:</value>
+  </data>
 </root>

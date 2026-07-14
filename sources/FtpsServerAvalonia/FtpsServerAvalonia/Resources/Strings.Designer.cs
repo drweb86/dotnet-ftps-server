@@ -446,5 +446,89 @@ namespace FtpsServerAvalonia.Resources {
                 return ResourceManager.GetString("UserUsername", resourceCulture);
             }
         }
+
+        public static string CertCopied {
+            get {
+                return ResourceManager.GetString("CertCopied", resourceCulture);
+            }
+        }
+
+        public static string CertCopyButton {
+            get {
+                return ResourceManager.GetString("CertCopyButton", resourceCulture);
+            }
+        }
+
+        public static string CertIssuerLabel {
+            get {
+                return ResourceManager.GetString("CertIssuerLabel", resourceCulture);
+            }
+        }
+
+        public static string CertIssuerSelf {
+            get {
+                return ResourceManager.GetString("CertIssuerSelf", resourceCulture);
+            }
+        }
+
+        public static string CertNoticeMessage {
+            get {
+                return ResourceManager.GetString("CertNoticeMessage", resourceCulture);
+            }
+        }
+
+        public static string CertNoticeTitle {
+            get {
+                return ResourceManager.GetString("CertNoticeTitle", resourceCulture);
+            }
+        }
+
+        public static string CertSectionTitle {
+            get {
+                return ResourceManager.GetString("CertSectionTitle", resourceCulture);
+            }
+        }
+
+        public static string CertSerialLabel {
+            get {
+                return ResourceManager.GetString("CertSerialLabel", resourceCulture);
+            }
+        }
+
+        public static string CertSha1Label {
+            get {
+                return ResourceManager.GetString("CertSha1Label", resourceCulture);
+            }
+        }
+
+        public static string CertSha256Label {
+            get {
+                return ResourceManager.GetString("CertSha256Label", resourceCulture);
+            }
+        }
+
+        public static string CertSubjectLabel {
+            get {
+                return ResourceManager.GetString("CertSubjectLabel", resourceCulture);
+            }
+        }
+
+        public static string CertTypeSelfSigned {
+            get {
+                return ResourceManager.GetString("CertTypeSelfSigned", resourceCulture);
+            }
+        }
+
+        public static string CertTypeLabel {
+            get {
+                return ResourceManager.GetString("CertTypeLabel", resourceCulture);
+            }
+        }
+
+        public static string CertValidLabel {
+            get {
+                return ResourceManager.GetString("CertValidLabel", resourceCulture);
+            }
+        }
     }
 }

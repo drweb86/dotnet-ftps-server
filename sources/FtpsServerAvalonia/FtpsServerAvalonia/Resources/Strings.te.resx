@@ -201,4 +201,46 @@
   <data name="ErrorStopServerFormat" xml:space="preserve">
     <value>సర్వర్‌ను ఆపడంలో దోషం: {0}</value>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>కాపీ అయింది!</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>కాపీ చేయి</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>జారీదారు:</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>(విషయంతో సమానం — స్వయం-సంతకం)</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>ఈ సర్వర్ స్వయం-సంతకం చేసిన సర్టిఫికేట్ ఉపయోగిస్తుంది. FTP క్లయింట్లు కనెక్ట్ అవుతున్నప్పుడు భద్రతా హెచ్చరిక చూపవచ్చు. అడిగితే, అంగీకరించే ముందు మీ క్లయింట్‌లో చూపిన వేలిముద్రను క్రింది విలువలతో పోల్చండి.</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>సర్టిఫికేట్ నోటీసు</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>సర్వర్ సర్టిఫికేట్</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>సీరియల్ నంబర్:</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>విషయం:</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>స్వయం-సంతకం</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>రకం:</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>చెల్లుబాటు:</value>
+  </data>
 </root>

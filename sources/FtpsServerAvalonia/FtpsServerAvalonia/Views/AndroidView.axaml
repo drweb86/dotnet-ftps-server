@@ -133,6 +133,9 @@
 					CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}" />
 			</Expander>
 
+			<!-- Certificate Notice (shown after server start with self-signed cert) -->
+			<controls:ServerCertificateInfoControl x:Name="CertInfoPanel" Margin="0,0,0,0" />
+
 			<!-- Users Section (Collapsible) -->
 			<Expander Classes="SectionExpander" IsExpanded="True">
 				<Expander.Header>
@@ -195,8 +198,6 @@
 									<DataTemplate>
 										<TextBlock Text="{Binding FormattedMessage}"
 												   Foreground="{Binding Color}"
-												   FontFamily="Consolas, Courier New, monospace"
-												   FontSize="12"
 												   Margin="0,2"/>
 									</DataTemplate>
 								</ItemsControl.ItemTemplate>

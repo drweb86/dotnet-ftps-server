@@ -189,4 +189,46 @@
   <data name="UserUsername" xml:space="preserve">
     <value>사용자 이름</value>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>복사됨!</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>복사</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>발급자:</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>(주체와 동일 — 자체 서명)</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>이 서버는 자체 서명된 인증서를 사용합니다. FTP 클라이언트가 연결 시 보안 경고를 표시할 수 있습니다. 메시지가 표시되면 수락하기 전에 클라이언트에 표시된 지문을 아래 값과 비교하세요.</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>인증서 알림</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>서버 인증서</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>일련 번호:</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>주체:</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>자체 서명</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>유형:</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>유효 기간:</value>
+  </data>
 </root>

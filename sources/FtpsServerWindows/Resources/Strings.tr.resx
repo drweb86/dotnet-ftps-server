@@ -195,4 +195,46 @@
   <data name="UserUsername" xml:space="preserve">
     <value>Kullanıcı Adı</value>
   </data>
+  <data name="CertCopied" xml:space="preserve">
+    <value>Kopyalandı!</value>
+  </data>
+  <data name="CertCopyButton" xml:space="preserve">
+    <value>Kopyala</value>
+  </data>
+  <data name="CertIssuerLabel" xml:space="preserve">
+    <value>Veren:</value>
+  </data>
+  <data name="CertIssuerSelf" xml:space="preserve">
+    <value>(konu ile aynı — kendinden imzalı)</value>
+  </data>
+  <data name="CertNoticeMessage" xml:space="preserve">
+    <value>Bu sunucu kendinden imzalı bir sertifika kullanıyor. FTP istemcileri bağlanırken bir güvenlik uyarısı gösterebilir. İstenirse, kabul etmeden önce istemcinizde gösterilen parmak izini aşağıdaki değerlerle karşılaştırın.</value>
+  </data>
+  <data name="CertNoticeTitle" xml:space="preserve">
+    <value>Sertifika Bildirimi</value>
+  </data>
+  <data name="CertSectionTitle" xml:space="preserve">
+    <value>Sunucu Sertifikası</value>
+  </data>
+  <data name="CertSerialLabel" xml:space="preserve">
+    <value>Seri Numarası:</value>
+  </data>
+  <data name="CertSha1Label" xml:space="preserve">
+    <value>SHA-1</value>
+  </data>
+  <data name="CertSha256Label" xml:space="preserve">
+    <value>SHA-256</value>
+  </data>
+  <data name="CertSubjectLabel" xml:space="preserve">
+    <value>Konu:</value>
+  </data>
+  <data name="CertTypeSelfSigned" xml:space="preserve">
+    <value>Kendinden imzalı</value>
+  </data>
+  <data name="CertTypeLabel" xml:space="preserve">
+    <value>Tür:</value>
+  </data>
+  <data name="CertValidLabel" xml:space="preserve">
+    <value>Geçerli:</value>
+  </data>
 </root>

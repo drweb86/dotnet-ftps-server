@@ -1,3 +1,4 @@
+using FtpsServerAppsShared.Helpers;
 using FtpsServerWindows.Controls;
 using FtpsServerWindows.Models;
 using FtpsServerWindows.Services;
@@ -227,8 +228,11 @@ namespace FtpsServerWindows
 
                 _server = new FtpsServer(new FileLog(), config, new FtpsServerFileSystemProvider());
                 await _server.StartAsync();
-                
+
                 IsServerRunning = true;
+
+                if (_server.LoadedCertificate != null)
+                    CertInfoPanel.CertInfo = CertificateInfoHelper.GetInfo(_server.LoadedCertificate);
             }
             catch (Exception ex)
             {
@@ -247,6 +251,7 @@ namespace FtpsServerWindows
                 _server?.Stop();
                 _server = null;
                 IsServerRunning = false;
+                CertInfoPanel.CertInfo = null;
             }
             catch (Exception ex)
             {

@@ -19,12 +19,15 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
     private X509Certificate2? _serverCertificate;
     private int _activeConnections;
 
+    public X509Certificate2? LoadedCertificate { get; private set; }
+
     public async Task StartAsync()
     {
         try
         {
             // Load certificate
             _serverCertificate = await LoadCertificate();
+            LoadedCertificate = _serverCertificate;
 
             // Create user directories
             foreach (var user in _config.Users)
