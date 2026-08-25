@@ -3,6 +3,7 @@
 
 ## Changes
 - UI: During work, sleep is prevented.
+- Update libraries
 
 # 2026.07.18
 
