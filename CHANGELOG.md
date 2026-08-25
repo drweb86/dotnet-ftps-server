@@ -1,3 +1,9 @@
+# 2026.08.26
+(unpublished)
+
+## Changes
+- UI: During work, sleep is prevented.
+
 # 2026.07.18
 
 ## Changes

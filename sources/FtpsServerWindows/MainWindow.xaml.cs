@@ -1,4 +1,5 @@
 using FtpsServerAppsShared.Helpers;
+using FtpsServerAppsShared.Services;
 using FtpsServerWindows.Controls;
 using FtpsServerWindows.Models;
 using FtpsServerWindows.Services;
@@ -19,6 +20,7 @@ namespace FtpsServerWindows
         private FtpsServer? _server;
         private readonly AppSettings _settings;
         private readonly ObservableCollection<UserAccount> _users;
+        private readonly IOsSleepPreventionService _osSleepPreventionService = OsSleepPreventionServiceFactory.Create();
         private bool _isServerRunning;
 
         public bool IsServerRunning
@@ -230,6 +232,7 @@ namespace FtpsServerWindows
                 await _server.StartAsync();
 
                 IsServerRunning = true;
+                _osSleepPreventionService.PreventSleep();
 
                 if (_server.LoadedCertificate != null)
                     CertInfoPanel.CertInfo = CertificateInfoHelper.GetInfo(_server.LoadedCertificate);
@@ -252,6 +255,7 @@ namespace FtpsServerWindows
                 _server = null;
                 IsServerRunning = false;
                 CertInfoPanel.CertInfo = null;
+                _osSleepPreventionService.StopPreventSleep();
             }
             catch (Exception ex)
             {
