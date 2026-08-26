@@ -1,0 +1,50 @@
+name: Publish NuGet Package
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish-nuget:
+    runs-on: ubuntu-latest
+    environment: nuget-publish
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Get version
+        id: version
+        run: |
+          version=$(head -1 CHANGELOG.md | sed 's/^\xEF\xBB\xBF//' | sed 's/^# //')
+          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "Version: $version"
+
+      - name: Pack
+        run: |
+          v="${{ steps.version.outputs.version }}"
+          dotnet pack sources/FtpsServerLibrary/FtpsServerLibrary.csproj \
+            -c Release \
+            -o output/nuget-package \
+            "/p:InformationalVersion=$v" \
+            "/p:VersionPrefix=$v" \
+            "/p:Version=$v" \
+            "/p:AssemblyVersion=$v" \
+            /p:Configuration=Release
+
+      - name: Push to NuGet.org
+        run: |
+          pkg=$(find output/nuget-package -name '*.nupkg' | head -1)
+          if [ -z "$pkg" ]; then
+            echo "Error: no .nupkg produced"
+            exit 1
+          fi
+          echo "Pushing $pkg"
+          dotnet nuget push "$pkg" \
+            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --source https://api.nuget.org/v3/index.json
