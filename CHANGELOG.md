@@ -1,3 +1,8 @@
+# 2026.08.27
+
+## Bug Fixes
+- Android: build is unsighed.
+
 # 2026.08.26
 
 ## New Features
