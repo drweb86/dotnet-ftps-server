@@ -49,8 +49,13 @@ if (-not (Test-Path $nugetKeyFile))
 }
 
 $nugetKey = Get-Content $nugetKeyFile -First 1
-$normalizedVersion = ($version.Split('.') | ForEach-Object { [int]$_ }) -join '.'
-& dotnet nuget push output\nuget-package\Siarhei_Kuchuk.FtpsServerLibrary.$normalizedVersion.nupkg `
+$nupkg = Get-ChildItem "output\nuget-package\*.nupkg" | Select-Object -First 1
+if (-not $nupkg)
+{
+	Write-Error "No .nupkg found in output\nuget-package"
+	Exit 1
+}
+& dotnet nuget push $nupkg.FullName `
     --api-key $nugetKey `
     --source https://api.nuget.org/v3/index.json
 
