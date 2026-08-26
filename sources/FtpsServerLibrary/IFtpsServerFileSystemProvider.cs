@@ -109,14 +109,15 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
 
         result.AddRange(Directory
             .GetFileSystemEntries(folder)
-            .Select(x => 
+            .Where(x => !IsHiddenSystemDirectory(x))
+            .Select(x =>
             {
                 var fullName = Path.Combine(folder, x);
                 if (File.Exists(fullName))
                 {
                     var info = new FileInfo(x);
                     return new FtpsServerFileSystemEntry(Path.GetFileName(x), info.LastWriteTimeUtc, info.Length, false);
-                } 
+                }
                 else
                 {
                     var info = new DirectoryInfo(x);
@@ -131,6 +132,15 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
     public Task<string> GetFileName(string pickerFile)
     {
         return Task.FromResult(pickerFile);
+    }
+
+    // Handle $RECYCLE.BIN, System Volume Information
+    private static bool IsHiddenSystemDirectory(string path)
+    {
+        if (!OperatingSystem.IsWindows() || !Directory.Exists(path))
+            return false;
+
+        return (new DirectoryInfo(path).Attributes & FileAttributes.System) == FileAttributes.System;
     }
 
     private string GetRealPath(string userFolder, params IEnumerable<string> parts)

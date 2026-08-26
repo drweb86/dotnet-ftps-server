@@ -5,6 +5,9 @@
 - UI: During work, sleep is prevented.
 - Update libraries
 
+## Bug Fixes
+- Windows: system hidden folders from now on are excluded from returning by library to handle case when user shared entire hard drive.
+
 # 2026.07.18
 
 ## Changes
