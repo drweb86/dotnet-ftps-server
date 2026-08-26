@@ -44,6 +44,12 @@ class FtpsServerClientSession(
     // FTPS data connection protection level
     private FtpsServerDataConnectionProtection _dataProtection = FtpsServerDataConnectionProtection.Clear;
 
+    private static readonly string[] MlsSupportedFacts = ["type", "size", "modify", "perm"];
+    private readonly HashSet<string> _mlsSelectedFacts = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "type", "size", "modify", "perm"
+    };
+
 
     private void Log(string command, string text)
     {
@@ -160,6 +166,12 @@ class FtpsServerClientSession(
                 case "LIST":
                     await HandleListAsync(argument);
                     break;
+                case "MLSD":
+                    await HandleMlsdAsync(argument);
+                    break;
+                case "MLST":
+                    await HandleMlstAsync(argument);
+                    break;
                 case "NLST":
                     await HandleNlstAsync(argument);
                     break;
@@ -219,6 +231,26 @@ class FtpsServerClientSession(
     private async Task HandleOptsAsync(string argument)
     {
         var args = argument.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (args.Length >= 1 && args[0].Equals("MLST", StringComparison.OrdinalIgnoreCase))
+        {
+            _mlsSelectedFacts.Clear();
+            if (args.Length >= 2)
+            {
+                foreach (var name in string.Join(" ", args.Skip(1)).Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+                {
+                    var match = Array.Find(MlsSupportedFacts, f => f.Equals(name, StringComparison.OrdinalIgnoreCase));
+                    if (match != null)
+                        _mlsSelectedFacts.Add(match);
+                }
+            }
+
+            var selected = string.Join(";", MlsSupportedFacts.Where(_mlsSelectedFacts.Contains));
+            if (selected.Length > 0)
+                selected += ";";
+            await SendResponseAsync(200, "MLST OPTS " + selected);
+            return;
+        }
 
         if (args.Length >= 1 && args[0].Equals("UTF8", StringComparison.OrdinalIgnoreCase))
         {
@@ -614,6 +646,20 @@ class FtpsServerClientSession(
         await SendResponseAsync(227, response);
     }
 
+    // Unix ls -l: time if modified in the last six months, otherwise year.
+    // Always emitting HH:mm makes clients assume the current year (Feb 29 2026 is invalid).
+    private static string FormatUnixListDate(DateTime lastWriteTime)
+    {
+        var now = lastWriteTime.Kind == DateTimeKind.Utc ? DateTime.UtcNow : DateTime.Now;
+        var sixMonths = TimeSpan.FromSeconds(31556952 / 2);
+        var age = now - lastWriteTime;
+        var isRecent = age >= TimeSpan.Zero && age < sixMonths;
+
+        return lastWriteTime.ToString(
+            isRecent ? "MMM dd HH:mm" : "MMM dd  yyyy",
+            CultureInfo.InvariantCulture);
+    }
+
     private async Task HandleListAsync(string directory)
     {
         if (!CheckAuthentication() || !CheckPermission(true, false) || _path is null || _user is null)
@@ -676,7 +722,7 @@ class FtpsServerClientSession(
                         {
                             var permissions = entry.IsDirectory ? "drwxr-xr-x" : "-rw-r--r--";
                             var size = entry.IsDirectory ? "0" : entry.Length.ToString();
-                            var modified = entry.LastWriteTime.ToString("MMM dd HH:mm", CultureInfo.InvariantCulture);
+                            var modified = FormatUnixListDate(entry.LastWriteTime);
 
                             var line = $"{permissions} 1 owner group {size,15} {modified} {entry.FileName}";
                             dataWriter.NewLine = "\r\n";
@@ -699,6 +745,201 @@ class FtpsServerClientSession(
             _dataListener = null;
             _isPassiveMode = false;
         }
+    }
+
+    private async Task HandleMlsdAsync(string directory)
+    {
+        if (!CheckAuthentication() || !CheckPermission(true, false) || _path is null || _user is null)
+        {
+            await SendResponseAsync(550, "Permission denied");
+            return;
+        }
+
+        if (!_isPassiveMode || _dataListener == null)
+        {
+            await SendResponseAsync(425, "Use PASV first");
+            return;
+        }
+
+        if (!IsDataConnectionEncrypted())
+        {
+            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
+            return;
+        }
+
+        TcpClient dataClient;
+        try
+        {
+            dataClient = await _dataListener.AcceptTcpClientAsync();
+        }
+        catch (Exception)
+        {
+            await SendResponseAsync(425, "Can't open data connection");
+            return;
+        }
+
+        var path = _path.Append(directory ?? ".");
+        var ftpsPath = path.ToFtpsPath();
+        Log("mlsd", ftpsPath);
+
+        try
+        {
+            if (!await fileSystemProvider.DirectoryExists(_user.Folder, path.Segments))
+            {
+                dataClient.Dispose();
+                await SendResponseAsync(550, "Directory not found");
+                return;
+            }
+
+            await SendResponseAsync(150, "Opening data connection");
+
+            using (dataClient)
+            {
+                System.IO.Stream dataStream = dataClient.GetStream();
+
+                if (_dataProtection == FtpsServerDataConnectionProtection.Protected && _certificate != null)
+                {
+                    var sslStream = new SslStream(dataStream, false);
+                    await sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
+                    dataStream = sslStream;
+                }
+
+                using (dataStream)
+                using (var dataWriter = new System.IO.StreamWriter(dataStream, Encoding.UTF8) { AutoFlush = true, NewLine = "\r\n" })
+                {
+                    var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_user.Folder, path.Segments);
+                    foreach (var entry in entries)
+                    {
+                        await dataWriter.WriteLineAsync(FormatMlsRecord(
+                            MlsTypeForName(entry.FileName, entry.IsDirectory),
+                            entry.LastWriteTime,
+                            entry.Length,
+                            entry.IsDirectory,
+                            entry.FileName));
+                    }
+                }
+            }
+
+            await SendResponseAsync(226, "Transfer complete");
+        }
+        catch (Exception ex)
+        {
+            LogError(ex, "MLSD failed");
+            await SendResponseAsync(550, $"MLSD failed: {ex.Message}");
+        }
+        finally
+        {
+            _dataListener?.Stop();
+            _dataListener = null;
+            _isPassiveMode = false;
+        }
+    }
+
+    private async Task HandleMlstAsync(string pathname)
+    {
+        if (!CheckAuthentication() || !CheckPermission(true, false) || _path is null || _user is null)
+        {
+            await SendResponseAsync(550, "Permission denied");
+            return;
+        }
+
+        var path = string.IsNullOrWhiteSpace(pathname) ? _path : _path.Append(pathname);
+        var ftpsPath = path.ToFtpsPath();
+        Log("mlst", ftpsPath);
+
+        string type;
+        DateTime lastWriteTime;
+        long length;
+        bool isDirectory;
+        string displayName;
+
+        if (await fileSystemProvider.DirectoryExists(_user.Folder, path.Segments))
+        {
+            var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_user.Folder, path.Segments);
+            var self = entries.FirstOrDefault(e => e.FileName == ".");
+            lastWriteTime = self?.LastWriteTime ?? DateTime.UtcNow;
+            length = 0;
+            isDirectory = true;
+            var isCurrent = string.IsNullOrWhiteSpace(pathname) || pathname is "." or "./";
+            type = isCurrent ? "cdir" : "dir";
+            displayName = isCurrent ? ftpsPath : pathname;
+        }
+        else if (await fileSystemProvider.FileExists(_user.Folder, path.Segments))
+        {
+            lastWriteTime = await fileSystemProvider.GetFileLastWriteTimeUtc(_user.Folder, path.Segments);
+            length = await fileSystemProvider.GetFileLength(_user.Folder, path.Segments);
+            isDirectory = false;
+            type = "file";
+            displayName = string.IsNullOrWhiteSpace(pathname) ? ftpsPath : pathname;
+        }
+        else
+        {
+            await SendResponseAsync(550, "File not found");
+            return;
+        }
+
+        await SendControlLineAsync($"250-Listing {ftpsPath}");
+        await SendControlLineAsync(" " + FormatMlsRecord(type, lastWriteTime, length, isDirectory, displayName));
+        await SendResponseAsync(250, "End");
+    }
+
+    private static string MlsTypeForName(string fileName, bool isDirectory) =>
+        fileName switch
+        {
+            "." => "cdir",
+            ".." => "pdir",
+            _ => isDirectory ? "dir" : "file"
+        };
+
+    private string FormatMlsRecord(string type, DateTime lastWriteTime, long size, bool isDirectory, string pathname)
+    {
+        var facts = new List<string>();
+        if (_mlsSelectedFacts.Contains("type"))
+            facts.Add($"type={type}");
+        if (_mlsSelectedFacts.Contains("size") && !isDirectory)
+            facts.Add($"size={size}");
+        if (_mlsSelectedFacts.Contains("modify"))
+            facts.Add($"modify={FormatMlsModify(lastWriteTime)}");
+        if (_mlsSelectedFacts.Contains("perm"))
+            facts.Add($"perm={GetMlsPerm(isDirectory)}");
+
+        var factString = facts.Count == 0 ? "" : string.Join(";", facts) + ";";
+        return $"{factString} {pathname}";
+    }
+
+    private static string FormatMlsModify(DateTime lastWriteTime)
+    {
+        var utc = lastWriteTime.Kind == DateTimeKind.Local
+            ? lastWriteTime.ToUniversalTime()
+            : lastWriteTime;
+        return utc.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+    }
+
+    private string GetMlsPerm(bool isDirectory)
+    {
+        var read = _user?.Read == true;
+        var write = _user?.Write == true;
+
+        if (isDirectory)
+        {
+            var perm = "";
+            if (write) perm += "c";
+            if (write) perm += "d";
+            if (read) perm += "e";
+            if (write) perm += "f";
+            if (read) perm += "l";
+            if (write) perm += "m";
+            if (write) perm += "p";
+            return perm;
+        }
+
+        var filePerm = "";
+        if (write) filePerm += "a";
+        if (write) filePerm += "d";
+        if (write) filePerm += "f";
+        if (read) filePerm += "r";
+        if (write) filePerm += "w";
+        return filePerm;
     }
 
     private async Task HandleNlstAsync(string directory)
@@ -1004,7 +1245,9 @@ class FtpsServerClientSession(
 
     private async Task HandleFeatAsync()
     {
-        // Store the feature lines in a list
+        var mlstFacts = string.Join(";", MlsSupportedFacts.Select(f =>
+            _mlsSelectedFacts.Contains(f) ? f + "*" : f)) + ";";
+
         var featureLines = new List<string>
         {
             "211-Features:",
@@ -1013,17 +1256,16 @@ class FtpsServerClientSession(
             " PROT",
             " SIZE",
             " MDTM",
+            " MLST " + mlstFacts,
             " UTF8",
             "211 End"
         };
 
-        // Write each line using the current encoding
         foreach (var line in featureLines)
         {
             await _writer!.WriteLineAsync(line);
         }
 
-        // Make sure everything is flushed
         await _writer!.FlushAsync();
     }
 
@@ -1047,14 +1289,16 @@ class FtpsServerClientSession(
 #pragma warning restore IDE0075 // Simplify conditional expression
     }
 
-    private async Task SendResponseAsync(int code, string message)
+    private async Task SendControlLineAsync(string line)
     {
-        var response = $"{code} {message}";
-        _log.Debug($"[{_clientAddress}] << {response}");
-
-        // Use WriteAsync with the current encoding
-        var bytes = _currentEncoding.GetBytes(response + "\r\n");
+        _log.Debug($"[{_clientAddress}] << {line}");
+        var bytes = _currentEncoding.GetBytes(line + "\r\n");
         await _controlStream!.WriteAsync(bytes);
         await _controlStream.FlushAsync();
+    }
+
+    private async Task SendResponseAsync(int code, string message)
+    {
+        await SendControlLineAsync($"{code} {message}");
     }
 }

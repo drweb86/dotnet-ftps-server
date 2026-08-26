@@ -1,11 +1,15 @@
 # 2026.08.26
 (unpublished)
 
+## New Features
+- Library: MLSD and MLST listings (RFC 3659) include a full UTC timestamp (`yyyyMMddHHmmss`: year, time, and seconds).
+
 ## Changes
 - UI: During work, sleep is prevented.
 - Update libraries
 
 ## Bug Fixes
+- Library: LIST dates for older than current year did not include year (!).
 - Windows: system hidden folders from now on are excluded from returning by library to handle case when user shared entire hard drive.
 
 # 2026.07.18
