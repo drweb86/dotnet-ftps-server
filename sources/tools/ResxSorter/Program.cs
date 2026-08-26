@@ -206,7 +206,7 @@ namespace Codice.SortResX
                 writer.WriteLine("Author: Siarhei Kuchuk");
                 writer.WriteLine("PackageName: FtpsServer");
                 writer.WriteLine("PackageUrl: https://github.com/drweb86/dotnet-ftps-server");
-                writer.WriteLine("License: MIT");
+                writer.WriteLine("License: CC0-1.0");
                 writer.WriteLine("LicenseUrl: https://raw.githubusercontent.com/drweb86/dotnet-ftps-server/refs/heads/main/LICENSE");
                 writer.WriteLine("Copyright: 2025-CURRENT_YEAR Siarhei Kuchuk");
                 writer.WriteLine("CopyrightUrl: https://raw.githubusercontent.com/drweb86/dotnet-ftps-server/refs/heads/main/LICENSE");

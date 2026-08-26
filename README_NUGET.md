@@ -4,7 +4,7 @@ A FTPS (FTP over TLS) server implementation in C# with logging, user permissions
 
 Does not have dependencies.
 
-Uses permissive license MIT.
+Uses permissive license CC0-1.0.
 
 This is a sample implementation provided for:
 - ✅ Learning and education

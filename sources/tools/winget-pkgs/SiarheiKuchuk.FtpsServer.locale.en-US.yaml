@@ -9,7 +9,7 @@ PublisherSupportUrl: https://github.com/drweb86/dotnet-ftps-server/issues
 Author: Siarhei Kuchuk
 PackageName: FtpsServer
 PackageUrl: https://github.com/drweb86/dotnet-ftps-server
-License: MIT
+License: CC0-1.0
 LicenseUrl: https://raw.githubusercontent.com/drweb86/dotnet-ftps-server/refs/heads/main/LICENSE
 Copyright: 2025-CURRENT_YEAR Siarhei Kuchuk
 CopyrightUrl: https://raw.githubusercontent.com/drweb86/dotnet-ftps-server/refs/heads/main/LICENSE
