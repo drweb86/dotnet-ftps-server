@@ -221,9 +221,9 @@ jobs:
           mkdir -p Output
           echo "APK files produced:"
           find sources/FtpsServerAvalonia/FtpsServerAvalonia.Android/bin -name "*.apk" -type f
-          apk=$(find sources/FtpsServerAvalonia/FtpsServerAvalonia.Android/bin -name "*.apk" -type f | head -1)
+          apk=$(find sources/FtpsServerAvalonia/FtpsServerAvalonia.Android/bin -name "*-Signed.apk" -type f | head -1)
           if [ -z "$apk" ]; then
-            echo "Error: APK not found"
+            echo "Error: signed APK (*-Signed.apk) not found"
             exit 1
           fi
           echo "Using: $apk"
