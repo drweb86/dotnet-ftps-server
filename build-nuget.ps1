@@ -9,11 +9,6 @@ Write-Output "Clear Output folder..."
 if (Test-Path ".\Output")
 {
 	Remove-Item ".\Output" -Confirm:$false -Recurse:$true
-	if ($LastExitCode -ne 0)
-	{
-		Write-Error "Fail." 
-		Exit 1
-	}
 }
 
 Write-Output "Getting nuget..."
@@ -54,7 +49,8 @@ if (-not (Test-Path $nugetKeyFile))
 }
 
 $nugetKey = Get-Content $nugetKeyFile -First 1
-& dotnet nuget push output\nuget-package\Siarhei_Kuchuk.FtpsServerLibrary.$version.nupkg `
+$normalizedVersion = ($version.Split('.') | ForEach-Object { [int]$_ }) -join '.'
+& dotnet nuget push output\nuget-package\Siarhei_Kuchuk.FtpsServerLibrary.$normalizedVersion.nupkg `
     --api-key $nugetKey `
     --source https://api.nuget.org/v3/index.json
 

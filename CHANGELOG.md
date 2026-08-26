@@ -1,5 +1,4 @@
 # 2026.08.26
-(unpublished)
 
 ## New Features
 - Library: MLSD and MLST listings (RFC 3659) include a full UTC timestamp (`yyyyMMddHHmmss`: year, time, and seconds).
