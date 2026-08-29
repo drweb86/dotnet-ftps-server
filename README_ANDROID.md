@@ -1,8 +1,16 @@
 # Android Installation
 
-GitHub releases and RuStore ship the native Kotlin app from `sources/android` (`com.siarheikuchuk.ftpsserver`, ~13 MB). It is signed with the same keystore as the older Avalonia APK, so it can update an existing install.
+GitHub releases and RuStore ship a **native Kotlin** app from [`sources/android`](./sources/android) (`com.siarheikuchuk.ftpsserver`, about 4.5 MB).
 
-The Avalonia/.NET project in `sources/FtpsServerAvalonia/FtpsServerAvalonia.Android` remains in the tree but is no longer built by CI.
+## Why Kotlin (not Avalonia/.NET)
+
+FOSS repositories such as F-Droid do not accept the Avalonia Android build: they need to compile everything from source on Debian, and they cannot do that for .NET / NuGet / AOT. They also enforce a **30 MB** APK cap. The .NET APK was already close to that limit (~27 MB). Kotlin + Gradle is a few megabytes and is a normal Android source build.
+
+The Avalonia Android project remains at `sources/FtpsServerAvalonia/FtpsServerAvalonia.Android` so the code is not lost, but it is **not** the product Android app anymore. CI, GitHub releases, and RuStore use only the Kotlin app. The same package id and signing keystore are kept, so the Kotlin APK can update an existing Avalonia install.
+
+The repository license is [CC0 1.0](./LICENSE). You may copy the Kotlin FTPS server (and the rest of `sources/android`) into your own projects.
+
+Requires **Android 6.0 (API 23)** or newer. The release APK includes `arm64-v8a`, `armeabi-v7a`, `x86`, and `x86_64`.
 
 To build and optionally install a debug APK on a phone or emulator:
 

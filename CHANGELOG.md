@@ -5,9 +5,9 @@
 - Windows: Win-get support for all application languages.
 
 ## Changes
+- Android: the shipped app is now native Kotlin (`sources/android`) instead of Avalonia/.NET, so FOSS stores can build from source and stay under the 30 MB APK cap.
+- Android: GitHub/RuStore APK uses the same package id and signing key as before, so it can update an existing install.
 - Android: align `ApplicationId` with the RuStore package `com.siarheikuchuk.ftpsserver`.
-- Android: CI also builds arm64-only and x64-only APKs as workflow artifacts for F-Droid-compatible stores; the GitHub release and RuStore keep a single universal APK.
-- Android: reduce APK size to be compliant with FOSS distribution shops.
 
 # 2026.08.27
 

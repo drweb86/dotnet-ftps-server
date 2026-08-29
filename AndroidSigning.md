@@ -1,6 +1,6 @@
 # Android APK Signing
 
-Release APKs are the native Kotlin app in `sources/android`, built by GitHub Actions and signed with the same self-signed Android keystore as earlier Avalonia APKs.
+Release APKs are the native Kotlin app in `sources/android`, built by GitHub Actions and signed with the same self-signed Android keystore as earlier Avalonia APKs. The Avalonia Android project is no longer what CI publishes.
 Keep that keystore for future releases, otherwise Android will reject app updates installed over an earlier version.
 
 ## Create a self-signed keystore
