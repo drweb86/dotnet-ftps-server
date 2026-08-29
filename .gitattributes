@@ -1,0 +1,4 @@
+# POSIX scripts must stay LF or Linux CI fails with `env: ‘bash\r’: No such file`.
+*.sh text eol=lf
+gradlew text eol=lf
+sources/android/gradlew text eol=lf
