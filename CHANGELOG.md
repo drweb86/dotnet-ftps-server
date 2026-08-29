@@ -4,6 +4,9 @@
 ## New Features
 - Windows: Win-get support for all application languages.
 
+## Changes
+- Android: align `ApplicationId` with the RuStore package `com.siarheikuchuk.ftpsserver`.
+
 # 2026.08.27
 
 ## Bug Fixes

@@ -4,7 +4,8 @@
     <TargetFramework>net10.0-android</TargetFramework>
     <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
     <Nullable>enable</Nullable>
-    <ApplicationId>com.SiarheiKuchuk.FtpsServer</ApplicationId>
+    <!-- Keep lowercase: this is the installed application id on RuStore. -->
+    <ApplicationId>com.siarheikuchuk.ftpsserver</ApplicationId>
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
