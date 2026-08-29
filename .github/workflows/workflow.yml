@@ -150,13 +150,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup .NET 10
-        uses: actions/setup-dotnet@v4
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
         with:
-          dotnet-version: '10.0.x'
+          distribution: temurin
+          java-version: '17'
 
-      - name: Install Android workload
-        run: dotnet workload install android
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: sdkmanager "platforms;android-35" "build-tools;36.0.0"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Prepare Android signing key
         env:
@@ -174,7 +181,7 @@ jobs:
           done
           [ "$missing" -eq 0 ] || exit 1
 
-          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android-release.keystore
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "${{ github.workspace }}/android-release.keystore"
 
       - name: Get version
         id: version
@@ -183,83 +190,22 @@ jobs:
           echo "version=$version" >> $GITHUB_OUTPUT
           echo "Version: $version"
 
-      - name: Publish Android
-        working-directory: sources
+      - name: Build signed native release APK
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          ANDROID_KEYSTORE_FILE: ${{ github.workspace }}/android-release.keystore
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
-          v="${{ steps.version.outputs.version }}"
-          app_version=$(echo "$v" | tr -d '.')
-          bin_root="FtpsServerAvalonia/FtpsServerAvalonia.Android/bin"
-          out_dir="${{ github.workspace }}/Output"
-
-          publish_once() {
-            local success=false
-            local attempt
-            for attempt in 1 2 3; do
-              echo "Attempt $attempt of 3..."
-              if dotnet publish FtpsServer.Android.slnx \
-                "/p:InformationalVersion=$v" \
-                "/p:VersionPrefix=$v" \
-                "/p:Version=$v" \
-                "/p:AssemblyVersion=$v" \
-                "/p:ApplicationVersion=$app_version" \
-                "/p:ApplicationDisplayVersion=$v" \
-                /p:Configuration=Release \
-                /p:PublishReadyToRun=false \
-                /p:RunAnalyzersDuringBuild=False \
-                /p:AndroidKeyStore=true \
-                "/p:AndroidSigningKeyStore=${{ github.workspace }}/android-release.keystore" \
-                "/p:AndroidSigningStorePass=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" \
-                "/p:AndroidSigningKeyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" \
-                "/p:AndroidSigningKeyPass=${{ secrets.ANDROID_KEY_PASSWORD }}" \
-                --self-contained true \
-                --property WarningLevel=0 \
-                "$@"; then
-                success=true
-                break
-              fi
-              [ $attempt -lt 3 ] && echo "Build failed. Retrying in 2s..." && sleep 2
-            done
-            $success
-          }
-
-          stage_signed() {
-            local dest="$1"
-            echo "APK files produced:"
-            find "$bin_root" -name "*.apk" -type f
-            local apk
-            apk=$(find "$bin_root" -name "*-Signed.apk" -type f | head -1)
-            if [ -z "$apk" ]; then
-              echo "Error: signed APK (*-Signed.apk) not found"
-              return 1
-            fi
-            mkdir -p "$(dirname "$dest")"
-            echo "Using: $apk"
-            cp "$apk" "$dest"
-            ls -lh "$dest"
-          }
-
-          echo "Publishing universal APK for GitHub and RuStore..."
-          publish_once || exit 1
-          stage_signed "${out_dir}/ftpsserver_${v}_android.apk" || exit 1
-
-          for rid in android-arm64 android-x64; do
-            echo "Publishing ${rid}-only APK for F-Droid-compatible stores..."
-            rm -rf "$bin_root"
-            publish_once -r "$rid" || exit 1
-            stage_signed "${out_dir}/abi/ftpsserver_${v}_android-${rid#android-}.apk" || exit 1
-          done
+          chmod +x sources/android/ci-build.sh
+          ./sources/android/ci-build.sh
 
       - name: Upload Android artifact
         uses: actions/upload-artifact@v4
         with:
           name: android-package
           path: Output/ftpsserver_*_android.apk
-
-      - name: Upload Android ABI artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-abi
-          path: Output/abi/*.apk
 
       - name: Upload Android APK to GitHub Release
         if: github.event_name == 'release'
