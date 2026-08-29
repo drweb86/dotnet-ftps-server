@@ -1,5 +1,18 @@
 # Android Installation
 
+GitHub releases and RuStore ship the native Kotlin app from `sources/android` (`com.siarheikuchuk.ftpsserver`, ~13 MB). It is signed with the same keystore as the older Avalonia APK, so it can update an existing install.
+
+The Avalonia/.NET project in `sources/FtpsServerAvalonia/FtpsServerAvalonia.Android` remains in the tree but is no longer built by CI.
+
+To build and optionally install a debug APK on a phone or emulator:
+
+```powershell
+powershell -File sources/android/check-local.ps1
+powershell -File sources/android/check-local.ps1 -Install
+```
+
+Debug builds use application id `com.siarheikuchuk.ftpsserver.debug` so they can sit next to the store app.
+
 Best way via Application Store:
 - [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver)  
 
@@ -32,4 +45,4 @@ Android requires all updates for the same app to be signed with the same signing
 
 ## After Installation
 
-Start FTPS Server, add at least one user, choose a shared folder, and tap `Start`. While the server is running, the app keeps the screen awake so Android does not cut off connectivity by locking the device.
+Start FTPS Server, add at least one user, choose a shared folder, and tap `Start`. While the server is running, a notification stays on screen and the app keeps the CPU and Wi-Fi awake so transfers continue with the screen off.

@@ -11,6 +11,12 @@ import java.io.OutputStream
 
 class SafFileSystemProvider(private val context: Context) : FileSystemProvider {
 
+    // SAF createFile(mime, name) appends a MIME extension when name does not already
+    // end with that extension ("test.js VERIFICATION" + javascript → "...VERIFICATION.js").
+    private companion object {
+        const val MIME_BINARY = "application/octet-stream"
+    }
+
     private fun root(uriString: String): DocumentFile {
         val uri = Uri.parse(uriString)
         return DocumentFile.fromTreeUri(context, uri)
@@ -88,16 +94,18 @@ class SafFileSystemProvider(private val context: Context) : FileSystemProvider {
         val from = navigateFile(userFolder, fromParts)
         val destParent = navigateFolder(userFolder, toParts.dropLast(1))
         val newName = toParts.last()
-        destParent.findFile(newName)?.delete()
-        val dest = destParent.createFile(from.type ?: "application/octet-stream", newName)
-            ?: error("Failed to create destination file: $newName")
-        context.contentResolver.openInputStream(from.uri).use { input ->
-            context.contentResolver.openOutputStream(dest.uri, "w").use { output ->
-                require(input != null && output != null)
-                input.copyTo(output)
-            }
+        val sameFolder = fromParts.dropLast(1) == toParts.dropLast(1)
+        destParent.findFile(newName)?.takeIf { it.uri != from.uri }?.delete()
+
+        if (sameFolder && from.renameTo(newName) && from.name == newName) {
+            return
         }
-        from.delete()
+
+        val dest = createExactFile(destParent, newName)
+        if (from.uri != dest.uri) {
+            copyContents(from, dest)
+            from.delete()
+        }
     }
 
     override fun fileCreate(userFolder: String, parts: List<String>): OutputStream {
@@ -105,8 +113,7 @@ class SafFileSystemProvider(private val context: Context) : FileSystemProvider {
         val folder = navigateFolder(userFolder, parts.dropLast(1))
         val name = parts.last()
         folder.findFile(name)?.delete()
-        val file = folder.createFile("application/octet-stream", name)
-            ?: error("Failed to create file: $name")
+        val file = createExactFile(folder, name)
         return context.contentResolver.openOutputStream(file.uri, "w")
             ?: error("Cannot open file for write: $name")
     }
@@ -148,12 +155,27 @@ class SafFileSystemProvider(private val context: Context) : FileSystemProvider {
                 val child = to.createDirectory(name) ?: continue
                 copyTree(item, child)
             } else {
-                val dest = to.createFile(item.type ?: "application/octet-stream", name) ?: continue
-                context.contentResolver.openInputStream(item.uri).use { input ->
-                    context.contentResolver.openOutputStream(dest.uri, "w").use { output ->
-                        if (input != null && output != null) input.copyTo(output)
-                    }
-                }
+                val dest = createExactFile(to, name)
+                copyContents(item, dest)
+            }
+        }
+    }
+
+    private fun createExactFile(parent: DocumentFile, displayName: String): DocumentFile {
+        parent.findFile(displayName)?.delete()
+        val created = parent.createFile(MIME_BINARY, displayName)
+            ?: error("Failed to create file: $displayName")
+        if (created.name != null && created.name != displayName) {
+            created.renameTo(displayName)
+        }
+        return created
+    }
+
+    private fun copyContents(from: DocumentFile, to: DocumentFile) {
+        context.contentResolver.openInputStream(from.uri).use { input ->
+            context.contentResolver.openOutputStream(to.uri, "w").use { output ->
+                require(input != null && output != null)
+                input.copyTo(output)
             }
         }
     }

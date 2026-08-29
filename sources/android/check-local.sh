@@ -53,17 +53,36 @@ fi
 
 TASK=assembleDebug
 INSTALL=0
+VERSION_NAME=""
+VERSION_CODE=""
 for arg in "$@"; do
   case "$arg" in
     --release) TASK=assembleRelease ;;
     --install) INSTALL=1 ;;
+    --version-name=*) VERSION_NAME="${arg#--version-name=}" ;;
+    --version-code=*) VERSION_CODE="${arg#--version-code=}" ;;
   esac
 done
 
 chmod +x "$ANDROID_ROOT/gradlew"
-(cd "$ANDROID_ROOT" && ./gradlew --no-daemon "$TASK")
+GRADLE_ARGS="--no-daemon $TASK"
+[ -n "$VERSION_NAME" ] && GRADLE_ARGS="$GRADLE_ARGS -PappVersionName=$VERSION_NAME"
+[ -n "$VERSION_CODE" ] && GRADLE_ARGS="$GRADLE_ARGS -PappVersionCode=$VERSION_CODE"
+# shellcheck disable=SC2086
+(cd "$ANDROID_ROOT" && ./gradlew $GRADLE_ARGS)
 
-APK=$(find "$ANDROID_ROOT/app/build/outputs/apk" -name "*.apk" | head -1)
+if [ "$TASK" = assembleRelease ]; then
+  APK=""
+  for candidate in "$ANDROID_ROOT/app/build/outputs/apk/release/app-release.apk" \
+                   "$ANDROID_ROOT/app/build/outputs/apk/release/app-release-unsigned.apk"; do
+    if [ -f "$candidate" ]; then APK="$candidate"; break; fi
+  done
+else
+  APK="$ANDROID_ROOT/app/build/outputs/apk/debug/app-debug.apk"
+fi
+if [ -z "$APK" ] || [ ! -f "$APK" ]; then
+  APK=$(find "$ANDROID_ROOT/app/build/outputs/apk" -name "*.apk" | head -1)
+fi
 echo "APK: $APK"
 ls -lh "$APK"
 

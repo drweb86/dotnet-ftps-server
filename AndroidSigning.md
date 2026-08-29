@@ -1,7 +1,7 @@
 # Android APK Signing
 
-Release APKs are signed by GitHub Actions with a self-signed Android keystore.
-Keep the same keystore for future releases, otherwise Android will reject app updates installed over an earlier version.
+Release APKs are the native Kotlin app in `sources/android`, built by GitHub Actions and signed with the same self-signed Android keystore as earlier Avalonia APKs.
+Keep that keystore for future releases, otherwise Android will reject app updates installed over an earlier version.
 
 ## Create a self-signed keystore
 
@@ -40,14 +40,8 @@ Add these repository secrets:
 - `ANDROID_KEY_ALIAS`: `ftpsserver`, unless you chose another alias.
 - `ANDROID_KEY_PASSWORD`: the key password.
 
-The GitHub release and RuStore get only the universal APK:
+The GitHub release and RuStore get a single APK:
 
-- `ftpsserver_<version>_android.apk` — arm64 + x64. This is the file users should install.
+- `ftpsserver_<version>_android.apk`
 
-Per-ABI APKs are built in the same job but are **not** attached to the GitHub release, so downloaders are not asked to pick a CPU:
-
-- `ftpsserver_<version>_android-arm64.apk`
-- `ftpsserver_<version>_android-x64.apk`
-
-They are uploaded as the `android-abi` workflow artifact. Use those when a store (for example IzzyOnDroid) needs a smaller single-ABI APK.
-
+The package id is `com.siarheikuchuk.ftpsserver`. Because the signing key is unchanged, this APK can update an existing install of the older Avalonia build.

@@ -18,7 +18,6 @@ import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder
 import java.math.BigInteger
-import java.security.Security
 
 data class LoadedCertificate(
     val sslContext: SSLContext,
@@ -31,11 +30,9 @@ data class LoadedCertificate(
 object Certificates {
     private const val PFX_PASSWORD = "test"
 
-    init {
-        if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
-            Security.addProvider(BouncyCastleProvider())
-        }
-    }
+    // Android already registers a truncated provider named "BC". Looking up "BC"
+    // by name hits that stub (no SHA256withRSA). Use our bundled instance instead.
+    private val bc = BouncyCastleProvider()
 
     fun loadOrCreate(filesDir: File, settings: FtpsServerSettings, log: FtpsLog): LoadedCertificate {
         if (!settings.certificatePath.isNullOrBlank()) {
@@ -112,8 +109,8 @@ object Certificates {
             )
         )
         builder.addExtension(Extension.subjectAlternativeName, false, names)
-        val signer = JcaContentSignerBuilder("SHA256withRSA").setProvider("BC").build(keyPair.private)
-        val cert = JcaX509CertificateConverter().setProvider("BC").getCertificate(builder.build(signer))
+        val signer = JcaContentSignerBuilder("SHA256withRSA").setProvider(bc).build(keyPair.private)
+        val cert = JcaX509CertificateConverter().setProvider(bc).getCertificate(builder.build(signer))
         val ks = KeyStore.getInstance("PKCS12")
         ks.load(null, PFX_PASSWORD.toCharArray())
         ks.setKeyEntry("ftpsserver", keyPair.private, PFX_PASSWORD.toCharArray(), arrayOf(cert))

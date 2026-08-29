@@ -2,11 +2,14 @@
 # Usage (from anywhere):
 #   powershell -File sources/android/check-local.ps1
 # Optional: -Install  to adb install/launch if a device/emulator is connected
-#           -Release  to assemble the release APK (unsigned)
+#           -Release  to assemble the release APK
+#           -VersionName / -VersionCode  (used for release versioning)
 
 param(
     [switch]$Install,
-    [switch]$Release
+    [switch]$Release,
+    [string]$VersionName = "",
+    [string]$VersionCode = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -102,18 +105,25 @@ $task = if ($Release) { "assembleRelease" } else { "assembleDebug" }
 Write-Host "Building $task ..."
 Push-Location $AndroidRoot
 try {
-    & .\gradlew.bat --no-daemon $task
+    $gradleArgs = @("--no-daemon", $task)
+    if ($VersionName) { $gradleArgs += "-PappVersionName=$VersionName" }
+    if ($VersionCode) { $gradleArgs += "-PappVersionCode=$VersionCode" }
+    & .\gradlew.bat @gradleArgs
     if ($LASTEXITCODE -ne 0) { throw "Gradle $task failed with exit code $LASTEXITCODE" }
 } finally {
     Pop-Location
 }
 
 $apk = if ($Release) {
-    Join-Path $AndroidRoot "app\build\outputs\apk\release\app-release-unsigned.apk"
+    $releaseDir = Join-Path $AndroidRoot "app\build\outputs\apk\release"
+    @("app-release.apk", "app-release-unsigned.apk") |
+        ForEach-Object { Join-Path $releaseDir $_ } |
+        Where-Object { Test-Path $_ } |
+        Select-Object -First 1
 } else {
     Join-Path $AndroidRoot "app\build\outputs\apk\debug\app-debug.apk"
 }
-if (-not (Test-Path $apk)) {
+if (-not $apk -or -not (Test-Path $apk)) {
     $apk = Get-ChildItem (Join-Path $AndroidRoot "app\build\outputs\apk") -Recurse -Filter "*.apk" | Select-Object -First 1 -ExpandProperty FullName
 }
 Write-Host "APK: $apk"

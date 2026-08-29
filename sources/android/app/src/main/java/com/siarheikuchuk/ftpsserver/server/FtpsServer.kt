@@ -44,6 +44,8 @@ class FtpsServer(
         while (running.get()) {
             try {
                 val client = server.accept()
+                client.keepAlive = true
+                client.tcpNoDelay = true
                 val max = config.settings.maxConnections
                 if (active.get() >= max) {
                     log.warn("Connection rejected from ${client.inetAddress}: Max connections reached")

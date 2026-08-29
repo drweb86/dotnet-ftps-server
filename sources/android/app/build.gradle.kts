@@ -13,14 +13,30 @@ android {
         applicationId = "com.siarheikuchuk.ftpsserver"
         minSdk = 23
         targetSdk = 35
-        versionCode = 20260828
-        versionName = "2026.08.28"
+        versionCode = findProperty("appVersionCode")?.toString()?.toIntOrNull() ?: 20260828
+        versionName = findProperty("appVersionName")?.toString()?.takeIf { it.isNotBlank() } ?: "2026.08.28"
+    }
+
+    signingConfigs {
+        val keystoreFile = System.getenv("ANDROID_KEYSTORE_FILE")
+        if (!keystoreFile.isNullOrBlank()) {
+            create("release") {
+                storeFile = file(keystoreFile)
+                storePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: ""
+                keyAlias = System.getenv("ANDROID_KEY_ALIAS") ?: ""
+                keyPassword = System.getenv("ANDROID_KEY_PASSWORD") ?: ""
+                enableV1Signing = true
+                enableV2Signing = true
+            }
+        }
     }
 
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-native"
+            // Distinct launcher name so this sits next to the store/Avalonia app.
+            resValue("string", "app_label", "FTPS Server (native debug)")
         }
         release {
             isMinifyEnabled = true
@@ -29,6 +45,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.findByName("release")
         }
     }
 
