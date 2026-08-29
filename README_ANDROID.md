@@ -35,22 +35,22 @@ Start FTPS Server, add at least one user, choose a shared folder, and tap `Start
 
 There're 2 implementations:
 
-a. Dotnet 10 Avalonia based.
+a. Dotnet 10 Avalonia based
 
 This is historically first version. However FOSS stores do not approve dotnet based apps and those which size are above 30MB. So this version is still there for your own needs to create implementation, but it won't be deployed. So its workable version.
 
-b. Kotlin app
+b. Kotlin app (Current)
 
 This is current version.
 
-Build:
+Build in Powershell:
+
 ```powershell
-powershell -File sources/android/check-local.ps1
-powershell -File sources/android/check-local.ps1 -Install
+./sources/android/check-local.ps1
+./sources/android/check-local.ps1 -Screenshots
+./sources/android/check-local.ps1 -Install
+Screenshots
 ```
 
-Debug builds use application id `com.siarheikuchuk.ftpsserver.debug` so they can sit next to the store app.
-Also there's screenshot version of app with extra cmd line argument.
-
-
-
+Screenshots version will not check for updates and use english locale and have different id from release app.
+Debug version will have different id from release app.
