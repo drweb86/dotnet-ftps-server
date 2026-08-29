@@ -1,8 +1,7 @@
-# 2026.08.30
-(unpublished)
+# 2026.08.31
 
 ## New Features
-- Windows: Win-get support for all application languages.
+- Windows: Win-get support for all application languages (app is still under review process, so delivery will be skipped).
 
 ## Changes
 - Android: the shipped app is now native Kotlin (`sources/android`) instead of Avalonia/.NET, so FOSS stores can build from source and stay under the 30 MB APK cap.
