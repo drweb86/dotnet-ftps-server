@@ -160,10 +160,13 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Install Android SDK packages
-        run: sdkmanager "platforms;android-35" "build-tools;36.0.0"
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        run: |
+          set -eux
+          export PATH="${ANDROID_SDK_ROOT:-$ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT:-$ANDROID_HOME}/cmdline-tools/bin:$PATH"
+          echo "ANDROID_HOME=${ANDROID_HOME:-}"
+          echo "ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT:-}"
+          command -v sdkmanager
+          sdkmanager --install "platforms;android-35" "build-tools;36.0.0"
 
       - name: Prepare Android signing key
         env:
@@ -186,7 +189,7 @@ jobs:
       - name: Get version
         id: version
         run: |
-          version=$(head -1 CHANGELOG.md | sed 's/^\xEF\xBB\xBF//' | sed 's/^# //')
+          version=$(head -1 CHANGELOG.md | sed 's/^\xEF\xBB\xBF//' | grep -oE '[0-9]{4}\.[0-9]{2}\.[0-9]{2}' | head -1)
           echo "version=$version" >> $GITHUB_OUTPUT
           echo "Version: $version"
 
@@ -198,8 +201,8 @@ jobs:
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
-          chmod +x sources/android/ci-build.sh
-          ./sources/android/ci-build.sh
+          sed -i 's/\r$//' sources/android/ci-build.sh
+          bash sources/android/ci-build.sh
 
       - name: Upload Android artifact
         uses: actions/upload-artifact@v4
