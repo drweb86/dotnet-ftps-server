@@ -1,0 +1,3 @@
+-keep class org.bouncycastle.** { *; }
+-dontwarn org.bouncycastle.**
+-keepclassmembers class com.siarheikuchuk.ftpsserver.** { *; }

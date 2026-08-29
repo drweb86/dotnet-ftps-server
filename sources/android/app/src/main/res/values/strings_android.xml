@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_label">FTPS Server by Siarhei Kuchuk</string>
+    <string name="config_access_info_android">This device can be accessed on the LAN by its name or IP address.</string>
+    <string name="notification_channel">FTPS server</string>
+    <string name="notification_title">FTPS Server is running</string>
+    <string name="notification_text">File transfers stay active while this notification is shown.</string>
+</resources>

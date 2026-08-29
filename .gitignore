@@ -4,4 +4,9 @@ obj/
 bin/
 debug/
 packages/
+sources/android/.gradle/
+sources/android/build/
+sources/android/app/build/
+sources/android/local.properties
+sources/android/.idea/
 
