@@ -3,11 +3,13 @@
 #   powershell -File sources/android/check-local.ps1
 # Optional: -Install  to adb install/launch if a device/emulator is connected
 #           -Release  to assemble the release APK
+#           -Screenshots  English-only APK for store screenshots (id ...ftpsserver.screenshots)
 #           -VersionName / -VersionCode  (used for release versioning)
 
 param(
     [switch]$Install,
     [switch]$Release,
+    [switch]$Screenshots,
     [string]$VersionName = "",
     [string]$VersionCode = ""
 )
@@ -108,6 +110,7 @@ try {
     $gradleArgs = @("--no-daemon", $task)
     if ($VersionName) { $gradleArgs += "-PappVersionName=$VersionName" }
     if ($VersionCode) { $gradleArgs += "-PappVersionCode=$VersionCode" }
+    if ($Screenshots) { $gradleArgs += "-Pscreenshots=true" }
     & .\gradlew.bat @gradleArgs
     if ($LASTEXITCODE -ne 0) { throw "Gradle $task failed with exit code $LASTEXITCODE" }
 } finally {
@@ -140,7 +143,13 @@ if ($Install) {
     Write-Host "Installing on device..."
     & $adb install -r $apk
     if ($LASTEXITCODE -ne 0) { throw "adb install failed" }
-    $pkg = if ($Release) { "com.siarheikuchuk.ftpsserver" } else { "com.siarheikuchuk.ftpsserver.debug" }
+    $pkg = if ($Screenshots) {
+        "com.siarheikuchuk.ftpsserver.screenshots"
+    } elseif ($Release) {
+        "com.siarheikuchuk.ftpsserver"
+    } else {
+        "com.siarheikuchuk.ftpsserver.debug"
+    }
     & $adb shell am start -n "$pkg/com.siarheikuchuk.ftpsserver.MainActivity"
     Write-Host "Launched $pkg"
 }

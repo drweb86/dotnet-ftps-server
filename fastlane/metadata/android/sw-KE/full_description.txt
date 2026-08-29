@@ -1,0 +1,13 @@
+Seva ya FTPS (FTP juu ya TLS) ya kushiriki faili salama kati ya vifaa kwenye mtandao.
+
+Vipengele:
+- **Ruhusa za watumiaji** - Udhibiti wa kina wa shughuli za kusoma/kuandika
+- **Folda kuu kwa kila mtumiaji** - Saraka zilizotenganishwa kwa kila mtumiaji
+- **Usalama wa njia** - Ulinzi dhidi ya mashambulizi ya directory traversal
+- **UTF-8** - Inasaidia herufi zilizotafsiriwa
+- **Vyeti vilivyotiwa saini na mwenyewe** - Tengeneza vyeti vya TLS kiotomatiki au tumia vyako
+
+Hii ni programu ya Android (Kotlin). Bila matangazo. Chanzo huria (CC0). Kila mtumiaji huchagua folda kwa kichaguzi cha mfumo. Arifa huendeleza uhamishaji skrini ikiwa imezimwa.
+
+Inahitaji Android 6.0 au mpya zaidi.
+https://github.com/drweb86/dotnet-ftps-server

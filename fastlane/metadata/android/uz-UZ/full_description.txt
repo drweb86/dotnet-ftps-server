@@ -1,0 +1,13 @@
+Tarmoqdagi qurilmalar o'rtasida xavfsiz fayl ulashish uchun FTPS (TLS ustidan FTP) server.
+
+Imkoniyatlar:
+- **Foydalanuvchi ruxsatlari** - O'qish/yozish amallarini batafsil boshqarish
+- **Har bir foydalanuvchi uchun ildiz papkalar** - Har bir foydalanuvchi uchun ajratilgan kataloglar
+- **Yo'l xavfsizligi** - Katalogni aylanib o'tish hujumlaridan himoya
+- **UTF-8** - Mahalliylashtirilgan belgilarni qo'llab-quvvatlash
+- **O'z-o'zini imzolagan sertifikatlar** - TLS sertifikatlarini avtomatik yaratish yoki o'zingiznikini ishlatish
+
+Bu Android ilovasi (Kotlin). Reklamasiz. Ochiq kod (CC0). Har bir foydalanuvchi tizim tanlagichida jild tanlaydi. Bildirishnoma ekran o‘chiqligida ham uzatishni davom ettiradi.
+
+Android 6.0 yoki yangiroq kerak.
+https://github.com/drweb86/dotnet-ftps-server

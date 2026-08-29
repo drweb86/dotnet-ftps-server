@@ -1,0 +1,1 @@
+App Android nísinsinyìí jẹ́ Kotlin abínibí dípò Avalonia/.NET (~5 MB; àwọn ilé-ìtajà FOSS lè kọ́ láti orísun). Id ìdìpọ̀ àti kọ́kọ́rọ́ ìbuwọ́lu kannáà, àwọn ìgbékalẹ̀ tó wà lè ṣe ìmúdójúìwọ̀n.

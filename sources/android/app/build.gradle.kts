@@ -4,6 +4,8 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
+val screenshots = findProperty("screenshots")?.toString() == "true"
+
 android {
     namespace = "com.siarheikuchuk.ftpsserver"
     compileSdk = 35
@@ -15,6 +17,11 @@ android {
         targetSdk = 35
         versionCode = findProperty("appVersionCode")?.toString()?.toIntOrNull() ?: 20260828
         versionName = findProperty("appVersionName")?.toString()?.takeIf { it.isNotBlank() } ?: "2026.08.28"
+        buildConfigField("boolean", "SCREENSHOTS", if (screenshots) "true" else "false")
+        if (screenshots) {
+            applicationIdSuffix = ".screenshots"
+            resConfigs("en")
+        }
     }
 
     signingConfigs {
@@ -33,10 +40,12 @@ android {
 
     buildTypes {
         debug {
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-native"
-            // Distinct launcher name so this sits next to the store/Avalonia app.
-            resValue("string", "app_label", "FTPS Server (native debug)")
+            if (!screenshots) {
+                applicationIdSuffix = ".debug"
+                versionNameSuffix = "-native"
+                // Distinct launcher name so this sits next to the store/Avalonia app.
+                resValue("string", "app_label", "FTPS Server (native debug)")
+            }
         }
         release {
             isMinifyEnabled = true

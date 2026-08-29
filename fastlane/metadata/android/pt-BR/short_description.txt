@@ -1,0 +1,1 @@
+Servidor FTPS para compartilhamento seguro de arquivos pela rede.

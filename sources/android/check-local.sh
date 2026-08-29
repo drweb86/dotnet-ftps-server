@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # Native Android FTPS Server — local build and optional device install.
-# Usage: ./sources/android/check-local.sh [--install] [--release]
+# Usage: ./sources/android/check-local.sh [--install] [--release] [--screenshots]
 set -e
 ANDROID_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 PROJECT_ROOT=$(CDPATH= cd -- "$ANDROID_ROOT/../.." && pwd)
@@ -53,12 +53,14 @@ fi
 
 TASK=assembleDebug
 INSTALL=0
+SCREENSHOTS=0
 VERSION_NAME=""
 VERSION_CODE=""
 for arg in "$@"; do
   case "$arg" in
     --release) TASK=assembleRelease ;;
     --install) INSTALL=1 ;;
+    --screenshots) SCREENSHOTS=1 ;;
     --version-name=*) VERSION_NAME="${arg#--version-name=}" ;;
     --version-code=*) VERSION_CODE="${arg#--version-code=}" ;;
   esac
@@ -68,6 +70,7 @@ chmod +x "$ANDROID_ROOT/gradlew"
 GRADLE_ARGS="--no-daemon $TASK"
 [ -n "$VERSION_NAME" ] && GRADLE_ARGS="$GRADLE_ARGS -PappVersionName=$VERSION_NAME"
 [ -n "$VERSION_CODE" ] && GRADLE_ARGS="$GRADLE_ARGS -PappVersionCode=$VERSION_CODE"
+[ "$SCREENSHOTS" -eq 1 ] && GRADLE_ARGS="$GRADLE_ARGS -Pscreenshots=true"
 # shellcheck disable=SC2086
 (cd "$ANDROID_ROOT" && ./gradlew $GRADLE_ARGS)
 
@@ -94,6 +97,7 @@ if [ "$INSTALL" -eq 1 ]; then
   adb install -r "$APK"
   PKG=com.siarheikuchuk.ftpsserver.debug
   [ "$TASK" = assembleRelease ] && PKG=com.siarheikuchuk.ftpsserver
+  [ "$SCREENSHOTS" -eq 1 ] && PKG=com.siarheikuchuk.ftpsserver.screenshots
   adb shell am start -n "$PKG/com.siarheikuchuk.ftpsserver.MainActivity"
 fi
 

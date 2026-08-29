@@ -1,0 +1,13 @@
+Serveerii FTPS (FTP TLS irratti) meeshaalee gidduutti faayilota karaa neetiwarkii nageenyaan qooduuf.
+
+Amaloota:
+- **Hayyama fayyadamaa** - To'annoo bal'aa hojii dubbisuu/barreessuu irratti
+- **Folldaraa hundee fayyadamaa tokkoon tokkoo** - Galmeewwan adda baafaman fayyadamaa tokkoof
+- **Nageenya karaa** - Itti yaadannoo haleellaa directory traversal irraa eegumsa
+- **UTF-8** - Arfiilee naannoo deeggara
+- **Waraqaa ragaa ofiin mallatteeffame** - Waraqaa ragaa TLS ofumaan uumi ykn kan kee fayyadami
+
+Kun app Android (Kotlin) dha. Beeksisa hin qabu. Madda banaa (CC0). Fayyadamaa tokkoon tokkoon galmee filannaa sirnaatiin filata. Beeksisaon argii cufaa yeroo geeddaruu itti fufsiisa.
+
+Android 6.0 ykn haaraa barbaachisa.
+https://github.com/drweb86/dotnet-ftps-server

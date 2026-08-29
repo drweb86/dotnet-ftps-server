@@ -1,0 +1,1 @@
+Android ilovasi endi Avalonia/.NET emas, native Kotlin (~5 MB; FOSS do‘konlari manbadan yig‘ishi mumkin). Xuddi shu paket id va imzo kaliti, mavjud o‘rnatishlarni yangilash mumkin.

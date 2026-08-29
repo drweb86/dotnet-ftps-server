@@ -1,0 +1,1 @@
+Serwer FTPS do bezpiecznego udostępniania plików w sieci.

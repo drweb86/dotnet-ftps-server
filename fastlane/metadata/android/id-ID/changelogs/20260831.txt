@@ -1,0 +1,1 @@
+Aplikasi Android kini Kotlin native, bukan Avalonia/.NET (~5 MB; toko FOSS dapat membangun dari sumber). Id paket dan kunci tanda tangan sama, instalasi yang ada dapat diperbarui.

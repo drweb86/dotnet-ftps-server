@@ -1,0 +1,13 @@
+Server FTPS (FTP melalui TLS) untuk berbagi file secara aman antar perangkat melalui jaringan.
+
+Fitur:
+- **Izin pengguna** - Kontrol terperinci atas operasi baca/tulis
+- **Folder akar per pengguna** - Direktori terisolasi untuk setiap pengguna
+- **Keamanan jalur** - Perlindungan dari serangan directory traversal
+- **UTF-8** - Mendukung karakter yang dilokalkan
+- **Sertifikat self-signed** - Buat sertifikat TLS secara otomatis atau gunakan milik Anda
+
+Ini aplikasi Android (Kotlin). Tanpa iklan. Sumber terbuka (CC0). Setiap pengguna memilih folder dengan pemilih sistem. Notifikasi menjaga transfer saat layar mati.
+
+Membutuhkan Android 6.0 atau lebih baru.
+https://github.com/drweb86/dotnet-ftps-server

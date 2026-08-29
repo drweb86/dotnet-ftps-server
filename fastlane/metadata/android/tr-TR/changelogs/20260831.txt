@@ -1,0 +1,1 @@
+Android uygulaması Avalonia/.NET yerine yerel Kotlin (~5 MB; FOSS mağazaları kaynaktan derleyebilir). Aynı paket kimliği ve imza anahtarı, mevcut kurulumlar güncellenebilir.

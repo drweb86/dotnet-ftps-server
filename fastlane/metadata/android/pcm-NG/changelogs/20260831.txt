@@ -1,0 +1,1 @@
+Di Android app na native Kotlin now, no be Avalonia/.NET (~5 MB; FOSS stores fit build from source). Na di same package id and signing key, so old install fit update.

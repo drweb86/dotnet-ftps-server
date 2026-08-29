@@ -1,0 +1,13 @@
+Olùpèsè FTPS (FTP lórí TLS) fún pínpín fáìlì láìléwu láàárín àwọn ẹ̀rọ lórí nẹ́tíwọ́ọ̀kì.
+
+Àwọn ẹ̀yà:
+- **Àwọn ìyọ̀ǹda olùmúlò** - Ìṣàkóso tó kún fún ìṣe kíkà/kíkọ
+- **Àwọn fódà gbòngbò fún olùkọ̀ọ̀kan** - Àwọn àtòjọ tí a yà sọ́tọ̀ fún olùmúlò kọ̀ọ̀kan
+- **Ààbò ọ̀nà** - Ààbò lọ́wọ́ ìkọlù directory traversal
+- **UTF-8** - Ṣe àtìlẹ́yìn àwọn lẹ́tà tí a ṣe àdàkọ
+- **Ìwé-ẹ̀rí tí a fọwọ́ sí fúnrararẹ̀** - Ṣẹ̀dá ìwé-ẹ̀rí TLS fúnra rẹ̀ tàbí lo tìrẹ
+
+Èyí ni app Android (Kotlin). Kò sí ìpolówó. Open source (CC0). Olùmúlò kọ̀ọ̀kan yan folder pẹ̀lú aṣàyàn ètò. Ìfitónilétí máa ń tẹ̀síwájú ìgbésí nígbà tí ìbòjú bá pa.
+
+Ó nílò Android 6.0 tàbí tuntun.
+https://github.com/drweb86/dotnet-ftps-server

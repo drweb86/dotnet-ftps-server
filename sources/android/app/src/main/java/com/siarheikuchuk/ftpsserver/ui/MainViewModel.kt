@@ -74,7 +74,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         ServerEvents.onRunning = { running -> _state.update { it.copy(running = running) } }
         ServerEvents.onFailed = { msg -> _state.update { it.copy(error = msg, running = false) } }
         ServerEvents.onCertificate = { cert -> _state.update { it.copy(certificate = cert) } }
-        Thread { checkUpdate() }.start()
+        if (!BuildConfig.SCREENSHOTS) {
+            Thread { checkUpdate() }.start()
+        }
     }
 
     fun setPort(value: Int) = _state.update { it.copy(port = value.coerceAtLeast(2121)) }

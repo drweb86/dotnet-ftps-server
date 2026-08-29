@@ -16,7 +16,8 @@ The repository is [CC0 1.0](../../LICENSE). Copy the Kotlin FTPS server under `a
 
 - `app/` — Compose UI, foreground service, SAF file access, FTPS protocol
 - `tools/convert_resx.py` — copies strings from the Avalonia `.resx` files
-- `check-local.ps1` / `check-local.sh` — local debug/release build
+- `tools/generate_fastlane.py` — writes `fastlane/metadata/android` from Windows `.resx` translations
+- `check-local.ps1` / `check-local.sh` — local debug/release build (`-Screenshots` / `--screenshots` for an English-only APK used to capture store screenshots)
 - `ci-build.sh` — signed release APK for GitHub Actions
 
 ## Requirements

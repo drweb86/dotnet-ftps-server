@@ -1,6 +1,7 @@
 package com.siarheikuchuk.ftpsserver
 
 import android.Manifest
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,6 +15,12 @@ import com.siarheikuchuk.ftpsserver.ui.MainViewModel
 
 class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModels()
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(
+            if (BuildConfig.SCREENSHOTS) newBase.withEnglishLocale() else newBase,
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

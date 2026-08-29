@@ -1,0 +1,13 @@
+Serveur FTPS (FTP sur TLS) pour le partage sécurisé de fichiers entre appareils sur le réseau.
+
+Fonctionnalités :
+- **Autorisations utilisateur** - Contrôle granulaire des opérations de lecture/écriture
+- **Dossiers racine par utilisateur** - Répertoires isolés pour chaque utilisateur
+- **Sécurité des chemins** - Protection contre les attaques par traversée de répertoire
+- **UTF-8** - Prise en charge des caractères localisés
+- **Certificats auto-signés** - Génération automatique de certificats TLS ou utilisation des vôtres
+
+Ceci est l’application Android (Kotlin). Sans publicité. Open source (CC0). Chaque utilisateur choisit un dossier avec le sélecteur système. Une notification maintient les transferts écran éteint.
+
+Nécessite Android 6.0 ou plus récent.
+https://github.com/drweb86/dotnet-ftps-server

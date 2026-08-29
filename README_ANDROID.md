@@ -12,6 +12,20 @@ The repository license is [CC0 1.0](./LICENSE). You may copy the Kotlin FTPS ser
 
 Requires **Android 6.0 (API 23)** or newer. The release APK includes `arm64-v8a`, `armeabi-v7a`, `x86`, and `x86_64`.
 
+## Screenshots
+
+Phone:
+
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="240" alt="Phone: start the server" />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="240" alt="Phone: running server and certificate" />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="240" alt="Phone: users and shared folder" />
+
+Tablet:
+
+<img src="fastlane/metadata/android/en-US/images/tenInchScreenshots/1.jpg" width="420" alt="Tablet: start the server" />
+<img src="fastlane/metadata/android/en-US/images/tenInchScreenshots/2.jpg" width="420" alt="Tablet: running server and certificate" />
+<img src="fastlane/metadata/android/en-US/images/tenInchScreenshots/3.jpg" width="420" alt="Tablet: users and server logs" />
+
 To build and optionally install a debug APK on a phone or emulator:
 
 ```powershell

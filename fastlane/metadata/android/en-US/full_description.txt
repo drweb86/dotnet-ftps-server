@@ -1,0 +1,13 @@
+FTPS (FTP over TLS) server for secure file sharing between devices over network.
+
+Features:
+- **User Permissions** - Granular control over Read/Write operations
+- **Per-User Root Folders** - Isolated directories for each user
+- **Path Security** - Protection against directory traversal attacks
+- **UTF-8** - Supports localized characters
+- **Self-Signed Certificates** - Auto-generate TLS certificates or bring your own
+
+This is the Android app (Kotlin). No ads. Open source (CC0). Each user chooses a folder with the system picker. A notification keeps transfers running with the screen off.
+
+Requires Android 6.0 or newer.
+https://github.com/drweb86/dotnet-ftps-server

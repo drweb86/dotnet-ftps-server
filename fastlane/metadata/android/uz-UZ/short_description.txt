@@ -1,0 +1,1 @@
+Tarmoq orqali xavfsiz fayl ulashish uchun FTPS server.

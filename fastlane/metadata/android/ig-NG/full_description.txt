@@ -1,0 +1,13 @@
+Sava FTPS (FTP n'elu TLS) maka ikesa faịlụ n'ụzọ nchekwa n'etiti ngwaọrụ na netwọkụ.
+
+Njirimara:
+- **Ikike onye ọrụ** - Njikwa zuru ezu nke ọrụ ịgụ/ide
+- **Nchekwa mgbọrọgwụ maka onye ọrụ ọ bụla** - Ndekọ kewapụrụ maka onye ọrụ ọ bụla
+- **Nchekwa ụzọ** - Nchebe megide mwakpo directory traversal
+- **UTF-8** - Na-akwado mkpụrụedemede e mere ka ọ bụrụ nke mpaghara
+- **Asambodo nke onwe** - Mepụta asambodo TLS na-akpaghị aka ma ọ bụ jiri nke gị
+
+Nke a bụ ngwa Android (Kotlin). Enweghị mgbasa ozi. Open source (CC0). Onye ọrụ ọ bụla na-ahọrọ nchekwa site na nhọrọ sistemụ. Ọkwa na-eme ka nnyefe gaa n’ihu mgbe ihuenyo gbanyụrụ.
+
+Ọ chọrọ Android 6.0 ma ọ bụ ọhụrụ.
+https://github.com/drweb86/dotnet-ftps-server
