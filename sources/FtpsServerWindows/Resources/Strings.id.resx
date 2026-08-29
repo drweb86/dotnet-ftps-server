@@ -231,4 +231,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Berlaku:</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>Server FTPS (FTP melalui TLS) untuk berbagi file secara aman antar perangkat melalui jaringan.
+
+Fitur:
+- **Izin pengguna** - Kontrol terperinci atas operasi baca/tulis
+- **Folder akar per pengguna** - Direktori terisolasi untuk setiap pengguna
+- **Keamanan jalur** - Perlindungan dari serangan directory traversal
+- **UTF-8** - Mendukung karakter yang dilokalkan
+- **Antarmuka Windows** - Antarmuka grafis yang dibuat dengan WPF
+- **Sertifikat self-signed** - Buat sertifikat TLS secara otomatis atau gunakan milik Anda
+- **Beberapa arsitektur** - Mendukung x64 dan ARM64</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>Server FTPS untuk berbagi file secara aman melalui jaringan.</value>
+  </data>
 </root>

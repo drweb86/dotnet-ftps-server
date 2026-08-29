@@ -237,4 +237,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>有效期：</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>用嚟喺網絡上喺裝置之間安全分享檔案嘅 FTPS（TLS 上嘅 FTP）伺服器。
+
+功能：
+- **使用者權限** - 對讀取／寫入操作嘅精細控制
+- **每個使用者嘅根資料夾** - 為每個使用者隔離嘅目錄
+- **路徑安全** - 防範目錄遍歷攻擊
+- **UTF-8** - 支援本地化字元
+- **Windows 介面** - 用 WPF 建立嘅圖形介面
+- **自簽證書** - 自動產生 TLS 證書，或者用你自己嘅
+- **多種架構** - 支援 x64 同 ARM64</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>用嚟喺網絡上安全分享檔案嘅 FTPS 伺服器。</value>
+  </data>
 </root>

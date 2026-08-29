@@ -246,4 +246,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Amal qiladi:</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>Tarmoqdagi qurilmalar o'rtasida xavfsiz fayl ulashish uchun FTPS (TLS ustidan FTP) server.
+
+Imkoniyatlar:
+- **Foydalanuvchi ruxsatlari** - O'qish/yozish amallarini batafsil boshqarish
+- **Har bir foydalanuvchi uchun ildiz papkalar** - Har bir foydalanuvchi uchun ajratilgan kataloglar
+- **Yo'l xavfsizligi** - Katalogni aylanib o'tish hujumlaridan himoya
+- **UTF-8** - Mahalliylashtirilgan belgilarni qo'llab-quvvatlash
+- **Windows interfeysi** - WPF bilan yaratilgan grafik interfeys
+- **O'z-o'zini imzolagan sertifikatlar** - TLS sertifikatlarini avtomatik yaratish yoki o'zingiznikini ishlatish
+- **Bir nechta arxitektura** - x64 va ARM64 ni qo'llab-quvvatlash</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>Tarmoq orqali xavfsiz fayl ulashish uchun FTPS server.</value>
+  </data>
 </root>

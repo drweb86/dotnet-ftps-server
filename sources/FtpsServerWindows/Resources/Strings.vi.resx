@@ -237,4 +237,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Hợp lệ:</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>Máy chủ FTPS (FTP trên TLS) để chia sẻ tệp an toàn giữa các thiết bị qua mạng.
+
+Tính năng:
+- **Quyền người dùng** - Kiểm soát chi tiết các thao tác đọc/ghi
+- **Thư mục gốc theo người dùng** - Thư mục được cô lập cho từng người dùng
+- **Bảo mật đường dẫn** - Bảo vệ khỏi các cuộc tấn công directory traversal
+- **UTF-8** - Hỗ trợ ký tự đã bản địa hóa
+- **Giao diện Windows** - Giao diện đồ họa được xây dựng bằng WPF
+- **Chứng chỉ tự ký** - Tự động tạo chứng chỉ TLS hoặc dùng chứng chỉ của bạn
+- **Nhiều kiến trúc** - Hỗ trợ x64 và ARM64</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>Máy chủ FTPS để chia sẻ tệp an toàn qua mạng.</value>
+  </data>
 </root>

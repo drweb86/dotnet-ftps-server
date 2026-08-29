@@ -1,3 +1,9 @@
+# 2026.08.28
+(unpublished)
+
+## New Features
+- Windows: Win-get support for all application languages.
+
 # 2026.08.27
 
 ## Bug Fixes

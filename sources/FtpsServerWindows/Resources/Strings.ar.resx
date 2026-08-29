@@ -237,4 +237,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>صالحة:</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>خادم FTPS (FTP عبر TLS) لمشاركة الملفات بأمان بين الأجهزة عبر الشبكة.
+
+الميزات:
+- **أذونات المستخدم** - تحكم دقيق في عمليات القراءة/الكتابة
+- **مجلدات جذر لكل مستخدم** - أدلة معزولة لكل مستخدم
+- **أمان المسارات** - حماية من هجمات اجتياز الدليل
+- **UTF-8** - يدعم الأحرف المترجمة
+- **واجهة Windows** - واجهة رسومية مبنية بـ WPF
+- **شهادات موقعة ذاتيًا** - إنشاء شهادات TLS تلقائيًا أو استخدام شهاداتك
+- **بنى متعددة** - يدعم x64 وARM64</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>خادم FTPS لمشاركة الملفات بأمان عبر الشبكة.</value>
+  </data>
 </root>

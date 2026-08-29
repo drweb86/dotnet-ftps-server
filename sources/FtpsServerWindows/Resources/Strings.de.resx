@@ -231,4 +231,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Gültig:</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>FTPS-Server (FTP über TLS) für sichere Dateifreigabe zwischen Geräten über das Netzwerk.
+
+Funktionen:
+- **Benutzerberechtigungen** - Granulare Kontrolle über Lese-/Schreibvorgänge
+- **Benutzerbezogene Stammordner** - Isolierte Verzeichnisse für jeden Benutzer
+- **Pfadsicherheit** - Schutz vor Directory-Traversal-Angriffen
+- **UTF-8** - Unterstützt lokalisierte Zeichen
+- **Windows-Oberfläche** - Grafische Oberfläche mit WPF
+- **Selbstsignierte Zertifikate** - TLS-Zertifikate automatisch erzeugen oder eigene verwenden
+- **Mehrere Architekturen** - Unterstützt x64 und ARM64</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>FTPS-Server für sichere Dateifreigabe über das Netzwerk.</value>
+  </data>
 </root>

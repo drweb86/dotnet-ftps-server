@@ -20,7 +20,7 @@ using System.Xml;
 //   1. Create Strings.{culture}.resx file in FtpsServerWindows/Resources
 //   2. Add _Technical_WingetLocale with the appropriate locale code
 //   3. Add Winget_ShortDescription and Winget_Description translations
-//   4. Run ResxSorter to generate output files
+//   4. ResxSorter generates locale YAML during winget submission (not committed)
 // =============================================================================
 
 namespace Codice.SortResX

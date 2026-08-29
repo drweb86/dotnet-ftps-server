@@ -246,4 +246,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Halali:</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>Seva ya FTPS (FTP juu ya TLS) ya kushiriki faili salama kati ya vifaa kwenye mtandao.
+
+Vipengele:
+- **Ruhusa za watumiaji** - Udhibiti wa kina wa shughuli za kusoma/kuandika
+- **Folda kuu kwa kila mtumiaji** - Saraka zilizotenganishwa kwa kila mtumiaji
+- **Usalama wa njia** - Ulinzi dhidi ya mashambulizi ya directory traversal
+- **UTF-8** - Inasaidia herufi zilizotafsiriwa
+- **Kiolesura cha Windows** - Kiolesura cha picha kilichojengwa kwa WPF
+- **Vyeti vilivyotiwa saini na mwenyewe** - Tengeneza vyeti vya TLS kiotomatiki au tumia vyako
+- **Miundo mingi** - Inasaidia x64 na ARM64</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>Seva ya FTPS ya kushiriki faili salama kwenye mtandao.</value>
+  </data>
 </root>

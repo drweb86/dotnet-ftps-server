@@ -231,4 +231,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Valide :</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>Serveur FTPS (FTP sur TLS) pour le partage sécurisé de fichiers entre appareils sur le réseau.
+
+Fonctionnalités :
+- **Autorisations utilisateur** - Contrôle granulaire des opérations de lecture/écriture
+- **Dossiers racine par utilisateur** - Répertoires isolés pour chaque utilisateur
+- **Sécurité des chemins** - Protection contre les attaques par traversée de répertoire
+- **UTF-8** - Prise en charge des caractères localisés
+- **Interface Windows** - Interface graphique créée avec WPF
+- **Certificats auto-signés** - Génération automatique de certificats TLS ou utilisation des vôtres
+- **Architectures multiples** - Prise en charge de x64 et ARM64</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>Serveur FTPS pour le partage sécurisé de fichiers sur le réseau.</value>
+  </data>
 </root>

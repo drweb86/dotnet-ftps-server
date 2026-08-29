@@ -237,4 +237,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Geçerli:</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>Ağdaki cihazlar arasında güvenli dosya paylaşımı için FTPS (TLS üzerinden FTP) sunucusu.
+
+Özellikler:
+- **Kullanıcı izinleri** - Okuma/yazma işlemleri üzerinde ayrıntılı denetim
+- **Kullanıcı başına kök klasörler** - Her kullanıcı için yalıtılmış dizinler
+- **Yol güvenliği** - Dizin geçiş saldırılarına karşı koruma
+- **UTF-8** - Yerelleştirilmiş karakterleri destekler
+- **Windows arayüzü** - WPF ile oluşturulmuş grafik arayüz
+- **Kendinden imzalı sertifikalar** - TLS sertifikalarını otomatik oluşturun veya kendinizinkini kullanın
+- **Birden fazla mimari** - x64 ve ARM64 desteği</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>Ağ üzerinden güvenli dosya paylaşımı için FTPS sunucusu.</value>
+  </data>
 </root>

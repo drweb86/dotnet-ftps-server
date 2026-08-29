@@ -246,4 +246,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>ተቀባይነት:</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>በአውታረ መረብ ላይ በመሳሪያዎች መካከል ፋይሎችን በደህንነት ለማጋራት የ FTPS (በ TLS ላይ FTP) አገልጋይ።
+
+ባህሪያት:
+- **የተጠቃሚ ፈቃዶች** - በንባብ/ጽሑፍ ስራዎች ላይ ዝርዝር ቁጥጥር
+- **ለእያንዳንዱ ተጠቃሚ ሥር አቃፊዎች** - ለእያንዳንዱ ተጠቃሚ የተለዩ ማውጫዎች
+- **የመንገድ ደህንነት** - ከዳይሬክተሪ መሻገር ጥቃቶች መከላከል
+- **UTF-8** - የተተረጎሙ ቁምፊዎችን ይደግፋል
+- **የ Windows በይነገጽ** - በ WPF የተሰራ ግራፊክ በይነገጽ
+- **በራስ የተፈረሙ ሰርተፊኬቶች** - የ TLS ሰርተፊኬቶችን በራስ-ሰር ይፍጠሩ ወይም የራስዎን ይጠቀሙ
+- **ብዙ አርክቴክቸሮች** - x64 እና ARM64ን ይደግፋል</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>በአውታረ መረብ ላይ ፋይሎችን በደህንነት ለማጋራት የ FTPS አገልጋይ።</value>
+  </data>
 </root>

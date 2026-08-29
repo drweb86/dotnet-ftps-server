@@ -246,4 +246,19 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Ingantacce:</value>
   </data>
+  <data name="Winget_Description" xml:space="preserve">
+    <value>Uwar garken FTPS (FTP akan TLS) don raba fayiloli cikin aminci tsakanin na'urori a kan hanyar sadarwa.
+
+Siffofi:
+- **Izinonin mai amfani** - Culakulewar aiki na karantawa/rubutu
+- **Folder ɗin tushe na kowane mai amfani** - Keɓaɓɓun jagorori ga kowane mai amfani
+- **Tsaron hanya** - Kariya daga hare-haren directory traversal
+- **UTF-8** - Yana goyon bayan haruffan gida
+- **Windows UI** - Ƙa'idar hoto da aka gina da WPF
+- **Takaddun shaida da aka sa hannu da kai** - Samar da takaddun TLS ta atomatik ko yi amfani da naku
+- **Gine-gine da yawa** - Yana goyon bayan x64 da ARM64</value>
+  </data>
+  <data name="Winget_ShortDescription" xml:space="preserve">
+    <value>Uwar garken FTPS don raba fayiloli cikin aminci a kan hanyar sadarwa.</value>
+  </data>
 </root>
