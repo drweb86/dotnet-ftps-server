@@ -29,7 +29,7 @@ Android requires all updates for the same app to be signed with the same signing
 
 ## Usage
 
-Start FTPS Server, add at least one user, choose a shared folder, and tap `Start`. While the server is running, a notification stays on screen and the app keeps the CPU and Wi-Fi awake so transfers continue with the screen off.
+Start FTPS Server, add at least one user, choose a shared folder, and tap `Start`. While the server is running, a notification stays on screen and the app keeps the CPU and Wi-Fi awake so transfers continue with the screen off. Once you done your transfers, you must stop server.
 
 ## Source code
 
