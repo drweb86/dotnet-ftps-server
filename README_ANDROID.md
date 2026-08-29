@@ -2,9 +2,7 @@
 
 Phone:
 
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="240" alt="Phone: start the server" />
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="240" alt="Phone: running server and certificate" />
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="240" alt="Phone: users and shared folder" />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="240" alt="Phone: start the server" /><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="240" alt="Phone: running server and certificate" /><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="240" alt="Phone: users and shared folder" />
 
 Tablet:
 
