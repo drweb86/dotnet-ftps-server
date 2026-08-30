@@ -1,13 +1,6 @@
-FTPS-Server (FTP über TLS) für sichere Dateifreigabe zwischen Geräten über das Netzwerk.
-
-Funktionen:
-- **Benutzerberechtigungen** - Granulare Kontrolle über Lese-/Schreibvorgänge
-- **Benutzerbezogene Stammordner** - Isolierte Verzeichnisse für jeden Benutzer
-- **Pfadsicherheit** - Schutz vor Directory-Traversal-Angriffen
-- **UTF-8** - Unterstützt lokalisierte Zeichen
-- **Selbstsignierte Zertifikate** - TLS-Zertifikate automatisch erzeugen oder eigene verwenden
-
-Dies ist die Android-App (Kotlin). Keine Werbung. Open Source (CC0). Jeder Benutzer wählt einen Ordner über die Systemauswahl. Eine Benachrichtigung hält Übertragungen bei ausgeschaltetem Bildschirm aktiv.
-
-Erfordert Android 6.0 oder neuer.
-https://github.com/drweb86/dotnet-ftps-server
+<p>FTPS-Server (FTP über TLS) für sichere Dateifreigabe zwischen Geräten über das Netzwerk.</p>
+<p><b>Funktionen:</b></p>
+<ul><li><b>Benutzerberechtigungen</b> - Granulare Kontrolle über Lese-/Schreibvorgänge</li><li><b>Benutzerbezogene Stammordner</b> - Isolierte Verzeichnisse für jeden Benutzer</li><li><b>Pfadsicherheit</b> - Schutz vor Directory-Traversal-Angriffen</li><li><b>UTF-8</b> - Unterstützt lokalisierte Zeichen</li><li><b>Selbstsignierte Zertifikate</b> - TLS-Zertifikate automatisch erzeugen oder eigene verwenden</li></ul>
+<p>Dies ist die Android-App (Kotlin). Keine Werbung. Open Source (CC0). Jeder Benutzer wählt einen Ordner über die Systemauswahl. Eine Benachrichtigung hält Übertragungen bei ausgeschaltetem Bildschirm aktiv.</p>
+<p>Erfordert Android 6.0 oder neuer.</p>
+<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

@@ -1,13 +1,6 @@
-Serveur FTPS (FTP sur TLS) pour le partage sécurisé de fichiers entre appareils sur le réseau.
-
-Fonctionnalités :
-- **Autorisations utilisateur** - Contrôle granulaire des opérations de lecture/écriture
-- **Dossiers racine par utilisateur** - Répertoires isolés pour chaque utilisateur
-- **Sécurité des chemins** - Protection contre les attaques par traversée de répertoire
-- **UTF-8** - Prise en charge des caractères localisés
-- **Certificats auto-signés** - Génération automatique de certificats TLS ou utilisation des vôtres
-
-Ceci est l’application Android (Kotlin). Sans publicité. Open source (CC0). Chaque utilisateur choisit un dossier avec le sélecteur système. Une notification maintient les transferts écran éteint.
-
-Nécessite Android 6.0 ou plus récent.
-https://github.com/drweb86/dotnet-ftps-server
+<p>Serveur FTPS (FTP sur TLS) pour le partage sécurisé de fichiers entre appareils sur le réseau.</p>
+<p><b>Fonctionnalités :</b></p>
+<ul><li><b>Autorisations utilisateur</b> - Contrôle granulaire des opérations de lecture/écriture</li><li><b>Dossiers racine par utilisateur</b> - Répertoires isolés pour chaque utilisateur</li><li><b>Sécurité des chemins</b> - Protection contre les attaques par traversée de répertoire</li><li><b>UTF-8</b> - Prise en charge des caractères localisés</li><li><b>Certificats auto-signés</b> - Génération automatique de certificats TLS ou utilisation des vôtres</li></ul>
+<p>Ceci est l’application Android (Kotlin). Sans publicité. Open source (CC0). Chaque utilisateur choisit un dossier avec le sélecteur système. Une notification maintient les transferts écran éteint.</p>
+<p>Nécessite Android 6.0 ou plus récent.</p>
+<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

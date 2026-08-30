@@ -1,13 +1,6 @@
-Serwer FTPS (FTP przez TLS) do bezpiecznego udostępniania plików między urządzeniami w sieci.
-
-Funkcje:
-- **Uprawnienia użytkowników** - Szczegółowa kontrola operacji odczytu/zapisu
-- **Foldery główne dla każdego użytkownika** - Izolowane katalogi dla każdego użytkownika
-- **Bezpieczeństwo ścieżek** - Ochrona przed atakami directory traversal
-- **UTF-8** - Obsługa znaków zlokalizowanych
-- **Certyfikaty z podpisem własnym** - Automatyczne generowanie certyfikatów TLS lub użycie własnych
-
-To aplikacja na Androida (Kotlin). Bez reklam. Open source (CC0). Każdy użytkownik wybiera folder systemowym selektorem. Powiadomienie utrzymuje transfery przy wyłączonym ekranie.
-
-Wymaga Androida 6.0 lub nowszego.
-https://github.com/drweb86/dotnet-ftps-server
+<p>Serwer FTPS (FTP przez TLS) do bezpiecznego udostępniania plików między urządzeniami w sieci.</p>
+<p><b>Funkcje:</b></p>
+<ul><li><b>Uprawnienia użytkowników</b> - Szczegółowa kontrola operacji odczytu/zapisu</li><li><b>Foldery główne dla każdego użytkownika</b> - Izolowane katalogi dla każdego użytkownika</li><li><b>Bezpieczeństwo ścieżek</b> - Ochrona przed atakami directory traversal</li><li><b>UTF-8</b> - Obsługa znaków zlokalizowanych</li><li><b>Certyfikaty z podpisem własnym</b> - Automatyczne generowanie certyfikatów TLS lub użycie własnych</li></ul>
+<p>To aplikacja na Androida (Kotlin). Bez reklam. Open source (CC0). Każdy użytkownik wybiera folder systemowym selektorem. Powiadomienie utrzymuje transfery przy wyłączonym ekranie.</p>
+<p>Wymaga Androida 6.0 lub nowszego.</p>
+<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

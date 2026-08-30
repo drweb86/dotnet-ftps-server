@@ -1,13 +1,6 @@
-FTPS（基于 TLS 的 FTP）服务器，用于在网络设备之间安全共享文件。
-
-功能：
-- **用户权限** - 对读/写操作的精细控制
-- **每用户根目录** - 为每个用户隔离的目录
-- **路径安全** - 防止目录遍历攻击
-- **UTF-8** - 支持本地化字符
-- **自签名证书** - 自动生成 TLS 证书或使用您自己的证书
-
-这是 Android 应用（Kotlin）。无广告。开源（CC0）。每位用户通过系统选择器选定文件夹。通知可在息屏时保持传输。
-
-需要 Android 6.0 或更高版本。
-https://github.com/drweb86/dotnet-ftps-server
+<p>FTPS（基于 TLS 的 FTP）服务器，用于在网络设备之间安全共享文件。</p>
+<p><b>功能：</b></p>
+<ul><li><b>用户权限</b> - 对读/写操作的精细控制</li><li><b>每用户根目录</b> - 为每个用户隔离的目录</li><li><b>路径安全</b> - 防止目录遍历攻击</li><li><b>UTF-8</b> - 支持本地化字符</li><li><b>自签名证书</b> - 自动生成 TLS 证书或使用您自己的证书</li></ul>
+<p>这是 Android 应用（Kotlin）。无广告。开源（CC0）。每位用户通过系统选择器选定文件夹。通知可在息屏时保持传输。</p>
+<p>需要 Android 6.0 或更高版本。</p>
+<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>
