@@ -1,1 +1,0 @@
-Android 应用改为原生 Kotlin，不再使用 Avalonia/.NET（约 5 MB，FOSS 商店可从源码构建）。包名与签名密钥不变，可覆盖更新已安装版本。

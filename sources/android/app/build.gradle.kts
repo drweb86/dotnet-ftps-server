@@ -15,8 +15,10 @@ android {
         applicationId = "com.siarheikuchuk.ftpsserver"
         minSdk = 23
         targetSdk = 35
-        versionCode = findProperty("appVersionCode")?.toString()?.toIntOrNull() ?: 20260828
-        versionName = findProperty("appVersionName")?.toString()?.takeIf { it.isNotBlank() } ?: "2026.08.28"
+        val defaultVersionCode = 20260832
+        val defaultVersionName = "2026.08.32"
+        versionCode = findProperty("appVersionCode")?.toString()?.toIntOrNull() ?: defaultVersionCode
+        versionName = findProperty("appVersionName")?.toString()?.takeIf { it.isNotBlank() } ?: defaultVersionName
         buildConfigField("boolean", "SCREENSHOTS", if (screenshots) "true" else "false")
         if (screenshots) {
             applicationIdSuffix = ".screenshots"
@@ -75,6 +77,12 @@ android {
             excludes += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
             pickFirsts += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
         }
+    }
+
+    // F-Droid
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
     }
 }
 

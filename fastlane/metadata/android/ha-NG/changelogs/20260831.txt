@@ -1,1 +1,0 @@
-App ɗin Android yanzu Kotlin ne na asali maimakon Avalonia/.NET (~5 MB; shagunan FOSS na iya ginawa daga tushe). Irin wannan id ɗin fakitin da maɓallin sa hannu, shigarwar da ke wurin za a iya sabunta su.

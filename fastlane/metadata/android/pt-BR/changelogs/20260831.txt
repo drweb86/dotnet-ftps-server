@@ -1,1 +1,0 @@
-O app Android agora é Kotlin nativo em vez de Avalonia/.NET (~5 MB; lojas FOSS podem compilar a partir do código). O mesmo id de pacote e chave de assinatura, instalações existentes podem atualizar.

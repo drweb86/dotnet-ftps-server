@@ -1,1 +1,0 @@
-Ứng dụng Android giờ là Kotlin gốc thay Avalonia/.NET (~5 MB; cửa hàng FOSS có thể biên dịch từ mã nguồn). Cùng id gói và khóa ký, bản cài sẵn có thể cập nhật.

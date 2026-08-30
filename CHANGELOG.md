@@ -1,3 +1,8 @@
+# 2026.08.32
+
+## Changes
+- Android: Preparation for F-Droid.
+
 # 2026.08.31
 
 ## New Features

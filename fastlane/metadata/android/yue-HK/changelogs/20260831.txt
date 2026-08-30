@@ -1,1 +1,0 @@
-Android 應用而家係原生 Kotlin，唔再用 Avalonia/.NET（約 5 MB，FOSS 商店可以由原始碼編譯）。套件名稱同簽名匙不變，可以覆蓋更新已安裝版本。

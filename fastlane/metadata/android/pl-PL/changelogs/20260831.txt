@@ -1,1 +1,0 @@
-Aplikacja Android jest teraz natywnym Kotlinem zamiast Avalonia/.NET (~5 MB; sklepy FOSS mogą budować ze źródeł). Ten sam identyfikator pakietu i klucz podpisu — istniejące instalacje można zaktualizować.

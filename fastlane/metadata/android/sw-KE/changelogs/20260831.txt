@@ -1,1 +1,0 @@
-Programu ya Android sasa ni Kotlin asilia badala ya Avalonia/.NET (~5 MB; maduka ya FOSS yanaweza kujenga kutoka chanzo). Kitambulisho cha kifurushi na ufunguo wa saini ni vilevile, usakinishaji uliopo unaweza kusasishwa.

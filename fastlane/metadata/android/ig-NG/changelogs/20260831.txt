@@ -1,1 +1,0 @@
-Ngwa Android ugbu a bụ Kotlin nke obodo kama Avalonia/.NET (~5 MB; ụlọ ahịa FOSS nwere ike wuo site na isi mmalite). Otu id ngwugwu na igodo mbinye aka, nrụnye dị ugbu a nwere ike melite.

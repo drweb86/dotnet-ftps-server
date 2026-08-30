@@ -74,7 +74,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         ServerEvents.onRunning = { running -> _state.update { it.copy(running = running) } }
         ServerEvents.onFailed = { msg -> _state.update { it.copy(error = msg, running = false) } }
         ServerEvents.onCertificate = { cert -> _state.update { it.copy(certificate = cert) } }
-        if (!BuildConfig.SCREENSHOTS) {
+        if (shouldCheckGithubUpdate()) {
             Thread { checkUpdate() }.start()
         }
     }
@@ -185,6 +185,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         return rows
     }
 
+    private fun shouldCheckGithubUpdate(): Boolean {
+        if (BuildConfig.SCREENSHOTS) return false
+        val app = getApplication<Application>()
+        val installer = try {
+            if (Build.VERSION.SDK_INT >= 30) {
+                app.packageManager.getInstallSourceInfo(app.packageName).installingPackageName
+            } else {
+                @Suppress("DEPRECATION")
+                app.packageManager.getInstallerPackageName(app.packageName)
+            }
+        } catch (_: Exception) {
+            null
+        }
+        return installer !in FDROID_INSTALLERS
+    }
+
     private fun checkUpdate() {
         try {
             val conn = URL("https://api.github.com/repos/drweb86/dotnet-ftps-server/releases/latest").openConnection() as HttpURLConnection
@@ -221,5 +237,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         ServerEvents.onFailed = null
         ServerEvents.onCertificate = null
         super.onCleared()
+    }
+
+    companion object {
+        private val FDROID_INSTALLERS = setOf(
+            "org.fdroid.fdroid",
+            "org.fdroid.basic",
+            "org.fdroid.fdroid.privileged",
+        )
     }
 }
