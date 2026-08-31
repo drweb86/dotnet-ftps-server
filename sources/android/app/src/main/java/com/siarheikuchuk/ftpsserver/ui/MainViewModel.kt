@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
 import com.siarheikuchuk.ftpsserver.BuildConfig
 import com.siarheikuchuk.ftpsserver.data.AppSettings
 import com.siarheikuchuk.ftpsserver.data.SettingsRepository
@@ -23,6 +24,7 @@ import java.util.Locale
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 data class LogLine(val timestamp: String, val level: String, val message: String)
@@ -61,19 +63,35 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             certificatePath = loaded.certificatePath,
             certificatePassword = loaded.certificatePassword,
             users = loaded.users.toList(),
+            running = ServerEvents.isRunning.value,
             networks = localNetworks(),
             hostName = Build.MODEL ?: "Android",
+            certificate = ServerEvents.loadedCertificate.value,
         )
-        ServerEvents.onLog = { level, message ->
-            val time = SimpleDateFormat("HH:mm:ss", Locale.US).format(Date())
-            _state.update { s ->
-                val next = (s.logs + LogLine(time, level, message)).takeLast(500)
-                s.copy(logs = next)
+        viewModelScope.launch {
+            ServerEvents.isRunning.collect { running ->
+                _state.update { it.copy(running = running) }
             }
         }
-        ServerEvents.onRunning = { running -> _state.update { it.copy(running = running) } }
-        ServerEvents.onFailed = { msg -> _state.update { it.copy(error = msg, running = false) } }
-        ServerEvents.onCertificate = { cert -> _state.update { it.copy(certificate = cert) } }
+        viewModelScope.launch {
+            ServerEvents.failures.collect { msg ->
+                _state.update { it.copy(error = msg, running = false) }
+            }
+        }
+        viewModelScope.launch {
+            ServerEvents.loadedCertificate.collect { cert ->
+                _state.update { it.copy(certificate = cert) }
+            }
+        }
+        viewModelScope.launch {
+            ServerEvents.logs.collect { (level, message) ->
+                val time = SimpleDateFormat("HH:mm:ss", Locale.US).format(Date())
+                _state.update { s ->
+                    val next = (s.logs + LogLine(time, level, message)).takeLast(500)
+                    s.copy(logs = next)
+                }
+            }
+        }
         if (shouldCheckGithubUpdate()) {
             Thread { checkUpdate() }.start()
         }
@@ -187,8 +205,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun shouldCheckGithubUpdate(): Boolean {
         if (BuildConfig.SCREENSHOTS) return false
+        return installerPackage() !in SKIP_GITHUB_UPDATE_INSTALLERS
+    }
+
+    private fun installerPackage(): String? {
         val app = getApplication<Application>()
-        val installer = try {
+        return try {
             if (Build.VERSION.SDK_INT >= 30) {
                 app.packageManager.getInstallSourceInfo(app.packageName).installingPackageName
             } else {
@@ -198,7 +220,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         } catch (_: Exception) {
             null
         }
-        return installer !in SKIP_GITHUB_UPDATE_INSTALLERS
     }
 
     private fun checkUpdate() {
@@ -232,14 +253,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     override fun onCleared() {
         save()
-        ServerEvents.onLog = null
-        ServerEvents.onRunning = null
-        ServerEvents.onFailed = null
-        ServerEvents.onCertificate = null
         super.onCleared()
     }
 
     companion object {
+        const val PLAY_TESTER_ISSUE_URL =
+            "https://github.com/drweb86/dotnet-ftps-server/issues/new?template=play-tester.yml"
+
+        // Set false after the app is listed on Google Play production.
+        private const val SHOW_PLAY_TESTER_BANNER = true
+        private const val PLAY_INSTALLER = "com.android.vending"
+
         private val SKIP_GITHUB_UPDATE_INSTALLERS = setOf(
             "org.fdroid.fdroid",
             "org.fdroid.basic",

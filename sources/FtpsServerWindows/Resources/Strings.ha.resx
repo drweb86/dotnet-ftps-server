@@ -261,4 +261,105 @@ Siffofi:
   <data name="Winget_ShortDescription" xml:space="preserve">
     <value>Uwar garken FTPS don raba fayiloli cikin aminci a kan hanyar sadarwa.</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>Kwafi cikakken bayanin haɗi</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Raba...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>Cikakken bayanin haɗi</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>Don haɗawa, na'urar abokin ciniki dole tana cikin hanyar sadarwa ɗaya da wannan waya (Wi-Fi ɗaya, ko hotspot / USB tethering ɗaya).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>Don haɗawa, na'urar abokin ciniki dole tana cikin hanyar sadarwa ɗaya da wannan kwamfuta (Wi-Fi ko LAN ɗaya).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>Shigar da kowane abokin ciniki na FTPS, misali:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • ko wani abokin ciniki da ke goyon bayan explicit FTPS</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>Cika filayen abokin ciniki kamar haka.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host shine adireshin na'urar da FTPS Server ke gudana.
+Gwada adireshin IP. Sunan na'ura yana aiki kawai idan hanyar sadarwa za ta iya warware shi.
+
+Yi amfani da ɗaya daga ciki:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port shine tashar aikace-aikacen a wannan host.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server yana ɓoye umarni da bayanai.
+Yana goyon bayan EXPLICIT TLS kawai (AUTH TLS / FTP over TLS).
+
+A cikin abokin ciniki, zaɓa:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Kada ka zaɓi Implicit FTPS (sau da yawa ana kiran sa "FTPS" kawai) — ba zai haɗa ba.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>Waɗannan asusu ne da za su iya shiga foldocin da aka raba.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. Mai amfani {1} — damar {2} zuwa {3}</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>karantawa/rubutawa</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>karantawa kawai</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(ba a saita folder ba)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>Wannan uwar garken tana amfani da takardar shaida ta kansa. Abokin ciniki zai yi gargaɗi.
+Kwatanta fingerprint ɗin abokin ciniki da ƙimar da ke ƙasa. Idan sun dace, karɓi takardar shaida.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>Idan abokin ciniki ya nuna "Fingerprint" kawai (babu sunan algorithm), fara da SHA-256, sa'an nan SHA-1.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>Cikakken bayanin haɗin FTPS Server</value>
+  </data>
 </root>

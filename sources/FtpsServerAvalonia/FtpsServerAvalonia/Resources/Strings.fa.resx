@@ -249,4 +249,105 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>معتبر:</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>کپی جزئیات اتصال</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>اشتراک‌گذاری...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>جزئیات اتصال</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>برای اتصال، دستگاه کلاینت باید در همان شبکه این گوشی باشد (همان Wi-Fi یا همان هات‌اسپات / USB tethering).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>برای اتصال، دستگاه کلاینت باید در همان شبکه این رایانه باشد (همان Wi-Fi یا LAN).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>هر کلاینت سازگار با FTPS را نصب کنید، مثلاً:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • یا کلاینت دیگری با FTPS صریح</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>فیلدهای کلاینت را این‌گونه پر کنید.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host نشانی دستگاهی است که FTPS Server روی آن اجرا می‌شود.
+ترجیحاً یک نشانی IP بگذارید. نام دستگاه فقط اگر شبکه بتواند آن را حل کند کار می‌کند.
+
+یکی از این مقادیر را استفاده کنید:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port درگاه برنامه روی آن میزبان است.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server فرمان‌ها و داده را رمزنگاری می‌کند.
+فقط TLS صریح (AUTH TLS / FTP over TLS) پشتیبانی می‌شود.
+
+در کلاینت انتخاب کنید:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+FTPS ضمنی را انتخاب نکنید (اغلب فقط "FTPS" نامیده می‌شود) — وصل نمی‌شود.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>این حساب‌ها به پوشه‌های اشتراکی دسترسی دارند.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. کاربر {1} — دسترسی {2} به {3}</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>خواندن/نوشتن</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>فقط خواندنی</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(پوشه تنظیم نشده)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>این سرور از گواهی خودامضا استفاده می‌کند. کلاینت هشدار می‌دهد.
+اثر انگشت کلاینت را با مقادیر زیر مقایسه کنید. اگر یکی بودند گواهی را بپذیرید.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>اگر کلاینت فقط "Fingerprint" (بدون نام الگوریتم) نشان داد، ابتدا با SHA-256 سپس SHA-1 مقایسه کنید.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>جزئیات اتصال FTPS Server</value>
+  </data>
 </root>

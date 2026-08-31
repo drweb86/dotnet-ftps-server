@@ -252,4 +252,105 @@
   <data name="Winget_ShortDescription" xml:space="preserve">
     <value>নেটওয়ার্কে নিরাপদ ফাইল শেয়ারিংয়ের জন্য FTPS সার্ভার।</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>সংযোগের বিবরণ কপি করুন</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>শেয়ার...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>সংযোগের বিবরণ</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>সংযোগ করতে ক্লায়েন্ট ডিভাইসকে এই ফোনের একই নেটওয়ার্কে থাকতে হবে (একই Wi-Fi, বা একই হটস্পট / USB টেথারিং)।</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>সংযোগ করতে ক্লায়েন্ট ডিভাইসকে এই কম্পিউটারের একই নেটওয়ার্কে থাকতে হবে (একই Wi-Fi বা LAN)।</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>যেকোনো FTPS-সক্ষম ক্লায়েন্ট ইনস্টল করুন, যেমন:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • বা অন্য ক্লায়েন্ট যা explicit FTPS সমর্থন করে</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>ক্লায়েন্টের ঘরগুলো এভাবে পূরণ করুন।</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host হলো সেই ডিভাইসের ঠিকানা যেখানে FTPS Server চলছে।
+IP ঠিকানা ব্যবহার করুন। ডিভাইসের নাম কেবল নেটওয়ার্ক তা resolve করতে পারলে কাজ করবে।
+
+এগুলোর একটি ব্যবহার করুন:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port হলো সেই হোস্টের অ্যাপ্লিকেশন পোর্ট।</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server কমান্ড ও ডেটা দুটোই এনক্রিপ্ট করে।
+শুধু EXPLICIT TLS (AUTH TLS / FTP over TLS) সমর্থিত।
+
+ক্লায়েন্টে বেছে নিন:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Implicit FTPS বেছে নেবেন না (প্রায়ই শুধু "FTPS" লেখা থাকে) — সংযোগ হবে না।</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>শেয়ার করা ফোল্ডারে প্রবেশ করতে পারে এমন অ্যাকাউন্ট।</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. ব্যবহারকারী {1} — {3}-এ {2} অ্যাক্সেস</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>পড়া/লেখা</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>শুধু পড়া</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(ফোল্ডার সেট করা নেই)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>এই সার্ভার স্ব-স্বাক্ষরিত সার্টিফিকেট ব্যবহার করে। ক্লায়েন্ট সতর্ক করবে।
+ক্লায়েন্টের ফিঙ্গারপ্রিন্ট নিচের মানগুলোর সাথে মিলিয়ে দেখুন। মিললে সার্টিফিকেট গ্রহণ করুন।</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>ক্লায়েন্ট যদি শুধু "Fingerprint" দেখায় (অ্যালগরিদমের নাম ছাড়া), আগে SHA-256 তারপর SHA-1-এর সাথে মেলান।</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>FTPS Server সংযোগের বিবরণ</value>
+  </data>
 </root>

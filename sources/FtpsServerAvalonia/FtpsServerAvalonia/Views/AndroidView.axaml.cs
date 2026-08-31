@@ -5,6 +5,7 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using FtpsServerAppsShared.Helpers;
 using FtpsServerAvalonia.Controls;
+using FtpsServerAvalonia.Helpers;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
 using FtpsServerAvalonia.Services;
@@ -126,6 +127,17 @@ public partial class AndroidView : UserControl
         CertificatePath = _settings.CertificatePath;
         CertificatePassword = _settings.CertificatePassword;
         DataContext = this;
+
+        ServerConfig.ConnectionDetailsRequested += (_, e) =>
+        {
+            e.Text = ConnectionDetails.Build(
+                Port,
+                _users,
+                CertificateSource == CertificateSourceType.SelfSigned,
+                CertInfoPanel.CertInfo?.Sha256Fingerprint,
+                CertInfoPanel.CertInfo?.Sha1Fingerprint,
+                android: true);
+        };
     }
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)

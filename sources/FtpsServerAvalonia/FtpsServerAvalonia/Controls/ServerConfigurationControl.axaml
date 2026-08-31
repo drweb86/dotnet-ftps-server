@@ -187,6 +187,20 @@
                     Text="{Binding CertificatePassword, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  />
 			</Grid>
+
+			<WrapPanel Margin="0,16,0,0">
+				<Button x:Name="CopyConnectionDetailsButton"
+                        Classes="SecondaryButton"
+                        Content="{x:Static res:Strings.ConfigCopyConnectionDetails}"
+                        Click="CopyConnectionDetails_Click"
+                        Margin="0,0,8,8"/>
+				<Button x:Name="ShareConnectionDetailsButton"
+                        Classes="SecondaryButton"
+                        Content="{x:Static res:Strings.ConfigShareConnectionDetails}"
+                        Click="ShareConnectionDetails_Click"
+                        IsVisible="False"
+                        Margin="0,0,8,8"/>
+			</WrapPanel>
 		</StackPanel>
 	</Border>
 </UserControl>

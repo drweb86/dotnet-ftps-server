@@ -252,4 +252,105 @@
   <data name="Winget_ShortDescription" xml:space="preserve">
     <value>خادم FTPS لمشاركة الملفات بأمان عبر الشبكة.</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>نسخ تفاصيل الاتصال</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>مشاركة...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>تفاصيل الاتصال</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>للاتصال يجب أن يكون جهاز العميل على نفس شبكة هذا الهاتف (نفس Wi-Fi أو نفس نقطة الاتصال / مشاركة USB).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>للاتصال يجب أن يكون جهاز العميل على نفس شبكة هذا الحاسوب (نفس Wi-Fi أو الشبكة المحلية).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>ثبّت أي عميل يدعم FTPS، على سبيل المثال:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • أو أي عميل آخر يدعم FTPS الصريح</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>املأ حقول العميل كما يلي.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host هو عنوان الجهاز الذي يعمل عليه FTPS Server.
+يفضّل عنوان IP. اسم الجهاز يعمل فقط إذا كانت الشبكة قادرة على حله.
+
+استخدم واحدًا مما يلي:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port هو منفذ التطبيق على ذلك المضيف.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>يشفر FTPS Server الأوامر والبيانات.
+يدعم فقط TLS الصريح (AUTH TLS / FTP over TLS).
+
+في العميل اختر:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+لا تختر FTPS الضمني (غالبًا يُسمّى فقط "FTPS") — لن يتم الاتصال.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>هذه الحسابات التي يمكنها الوصول إلى المجلدات المشتركة.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. المستخدم {1} — وصول {2} إلى {3}</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>قراءة/كتابة</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>قراءة فقط</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(لم يُحدد مجلد)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>يستخدم هذا الخادم شهادة موقعة ذاتيًا. سيحذرك العميل.
+قارن البصمة في العميل بالقيم أدناه. إذا تطابقت فاقبل الشهادة.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>إذا عرض العميل "Fingerprint" فقط (بدون اسم الخوارزمية) فقارن أولًا مع SHA-256 ثم SHA-1.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>تفاصيل اتصال FTPS Server</value>
+  </data>
 </root>

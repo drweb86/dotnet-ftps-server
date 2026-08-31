@@ -261,4 +261,105 @@
   <data name="Winget_ShortDescription" xml:space="preserve">
     <value>Olùpèsè FTPS fún pínpín fáìlì láìléwu lórí nẹ́tíwọ́ọ̀kì.</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>Da àlàyé ìsopọ̀ kọ</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Pín...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>Àlàyé ìsopọ̀</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>Láti sopọ̀, ẹ̀rọ oníbàárà gbọ́dọ̀ wà lórí ẹ̀rọ ayélujára kannáà pẹ̀lú foonu yìí (Wi-Fi kannáà, tàbí hotspot / USB tethering kannáà).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>Láti sopọ̀, ẹ̀rọ oníbàárà gbọ́dọ̀ wà lórí ẹ̀rọ ayélujára kannáà pẹ̀lú kọ̀mpútà yìí (Wi-Fi tàbí LAN kannáà).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>Fi oníbàárà FTPS èyíkéyìí sílẹ̀, fún àpẹẹrẹ:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • tàbí oníbàárà mìíràn tó ṣe atìlẹyìn explicit FTPS</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>Kún àwọn pápá oníbàárà báyìí.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host ni àdírẹ́sì ẹ̀rọ tí FTPS Server ń ṣiṣẹ́ lórí rẹ̀.
+Lo àdírẹ́sì IP. Orúkọ ẹ̀rọ yóò ṣiṣẹ́ nìkan tí ẹ̀rọ ayélujára bá le yanjú rẹ̀.
+
+Lo ọ̀kan nínú:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port ni èbúté ohun èlò lórí host yẹn.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server ń ṣe ìpamọ́ àṣẹ àti data.
+EXPLICIT TLS (AUTH TLS / FTP over TLS) nìkan ni ó ṣe atìlẹyìn.
+
+Nínú oníbàárà, yan:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Má ṣe yan Implicit FTPS (wọ́n sábà máa ń kọ "FTPS" nìkan) — kò ní sopọ̀.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>Àwọn àkọọ́lẹ̀ tó lè wọ àwọn folda tí a pín.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. Olùmúlò {1} — ìráyè {2} sí {3}</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>kà/kọ</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>kà nìkan</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(a kò ṣeto folda)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>Olùpèsè yìí ń lo ìwé-ẹ̀rí tí ara rẹ̀ fọwọ́ sí. Oníbàárà yóò kìlọ̀.
+Fi ìtẹ̀ka ika nínú oníbàárà wé àwọn iye ní ìsàlẹ̀. Tí wọ́n bá jọra, gba ìwé-ẹ̀rí náà.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>Tí oníbàárà bá ṣàfihàn "Fingerprint" nìkan (láìsí orúkọ algorithm), fi wé SHA-256 kọ́kọ́, lẹ́yìn náà SHA-1.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>Àlàyé ìsopọ̀ FTPS Server</value>
+  </data>
 </root>

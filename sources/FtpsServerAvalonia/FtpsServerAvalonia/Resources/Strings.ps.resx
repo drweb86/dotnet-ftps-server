@@ -249,4 +249,105 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>معتبر:</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>د نښلېدو جزئیات کاپي کړئ</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>شریکول...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>د نښلېدو جزئیات</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>د نښلېدو لپاره باید د پیرودونکي وسیله په همدې شبکه کې وي لکه دا تلیفون (همدا Wi-Fi، یا همدا هاټسپاټ / USB tethering).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>د نښلېدو لپاره باید د پیرودونکي وسیله په همدې شبکه کې وي لکه دا کمپیوټر (همدا Wi-Fi یا LAN).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>کوم FTPS وړ پیرودونکی نصب کړئ، لکه:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • یا بل پیرودونکی چې explicit FTPS ملاتړ کوي</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>د پیرودونکي ډګرونه داسې ډک کړئ.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host د هغې وسیلې پته ده چې FTPS Server پرې روان دی.
+د IP پته وکاروئ. د وسیلې نوم یوازې هغه وخت کار کوي چې شبکه یې حل کړای شي.
+
+له دې څخه یو وکاروئ:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port په هغه کوربه کې د اپلیکیشن پورټ دی.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server امرونه او معلومات دواړه کوډ کوي.
+یوازې EXPLICIT TLS (AUTH TLS / FTP over TLS) ملاتړ کېږي.
+
+په پیرودونکي کې وټاکئ:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Implicit FTPS مه ټاکئ (ډېر ځله یوازې "FTPS" لیکل شوی وي) — نه نښلي.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>هغه حسابونه چې شریک شوي پوښۍ ته لاسرسی لري.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. کارن {1} — {2} لاسرسی {3} ته</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>لوستل/لیکل</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>یوازې لوستل</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(پوښۍ نه ده ټاکل شوې)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>دا سرور ځان لاسلیک شوی سند کاروي. پیرودونکی به خبرداری ورکړي.
+په پیرودونکي کې ګوتې نښه د لاندې ارزښتونو سره پرتله کړئ. که سمون ولري، سند ومنئ.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>که پیرودونکی یوازې "Fingerprint" وښيي (بې د الګورېتم نوم)، لومړی SHA-256 بیا SHA-1 سره پرتله کړئ.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>د FTPS Server د نښلېدو جزئیات</value>
+  </data>
 </root>

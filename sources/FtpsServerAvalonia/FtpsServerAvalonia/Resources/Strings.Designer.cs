@@ -142,6 +142,15 @@ namespace FtpsServerAvalonia.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy connection details.
+        /// </summary>
+        public static string ConfigCopyConnectionDetails {
+            get {
+                return ResourceManager.GetString("ConfigCopyConnectionDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IP Addresses: .
         /// </summary>
         public static string ConfigIPAddresses {
@@ -205,6 +214,15 @@ namespace FtpsServerAvalonia.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share....
+        /// </summary>
+        public static string ConfigShareConnectionDetails {
+            get {
+                return ResourceManager.GetString("ConfigShareConnectionDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Host, Port, Certificate.
         /// </summary>
         public static string ConfigTitle {
@@ -219,6 +237,231 @@ namespace FtpsServerAvalonia.Resources {
         public static string ConfigUseSelfSigned {
             get {
                 return ResourceManager.GetString("ConfigUseSelfSigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to read-only.
+        /// </summary>
+        public static string ConnectionDetailsAccessReadOnly {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsAccessReadOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to read/write.
+        /// </summary>
+        public static string ConnectionDetailsAccessReadWrite {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsAccessReadWrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}. User {1} — {2} access to {3}.
+        /// </summary>
+        public static string ConnectionDetailsAccountFormat {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsAccountFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to These are the accounts that can access shared folders..
+        /// </summary>
+        public static string ConnectionDetailsAccountsBody {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsAccountsBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to D. LOGIN and PASSWORD.
+        /// </summary>
+        public static string ConnectionDetailsAccountsTitle {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsAccountsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This server uses a self-signed certificate. The client will warn you. Compare the finge....
+        /// </summary>
+        public static string ConnectionDetailsCertBody {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsCertBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If the client shows only "Fingerprint" (no algorithm name), compare it to SHA-256 first....
+        /// </summary>
+        public static string ConnectionDetailsCertFingerprintHint {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsCertFingerprintHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SHA-1:    {0}.
+        /// </summary>
+        public static string ConnectionDetailsCertSha1Format {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsCertSha1Format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SHA-256:  {0}.
+        /// </summary>
+        public static string ConnectionDetailsCertSha256Format {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsCertSha256Format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E. CERTIFICATE WARNING.
+        /// </summary>
+        public static string ConnectionDetailsCertTitle {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsCertTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install any FTPS-capable client, for example:   • Windows: WinSCP, FileZilla   • Linux:....
+        /// </summary>
+        public static string ConnectionDetailsClients {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsClients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FTPS Server encrypts both commands and data. It supports only EXPLICIT TLS (AUTH TLS / ....
+        /// </summary>
+        public static string ConnectionDetailsEncryptionBody {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsEncryptionBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C. ENCRYPTION.
+        /// </summary>
+        public static string ConnectionDetailsEncryptionTitle {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsEncryptionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fill in the client fields as follows..
+        /// </summary>
+        public static string ConnectionDetailsFillFields {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsFillFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (folder not set).
+        /// </summary>
+        public static string ConnectionDetailsFolderUnspecified {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsFolderUnspecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Host is the address of the device running FTPS Server. Prefer an IP address. The device....
+        /// </summary>
+        public static string ConnectionDetailsHostBody {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsHostBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A. HOST.
+        /// </summary>
+        public static string ConnectionDetailsHostTitle {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsHostTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To connect, the client device must be on the same network as this phone (same Wi-Fi, or....
+        /// </summary>
+        public static string ConnectionDetailsIntroAndroid {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsIntroAndroid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To connect, the client device must be on the same network as this computer (same Wi-Fi ....
+        /// </summary>
+        public static string ConnectionDetailsIntroDesktop {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsIntroDesktop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOGIN:.
+        /// </summary>
+        public static string ConnectionDetailsLoginLabel {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsLoginLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PASSWORD:.
+        /// </summary>
+        public static string ConnectionDetailsPasswordLabel {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsPasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port is the application port on that host..
+        /// </summary>
+        public static string ConnectionDetailsPortBody {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsPortBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to B. PORT.
+        /// </summary>
+        public static string ConnectionDetailsPortTitle {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsPortTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FTPS Server connection details.
+        /// </summary>
+        public static string ConnectionDetailsShareSubject {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsShareSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection details.
+        /// </summary>
+        public static string ConnectionDetailsTitle {
+            get {
+                return ResourceManager.GetString("ConnectionDetailsTitle", resourceCulture);
             }
         }
         

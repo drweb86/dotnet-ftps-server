@@ -1,13 +1,17 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input.Platform;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
+using Avalonia.Threading;
 using FtpsServerApp.Helpers;
+using FtpsServerAppsShared.Helpers;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace FtpsServerAvalonia.Controls
 {
@@ -85,6 +89,8 @@ namespace FtpsServerAvalonia.Controls
             set => SetValue(CertificatePasswordProperty, value);
         }
 
+        public event EventHandler<ConnectionDetailsRequestEventArgs>? ConnectionDetailsRequested;
+
         public ServerConfigurationControl()
         {
             InitializeComponent();
@@ -103,6 +109,7 @@ namespace FtpsServerAvalonia.Controls
 
             SelfSignedCertButton.IsVisible = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
                 RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            ShareConnectionDetailsButton.IsVisible = OperatingSystem.IsAndroid();
         }
 
         protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
@@ -159,6 +166,35 @@ namespace FtpsServerAvalonia.Controls
                 CertificatePath = files[0].Path.LocalPath;
                 CertPathTextBox.Text = files[0].Path.LocalPath;
             }
+        }
+
+        private async void CopyConnectionDetails_Click(object? sender, RoutedEventArgs e)
+        {
+            var text = RequestConnectionDetailsText();
+            if (string.IsNullOrEmpty(text))
+                return;
+
+            await (TopLevel.GetTopLevel(this)?.Clipboard?.SetTextAsync(text) ?? Task.CompletedTask);
+            CopyConnectionDetailsButton.Content = Strings.CertCopied;
+            DispatcherTimer.RunOnce(
+                () => CopyConnectionDetailsButton.Content = Strings.ConfigCopyConnectionDetails,
+                TimeSpan.FromSeconds(2));
+        }
+
+        private void ShareConnectionDetails_Click(object? sender, RoutedEventArgs e)
+        {
+            var text = RequestConnectionDetailsText();
+            if (string.IsNullOrEmpty(text))
+                return;
+
+            App.AndroidShareService?.ShareText(Strings.ConnectionDetailsShareSubject, text);
+        }
+
+        private string RequestConnectionDetailsText()
+        {
+            var args = new ConnectionDetailsRequestEventArgs();
+            ConnectionDetailsRequested?.Invoke(this, args);
+            return args.Text;
         }
     }
 }

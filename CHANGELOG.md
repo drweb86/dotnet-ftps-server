@@ -1,7 +1,11 @@
-# 2026.08.34
+# 2026.08.35
 
 ## Changes
-- Android: Preparation for F-Droid.
+- Android: Preparation for F-Droid, Google Store.
+- UI: Possibility to share connection details over chat.
+
+## Bug Fixes
+- Android: Application was spawning other instances.
 
 # 2026.08.31
 

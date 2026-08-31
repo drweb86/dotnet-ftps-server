@@ -246,4 +246,105 @@
   <data name="Winget_ShortDescription" xml:space="preserve">
     <value>பிணையத்தில் பாதுகாப்பாக கோப்புகளைப் பகிர FTPS சேவையகம்.</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>இணைப்பு விவரங்களை நகலெடு</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>பகிர்...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>இணைப்பு விவரங்கள்</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>இணைய, கிளையன்ட் சாதனம் இந்த தொலைபேசியின் அதே பிணையத்தில் இருக்க வேண்டும் (அதே Wi-Fi, அல்லது அதே ஹாட்ஸ்பாட் / USB டெதரிங்).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>இணைய, கிளையன்ட் சாதனம் இந்த கணினியின் அதே பிணையத்தில் இருக்க வேண்டும் (அதே Wi-Fi அல்லது LAN).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>FTPS ஆதரவுள்ள எந்த கிளையண்டையும் நிறுவுங்கள், எடுத்துக்காட்டு:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • அல்லது explicit FTPS ஆதரிக்கும் வேறு கிளையண்ட்</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>கிளையன்ட் புலங்களை இவ்வாறு நிரப்புங்கள்.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host என்பது FTPS Server இயங்கும் சாதனத்தின் முகவரி.
+IP முகவரியை விரும்புங்கள். சாதனப் பெயர் பிணையம் அதைத் தீர்க்க முடிந்தால் மட்டுமே வேலை செய்யும்.
+
+இவற்றில் ஒன்றைப் பயன்படுத்துங்கள்:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port என்பது அந்த ஹோஸ்டில் உள்ள பயன்பாட்டுத் துறை.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server கட்டளைகளையும் தரவையும் மறைகுறியாக்குகிறது.
+EXPLICIT TLS (AUTH TLS / FTP over TLS) மட்டுமே ஆதரிக்கப்படுகிறது.
+
+கிளையண்டில் தேர்ந்தெடுக்கவும்:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Implicit FTPS தேர்ந்தெடுக்க வேண்டாம் (பெரும்பாலும் "FTPS" என்று மட்டும் இருக்கும்) — இணையாது.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>பகிரப்பட்ட கோப்புறைகளை அணுகக்கூடிய கணக்குகள்.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. பயனர் {1} — {3}க்கு {2} அணுகல்</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>படி/எழுது</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>படி மட்டும்</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(கோப்புறை அமைக்கப்படவில்லை)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>இந்த சேவையகம் சுய கையொப்ப சான்றிதழைப் பயன்படுத்துகிறது. கிளையண்ட் எச்சரிக்கை காட்டும்.
+கிளையண்டில் உள்ள கைரேகையை கீழே உள்ள மதிப்புகளுடன் ஒப்பிடுங்கள். பொருந்தினால் சான்றிதழை ஏற்றுக்கொள்ளுங்கள்.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>கிளையண்ட் "Fingerprint" மட்டும் காட்டினால் (வழிமுறை பெயர் இல்லாமல்), முதலில் SHA-256 பிறகு SHA-1 உடன் ஒப்பிடுங்கள்.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>FTPS Server இணைப்பு விவரங்கள்</value>
+  </data>
 </root>

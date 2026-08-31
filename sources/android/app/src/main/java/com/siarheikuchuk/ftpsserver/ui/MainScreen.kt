@@ -194,6 +194,40 @@ fun MainScreen(viewModel: MainViewModel) {
                         colors = fieldColors(),
                     )
                 }
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    var copied by remember { mutableStateOf(false) }
+                    OutlinedButton(
+                        onClick = {
+                            val text = buildConnectionDetails(context, state)
+                            val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                            cm.setPrimaryClip(ClipData.newPlainText(context.getString(R.string.connection_details_share_subject), text))
+                            copied = true
+                        },
+                        modifier = Modifier.weight(1f),
+                    ) {
+                        Text(
+                            if (copied) stringResource(R.string.cert_copied) else stringResource(R.string.config_copy_connection_details),
+                            color = AppColors.accent,
+                        )
+                    }
+                    OutlinedButton(
+                        onClick = {
+                            val text = buildConnectionDetails(context, state)
+                            val send = Intent(Intent.ACTION_SEND).apply {
+                                type = "text/plain"
+                                putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.connection_details_share_subject))
+                                putExtra(Intent.EXTRA_TEXT, text)
+                            }
+                            context.startActivity(Intent.createChooser(send, context.getString(R.string.config_share_connection_details)))
+                        },
+                        modifier = Modifier.weight(1f),
+                    ) {
+                        Text(stringResource(R.string.config_share_connection_details), color = AppColors.accent)
+                    }
+                }
             }
 
             state.certificate?.let { CertificateCard(it) }

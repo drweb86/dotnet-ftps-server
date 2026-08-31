@@ -15,8 +15,8 @@ android {
         applicationId = "com.siarheikuchuk.ftpsserver"
         minSdk = 23
         targetSdk = 35
-        val defaultVersionCode = 20260834
-        val defaultVersionName = "2026.08.34"
+        val defaultVersionCode = 20260835
+        val defaultVersionName = "2026.08.35"
         versionCode = findProperty("appVersionCode")?.toString()?.toIntOrNull() ?: defaultVersionCode
         versionName = findProperty("appVersionName")?.toString()?.takeIf { it.isNotBlank() } ?: defaultVersionName
         buildConfigField("boolean", "SCREENSHOTS", if (screenshots) "true" else "false")
@@ -95,6 +95,7 @@ dependencies {
     implementation("androidx.compose.material:material-icons-core")
     implementation("androidx.activity:activity-compose:1.9.3")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation("androidx.lifecycle:lifecycle-service:2.8.7")
     implementation("androidx.core:core-ktx:1.15.0")

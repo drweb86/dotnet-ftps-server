@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using FtpsServerAppsShared.Helpers;
 using FtpsServerAppsShared.Services;
+using FtpsServerAvalonia.Helpers;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
 using FtpsServerAvalonia.Services;
@@ -107,6 +108,17 @@ namespace FtpsServerAvalonia
             CertificatePassword = _settings.CertificatePassword;
 
             DataContext = this;
+
+            ServerConfig.ConnectionDetailsRequested += (_, e) =>
+            {
+                e.Text = ConnectionDetails.Build(
+                    Port,
+                    _users,
+                    CertificateSource == CertificateSourceType.SelfSigned,
+                    CertInfoPanel.CertInfo?.Sha256Fingerprint,
+                    CertInfoPanel.CertInfo?.Sha1Fingerprint,
+                    android: false);
+            };
         }
 
         private void SaveSettings()

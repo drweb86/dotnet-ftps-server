@@ -249,4 +249,105 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>有效期：</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>複製連線資料</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>分享...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>連線資料</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>要連線，用戶端裝置必須同呢部手機喺同一網絡（同一個 Wi-Fi，或者同一個熱點 / USB 網絡共享）。</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>要連線，用戶端裝置必須同呢部電腦喺同一網絡（同一個 Wi-Fi 或者區域網絡）。</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>安裝任何支援 FTPS 嘅用戶端，例如：
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • 或者其他支援顯式 FTPS 嘅用戶端</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>請按以下方式填寫用戶端欄位。</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host 係運行 FTPS Server 嗰部裝置嘅地址。
+建議用 IP 地址。裝置名稱只有網絡可以解析嗰陣先得。
+
+用以下其中一個：</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port 係嗰個主機上面嘅應用程式埠。</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server 會加密指令同數據。
+只支援顯式 TLS（AUTH TLS / FTP over TLS）。
+
+喺用戶端揀：
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+唔好揀隱式 FTPS（好多時淨係標「FTPS」）——會連唔到。</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>呢啲帳戶可以存取共用資料夾。</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. 用戶 {1} — 對 {3} 嘅{2}權限</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>讀寫</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>唯讀</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>（未設定資料夾）</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>呢個伺服器使用自行簽署憑證。用戶端會顯示警告。
+將用戶端入面嘅指紋同下面嘅值比較。如果相符，就接受憑證。</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>如果用戶端淨係顯示「Fingerprint」（冇演算法名稱），先同 SHA-256 比較，再同 SHA-1 比較。</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>FTPS Server 連線資料</value>
+  </data>
 </root>

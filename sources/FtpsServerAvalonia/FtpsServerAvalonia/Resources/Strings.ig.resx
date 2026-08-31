@@ -249,4 +249,105 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Dị irè:</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>Detuo nkọwa njikọ</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Kekọrịta...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>Nkọwa njikọ</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>Iji jikọọ, ngwaọrụ client ga-anọ n'otu netwọkụ ekwentị a (otu Wi-Fi, ma ọ bụ otu hotspot / USB tethering).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>Iji jikọọ, ngwaọrụ client ga-anọ n'otu netwọkụ kọmputa a (otu Wi-Fi ma ọ bụ LAN).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>Wụnye client ọ bụla nwere FTPS, dịka:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • ma ọ bụ client ọzọ nke na-akwado explicit FTPS</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>Dejupụta oghere client dị ka nke a.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host bụ adreesị ngwaọrụ ebe FTPS Server na-agba.
+Họrọ adreesị IP. Aha ngwaọrụ na-arụ ọrụ naanị ma netwọkụ nwere ike dozie ya.
+
+Jiri otu n'ime ndị a:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port bụ ọnụ ụzọ ngwa n'ahụ host ahụ.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server na-ezochi iwu na data.
+Ọ na-akwado naanị EXPLICIT TLS (AUTH TLS / FTP over TLS).
+
+Na client, họrọ:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Ahọla Implicit FTPS (a na-akpọkarị ya naanị "FTPS") — ọ gaghị ejikọ.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>Ndị a bụ akaụntụ nwere ike ịnweta nchekwa ekerịtara.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. Onye ọrụ {1} — ohere {2} na {3}</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>gụọ/dee</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>gụọ naanị</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(esetibeghị nchekwa)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>Sava a na-eji asambodo onwe ya bịanyere aka. Client ga-adọ gị aka ná ntị.
+Tụnyere mkpịsị aka na client na ụkpụrụ dị n'okpuru. Ọ bụrụ na ha dakọtara, nabata asambodo ahụ.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>Ọ bụrụ na client na-egosi naanị "Fingerprint" (enweghị aha algorithm), tụnyere SHA-256 mbụ, mgbe ahụ SHA-1.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>Nkọwa njikọ FTPS Server</value>
+  </data>
 </root>

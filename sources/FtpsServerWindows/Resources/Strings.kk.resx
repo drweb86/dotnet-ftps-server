@@ -261,4 +261,105 @@
   <data name="Winget_ShortDescription" xml:space="preserve">
     <value>Желі арқылы файлдарды қауіпсіз бөлісуге арналған FTPS сервері.</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>Қосылым мәліметтерін көшіру</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Бөлісу...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>Қосылым мәліметтері</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>Қосылу үшін клиент құрылғысы осы телефонмен бір желіде болуы керек (сол Wi-Fi немесе сол хотспот / USB tethering).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>Қосылу үшін клиент құрылғысы осы компьютермен бір желіде болуы керек (сол Wi-Fi немесе LAN).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>FTPS қолдайтын кез келген клиентті орнатыңыз, мысалы:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • немесе explicit FTPS қолдайтын басқа клиент</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>Клиент өрістерін былай толтырыңыз.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host — FTPS Server істеп тұрған құрылғының мекенжайы.
+IP мекенжайын қолданған жөн. Құрылғы атауы желі оны шеше алса ғана жұмыс істейді.
+
+Мыналардың бірін пайдаланыңыз:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port — сол хосттағы қолданба порты.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server пәрмендер мен деректерді шифрлайды.
+Тек EXPLICIT TLS (AUTH TLS / FTP over TLS) қолдауы бар.
+
+Клиентте таңдаңыз:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Implicit FTPS таңдамаңыз (жиі тек "FTPS" деп белгіленеді) — қосылмайды.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>Бөлісілген қалталарға кіре алатын тіркелгілер.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. Пайдаланушы {1} — {3} үшін {2} рұқсат</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>оқу/жазу</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>тек оқу</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(қалта орнатылмаған)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>Бұл сервер өзін-өзі қол қойған сертификатты пайдаланады. Клиент ескертеді.
+Клиенттегі саусақ ізін төмендегі мәндермен салыстырыңыз. Сәйкес келсе, сертификатты қабылдаңыз.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>Клиент тек "Fingerprint" көрсетсе (алгоритм атынсыз), алдымен SHA-256, содан кейін SHA-1-мен салыстырыңыз.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>FTPS Server қосылым мәліметтері</value>
+  </data>
 </root>

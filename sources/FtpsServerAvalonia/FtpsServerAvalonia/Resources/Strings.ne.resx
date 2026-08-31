@@ -249,4 +249,105 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>वैध:</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>जडान विवरण कपी गर्नुहोस्</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>सेयर...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>जडान विवरण</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>जडान गर्न क्लाइन्ट यन्त्र यो फोनसँगैको नेटवर्कमा हुनुपर्छ (उही Wi-Fi, वा उही हटस्पट / USB टेथरिङ)।</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>जडान गर्न क्लाइन्ट यन्त्र यो कम्प्युटरसँगैको नेटवर्कमा हुनुपर्छ (उही Wi-Fi वा LAN)।</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>कुनै पनि FTPS- सक्षम क्लाइन्ट स्थापना गर्नुहोस्, जस्तै:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • वा explicit FTPS समर्थन गर्ने अन्य क्लाइन्ट</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>क्लाइन्टका फिल्ड यसरी भर्नुहोस्।</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host भनेको FTPS Server चलिरहेको यन्त्रको ठेगाना हो।
+IP ठेगाना प्रयोग गर्नुहोस्। यन्त्रको नाम नेटवर्कले resolve गर्न सके मात्र काम गर्छ।
+
+यी मध्ये एक प्रयोग गर्नुहोस्:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port भनेको त्यस होस्टमा अनुप्रयोग पोर्ट हो।</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server आदेश र डाटा दुवै इन्क्रिप्ट गर्छ।
+केवल EXPLICIT TLS (AUTH TLS / FTP over TLS) समर्थित छ।
+
+क्लाइन्टमा छान्नुहोस्:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Implicit FTPS नछान्नुहोस् (प्रायः केवल "FTPS" लेखिएको हुन्छ) — जडान हुँदैन।</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>साझा फोल्डरमा पहुँच गर्न सक्ने खाताहरू।</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. प्रयोगकर्ता {1} — {3} मा {2} पहुँच</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>पढ्ने/लेख्ने</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>पढ्ने मात्र</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(फोल्डर सेट छैन)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>यो सर्भर स्वयं-हस्ताक्षरित प्रमाणपत्र प्रयोग गर्छ। क्लाइन्टले चेतावनी देखाउनेछ।
+क्लाइन्टको फिंगरप्रिन्ट तलका मानसँग मिलाउनुहोस्। मिलेमा प्रमाणपत्र स्वीकार गर्नुहोस्।</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>क्लाइन्टले केवल "Fingerprint" देखाएमा (एल्गोरिदम नाम बिना), पहिले SHA-256 त्यसपछि SHA-1 सँग तुलना गर्नुहोस्।</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>FTPS Server जडान विवरण</value>
+  </data>
 </root>

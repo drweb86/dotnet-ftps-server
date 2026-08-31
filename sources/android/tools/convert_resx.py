@@ -58,7 +58,8 @@ def to_snake(name: str) -> str:
 
 
 def android_escape(text: str) -> str:
-    text = text.replace("{0}", "%1$s").replace("{1}", "%2$s")
+    text = re.sub(r"\{(\d+)\}", lambda m: f"%{int(m.group(1)) + 1}$s", text)
+    text = text.replace("\r\n", "\n").replace("\r", "\n").replace("\n", r"\n")
     text = (
         text.replace("&", "&amp;")
         .replace("<", "&lt;")

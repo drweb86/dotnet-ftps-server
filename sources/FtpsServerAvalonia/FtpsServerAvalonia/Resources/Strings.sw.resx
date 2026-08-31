@@ -249,4 +249,105 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Halali:</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>Nakili maelezo ya muunganisho</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Shiriki...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>Maelezo ya muunganisho</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>Ili kuunganisha, kifaa cha mteja lazima kiwe kwenye mtandao uleule na simu hii (Wi-Fi ileile, au hotspot / USB tethering ileile).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>Ili kuunganisha, kifaa cha mteja lazima kiwe kwenye mtandao uleule na kompyuta hii (Wi-Fi au LAN ileile).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>Sakinisha mteja wowote unaotumia FTPS, kwa mfano:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • au mteja mwingine unaounga mkono explicit FTPS</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>Jaza sehemu za mteja hivi.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host ni anwani ya kifaa kinachoendesha FTPS Server.
+Tumia anwani ya IP. Jina la kifaa hufanya kazi tu ikiwa mtandao unaweza kulitambua.
+
+Tumia mojawapo:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port ni bandari ya programu kwenye host hiyo.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server husimbua amri na data.
+Inaauni EXPLICIT TLS pekee (AUTH TLS / FTP over TLS).
+
+Katika mteja, chagua:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Usichague Implicit FTPS (mara nyingi huandikwa "FTPS" tu) — haitaunganisha.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>Hizi ni akaunti zinazoweza kufikia folda zilizoshirikiwa.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. Mtumiaji {1} — ufikiaji {2} kwa {3}</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>soma/andika</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>soma tu</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(folda haijawekwa)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>Seva hii hutumia cheti kilichojisaini. Mteja atakuonya.
+Linganisha alama ya kidole kwenye mteja na thamani zilizo hapa chini. Zikilingana, kubali cheti.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>Ikiwa mteja anaonyesha "Fingerprint" tu (bila jina la algorithm), linganisha na SHA-256 kwanza, kisha SHA-1.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>Maelezo ya muunganisho wa FTPS Server</value>
+  </data>
 </root>

@@ -10,6 +10,7 @@ public partial class App : Application
 {
     public static Visual? Instance { get; private set; }
     public static IAndroidKeepAwakeService? AndroidKeepAwakeService { get; set; }
+    public static IAndroidShareService? AndroidShareService { get; set; }
 
     public override void Initialize()
     {

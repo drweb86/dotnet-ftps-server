@@ -246,4 +246,105 @@
   <data name="Winget_ShortDescription" xml:space="preserve">
     <value>ネットワーク上で安全にファイルを共有するための FTPS サーバー。</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>接続情報をコピー</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>共有...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>接続情報</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>接続するには、クライアント端末がこのスマートフォンと同じネットワーク（同じ Wi-Fi、または同じテザリング / USB テザリング）にいる必要があります。</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>接続するには、クライアント端末がこのコンピューターと同じネットワーク（同じ Wi-Fi または LAN）にいる必要があります。</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>FTPS 対応クライアントをインストールしてください。例:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • または明示的 FTPS をサポートするその他のクライアント</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>クライアントの項目を次のように入力します。</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host は FTPS Server が動作している端末のアドレスです。
+IP アドレスを推奨します。端末名はネットワークが名前解決できる場合のみ使えます。
+
+次のいずれかを指定します:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port はそのホスト上のアプリケーションのポートです。</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server はコマンドとデータの両方を暗号化します。
+明示的 TLS（AUTH TLS / FTP over TLS）のみをサポートします。
+
+クライアントでは次を選択してください:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+暗黙的 FTPS（「FTPS」とだけ表示されることが多い）は選ばないでください。接続できません。</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>共有フォルダーにアクセスできるアカウントです。</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. ユーザー {1} — {3} への{2}アクセス</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>読み書き</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>読み取り専用</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(フォルダー未設定)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>このサーバーは自己署名証明書を使います。クライアントに警告が表示されます。
+クライアントに表示されるフィンガープリントを以下の値と比較し、一致すれば証明書を受け入れてください。</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>クライアントがアルゴリズム名なしで "Fingerprint" のみを表示する場合は、まず SHA-256、次に SHA-1 と比較してください。</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>FTPS Server の接続情報</value>
+  </data>
 </root>

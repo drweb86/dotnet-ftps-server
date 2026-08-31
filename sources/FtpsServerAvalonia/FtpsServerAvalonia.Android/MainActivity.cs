@@ -1,5 +1,6 @@
 using System;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
@@ -16,11 +17,12 @@ namespace FtpsServerAvalonia.Android;
     MainLauncher = true,
     ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.UiMode,
     WindowSoftInputMode = SoftInput.AdjustResize)]
-public class MainActivity : AvaloniaMainActivity, IAndroidKeepAwakeService
+public class MainActivity : AvaloniaMainActivity, IAndroidKeepAwakeService, IAndroidShareService
 {
     protected override void OnCreate(Bundle? savedInstanceState)
     {
         global::FtpsServerAvalonia.App.AndroidKeepAwakeService = this;
+        global::FtpsServerAvalonia.App.AndroidShareService = this;
 
         AppDomain.CurrentDomain.UnhandledException += (_, e) =>
         {
@@ -47,8 +49,19 @@ public class MainActivity : AvaloniaMainActivity, IAndroidKeepAwakeService
     {
         if (global::FtpsServerAvalonia.App.AndroidKeepAwakeService == this)
             global::FtpsServerAvalonia.App.AndroidKeepAwakeService = null;
+        if (global::FtpsServerAvalonia.App.AndroidShareService == this)
+            global::FtpsServerAvalonia.App.AndroidShareService = null;
 
         base.OnDestroy();
+    }
+
+    public void ShareText(string title, string text)
+    {
+        var intent = new Intent(Intent.ActionSend);
+        intent.SetType("text/plain");
+        intent.PutExtra(Intent.ExtraSubject, title);
+        intent.PutExtra(Intent.ExtraText, text);
+        StartActivity(Intent.CreateChooser(intent, title));
     }
 
     public void SetKeepScreenOn(bool enabled)

@@ -2,6 +2,7 @@ package com.siarheikuchuk.ftpsserver
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -33,6 +34,11 @@ class MainActivity : ComponentActivity() {
                 MainScreen(viewModel)
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
     }
 
     override fun onPause() {

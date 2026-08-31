@@ -249,4 +249,105 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Sirrii:</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>Bal'ina quunnamtii galchii</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Qoodi...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>Bal'ina quunnamtii</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>Quunnamuuf meeshaan maamilaa cimdaa bilbila kanaa waliin tokko ta'uu qaba (Wi-Fi tokko, ykn hotspot / USB tethering tokko).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>Quunnamuuf meeshaan maamilaa cimdaa kompiitara kanaa waliin tokko ta'uu qaba (Wi-Fi ykn LAN tokko).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>Maamila FTPS deeggaru kamiyyuu galchi, fakkeenyaaf:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • ykn maamila biraa explicit FTPS deeggaru</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>Dirreewwan maamilaa akka armaan gadiitti guuti.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host teessoo meeshaa FTPS Server irratti hojjetuudha.
+Teessoo IP filadhu. Maqaan meeshaa cimdaan hiikkachuu yoo danda'e qofa hojjeta.
+
+Tokko kanneen keessaa fayyadami:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port keessummeessaa sana irratti balbala app dha.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server ajajaa fi data ni icciti.
+EXPLICIT TLS (AUTH TLS / FTP over TLS) qofa deeggara.
+
+Maamilaa keessatti filadhu:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Implicit FTPS hin filatin (yeroo baayyee "FTPS" qofa jedhama) — hin quunnamu.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>Akkaawuntiiwwan galmee qoodaman argachuu danda'an.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. Fayyadamaa {1} — argannoo {2} gara {3}</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>dubbisuu/barreessuu</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>dubbisuu qofa</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(galmeen hin murteeffamne)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>Serveerri kun ragaa ofiin mallatteessame fayyadama. Maamilaan si akeeka.
+Ashaaraa qubaa maamilaa gatiiwwan armaan gadii waliin wal bira qabi. Yoo wal simatan ragaa fudhadhu.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>Maamilaan "Fingerprint" qofa yoo agarsiise (maqaa algorithm malee), duraan SHA-256, itti aansuun SHA-1 waliin wal bira qabi.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>Bal'ina quunnamtii FTPS Server</value>
+  </data>
 </root>

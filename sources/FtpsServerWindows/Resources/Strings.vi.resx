@@ -252,4 +252,105 @@ Tính năng:
   <data name="Winget_ShortDescription" xml:space="preserve">
     <value>Máy chủ FTPS để chia sẻ tệp an toàn qua mạng.</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>Sao chép chi tiết kết nối</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Chia sẻ...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>Chi tiết kết nối</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>Để kết nối, thiết bị máy khách phải cùng mạng với điện thoại này (cùng Wi-Fi, hoặc cùng hotspot / USB tethering).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>Để kết nối, thiết bị máy khách phải cùng mạng với máy tính này (cùng Wi-Fi hoặc LAN).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>Cài đặt một ứng dụng khách hỗ trợ FTPS, ví dụ:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • hoặc ứng dụng khác hỗ trợ FTPS tường minh</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>Điền các trường trên máy khách như sau.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host là địa chỉ thiết bị đang chạy FTPS Server.
+Nên dùng địa chỉ IP. Tên thiết bị chỉ hoạt động nếu mạng phân giải được tên.
+
+Dùng một trong:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port là cổng ứng dụng trên máy chủ đó.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server mã hóa cả lệnh và dữ liệu.
+Chỉ hỗ trợ TLS TƯỜNG MINH (AUTH TLS / FTP over TLS).
+
+Trong máy khách, chọn:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Đừng chọn FTPS ngầm (thường chỉ ghi "FTPS") — sẽ không kết nối được.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>Đây là các tài khoản có thể truy cập thư mục dùng chung.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. Người dùng {1} — quyền {2} tới {3}</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>đọc/ghi</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>chỉ đọc</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(chưa đặt thư mục)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>Máy chủ này dùng chứng chỉ tự ký. Máy khách sẽ cảnh báo.
+So sánh vân tay trên máy khách với các giá trị bên dưới. Nếu khớp, hãy chấp nhận chứng chỉ.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>Nếu máy khách chỉ hiện "Fingerprint" (không có tên thuật toán), hãy so với SHA-256 trước, rồi SHA-1.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>Chi tiết kết nối FTPS Server</value>
+  </data>
 </root>

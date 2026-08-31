@@ -22,6 +22,13 @@ import com.siarheikuchuk.ftpsserver.server.FtpsServerSettings
 import com.siarheikuchuk.ftpsserver.server.FtpsUserAccount
 import com.siarheikuchuk.ftpsserver.server.LoadedCertificate
 import com.siarheikuchuk.ftpsserver.storage.SafFileSystemProvider
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class FtpsForegroundService : Service() {
     private var server: FtpsServer? = null
@@ -43,13 +50,12 @@ class FtpsForegroundService : Service() {
     }
 
     private fun startServer(intent: Intent?) {
-        if (server != null) return
-        createChannel()
-        val notification = buildNotification()
-        if (Build.VERSION.SDK_INT >= 34) {
-            startForeground(NOTIFICATION_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
-        } else {
-            startForeground(NOTIFICATION_ID, notification)
+        // startForegroundService() requires startForeground() even when the
+        // server is already running; otherwise Android shows "not responding".
+        enterForeground()
+        if (server != null) {
+            ServerEvents.running(true)
+            return
         }
 
         val pm = getSystemService(POWER_SERVICE) as PowerManager
@@ -132,6 +138,16 @@ class FtpsForegroundService : Service() {
         super.onDestroy()
     }
 
+    private fun enterForeground() {
+        createChannel()
+        val notification = buildNotification()
+        if (Build.VERSION.SDK_INT >= 34) {
+            startForeground(NOTIFICATION_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+        } else {
+            startForeground(NOTIFICATION_ID, notification)
+        }
+    }
+
     private fun createChannel() {
         if (Build.VERSION.SDK_INT >= 26) {
             val mgr = getSystemService(NotificationManager::class.java)
@@ -145,8 +161,10 @@ class FtpsForegroundService : Service() {
         val launch = PendingIntent.getActivity(
             this,
             0,
-            Intent(this, MainActivity::class.java),
-            PendingIntent.FLAG_IMMUTABLE,
+            Intent(this, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            },
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
         )
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_stat_server)
@@ -180,24 +198,38 @@ class FtpsForegroundService : Service() {
 }
 
 object ServerEvents {
-    @Volatile var onLog: ((String, String) -> Unit)? = null
-    @Volatile var onRunning: ((Boolean) -> Unit)? = null
-    @Volatile var onFailed: ((String) -> Unit)? = null
-    @Volatile var onCertificate: ((com.siarheikuchuk.ftpsserver.server.LoadedCertificate?) -> Unit)? = null
+    private val _isRunning = MutableStateFlow(false)
+    val isRunning: StateFlow<Boolean> = _isRunning.asStateFlow()
+
+    private val _loadedCertificate = MutableStateFlow<LoadedCertificate?>(null)
+    val loadedCertificate: StateFlow<LoadedCertificate?> = _loadedCertificate.asStateFlow()
+
+    private val _logs = MutableSharedFlow<Pair<String, String>>(
+        extraBufferCapacity = 64,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    )
+    val logs: SharedFlow<Pair<String, String>> = _logs.asSharedFlow()
+
+    private val _failures = MutableSharedFlow<String>(
+        extraBufferCapacity = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    )
+    val failures: SharedFlow<String> = _failures.asSharedFlow()
 
     fun log(level: String, message: String) {
-        onLog?.invoke(level, message)
+        _logs.tryEmit(level to message)
     }
 
     fun running(value: Boolean) {
-        onRunning?.invoke(value)
+        _isRunning.value = value
     }
 
     fun failed(message: String) {
-        onFailed?.invoke(message)
+        _isRunning.value = false
+        _failures.tryEmit(message)
     }
 
-    fun certificate(cert: com.siarheikuchuk.ftpsserver.server.LoadedCertificate?) {
-        onCertificate?.invoke(cert)
+    fun certificate(cert: LoadedCertificate?) {
+        _loadedCertificate.value = cert
     }
 }

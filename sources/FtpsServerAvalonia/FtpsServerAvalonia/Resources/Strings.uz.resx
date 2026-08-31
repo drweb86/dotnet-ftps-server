@@ -249,4 +249,105 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Amal qiladi:</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>Ulanish tafsilotlarini nusxalash</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Ulashish...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>Ulanish tafsilotlari</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>Ulanish uchun mijoz qurilmasi shu telefon bilan bir xil tarmoqda bo‘lishi kerak (xuddi shu Wi-Fi yoki hotspot / USB tethering).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>Ulanish uchun mijoz qurilmasi shu kompyuter bilan bir xil tarmoqda bo‘lishi kerak (xuddi shu Wi-Fi yoki LAN).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>FTPS ni qo‘llab-quvvatlovchi istalgan mijozni o‘rnating, masalan:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • yoki explicit FTPS ni qo‘llab-quvvatlovchi boshqa mijoz</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>Mijoz maydonlarini quyidagicha to‘ldiring.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host — FTPS Server ishlayotgan qurilma manzili.
+IP manzilni afzal ko‘ring. Qurilma nomi tarmoq uni aniqlasagina ishlaydi.
+
+Quyidagilardan birini ishlating:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port — shu xostdagi ilova porti.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server buyruqlar va ma’lumotlarni shifrlaydi.
+Faqat EXPLICIT TLS (AUTH TLS / FTP over TLS) qo‘llab-quvvatlanadi.
+
+Mijozda tanlang:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Implicit FTPS ni tanlamang (ko‘pincha faqat "FTPS" deb yoziladi) — ulanmaydi.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>Umumiy jildlarga kira oladigan hisoblar.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. Foydalanuvchi {1} — {3} uchun {2} ruxsat</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>o‘qish/yozish</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>faqat o‘qish</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(jild belgilanmagan)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>Bu server o‘z-o‘ziga imzo chekilgan sertifikatdan foydalanadi. Mijoz ogohlantiradi.
+Mijozdagi barmoq izini quyidagi qiymatlar bilan solishtiring. Mos kelsa, sertifikatni qabul qiling.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>Agar mijoz faqat "Fingerprint" ko‘rsatsa (algoritm nomisiz), avval SHA-256, keyin SHA-1 bilan solishtiring.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>FTPS Server ulanish tafsilotlari</value>
+  </data>
 </root>

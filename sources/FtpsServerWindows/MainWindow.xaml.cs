@@ -1,6 +1,7 @@
 using FtpsServerAppsShared.Helpers;
 using FtpsServerAppsShared.Services;
 using FtpsServerWindows.Controls;
+using FtpsServerWindows.Helpers;
 using FtpsServerWindows.Models;
 using FtpsServerWindows.Services;
 using FtpsServerWindows.Resources;
@@ -102,6 +103,16 @@ namespace FtpsServerWindows
             CertificatePassword = _settings.CertificatePassword;
 
             DataContext = this;
+
+            ServerConfig.ConnectionDetailsRequested += (_, e) =>
+            {
+                e.Text = ConnectionDetails.Build(
+                    Port,
+                    _users,
+                    CertificateSource == CertificateSourceType.SelfSigned,
+                    CertInfoPanel.CertInfo?.Sha256Fingerprint,
+                    CertInfoPanel.CertInfo?.Sha1Fingerprint);
+            };
         }
 
         private static void OnPortChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

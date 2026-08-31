@@ -246,4 +246,105 @@ Funktionen:
   <data name="Winget_ShortDescription" xml:space="preserve">
     <value>FTPS-Server für sichere Dateifreigabe über das Netzwerk.</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>Verbindungsdaten kopieren</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Teilen...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>Verbindungsdaten</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>Zum Verbinden muss das Client-Gerät im selben Netzwerk wie dieses Telefon sein (gleiches WLAN oder derselbe Hotspot / USB-Tethering).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>Zum Verbinden muss das Client-Gerät im selben Netzwerk wie dieser Computer sein (gleiches WLAN oder LAN).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>Installieren Sie einen FTPS-fähigen Client, zum Beispiel:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • oder einen anderen Client mit explizitem FTPS</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>Füllen Sie die Felder im Client wie folgt aus.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host ist die Adresse des Geräts, auf dem FTPS Server läuft.
+Verwenden Sie bevorzugt eine IP-Adresse. Der Gerätename funktioniert nur, wenn Ihr Netzwerk ihn auflösen kann.
+
+Verwenden Sie einen der folgenden Werte:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port ist der Anwendungsport auf diesem Host.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server verschlüsselt Befehle und Daten.
+Unterstützt wird nur EXPLICIT TLS (AUTH TLS / FTP over TLS).
+
+Wählen Sie im Client:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Wählen Sie nicht Implicit FTPS (oft nur als „FTPS“ bezeichnet) — die Verbindung schlägt fehl.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>Das sind die Konten mit Zugriff auf die freigegebenen Ordner.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. Benutzer {1} — {2} Zugriff auf {3}</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>Lesen/Schreiben</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>nur Lesen</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(kein Ordner festgelegt)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>Dieser Server verwendet ein selbstsigniertes Zertifikat. Der Client zeigt eine Warnung.
+Vergleichen Sie den Fingerprint im Client mit den Werten unten. Stimmen sie überein, akzeptieren Sie das Zertifikat.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>Wenn der Client nur „Fingerprint“ (ohne Algorithmus) anzeigt, vergleichen Sie zuerst mit SHA-256, dann mit SHA-1.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>FTPS Server Verbindungsdaten</value>
+  </data>
 </root>

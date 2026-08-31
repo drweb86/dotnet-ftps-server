@@ -252,4 +252,105 @@
   <data name="Winget_ShortDescription" xml:space="preserve">
     <value>Ağ üzerinden güvenli dosya paylaşımı için FTPS sunucusu.</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>Bağlantı bilgilerini kopyala</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Paylaş...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>Bağlantı bilgileri</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>Bağlanmak için istemci cihaz bu telefonla aynı ağda olmalıdır (aynı Wi-Fi veya aynı erişim noktası / USB tethering).</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>Bağlanmak için istemci cihaz bu bilgisayarla aynı ağda olmalıdır (aynı Wi-Fi veya LAN).</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>FTPS destekleyen bir istemci kurun, örneğin:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • veya açık FTPS destekleyen başka bir istemci</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>İstemci alanlarını şöyle doldurun.</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host, FTPS Server'ın çalıştığı cihazın adresidir.
+Bir IP adresi tercih edin. Cihaz adı yalnızca ağ çözümlendirebiliyorsa çalışır.
+
+Şunlardan birini kullanın:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port, o ana bilgisayardaki uygulama bağlantı noktasıdır.</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server komutları ve verileri şifreler.
+Yalnızca AÇIK TLS (AUTH TLS / FTP over TLS) desteklenir.
+
+İstemcide şunu seçin:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Örtük FTPS seçmeyin (çoğu zaman yalnızca "FTPS" olarak etiketlenir) — bağlanmaz.</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>Paylaşılan klasörlere erişebilen hesaplar bunlardır.</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. Kullanıcı {1} — {3} için {2} erişim</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>okuma/yazma</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>salt okunur</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(klasör ayarlanmadı)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>Bu sunucu kendi imzaladığı bir sertifika kullanır. İstemci sizi uyarır.
+İstemcideki parmak izini aşağıdaki değerlerle karşılaştırın. Eşleşirse sertifikayı kabul edin.</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>İstemci yalnızca "Fingerprint" (algoritma adı yok) gösteriyorsa önce SHA-256, sonra SHA-1 ile karşılaştırın.</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>FTPS Server bağlantı bilgileri</value>
+  </data>
 </root>

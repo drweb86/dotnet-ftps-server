@@ -249,4 +249,105 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>ใช้ได้:</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>คัดลอกรายละเอียดการเชื่อมต่อ</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>แชร์...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>รายละเอียดการเชื่อมต่อ</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>ในการเชื่อมต่อ อุปกรณ์ไคลเอนต์ต้องอยู่เครือข่ายเดียวกับโทรศัพท์นี้ (Wi-Fi เดียวกัน หรือฮอตสปอต / USB tethering เดียวกัน)</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>ในการเชื่อมต่อ อุปกรณ์ไคลเอนต์ต้องอยู่เครือข่ายเดียวกับคอมพิวเตอร์นี้ (Wi-Fi หรือ LAN เดียวกัน)</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>ติดตั้งไคลเอนต์ที่รองรับ FTPS เช่น:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • หรือไคลเอนต์อื่นที่รองรับ FTPS แบบ explicit</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>กรอกช่องในไคลเอนต์ดังนี้</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host คือที่อยู่ของอุปกรณ์ที่รัน FTPS Server
+ควรใช้ที่อยู่ IP ชื่ออุปกรณ์ใช้ได้เฉพาะเมื่อเครือข่ายแปลงชื่อได้
+
+ใช้ค่าใดค่าหนึ่ง:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port คือพอร์ตของแอปบนโฮสต์นั้น</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server เข้ารหัสทั้งคำสั่งและข้อมูล
+รองรับเฉพาะ EXPLICIT TLS (AUTH TLS / FTP over TLS)
+
+ในไคลเอนต์ให้เลือก:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+อย่าเลือก Implicit FTPS (มักติดป้ายแค่ "FTPS") — จะเชื่อมต่อไม่ได้</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>บัญชีที่เข้าถึงโฟลเดอร์ที่แชร์ได้</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. ผู้ใช้ {1} — สิทธิ์{2}ไปยัง {3}</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>อ่าน/เขียน</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>อ่านอย่างเดียว</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(ยังไม่ได้ตั้งโฟลเดอร์)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>เซิร์ฟเวอร์นี้ใช้ใบรับรองที่ลงนามด้วยตนเอง ไคลเอนต์จะเตือนคุณ
+เปรียบเทียบลายนิ้วมือในไคลเอนต์กับค่าด้านล่าง หากตรงกันให้ยอมรับใบรับรอง</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>หากไคลเอนต์แสดงเพียง "Fingerprint" (ไม่มีชื่ออัลกอริทึม) ให้เทียบ SHA-256 ก่อน แล้วจึง SHA-1</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>รายละเอียดการเชื่อมต่อ FTPS Server</value>
+  </data>
 </root>

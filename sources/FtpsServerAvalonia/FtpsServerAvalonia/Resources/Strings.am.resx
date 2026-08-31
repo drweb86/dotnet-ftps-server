@@ -249,4 +249,105 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>ተቀባይነት:</value>
   </data>
+  <data name="ConfigCopyConnectionDetails" xml:space="preserve">
+    <value>የግንኙነት ዝርዝሮችን ቅዳ</value>
+  </data>
+  <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>አጋራ...</value>
+  </data>
+  <data name="ConnectionDetailsTitle" xml:space="preserve">
+    <value>የግንኙነት ዝርዝሮች</value>
+  </data>
+  <data name="ConnectionDetailsIntroAndroid" xml:space="preserve">
+    <value>ለመገናኘት የደንበኛ መሣሪያው በዚህ ስልክ ተመሳሳይ መረብ ላይ መሆን አለበት (ተመሳሳይ Wi-Fi ወይም ተመሳሳይ ሆትስፖት / USB tethering)።</value>
+  </data>
+  <data name="ConnectionDetailsIntroDesktop" xml:space="preserve">
+    <value>ለመገናኘት የደንበኛ መሣሪያው በዚህ ኮምፒዩተር ተመሳሳይ መረብ ላይ መሆን አለበት (ተመሳሳይ Wi-Fi ወይም LAN)።</value>
+  </data>
+  <data name="ConnectionDetailsClients" xml:space="preserve">
+    <value>ማንኛውንም የFTPS ደንበኛ ይጫኑ፣ ለምሳሌ:
+  • Windows: WinSCP, FileZilla
+  • Linux: FileZilla, lftp
+  • macOS: Cyberduck, FileZilla
+  • Android: Ghost Commander
+  • ወይም explicit FTPS የሚደግፍ ሌላ ደንበኛ</value>
+  </data>
+  <data name="ConnectionDetailsFillFields" xml:space="preserve">
+    <value>የደንበኛውን መስኮች እንደሚከተለው ይሙሉ።</value>
+  </data>
+  <data name="ConnectionDetailsHostTitle" xml:space="preserve">
+    <value>A. HOST</value>
+  </data>
+  <data name="ConnectionDetailsHostBody" xml:space="preserve">
+    <value>Host FTPS Server የሚሄድበት መሣሪያ አድራሻ ነው።
+የIP አድራሻ ይምረጡ። የመሣሪያ ስም መረቡ ሲፈታ ብቻ ይሰራል።
+
+ከእነዚህ አንዱን ይጠቀሙ:</value>
+  </data>
+  <data name="ConnectionDetailsPortTitle" xml:space="preserve">
+    <value>B. PORT</value>
+  </data>
+  <data name="ConnectionDetailsPortBody" xml:space="preserve">
+    <value>Port በዚያ አስተናጋጅ ላይ የመተግበሪያው ወደብ ነው።</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionTitle" xml:space="preserve">
+    <value>C. ENCRYPTION</value>
+  </data>
+  <data name="ConnectionDetailsEncryptionBody" xml:space="preserve">
+    <value>FTPS Server ትዕዛዞችንና ውሂብን ያመስጥራል።
+የሚደገፈው EXPLICIT TLS (AUTH TLS / FTP over TLS) ብቻ ነው።
+
+በደንበኛው ይምረጡ:
+
+  Protocol: FTP
+  Encryption: Explicit TLS
+    (FileZilla: "Require explicit FTP over TLS"
+     WinSCP: "TLS/SSL Explicit encryption"
+     Cyberduck: "FTP-SSL (Explicit AUTH TLS)")
+
+Implicit FTPS አይምረጡ (ብዙ ጊዜ "FTPS" ብቻ ይባላል) — አይገናኝም።</value>
+  </data>
+  <data name="ConnectionDetailsAccountsTitle" xml:space="preserve">
+    <value>D. LOGIN and PASSWORD</value>
+  </data>
+  <data name="ConnectionDetailsAccountsBody" xml:space="preserve">
+    <value>የተጋሩ አቃፊዎችን ማግኘት የሚችሉ መለያዎች እነዚህ ናቸው።</value>
+  </data>
+  <data name="ConnectionDetailsAccountFormat" xml:space="preserve">
+    <value>{0}. ተጠቃሚ {1} — ወደ {3} {2} መዳረሻ</value>
+  </data>
+  <data name="ConnectionDetailsLoginLabel" xml:space="preserve">
+    <value>LOGIN:</value>
+  </data>
+  <data name="ConnectionDetailsPasswordLabel" xml:space="preserve">
+    <value>PASSWORD:</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadWrite" xml:space="preserve">
+    <value>ማንበብ/መጻፍ</value>
+  </data>
+  <data name="ConnectionDetailsAccessReadOnly" xml:space="preserve">
+    <value>ማንበብ ብቻ</value>
+  </data>
+  <data name="ConnectionDetailsFolderUnspecified" xml:space="preserve">
+    <value>(አቃፊ አልተቀመጠም)</value>
+  </data>
+  <data name="ConnectionDetailsCertTitle" xml:space="preserve">
+    <value>E. CERTIFICATE WARNING</value>
+  </data>
+  <data name="ConnectionDetailsCertBody" xml:space="preserve">
+    <value>ይህ አገልጋይ በራሱ የተፈረመ የምስክር ወረቀት ይጠቀማል። ደንበኛው ያስጠነቅቃል።
+በደንበኛው ያለውን የጣት አሻራ ከታች ካሉት እሴቶች ጋር ያነፃፅሩ። ከተመሳሰሉ የምስክር ወረቀቱን ይቀበሉ።</value>
+  </data>
+  <data name="ConnectionDetailsCertSha256Format" xml:space="preserve">
+    <value>SHA-256:  {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertSha1Format" xml:space="preserve">
+    <value>SHA-1:    {0}</value>
+  </data>
+  <data name="ConnectionDetailsCertFingerprintHint" xml:space="preserve">
+    <value>ደንበኛው "Fingerprint" ብቻ ካሳየ (ያለ የአልጎሪዝም ስም) መጀመሪያ SHA-256 ከዚያ SHA-1 ጋር ያነፃፅሩ።</value>
+  </data>
+  <data name="ConnectionDetailsShareSubject" xml:space="preserve">
+    <value>የFTPS Server የግንኙነት ዝርዝሮች</value>
+  </data>
 </root>
