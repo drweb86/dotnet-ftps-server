@@ -54,3 +54,18 @@ Screenshots
 
 Screenshots version will not check for updates and use english locale and have different id from release app.
 Debug version will have different id from release app.
+
+
+## Help list FTPS Server on Google Play
+
+Google Play will not publish this app until **12 people** stay in closed testing for **14 days**. If you have an Android phone and a Google account, you can help.
+
+**Do this in order, with the same Google account that is on the phone:**
+
+1. Join the tester group: https://groups.google.com/g/ftpsserver-play-testers  
+   (group email: `ftpsserver-play-testers@googlegroups.com`)
+2. Open this Play link on the phone and tap **Become a tester**:  
+   `https://play.google.com/store/apps/details?id=com.siarheikuchuk.ftpsserver`
+3. Install **FTPS Server** from Play and leave the tester opt-in on for 14 days.
+
+Joining the group alone is not enough. The Play link only works after you have joined the group. Do not leave the group or the test during those 14 days.
