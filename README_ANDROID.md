@@ -13,7 +13,8 @@ Tablet:
 ## Installation
 
 Stores:
-- [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver)  
+- [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver)
+- Google Play (see bottom)
 
 Manually:
 - Release contains prebuilt asset `ftpsserver_<version>_android.apk`.
