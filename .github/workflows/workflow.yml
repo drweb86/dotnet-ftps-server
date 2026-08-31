@@ -178,7 +178,7 @@ jobs:
           missing=0
           for name in ANDROID_KEYSTORE_BASE64 ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_ALIAS ANDROID_KEY_PASSWORD; do
             if [ -z "${!name}" ]; then
-              echo "$name secret is required to sign the release APK."
+              echo "$name secret is required to sign the release APK and AAB."
               missing=1
             fi
           done
@@ -193,7 +193,7 @@ jobs:
           echo "version=$version" >> $GITHUB_OUTPUT
           echo "Version: $version"
 
-      - name: Build signed native release APK
+      - name: Build signed native release APK and AAB
         env:
           VERSION: ${{ steps.version.outputs.version }}
           ANDROID_KEYSTORE_FILE: ${{ github.workspace }}/android-release.keystore
@@ -208,15 +208,18 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: android-package
-          path: Output/ftpsserver_*_android.apk
+          path: |
+            Output/ftpsserver_*_android.apk
+            Output/ftpsserver_*_android.aab
 
-      - name: Upload Android APK to GitHub Release
+      - name: Upload Android APK and AAB to GitHub Release
         if: github.event_name == 'release'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           v="${{ steps.version.outputs.version }}"
           gh release upload "${{ github.event.release.tag_name }}" "Output/ftpsserver_${v}_android.apk" --clobber
+          gh release upload "${{ github.event.release.tag_name }}" "Output/ftpsserver_${v}_android.aab" --clobber
 
   update-apt-repo:
     needs: build-deb
