@@ -23,7 +23,7 @@ Because app is self-signed, Android will ask you to confirm that you trust the A
 
 ## Updating
 
-If you install from store, store will update application. Otherwise you can go to releases and do it mnanually. Update information will be shown in application.
+If you install from Google Play, RuStore, or F-Droid, the store updates the app. GitHub sideload installs can still show an in-app notice when a newer GitHub release exists; otherwise go to releases and update manually.
 
 Android requires all updates for the same app to be signed with the same signing key. If Android says the package conflicts with an existing app or the signature does not match, uninstall the old app first, then install the new APK.
 

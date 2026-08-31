@@ -198,7 +198,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         } catch (_: Exception) {
             null
         }
-        return installer !in FDROID_INSTALLERS
+        return installer !in SKIP_GITHUB_UPDATE_INSTALLERS
     }
 
     private fun checkUpdate() {
@@ -240,10 +240,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     companion object {
-        private val FDROID_INSTALLERS = setOf(
+        private val SKIP_GITHUB_UPDATE_INSTALLERS = setOf(
             "org.fdroid.fdroid",
             "org.fdroid.basic",
             "org.fdroid.fdroid.privileged",
+            "com.android.vending",
+            "ru.vk.store",
         )
     }
 }

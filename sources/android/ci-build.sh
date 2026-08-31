@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Native Android release APK for GitHub Actions.
+# Native Android release APK (GitHub/RuStore) and AAB (Google Play) for GitHub Actions.
 # Required env: VERSION
 # Signing env (same secrets as the previous Avalonia APK):
 #   ANDROID_KEYSTORE_FILE, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD
@@ -35,7 +35,7 @@ unset GRADLE_OPTS || true
 
 (
   cd "$ANDROID_ROOT"
-  sh ./gradlew --no-daemon assembleRelease \
+  sh ./gradlew --no-daemon assembleRelease bundleRelease \
     -PappVersionName="$VERSION" \
     -PappVersionCode="$VERSION_CODE"
 )
@@ -50,8 +50,22 @@ if [ -z "$apk" ]; then
   exit 1
 fi
 
+aab=""
+if [ -f "$ANDROID_ROOT/app/build/outputs/bundle/release/app-release.aab" ]; then
+  aab="$ANDROID_ROOT/app/build/outputs/bundle/release/app-release.aab"
+fi
+if [ -z "$aab" ]; then
+  echo "Signed app-release.aab not found. ANDROID_KEYSTORE_* secrets may be missing."
+  find "$ANDROID_ROOT/app/build/outputs/bundle" -name '*.aab' -type f || true
+  exit 1
+fi
+
 mkdir -p "$OUT_DIR"
-dest="$OUT_DIR/ftpsserver_${VERSION}_android.apk"
-cp "$apk" "$dest"
-echo "APK: $dest"
-ls -lh "$dest"
+dest_apk="$OUT_DIR/ftpsserver_${VERSION}_android.apk"
+dest_aab="$OUT_DIR/ftpsserver_${VERSION}_android.aab"
+cp "$apk" "$dest_apk"
+cp "$aab" "$dest_aab"
+echo "APK: $dest_apk"
+ls -lh "$dest_apk"
+echo "AAB: $dest_aab"
+ls -lh "$dest_aab"

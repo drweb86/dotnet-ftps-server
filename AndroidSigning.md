@@ -40,8 +40,9 @@ Add these repository secrets:
 - `ANDROID_KEY_ALIAS`: `ftpsserver`, unless you chose another alias.
 - `ANDROID_KEY_PASSWORD`: the key password.
 
-The GitHub release and RuStore get a single APK:
+GitHub Actions signs both outputs with that key:
 
-- `ftpsserver_<version>_android.apk`
+- `ftpsserver_<version>_android.apk` — GitHub release and RuStore
+- `ftpsserver_<version>_android.aab` — Google Play (Closed testing / production)
 
-The package id is `com.siarheikuchuk.ftpsserver`. Because the signing key is unchanged, this APK can update an existing install of the older Avalonia build.
+The package id is `com.siarheikuchuk.ftpsserver`. Because the signing key is unchanged, this APK can update an existing install of the older Avalonia build. Upload the AAB to Play with the same existing key; do not let Play generate a new signing key.
