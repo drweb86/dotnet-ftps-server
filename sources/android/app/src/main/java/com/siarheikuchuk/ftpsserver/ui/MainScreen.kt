@@ -91,7 +91,7 @@ fun MainScreen(viewModel: MainViewModel) {
                 ),
                 actions = {
                     TextButton(onClick = { menuOpen = true }) {
-                        Text(stringResource(R.string.menu_header), color = AppColors.accent)
+                        Text("?", color = AppColors.accent, fontSize = 22.sp, fontWeight = FontWeight.Bold)
                     }
                     DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
                         DropdownMenuItem(

@@ -1,4 +1,4 @@
-# 2026.08.35
+# 2026.08.36
 
 ## Changes
 - Android: Preparation for F-Droid, Google Store.
