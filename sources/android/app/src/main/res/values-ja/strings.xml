@@ -4,8 +4,6 @@
     <string name="users_tab">ユーザー</string>
     <string name="add_user_button">+ 追加</string>
     <string name="menu_header">FTPSサーバー</string>
-    <string name="menu_web_site">ウェブサイト</string>
-    <string name="menu_license">ライセンス</string>
     <string name="menu_logs">ログ</string>
     <string name="logs_tab">サーバーログ</string>
     <string name="clear_logs">クリア</string>
@@ -33,8 +31,6 @@
     <string name="user_readonly">読み取り専用</string>
     <string name="user_delete">削除</string>
     <string name="user_select_folder_format">ユーザー %1$s の共有フォルダを選択</string>
-    <string name="update_download">ダウンロード</string>
-    <string name="update_available_format">新しいバージョン %1$s が利用可能です。</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">エラー</string>

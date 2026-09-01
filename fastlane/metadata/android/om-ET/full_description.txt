@@ -3,4 +3,3 @@
 <ul><li><b>Hayyama fayyadamaa</b> - To'annoo bal'aa hojii dubbisuu/barreessuu irratti</li><li><b>Folldaraa hundee fayyadamaa tokkoon tokkoo</b> - Galmeewwan adda baafaman fayyadamaa tokkoof</li><li><b>Nageenya karaa</b> - Itti yaadannoo haleellaa directory traversal irraa eegumsa</li><li><b>UTF-8</b> - Arfiilee naannoo deeggara</li><li><b>Waraqaa ragaa ofiin mallatteeffame</b> - Waraqaa ragaa TLS ofumaan uumi ykn kan kee fayyadami</li></ul>
 <p>Kun app Android (Kotlin) dha. Beeksisa hin qabu. Madda banaa (CC0). Fayyadamaa tokkoon tokkoon galmee filannaa sirnaatiin filata. Beeksisaon argii cufaa yeroo geeddaruu itti fufsiisa.</p>
 <p>Android 6.0 ykn haaraa barbaachisa.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

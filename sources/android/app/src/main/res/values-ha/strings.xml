@@ -4,8 +4,6 @@
     <string name="users_tab">Masu amfani</string>
     <string name="add_user_button">+ Ƙara</string>
     <string name="menu_header">FTPS Server</string>
-    <string name="menu_web_site">Shafin yanar gizo</string>
-    <string name="menu_license">Lasisin</string>
     <string name="menu_logs">Rikodin</string>
     <string name="logs_tab">Rikodin Uwar Garke</string>
     <string name="clear_logs">Share</string>
@@ -33,8 +31,6 @@
     <string name="user_readonly">Karanta kawai</string>
     <string name="user_delete">Goge</string>
     <string name="user_select_folder_format">Zaɓi babban fayil ɗin don raba ga mai amfani %1$s</string>
-    <string name="update_download">Sauke</string>
-    <string name="update_available_format">Sabon sigar %1$s yana samuwa.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Kuskure</string>

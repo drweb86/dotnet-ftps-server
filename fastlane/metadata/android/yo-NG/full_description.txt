@@ -3,4 +3,3 @@
 <ul><li><b>Àwọn ìyọ̀ǹda olùmúlò</b> - Ìṣàkóso tó kún fún ìṣe kíkà/kíkọ</li><li><b>Àwọn fódà gbòngbò fún olùkọ̀ọ̀kan</b> - Àwọn àtòjọ tí a yà sọ́tọ̀ fún olùmúlò kọ̀ọ̀kan</li><li><b>Ààbò ọ̀nà</b> - Ààbò lọ́wọ́ ìkọlù directory traversal</li><li><b>UTF-8</b> - Ṣe àtìlẹ́yìn àwọn lẹ́tà tí a ṣe àdàkọ</li><li><b>Ìwé-ẹ̀rí tí a fọwọ́ sí fúnrararẹ̀</b> - Ṣẹ̀dá ìwé-ẹ̀rí TLS fúnra rẹ̀ tàbí lo tìrẹ</li></ul>
 <p>Èyí ni app Android (Kotlin). Kò sí ìpolówó. Open source (CC0). Olùmúlò kọ̀ọ̀kan yan folder pẹ̀lú aṣàyàn ètò. Ìfitónilétí máa ń tẹ̀síwájú ìgbésí nígbà tí ìbòjú bá pa.</p>
 <p>Ó nílò Android 6.0 tàbí tuntun.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

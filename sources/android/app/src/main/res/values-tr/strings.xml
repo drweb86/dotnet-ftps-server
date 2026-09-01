@@ -4,8 +4,6 @@
     <string name="users_tab">Kullanıcılar</string>
     <string name="add_user_button">+ Ekle</string>
     <string name="menu_header">FTPS Server</string>
-    <string name="menu_web_site">Web Sitesi</string>
-    <string name="menu_license">Lisans</string>
     <string name="menu_logs">Günlükler</string>
     <string name="logs_tab">Sunucu Günlükleri</string>
     <string name="clear_logs">Temizle</string>
@@ -33,8 +31,6 @@
     <string name="user_readonly">Salt Okunur</string>
     <string name="user_delete">Sil</string>
     <string name="user_select_folder_format">%1$s kullanıcısı için paylaşılacak klasörü seçin</string>
-    <string name="update_download">İndir</string>
-    <string name="update_available_format">Yeni %1$s sürümü mevcut.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Hata</string>

@@ -3,4 +3,3 @@
 <ul><li><b>Ikike onye ọrụ</b> - Njikwa zuru ezu nke ọrụ ịgụ/ide</li><li><b>Nchekwa mgbọrọgwụ maka onye ọrụ ọ bụla</b> - Ndekọ kewapụrụ maka onye ọrụ ọ bụla</li><li><b>Nchekwa ụzọ</b> - Nchebe megide mwakpo directory traversal</li><li><b>UTF-8</b> - Na-akwado mkpụrụedemede e mere ka ọ bụrụ nke mpaghara</li><li><b>Asambodo nke onwe</b> - Mepụta asambodo TLS na-akpaghị aka ma ọ bụ jiri nke gị</li></ul>
 <p>Nke a bụ ngwa Android (Kotlin). Enweghị mgbasa ozi. Open source (CC0). Onye ọrụ ọ bụla na-ahọrọ nchekwa site na nhọrọ sistemụ. Ọkwa na-eme ka nnyefe gaa n’ihu mgbe ihuenyo gbanyụrụ.</p>
 <p>Ọ chọrọ Android 6.0 ma ọ bụ ọhụrụ.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

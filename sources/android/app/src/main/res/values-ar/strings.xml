@@ -4,8 +4,6 @@
     <string name="users_tab">المستخدمون</string>
     <string name="add_user_button">+ إضافة</string>
     <string name="menu_header">FTPS Server</string>
-    <string name="menu_web_site">الموقع الإلكتروني</string>
-    <string name="menu_license">الترخيص</string>
     <string name="menu_logs">السجلات</string>
     <string name="logs_tab">سجلات الخادم</string>
     <string name="clear_logs">مسح</string>
@@ -33,8 +31,6 @@
     <string name="user_readonly">للقراءة فقط</string>
     <string name="user_delete">حذف</string>
     <string name="user_select_folder_format">اختر مجلدًا لمشاركته مع المستخدم %1$s</string>
-    <string name="update_download">تنزيل</string>
-    <string name="update_available_format">يتوفر إصدار %1$s جديد.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">خطأ</string>

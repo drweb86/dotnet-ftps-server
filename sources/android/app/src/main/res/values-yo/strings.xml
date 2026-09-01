@@ -4,8 +4,6 @@
     <string name="users_tab">Awọn olumulo</string>
     <string name="add_user_button">+ Fi kun</string>
     <string name="menu_header">FTPS Server</string>
-    <string name="menu_web_site">Oju-opo wẹẹbu</string>
-    <string name="menu_license">Iwe-aṣẹ</string>
     <string name="menu_logs">Awọn igbasilẹ</string>
     <string name="logs_tab">Awọn igbasilẹ Olupin</string>
     <string name="clear_logs">Kuro</string>
@@ -33,8 +31,6 @@
     <string name="user_readonly">Ka nikan</string>
     <string name="user_delete">Paarẹ</string>
     <string name="user_select_folder_format">Yan folda lati pin fun olumulo %1$s</string>
-    <string name="update_download">Gba</string>
-    <string name="update_available_format">Ẹya tuntun %1$s wa.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Aṣiṣe</string>

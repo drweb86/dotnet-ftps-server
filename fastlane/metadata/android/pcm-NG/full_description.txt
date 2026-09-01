@@ -3,4 +3,3 @@
 <ul><li><b>User Permissions</b> - Fine-fine control for Read/Write operations</li><li><b>Per-User Root Folders</b> - Separate directories for each user</li><li><b>Path Security</b> - Protection from directory traversal attack</li><li><b>UTF-8</b> - E dey support localized characters</li><li><b>Self-Signed Certificates</b> - Auto-generate TLS certificates or use your own</li></ul>
 <p>Dis na Android app (Kotlin). No advert. Open source (CC0). Each user go choose folder wit di system picker. Notification go keep transfer even if screen don off.</p>
 <p>E need Android 6.0 or newer.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

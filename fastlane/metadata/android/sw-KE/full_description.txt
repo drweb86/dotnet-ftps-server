@@ -3,4 +3,3 @@
 <ul><li><b>Ruhusa za watumiaji</b> - Udhibiti wa kina wa shughuli za kusoma/kuandika</li><li><b>Folda kuu kwa kila mtumiaji</b> - Saraka zilizotenganishwa kwa kila mtumiaji</li><li><b>Usalama wa njia</b> - Ulinzi dhidi ya mashambulizi ya directory traversal</li><li><b>UTF-8</b> - Inasaidia herufi zilizotafsiriwa</li><li><b>Vyeti vilivyotiwa saini na mwenyewe</b> - Tengeneza vyeti vya TLS kiotomatiki au tumia vyako</li></ul>
 <p>Hii ni programu ya Android (Kotlin). Bila matangazo. Chanzo huria (CC0). Kila mtumiaji huchagua folda kwa kichaguzi cha mfumo. Arifa huendeleza uhamishaji skrini ikiwa imezimwa.</p>
 <p>Inahitaji Android 6.0 au mpya zaidi.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

@@ -3,4 +3,3 @@
 <ul><li><b>Izinonin mai amfani</b> - Culakulewar aiki na karantawa/rubutu</li><li><b>Folder ɗin tushe na kowane mai amfani</b> - Keɓaɓɓun jagorori ga kowane mai amfani</li><li><b>Tsaron hanya</b> - Kariya daga hare-haren directory traversal</li><li><b>UTF-8</b> - Yana goyon bayan haruffan gida</li><li><b>Takaddun shaida da aka sa hannu da kai</b> - Samar da takaddun TLS ta atomatik ko yi amfani da naku</li></ul>
 <p>Wannan app ɗin Android ne (Kotlin). Babu talla. Open source (CC0). Kowane mai amfani yana zaɓar folder da zaɓin tsarin. Sanarwa tana ci gaba da canja wurin yayin da allon ya kashe.</p>
 <p>Yana buƙatar Android 6.0 ko sabo.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

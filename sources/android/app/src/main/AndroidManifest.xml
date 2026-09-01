@@ -11,7 +11,7 @@
 
     <application
         android:name=".FtpsServerApp"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_label"
         android:supportsRtl="true"

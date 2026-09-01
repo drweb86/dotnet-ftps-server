@@ -7,17 +7,14 @@ import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.siarheikuchuk.ftpsserver.BuildConfig
 import com.siarheikuchuk.ftpsserver.data.AppSettings
 import com.siarheikuchuk.ftpsserver.data.SettingsRepository
 import com.siarheikuchuk.ftpsserver.data.UserAccount
 import com.siarheikuchuk.ftpsserver.server.LoadedCertificate
 import com.siarheikuchuk.ftpsserver.service.FtpsForegroundService
 import com.siarheikuchuk.ftpsserver.service.ServerEvents
-import java.net.HttpURLConnection
 import java.net.Inet4Address
 import java.net.NetworkInterface
-import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -25,13 +22,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.json.JSONObject
 
 data class LogLine(val timestamp: String, val level: String, val message: String)
 
 data class NetworkRow(val name: String, val addresses: List<String>)
-
-data class UpdateInfo(val version: String, val changes: String)
 
 data class UiState(
     val port: Int = 2121,
@@ -46,7 +40,6 @@ data class UiState(
     val networks: List<NetworkRow> = emptyList(),
     val hostName: String = Build.MODEL ?: "Android",
     val certificate: LoadedCertificate? = null,
-    val update: UpdateInfo? = null,
 )
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -91,9 +84,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     s.copy(logs = next)
                 }
             }
-        }
-        if (shouldCheckGithubUpdate()) {
-            Thread { checkUpdate() }.start()
         }
     }
 
@@ -203,73 +193,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         return rows
     }
 
-    private fun shouldCheckGithubUpdate(): Boolean {
-        if (BuildConfig.SCREENSHOTS) return false
-        return installerPackage() !in SKIP_GITHUB_UPDATE_INSTALLERS
-    }
-
-    private fun installerPackage(): String? {
-        val app = getApplication<Application>()
-        return try {
-            if (Build.VERSION.SDK_INT >= 30) {
-                app.packageManager.getInstallSourceInfo(app.packageName).installingPackageName
-            } else {
-                @Suppress("DEPRECATION")
-                app.packageManager.getInstallerPackageName(app.packageName)
-            }
-        } catch (_: Exception) {
-            null
-        }
-    }
-
-    private fun checkUpdate() {
-        try {
-            val conn = URL("https://api.github.com/repos/drweb86/dotnet-ftps-server/releases/latest").openConnection() as HttpURLConnection
-            conn.setRequestProperty("User-Agent", "FtpsServer-Android")
-            conn.setRequestProperty("Accept", "application/vnd.github+json")
-            conn.connectTimeout = 8000
-            conn.readTimeout = 8000
-            val body = conn.inputStream.bufferedReader().readText()
-            val json = JSONObject(body)
-            val tag = json.optString("tag_name").trimStart('v')
-            val notes = json.optString("body")
-            val remote = tag.split('.').mapNotNull { it.toIntOrNull() }
-            val local = BuildConfig.VERSION_NAME.substringBefore('-').split('.').mapNotNull { it.toIntOrNull() }
-            var newer = false
-            for (i in 0 until maxOf(remote.size, local.size)) {
-                val r = remote.getOrElse(i) { 0 }
-                val l = local.getOrElse(i) { 0 }
-                if (r != l) {
-                    newer = r > l
-                    break
-                }
-            }
-            if (newer) {
-                _state.update { it.copy(update = UpdateInfo(tag, notes.take(800))) }
-            }
-        } catch (_: Exception) {
-        }
-    }
-
     override fun onCleared() {
         save()
         super.onCleared()
-    }
-
-    companion object {
-        const val PLAY_TESTER_ISSUE_URL =
-            "https://github.com/drweb86/dotnet-ftps-server/issues/new?template=play-tester.yml"
-
-        // Set false after the app is listed on Google Play production.
-        private const val SHOW_PLAY_TESTER_BANNER = true
-        private const val PLAY_INSTALLER = "com.android.vending"
-
-        private val SKIP_GITHUB_UPDATE_INSTALLERS = setOf(
-            "org.fdroid.fdroid",
-            "org.fdroid.basic",
-            "org.fdroid.fdroid.privileged",
-            "com.android.vending",
-            "ru.vk.store",
-        )
     }
 }

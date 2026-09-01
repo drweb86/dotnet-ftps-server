@@ -3,4 +3,3 @@
 <ul><li><b>Izin pengguna</b> - Kontrol terperinci atas operasi baca/tulis</li><li><b>Folder akar per pengguna</b> - Direktori terisolasi untuk setiap pengguna</li><li><b>Keamanan jalur</b> - Perlindungan dari serangan directory traversal</li><li><b>UTF-8</b> - Mendukung karakter yang dilokalkan</li><li><b>Sertifikat self-signed</b> - Buat sertifikat TLS secara otomatis atau gunakan milik Anda</li></ul>
 <p>Ini aplikasi Android (Kotlin). Tanpa iklan. Sumber terbuka (CC0). Setiap pengguna memilih folder dengan pemilih sistem. Notifikasi menjaga transfer saat layar mati.</p>
 <p>Membutuhkan Android 6.0 atau lebih baru.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

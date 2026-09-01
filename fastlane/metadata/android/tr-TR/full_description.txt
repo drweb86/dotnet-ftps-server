@@ -3,4 +3,3 @@
 <ul><li><b>Kullanıcı izinleri</b> - Okuma/yazma işlemleri üzerinde ayrıntılı denetim</li><li><b>Kullanıcı başına kök klasörler</b> - Her kullanıcı için yalıtılmış dizinler</li><li><b>Yol güvenliği</b> - Dizin geçiş saldırılarına karşı koruma</li><li><b>UTF-8</b> - Yerelleştirilmiş karakterleri destekler</li><li><b>Kendinden imzalı sertifikalar</b> - TLS sertifikalarını otomatik oluşturun veya kendinizinkini kullanın</li></ul>
 <p>Bu Android uygulamasıdır (Kotlin). Reklamsız. Açık kaynak (CC0). Her kullanıcı sistem seçicisiyle bir klasör seçer. Bildirim, ekran kapalıyken aktarımları sürdürür.</p>
 <p>Android 6.0 veya daha yenisi gerekir.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

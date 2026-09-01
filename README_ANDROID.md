@@ -10,6 +10,14 @@ Tablet:
 <img src="fastlane/metadata/android/en-US/images/tenInchScreenshots/2.jpg" width="420" alt="Tablet: running server and certificate" />
 <img src="fastlane/metadata/android/en-US/images/tenInchScreenshots/3.jpg" width="420" alt="Tablet: users and server logs" />
 
+## Privacy policy (Android)
+
+Store listings should use this language-selection page (after it is on the default branch):
+
+https://github.com/drweb86/dotnet-ftps-server/blob/main/privacy/android/README.md
+
+The English source is [privacy/android/en.md](./privacy/android/en.md). Localized copies live in the same folder. The root [PRIVACY.md](./PRIVACY.md) is unchanged and is for other store submissions.
+
 ## Installation
 
 Stores:
@@ -24,7 +32,7 @@ Because app is self-signed, Android will ask you to confirm that you trust the A
 
 ## Updating
 
-If you install from Google Play, RuStore, or F-Droid, the store updates the app. GitHub sideload installs can still show an in-app notice when a newer GitHub release exists; otherwise go to releases and update manually.
+If you install from an app store, that store updates the app. The Android app does not check for updates itself. For a sideloaded APK, install a newer APK over the existing one.
 
 Android requires all updates for the same app to be signed with the same signing key. If Android says the package conflicts with an existing app or the signature does not match, uninstall the old app first, then install the new APK.
 
@@ -53,7 +61,7 @@ Build in Powershell:
 Screenshots
 ```
 
-Screenshots version will not check for updates and use english locale and have different id from release app.
+Screenshots version uses English locale and has a different id from the release app.
 Debug version will have different id from release app.
 
 

@@ -3,4 +3,3 @@
 <ul><li><b>Quyền người dùng</b> - Kiểm soát chi tiết các thao tác đọc/ghi</li><li><b>Thư mục gốc theo người dùng</b> - Thư mục được cô lập cho từng người dùng</li><li><b>Bảo mật đường dẫn</b> - Bảo vệ khỏi các cuộc tấn công directory traversal</li><li><b>UTF-8</b> - Hỗ trợ ký tự đã bản địa hóa</li><li><b>Chứng chỉ tự ký</b> - Tự động tạo chứng chỉ TLS hoặc dùng chứng chỉ của bạn</li></ul>
 <p>Đây là ứng dụng Android (Kotlin). Không quảng cáo. Mã nguồn mở (CC0). Mỗi người dùng chọn thư mục bằng bộ chọn hệ thống. Thông báo giữ truyền tệp khi tắt màn hình.</p>
 <p>Cần Android 6.0 trở lên.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

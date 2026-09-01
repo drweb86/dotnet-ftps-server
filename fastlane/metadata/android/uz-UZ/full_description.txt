@@ -3,4 +3,3 @@
 <ul><li><b>Foydalanuvchi ruxsatlari</b> - O'qish/yozish amallarini batafsil boshqarish</li><li><b>Har bir foydalanuvchi uchun ildiz papkalar</b> - Har bir foydalanuvchi uchun ajratilgan kataloglar</li><li><b>Yo'l xavfsizligi</b> - Katalogni aylanib o'tish hujumlaridan himoya</li><li><b>UTF-8</b> - Mahalliylashtirilgan belgilarni qo'llab-quvvatlash</li><li><b>O'z-o'zini imzolagan sertifikatlar</b> - TLS sertifikatlarini avtomatik yaratish yoki o'zingiznikini ishlatish</li></ul>
 <p>Bu Android ilovasi (Kotlin). Reklamasiz. Ochiq kod (CC0). Har bir foydalanuvchi tizim tanlagichida jild tanlaydi. Bildirishnoma ekran o‘chiqligida ham uzatishni davom ettiradi.</p>
 <p>Android 6.0 yoki yangiroq kerak.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>

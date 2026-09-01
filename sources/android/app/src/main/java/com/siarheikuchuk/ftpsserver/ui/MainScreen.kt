@@ -4,7 +4,6 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
@@ -28,8 +27,6 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
@@ -77,7 +74,6 @@ private fun fieldColors() = OutlinedTextFieldDefaults.colors(
 fun MainScreen(viewModel: MainViewModel) {
     val state by viewModel.state.collectAsState()
     val context = LocalContext.current
-    var menuOpen by remember { mutableStateOf(false) }
     val scroll = rememberScrollState()
 
     Scaffold(
@@ -89,27 +85,6 @@ fun MainScreen(viewModel: MainViewModel) {
                     containerColor = AppColors.surface,
                     titleContentColor = AppColors.text,
                 ),
-                actions = {
-                    TextButton(onClick = { menuOpen = true }) {
-                        Text("?", color = AppColors.accent, fontSize = 22.sp, fontWeight = FontWeight.Bold)
-                    }
-                    DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
-                        DropdownMenuItem(
-                            text = { Text(stringResource(R.string.menu_web_site)) },
-                            onClick = {
-                                menuOpen = false
-                                context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/drweb86/dotnet-ftps-server")))
-                            },
-                        )
-                        DropdownMenuItem(
-                            text = { Text(stringResource(R.string.menu_license)) },
-                            onClick = {
-                                menuOpen = false
-                                context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://raw.githubusercontent.com/drweb86/dotnet-ftps-server/refs/heads/main/LICENSE")))
-                            },
-                        )
-                    }
-                },
             )
         },
     ) { padding ->
@@ -148,17 +123,6 @@ fun MainScreen(viewModel: MainViewModel) {
                 ) {
                     Text(state.error!!, color = AppColors.text, modifier = Modifier.weight(1f))
                     TextButton(onClick = { viewModel.dismissError() }) { Text("X", color = AppColors.text) }
-                }
-            }
-
-            state.update?.let { update ->
-                SectionCard {
-                    Text(stringResource(R.string.update_available_format, update.version), color = AppColors.text, fontWeight = FontWeight.SemiBold)
-                    Text(update.changes, color = AppColors.muted, fontSize = 13.sp, modifier = Modifier.padding(top = 4.dp))
-                    OutlinedButton(
-                        onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/drweb86/dotnet-ftps-server/releases/latest"))) },
-                        modifier = Modifier.padding(top = 8.dp),
-                    ) { Text(stringResource(R.string.update_download), color = AppColors.accent) }
                 }
             }
 

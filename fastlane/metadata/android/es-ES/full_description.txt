@@ -3,4 +3,3 @@
 <ul><li><b>Permisos de usuario</b> - Control granular sobre las operaciones de lectura/escritura</li><li><b>Carpetas raíz por usuario</b> - Directorios aislados para cada usuario</li><li><b>Seguridad de rutas</b> - Protección contra ataques de directory traversal</li><li><b>UTF-8</b> - Compatible con caracteres localizados</li><li><b>Certificados autofirmados</b> - Generación automática de certificados TLS o use los suyos</li></ul>
 <p>Esta es la aplicación para Android (Kotlin). Sin anuncios. Código abierto (CC0). Cada usuario elige una carpeta con el selector del sistema. Una notificación mantiene las transferencias con la pantalla apagada.</p>
 <p>Requiere Android 6.0 o posterior.</p>
-<p><a href="https://github.com/drweb86/dotnet-ftps-server">https://github.com/drweb86/dotnet-ftps-server</a></p>
