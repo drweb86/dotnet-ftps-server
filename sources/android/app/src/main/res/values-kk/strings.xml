@@ -11,7 +11,7 @@
     <string name="clear_logs">Тазалау</string>
     <string name="menu_start">[ БАСТАУ ]</string>
     <string name="menu_stop">[ ТОҚТАТУ ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Хост, Порт, Сертификат</string>
     <string name="config_address">Мекенжай</string>
     <string name="config_port">Порт</string>

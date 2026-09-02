@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">Serveur FTPS</string>
+    <string name="app_title">FTPS Server</string>
     <string name="users_tab">Utilisateurs</string>
     <string name="add_user_button">+ Ajouter</string>
-    <string name="menu_header">Serveur FTPS</string>
+    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Site Web</string>
     <string name="menu_license">Licence</string>
     <string name="menu_logs">Journaux</string>
@@ -11,7 +11,7 @@
     <string name="clear_logs">Effacer</string>
     <string name="menu_start">[ DÉMARRER ]</string>
     <string name="menu_stop">[ ARRÊTER ]</string>
-    <string name="menu_about_format">Serveur FTPS - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Hôte, Port, Certificat</string>
     <string name="config_address">Adresse</string>
     <string name="config_port">Port</string>

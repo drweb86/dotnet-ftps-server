@@ -11,7 +11,7 @@
     <string name="clear_logs">Share</string>
     <string name="menu_start">[ FARA ]</string>
     <string name="menu_stop">[ TSAYA ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Mai masauki, Tashar, Takaddun shaidar</string>
     <string name="config_address">Adireshi</string>
     <string name="config_port">Tashar</string>

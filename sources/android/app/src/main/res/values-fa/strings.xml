@@ -11,7 +11,7 @@
     <string name="clear_logs">پاک کردن</string>
     <string name="menu_start">[ شروع ]</string>
     <string name="menu_stop">[ توقف ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">میزبان، پورت، گواهی</string>
     <string name="config_address">آدرس</string>
     <string name="config_port">پورت</string>

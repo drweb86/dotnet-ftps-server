@@ -1,3 +1,9 @@
+# 2026.09.05
+
+## Changes
+- Android: privacy policy names the app **FTPS Server** and the developer **Siarhei Kuchuk**.
+- Android: launcher and in-app titles use **FTPS Server** in every language.
+
 # 2026.09.04
 
 ## Changes

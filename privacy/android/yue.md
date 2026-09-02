@@ -4,6 +4,11 @@
 
 最近更新日期：2026年9月2日
 
+**FTPS Server** by Siarhei Kuchuk
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 呢個軟件係本地 FTPS（經 TLS 嘅 FTP）伺服器。佢唔會開雲端帳戶。
 開發者唔會營運接收你檔案、密碼或者使用數據嘅後端。
 
@@ -43,5 +48,8 @@
 呢個應用程式係網絡檔案伺服器，唔以 13 歲以下兒童為對象。
 
 ## 聯絡
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
 
 有關呢個 Android 應用程式嘅問題，可以經你安裝所用嘅商店頁面發送。

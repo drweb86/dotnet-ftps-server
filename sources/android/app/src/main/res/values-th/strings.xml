@@ -11,7 +11,7 @@
     <string name="clear_logs">ล้าง</string>
     <string name="menu_start">[ เริ่ม ]</string>
     <string name="menu_stop">[ หยุด ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">โฮสต์ พอร์ต ใบรับรอง</string>
     <string name="config_address">ที่อยู่</string>
     <string name="config_port">พอร์ต</string>

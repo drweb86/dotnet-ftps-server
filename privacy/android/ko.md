@@ -4,6 +4,11 @@
 
 최종 업데이트: 2026년 9월 2일
 
+**FTPS Server** by Siarhei Kuchuk
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 본 소프트웨어는 로컬 FTPS(TLS 위의 FTP) 서버입니다. 클라우드 계정을 만들지 않습니다.
 개발자는 파일, 비밀번호, 사용 데이터를 받는 백엔드를 운영하지 않습니다.
 
@@ -43,5 +48,9 @@
 본 앱은 네트워크 파일 서버이며 13세 미만 아동을 대상으로 하지 않습니다.
 
 ## 문의
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 
 이 Android 앱에 관한 질문은 설치에 사용한 스토어 페이지를 통해 보낼 수 있습니다.

@@ -11,7 +11,7 @@
     <string name="clear_logs">Kuro</string>
     <string name="menu_start">[ BẸRẸ ]</string>
     <string name="menu_stop">[ DURO ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Olugbalejo, Port, Iwe-eri</string>
     <string name="config_address">Adirẹsi</string>
     <string name="config_port">Port</string>

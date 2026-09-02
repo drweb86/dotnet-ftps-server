@@ -11,7 +11,7 @@
     <string name="clear_logs">साफ़ करें</string>
     <string name="menu_start">[ शुरू ]</string>
     <string name="menu_stop">[ रोकें ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">होस्ट, पोर्ट, प्रमाणपत्र</string>
     <string name="config_address">पता</string>
     <string name="config_port">पोर्ट</string>

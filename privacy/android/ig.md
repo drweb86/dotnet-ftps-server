@@ -4,6 +4,11 @@
 
 Emelitere ikpeazụ: 2 Septemba 2026
 
+**FTPS Server** by Siarhei Kuchuk
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 Ngwanrọ a bụ sava FTPS mpaghara (FTP n’elu TLS). Ọ naghị emepụta akaụntụ ígwé ojii.
 Onye mmepe anaghị arụ backend nke na-anata faịlụ gị, paswọọdụ, ma ọ bụ data ojiji.
 
@@ -43,5 +48,9 @@ Ngwa na-eji naanị ikike ndị a:
 Ngwa a bụ sava faịlụ netwọk. Ọ maghị ụmụaka nọ n’okpuru afọ 13.
 
 ## Kọntaktị
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 
 Ajụjụ gbasara ngwa Android a nwere ike iziga site na ibe ụlọ ahịa ị jiri wụnye ya.

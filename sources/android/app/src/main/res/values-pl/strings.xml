@@ -11,7 +11,7 @@
     <string name="clear_logs">Wyczyść</string>
     <string name="menu_start">[ URUCHOM ]</string>
     <string name="menu_stop">[ ZATRZYMAJ ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Host, Port, Certyfikat</string>
     <string name="config_address">Adres</string>
     <string name="config_port">Port</string>

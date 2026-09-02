@@ -11,7 +11,7 @@
     <string name="clear_logs">মুছুন</string>
     <string name="menu_start">[ শুরু ]</string>
     <string name="menu_stop">[ বন্ধ ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">হোস্ট, পোর্ট, সার্টিফিকেট</string>
     <string name="config_address">ঠিকানা</string>
     <string name="config_port">পোর্ট</string>

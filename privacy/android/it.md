@@ -4,6 +4,11 @@
 
 Ultimo aggiornamento: 2 settembre 2026
 
+**FTPS Server** by Siarhei Kuchuk
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 Il software è un server FTPS locale (FTP su TLS). Non crea account cloud.
 Lo sviluppatore non gestisce un backend che riceva i tuoi file, le password o i dati di utilizzo.
 
@@ -43,5 +48,9 @@ L’app usa solo le seguenti autorizzazioni:
 L’app è un server di file in rete. Non è destinata a minori di 13 anni.
 
 ## Contatti
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 
 Le domande su questa app Android possono essere inviate tramite la scheda dello store da cui l’hai installata.

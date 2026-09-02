@@ -11,7 +11,7 @@
     <string name="clear_logs">Haqi</string>
     <string name="menu_start">[ EEGALI ]</string>
     <string name="menu_stop">[ DHAABI ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Hoostii, Poortii, Waraqaa Ragaa</string>
     <string name="config_address">Teessoo</string>
     <string name="config_port">Poortii</string>

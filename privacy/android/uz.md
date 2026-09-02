@@ -4,6 +4,11 @@
 
 Oxirgi yangilanish: 2026-yil 2-sentabr
 
+**FTPS Server** by Siarhei Kuchuk
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 Dastur mahalliy FTPS (TLS ustida FTP) serveridir. U bulut hisoblarini yaratmaydi.
 Ishlab chiquvchi fayllaringiz, parollaringiz yoki foydalanish ma’lumotlarini qabul qiladigan backendni ishlatmaydi.
 
@@ -43,5 +48,9 @@ Ilova faqat quyidagi ruxsatlardan foydalanadi:
 Ilova tarmoq fayl serveridir. 13 yoshgacha bolalarga mo‘ljallanmagan.
 
 ## Aloqa
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 
 Ushbu Android ilovasi haqidagi savollarni o‘rnatgan do‘kon sahifasi orqali yuborish mumkin.

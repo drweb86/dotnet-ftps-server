@@ -11,7 +11,7 @@
     <string name="clear_logs">Hapus</string>
     <string name="menu_start">[ MULAI ]</string>
     <string name="menu_stop">[ BERHENTI ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Host, Port, Sertifikat</string>
     <string name="config_address">Alamat</string>
     <string name="config_port">Port</string>

@@ -4,6 +4,11 @@
 
 Imesasishwa mwisho: 2 Septemba 2026
 
+**FTPS Server** by Siarhei Kuchuk
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 Programu ni seva ya FTPS ya ndani (FTP juu ya TLS). Haitengenezi akaunti za wingu.
 Msanidi hafanyi kazi ya seva ya nyuma inayopokea faili zako, nenosiri, au data ya matumizi.
 
@@ -43,5 +48,9 @@ Programu hutumia ruhusa hizi tu:
 Programu ni seva ya faili ya mtandao. Hailengi watoto chini ya miaka 13.
 
 ## Mawasiliano
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 
 Maswali kuhusu programu hii ya Android yanaweza kutumwa kupitia ukurasa wa duka uliotumia kuisakinisha.

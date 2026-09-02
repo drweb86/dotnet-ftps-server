@@ -11,7 +11,7 @@
     <string name="clear_logs">ရှင်းလင်းရန်</string>
     <string name="menu_start">[ စတင်ရန် ]</string>
     <string name="menu_stop">[ ရပ်တန့်ရန် ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">ဟောက်စ်၊ ပို့၊ လက်မှတ်</string>
     <string name="config_address">လိပ်စာ</string>
     <string name="config_port">ပို့</string>

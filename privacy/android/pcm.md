@@ -4,6 +4,11 @@
 
 Last update: 2 September 2026
 
+**FTPS Server** by Siarhei Kuchuk
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 Di software na local FTPS server (FTP over TLS). E no create cloud account.
 Di developer no dey run any backend wey go receive your files, passwords, or usage data.
 
@@ -43,5 +48,9 @@ Di app dey use only these permissions:
 Di app na network file server. E no dey for children under 13.
 
 ## Contact
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 
 Questions about dis Android app fit dey send through di store listing wey you use take install am.

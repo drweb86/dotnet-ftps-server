@@ -11,7 +11,7 @@
     <string name="clear_logs">Clear</string>
     <string name="menu_start">[ START ]</string>
     <string name="menu_stop">[ STOP ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Host, Port, Certificate</string>
     <string name="config_address">Address</string>
     <string name="config_port">Port</string>

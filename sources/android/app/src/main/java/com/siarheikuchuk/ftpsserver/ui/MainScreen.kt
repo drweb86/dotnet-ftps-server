@@ -83,7 +83,12 @@ fun MainScreen(viewModel: MainViewModel, onOpenPrivacy: () -> Unit) {
         containerColor = AppColors.background,
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.menu_about_format, BuildConfig.VERSION_NAME.substringBefore('-'))) },
+                title = {
+                    val version = BuildConfig.VERSION_NAME.substringBefore('-')
+                    Text(
+                        "${stringResource(R.string.app_title)} - ${stringResource(R.string.developer_name)} - V$version"
+                    )
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = AppColors.surface,
                     titleContentColor = AppColors.text,

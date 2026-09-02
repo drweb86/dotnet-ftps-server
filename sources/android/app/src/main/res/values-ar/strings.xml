@@ -11,7 +11,7 @@
     <string name="clear_logs">مسح</string>
     <string name="menu_start">[ تشغيل ]</string>
     <string name="menu_stop">[ إيقاف ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">المضيف، المنفذ، الشهادة</string>
     <string name="config_address">العنوان</string>
     <string name="config_port">المنفذ</string>

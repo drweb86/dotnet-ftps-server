@@ -4,6 +4,11 @@
 
 ለመጨረሻ ጊዜ የተሻሻለው፦ 2 መስከረም 2026
 
+**FTPS Server** by Siarhei Kuchuk
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 ሶፍትዌሩ የአካባቢ FTPS (በ TLS ላይ FTP) አገልጋይ ነው። የደመና መለያዎችን አይፈጥርም።
 ገንቢው ፋይሎችዎን፣ የይለፍ ቃሎችዎን ወይም የአጠቃቀም ውሂብዎን የሚቀበል የኋላ አገልጋይ አያንቀሳቅስም።
 
@@ -43,5 +48,9 @@
 መተግበሪያው የአውታረ መረብ ፋይል አገልጋይ ነው። ከ13 ዓመት በታች ለሆኑ ሕፃናት አይመራም።
 
 ## መገናኛ
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 
 ስለዚህ የ Android መተግበሪያ ጥያቄዎች የጫኑበትን የመደብር ገጽ በኩል ሊላኩ ይችላሉ።

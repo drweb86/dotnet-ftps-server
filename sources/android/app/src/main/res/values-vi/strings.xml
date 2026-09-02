@@ -11,7 +11,7 @@
     <string name="clear_logs">Xóa</string>
     <string name="menu_start">[ BẮT ĐẦU ]</string>
     <string name="menu_stop">[ DỪNG ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Máy chủ, Cổng, Chứng chỉ</string>
     <string name="config_address">Địa chỉ</string>
     <string name="config_port">Cổng</string>

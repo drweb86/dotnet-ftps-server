@@ -11,7 +11,7 @@
     <string name="clear_logs">پاک کړئ</string>
     <string name="menu_start">[ پیل کړئ ]</string>
     <string name="menu_stop">[ ودرولئ ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">کوربه، بندر، سند</string>
     <string name="config_address">پته</string>
     <string name="config_port">بندر</string>

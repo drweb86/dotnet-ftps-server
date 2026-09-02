@@ -4,6 +4,11 @@
 
 Haaromsni dhumaa: Fulbaana 2, 2026
 
+**FTPS Server** by Siarhei Kuchuk
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 Softiweerichi sarvarii FTPS naannoo (FTP irratti TLS) dha. Akkaawuntii duumessa hin uumu.
 Miseensaan backend kan faayila, jecha icciitii, ykn daataa fayyadama keessan fudhatu hin hojjechisu.
 
@@ -43,5 +48,9 @@ App hayyama armaan gadii qofa fayyadama:
 App sarvarii faayilaa cimdaa dha. Daa’imman waggaa 13 gadiif hin qophaa’ine.
 
 ## Quunnamtii
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
 
 Gaaffiin waa’ee app Android kanaa fuula kuusaa itti fe’attan irraa ergamuu danda’a.

@@ -11,7 +11,7 @@
     <string name="clear_logs">Tozalash</string>
     <string name="menu_start">[ BOSHLASH ]</string>
     <string name="menu_stop">[ TO\'XTATISH ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Host, Port, Sertifikat</string>
     <string name="config_address">Manzil</string>
     <string name="config_port">Port</string>

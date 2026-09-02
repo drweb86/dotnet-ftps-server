@@ -11,7 +11,7 @@
     <string name="clear_logs">清除</string>
     <string name="menu_start">[ 啟動 ]</string>
     <string name="menu_stop">[ 停止 ]</string>
-    <string name="menu_about_format">FTPS Server - V%1$s</string>
+    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">主機、端口、證書</string>
     <string name="config_address">地址</string>
     <string name="config_port">端口</string>

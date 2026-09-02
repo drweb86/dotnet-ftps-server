@@ -1,7 +1,11 @@
 # Privacy policy
 
-**FTPS Server** by Siarhei Kuchuk 
-Last updated: 31 August 2026
+**FTPS Server** by Siarhei Kuchuk
+
+Application name: FTPS Server
+Developer: Siarhei Kuchuk
+
+Last updated: 2 September 2026
 
 The software is a local FTPS (FTP over TLS) server. It does not create cloud accounts. The developer does not operate a backend that receives your files, passwords, or usage data.
 
