@@ -99,25 +99,36 @@ android {
     }
 }
 
-val copyPrivacyPolicies = tasks.register<Copy>("copyPrivacyPolicies") {
-    val dest = layout.buildDirectory.dir("generated/privacyAssets/privacy")
-    from(rootProject.projectDir.resolve("../../privacy/android")) {
-        include("*.md")
-        exclude("README.md")
-    }
-    into(dest)
-}
+abstract class CopyPrivacyPoliciesTask : DefaultTask() {
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val sourceDir: DirectoryProperty
 
-android.sourceSets.getByName("main").assets.srcDir(layout.buildDirectory.dir("generated/privacyAssets"))
+    @get:OutputDirectory
+    abstract val outputDir: DirectoryProperty
 
-tasks.configureEach {
-    if (name.startsWith("merge") && name.endsWith("Assets")) {
-        dependsOn(copyPrivacyPolicies)
+    @TaskAction
+    fun copyPolicies() {
+        val dest = outputDir.get().asFile.resolve("privacy")
+        dest.deleteRecursively()
+        dest.mkdirs()
+        sourceDir.get().asFile.listFiles()
+            ?.filter { it.isFile && it.extension == "md" && !it.name.equals("README.md", ignoreCase = true) }
+            ?.forEach { it.copyTo(dest.resolve(it.name), overwrite = true) }
     }
 }
 
 androidComponents {
     onVariants { variant ->
+        val copyPrivacyPolicies = tasks.register<CopyPrivacyPoliciesTask>(
+            "copyPrivacyPolicies${variant.name.replaceFirstChar { it.uppercase() }}",
+        ) {
+            sourceDir.set(rootProject.projectDir.resolve("../../privacy/android"))
+        }
+        variant.sources.assets?.addGeneratedSourceDirectory(
+            copyPrivacyPolicies,
+            CopyPrivacyPoliciesTask::outputDir,
+        )
         if (variant.flavorName == "chinaPiplPolicy" && variant.buildType == "debug") {
             variant.applicationId.set("com.siarheikuchuk.ftpsserver.chinapipl.debug")
         }
