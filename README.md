@@ -24,7 +24,7 @@ Features:
 | [Library](./README_NUGET.md)   | [NUGet Package](https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary)  |
 | [UI for Windows and Ubuntu](./README_UI.md) |                                                                      |
 | [Console](./README_CONSOLE.md) |                                                                                   |
-| [Android](./README_ANDROID.md) | [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver) [Google Play (help wanted, see bottom of page)](./README_ANDROID.md) |
+| [Android](./README_ANDROID.md) | [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver) [Google Play (help wanted, see bottom of page)](./README_ANDROID.md) [Huawei](https://appgallery.huawei.com/app/C118829925) |
 | [Ubuntu](./Ubuntu.md) |                                                                                   |
 
 [Installation and uninstallation on Ubuntu](./Ubuntu.md)
