@@ -11,7 +11,7 @@ FOSS stores (F-Droid and similar) reject .NET/Avalonia APKs because they cannot 
 ## Requirements
 
 - minSdk 23 (Android 6.0)
-- compileSdk / targetSdk 35 (Android 15)
+- compileSdk / targetSdk 36 (Android 16)
 - JDK 17+
 
 ## Product flavors

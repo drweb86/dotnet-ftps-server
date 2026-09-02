@@ -1,0 +1,1 @@
+Android: target API 36 (Google Play requirement).

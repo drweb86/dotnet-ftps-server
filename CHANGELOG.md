@@ -1,3 +1,8 @@
+# 2026.09.04
+
+## Changes
+- Android: target API 36 (Google Play requirement).
+
 # 2026.09.03
 
 ## Changes

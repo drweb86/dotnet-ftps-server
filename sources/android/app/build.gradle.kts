@@ -8,15 +8,15 @@ val screenshots = findProperty("screenshots")?.toString() == "true"
 
 android {
     namespace = "com.siarheikuchuk.ftpsserver"
-    compileSdk = 35
+    compileSdk = 36
     buildToolsVersion = "36.0.0"
 
     defaultConfig {
         applicationId = "com.siarheikuchuk.ftpsserver"
         minSdk = 23
-        targetSdk = 35
-        val defaultVersionCode = 20260903
-        val defaultVersionName = "2026.09.03"
+        targetSdk = 36
+        val defaultVersionCode = 20260904
+        val defaultVersionName = "2026.09.04"
         versionCode = findProperty("appVersionCode")?.toString()?.toIntOrNull() ?: defaultVersionCode
         versionName = findProperty("appVersionName")?.toString()?.takeIf { it.isNotBlank() } ?: defaultVersionName
         buildConfigField("boolean", "SCREENSHOTS", if (screenshots) "true" else "false")
