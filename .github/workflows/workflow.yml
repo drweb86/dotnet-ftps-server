@@ -211,6 +211,7 @@ jobs:
           path: |
             Output/ftpsserver_*_android.apk
             Output/ftpsserver_*_android.aab
+            Output/ftpsserver_*_android_china.aab
 
       - name: Upload Android APK and AAB to GitHub Release
         if: github.event_name == 'release'
@@ -220,6 +221,7 @@ jobs:
           v="${{ steps.version.outputs.version }}"
           gh release upload "${{ github.event.release.tag_name }}" "Output/ftpsserver_${v}_android.apk" --clobber
           gh release upload "${{ github.event.release.tag_name }}" "Output/ftpsserver_${v}_android.aab" --clobber
+          gh release upload "${{ github.event.release.tag_name }}" "Output/ftpsserver_${v}_android_china.aab" --clobber
 
   update-apt-repo:
     needs: build-deb
