@@ -23,6 +23,7 @@ The English source is [privacy/android/en.md](./privacy/android/en.md). Localize
 Stores:
 - [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver)
 - Google Play (see bottom)
+- [Huawei](https://appgallery.huawei.com/app/C118829925)
 
 Manually:
 - Release contains prebuilt asset `ftpsserver_<version>_android.apk`.
