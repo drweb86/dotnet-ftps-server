@@ -1,4 +1,4 @@
-# 2026.09.02
+# 2026.09.03
 
 ## Changes
 - Android: removed in-app update checks and website / license links (store listing rules).
