@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Privacy</string>
+    <string name="privacy_language">Language</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">I agree</string>
+    <string name="privacy_disagree">I no agree</string>
+    <string name="privacy_withdraw_consent">Commot di consent</string>
+    <string name="privacy_decline_message">Dis one go delete all di settings, usernames and passwords wey dey store, forever, and e go close di app. You no fit undo am.</string>
+    <string name="privacy_cancel">Cancel</string>
+    <string name="privacy_delete_and_close">Delete and close</string>
+</resources>

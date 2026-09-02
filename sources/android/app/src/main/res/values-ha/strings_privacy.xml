@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Sirri</string>
+    <string name="privacy_language">Harshe</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Na yarda</string>
+    <string name="privacy_disagree">Ban yarda ba</string>
+    <string name="privacy_withdraw_consent">Janye yarda</string>
+    <string name="privacy_decline_message">Wannan zai goge duk saitunan da aka adana, sunayen masu amfani, da kalmomin sirri har abada, sannan ya rufe aikin. Ba za a iya juyawa ba.</string>
+    <string name="privacy_cancel">Soke</string>
+    <string name="privacy_delete_and_close">Goge kuma rufe</string>
+</resources>

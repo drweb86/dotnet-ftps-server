@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">गोपनीयता</string>
+    <string name="privacy_language">भाषा</string>
+    <string name="privacy_ok">ठीक है</string>
+    <string name="privacy_agree">सहमत</string>
+    <string name="privacy_disagree">असहमत</string>
+    <string name="privacy_withdraw_consent">सहमति वापस लें</string>
+    <string name="privacy_decline_message">इससे सभी संग्रहीत सेटिंग, उपयोगकर्ता नाम और पासवर्ड स्थायी रूप से हट जाएंगे और ऐप बंद हो जाएगा। इसे पूर्ववत नहीं किया जा सकता।</string>
+    <string name="privacy_cancel">रद्द करें</string>
+    <string name="privacy_delete_and_close">हटाएँ और बंद करें</string>
+</resources>

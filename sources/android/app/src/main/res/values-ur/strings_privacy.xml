@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">پرائیویسی</string>
+    <string name="privacy_language">زبان</string>
+    <string name="privacy_ok">ٹھیک ہے</string>
+    <string name="privacy_agree">متفق ہوں</string>
+    <string name="privacy_disagree">متفق نہیں</string>
+    <string name="privacy_withdraw_consent">رضامندی واپس لیں</string>
+    <string name="privacy_decline_message">اس سے تمام محفوظ شدہ ترتیبات، صارف نام اور پاس ورڈ مستقل طور پر حذف ہو جائیں گے اور ایپ بند ہو جائے گی۔ اسے کالعدم نہیں کیا جا سکتا۔</string>
+    <string name="privacy_cancel">منسوخ</string>
+    <string name="privacy_delete_and_close">حذف کریں اور بند کریں</string>
+</resources>

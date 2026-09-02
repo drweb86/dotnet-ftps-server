@@ -4,6 +4,8 @@
     <string name="users_tab">ผู้ใช้</string>
     <string name="add_user_button">+ เพิ่ม</string>
     <string name="menu_header">FTPS Server</string>
+    <string name="menu_web_site">เว็บไซต์</string>
+    <string name="menu_license">ใบอนุญาต</string>
     <string name="menu_logs">บันทึก</string>
     <string name="logs_tab">บันทึกเซิร์ฟเวอร์</string>
     <string name="clear_logs">ล้าง</string>
@@ -31,6 +33,8 @@
     <string name="user_readonly">อ่านอย่างเดียว</string>
     <string name="user_delete">ลบ</string>
     <string name="user_select_folder_format">เลือกโฟลเดอร์เพื่อแชร์ให้ผู้ใช้ %1$s</string>
+    <string name="update_download">ดาวน์โหลด</string>
+    <string name="update_available_format">มีเวอร์ชัน %1$s ใหม่พร้อมใช้งาน</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">ข้อผิดพลาด</string>

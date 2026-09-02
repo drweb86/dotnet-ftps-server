@@ -11,8 +11,8 @@ $script = Join-Path $PSScriptRoot "sources\android\check-local.ps1"
 & $script -Release -VersionName $version -VersionCode $versionCode
 if ($LASTEXITCODE -ne 0) { Exit $LASTEXITCODE }
 
-$releaseDir = Join-Path $PSScriptRoot "sources\android\app\build\outputs\apk\release"
-$apk = @("app-release.apk", "app-release-unsigned.apk") |
+$releaseDir = Join-Path $PSScriptRoot "sources\android\app\build\outputs\apk\general\release"
+$apk = @("app-general-release.apk", "app-release-unsigned.apk") |
     ForEach-Object { Join-Path $releaseDir $_ } |
     Where-Object { Test-Path $_ } |
     Select-Object -First 1

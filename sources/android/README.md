@@ -13,3 +13,13 @@ FOSS stores (F-Droid and similar) reject .NET/Avalonia APKs because they cannot 
 - minSdk 23 (Android 6.0)
 - compileSdk / targetSdk 35 (Android 15)
 - JDK 17+
+
+## Product flavors
+
+- `general` (default) — Privacy menu shows the embedded policy (OK to dismiss). No consent gate.
+- `chinaPiplPolicy` — first-launch Agree/Disagree gate, persisted consent, withdraw from Privacy, wipe of app-private data only.
+
+Local debug (three APKs): `./check-local.ps1` then optional `-Install`.
+Local China-only release: `./check-local.ps1 -Release -ChinaPipl`.
+CI AAB: `ftpsserver_<version>_android_china.aab`.
+F-Droid / default store builds should use `assembleGeneralRelease`.

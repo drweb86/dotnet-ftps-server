@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Privacy</string>
+    <string name="privacy_language">Language</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Agree</string>
+    <string name="privacy_disagree">Disagree</string>
+    <string name="privacy_withdraw_consent">Withdraw consent</string>
+    <string name="privacy_decline_message">This will permanently delete all stored settings, usernames, and passwords, and close the app. This cannot be undone.</string>
+    <string name="privacy_cancel">Cancel</string>
+    <string name="privacy_delete_and_close">Delete and close</string>
+</resources>

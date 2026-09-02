@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Native Android release APK (GitHub/RuStore) and AAB (Google Play) for GitHub Actions.
+# Native Android release APK (GitHub/RuStore), general AAB (Google Play),
+# and China PIPL-policy AAB (chinaPiplPolicy flavor) for GitHub Actions.
 # Required env: VERSION
 # Signing env (same secrets as the previous Avalonia APK):
 #   ANDROID_KEYSTORE_FILE, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD
@@ -35,27 +36,40 @@ unset GRADLE_OPTS || true
 
 (
   cd "$ANDROID_ROOT"
-  sh ./gradlew --no-daemon assembleRelease bundleRelease \
+  sh ./gradlew --no-daemon \
+    assembleGeneralRelease \
+    bundleGeneralRelease \
+    bundleChinaPiplPolicyRelease \
     -PappVersionName="$VERSION" \
     -PappVersionCode="$VERSION_CODE"
 )
 
 apk=""
-if [ -f "$ANDROID_ROOT/app/build/outputs/apk/release/app-release.apk" ]; then
-  apk="$ANDROID_ROOT/app/build/outputs/apk/release/app-release.apk"
+if [ -f "$ANDROID_ROOT/app/build/outputs/apk/general/release/app-general-release.apk" ]; then
+  apk="$ANDROID_ROOT/app/build/outputs/apk/general/release/app-general-release.apk"
 fi
 if [ -z "$apk" ]; then
-  echo "Signed app-release.apk not found. ANDROID_KEYSTORE_* secrets may be missing."
+  echo "Signed general release APK not found. ANDROID_KEYSTORE_* secrets may be missing."
   find "$ANDROID_ROOT/app/build/outputs/apk" -name '*.apk' -type f || true
   exit 1
 fi
 
 aab=""
-if [ -f "$ANDROID_ROOT/app/build/outputs/bundle/release/app-release.aab" ]; then
-  aab="$ANDROID_ROOT/app/build/outputs/bundle/release/app-release.aab"
+if [ -f "$ANDROID_ROOT/app/build/outputs/bundle/generalRelease/app-general-release.aab" ]; then
+  aab="$ANDROID_ROOT/app/build/outputs/bundle/generalRelease/app-general-release.aab"
 fi
 if [ -z "$aab" ]; then
-  echo "Signed app-release.aab not found. ANDROID_KEYSTORE_* secrets may be missing."
+  echo "Signed general release AAB not found. ANDROID_KEYSTORE_* secrets may be missing."
+  find "$ANDROID_ROOT/app/build/outputs/bundle" -name '*.aab' -type f || true
+  exit 1
+fi
+
+china_aab=""
+if [ -f "$ANDROID_ROOT/app/build/outputs/bundle/chinaPiplPolicyRelease/app-chinaPiplPolicy-release.aab" ]; then
+  china_aab="$ANDROID_ROOT/app/build/outputs/bundle/chinaPiplPolicyRelease/app-chinaPiplPolicy-release.aab"
+fi
+if [ -z "$china_aab" ]; then
+  echo "Signed China PIPL policy AAB not found."
   find "$ANDROID_ROOT/app/build/outputs/bundle" -name '*.aab' -type f || true
   exit 1
 fi
@@ -63,9 +77,13 @@ fi
 mkdir -p "$OUT_DIR"
 dest_apk="$OUT_DIR/ftpsserver_${VERSION}_android.apk"
 dest_aab="$OUT_DIR/ftpsserver_${VERSION}_android.aab"
+dest_china_aab="$OUT_DIR/ftpsserver_${VERSION}_android_china.aab"
 cp "$apk" "$dest_apk"
 cp "$aab" "$dest_aab"
+cp "$china_aab" "$dest_china_aab"
 echo "APK: $dest_apk"
 ls -lh "$dest_apk"
 echo "AAB: $dest_aab"
 ls -lh "$dest_aab"
+echo "China PIPL AAB: $dest_china_aab"
+ls -lh "$dest_china_aab"

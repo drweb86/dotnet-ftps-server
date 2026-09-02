@@ -4,6 +4,8 @@
     <string name="users_tab">Utilisateurs</string>
     <string name="add_user_button">+ Ajouter</string>
     <string name="menu_header">Serveur FTPS</string>
+    <string name="menu_web_site">Site Web</string>
+    <string name="menu_license">Licence</string>
     <string name="menu_logs">Journaux</string>
     <string name="logs_tab">Journaux du Serveur</string>
     <string name="clear_logs">Effacer</string>
@@ -31,6 +33,8 @@
     <string name="user_readonly">Lecture Seule</string>
     <string name="user_delete">Supprimer</string>
     <string name="user_select_folder_format">Sélectionner le dossier à partager pour l\'utilisateur %1$s</string>
+    <string name="update_download">Télécharger</string>
+    <string name="update_available_format">Nouvelle version %1$s disponible.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Erreur</string>

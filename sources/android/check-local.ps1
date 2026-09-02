@@ -1,15 +1,19 @@
 # Native Android FTPS Server — local build and optional device install.
 # Usage (from anywhere):
 #   powershell -File sources/android/check-local.ps1
-# Optional: -Install  to adb install/launch if a device/emulator is connected
-#           -Release  to assemble the release APK
-#           -Screenshots  English-only APK for store screenshots (id ...ftpsserver.screenshots)
+# Default debug builds three APKs you can install side by side:
+#   screenshots (general, English-only, id ...ftpsserver.screenshots)
+#   general debug (id ...ftpsserver.debug)
+#   China PIPL debug (id ...ftpsserver.chinapipl.debug)
+# Optional: -Install  adb install all three if a device/emulator is connected
+#           -Release  assemble one release APK instead
+#           -ChinaPipl  with -Release: China PIPL-policy flavor
 #           -VersionName / -VersionCode  (used for release versioning)
 
 param(
     [switch]$Install,
     [switch]$Release,
-    [switch]$Screenshots,
+    [switch]$ChinaPipl,
     [string]$VersionName = "",
     [string]$VersionCode = ""
 )
@@ -71,6 +75,29 @@ function New-WritableSdk($sdk) {
     return $localSdk
 }
 
+function Invoke-Gradle([string[]]$Tasks, [string[]]$ExtraArgs) {
+    $gradleArgs = @("--no-daemon") + $Tasks
+    if ($VersionName) { $gradleArgs += "-PappVersionName=$VersionName" }
+    if ($VersionCode) { $gradleArgs += "-PappVersionCode=$VersionCode" }
+    if ($ExtraArgs) { $gradleArgs += $ExtraArgs }
+    Write-Host "Building $($Tasks -join ', ') ..."
+    Push-Location $AndroidRoot
+    try {
+        & .\gradlew.bat @gradleArgs
+        if ($LASTEXITCODE -ne 0) { throw "Gradle $($Tasks -join ' ') failed with exit code $LASTEXITCODE" }
+    } finally {
+        Pop-Location
+    }
+}
+
+function Show-Apk($path, $label) {
+    if (-not $path -or -not (Test-Path $path)) {
+        throw "APK not found ($label): $path"
+    }
+    Write-Host ("{0}: {1}" -f $label, $path)
+    Write-Host ("  Size: {0:N2} MB" -f ((Get-Item $path).Length / 1MB))
+}
+
 $javaHome = Find-JavaHome
 $sdk = New-WritableSdk (Find-AndroidSdk)
 $env:JAVA_HOME = $javaHome
@@ -103,34 +130,43 @@ if (-not (Test-Path $wrapperJar)) {
     Invoke-WebRequest -Uri $url -OutFile $wrapperJar -UseBasicParsing
 }
 
-$task = if ($Release) { "assembleRelease" } else { "assembleDebug" }
-Write-Host "Building $task ..."
-Push-Location $AndroidRoot
-try {
-    $gradleArgs = @("--no-daemon", $task)
-    if ($VersionName) { $gradleArgs += "-PappVersionName=$VersionName" }
-    if ($VersionCode) { $gradleArgs += "-PappVersionCode=$VersionCode" }
-    if ($Screenshots) { $gradleArgs += "-Pscreenshots=true" }
-    & .\gradlew.bat @gradleArgs
-    if ($LASTEXITCODE -ne 0) { throw "Gradle $task failed with exit code $LASTEXITCODE" }
-} finally {
-    Pop-Location
-}
+$apkOutputs = Join-Path $AndroidRoot "app\build\outputs\apk"
+$installList = @()
 
-$apk = if ($Release) {
-    $releaseDir = Join-Path $AndroidRoot "app\build\outputs\apk\release"
-    @("app-release.apk", "app-release-unsigned.apk") |
+if ($Release) {
+    $flavorTask = if ($ChinaPipl) { "ChinaPiplPolicy" } else { "General" }
+    Invoke-Gradle @("assemble${flavorTask}Release") @()
+    $flavorDir = if ($ChinaPipl) { "chinaPiplPolicy" } else { "general" }
+    $apkName = if ($ChinaPipl) { "app-chinaPiplPolicy-release.apk" } else { "app-general-release.apk" }
+    $releaseDir = Join-Path $apkOutputs "$flavorDir\release"
+    $apk = @($apkName, "app-release-unsigned.apk") |
         ForEach-Object { Join-Path $releaseDir $_ } |
         Where-Object { Test-Path $_ } |
         Select-Object -First 1
+    Show-Apk $apk "Release APK"
+    $pkg = "com.siarheikuchuk.ftpsserver"
+    $installList += @{ Path = $apk; Package = $pkg }
 } else {
-    Join-Path $AndroidRoot "app\build\outputs\apk\debug\app-debug.apk"
+    # Screenshots uses -Pscreenshots=true, which cannot be mixed with the other
+    # debug variants in one Gradle run (it would rewrite applicationId for all).
+    Invoke-Gradle @("assembleGeneralDebug") @("-Pscreenshots=true")
+    $screenshotsSrc = Join-Path $apkOutputs "general\debug\app-general-debug.apk"
+    $screenshotsDir = Join-Path $apkOutputs "screenshots\debug"
+    New-Item -ItemType Directory -Force -Path $screenshotsDir | Out-Null
+    $screenshotsApk = Join-Path $screenshotsDir "app-general-screenshots-debug.apk"
+    Copy-Item $screenshotsSrc $screenshotsApk -Force
+
+    Invoke-Gradle @("assembleGeneralDebug", "assembleChinaPiplPolicyDebug") @()
+    $generalApk = Join-Path $apkOutputs "general\debug\app-general-debug.apk"
+    $chinaApk = Join-Path $apkOutputs "chinaPiplPolicy\debug\app-chinaPiplPolicy-debug.apk"
+
+    Show-Apk $screenshotsApk "Screenshots debug (no PIPL)"
+    Show-Apk $generalApk "General debug (no PIPL)"
+    Show-Apk $chinaApk "China PIPL debug"
+    $installList += @{ Path = $screenshotsApk; Package = "com.siarheikuchuk.ftpsserver.screenshots" }
+    $installList += @{ Path = $generalApk; Package = "com.siarheikuchuk.ftpsserver.debug" }
+    $installList += @{ Path = $chinaApk; Package = "com.siarheikuchuk.ftpsserver.chinapipl.debug" }
 }
-if (-not $apk -or -not (Test-Path $apk)) {
-    $apk = Get-ChildItem (Join-Path $AndroidRoot "app\build\outputs\apk") -Recurse -Filter "*.apk" | Select-Object -First 1 -ExpandProperty FullName
-}
-Write-Host "APK: $apk"
-if ($apk) { Write-Host ("Size: {0:N2} MB" -f ((Get-Item $apk).Length / 1MB)) }
 
 if ($Install) {
     $adb = Join-Path $sdk "platform-tools\adb.exe"
@@ -140,18 +176,12 @@ if ($Install) {
         Write-Host "No Android device/emulator with status 'device'. Start an emulator or plug in a phone, then re-run with -Install."
         exit 0
     }
-    Write-Host "Installing on device..."
-    & $adb install -r $apk
-    if ($LASTEXITCODE -ne 0) { throw "adb install failed" }
-    $pkg = if ($Screenshots) {
-        "com.siarheikuchuk.ftpsserver.screenshots"
-    } elseif ($Release) {
-        "com.siarheikuchuk.ftpsserver"
-    } else {
-        "com.siarheikuchuk.ftpsserver.debug"
+    foreach ($item in $installList) {
+        Write-Host "Installing $($item.Package) ..."
+        & $adb install -r $item.Path
+        if ($LASTEXITCODE -ne 0) { throw "adb install failed for $($item.Package)" }
     }
-    & $adb shell am start -n "$pkg/com.siarheikuchuk.ftpsserver.MainActivity"
-    Write-Host "Launched $pkg"
+    Write-Host "Installed $($installList.Count) APK(s). Open them from the launcher (distinct names)."
 }
 
 Write-Host "OK"

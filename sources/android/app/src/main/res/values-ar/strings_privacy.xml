@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">الخصوصية</string>
+    <string name="privacy_language">اللغة</string>
+    <string name="privacy_ok">موافق</string>
+    <string name="privacy_agree">موافقة</string>
+    <string name="privacy_disagree">رفض</string>
+    <string name="privacy_withdraw_consent">سحب الموافقة</string>
+    <string name="privacy_decline_message">سيؤدي هذا إلى حذف جميع الإعدادات وأسماء المستخدمين وكلمات المرور المخزَّنة نهائياً وإغلاق التطبيق. لا يمكن التراجع عن ذلك.</string>
+    <string name="privacy_cancel">إلغاء</string>
+    <string name="privacy_delete_and_close">حذف وإغلاق</string>
+</resources>

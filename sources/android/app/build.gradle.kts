@@ -23,6 +23,20 @@ android {
         if (screenshots) {
             applicationIdSuffix = ".screenshots"
             resConfigs("en")
+            resValue("string", "app_label", "FTPS Server (screenshots)")
+        }
+    }
+
+    flavorDimensions += "policy"
+    productFlavors {
+        create("general") {
+            dimension = "policy"
+            isDefault = true
+            buildConfigField("boolean", "CHINA_PIPL_POLICY", "false")
+        }
+        create("chinaPiplPolicy") {
+            dimension = "policy"
+            buildConfigField("boolean", "CHINA_PIPL_POLICY", "true")
         }
     }
 
@@ -45,7 +59,6 @@ android {
             if (!screenshots) {
                 applicationIdSuffix = ".debug"
                 versionNameSuffix = "-native"
-                // Distinct launcher name so this sits next to the store/Avalonia app.
                 resValue("string", "app_label", "FTPS Server (native debug)")
             }
         }
@@ -83,6 +96,31 @@ android {
     dependenciesInfo {
         includeInApk = false
         includeInBundle = false
+    }
+}
+
+val copyPrivacyPolicies = tasks.register<Copy>("copyPrivacyPolicies") {
+    val dest = layout.buildDirectory.dir("generated/privacyAssets/privacy")
+    from(rootProject.projectDir.resolve("../../privacy/android")) {
+        include("*.md")
+        exclude("README.md")
+    }
+    into(dest)
+}
+
+android.sourceSets.getByName("main").assets.srcDir(layout.buildDirectory.dir("generated/privacyAssets"))
+
+tasks.configureEach {
+    if (name.startsWith("merge") && name.endsWith("Assets")) {
+        dependsOn(copyPrivacyPolicies)
+    }
+}
+
+androidComponents {
+    onVariants { variant ->
+        if (variant.flavorName == "chinaPiplPolicy" && variant.buildType == "debug") {
+            variant.applicationId.set("com.siarheikuchuk.ftpsserver.chinapipl.debug")
+        }
     }
 }
 

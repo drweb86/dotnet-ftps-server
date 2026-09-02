@@ -27,6 +27,8 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
@@ -71,9 +73,10 @@ private fun fieldColors() = OutlinedTextFieldDefaults.colors(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(viewModel: MainViewModel) {
+fun MainScreen(viewModel: MainViewModel, onOpenPrivacy: () -> Unit) {
     val state by viewModel.state.collectAsState()
     val context = LocalContext.current
+    var menuOpen by remember { mutableStateOf(false) }
     val scroll = rememberScrollState()
 
     Scaffold(
@@ -85,6 +88,20 @@ fun MainScreen(viewModel: MainViewModel) {
                     containerColor = AppColors.surface,
                     titleContentColor = AppColors.text,
                 ),
+                actions = {
+                    TextButton(onClick = { menuOpen = true }) {
+                        Text("?", color = AppColors.accent, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+                    }
+                    DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
+                        DropdownMenuItem(
+                            text = { Text(stringResource(R.string.menu_privacy)) },
+                            onClick = {
+                                menuOpen = false
+                                onOpenPrivacy()
+                            },
+                        )
+                    }
+                },
             )
         },
     ) { padding ->

@@ -2,7 +2,7 @@
 
 ## Changes
 - Android: removed in-app update checks and website / license links (store listing rules).
-- Android: disabled Android backup (`allowBackup=false`) so settings and credentials are not copied off the device.
+- Android: in-app Privacy policy (embedded, no links) (store listing rules).
 
 # 2026.08.36
 

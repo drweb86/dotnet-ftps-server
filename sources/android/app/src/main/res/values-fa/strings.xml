@@ -4,6 +4,8 @@
     <string name="users_tab">کاربران</string>
     <string name="add_user_button">+ افزودن</string>
     <string name="menu_header">FTPS Server</string>
+    <string name="menu_web_site">وب‌سایت</string>
+    <string name="menu_license">مجوز</string>
     <string name="menu_logs">گزارش‌ها</string>
     <string name="logs_tab">گزارش‌های سرور</string>
     <string name="clear_logs">پاک کردن</string>
@@ -31,6 +33,8 @@
     <string name="user_readonly">فقط خواندنی</string>
     <string name="user_delete">حذف</string>
     <string name="user_select_folder_format">پوشه‌ای برای اشتراک‌گذاری با کاربر %1$s انتخاب کنید</string>
+    <string name="update_download">دانلود</string>
+    <string name="update_available_format">نسخه جدید %1$s در دسترس است.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">خطا</string>

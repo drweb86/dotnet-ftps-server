@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Privacidade</string>
+    <string name="privacy_language">Idioma</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Concordar</string>
+    <string name="privacy_disagree">Discordar</string>
+    <string name="privacy_withdraw_consent">Retirar consentimento</string>
+    <string name="privacy_decline_message">Isso excluirá permanentemente todas as configurações, nomes de usuário e senhas armazenados e fechará o aplicativo. Não é possível desfazer.</string>
+    <string name="privacy_cancel">Cancelar</string>
+    <string name="privacy_delete_and_close">Excluir e fechar</string>
+</resources>

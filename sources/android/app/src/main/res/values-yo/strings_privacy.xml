@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Ìkọ̀kọ̀</string>
+    <string name="privacy_language">Èdè</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Mo gba</string>
+    <string name="privacy_disagree">Mi ò gba</string>
+    <string name="privacy_withdraw_consent">Fa ìfọwọ́sí padà</string>
+    <string name="privacy_decline_message">Èyí yóò pa gbogbo ìṣètò, orúkọ olùmúlò àti ọ̀rọ̀ aṣínà tí a fi pamọ́ rẹ́ títí, kí á sì pa áàpù. A kò lè dá a padà.</string>
+    <string name="privacy_cancel">Fagilé</string>
+    <string name="privacy_delete_and_close">Pa rẹ́ kí o sì pa</string>
+</resources>

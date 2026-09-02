@@ -4,6 +4,8 @@
     <string name="users_tab">Usuários</string>
     <string name="add_user_button">+ Adicionar</string>
     <string name="menu_header">Servidor FTPS</string>
+    <string name="menu_web_site">Site</string>
+    <string name="menu_license">Licença</string>
     <string name="menu_logs">Registros</string>
     <string name="logs_tab">Registros do Servidor</string>
     <string name="clear_logs">Limpar</string>
@@ -31,6 +33,8 @@
     <string name="user_readonly">Somente Leitura</string>
     <string name="user_delete">Excluir</string>
     <string name="user_select_folder_format">Selecionar pasta para compartilhar para o usuário %1$s</string>
+    <string name="update_download">Baixar</string>
+    <string name="update_available_format">Nova versão %1$s disponível.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Erro</string>

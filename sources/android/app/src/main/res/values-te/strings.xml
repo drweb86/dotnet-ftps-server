@@ -4,6 +4,8 @@
     <string name="users_tab">వినియోగదారులు</string>
     <string name="add_user_button">+ జోడించు</string>
     <string name="menu_header">FTPS సర్వర్</string>
+    <string name="menu_web_site">వెబ్‌సైట్</string>
+    <string name="menu_license">లైసెన్స్</string>
     <string name="menu_logs">లాగ్‌లు</string>
     <string name="logs_tab">సర్వర్ లాగ్‌లు</string>
     <string name="clear_logs">క్లియర్</string>
@@ -31,6 +33,8 @@
     <string name="user_readonly">చదవడానికి మాత్రమే</string>
     <string name="user_delete">తొలగించు</string>
     <string name="user_select_folder_format">వినియోగదారు %1$s కోసం షేర్ చేయడానికి ఫోల్డర్‌ను ఎంచుకోండి</string>
+    <string name="update_download">డౌన్‌లోడ్</string>
+    <string name="update_available_format">కొత్త %1$s వెర్షన్ అందుబాటులో ఉంది.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">దోషం</string>

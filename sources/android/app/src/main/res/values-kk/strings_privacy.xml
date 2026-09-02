@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Құпиялылық</string>
+    <string name="privacy_language">Тіл</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Келісемін</string>
+    <string name="privacy_disagree">Келіспеймін</string>
+    <string name="privacy_withdraw_consent">Келісімді кері қайтару</string>
+    <string name="privacy_decline_message">Сақталған барлық параметрлер, пайдаланушы аттары мен құпиясөздер біржола жойылады және қолданба жабылады. Бұл әрекетті болдырмауға болмайды.</string>
+    <string name="privacy_cancel">Бас тарту</string>
+    <string name="privacy_delete_and_close">Жою және жабу</string>
+</resources>

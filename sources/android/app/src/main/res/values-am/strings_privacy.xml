@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">ግላዊነት</string>
+    <string name="privacy_language">ቋንቋ</string>
+    <string name="privacy_ok">እሺ</string>
+    <string name="privacy_agree">እስማማለሁ</string>
+    <string name="privacy_disagree">አልስማማም</string>
+    <string name="privacy_withdraw_consent">ስምምነትን መልስ</string>
+    <string name="privacy_decline_message">ይህ የተቀመጡ ቅንብሮችን፣ የተጠቃሚ ስሞችን እና የይለፍ ቃሎችን በቋሚነት ይሰርዛል እና መተግበሪያውን ይዘጋል። መመለስ አይቻልም።</string>
+    <string name="privacy_cancel">ሰርዝ</string>
+    <string name="privacy_delete_and_close">ሰርዘህ ዝጋ</string>
+</resources>

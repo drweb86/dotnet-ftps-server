@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">ความเป็นส่วนตัว</string>
+    <string name="privacy_language">ภาษา</string>
+    <string name="privacy_ok">ตกลง</string>
+    <string name="privacy_agree">ยอมรับ</string>
+    <string name="privacy_disagree">ไม่ยอมรับ</string>
+    <string name="privacy_withdraw_consent">ถอนความยินยอม</string>
+    <string name="privacy_decline_message">การดำเนินการนี้จะลบการตั้งค่า ชื่อผู้ใช้ และรหัสผ่านที่เก็บไว้ทั้งหมดอย่างถาวร และปิดแอป ไม่สามารถเลิกทำได้</string>
+    <string name="privacy_cancel">ยกเลิก</string>
+    <string name="privacy_delete_and_close">ลบแล้วปิด</string>
+</resources>

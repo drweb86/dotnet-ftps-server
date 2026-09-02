@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Prywatność</string>
+    <string name="privacy_language">Język</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Zgadzam się</string>
+    <string name="privacy_disagree">Nie zgadzam się</string>
+    <string name="privacy_withdraw_consent">Wycofaj zgodę</string>
+    <string name="privacy_decline_message">Spowoduje to trwałe usunięcie wszystkich zapisanych ustawień, nazw użytkowników i haseł oraz zamknięcie aplikacji. Tej operacji nie można cofnąć.</string>
+    <string name="privacy_cancel">Anuluj</string>
+    <string name="privacy_delete_and_close">Usuń i zamknij</string>
+</resources>

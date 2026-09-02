@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">개인정보</string>
+    <string name="privacy_language">언어</string>
+    <string name="privacy_ok">확인</string>
+    <string name="privacy_agree">동의</string>
+    <string name="privacy_disagree">동의 안 함</string>
+    <string name="privacy_withdraw_consent">동의 철회</string>
+    <string name="privacy_decline_message">저장된 모든 설정, 사용자 이름, 비밀번호가 영구적으로 삭제되고 앱이 종료됩니다. 되돌릴 수 없습니다.</string>
+    <string name="privacy_cancel">취소</string>
+    <string name="privacy_delete_and_close">삭제하고 종료</string>
+</resources>

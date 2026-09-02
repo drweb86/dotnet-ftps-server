@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Nzuzo</string>
+    <string name="privacy_language">Asụsụ</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Ekwenyere m</string>
+    <string name="privacy_disagree">Ekweghị m</string>
+    <string name="privacy_withdraw_consent">Weghachite nkwenye</string>
+    <string name="privacy_decline_message">Nke a ga-ehichapụ kpamkpam ntọala, aha njirimara na paswọọdụ echekwara, ma mechie ngwa. Enweghị ike ịmegharị ya.</string>
+    <string name="privacy_cancel">Kagbuo</string>
+    <string name="privacy_delete_and_close">Hichapụ ma mechie</string>
+</resources>

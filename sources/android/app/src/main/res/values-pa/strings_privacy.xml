@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">ਪਰਾਈਵੇਸੀ</string>
+    <string name="privacy_language">ਭਾਸ਼ਾ</string>
+    <string name="privacy_ok">ਠੀਕ ਹੈ</string>
+    <string name="privacy_agree">ਸਹਿਮਤ</string>
+    <string name="privacy_disagree">ਅਸਹਿਮਤ</string>
+    <string name="privacy_withdraw_consent">ਸਹਿਮਤੀ ਵਾਪਸ ਲਓ</string>
+    <string name="privacy_decline_message">ਇਸ ਨਾਲ ਸਾਰੀਆਂ ਸੁਰੱਖਿਅਤ ਸੈਟਿੰਗਾਂ, ਯੂਜ਼ਰ ਨਾਂ ਅਤੇ ਪਾਸਵਰਡ ਪੱਕੇ ਤੌਰ ਤੇ ਮਿਟ ਜਾਣਗੇ ਅਤੇ ਐਪ ਬੰਦ ਹੋ ਜਾਵੇਗੀ। ਇਸਨੂੰ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।</string>
+    <string name="privacy_cancel">ਰੱਦ ਕਰੋ</string>
+    <string name="privacy_delete_and_close">ਮਿਟਾਓ ਅਤੇ ਬੰਦ ਕਰੋ</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Confidentialité</string>
+    <string name="privacy_language">Langue</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Accepter</string>
+    <string name="privacy_disagree">Refuser</string>
+    <string name="privacy_withdraw_consent">Retirer le consentement</string>
+    <string name="privacy_decline_message">Cela supprimera définitivement tous les paramètres, identifiants et mots de passe enregistrés, et fermera l’application. Cette action est irréversible.</string>
+    <string name="privacy_cancel">Annuler</string>
+    <string name="privacy_delete_and_close">Supprimer et fermer</string>
+</resources>

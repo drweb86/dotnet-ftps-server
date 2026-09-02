@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Конфиденциальность</string>
+    <string name="privacy_language">Язык</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Согласен</string>
+    <string name="privacy_disagree">Не согласен</string>
+    <string name="privacy_withdraw_consent">Отозвать согласие</string>
+    <string name="privacy_decline_message">Будут безвозвратно удалены все сохранённые настройки, имена пользователей и пароли, после чего приложение закроется. Отменить это нельзя.</string>
+    <string name="privacy_cancel">Отмена</string>
+    <string name="privacy_delete_and_close">Удалить и закрыть</string>
+</resources>

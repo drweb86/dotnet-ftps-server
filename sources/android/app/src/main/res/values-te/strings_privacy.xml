@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">గోప్యత</string>
+    <string name="privacy_language">భాష</string>
+    <string name="privacy_ok">సరే</string>
+    <string name="privacy_agree">అంగీకరిస్తున్నాను</string>
+    <string name="privacy_disagree">అంగీకరించను</string>
+    <string name="privacy_withdraw_consent">సమ్మతిని ఉపసంహరించు</string>
+    <string name="privacy_decline_message">నిల్వ ఉన్న అన్ని సెట్టింగ్‌లు, వినియోగదారు పేర్లు, పాస్‌వర్డ్‌లు శాశ్వతంగా తొలగించబడి యాప్ మూసివేయబడుతుంది. దీన్ని రద్దు చేయలేరు.</string>
+    <string name="privacy_cancel">రద్దు</string>
+    <string name="privacy_delete_and_close">తొలగించి మూసివేయి</string>
+</resources>

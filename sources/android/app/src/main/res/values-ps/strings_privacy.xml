@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">محرمیت</string>
+    <string name="privacy_language">ژبه</string>
+    <string name="privacy_ok">ښه</string>
+    <string name="privacy_agree">منم</string>
+    <string name="privacy_disagree">نه منم</string>
+    <string name="privacy_withdraw_consent"> رضایت بیرته اخیستل</string>
+    <string name="privacy_decline_message">دا به ټول خوندي شوي تنظیمات، کارن نومونه او پټنومونه د تل لپاره ړنګ کړي او اپلیکیشن به وتړي. دا بیرته کېدای نشي.</string>
+    <string name="privacy_cancel">لغوه</string>
+    <string name="privacy_delete_and_close">ړنګ کړه او وتړه</string>
+</resources>

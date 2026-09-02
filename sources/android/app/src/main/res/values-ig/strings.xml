@@ -4,6 +4,8 @@
     <string name="users_tab">Ndị ọrụ</string>
     <string name="add_user_button">+ Tinye</string>
     <string name="menu_header">FTPS Server</string>
+    <string name="menu_web_site">Webụsaịtị</string>
+    <string name="menu_license">Ikike</string>
     <string name="menu_logs">Ndekọ</string>
     <string name="logs_tab">Ndekọ Sava</string>
     <string name="clear_logs">Hichapụ</string>
@@ -31,6 +33,8 @@
     <string name="user_readonly">Ọ dị ka ọgụgụ naanị</string>
     <string name="user_delete">Hichapụ</string>
     <string name="user_select_folder_format">Họrọ folda iji kesaa nye onye ọrụ %1$s</string>
+    <string name="update_download">Budata</string>
+    <string name="update_available_format">Ụdị ọhụrụ %1$s dị.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Njehie</string>

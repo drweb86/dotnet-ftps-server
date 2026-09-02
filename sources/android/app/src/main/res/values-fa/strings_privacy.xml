@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">حریم خصوصی</string>
+    <string name="privacy_language">زبان</string>
+    <string name="privacy_ok">تأیید</string>
+    <string name="privacy_agree">موافقم</string>
+    <string name="privacy_disagree">موافق نیستم</string>
+    <string name="privacy_withdraw_consent">پس‌گرفتن رضایت</string>
+    <string name="privacy_decline_message">با این کار همه تنظیمات، نام‌های کاربری و گذرواژه‌های ذخیره‌شده برای همیشه حذف می‌شود و برنامه بسته می‌شود. قابل بازگشت نیست.</string>
+    <string name="privacy_cancel">لغو</string>
+    <string name="privacy_delete_and_close">حذف و بستن</string>
+</resources>

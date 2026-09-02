@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">தனியுரிமை</string>
+    <string name="privacy_language">மொழி</string>
+    <string name="privacy_ok">சரி</string>
+    <string name="privacy_agree">ஒப்புக்கொள்</string>
+    <string name="privacy_disagree">மறு</string>
+    <string name="privacy_withdraw_consent">ஒப்புதலைத் திரும்பப் பெறு</string>
+    <string name="privacy_decline_message">சேமிக்கப்பட்ட அனைத்து அமைப்புகள், பயனர் பெயர்கள் மற்றும் கடவுச்சொற்கள் நிரந்தரமாக நீக்கப்பட்டு செயலி மூடப்படும். இதை செயல்தவிர்க்க முடியாது.</string>
+    <string name="privacy_cancel">ரத்து</string>
+    <string name="privacy_delete_and_close">நீக்கி மூடு</string>
+</resources>

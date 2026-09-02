@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # Native Android FTPS Server — local build and optional device install.
-# Usage: ./sources/android/check-local.sh [--install] [--release] [--screenshots]
+# Usage: ./sources/android/check-local.sh [--install] [--release] [--screenshots] [--china-pipl]
 set -e
 ANDROID_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 PROJECT_ROOT=$(CDPATH= cd -- "$ANDROID_ROOT/../.." && pwd)
@@ -51,20 +51,29 @@ if [ ! -f "$WRAPPER" ]; then
   curl -L "https://github.com/gradle/gradle/raw/v8.11.1/gradle/wrapper/gradle-wrapper.jar" -o "$WRAPPER"
 fi
 
-TASK=assembleDebug
+TASK=assembleGeneralDebug
 INSTALL=0
 SCREENSHOTS=0
+CHINA_PIPL=0
 VERSION_NAME=""
 VERSION_CODE=""
 for arg in "$@"; do
   case "$arg" in
-    --release) TASK=assembleRelease ;;
+    --release) TASK=assembleGeneralRelease ;;
     --install) INSTALL=1 ;;
     --screenshots) SCREENSHOTS=1 ;;
+    --china-pipl) CHINA_PIPL=1 ;;
     --version-name=*) VERSION_NAME="${arg#--version-name=}" ;;
     --version-code=*) VERSION_CODE="${arg#--version-code=}" ;;
   esac
 done
+
+if [ "$CHINA_PIPL" -eq 1 ]; then
+  case "$TASK" in
+    assembleGeneralRelease) TASK=assembleChinaPiplPolicyRelease ;;
+    *) TASK=assembleChinaPiplPolicyDebug ;;
+  esac
+fi
 
 chmod +x "$ANDROID_ROOT/gradlew"
 GRADLE_ARGS="--no-daemon $TASK"
@@ -74,14 +83,18 @@ GRADLE_ARGS="--no-daemon $TASK"
 # shellcheck disable=SC2086
 (cd "$ANDROID_ROOT" && ./gradlew $GRADLE_ARGS)
 
-if [ "$TASK" = assembleRelease ]; then
+if [ "$TASK" = assembleGeneralRelease ] || [ "$TASK" = assembleChinaPiplPolicyRelease ]; then
   APK=""
-  for candidate in "$ANDROID_ROOT/app/build/outputs/apk/release/app-release.apk" \
-                   "$ANDROID_ROOT/app/build/outputs/apk/release/app-release-unsigned.apk"; do
+  for candidate in \
+    "$ANDROID_ROOT/app/build/outputs/apk/general/release/app-general-release.apk" \
+    "$ANDROID_ROOT/app/build/outputs/apk/chinaPiplPolicy/release/app-chinaPiplPolicy-release.apk" \
+    "$ANDROID_ROOT/app/build/outputs/apk/release/app-release-unsigned.apk"
+  do
     if [ -f "$candidate" ]; then APK="$candidate"; break; fi
   done
 else
-  APK="$ANDROID_ROOT/app/build/outputs/apk/debug/app-debug.apk"
+  APK="$ANDROID_ROOT/app/build/outputs/apk/general/debug/app-general-debug.apk"
+  [ "$CHINA_PIPL" -eq 1 ] && APK="$ANDROID_ROOT/app/build/outputs/apk/chinaPiplPolicy/debug/app-chinaPiplPolicy-debug.apk"
 fi
 if [ -z "$APK" ] || [ ! -f "$APK" ]; then
   APK=$(find "$ANDROID_ROOT/app/build/outputs/apk" -name "*.apk" | head -1)
@@ -95,9 +108,15 @@ if [ "$INSTALL" -eq 1 ]; then
     exit 0
   fi
   adb install -r "$APK"
-  PKG=com.siarheikuchuk.ftpsserver.debug
-  [ "$TASK" = assembleRelease ] && PKG=com.siarheikuchuk.ftpsserver
-  [ "$SCREENSHOTS" -eq 1 ] && PKG=com.siarheikuchuk.ftpsserver.screenshots
+  if [ "$SCREENSHOTS" -eq 1 ]; then
+    PKG=com.siarheikuchuk.ftpsserver.screenshots
+  elif [ "$TASK" = assembleChinaPiplPolicyDebug ]; then
+    PKG=com.siarheikuchuk.ftpsserver.chinapipl.debug
+  elif [ "$TASK" = assembleGeneralRelease ] || [ "$TASK" = assembleChinaPiplPolicyRelease ]; then
+    PKG=com.siarheikuchuk.ftpsserver
+  else
+    PKG=com.siarheikuchuk.ftpsserver.debug
+  fi
   adb shell am start -n "$PKG/com.siarheikuchuk.ftpsserver.MainActivity"
 fi
 

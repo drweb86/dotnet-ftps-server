@@ -4,6 +4,8 @@
     <string name="users_tab">ਉਪਭੋਗਤਾ</string>
     <string name="add_user_button">+ ਜੋੜੋ</string>
     <string name="menu_header">FTPS Server</string>
+    <string name="menu_web_site">ਵੈੱਬਸਾਈਟ</string>
+    <string name="menu_license">ਲਾਇਸੈਂਸ</string>
     <string name="menu_logs">ਲੌਗ</string>
     <string name="logs_tab">ਸਰਵਰ ਲੌਗ</string>
     <string name="clear_logs">ਸਾਫ਼ ਕਰੋ</string>
@@ -31,6 +33,8 @@
     <string name="user_readonly">ਸਿਰਫ਼ ਪੜ੍ਹੋ</string>
     <string name="user_delete">ਮਿਟਾਓ</string>
     <string name="user_select_folder_format">ਉਪਭੋਗਤਾ %1$s ਲਈ ਸ਼ੇਅਰ ਕਰਨ ਲਈ ਫੋਲਡਰ ਚੁਣੋ</string>
+    <string name="update_download">ਡਾਊਨਲੋਡ ਕਰੋ</string>
+    <string name="update_available_format">ਨਵਾਂ %1$s ਵਰਜ਼ਨ ਉਪਲਬਧ ਹੈ।</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">ਗਲਤੀ</string>

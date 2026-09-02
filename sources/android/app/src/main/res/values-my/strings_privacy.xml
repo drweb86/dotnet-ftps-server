@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">ကိုယ်ရေးအချက်အလက်</string>
+    <string name="privacy_language">ဘာသာစကား</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">သဘောတူသည်</string>
+    <string name="privacy_disagree">သဘောမတူပါ</string>
+    <string name="privacy_withdraw_consent">သဘောတူမှု ပြန်ရုပ်သိမ်း</string>
+    <string name="privacy_decline_message">သိမ်းထားသော ဆက်တင်များ၊ အသုံးပြုသူအမည်များနှင့် စကားဝှက်အားလုံး အပြီးဖျက်ပြီး အက်ပ် ပိတ်မည်။ ပြန်ပြင်၍မရပါ။</string>
+    <string name="privacy_cancel">မလုပ်တော့</string>
+    <string name="privacy_delete_and_close">ဖျက်ပြီး ပိတ်မည်</string>
+</resources>

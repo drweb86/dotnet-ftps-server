@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Dhuunfaa</string>
+    <string name="privacy_language">Afaan</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Walii gala</string>
+    <string name="privacy_disagree">Walii hin galu</string>
+    <string name="privacy_withdraw_consent">Walii galtee deebisi</string>
+    <string name="privacy_decline_message">Kun sajoo, maqaa fayyadamaa fi jecha icciitii kuufame hunda dhaabbataan ni haqa, appis ni cufa. Deebisuu hin danda’amu.</string>
+    <string name="privacy_cancel">Haqi</string>
+    <string name="privacy_delete_and_close">Haqii cufi</string>
+</resources>

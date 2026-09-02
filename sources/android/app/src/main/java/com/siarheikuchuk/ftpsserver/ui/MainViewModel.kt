@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.siarheikuchuk.ftpsserver.privacy.PrivacyStore
 import com.siarheikuchuk.ftpsserver.data.AppSettings
 import com.siarheikuchuk.ftpsserver.data.SettingsRepository
 import com.siarheikuchuk.ftpsserver.data.UserAccount
@@ -128,6 +129,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun save() {
+        if (PrivacyStore.skipSettingsSave) return
         val s = _state.value
         repo.save(
             AppSettings(

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_privacy">Конфіденційність</string>
+    <string name="privacy_language">Мова</string>
+    <string name="privacy_ok">OK</string>
+    <string name="privacy_agree">Погоджуюсь</string>
+    <string name="privacy_disagree">Не погоджуюсь</string>
+    <string name="privacy_withdraw_consent">Відкликати згоду</string>
+    <string name="privacy_decline_message">Буде остаточно видалено всі збережені налаштування, імена користувачів і паролі, після чого застосунок закриється. Скасувати це неможливо.</string>
+    <string name="privacy_cancel">Скасувати</string>
+    <string name="privacy_delete_and_close">Видалити й закрити</string>
+</resources>
