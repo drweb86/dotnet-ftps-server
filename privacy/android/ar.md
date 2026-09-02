@@ -6,8 +6,8 @@
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+اسم التطبيق: FTPS Server
+اسم المطوّر: Siarhei Kuchuk
 
 البرنامج خادم FTPS محلي (FTP عبر TLS). وهو لا ينشئ حسابات سحابية.
 لا يشغّل المطوّر خادماً خلفياً يستقبل ملفاتك أو كلمات مرورك أو بيانات استخدامك.
@@ -49,7 +49,7 @@ Developer: Siarhei Kuchuk
 
 ## التواصل
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+اسم التطبيق: FTPS Server
+اسم المطوّر: Siarhei Kuchuk
 
 يمكن إرسال الأسئلة حول تطبيق Android هذا عبر صفحة المتجر الذي ثبّتَّ التطبيق منه.

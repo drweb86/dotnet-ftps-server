@@ -6,8 +6,8 @@
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+ایپلیکیشن کا نام: FTPS Server
+ڈویلپر کا نام: Siarhei Kuchuk
 
 یہ سافٹ ویئر مقامی FTPS (TLS پر FTP) سرور ہے۔ یہ کلاؤڈ اکاؤنٹ نہیں بناتا۔
 ڈویلپر ایسا بیک اینڈ نہیں چلاتا جو آپ کی فائلیں، پاس ورڈ یا استعمال کا ڈیٹا وصول کرے۔
@@ -49,8 +49,8 @@ Developer: Siarhei Kuchuk
 
 ## رابطہ
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+ایپلیکیشن کا نام: FTPS Server
+ڈویلپر کا نام: Siarhei Kuchuk
 
 
 اس Android ایپ کے بارے میں سوالات اس اسٹور صفحے کے ذریعے بھیجے جا سکتے ہیں جہاں سے آپ نے اسے انسٹال کیا۔

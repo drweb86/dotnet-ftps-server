@@ -6,8 +6,8 @@
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Orúkọ ìṣàfilọ́lẹ̀: FTPS Server
+Orúkọ olùgbéjáde: Siarhei Kuchuk
 
 Sọ́fútíwẹ̀ yìí jẹ́ olùpèsè FTPS àdúgbò (FTP lórí TLS). Kò ṣẹ̀dá àkántì ìkùukùu.
 Olùgbéjáde kò ṣiṣẹ́ backend tí yóò gba àwọn fáìlì, ọ̀rọ̀ aṣínà, tàbí dátà lílo yín.
@@ -49,8 +49,8 @@ Nígbà tí olùpèsè ń ṣiṣẹ́, ó ń tẹ́tí sí nẹ́tíwọ́ọ̀
 
 ## Ìkànsí
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Orúkọ ìṣàfilọ́lẹ̀: FTPS Server
+Orúkọ olùgbéjáde: Siarhei Kuchuk
 
 
 Àwọn ìbéèrè nípa áàpù Android yìí lè fi ránṣẹ́ nípasẹ̀ ojú-ewé ilé ìtajà tí ẹ fi fi sílẹ̀.

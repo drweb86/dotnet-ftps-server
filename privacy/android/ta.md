@@ -6,8 +6,8 @@
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+பயன்பாட்டின் பெயர்: FTPS Server
+உருவாக்குநரின் பெயர்: Siarhei Kuchuk
 
 இந்த மென்பொருள் உள்ளூர் FTPS (TLS மீது FTP) சேவையகம். இது மேகக் கணக்குகளை உருவாக்காது.
 உங்கள் கோப்புகள், கடவுச்சொற்கள் அல்லது பயன்பாட்டுத் தரவைப் பெறும் பின்புலத்தை உருவாக்குநர் இயக்கவில்லை.
@@ -49,8 +49,8 @@ Developer: Siarhei Kuchuk
 
 ## தொடர்பு
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+பயன்பாட்டின் பெயர்: FTPS Server
+உருவாக்குநரின் பெயர்: Siarhei Kuchuk
 
 
 இந்த Android செயலி பற்றிய கேள்விகளை நீங்கள் நிறுவிய கடைப் பக்கத்தின் வழியாக அனுப்பலாம்.

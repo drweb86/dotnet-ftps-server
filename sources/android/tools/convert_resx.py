@@ -81,6 +81,10 @@ def parse_resx(path: Path) -> dict[str, str]:
         if value_el is None or value_el.text is None:
             continue
         out[name] = value_el.text
+    # Store listing and launcher use the English product name; do not localize it.
+    out["AppTitle"] = "FTPS Server"
+    out["MenuHeader"] = "FTPS Server"
+    out["MenuAboutFormat"] = "FTPS Server - Siarhei Kuchuk - V{0}"
     return out
 
 

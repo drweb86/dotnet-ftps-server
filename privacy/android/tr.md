@@ -6,8 +6,8 @@ Son güncelleme: 2 Eylül 2026
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Uygulama adı: FTPS Server
+Geliştirici adı: Siarhei Kuchuk
 
 Yazılım yerel bir FTPS (TLS üzerinden FTP) sunucusudur. Bulut hesapları oluşturmaz.
 Geliştirici; dosyalarınızı, parolalarınızı veya kullanım verilerinizi alan bir sunucu işletmez.
@@ -49,8 +49,8 @@ Uygulama bir ağ dosya sunucusudur. 13 yaşından küçük çocuklara yönelik d
 
 ## İletişim
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Uygulama adı: FTPS Server
+Geliştirici adı: Siarhei Kuchuk
 
 
 Bu Android uygulaması hakkındaki sorular, yüklediğiniz mağaza sayfası üzerinden gönderilebilir.

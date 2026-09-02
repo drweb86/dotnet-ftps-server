@@ -3,7 +3,7 @@
 **FTPS Server** by Siarhei Kuchuk
 
 Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Developer name: Siarhei Kuchuk
 
 Last updated: 2 September 2026
 

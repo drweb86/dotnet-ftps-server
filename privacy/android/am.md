@@ -6,8 +6,8 @@
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+የመተግበሪያ ስም: FTPS Server
+የገንቢ ስም: Siarhei Kuchuk
 
 ሶፍትዌሩ የአካባቢ FTPS (በ TLS ላይ FTP) አገልጋይ ነው። የደመና መለያዎችን አይፈጥርም።
 ገንቢው ፋይሎችዎን፣ የይለፍ ቃሎችዎን ወይም የአጠቃቀም ውሂብዎን የሚቀበል የኋላ አገልጋይ አያንቀሳቅስም።
@@ -49,8 +49,8 @@ Developer: Siarhei Kuchuk
 
 ## መገናኛ
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+የመተግበሪያ ስም: FTPS Server
+የገንቢ ስም: Siarhei Kuchuk
 
 
 ስለዚህ የ Android መተግበሪያ ጥያቄዎች የጫኑበትን የመደብር ገጽ በኩል ሊላኩ ይችላሉ።

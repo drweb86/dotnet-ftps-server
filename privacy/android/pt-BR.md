@@ -6,8 +6,8 @@
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Nome do aplicativo: FTPS Server
+Nome do desenvolvedor: Siarhei Kuchuk
 
 O software é um servidor FTPS local (FTP sobre TLS). Ele não cria contas na nuvem.
 O desenvolvedor não opera um servidor que receba seus arquivos, senhas ou dados de uso.
@@ -49,8 +49,8 @@ O aplicativo é um servidor de arquivos em rede. Não é dirigido a menores de 1
 
 ## Contato
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Nome do aplicativo: FTPS Server
+Nome do desenvolvedor: Siarhei Kuchuk
 
 
 Perguntas sobre este aplicativo Android podem ser enviadas pela ficha da loja pela qual você o instalou.

@@ -6,8 +6,8 @@ Cập nhật lần cuối: 2 tháng 9 năm 2026
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Tên ứng dụng: FTPS Server
+Tên nhà phát triển: Siarhei Kuchuk
 
 Phần mềm là máy chủ FTPS cục bộ (FTP qua TLS). Ứng dụng không tạo tài khoản đám mây.
 Nhà phát triển không vận hành máy chủ nhận tệp, mật khẩu hoặc dữ liệu sử dụng của bạn.
@@ -49,8 +49,8 @@ Bạn chịu trách nhiệm về việc ai có thể truy cập cổng, thư m�
 
 ## Liên hệ
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Tên ứng dụng: FTPS Server
+Tên nhà phát triển: Siarhei Kuchuk
 
 
 Câu hỏi về ứng dụng Android này có thể gửi qua trang cửa hàng bạn đã dùng để cài đặt.

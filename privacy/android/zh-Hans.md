@@ -6,8 +6,8 @@
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+应用名称: FTPS Server
+开发者姓名: Siarhei Kuchuk
 
 本软件是本地 FTPS（基于 TLS 的 FTP）服务器。它不会创建云账号。
 开发者不会运营用于接收您的文件、密码或使用数据的后台服务。
@@ -49,7 +49,7 @@ Developer: Siarhei Kuchuk
 
 ## 联系
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+应用名称: FTPS Server
+开发者姓名: Siarhei Kuchuk
 
 有关本 Android 应用的问题，可通过您安装该应用所用的商店页面发送。

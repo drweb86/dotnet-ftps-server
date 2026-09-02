@@ -6,8 +6,8 @@
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+အက်ပလီကေးရှင်းအမည်: FTPS Server
+ဆော့ဖ်ဝဲရေးသူအမည်: Siarhei Kuchuk
 
 ဆော့ဖ်ဝဲသည် ဒေသခံ FTPS (TLS ပေါ်ရှိ FTP) ဆာဗာဖြစ်သည်။ က্লাုড အကောင့် မဖန်တီးပါ။
 ဖိုင်များ၊ စကားဝှက်များ သို့မဟုတ် အသုံးပြုမှု ဒေတာ လက်ခံသည့် နောက်ခံကို ဆော့ဖ်ဝဲရေးသူ မလည်ပတ်ပါ။
@@ -49,8 +49,8 @@ Developer: Siarhei Kuchuk
 
 ## ဆက်သွယ်ရန်
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+အက်ပလီကေးရှင်းအမည်: FTPS Server
+ဆော့ဖ်ဝဲရေးသူအမည်: Siarhei Kuchuk
 
 
 ဤ Android အက်ပ် အကြောင်း မေးခွန်းများကို သင် ထည့်သွင်းခဲ့သော စတိုး စာမျက်နှာမှ ပို့နိုင်သည်။

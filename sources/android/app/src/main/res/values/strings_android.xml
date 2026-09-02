@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_label" translatable="false">FTPS Server</string>
+    <string name="developer_name" translatable="false">Siarhei Kuchuk</string>
     <string name="config_access_info_android">This device can be accessed on the LAN by its name or IP address.</string>
     <string name="notification_channel">FTPS Server</string>
     <string name="notification_title">FTPS Server is running</string>

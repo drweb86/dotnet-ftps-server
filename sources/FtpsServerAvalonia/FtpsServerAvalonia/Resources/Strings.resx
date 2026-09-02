@@ -96,7 +96,7 @@
     <value>[ STOP ]</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
+    <value>FTPS Server - Siarhei Kuchuk - V{0}</value>
     <comment>Format: {0} = version number</comment>
   </data>
 

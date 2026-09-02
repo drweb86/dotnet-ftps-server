@@ -6,8 +6,8 @@ An sabunta ƙarshe: 2 Satumba 2026
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Sunan aikace-aikace: FTPS Server
+Sunan mai haɓakawa: Siarhei Kuchuk
 
 Software ɗin babban uwar garke na FTPS na gida ne (FTP akan TLS). Ba ya ƙirƙirar asusun girgije.
 Mai haɓakawa ba ya gudanar da wani backend da ke karɓar fayilolinka, kalmomin sirri, ko bayanan amfani.
@@ -49,8 +49,8 @@ Aikin uwar garken fayil na hanyar sadarwa ne. Ba a nufa shi ga yara ƙasa da she
 
 ## Tuntuɓa
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Sunan aikace-aikace: FTPS Server
+Sunan mai haɓakawa: Siarhei Kuchuk
 
 
 Ana iya aika tambayoyi game da wannan aikin Android ta shafin kantin da ka yi amfani da shi don shigar da shi.

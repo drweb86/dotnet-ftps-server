@@ -6,8 +6,8 @@ Terakhir diperbarui: 2 September 2026
 
 **FTPS Server** by Siarhei Kuchuk
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Nama aplikasi: FTPS Server
+Nama pengembang: Siarhei Kuchuk
 
 Perangkat lunak ini adalah server FTPS lokal (FTP melalui TLS). Aplikasi tidak membuat akun cloud.
 Pengembang tidak mengoperasikan backend yang menerima berkas, kata sandi, atau data penggunaan Anda.
@@ -49,8 +49,8 @@ Aplikasi ini adalah server berkas jaringan. Tidak ditujukan kepada anak di bawah
 
 ## Kontak
 
-Application name: FTPS Server
-Developer: Siarhei Kuchuk
+Nama aplikasi: FTPS Server
+Nama pengembang: Siarhei Kuchuk
 
 
 Pertanyaan tentang aplikasi Android ini dapat dikirim melalui halaman toko yang Anda gunakan untuk memasangnya.
