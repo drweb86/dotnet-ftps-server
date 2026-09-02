@@ -144,10 +144,8 @@ fun PrivacyPolicyScreen(
                     }
                 }
 
-                Text(
-                    text = body,
-                    color = AppColors.text,
-                    fontSize = 14.sp,
+                PrivacyMarkdownDocument(
+                    markdown = body,
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()

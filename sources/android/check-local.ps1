@@ -1,10 +1,10 @@
 # Native Android FTPS Server — local build and optional device install.
 # Usage (from anywhere):
 #   powershell -File sources/android/check-local.ps1
-# Default debug builds three APKs you can install side by side:
-#   screenshots (general, English-only, id ...ftpsserver.screenshots)
-#   general debug (id ...ftpsserver.debug)
-#   China PIPL debug (id ...ftpsserver.chinapipl.debug)
+# Default debug copies three APKs into the repo Output folder:
+#   Output/ftpsserver_android_screenshots_debug.apk
+#   Output/ftpsserver_android_debug.apk
+#   Output/ftpsserver_android_china_debug.apk
 # Optional: -Install  adb install all three if a device/emulator is connected
 #           -Release  assemble one release APK instead
 #           -ChinaPipl  with -Release: China PIPL-policy flavor
@@ -90,12 +90,17 @@ function Invoke-Gradle([string[]]$Tasks, [string[]]$ExtraArgs) {
     }
 }
 
-function Show-Apk($path, $label) {
-    if (-not $path -or -not (Test-Path $path)) {
-        throw "APK not found ($label): $path"
+function Copy-ToOutput($src, $fileName) {
+    if (-not $src -or -not (Test-Path $src)) {
+        throw "APK not found: $src"
     }
-    Write-Host ("{0}: {1}" -f $label, $path)
-    Write-Host ("  Size: {0:N2} MB" -f ((Get-Item $path).Length / 1MB))
+    $outDir = Join-Path $ProjectRoot "Output"
+    New-Item -ItemType Directory -Force -Path $outDir | Out-Null
+    $dest = Join-Path $outDir $fileName
+    Copy-Item $src $dest -Force
+    Write-Host ("{0}: {1}" -f $fileName, $dest)
+    Write-Host ("  Size: {0:N2} MB" -f ((Get-Item $dest).Length / 1MB))
+    return $dest
 }
 
 $javaHome = Find-JavaHome
@@ -143,7 +148,7 @@ if ($Release) {
         ForEach-Object { Join-Path $releaseDir $_ } |
         Where-Object { Test-Path $_ } |
         Select-Object -First 1
-    Show-Apk $apk "Release APK"
+    $apk = Copy-ToOutput $apk $(if ($ChinaPipl) { "ftpsserver_android_china.apk" } else { "ftpsserver_android.apk" })
     $pkg = "com.siarheikuchuk.ftpsserver"
     $installList += @{ Path = $apk; Package = $pkg }
 } else {
@@ -151,18 +156,12 @@ if ($Release) {
     # debug variants in one Gradle run (it would rewrite applicationId for all).
     Invoke-Gradle @("assembleGeneralDebug") @("-Pscreenshots=true")
     $screenshotsSrc = Join-Path $apkOutputs "general\debug\app-general-debug.apk"
-    $screenshotsDir = Join-Path $apkOutputs "screenshots\debug"
-    New-Item -ItemType Directory -Force -Path $screenshotsDir | Out-Null
-    $screenshotsApk = Join-Path $screenshotsDir "app-general-screenshots-debug.apk"
-    Copy-Item $screenshotsSrc $screenshotsApk -Force
+    $screenshotsApk = Copy-ToOutput $screenshotsSrc "ftpsserver_android_screenshots_debug.apk"
 
     Invoke-Gradle @("assembleGeneralDebug", "assembleChinaPiplPolicyDebug") @()
-    $generalApk = Join-Path $apkOutputs "general\debug\app-general-debug.apk"
-    $chinaApk = Join-Path $apkOutputs "chinaPiplPolicy\debug\app-chinaPiplPolicy-debug.apk"
+    $generalApk = Copy-ToOutput (Join-Path $apkOutputs "general\debug\app-general-debug.apk") "ftpsserver_android_debug.apk"
+    $chinaApk = Copy-ToOutput (Join-Path $apkOutputs "chinaPiplPolicy\debug\app-chinaPiplPolicy-debug.apk") "ftpsserver_android_china_debug.apk"
 
-    Show-Apk $screenshotsApk "Screenshots debug (no PIPL)"
-    Show-Apk $generalApk "General debug (no PIPL)"
-    Show-Apk $chinaApk "China PIPL debug"
     $installList += @{ Path = $screenshotsApk; Package = "com.siarheikuchuk.ftpsserver.screenshots" }
     $installList += @{ Path = $generalApk; Package = "com.siarheikuchuk.ftpsserver.debug" }
     $installList += @{ Path = $chinaApk; Package = "com.siarheikuchuk.ftpsserver.chinapipl.debug" }
