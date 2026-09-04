@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>የግንኙነት ዝርዝሮችን ቅዳ</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>አጋራ...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>የግንኙነት ዝርዝሮችን አጋራ</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>የግንኙነት ዝርዝሮች</value>
@@ -349,5 +349,8 @@ Implicit FTPS አይምረጡ (ብዙ ጊዜ "FTPS" ብቻ ይባላል) — አ
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>የFTPS Server የግንኙነት ዝርዝሮች</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>የግንኙነት መመሪያ</value>
   </data>
 </root>

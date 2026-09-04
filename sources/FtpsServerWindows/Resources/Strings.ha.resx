@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>Share</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>Ana iya samun damar shiga kwamfutarka a cikin LAN ta sunan ta ko adireshin IP.</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Kuskure</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>Rikodin Uwar Garke</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@ Siffofi:
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Kwafi cikakken bayanin haɗi</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Raba...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Raba cikakken bayanin haɗi</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Cikakken bayanin haɗi</value>
@@ -361,5 +355,14 @@ Kwatanta fingerprint ɗin abokin ciniki da ƙimar da ke ƙasa. Idan sun dace, ka
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Cikakken bayanin haɗin FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Umarnin haɗi</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Rikodin Uwar Garke</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Share</value>
   </data>
 </root>

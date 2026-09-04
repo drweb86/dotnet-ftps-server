@@ -58,7 +58,7 @@
     <string name="cert_type_label">రకం:</string>
     <string name="cert_valid_label">చెల్లుబాటు:</string>
     <string name="config_copy_connection_details">కనెక్షన్ వివరాలను కాపీ చేయండి</string>
-    <string name="config_share_connection_details">షేర్...</string>
+    <string name="config_share_connection_details">కనెక్షన్ వివరాలను షేర్ చేయండి</string>
     <string name="connection_details_title">కనెక్షన్ వివరాలు</string>
     <string name="connection_details_intro_android">కనెక్ట్ కావడానికి క్లయింట్ పరికరం ఈ ఫోన్‌తో ఒకే నెట్‌వర్క్‌లో ఉండాలి (అదే Wi-Fi, లేదా అదే హాట్‌స్పాట్ / USB టెథరింగ్).</string>
     <string name="connection_details_intro_desktop">కనెక్ట్ కావడానికి క్లయింట్ పరికరం ఈ కంప్యూటర్‌తో ఒకే నెట్‌వర్క్‌లో ఉండాలి (అదే Wi-Fi లేదా LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">క్లయింట్ కేవలం \"Fingerprint\" చూపిస్తే (అల్గారితం పేరు లేకుండా), ముందు SHA-256 తర్వాత SHA-1తో పోల్చండి.</string>
     <string name="connection_details_share_subject">FTPS Server కనెక్షన్ వివరాలు</string>
+    <string name="connection_instruction_title">కనెక్షన్ సూచనలు</string>
 </resources>

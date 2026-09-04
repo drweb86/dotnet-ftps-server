@@ -61,30 +61,17 @@
 					HorizontalAlignment="Stretch"
 					HorizontalContentAlignment="Center"
 					VerticalContentAlignment="Center"
-					MinHeight="56"
-					Padding="16,0"
+					MinHeight="72"
+					Padding="16,12"
 					Margin="10,4,10,12"
 					Click="MainMenu_StartStopClicked">
-				<Grid ColumnDefinitions="Auto,Auto"
-					  HorizontalAlignment="Center"
-					  VerticalAlignment="Center">
-					<Path x:Name="AndroidStartStopIcon"
-						  Grid.Column="0"
-						  Width="18"
-						  Height="18"
-						  Stretch="Uniform"
-						  Fill="Green"
-						  Data="M 0 0 L 0 18 L 16 9 Z"
-						  VerticalAlignment="Center"/>
-					<TextBlock x:Name="AndroidStartStopText"
-							   Grid.Column="1"
-							   Text="{x:Static res:Strings.MenuStart}"
-							   Foreground="Green"
-							   FontSize="18"
-							   FontWeight="Bold"
-							   Margin="10,0,0,0"
-							   VerticalAlignment="Center"/>
-				</Grid>
+				<TextBlock x:Name="AndroidStartStopText"
+						   Text="{x:Static res:Strings.MenuStart}"
+						   Foreground="Green"
+						   FontSize="22"
+						   FontWeight="Bold"
+						   HorizontalAlignment="Center"
+						   VerticalAlignment="Center"/>
 			</Button>
 
 			<Border x:Name="ErrorBanner"
@@ -113,8 +100,26 @@
 
 			<controls:UpdateCheckExpanderView />
 
+			<Expander x:Name="ConnectionInstructionExpander"
+					  Classes="SectionExpander"
+					  IsExpanded="True"
+					  IsVisible="False">
+				<Expander.Header>
+					<TextBlock Text="{x:Static res:Strings.ConnectionInstructionTitle}"
+							   FontSize="18"
+							   FontWeight="SemiBold"
+							   Foreground="{StaticResource TextPrimaryBrush}"/>
+				</Expander.Header>
+				<controls:ConnectionInstructionControl
+					x:Name="ConnectionInstruction"
+					ShowTitle="False"
+					ShowShareButton="True"
+					BorderThickness="0"
+					Margin="0"/>
+			</Expander>
+
 			<!-- Host, Port, Certificate Section (Collapsible) -->
-			<Expander Classes="SectionExpander" IsExpanded="True">
+			<Expander x:Name="ConfigExpander" Classes="SectionExpander" IsExpanded="True">
 				<Expander.Header>
 					<TextBlock Text="{x:Static res:Strings.ConfigTitle}"
 							   FontSize="18"
@@ -133,11 +138,8 @@
 					CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}" />
 			</Expander>
 
-			<!-- Certificate Notice (shown after server start with self-signed cert) -->
-			<controls:ServerCertificateInfoControl x:Name="CertInfoPanel" Margin="0,0,0,0" />
-
 			<!-- Users Section (Collapsible) -->
-			<Expander Classes="SectionExpander" IsExpanded="True">
+			<Expander x:Name="UsersExpander" Classes="SectionExpander" IsExpanded="True">
 				<Expander.Header>
 					<Grid HorizontalAlignment="Stretch">
 						<TextBlock Text="{x:Static res:Strings.UsersTab}"
@@ -166,7 +168,7 @@
 			</Expander>
 
 			<!-- Server Logs Section (Collapsible) -->
-			<Expander Classes="SectionExpander" IsExpanded="False">
+			<Expander x:Name="LogsExpander" Classes="SectionExpander" IsExpanded="False" IsVisible="False">
 				<Expander.Header>
 					<Grid HorizontalAlignment="Stretch">
 						<TextBlock Text="{x:Static res:Strings.LogsTab}"

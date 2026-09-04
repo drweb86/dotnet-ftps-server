@@ -58,7 +58,7 @@
     <string name="cert_type_label">Iru:</string>
     <string name="cert_valid_label">Wulo:</string>
     <string name="config_copy_connection_details">Da àlàyé ìsopọ̀ kọ</string>
-    <string name="config_share_connection_details">Pín...</string>
+    <string name="config_share_connection_details">Pín àlàyé ìsopọ̀</string>
     <string name="connection_details_title">Àlàyé ìsopọ̀</string>
     <string name="connection_details_intro_android">Láti sopọ̀, ẹ̀rọ oníbàárà gbọ́dọ̀ wà lórí ẹ̀rọ ayélujára kannáà pẹ̀lú foonu yìí (Wi-Fi kannáà, tàbí hotspot / USB tethering kannáà).</string>
     <string name="connection_details_intro_desktop">Láti sopọ̀, ẹ̀rọ oníbàárà gbọ́dọ̀ wà lórí ẹ̀rọ ayélujára kannáà pẹ̀lú kọ̀mpútà yìí (Wi-Fi tàbí LAN kannáà).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Tí oníbàárà bá ṣàfihàn \"Fingerprint\" nìkan (láìsí orúkọ algorithm), fi wé SHA-256 kọ́kọ́, lẹ́yìn náà SHA-1.</string>
     <string name="connection_details_share_subject">Àlàyé ìsopọ̀ FTPS Server</string>
+    <string name="connection_instruction_title">Ìtọ́sọ́nà ìsopọ̀</string>
 </resources>

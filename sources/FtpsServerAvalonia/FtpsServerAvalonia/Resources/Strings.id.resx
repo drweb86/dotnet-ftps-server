@@ -246,8 +246,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Salin detail koneksi</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Bagikan...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Bagikan detail koneksi</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Detail koneksi</value>
@@ -343,5 +343,8 @@ Bandingkan sidik jari di klien dengan nilai di bawah. Jika cocok, terima sertifi
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Detail koneksi FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Petunjuk koneksi</value>
   </data>
 </root>

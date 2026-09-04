@@ -249,8 +249,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>연결 정보 복사</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>공유...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>연결 정보 공유</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>연결 정보</value>
@@ -346,5 +346,14 @@ IP 주소를 권장합니다. 기기 이름은 네트워크가 이름을 확인�
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server 연결 정보</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>연결 안내</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>서버 로그</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>지우기</value>
   </data>
 </root>

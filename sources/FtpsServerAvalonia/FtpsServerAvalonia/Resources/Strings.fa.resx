@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>کپی جزئیات اتصال</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>اشتراک‌گذاری...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>اشتراک‌گذاری جزئیات اتصال</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>جزئیات اتصال</value>
@@ -349,5 +349,8 @@ FTPS ضمنی را انتخاب نکنید (اغلب فقط "FTPS" نامیده 
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>جزئیات اتصال FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>راهنمای اتصال</value>
   </data>
 </root>

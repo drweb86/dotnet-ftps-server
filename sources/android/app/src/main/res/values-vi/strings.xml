@@ -58,7 +58,7 @@
     <string name="cert_type_label">Loại:</string>
     <string name="cert_valid_label">Hợp lệ:</string>
     <string name="config_copy_connection_details">Sao chép chi tiết kết nối</string>
-    <string name="config_share_connection_details">Chia sẻ...</string>
+    <string name="config_share_connection_details">Chia sẻ chi tiết kết nối</string>
     <string name="connection_details_title">Chi tiết kết nối</string>
     <string name="connection_details_intro_android">Để kết nối, thiết bị máy khách phải cùng mạng với điện thoại này (cùng Wi-Fi, hoặc cùng hotspot / USB tethering).</string>
     <string name="connection_details_intro_desktop">Để kết nối, thiết bị máy khách phải cùng mạng với máy tính này (cùng Wi-Fi hoặc LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Nếu máy khách chỉ hiện \"Fingerprint\" (không có tên thuật toán), hãy so với SHA-256 trước, rồi SHA-1.</string>
     <string name="connection_details_share_subject">Chi tiết kết nối FTPS Server</string>
+    <string name="connection_instruction_title">Hướng dẫn kết nối</string>
 </resources>

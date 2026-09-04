@@ -58,7 +58,7 @@
     <string name="cert_type_label">Turi:</string>
     <string name="cert_valid_label">Amal qiladi:</string>
     <string name="config_copy_connection_details">Ulanish tafsilotlarini nusxalash</string>
-    <string name="config_share_connection_details">Ulashish...</string>
+    <string name="config_share_connection_details">Ulanish tafsilotlarini ulashish</string>
     <string name="connection_details_title">Ulanish tafsilotlari</string>
     <string name="connection_details_intro_android">Ulanish uchun mijoz qurilmasi shu telefon bilan bir xil tarmoqda bo‘lishi kerak (xuddi shu Wi-Fi yoki hotspot / USB tethering).</string>
     <string name="connection_details_intro_desktop">Ulanish uchun mijoz qurilmasi shu kompyuter bilan bir xil tarmoqda bo‘lishi kerak (xuddi shu Wi-Fi yoki LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Agar mijoz faqat \"Fingerprint\" ko‘rsatsa (algoritm nomisiz), avval SHA-256, keyin SHA-1 bilan solishtiring.</string>
     <string name="connection_details_share_subject">FTPS Server ulanish tafsilotlari</string>
+    <string name="connection_instruction_title">Ulanish yo‘riqnomasi</string>
 </resources>

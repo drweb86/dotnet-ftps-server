@@ -1,12 +1,8 @@
-using FtpsServerApp.Helpers;
-using FtpsServerAppsShared.Helpers;
 using FtpsServerWindows.Models;
 using FtpsServerWindows.Resources;
 using Microsoft.Win32;
-using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace FtpsServerWindows.Controls
 {
@@ -76,14 +72,9 @@ namespace FtpsServerWindows.Controls
             set => SetValue(CertificatePasswordProperty, value);
         }
 
-        public event EventHandler<ConnectionDetailsRequestEventArgs>? ConnectionDetailsRequested;
-
         public ServerConfigurationControl()
         {
             InitializeComponent();
-
-            PCName.Text = Environment.MachineName;
-            NetworkIpsControl.ItemsSource = NetworkHelper.GetMyLocalIps();
 
             PortControl.Value = Port;
             MaxConnectionsControl.Value = MaxConnections;
@@ -148,24 +139,6 @@ namespace FtpsServerWindows.Controls
                 CertificatePath = dialog.FileName;
                 CertPathTextBox.Text = dialog.FileName;
             }
-        }
-
-        private void CopyConnectionDetails_Click(object sender, RoutedEventArgs e)
-        {
-            var args = new ConnectionDetailsRequestEventArgs();
-            ConnectionDetailsRequested?.Invoke(this, args);
-            if (string.IsNullOrEmpty(args.Text))
-                return;
-
-            Clipboard.SetText(args.Text);
-            CopyConnectionDetailsButton.Content = Strings.CertCopied;
-            var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
-            timer.Tick += (_, _) =>
-            {
-                timer.Stop();
-                CopyConnectionDetailsButton.Content = Strings.ConfigCopyConnectionDetails;
-            };
-            timer.Start();
         }
     }
 }

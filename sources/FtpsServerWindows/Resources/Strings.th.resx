@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>ล้าง</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>คอมพิวเตอร์ของคุณสามารถเข้าถึงได้ใน LAN ด้วยชื่อหรือที่อยู่ IP</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>ข้อผิดพลาด</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>บันทึกเซิร์ฟเวอร์</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>คัดลอกรายละเอียดการเชื่อมต่อ</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>แชร์...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>แชร์รายละเอียดการเชื่อมต่อ</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>รายละเอียดการเชื่อมต่อ</value>
@@ -361,5 +355,14 @@
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>รายละเอียดการเชื่อมต่อ FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>คำแนะนำการเชื่อมต่อ</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>บันทึกเซิร์ฟเวอร์</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>ล้าง</value>
   </data>
 </root>

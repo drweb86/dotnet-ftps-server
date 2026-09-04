@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>ရှင်းလင်းရန်</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>သင့်ကွန်ပျူတာကို LAN တွင် ၎င်း၏နာမည် သို့မဟုတ် IP လိပ်စာဖြင့် ဝင်ရောက်နိုင်သည်။</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>အမှား</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>ဆာဗာ မှတ်တမ်းများ</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>ချိတ်ဆက်မှုအသေးစိတ်ကို ကူးယူရန်</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>မျှဝေရန်...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>ချိတ်ဆက်မှုအသေးစိတ် မျှဝေရန်</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>ချိတ်ဆက်မှုအသေးစိတ်</value>
@@ -361,5 +355,14 @@ client ရှိ လက်ဗွေကို အောက်ပါ တန်ဖ�
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server ချိတ်ဆက်မှုအသေးစိတ်</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>ချိတ်ဆက်မှု လမ်းညွှန်</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>ဆာဗာ မှတ်တမ်းများ</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>ရှင်းလင်းရန်</value>
   </data>
 </root>

@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>Futa</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>Kompyuta yako inaweza kufikiwa kwenye LAN kwa jina lake au anwani ya IP.</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Hitilafu</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>Kumbukumbu za Seva</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@ Vipengele:
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Nakili maelezo ya muunganisho</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Shiriki...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Shiriki maelezo ya muunganisho</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Maelezo ya muunganisho</value>
@@ -361,5 +355,14 @@ Linganisha alama ya kidole kwenye mteja na thamani zilizo hapa chini. Zikilingan
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Maelezo ya muunganisho wa FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Maelekezo ya muunganisho</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Kumbukumbu za Seva</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Futa</value>
   </data>
 </root>

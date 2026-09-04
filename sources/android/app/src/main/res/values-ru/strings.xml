@@ -58,7 +58,7 @@
     <string name="cert_type_label">Тип:</string>
     <string name="cert_valid_label">Действителен:</string>
     <string name="config_copy_connection_details">Копировать данные подключения</string>
-    <string name="config_share_connection_details">Поделиться...</string>
+    <string name="config_share_connection_details">Поделиться данными подключения</string>
     <string name="connection_details_title">Данные подключения</string>
     <string name="connection_details_intro_android">Чтобы подключиться, клиент должен быть в той же сети, что и этот телефон (тот же Wi-Fi либо тот же хотспот / USB-модем).</string>
     <string name="connection_details_intro_desktop">Чтобы подключиться, клиент должен быть в той же сети, что и этот компьютер (тот же Wi-Fi или LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Если клиент показывает только «Fingerprint» (без алгоритма), сначала сравните с SHA-256, затем с SHA-1.</string>
     <string name="connection_details_share_subject">Данные подключения FTPS Server</string>
+    <string name="connection_instruction_title">Инструкция по подключению</string>
 </resources>

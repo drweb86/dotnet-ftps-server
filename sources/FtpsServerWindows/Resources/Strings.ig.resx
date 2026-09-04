@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>Hichapụ</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>Enwere ike ịnweta kọmpụta gị na LAN site n'aha ya ma ọ bụ adreesị IP ya.</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Njehie</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>Ndekọ Sava</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@ Njirimara:
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Detuo nkọwa njikọ</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Kekọrịta...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Kekọrịta nkọwa njikọ</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Nkọwa njikọ</value>
@@ -361,5 +355,14 @@ Tụnyere mkpịsị aka na client na ụkpụrụ dị n'okpuru. Ọ bụrụ n
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Nkọwa njikọ FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Ntuziaka njikọ</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Ndekọ Sava</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Hichapụ</value>
   </data>
 </root>

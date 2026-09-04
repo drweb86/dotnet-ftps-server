@@ -58,7 +58,7 @@
     <string name="cert_type_label">Jenis:</string>
     <string name="cert_valid_label">Berlaku:</string>
     <string name="config_copy_connection_details">Salin detail koneksi</string>
-    <string name="config_share_connection_details">Bagikan...</string>
+    <string name="config_share_connection_details">Bagikan detail koneksi</string>
     <string name="connection_details_title">Detail koneksi</string>
     <string name="connection_details_intro_android">Untuk terhubung, perangkat klien harus berada di jaringan yang sama dengan ponsel ini (Wi-Fi yang sama, atau hotspot / tethering USB yang sama).</string>
     <string name="connection_details_intro_desktop">Untuk terhubung, perangkat klien harus berada di jaringan yang sama dengan komputer ini (Wi-Fi atau LAN yang sama).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Jika klien hanya menampilkan \"Fingerprint\" (tanpa nama algoritma), bandingkan dulu dengan SHA-256, lalu SHA-1.</string>
     <string name="connection_details_share_subject">Detail koneksi FTPS Server</string>
+    <string name="connection_instruction_title">Petunjuk koneksi</string>
 </resources>

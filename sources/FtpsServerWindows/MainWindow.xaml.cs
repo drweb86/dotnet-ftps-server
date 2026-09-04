@@ -1,4 +1,5 @@
 using FtpsServerAppsShared.Helpers;
+using FtpsServerAppsShared.Models;
 using FtpsServerAppsShared.Services;
 using FtpsServerWindows.Controls;
 using FtpsServerWindows.Helpers;
@@ -10,9 +11,11 @@ using FtpsServerLibrary;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace FtpsServerWindows
 {
@@ -21,7 +24,10 @@ namespace FtpsServerWindows
         private FtpsServer? _server;
         private readonly AppSettings _settings;
         private readonly ObservableCollection<UserAccount> _users;
+        private readonly ObservableCollection<LogEntry> _logEntries;
+        private readonly UiLog _uiLog;
         private readonly IOsSleepPreventionService _osSleepPreventionService = OsSleepPreventionServiceFactory.Create();
+        private CertificateInfo? _certificateInfo;
         private bool _isServerRunning;
 
         public bool IsServerRunning
@@ -91,9 +97,18 @@ namespace FtpsServerWindows
         public MainWindow()
         {
             InitializeComponent();
+            MainMenu.ShowStartStopItems = false;
             _settings = SettingsManager.LoadSettings();
             _users = new ObservableCollection<UserAccount>(_settings.Users);
+            _logEntries = [];
+            _uiLog = new UiLog(_logEntries);
             UsersItemsControl.ItemsSource = _users;
+            LogItemsControl.ItemsSource = _logEntries;
+            _logEntries.CollectionChanged += (_, e) =>
+            {
+                if (e.Action == NotifyCollectionChangedAction.Add)
+                    LogScrollViewer.ScrollToEnd();
+            };
 
             // Initialize DependencyProperties from settings
             Port = _settings.ServerPort;
@@ -103,16 +118,7 @@ namespace FtpsServerWindows
             CertificatePassword = _settings.CertificatePassword;
 
             DataContext = this;
-
-            ServerConfig.ConnectionDetailsRequested += (_, e) =>
-            {
-                e.Text = ConnectionDetails.Build(
-                    Port,
-                    _users,
-                    CertificateSource == CertificateSourceType.SelfSigned,
-                    CertInfoPanel.CertInfo?.Sha256Fingerprint,
-                    CertInfoPanel.CertInfo?.Sha1Fingerprint);
-            };
+            UpdateServerStatus();
         }
 
         private static void OnPortChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -239,14 +245,16 @@ namespace FtpsServerWindows
                         });
                     }
 
-                _server = new FtpsServer(new FileLog(), config, new FtpsServerFileSystemProvider());
+                _server = new FtpsServer(new CompositeFtpsServerLog(new FileLog(), _uiLog), config, new FtpsServerFileSystemProvider());
                 await _server.StartAsync();
 
                 IsServerRunning = true;
                 _osSleepPreventionService.PreventSleep();
 
-                if (_server.LoadedCertificate != null)
-                    CertInfoPanel.CertInfo = CertificateInfoHelper.GetInfo(_server.LoadedCertificate);
+                _certificateInfo = _server.LoadedCertificate != null
+                    ? CertificateInfoHelper.GetInfo(_server.LoadedCertificate)
+                    : null;
+                RefreshConnectionInstruction();
             }
             catch (Exception ex)
             {
@@ -265,7 +273,8 @@ namespace FtpsServerWindows
                 _server?.Stop();
                 _server = null;
                 IsServerRunning = false;
-                CertInfoPanel.CertInfo = null;
+                _certificateInfo = null;
+                ConnectionInstruction.InstructionText = string.Empty;
                 _osSleepPreventionService.StopPreventSleep();
             }
             catch (Exception ex)
@@ -278,6 +287,27 @@ namespace FtpsServerWindows
         private void UpdateServerStatus()
         {
             MainMenu.UpdateServerStatus(IsServerRunning);
+            ConnectionInstruction.Visibility = IsServerRunning ? Visibility.Visible : Visibility.Collapsed;
+            ServerConfig.Visibility = IsServerRunning ? Visibility.Collapsed : Visibility.Visible;
+            UsersPanel.Visibility = IsServerRunning ? Visibility.Collapsed : Visibility.Visible;
+            LogsPanel.Visibility = IsServerRunning ? Visibility.Visible : Visibility.Collapsed;
+            StartStopButtonText.Text = IsServerRunning ? Strings.MenuStop : Strings.MenuStart;
+            StartStopButtonText.Foreground = IsServerRunning ? Brushes.PaleVioletRed : Brushes.Green;
+        }
+
+        private void RefreshConnectionInstruction()
+        {
+            ConnectionInstruction.InstructionText = ConnectionDetails.Build(
+                Port,
+                _users,
+                CertificateSource == CertificateSourceType.SelfSigned,
+                _certificateInfo?.Sha256Fingerprint,
+                _certificateInfo?.Sha1Fingerprint);
+        }
+
+        private void ClearLogs_Click(object sender, RoutedEventArgs e)
+        {
+            _logEntries.Clear();
         }
 
         protected override void OnClosed(EventArgs e)

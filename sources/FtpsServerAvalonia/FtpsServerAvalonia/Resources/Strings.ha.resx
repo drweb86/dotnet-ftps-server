@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Kwafi cikakken bayanin haɗi</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Raba...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Raba cikakken bayanin haɗi</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Cikakken bayanin haɗi</value>
@@ -349,5 +349,8 @@ Kwatanta fingerprint ɗin abokin ciniki da ƙimar da ke ƙasa. Idan sun dace, ka
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Cikakken bayanin haɗin FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Umarnin haɗi</value>
   </data>
 </root>

@@ -58,7 +58,7 @@
     <string name="cert_type_label">Ụdị:</string>
     <string name="cert_valid_label">Dị irè:</string>
     <string name="config_copy_connection_details">Detuo nkọwa njikọ</string>
-    <string name="config_share_connection_details">Kekọrịta...</string>
+    <string name="config_share_connection_details">Kekọrịta nkọwa njikọ</string>
     <string name="connection_details_title">Nkọwa njikọ</string>
     <string name="connection_details_intro_android">Iji jikọọ, ngwaọrụ client ga-anọ n\'otu netwọkụ ekwentị a (otu Wi-Fi, ma ọ bụ otu hotspot / USB tethering).</string>
     <string name="connection_details_intro_desktop">Iji jikọọ, ngwaọrụ client ga-anọ n\'otu netwọkụ kọmputa a (otu Wi-Fi ma ọ bụ LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Ọ bụrụ na client na-egosi naanị \"Fingerprint\" (enweghị aha algorithm), tụnyere SHA-256 mbụ, mgbe ahụ SHA-1.</string>
     <string name="connection_details_share_subject">Nkọwa njikọ FTPS Server</string>
+    <string name="connection_instruction_title">Ntuziaka njikọ</string>
 </resources>

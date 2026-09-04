@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>Kuro</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>A le wọle si kọmputa rẹ ni LAN nipasẹ orukọ rẹ tabi adirẹsi IP rẹ.</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Aṣiṣe</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>Awọn igbasilẹ Olupin</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Da àlàyé ìsopọ̀ kọ</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Pín...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Pín àlàyé ìsopọ̀</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Àlàyé ìsopọ̀</value>
@@ -361,5 +355,14 @@ Fi ìtẹ̀ka ika nínú oníbàárà wé àwọn iye ní ìsàlẹ̀. Tí wọ�
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Àlàyé ìsopọ̀ FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Ìtọ́sọ́nà ìsopọ̀</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Awọn igbasilẹ Olupin</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Kuro</value>
   </data>
 </root>

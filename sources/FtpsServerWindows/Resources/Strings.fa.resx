@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>پاک کردن</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>رایانه شما می‌تواند در شبکه محلی از طریق نام یا آدرس IP آن دسترسی داشته باشد.</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>خطا</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>گزارش‌های سرور</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>کپی جزئیات اتصال</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>اشتراک‌گذاری...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>اشتراک‌گذاری جزئیات اتصال</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>جزئیات اتصال</value>
@@ -361,5 +355,14 @@ FTPS ضمنی را انتخاب نکنید (اغلب فقط "FTPS" نامیده 
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>جزئیات اتصال FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>راهنمای اتصال</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>گزارش‌های سرور</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>پاک کردن</value>
   </data>
 </root>

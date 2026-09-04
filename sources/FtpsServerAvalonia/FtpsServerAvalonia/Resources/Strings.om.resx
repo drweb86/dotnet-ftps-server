@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Bal'ina quunnamtii galchii</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Qoodi...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Bal'ina quunnamtii qoodi</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Bal'ina quunnamtii</value>
@@ -349,5 +349,8 @@ Ashaaraa qubaa maamilaa gatiiwwan armaan gadii waliin wal bira qabi. Yoo wal sim
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Bal'ina quunnamtii FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Qajeelcha quunnamtii</value>
   </data>
 </root>

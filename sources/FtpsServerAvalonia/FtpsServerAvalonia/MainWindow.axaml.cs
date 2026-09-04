@@ -1,6 +1,8 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using FtpsServerAppsShared.Helpers;
+using FtpsServerAppsShared.Models;
 using FtpsServerAppsShared.Services;
 using FtpsServerAvalonia.Helpers;
 using FtpsServerAvalonia.Models;
@@ -12,6 +14,7 @@ using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace FtpsServerAvalonia
 {
@@ -20,7 +23,10 @@ namespace FtpsServerAvalonia
         private FtpsServer? _server;
         private readonly AppSettings _settings;
         private readonly ObservableCollection<UserAccount> _users;
+        private readonly ObservableCollection<LogEntry> _logEntries;
+        private readonly UiLog _uiLog;
         private readonly IOsSleepPreventionService _osSleepPreventionService = OsSleepPreventionServiceFactory.Create();
+        private CertificateInfo? _certificateInfo;
         private bool _isServerRunning;
 
         public bool IsServerRunning
@@ -96,9 +102,18 @@ namespace FtpsServerAvalonia
         {
             InitializeComponent();
             ExtendClientAreaToDecorationsHint = OperatingSystem.IsWindows() || OperatingSystem.IsMacOS() || OperatingSystem.IsLinux();
+            MainMenu.ShowStartStopItems = false;
             _settings = SettingsManager.LoadSettings();
             _users = new ObservableCollection<UserAccount>(_settings.Users);
+            _logEntries = [];
+            _uiLog = new UiLog(_logEntries);
             UsersItemsControl.ItemsSource = _users;
+            LogItemsControl.ItemsSource = _logEntries;
+            _logEntries.CollectionChanged += (_, e) =>
+            {
+                if (e.Action == NotifyCollectionChangedAction.Add)
+                    LogScrollViewer.ScrollToEnd();
+            };
 
             // Initialize DependencyProperties from settings
             Port = _settings.ServerPort;
@@ -108,17 +123,7 @@ namespace FtpsServerAvalonia
             CertificatePassword = _settings.CertificatePassword;
 
             DataContext = this;
-
-            ServerConfig.ConnectionDetailsRequested += (_, e) =>
-            {
-                e.Text = ConnectionDetails.Build(
-                    Port,
-                    _users,
-                    CertificateSource == CertificateSourceType.SelfSigned,
-                    CertInfoPanel.CertInfo?.Sha256Fingerprint,
-                    CertInfoPanel.CertInfo?.Sha1Fingerprint,
-                    android: false);
-            };
+            UpdateServerStatus();
         }
 
         private void SaveSettings()
@@ -212,14 +217,16 @@ namespace FtpsServerAvalonia
                     });
                 }
 
-                _server = new FtpsServer(new FileLog(), config, new FtpsServerFileSystemProvider());
+                _server = new FtpsServer(new CompositeFtpsServerLog(new FileLog(), _uiLog), config, new FtpsServerFileSystemProvider());
                 await _server.StartAsync();
 
                 IsServerRunning = true;
                 _osSleepPreventionService.PreventSleep();
 
-                if (_server.LoadedCertificate != null)
-                    CertInfoPanel.CertInfo = CertificateInfoHelper.GetInfo(_server.LoadedCertificate);
+                _certificateInfo = _server.LoadedCertificate != null
+                    ? CertificateInfoHelper.GetInfo(_server.LoadedCertificate)
+                    : null;
+                RefreshConnectionInstruction();
             }
             catch (Exception ex)
             {
@@ -237,7 +244,8 @@ namespace FtpsServerAvalonia
                 _server?.Stop();
                 _server = null;
                 IsServerRunning = false;
-                CertInfoPanel.CertInfo = null;
+                _certificateInfo = null;
+                ConnectionInstruction.InstructionText = string.Empty;
                 _osSleepPreventionService.StopPreventSleep();
             }
             catch (Exception ex)
@@ -249,6 +257,28 @@ namespace FtpsServerAvalonia
         private void UpdateServerStatus()
         {
             MainMenu.UpdateServerStatus(IsServerRunning);
+            ConnectionInstruction.IsVisible = IsServerRunning;
+            ServerConfig.IsVisible = !IsServerRunning;
+            UsersPanel.IsVisible = !IsServerRunning;
+            LogsPanel.IsVisible = IsServerRunning;
+            StartStopButtonText.Text = IsServerRunning ? Strings.MenuStop : Strings.MenuStart;
+            StartStopButtonText.Foreground = IsServerRunning ? Brushes.PaleVioletRed : Brushes.Green;
+        }
+
+        private void RefreshConnectionInstruction()
+        {
+            ConnectionInstruction.InstructionText = ConnectionDetails.Build(
+                Port,
+                _users,
+                CertificateSource == CertificateSourceType.SelfSigned,
+                _certificateInfo?.Sha256Fingerprint,
+                _certificateInfo?.Sha1Fingerprint,
+                android: false);
+        }
+
+        private void ClearLogs_Click(object? sender, RoutedEventArgs e)
+        {
+            _logEntries.Clear();
         }
 
         protected override void OnClosed(EventArgs e)

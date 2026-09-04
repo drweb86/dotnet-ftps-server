@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>አጽዳ</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>ኮምፒውተርዎ በ LAN ውስጥ በስሙ ወይም በ IP አድራሻው ሊደረስ ይችላል።</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>ስህተት</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>የሰርቨር ምዝገባ</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>የግንኙነት ዝርዝሮችን ቅዳ</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>አጋራ...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>የግንኙነት ዝርዝሮችን አጋራ</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>የግንኙነት ዝርዝሮች</value>
@@ -361,5 +355,14 @@ Implicit FTPS አይምረጡ (ብዙ ጊዜ "FTPS" ብቻ ይባላል) — አ
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>የFTPS Server የግንኙነት ዝርዝሮች</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>የግንኙነት መመሪያ</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>የሰርቨር ምዝገባ</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>አጽዳ</value>
   </data>
 </root>

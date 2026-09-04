@@ -214,7 +214,7 @@ namespace FtpsServerAvalonia.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Share....
+        ///   Looks up a localized string similar to Share connection details.
         /// </summary>
         public static string ConfigShareConnectionDetails {
             get {
@@ -462,6 +462,15 @@ namespace FtpsServerAvalonia.Resources {
         public static string ConnectionDetailsTitle {
             get {
                 return ResourceManager.GetString("ConnectionDetailsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection instruction.
+        /// </summary>
+        public static string ConnectionInstructionTitle {
+            get {
+                return ResourceManager.GetString("ConnectionInstructionTitle", resourceCulture);
             }
         }
         

@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>Тазалау</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>Компьютеріңізге LAN желісінде атауы немесе IP мекенжайы арқылы қатынауға болады.</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Қате</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>Сервер журналдары</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Қосылым мәліметтерін көшіру</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Бөлісу...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Қосылым мәліметтерімен бөлісу</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Қосылым мәліметтері</value>
@@ -361,5 +355,14 @@ Implicit FTPS таңдамаңыз (жиі тек "FTPS" деп белгілен
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server қосылым мәліметтері</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Қосылу нұсқаулығы</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Сервер журналдары</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Тазалау</value>
   </data>
 </root>

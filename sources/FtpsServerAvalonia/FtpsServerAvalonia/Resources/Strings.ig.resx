@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Detuo nkọwa njikọ</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Kekọrịta...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Kekọrịta nkọwa njikọ</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Nkọwa njikọ</value>
@@ -349,5 +349,8 @@ Tụnyere mkpịsị aka na client na ụkpụrụ dị n'okpuru. Ọ bụrụ n
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Nkọwa njikọ FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Ntuziaka njikọ</value>
   </data>
 </root>

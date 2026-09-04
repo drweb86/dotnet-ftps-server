@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Kopiuj dane połączenia</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Udostępnij...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Udostępnij dane połączenia</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Dane połączenia</value>
@@ -349,5 +349,8 @@ Porównaj odcisk w kliencie z wartościami poniżej. Jeśli się zgadzają, zaak
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Dane połączenia FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Instrukcja połączenia</value>
   </data>
 </root>

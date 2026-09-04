@@ -58,7 +58,7 @@
     <string name="cert_type_label">Tür:</string>
     <string name="cert_valid_label">Geçerli:</string>
     <string name="config_copy_connection_details">Bağlantı bilgilerini kopyala</string>
-    <string name="config_share_connection_details">Paylaş...</string>
+    <string name="config_share_connection_details">Bağlantı bilgilerini paylaş</string>
     <string name="connection_details_title">Bağlantı bilgileri</string>
     <string name="connection_details_intro_android">Bağlanmak için istemci cihaz bu telefonla aynı ağda olmalıdır (aynı Wi-Fi veya aynı erişim noktası / USB tethering).</string>
     <string name="connection_details_intro_desktop">Bağlanmak için istemci cihaz bu bilgisayarla aynı ağda olmalıdır (aynı Wi-Fi veya LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">İstemci yalnızca \"Fingerprint\" (algoritma adı yok) gösteriyorsa önce SHA-256, sonra SHA-1 ile karşılaştırın.</string>
     <string name="connection_details_share_subject">FTPS Server bağlantı bilgileri</string>
+    <string name="connection_instruction_title">Bağlantı talimatı</string>
 </resources>

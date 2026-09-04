@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>Wyczyść</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>Twój komputer jest dostępny w sieci LAN za pomocą nazwy lub adresu IP.</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Błąd</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>Dzienniki serwera</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@ Funkcje:
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Kopiuj dane połączenia</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Udostępnij...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Udostępnij dane połączenia</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Dane połączenia</value>
@@ -361,5 +355,14 @@ Porównaj odcisk w kliencie z wartościami poniżej. Jeśli się zgadzają, zaak
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Dane połączenia FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Instrukcja połączenia</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Dzienniki serwera</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Wyczyść</value>
   </data>
 </root>

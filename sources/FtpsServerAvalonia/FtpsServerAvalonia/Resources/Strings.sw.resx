@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Nakili maelezo ya muunganisho</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Shiriki...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Shiriki maelezo ya muunganisho</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Maelezo ya muunganisho</value>
@@ -349,5 +349,8 @@ Linganisha alama ya kidole kwenye mteja na thamani zilizo hapa chini. Zikilingan
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Maelezo ya muunganisho wa FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Maelekezo ya muunganisho</value>
   </data>
 </root>

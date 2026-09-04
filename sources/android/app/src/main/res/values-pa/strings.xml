@@ -58,7 +58,7 @@
     <string name="cert_type_label">ਕਿਸਮ:</string>
     <string name="cert_valid_label">ਵੈਧ:</string>
     <string name="config_copy_connection_details">ਕਨੈਕਸ਼ਨ ਵੇਰਵੇ ਕਾਪੀ ਕਰੋ</string>
-    <string name="config_share_connection_details">ਸਾਂਝਾ ਕਰੋ...</string>
+    <string name="config_share_connection_details">ਕਨੈਕਸ਼ਨ ਵੇਰਵੇ ਸਾਂਝੇ ਕਰੋ</string>
     <string name="connection_details_title">ਕਨੈਕਸ਼ਨ ਵੇਰਵੇ</string>
     <string name="connection_details_intro_android">ਕਨੈਕਟ ਕਰਨ ਲਈ ਕਲਾਇੰਟ ਡਿਵਾਈਸ ਇਸ ਫ਼ੋਨ ਵਾਲੇ ਉਸੇ ਨੈੱਟਵਰਕ \'ਤੇ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ (ਉਹੀ Wi-Fi, ਜਾਂ ਉਹੀ ਹਾਟਸਪਾਟ / USB ਟੈਦਰਿੰਗ)।</string>
     <string name="connection_details_intro_desktop">ਕਨੈਕਟ ਕਰਨ ਲਈ ਕਲਾਇੰਟ ਡਿਵਾਈਸ ਇਸ ਕੰਪਿਊਟਰ ਵਾਲੇ ਉਸੇ ਨੈੱਟਵਰਕ \'ਤੇ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ (ਉਹੀ Wi-Fi ਜਾਂ LAN)।</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">ਜੇ ਕਲਾਇੰਟ ਸਿਰਫ਼ \"Fingerprint\" ਦਿਖਾਵੇ (ਐਲਗੋਰਿਦਮ ਨਾਮ ਤੋਂ ਬਿਨਾਂ), ਪਹਿਲਾਂ SHA-256 ਫਿਰ SHA-1 ਨਾਲ ਤੁਲਨਾ ਕਰੋ।</string>
     <string name="connection_details_share_subject">FTPS Server ਕਨੈਕਸ਼ਨ ਵੇਰਵੇ</string>
+    <string name="connection_instruction_title">ਕਨੈਕਸ਼ਨ ਹਿਦਾਇਤ</string>
 </resources>

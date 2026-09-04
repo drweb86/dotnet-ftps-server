@@ -249,8 +249,8 @@ Fonctionnalités :
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copier les informations de connexion</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Partager...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Partager les informations de connexion</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Informations de connexion</value>
@@ -346,5 +346,14 @@ Comparez l'empreinte du client aux valeurs ci-dessous. Si elles correspondent, a
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Informations de connexion FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Instructions de connexion</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Journaux du Serveur</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Effacer</value>
   </data>
 </root>

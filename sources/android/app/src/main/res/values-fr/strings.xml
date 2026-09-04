@@ -58,7 +58,7 @@
     <string name="cert_type_label">Type :</string>
     <string name="cert_valid_label">Valide :</string>
     <string name="config_copy_connection_details">Copier les informations de connexion</string>
-    <string name="config_share_connection_details">Partager...</string>
+    <string name="config_share_connection_details">Partager les informations de connexion</string>
     <string name="connection_details_title">Informations de connexion</string>
     <string name="connection_details_intro_android">Pour vous connecter, l\'appareil client doit être sur le même réseau que ce téléphone (même Wi-Fi, ou même point d\'accès / partage USB).</string>
     <string name="connection_details_intro_desktop">Pour vous connecter, l\'appareil client doit être sur le même réseau que cet ordinateur (même Wi-Fi ou LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Si le client affiche seulement « Fingerprint » (sans algorithme), comparez d\'abord à SHA-256, puis à SHA-1.</string>
     <string name="connection_details_share_subject">Informations de connexion FTPS Server</string>
+    <string name="connection_instruction_title">Instructions de connexion</string>
 </resources>

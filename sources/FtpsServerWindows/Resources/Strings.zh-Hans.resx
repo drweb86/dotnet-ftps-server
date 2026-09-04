@@ -249,8 +249,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>复制连接详情</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>分享...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>分享连接详情</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>连接详情</value>
@@ -346,5 +346,14 @@
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server 连接详情</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>连接说明</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>服务器日志</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>清除</value>
   </data>
 </root>

@@ -58,7 +58,7 @@
     <string name="cert_type_label">ประเภท:</string>
     <string name="cert_valid_label">ใช้ได้:</string>
     <string name="config_copy_connection_details">คัดลอกรายละเอียดการเชื่อมต่อ</string>
-    <string name="config_share_connection_details">แชร์...</string>
+    <string name="config_share_connection_details">แชร์รายละเอียดการเชื่อมต่อ</string>
     <string name="connection_details_title">รายละเอียดการเชื่อมต่อ</string>
     <string name="connection_details_intro_android">ในการเชื่อมต่อ อุปกรณ์ไคลเอนต์ต้องอยู่เครือข่ายเดียวกับโทรศัพท์นี้ (Wi-Fi เดียวกัน หรือฮอตสปอต / USB tethering เดียวกัน)</string>
     <string name="connection_details_intro_desktop">ในการเชื่อมต่อ อุปกรณ์ไคลเอนต์ต้องอยู่เครือข่ายเดียวกับคอมพิวเตอร์นี้ (Wi-Fi หรือ LAN เดียวกัน)</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">หากไคลเอนต์แสดงเพียง \"Fingerprint\" (ไม่มีชื่ออัลกอริทึม) ให้เทียบ SHA-256 ก่อน แล้วจึง SHA-1</string>
     <string name="connection_details_share_subject">รายละเอียดการเชื่อมต่อ FTPS Server</string>
+    <string name="connection_instruction_title">คำแนะนำการเชื่อมต่อ</string>
 </resources>

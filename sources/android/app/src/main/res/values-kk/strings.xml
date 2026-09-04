@@ -58,7 +58,7 @@
     <string name="cert_type_label">Түрі:</string>
     <string name="cert_valid_label">Жарамды:</string>
     <string name="config_copy_connection_details">Қосылым мәліметтерін көшіру</string>
-    <string name="config_share_connection_details">Бөлісу...</string>
+    <string name="config_share_connection_details">Қосылым мәліметтерімен бөлісу</string>
     <string name="connection_details_title">Қосылым мәліметтері</string>
     <string name="connection_details_intro_android">Қосылу үшін клиент құрылғысы осы телефонмен бір желіде болуы керек (сол Wi-Fi немесе сол хотспот / USB tethering).</string>
     <string name="connection_details_intro_desktop">Қосылу үшін клиент құрылғысы осы компьютермен бір желіде болуы керек (сол Wi-Fi немесе LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Клиент тек \"Fingerprint\" көрсетсе (алгоритм атынсыз), алдымен SHA-256, содан кейін SHA-1-мен салыстырыңыз.</string>
     <string name="connection_details_share_subject">FTPS Server қосылым мәліметтері</string>
+    <string name="connection_instruction_title">Қосылу нұсқаулығы</string>
 </resources>

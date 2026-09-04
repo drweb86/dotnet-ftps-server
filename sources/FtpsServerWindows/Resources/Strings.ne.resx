@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>खाली गर्नुस्</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>तपाईंको कम्प्युटरलाई LAN मा यसको नाम वा IP ठेगानाद्वारा पहुँच गर्न सकिन्छ।</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>त्रुटि</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>सर्भर लगहरू</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>जडान विवरण कपी गर्नुहोस्</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>सेयर...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>जडान विवरण सेयर गर्नुहोस्</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>जडान विवरण</value>
@@ -361,5 +355,14 @@ Implicit FTPS नछान्नुहोस् (प्रायः केवल
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server जडान विवरण</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>जडान निर्देशन</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>सर्भर लगहरू</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>खाली गर्नुस्</value>
   </data>
 </root>

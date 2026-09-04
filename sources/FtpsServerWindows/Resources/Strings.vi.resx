@@ -255,8 +255,8 @@ Tính năng:
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Sao chép chi tiết kết nối</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Chia sẻ...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Chia sẻ chi tiết kết nối</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Chi tiết kết nối</value>
@@ -352,5 +352,14 @@ So sánh vân tay trên máy khách với các giá trị bên dưới. Nếu kh
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Chi tiết kết nối FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Hướng dẫn kết nối</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Nhật ký máy chủ</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Xóa</value>
   </data>
 </root>

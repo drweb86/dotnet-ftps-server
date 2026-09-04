@@ -255,8 +255,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>کنکشن کی تفصیلات کاپی کریں</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>شیئر...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>کنکشن کی تفصیلات شیئر کریں</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>کنکشن کی تفصیلات</value>
@@ -352,5 +352,14 @@ Implicit FTPS نہ چنیں (اکثر صرف "FTPS" لکھا ہوتا ہے) — 
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server کنکشن کی تفصیلات</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>کنکشن کی ہدایت</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>سرور نوشتہ جات</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>صاف کریں</value>
   </data>
 </root>

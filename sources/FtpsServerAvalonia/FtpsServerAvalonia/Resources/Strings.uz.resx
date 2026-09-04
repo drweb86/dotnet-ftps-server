@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Ulanish tafsilotlarini nusxalash</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Ulashish...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Ulanish tafsilotlarini ulashish</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Ulanish tafsilotlari</value>
@@ -349,5 +349,8 @@ Mijozdagi barmoq izini quyidagi qiymatlar bilan solishtiring. Mos kelsa, sertifi
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server ulanish tafsilotlari</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Ulanish yo‘riqnomasi</value>
   </data>
 </root>

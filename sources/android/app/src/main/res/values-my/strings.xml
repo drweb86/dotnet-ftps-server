@@ -58,7 +58,7 @@
     <string name="cert_type_label">အမျိုးအစား:</string>
     <string name="cert_valid_label">သက်တမ်းရှိသည်:</string>
     <string name="config_copy_connection_details">ချိတ်ဆက်မှုအသေးစိတ်ကို ကူးယူရန်</string>
-    <string name="config_share_connection_details">မျှဝေရန်...</string>
+    <string name="config_share_connection_details">ချိတ်ဆက်မှုအသေးစိတ် မျှဝေရန်</string>
     <string name="connection_details_title">ချိတ်ဆက်မှုအသေးစိတ်</string>
     <string name="connection_details_intro_android">ချိတ်ဆက်ရန် client စက်သည် ဤဖုန်းနှင့် တူညီသော ကွန်ရက်ပေါ်တွင် ရှိရမည် (တူညီသော Wi-Fi သို့မဟုတ် hotspot / USB tethering)။</string>
     <string name="connection_details_intro_desktop">ချိတ်ဆက်ရန် client စက်သည် ဤကွန်ပျူတာနှင့် တူညီသော ကွန်ရက်ပေါ်တွင် ရှိရမည် (တူညီသော Wi-Fi သို့မဟုတ် LAN)။</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">client က \"Fingerprint\" သာ ပြပါက (algorithm အမည်မပါ) SHA-256 ကို အရင်၊ ထို့နောက် SHA-1 နှင့် နှိုင်းယှဉ်ပါ။</string>
     <string name="connection_details_share_subject">FTPS Server ချိတ်ဆက်မှုအသေးစိတ်</string>
+    <string name="connection_instruction_title">ချိတ်ဆက်မှု လမ်းညွှန်</string>
 </resources>

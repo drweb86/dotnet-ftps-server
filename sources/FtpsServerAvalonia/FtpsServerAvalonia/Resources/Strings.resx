@@ -254,8 +254,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copy connection details</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Share...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Share connection details</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Connection details</value>
@@ -351,5 +351,8 @@ Compare the fingerprint in the client with the values below. If they match, acce
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server connection details</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Connection instruction</value>
   </data>
 </root>

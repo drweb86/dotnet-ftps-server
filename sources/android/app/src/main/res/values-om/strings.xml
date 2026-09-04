@@ -58,7 +58,7 @@
     <string name="cert_type_label">Gosa:</string>
     <string name="cert_valid_label">Sirrii:</string>
     <string name="config_copy_connection_details">Bal\'ina quunnamtii galchii</string>
-    <string name="config_share_connection_details">Qoodi...</string>
+    <string name="config_share_connection_details">Bal\'ina quunnamtii qoodi</string>
     <string name="connection_details_title">Bal\'ina quunnamtii</string>
     <string name="connection_details_intro_android">Quunnamuuf meeshaan maamilaa cimdaa bilbila kanaa waliin tokko ta\'uu qaba (Wi-Fi tokko, ykn hotspot / USB tethering tokko).</string>
     <string name="connection_details_intro_desktop">Quunnamuuf meeshaan maamilaa cimdaa kompiitara kanaa waliin tokko ta\'uu qaba (Wi-Fi ykn LAN tokko).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Maamilaan \"Fingerprint\" qofa yoo agarsiise (maqaa algorithm malee), duraan SHA-256, itti aansuun SHA-1 waliin wal bira qabi.</string>
     <string name="connection_details_share_subject">Bal\'ina quunnamtii FTPS Server</string>
+    <string name="connection_instruction_title">Qajeelcha quunnamtii</string>
 </resources>

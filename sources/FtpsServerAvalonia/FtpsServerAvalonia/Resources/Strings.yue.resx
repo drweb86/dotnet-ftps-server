@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>複製連線資料</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>分享...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>分享連線資料</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>連線資料</value>
@@ -349,5 +349,8 @@
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server 連線資料</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>連線說明</value>
   </data>
 </root>

@@ -246,8 +246,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>कनेक्शन तपशील कॉपी करा</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>शेअर...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>कनेक्शन तपशील शेअर करा</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>कनेक्शन तपशील</value>
@@ -343,5 +343,8 @@ Implicit FTPS निवडू नका (बहुधा फक्त "FTPS" ल
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server कनेक्शन तपशील</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>कनेक्शन सूचना</value>
   </data>
 </root>

@@ -58,7 +58,7 @@
     <string name="cert_type_label">유형:</string>
     <string name="cert_valid_label">유효 기간:</string>
     <string name="config_copy_connection_details">연결 정보 복사</string>
-    <string name="config_share_connection_details">공유...</string>
+    <string name="config_share_connection_details">연결 정보 공유</string>
     <string name="connection_details_title">연결 정보</string>
     <string name="connection_details_intro_android">연결하려면 클라이언트 기기가 이 휴대전화와 같은 네트워크에 있어야 합니다(같은 Wi-Fi 또는 같은 핫스팟 / USB 테더링).</string>
     <string name="connection_details_intro_desktop">연결하려면 클라이언트 기기가 이 컴퓨터와 같은 네트워크에 있어야 합니다(같은 Wi-Fi 또는 LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">클라이언트가 알고리즘 이름 없이 \"Fingerprint\"만 표시하면 먼저 SHA-256, 그다음 SHA-1과 비교하세요.</string>
     <string name="connection_details_share_subject">FTPS Server 연결 정보</string>
+    <string name="connection_instruction_title">연결 안내</string>
 </resources>

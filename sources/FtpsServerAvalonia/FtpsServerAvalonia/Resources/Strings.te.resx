@@ -246,8 +246,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>కనెక్షన్ వివరాలను కాపీ చేయండి</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>షేర్...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>కనెక్షన్ వివరాలను షేర్ చేయండి</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>కనెక్షన్ వివరాలు</value>
@@ -343,5 +343,8 @@ Implicit FTPS ఎంచుకోకండి (తరచు కేవలం "FTPS
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server కనెక్షన్ వివరాలు</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>కనెక్షన్ సూచనలు</value>
   </data>
 </root>

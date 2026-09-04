@@ -58,7 +58,7 @@
     <string name="cert_type_label">Nau\'i:</string>
     <string name="cert_valid_label">Ingantacce:</string>
     <string name="config_copy_connection_details">Kwafi cikakken bayanin haɗi</string>
-    <string name="config_share_connection_details">Raba...</string>
+    <string name="config_share_connection_details">Raba cikakken bayanin haɗi</string>
     <string name="connection_details_title">Cikakken bayanin haɗi</string>
     <string name="connection_details_intro_android">Don haɗawa, na\'urar abokin ciniki dole tana cikin hanyar sadarwa ɗaya da wannan waya (Wi-Fi ɗaya, ko hotspot / USB tethering ɗaya).</string>
     <string name="connection_details_intro_desktop">Don haɗawa, na\'urar abokin ciniki dole tana cikin hanyar sadarwa ɗaya da wannan kwamfuta (Wi-Fi ko LAN ɗaya).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Idan abokin ciniki ya nuna \"Fingerprint\" kawai (babu sunan algorithm), fara da SHA-256, sa\'an nan SHA-1.</string>
     <string name="connection_details_share_subject">Cikakken bayanin haɗin FTPS Server</string>
+    <string name="connection_instruction_title">Umarnin haɗi</string>
 </resources>

@@ -75,9 +75,6 @@
   <data name="AppTitle" xml:space="preserve">
     <value>FTPS Server</value>
   </data>
-  <data name="ClearLogs" xml:space="preserve">
-    <value>پاک کړئ</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>ستاسو کمپیوټر ته د شبکې (LAN) کې د هغه نوم یا IP پته له لارې لاسرسی ممکن دی.</value>
   </data>
@@ -143,9 +140,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>تېروتنه</value>
-  </data>
-  <data name="LogsTab" xml:space="preserve">
-    <value>د سرور لاګونه</value>
   </data>
   <data name="MenuAboutFormat" xml:space="preserve">
     <value>FTPS Server - V{0}</value>
@@ -264,8 +258,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>د نښلېدو جزئیات کاپي کړئ</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>شریکول...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>د نښلېدو جزئیات شریک کړئ</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>د نښلېدو جزئیات</value>
@@ -361,5 +355,14 @@ Implicit FTPS مه ټاکئ (ډېر ځله یوازې "FTPS" لیکل شوی و�
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>د FTPS Server د نښلېدو جزئیات</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>د نښلېدو لارښوونه</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>د سرور لاګونه</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>پاک کړئ</value>
   </data>
 </root>

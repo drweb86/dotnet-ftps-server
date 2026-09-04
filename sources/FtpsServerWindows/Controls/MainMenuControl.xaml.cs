@@ -11,6 +11,8 @@ namespace FtpsServerWindows
             EventManager.RegisterRoutedEvent(nameof(StartStopClicked), RoutingStrategy.Bubble,
                 typeof(RoutedEventHandler), typeof(MainMenuControl));
 
+        public bool ShowStartStopItems { get; set; } = true;
+
         public event RoutedEventHandler StartStopClicked
         {
             add { AddHandler(StartStopClickedEvent, value); }
@@ -35,6 +37,13 @@ namespace FtpsServerWindows
         {
             Dispatcher.Invoke(() =>
             {
+                if (!ShowStartStopItems)
+                {
+                    PlayIcon.Visibility = Visibility.Collapsed;
+                    StopIcon.Visibility = Visibility.Collapsed;
+                    return;
+                }
+
                 if (isRunning)
                 {
                     PlayIcon.Visibility = Visibility.Collapsed;

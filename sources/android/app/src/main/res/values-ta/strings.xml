@@ -58,7 +58,7 @@
     <string name="cert_type_label">வகை:</string>
     <string name="cert_valid_label">செல்லுபடியாகும்:</string>
     <string name="config_copy_connection_details">இணைப்பு விவரங்களை நகலெடு</string>
-    <string name="config_share_connection_details">பகிர்...</string>
+    <string name="config_share_connection_details">இணைப்பு விவரங்களைப் பகிர்</string>
     <string name="connection_details_title">இணைப்பு விவரங்கள்</string>
     <string name="connection_details_intro_android">இணைய, கிளையன்ட் சாதனம் இந்த தொலைபேசியின் அதே பிணையத்தில் இருக்க வேண்டும் (அதே Wi-Fi, அல்லது அதே ஹாட்ஸ்பாட் / USB டெதரிங்).</string>
     <string name="connection_details_intro_desktop">இணைய, கிளையன்ட் சாதனம் இந்த கணினியின் அதே பிணையத்தில் இருக்க வேண்டும் (அதே Wi-Fi அல்லது LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">கிளையண்ட் \"Fingerprint\" மட்டும் காட்டினால் (வழிமுறை பெயர் இல்லாமல்), முதலில் SHA-256 பிறகு SHA-1 உடன் ஒப்பிடுங்கள்.</string>
     <string name="connection_details_share_subject">FTPS Server இணைப்பு விவரங்கள்</string>
+    <string name="connection_instruction_title">இணைப்பு வழிமுறை</string>
 </resources>

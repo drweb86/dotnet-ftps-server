@@ -58,7 +58,7 @@
     <string name="cert_type_label">አይነት:</string>
     <string name="cert_valid_label">ተቀባይነት:</string>
     <string name="config_copy_connection_details">የግንኙነት ዝርዝሮችን ቅዳ</string>
-    <string name="config_share_connection_details">አጋራ...</string>
+    <string name="config_share_connection_details">የግንኙነት ዝርዝሮችን አጋራ</string>
     <string name="connection_details_title">የግንኙነት ዝርዝሮች</string>
     <string name="connection_details_intro_android">ለመገናኘት የደንበኛ መሣሪያው በዚህ ስልክ ተመሳሳይ መረብ ላይ መሆን አለበት (ተመሳሳይ Wi-Fi ወይም ተመሳሳይ ሆትስፖት / USB tethering)።</string>
     <string name="connection_details_intro_desktop">ለመገናኘት የደንበኛ መሣሪያው በዚህ ኮምፒዩተር ተመሳሳይ መረብ ላይ መሆን አለበት (ተመሳሳይ Wi-Fi ወይም LAN)።</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">ደንበኛው \"Fingerprint\" ብቻ ካሳየ (ያለ የአልጎሪዝም ስም) መጀመሪያ SHA-256 ከዚያ SHA-1 ጋር ያነፃፅሩ።</string>
     <string name="connection_details_share_subject">የFTPS Server የግንኙነት ዝርዝሮች</string>
+    <string name="connection_instruction_title">የግንኙነት መመሪያ</string>
 </resources>

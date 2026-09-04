@@ -58,7 +58,7 @@
     <string name="cert_type_label">類型：</string>
     <string name="cert_valid_label">有效期：</string>
     <string name="config_copy_connection_details">複製連線資料</string>
-    <string name="config_share_connection_details">分享...</string>
+    <string name="config_share_connection_details">分享連線資料</string>
     <string name="connection_details_title">連線資料</string>
     <string name="connection_details_intro_android">要連線，用戶端裝置必須同呢部手機喺同一網絡（同一個 Wi-Fi，或者同一個熱點 / USB 網絡共享）。</string>
     <string name="connection_details_intro_desktop">要連線，用戶端裝置必須同呢部電腦喺同一網絡（同一個 Wi-Fi 或者區域網絡）。</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">如果用戶端淨係顯示「Fingerprint」（冇演算法名稱），先同 SHA-256 比較，再同 SHA-1 比較。</string>
     <string name="connection_details_share_subject">FTPS Server 連線資料</string>
+    <string name="connection_instruction_title">連線說明</string>
 </resources>

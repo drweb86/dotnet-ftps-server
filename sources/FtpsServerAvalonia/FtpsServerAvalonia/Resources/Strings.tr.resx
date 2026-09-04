@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Bağlantı bilgilerini kopyala</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Paylaş...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Bağlantı bilgilerini paylaş</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Bağlantı bilgileri</value>
@@ -349,5 +349,8 @@ Yalnızca AÇIK TLS (AUTH TLS / FTP over TLS) desteklenir.
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server bağlantı bilgileri</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Bağlantı talimatı</value>
   </data>
 </root>

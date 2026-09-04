@@ -246,8 +246,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Verbindungsdaten kopieren</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Teilen...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Verbindungsdaten teilen</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Verbindungsdaten</value>
@@ -343,5 +343,8 @@ Vergleichen Sie den Fingerprint im Client mit den Werten unten. Stimmen sie übe
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server Verbindungsdaten</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Verbindungsanleitung</value>
   </data>
 </root>

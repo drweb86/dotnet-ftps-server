@@ -246,8 +246,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copiar datos de conexión</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Compartir...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Compartir datos de conexión</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Datos de conexión</value>
@@ -343,5 +343,8 @@ Compare la huella del cliente con los valores de abajo. Si coinciden, acepte el 
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Datos de conexión de FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Instrucciones de conexión</value>
   </data>
 </root>

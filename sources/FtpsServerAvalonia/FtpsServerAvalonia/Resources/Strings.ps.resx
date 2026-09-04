@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>د نښلېدو جزئیات کاپي کړئ</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>شریکول...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>د نښلېدو جزئیات شریک کړئ</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>د نښلېدو جزئیات</value>
@@ -349,5 +349,8 @@ Implicit FTPS مه ټاکئ (ډېر ځله یوازې "FTPS" لیکل شوی و�
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>د FTPS Server د نښلېدو جزئیات</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>د نښلېدو لارښوونه</value>
   </data>
 </root>

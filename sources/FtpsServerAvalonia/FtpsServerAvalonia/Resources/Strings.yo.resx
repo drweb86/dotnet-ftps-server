@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Da àlàyé ìsopọ̀ kọ</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Pín...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Pín àlàyé ìsopọ̀</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Àlàyé ìsopọ̀</value>
@@ -349,5 +349,8 @@ Fi ìtẹ̀ka ika nínú oníbàárà wé àwọn iye ní ìsàlẹ̀. Tí wọ�
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Àlàyé ìsopọ̀ FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Ìtọ́sọ́nà ìsopọ̀</value>
   </data>
 </root>

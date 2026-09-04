@@ -58,7 +58,7 @@
     <string name="cert_type_label">قسم:</string>
     <string name="cert_valid_label">درست:</string>
     <string name="config_copy_connection_details">کنکشن کی تفصیلات کاپی کریں</string>
-    <string name="config_share_connection_details">شیئر...</string>
+    <string name="config_share_connection_details">کنکشن کی تفصیلات شیئر کریں</string>
     <string name="connection_details_title">کنکشن کی تفصیلات</string>
     <string name="connection_details_intro_android">کنیکٹ کرنے کے لیے کلائنٹ ڈیوائس کو اسی نیٹ ورک پر ہونا چاہیے جس پر یہ فون ہے (وہی Wi-Fi، یا وہی ہاٹ اسپاٹ / USB tethering)۔</string>
     <string name="connection_details_intro_desktop">کنیکٹ کرنے کے لیے کلائنٹ ڈیوائس کو اسی نیٹ ورک پر ہونا چاہیے جس پر یہ کمپیوٹر ہے (وہی Wi-Fi یا LAN)۔</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">اگر کلائنٹ صرف \"Fingerprint\" دکھائے (الگورتھم کے نام کے بغیر)، پہلے SHA-256 پھر SHA-1 سے موازنہ کریں۔</string>
     <string name="connection_details_share_subject">FTPS Server کنکشن کی تفصیلات</string>
+    <string name="connection_instruction_title">کنکشن کی ہدایت</string>
 </resources>

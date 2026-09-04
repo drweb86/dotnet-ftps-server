@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>जडान विवरण कपी गर्नुहोस्</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>सेयर...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>जडान विवरण सेयर गर्नुहोस्</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>जडान विवरण</value>
@@ -349,5 +349,8 @@ Implicit FTPS नछान्नुहोस् (प्रायः केवल
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server जडान विवरण</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>जडान निर्देशन</value>
   </data>
 </root>

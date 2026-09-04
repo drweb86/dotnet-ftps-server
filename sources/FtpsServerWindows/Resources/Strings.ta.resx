@@ -249,8 +249,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>இணைப்பு விவரங்களை நகலெடு</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>பகிர்...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>இணைப்பு விவரங்களைப் பகிர்</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>இணைப்பு விவரங்கள்</value>
@@ -346,5 +346,14 @@ Implicit FTPS தேர்ந்தெடுக்க வேண்டாம் (
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server இணைப்பு விவரங்கள்</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>இணைப்பு வழிமுறை</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>சேவையக பதிவுகள்</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>அழி</value>
   </data>
 </root>

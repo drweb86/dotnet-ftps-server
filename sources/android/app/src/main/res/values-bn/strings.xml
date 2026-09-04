@@ -58,7 +58,7 @@
     <string name="cert_type_label">ধরন:</string>
     <string name="cert_valid_label">বৈধ:</string>
     <string name="config_copy_connection_details">সংযোগের বিবরণ কপি করুন</string>
-    <string name="config_share_connection_details">শেয়ার...</string>
+    <string name="config_share_connection_details">সংযোগের বিবরণ শেয়ার করুন</string>
     <string name="connection_details_title">সংযোগের বিবরণ</string>
     <string name="connection_details_intro_android">সংযোগ করতে ক্লায়েন্ট ডিভাইসকে এই ফোনের একই নেটওয়ার্কে থাকতে হবে (একই Wi-Fi, বা একই হটস্পট / USB টেথারিং)।</string>
     <string name="connection_details_intro_desktop">সংযোগ করতে ক্লায়েন্ট ডিভাইসকে এই কম্পিউটারের একই নেটওয়ার্কে থাকতে হবে (একই Wi-Fi বা LAN)।</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">ক্লায়েন্ট যদি শুধু \"Fingerprint\" দেখায় (অ্যালগরিদমের নাম ছাড়া), আগে SHA-256 তারপর SHA-1-এর সাথে মেলান।</string>
     <string name="connection_details_share_subject">FTPS Server সংযোগের বিবরণ</string>
+    <string name="connection_instruction_title">সংযোগ নির্দেশনা</string>
 </resources>

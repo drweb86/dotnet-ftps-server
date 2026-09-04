@@ -4,6 +4,7 @@ using Avalonia.Controls.Platform;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using FtpsServerAppsShared.Helpers;
+using FtpsServerAppsShared.Models;
 using FtpsServerAvalonia.Controls;
 using FtpsServerAvalonia.Helpers;
 using FtpsServerAvalonia.Models;
@@ -23,6 +24,7 @@ public partial class AndroidView : UserControl
     private readonly ObservableCollection<UserAccount> _users;
     private readonly ObservableCollection<LogEntry> _logEntries;
     private readonly UiLog? _uiLog;
+    private CertificateInfo? _certificateInfo;
     private bool _isServerRunning;
 
     public bool IsServerRunning
@@ -127,17 +129,7 @@ public partial class AndroidView : UserControl
         CertificatePath = _settings.CertificatePath;
         CertificatePassword = _settings.CertificatePassword;
         DataContext = this;
-
-        ServerConfig.ConnectionDetailsRequested += (_, e) =>
-        {
-            e.Text = ConnectionDetails.Build(
-                Port,
-                _users,
-                CertificateSource == CertificateSourceType.SelfSigned,
-                CertInfoPanel.CertInfo?.Sha256Fingerprint,
-                CertInfoPanel.CertInfo?.Sha1Fingerprint,
-                android: true);
-        };
+        UpdateServerStatus();
     }
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
@@ -277,8 +269,10 @@ public partial class AndroidView : UserControl
 
             IsServerRunning = true;
 
-            if (_server.LoadedCertificate != null)
-                CertInfoPanel.CertInfo = CertificateInfoHelper.GetInfo(_server.LoadedCertificate);
+            _certificateInfo = _server.LoadedCertificate != null
+                ? CertificateInfoHelper.GetInfo(_server.LoadedCertificate)
+                : null;
+            RefreshConnectionInstruction();
         }
         catch (Exception ex)
         {
@@ -296,7 +290,8 @@ public partial class AndroidView : UserControl
             _server?.Stop();
             _server = null;
             IsServerRunning = false;
-            CertInfoPanel.CertInfo = null;
+            _certificateInfo = null;
+            ConnectionInstruction.InstructionText = string.Empty;
         }
         catch (Exception ex)
         {
@@ -309,9 +304,22 @@ public partial class AndroidView : UserControl
         MainMenu.UpdateServerStatus(IsServerRunning);
         AndroidStartStopText.Text = IsServerRunning ? Strings.MenuStop : Strings.MenuStart;
         AndroidStartStopText.Foreground = IsServerRunning ? Brushes.PaleVioletRed : Brushes.Green;
-        AndroidStartStopIcon.Fill = IsServerRunning ? Brushes.PaleVioletRed : Brushes.Green;
-        AndroidStartStopIcon.Data = Geometry.Parse(IsServerRunning ? "M 0 0 H 18 V 18 H 0 Z" : "M 0 0 L 0 18 L 16 9 Z");
+        ConnectionInstructionExpander.IsVisible = IsServerRunning;
+        ConfigExpander.IsVisible = !IsServerRunning;
+        UsersExpander.IsVisible = !IsServerRunning;
+        LogsExpander.IsVisible = IsServerRunning;
         App.AndroidKeepAwakeService?.SetKeepScreenOn(IsServerRunning);
+    }
+
+    private void RefreshConnectionInstruction()
+    {
+        ConnectionInstruction.InstructionText = ConnectionDetails.Build(
+            Port,
+            _users,
+            CertificateSource == CertificateSourceType.SelfSigned,
+            _certificateInfo?.Sha256Fingerprint,
+            _certificateInfo?.Sha1Fingerprint,
+            android: true);
     }
 
     private void ShowError(string message)

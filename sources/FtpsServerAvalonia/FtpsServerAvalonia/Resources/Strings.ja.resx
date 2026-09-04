@@ -246,8 +246,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>接続情報をコピー</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>共有...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>接続情報を共有</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>接続情報</value>
@@ -343,5 +343,8 @@ IP アドレスを推奨します。端末名はネットワークが名前解�
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server の接続情報</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>接続手順</value>
   </data>
 </root>

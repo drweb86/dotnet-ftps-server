@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Копіювати дані з'єднання</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Поділитися...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Поділитися даними з'єднання</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Дані з'єднання</value>
@@ -349,5 +349,8 @@
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>Дані з'єднання FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Інструкція з підключення</value>
   </data>
 </root>

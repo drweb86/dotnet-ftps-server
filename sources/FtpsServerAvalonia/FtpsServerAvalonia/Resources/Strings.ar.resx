@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>نسخ تفاصيل الاتصال</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>مشاركة...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>مشاركة تفاصيل الاتصال</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>تفاصيل الاتصال</value>
@@ -349,5 +349,8 @@
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>تفاصيل اتصال FTPS Server</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>تعليمات الاتصال</value>
   </data>
 </root>

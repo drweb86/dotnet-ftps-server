@@ -252,8 +252,8 @@
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Қосылым мәліметтерін көшіру</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Бөлісу...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Қосылым мәліметтерімен бөлісу</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Қосылым мәліметтері</value>
@@ -349,5 +349,8 @@ Implicit FTPS таңдамаңыз (жиі тек "FTPS" деп белгілен
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server қосылым мәліметтері</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>Қосылу нұсқаулығы</value>
   </data>
 </root>

@@ -154,6 +154,15 @@ namespace FtpsServerWindows.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string ClearLogs {
+            get {
+                return ResourceManager.GetString("ClearLogs", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to FTPS Server.
         /// </summary>
         public static string AppTitle {
@@ -280,7 +289,7 @@ namespace FtpsServerWindows.Resources {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Share....
+        ///   Looks up a localized string similar to Share connection details.
         /// </summary>
         public static string ConfigShareConnectionDetails {
             get {
@@ -532,6 +541,15 @@ namespace FtpsServerWindows.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection instruction.
+        /// </summary>
+        public static string ConnectionInstructionTitle {
+            get {
+                return ResourceManager.GetString("ConnectionInstructionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please add at least one user..
         /// </summary>
         public static string ErrorAddUser {
@@ -582,6 +600,15 @@ namespace FtpsServerWindows.Resources {
         public static string ErrorTitle {
             get {
                 return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Server Logs.
+        /// </summary>
+        public static string LogsTab {
+            get {
+                return ResourceManager.GetString("LogsTab", resourceCulture);
             }
         }
 

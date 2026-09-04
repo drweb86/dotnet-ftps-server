@@ -58,7 +58,7 @@
     <string name="cert_type_label">ډول:</string>
     <string name="cert_valid_label">معتبر:</string>
     <string name="config_copy_connection_details">د نښلېدو جزئیات کاپي کړئ</string>
-    <string name="config_share_connection_details">شریکول...</string>
+    <string name="config_share_connection_details">د نښلېدو جزئیات شریک کړئ</string>
     <string name="connection_details_title">د نښلېدو جزئیات</string>
     <string name="connection_details_intro_android">د نښلېدو لپاره باید د پیرودونکي وسیله په همدې شبکه کې وي لکه دا تلیفون (همدا Wi-Fi، یا همدا هاټسپاټ / USB tethering).</string>
     <string name="connection_details_intro_desktop">د نښلېدو لپاره باید د پیرودونکي وسیله په همدې شبکه کې وي لکه دا کمپیوټر (همدا Wi-Fi یا LAN).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">که پیرودونکی یوازې \"Fingerprint\" وښيي (بې د الګورېتم نوم)، لومړی SHA-256 بیا SHA-1 سره پرتله کړئ.</string>
     <string name="connection_details_share_subject">د FTPS Server د نښلېدو جزئیات</string>
+    <string name="connection_instruction_title">د نښلېدو لارښوونه</string>
 </resources>

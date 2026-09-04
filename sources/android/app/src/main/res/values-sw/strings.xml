@@ -58,7 +58,7 @@
     <string name="cert_type_label">Aina:</string>
     <string name="cert_valid_label">Halali:</string>
     <string name="config_copy_connection_details">Nakili maelezo ya muunganisho</string>
-    <string name="config_share_connection_details">Shiriki...</string>
+    <string name="config_share_connection_details">Shiriki maelezo ya muunganisho</string>
     <string name="connection_details_title">Maelezo ya muunganisho</string>
     <string name="connection_details_intro_android">Ili kuunganisha, kifaa cha mteja lazima kiwe kwenye mtandao uleule na simu hii (Wi-Fi ileile, au hotspot / USB tethering ileile).</string>
     <string name="connection_details_intro_desktop">Ili kuunganisha, kifaa cha mteja lazima kiwe kwenye mtandao uleule na kompyuta hii (Wi-Fi au LAN ileile).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">Ikiwa mteja anaonyesha \"Fingerprint\" tu (bila jina la algorithm), linganisha na SHA-256 kwanza, kisha SHA-1.</string>
     <string name="connection_details_share_subject">Maelezo ya muunganisho wa FTPS Server</string>
+    <string name="connection_instruction_title">Maelekezo ya muunganisho</string>
 </resources>

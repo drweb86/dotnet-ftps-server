@@ -58,7 +58,7 @@
     <string name="cert_type_label">النوع:</string>
     <string name="cert_valid_label">صالحة:</string>
     <string name="config_copy_connection_details">نسخ تفاصيل الاتصال</string>
-    <string name="config_share_connection_details">مشاركة...</string>
+    <string name="config_share_connection_details">مشاركة تفاصيل الاتصال</string>
     <string name="connection_details_title">تفاصيل الاتصال</string>
     <string name="connection_details_intro_android">للاتصال يجب أن يكون جهاز العميل على نفس شبكة هذا الهاتف (نفس Wi-Fi أو نفس نقطة الاتصال / مشاركة USB).</string>
     <string name="connection_details_intro_desktop">للاتصال يجب أن يكون جهاز العميل على نفس شبكة هذا الحاسوب (نفس Wi-Fi أو الشبكة المحلية).</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">إذا عرض العميل \"Fingerprint\" فقط (بدون اسم الخوارزمية) فقارن أولًا مع SHA-256 ثم SHA-1.</string>
     <string name="connection_details_share_subject">تفاصيل اتصال FTPS Server</string>
+    <string name="connection_instruction_title">تعليمات الاتصال</string>
 </resources>

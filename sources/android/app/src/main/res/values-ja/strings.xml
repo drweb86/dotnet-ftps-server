@@ -58,7 +58,7 @@
     <string name="cert_type_label">種類：</string>
     <string name="cert_valid_label">有効期間：</string>
     <string name="config_copy_connection_details">接続情報をコピー</string>
-    <string name="config_share_connection_details">共有...</string>
+    <string name="config_share_connection_details">接続情報を共有</string>
     <string name="connection_details_title">接続情報</string>
     <string name="connection_details_intro_android">接続するには、クライアント端末がこのスマートフォンと同じネットワーク（同じ Wi-Fi、または同じテザリング / USB テザリング）にいる必要があります。</string>
     <string name="connection_details_intro_desktop">接続するには、クライアント端末がこのコンピューターと同じネットワーク（同じ Wi-Fi または LAN）にいる必要があります。</string>
@@ -84,4 +84,5 @@
     <string name="connection_details_cert_sha1_format">SHA-1:    %1$s</string>
     <string name="connection_details_cert_fingerprint_hint">クライアントがアルゴリズム名なしで \"Fingerprint\" のみを表示する場合は、まず SHA-256、次に SHA-1 と比較してください。</string>
     <string name="connection_details_share_subject">FTPS Server の接続情報</string>
+    <string name="connection_instruction_title">接続手順</string>
 </resources>

@@ -249,8 +249,8 @@ Features:
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copy di connection details</value>
   </data>
-  <data name="ConfigShareConnectionDetails" xml:space="preserve">
-    <value>Share...</value>
+    <data name="ConfigShareConnectionDetails" xml:space="preserve">
+    <value>Share di connection details</value>
   </data>
   <data name="ConnectionDetailsTitle" xml:space="preserve">
     <value>Connection details</value>
@@ -346,5 +346,14 @@ Compare di fingerprint for di client with di values below. If dem match, accept 
   </data>
   <data name="ConnectionDetailsShareSubject" xml:space="preserve">
     <value>FTPS Server connection details</value>
+  </data>
+  <data name="ConnectionInstructionTitle" xml:space="preserve">
+    <value>How to connect</value>
+  </data>
+  <data name="LogsTab" xml:space="preserve">
+    <value>Server Logs</value>
+  </data>
+  <data name="ClearLogs" xml:space="preserve">
+    <value>Clear</value>
   </data>
 </root>
