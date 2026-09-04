@@ -12,7 +12,7 @@
     <string name="menu_start">[ 启动 ]</string>
     <string name="menu_stop">[ 停止 ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">主机、端口、证书</string>
+    <string name="config_title">端口和证书</string>
     <string name="config_address">地址</string>
     <string name="config_port">端口</string>
     <string name="config_access_info">您的计算机可以通过其名称或IP地址在局域网中访问。</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">如果客户端仅显示“Fingerprint”（无算法名称），请先与 SHA-256 比较，再与 SHA-1 比较。</string>
     <string name="connection_details_share_subject">FTPS Server 连接详情</string>
     <string name="connection_instruction_title">连接说明</string>
+    <string name="config_port_help">端口是 FTP 客户端在网络上连接此服务器时使用的号码。默认值为 2121。</string>
+    <string name="config_port_validation">请输入 %1$s 到 %2$s 之间的端口。</string>
+    <string name="config_max_connections_validation">最大连接数必须至少为 %1$s。</string>
+    <string name="user_username_validation">请输入用户名。</string>
+    <string name="user_password_validation">请输入密码。</string>
+    <string name="user_folder_validation">请选择要共享的文件夹。</string>
 </resources>

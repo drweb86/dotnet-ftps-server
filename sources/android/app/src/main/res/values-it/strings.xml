@@ -12,7 +12,7 @@
     <string name="menu_start">[ AVVIA ]</string>
     <string name="menu_stop">[ FERMA ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">Host, Porta, Certificato</string>
+    <string name="config_title">Porta e certificato</string>
     <string name="config_address">Indirizzo</string>
     <string name="config_port">Porta</string>
     <string name="config_access_info">Il tuo PC è accessibile nella LAN tramite il suo nome o indirizzo IP.</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">Se il client mostra solo \"Fingerprint\" (senza algoritmo), confrontare prima con SHA-256, poi con SHA-1.</string>
     <string name="connection_details_share_subject">Dettagli di connessione FTPS Server</string>
     <string name="connection_instruction_title">Istruzioni di connessione</string>
+    <string name="config_port_help">La porta è il numero che un client FTP usa per raggiungere questo server in rete. Il valore predefinito è 2121.</string>
+    <string name="config_port_validation">Inserisci una porta da %1$s a %2$s.</string>
+    <string name="config_max_connections_validation">Il numero massimo di connessioni deve essere almeno %1$s.</string>
+    <string name="user_username_validation">Inserisci un nome utente.</string>
+    <string name="user_password_validation">Inserisci una password.</string>
+    <string name="user_folder_validation">Scegli una cartella da condividere.</string>
 </resources>

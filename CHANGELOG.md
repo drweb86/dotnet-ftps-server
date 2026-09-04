@@ -2,11 +2,7 @@
 (unreleased)
 
 ## Changes
-- UI: while the server is running, show a **Connection instruction** view (the same text as copy/share) and hide Host/Port/Certificate, users, and the old certificate notice.
-- UI: copy and share actions sit at the top of the connection instruction; the share button is labeled **Share connection details**.
-- Desktop/WPF: Start/Stop is a button above the main views; WPF shows in-app server logs while running.
-- Android: larger Start/Stop button without an icon.
-
+- UI: Improve user experience.
 
 # 2026.09.06
 

@@ -15,6 +15,10 @@ namespace FtpsServerWindows.Controls
         public static readonly DependencyProperty MinimumProperty =
             DependencyProperty.Register(nameof(Minimum), typeof(int), typeof(NumericUpDown),
                 new PropertyMetadata(0));
+
+        public static readonly DependencyProperty MaximumProperty =
+            DependencyProperty.Register(nameof(Maximum), typeof(int), typeof(NumericUpDown),
+                new PropertyMetadata(int.MaxValue));
         
         public int Value
         {
@@ -26,6 +30,12 @@ namespace FtpsServerWindows.Controls
         {
             get => (int)GetValue(MinimumProperty);
             set => SetValue(MinimumProperty, value);
+        }
+
+        public int Maximum
+        {
+            get => (int)GetValue(MaximumProperty);
+            set => SetValue(MaximumProperty, value);
         }
 
         public NumericUpDown()
@@ -57,6 +67,8 @@ namespace FtpsServerWindows.Controls
             {
                 if (newValue < Minimum)
                     Value = Minimum;
+                else if (newValue > Maximum)
+                    Value = Maximum;
                 else
                     Value = newValue;
             }
@@ -64,7 +76,8 @@ namespace FtpsServerWindows.Controls
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-             Value++;
+            if (Value < Maximum)
+                Value++;
         }
 
         private void DownButton_Click(object sender, RoutedEventArgs e)

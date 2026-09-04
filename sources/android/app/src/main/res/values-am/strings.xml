@@ -12,7 +12,7 @@
     <string name="menu_start">[ ጀምር ]</string>
     <string name="menu_stop">[ አቁም ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">አስተናጋጅ፣ ወደብ፣ ሰርተፊኬት</string>
+    <string name="config_title">Port and certificate</string>
     <string name="config_address">አድራሻ</string>
     <string name="config_port">ወደብ</string>
     <string name="config_access_info">ኮምፒውተርዎ በ LAN ውስጥ በስሙ ወይም በ IP አድራሻው ሊደረስ ይችላል።</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">ደንበኛው \"Fingerprint\" ብቻ ካሳየ (ያለ የአልጎሪዝም ስም) መጀመሪያ SHA-256 ከዚያ SHA-1 ጋር ያነፃፅሩ።</string>
     <string name="connection_details_share_subject">የFTPS Server የግንኙነት ዝርዝሮች</string>
     <string name="connection_instruction_title">የግንኙነት መመሪያ</string>
+    <string name="config_port_help">The port is the number an FTP client uses to reach this server on the network. The default is 2121.</string>
+    <string name="config_port_validation">Enter a port from %1$s to %2$s.</string>
+    <string name="config_max_connections_validation">Maximum connections must be at least %1$s.</string>
+    <string name="user_username_validation">Enter a username.</string>
+    <string name="user_password_validation">Enter a password.</string>
+    <string name="user_folder_validation">Choose a folder to share.</string>
 </resources>

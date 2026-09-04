@@ -2,48 +2,31 @@
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:res="using:FtpsServerAvalonia.Resources">
-
-	<Border x:Name="OuterBorder"
-            Background="{StaticResource TertiaryDarkBrush}"
-            BorderBrush="{StaticResource AccentCyanBrush}"
-            BorderThickness="1"
-            CornerRadius="8"
-            Padding="16"
-            Margin="10,0,10,20">
-		<StackPanel>
-			<TextBlock x:Name="TitleText"
-                       Text="{x:Static res:Strings.ConnectionInstructionTitle}"
-                       FontSize="18"
-                       FontWeight="SemiBold"
-                       Foreground="{StaticResource TextPrimaryBrush}"
-                       Margin="0,0,0,16"/>
-
-			<WrapPanel x:Name="ActionButtons" Margin="0,0,0,12">
-				<Button x:Name="CopyConnectionDetailsButton"
-                        Classes="SecondaryButton"
-                        Content="{x:Static res:Strings.ConfigCopyConnectionDetails}"
-                        Click="CopyConnectionDetails_Click"
-                        Margin="0,0,8,8"/>
-				<Button x:Name="ShareConnectionDetailsButton"
-                        Classes="SecondaryButton"
-                        Content="{x:Static res:Strings.ConfigShareConnectionDetails}"
-                        Click="ShareConnectionDetails_Click"
-                        IsVisible="False"
-                        Margin="0,0,8,8"/>
-			</WrapPanel>
-
-			<Border Background="{StaticResource PrimaryDarkBrush}"
-					CornerRadius="4"
-					Padding="8">
-				<ScrollViewer MaxHeight="420"
-							  VerticalScrollBarVisibility="Auto"
-							  HorizontalScrollBarVisibility="Disabled">
-					<SelectableTextBlock x:Name="InstructionTextBlock"
-										 TextWrapping="Wrap"
-										 FontSize="13"
-										 Foreground="{StaticResource TextPrimaryBrush}"/>
-				</ScrollViewer>
-			</Border>
-		</StackPanel>
-	</Border>
+	<StackPanel>
+		<WrapPanel x:Name="ActionButtons" Margin="0,0,0,12">
+			<Button x:Name="CopyConnectionDetailsButton"
+                    Classes="SecondaryButton"
+                    Content="{x:Static res:Strings.ConfigCopyConnectionDetails}"
+                    Click="CopyConnectionDetails_Click"
+                    Margin="0,0,8,8"/>
+			<Button x:Name="ShareConnectionDetailsButton"
+                    Classes="SecondaryButton"
+                    Content="{x:Static res:Strings.ConfigShareConnectionDetails}"
+                    Click="ShareConnectionDetails_Click"
+                    IsVisible="False"
+                    Margin="0,0,8,8"/>
+		</WrapPanel>
+		<Border Background="{StaticResource PrimaryDarkBrush}"
+				CornerRadius="4"
+				Padding="8">
+			<ScrollViewer MaxHeight="420"
+						  VerticalScrollBarVisibility="Auto"
+						  HorizontalScrollBarVisibility="Disabled">
+				<SelectableTextBlock x:Name="InstructionTextBlock"
+									 TextWrapping="Wrap"
+									 FontSize="13"
+									 Foreground="{StaticResource TextPrimaryBrush}"/>
+			</ScrollViewer>
+		</Border>
+	</StackPanel>
 </UserControl>

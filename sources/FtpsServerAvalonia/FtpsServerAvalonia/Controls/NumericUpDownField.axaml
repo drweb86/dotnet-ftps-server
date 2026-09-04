@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:FtpsServerAvalonia.Controls"
+             x:Class="FtpsServerAvalonia.Controls.NumericUpDownField"
+             x:Name="Root"
+             Margin="0 8 0 8">
+	<StackPanel>
+		<TextBlock Margin="0 0 0 8"
+				   Classes="ModernLabel"
+				   Text="{Binding #Root.Label}" />
+		<NumericUpDown HorizontalAlignment="Stretch"
+					   Classes="ModernTextBox"
+					   Value="{Binding #Root.Value, Mode=TwoWay}"
+					   Minimum="{Binding #Root.Minimum}"
+					   Maximum="{Binding #Root.Maximum}"
+					   Increment="1"
+					   FormatString="N0"
+					   ParsingNumberStyle="Integer" />
+		<TextBlock Margin="0 8 0 0"
+				IsVisible="{Binding #Root.Help, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+				Text="{Binding #Root.Help}"
+				Classes="ModernLabel"
+				TextWrapping="Wrap" />
+		<controls:ValidationError Error="{Binding #Root.Error}" />
+	</StackPanel>
+</UserControl>

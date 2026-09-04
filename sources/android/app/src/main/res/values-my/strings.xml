@@ -12,7 +12,7 @@
     <string name="menu_start">[ စတင်ရန် ]</string>
     <string name="menu_stop">[ ရပ်တန့်ရန် ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">ဟောက်စ်၊ ပို့၊ လက်မှတ်</string>
+    <string name="config_title">Port and certificate</string>
     <string name="config_address">လိပ်စာ</string>
     <string name="config_port">ပို့</string>
     <string name="config_access_info">သင့်ကွန်ပျူတာကို LAN တွင် ၎င်း၏နာမည် သို့မဟုတ် IP လိပ်စာဖြင့် ဝင်ရောက်နိုင်သည်။</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">client က \"Fingerprint\" သာ ပြပါက (algorithm အမည်မပါ) SHA-256 ကို အရင်၊ ထို့နောက် SHA-1 နှင့် နှိုင်းယှဉ်ပါ။</string>
     <string name="connection_details_share_subject">FTPS Server ချိတ်ဆက်မှုအသေးစိတ်</string>
     <string name="connection_instruction_title">ချိတ်ဆက်မှု လမ်းညွှန်</string>
+    <string name="config_port_help">The port is the number an FTP client uses to reach this server on the network. The default is 2121.</string>
+    <string name="config_port_validation">Enter a port from %1$s to %2$s.</string>
+    <string name="config_max_connections_validation">Maximum connections must be at least %1$s.</string>
+    <string name="user_username_validation">Enter a username.</string>
+    <string name="user_password_validation">Enter a password.</string>
+    <string name="user_folder_validation">Choose a folder to share.</string>
 </resources>

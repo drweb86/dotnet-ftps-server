@@ -194,56 +194,32 @@ namespace FtpsServerWindows
             try
             {
                 SaveSettings();
+                if (!TryValidateForStart())
+                    return;
 
                 var config = new FtpsServerConfiguration();
 
-                // Server configuration
                 config.ServerSettings.Ip = "0.0.0.0";
                 config.ServerSettings.Port = _settings.ServerPort;
                 config.ServerSettings.MaxConnections = _settings.MaxConnections;
 
-                // Certificate configuration
                 if (_settings.CertificateSource == CertificateSourceType.FromFile)
                 {
-                    if (string.IsNullOrWhiteSpace(_settings.CertificatePath))
-                    {
-                        MessageBox.Show(Strings.ErrorSelectCertificate, Strings.ErrorTitle,
-                            MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
-                    }
-
                     config.ServerSettings.CertificatePath = _settings.CertificatePath;
                     config.ServerSettings.CertificatePassword = _settings.CertificatePassword;
                 }
 
-                    // Users
-                    if (_users.Count == 0)
+                foreach (var user in _users)
+                {
+                    config.Users.Add(new FtpsServerUserAccount
                     {
-                        MessageBox.Show(Strings.ErrorAddUser, Strings.ErrorTitle,
-                            MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
-                    }
-
-                    foreach (var user in _users)
-                    {
-                        if (string.IsNullOrWhiteSpace(user.Login) ||
-                            string.IsNullOrWhiteSpace(user.Password) ||
-                            string.IsNullOrWhiteSpace(user.Folder))
-                        {
-                            MessageBox.Show(string.Format(Strings.ErrorIncompleteUserFormat, user.Login), Strings.ErrorTitle,
-                                MessageBoxButton.OK, MessageBoxImage.Warning);
-                            return;
-                        }
-
-                        config.Users.Add(new FtpsServerUserAccount
-                        {
-                            Login = user.Login,
-                            Password = user.Password,
-                            Folder = user.Folder,
-                            Read = true,
-                            Write = !user.ReadonlyPermission
-                        });
-                    }
+                        Login = user.Login,
+                        Password = user.Password,
+                        Folder = user.Folder,
+                        Read = true,
+                        Write = !user.ReadonlyPermission
+                    });
+                }
 
                 _server = new FtpsServer(new CompositeFtpsServerLog(new FileLog(), _uiLog), config, new FtpsServerFileSystemProvider());
                 await _server.StartAsync();
@@ -287,12 +263,47 @@ namespace FtpsServerWindows
         private void UpdateServerStatus()
         {
             MainMenu.UpdateServerStatus(IsServerRunning);
-            ConnectionInstruction.Visibility = IsServerRunning ? Visibility.Visible : Visibility.Collapsed;
-            ServerConfig.Visibility = IsServerRunning ? Visibility.Collapsed : Visibility.Visible;
-            UsersPanel.Visibility = IsServerRunning ? Visibility.Collapsed : Visibility.Visible;
-            LogsPanel.Visibility = IsServerRunning ? Visibility.Visible : Visibility.Collapsed;
+            ConnectionInstructionExpander.Visibility = IsServerRunning ? Visibility.Visible : Visibility.Collapsed;
+            ConfigExpander.Visibility = IsServerRunning ? Visibility.Collapsed : Visibility.Visible;
+            UsersExpander.Visibility = IsServerRunning ? Visibility.Collapsed : Visibility.Visible;
+            LogsExpander.Visibility = IsServerRunning ? Visibility.Visible : Visibility.Collapsed;
             StartStopButtonText.Text = IsServerRunning ? Strings.MenuStop : Strings.MenuStart;
             StartStopButtonText.Foreground = IsServerRunning ? Brushes.PaleVioletRed : Brushes.Green;
+            if (IsServerRunning)
+                ValidationBar.Text = null;
+        }
+
+        private string? ValidateUsers()
+        {
+            if (_users.Count == 0)
+                return Strings.ErrorAddUser;
+
+            foreach (var user in _users)
+            {
+                user.LoginError = string.IsNullOrWhiteSpace(user.Login) ? Strings.UserUsernameValidation : null;
+                user.PasswordError = string.IsNullOrWhiteSpace(user.Password) ? Strings.UserPasswordValidation : null;
+                user.FolderError = string.IsNullOrWhiteSpace(user.Folder) ? Strings.UserFolderValidation : null;
+                var error = user.LoginError ?? user.PasswordError ?? user.FolderError;
+                if (error != null)
+                    return error;
+            }
+
+            return null;
+        }
+
+        private bool TryValidateForStart()
+        {
+            var configError = ServerConfig.Validate();
+            var usersError = ValidateUsers();
+            var error = configError ?? usersError;
+            ValidationBar.Text = error;
+            if (error == null)
+                return true;
+            if (configError != null)
+                ConfigExpander.IsExpanded = true;
+            else
+                UsersExpander.IsExpanded = true;
+            return false;
         }
 
         private void RefreshConnectionInstruction()

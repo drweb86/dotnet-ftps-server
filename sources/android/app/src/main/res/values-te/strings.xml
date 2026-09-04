@@ -12,7 +12,7 @@
     <string name="menu_start">[ ప్రారంభించు ]</string>
     <string name="menu_stop">[ ఆపు ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">హోస్ట్, పోర్ట్, సర్టిఫికేట్</string>
+    <string name="config_title">Port and certificate</string>
     <string name="config_address">అడ్రస్</string>
     <string name="config_port">పోర్ట్</string>
     <string name="config_access_info">మీ PC ని LAN లో దాని పేరు లేదా IP అడ్రస్ ద్వారా యాక్సెస్ చేయవచ్చు.</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">క్లయింట్ కేవలం \"Fingerprint\" చూపిస్తే (అల్గారితం పేరు లేకుండా), ముందు SHA-256 తర్వాత SHA-1తో పోల్చండి.</string>
     <string name="connection_details_share_subject">FTPS Server కనెక్షన్ వివరాలు</string>
     <string name="connection_instruction_title">కనెక్షన్ సూచనలు</string>
+    <string name="config_port_help">The port is the number an FTP client uses to reach this server on the network. The default is 2121.</string>
+    <string name="config_port_validation">Enter a port from %1$s to %2$s.</string>
+    <string name="config_max_connections_validation">Maximum connections must be at least %1$s.</string>
+    <string name="user_username_validation">Enter a username.</string>
+    <string name="user_password_validation">Enter a password.</string>
+    <string name="user_folder_validation">Choose a folder to share.</string>
 </resources>

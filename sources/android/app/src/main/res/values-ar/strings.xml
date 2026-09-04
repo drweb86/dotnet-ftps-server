@@ -12,7 +12,7 @@
     <string name="menu_start">[ تشغيل ]</string>
     <string name="menu_stop">[ إيقاف ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">المضيف، المنفذ، الشهادة</string>
+    <string name="config_title">المنفذ والشهادة</string>
     <string name="config_address">العنوان</string>
     <string name="config_port">المنفذ</string>
     <string name="config_access_info">يمكن الوصول إلى جهازك في الشبكة المحلية عبر اسمه أو عنوان IP الخاص به.</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">إذا عرض العميل \"Fingerprint\" فقط (بدون اسم الخوارزمية) فقارن أولًا مع SHA-256 ثم SHA-1.</string>
     <string name="connection_details_share_subject">تفاصيل اتصال FTPS Server</string>
     <string name="connection_instruction_title">تعليمات الاتصال</string>
+    <string name="config_port_help">المنفذ هو الرقم الذي يستخدمه عميل FTP للوصول إلى هذا الخادم على الشبكة. القيمة الافتراضية 2121.</string>
+    <string name="config_port_validation">أدخل منفذًا من %1$s إلى %2$s.</string>
+    <string name="config_max_connections_validation">يجب أن يكون الحد الأقصى للاتصالات %1$s على الأقل.</string>
+    <string name="user_username_validation">أدخل اسم مستخدم.</string>
+    <string name="user_password_validation">أدخل كلمة مرور.</string>
+    <string name="user_folder_validation">اختر مجلدًا للمشاركة.</string>
 </resources>

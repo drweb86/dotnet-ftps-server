@@ -102,7 +102,7 @@
 
   <!-- Server Configuration -->
   <data name="ConfigTitle" xml:space="preserve">
-    <value>المضيف، المنفذ، الشهادة</value>
+    <value>المنفذ والشهادة</value>
   </data>
   <data name="ConfigAddress" xml:space="preserve">
     <value>العنوان</value>
@@ -352,5 +352,23 @@
   </data>
   <data name="ConnectionInstructionTitle" xml:space="preserve">
     <value>تعليمات الاتصال</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>المنفذ هو الرقم الذي يستخدمه عميل FTP للوصول إلى هذا الخادم على الشبكة. القيمة الافتراضية 2121.</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>أدخل منفذًا من {0} إلى {1}.</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>يجب أن يكون الحد الأقصى للاتصالات {0} على الأقل.</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>أدخل اسم مستخدم.</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>أدخل كلمة مرور.</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>اختر مجلدًا للمشاركة.</value>
   </data>
 </root>

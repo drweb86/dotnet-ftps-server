@@ -1,11 +1,10 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="using:FtpsServerAvalonia"
         xmlns:controls="using:FtpsServerAvalonia.Controls"
         xmlns:res="using:FtpsServerAvalonia.Resources"
         x:Class="FtpsServerAvalonia.MainWindow"
         Title="{x:Static res:Strings.AppTitle}"
-        MinWidth="1024"
+        MinWidth="720"
         CanResize="True">
 
     <Window.Styles>
@@ -26,123 +25,102 @@
 
 		<DockPanel Grid.Row="1">
 			<controls:UpdateCheckExpanderView DockPanel.Dock="Top" />
+			<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+				<StackPanel Classes="FormContent" HorizontalAlignment="Center">
+					<controls:MessageBar x:Name="ValidationBar" Kind="Error" />
 
-			<!-- Main Content -->
-			<Border Classes="Card">
-				<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-					<StackPanel>
-						<Button x:Name="StartStopButton"
-								Classes="SecondaryButton"
-								HorizontalAlignment="Stretch"
-								HorizontalContentAlignment="Center"
-								MinHeight="48"
-								Margin="10,0,10,16"
-								Click="MainMenu_StartStopClicked">
-							<TextBlock x:Name="StartStopButtonText"
-									   Text="{x:Static res:Strings.MenuStart}"
-									   Foreground="Green"
-									   FontSize="18"
-									   FontWeight="Bold"/>
-						</Button>
+					<Button x:Name="StartStopButton"
+							Classes="SecondaryButton"
+							HorizontalAlignment="Stretch"
+							HorizontalContentAlignment="Center"
+							MinHeight="48"
+							Margin="0,0,0,16"
+							Click="MainMenu_StartStopClicked">
+						<TextBlock x:Name="StartStopButtonText"
+								   Text="{x:Static res:Strings.MenuStart}"
+								   Foreground="Green"
+								   FontSize="18"
+								   FontWeight="Bold"/>
+					</Button>
 
-						<Grid>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition SharedSizeGroup="A" />
-								<ColumnDefinition SharedSizeGroup="A" />
-							</Grid.ColumnDefinitions>
+					<Expander x:Name="ConnectionInstructionExpander"
+							  Classes="SectionExpander"
+							  IsExpanded="True"
+							  IsVisible="False">
+						<Expander.Header>
+							<controls:ExpanderHeader Icon="📋" Text="{x:Static res:Strings.ConnectionInstructionTitle}" />
+						</Expander.Header>
+						<controls:ConnectionInstructionControl x:Name="ConnectionInstruction" />
+					</Expander>
 
-							<StackPanel Grid.Column="0">
-								<controls:ConnectionInstructionControl x:Name="ConnectionInstruction"
-																	   IsVisible="False" />
-								<controls:ServerConfigurationControl x:Name="ServerConfig"
-																	 Port="{Binding Port, Mode=TwoWay}"
-																	 MaxConnections="{Binding MaxConnections, Mode=TwoWay}"
-																	 CertificateSource="{Binding CertificateSource, Mode=TwoWay}"
-																	 CertificatePath="{Binding CertificatePath, Mode=TwoWay}"
-																	 CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}" />
-							</StackPanel>
+					<Expander x:Name="ConfigExpander" Classes="SectionExpander" IsExpanded="True">
+						<Expander.Header>
+							<controls:ExpanderHeader Icon="🔒" Text="{x:Static res:Strings.ConfigTitle}" />
+						</Expander.Header>
+						<controls:ServerConfigurationControl
+							x:Name="ServerConfig"
+							Port="{Binding Port, Mode=TwoWay}"
+							MaxConnections="{Binding MaxConnections, Mode=TwoWay}"
+							CertificateSource="{Binding CertificateSource, Mode=TwoWay}"
+							CertificatePath="{Binding CertificatePath, Mode=TwoWay}"
+							CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}" />
+					</Expander>
 
-							<Border x:Name="UsersPanel"
-									Background="{StaticResource TertiaryDarkBrush}"
-									BorderBrush="{StaticResource AccentCyanBrush}"
-									BorderThickness="1"
-									CornerRadius="8"
-									Padding="16"
-									Margin="10,0,10,20"
-									Grid.Column="1">
-								<StackPanel>
-									<Grid Margin="0,0,0,16">
-										<TextBlock Text="{x:Static res:Strings.UsersTab}"
-												   FontSize="18"
-												   FontWeight="SemiBold"
-												   Foreground="{StaticResource TextPrimaryBrush}"
-												   HorizontalAlignment="Left"
-												   VerticalAlignment="Center"/>
-										<Button Content="{x:Static res:Strings.AddUserButton}"
-												Classes="SecondaryButton"
-												HorizontalAlignment="Right"
-												Click="AddUser_Click"
-												Padding="16,8"/>
-									</Grid>
+					<Expander x:Name="UsersExpander" Classes="SectionExpander" IsExpanded="True">
+						<Expander.Header>
+							<controls:ExpanderHeader Icon="👤" Text="{x:Static res:Strings.UsersTab}" />
+						</Expander.Header>
+						<StackPanel>
+							<Button Content="{x:Static res:Strings.AddUserButton}"
+									Classes="SecondaryButton"
+									HorizontalAlignment="Left"
+									Click="AddUser_Click"
+									Margin="0,0,0,8"
+									Padding="16,8"/>
+							<ItemsControl x:Name="UsersItemsControl">
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<controls:UserItemControl RemoveUserRequested="UserItemControl_RemoveUserRequested"/>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</StackPanel>
+					</Expander>
 
-									<ItemsControl x:Name="UsersItemsControl">
+					<Expander x:Name="LogsExpander" Classes="SectionExpander" IsExpanded="True" IsVisible="False">
+						<Expander.Header>
+							<controls:ExpanderHeader Icon="📜" Text="{x:Static res:Strings.LogsTab}" />
+						</Expander.Header>
+						<StackPanel>
+							<Button Content="{x:Static res:Strings.ClearLogs}"
+									Classes="SecondaryButton"
+									HorizontalAlignment="Left"
+									Click="ClearLogs_Click"
+									Margin="0,0,0,8"
+									Padding="16,8"/>
+							<Border Background="{StaticResource PrimaryDarkBrush}"
+									CornerRadius="4"
+									Padding="8"
+									MinHeight="200"
+									MaxHeight="400">
+								<ScrollViewer x:Name="LogScrollViewer"
+											  VerticalScrollBarVisibility="Auto"
+											  HorizontalScrollBarVisibility="Auto">
+									<ItemsControl x:Name="LogItemsControl">
 										<ItemsControl.ItemTemplate>
 											<DataTemplate>
-												<controls:UserItemControl RemoveUserRequested="UserItemControl_RemoveUserRequested"/>
+												<TextBlock Text="{Binding FormattedMessage}"
+														   Foreground="{Binding Color}"
+														   Margin="0,2"/>
 											</DataTemplate>
 										</ItemsControl.ItemTemplate>
 									</ItemsControl>
-								</StackPanel>
+								</ScrollViewer>
 							</Border>
-
-							<Border x:Name="LogsPanel"
-									Background="{StaticResource TertiaryDarkBrush}"
-									BorderBrush="{StaticResource AccentCyanBrush}"
-									BorderThickness="1"
-									CornerRadius="8"
-									Padding="16"
-									Margin="10,0,10,20"
-									Grid.Column="1"
-									IsVisible="False">
-								<StackPanel>
-									<Grid Margin="0,0,0,16">
-										<TextBlock Text="{x:Static res:Strings.LogsTab}"
-												   FontSize="18"
-												   FontWeight="SemiBold"
-												   Foreground="{StaticResource TextPrimaryBrush}"
-												   HorizontalAlignment="Left"
-												   VerticalAlignment="Center"/>
-										<Button Content="{x:Static res:Strings.ClearLogs}"
-												Classes="SecondaryButton"
-												HorizontalAlignment="Right"
-												Click="ClearLogs_Click"
-												Padding="16,8"/>
-									</Grid>
-									<Border Background="{StaticResource PrimaryDarkBrush}"
-											CornerRadius="4"
-											Padding="8"
-											MinHeight="200"
-											MaxHeight="400">
-										<ScrollViewer x:Name="LogScrollViewer"
-													  VerticalScrollBarVisibility="Auto"
-													  HorizontalScrollBarVisibility="Auto">
-											<ItemsControl x:Name="LogItemsControl">
-												<ItemsControl.ItemTemplate>
-													<DataTemplate>
-														<TextBlock Text="{Binding FormattedMessage}"
-																   Foreground="{Binding Color}"
-																   Margin="0,2"/>
-													</DataTemplate>
-												</ItemsControl.ItemTemplate>
-											</ItemsControl>
-										</ScrollViewer>
-									</Border>
-								</StackPanel>
-							</Border>
-						</Grid>
-					</StackPanel>
-				</ScrollViewer>
-			</Border>
+						</StackPanel>
+					</Expander>
+				</StackPanel>
+			</ScrollViewer>
 		</DockPanel>
 	</Grid>
 </Window>

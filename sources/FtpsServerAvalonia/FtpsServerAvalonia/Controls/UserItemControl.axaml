@@ -1,103 +1,42 @@
 <UserControl x:Class="FtpsServerAvalonia.Controls.UserItemControl"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:res="using:FtpsServerAvalonia.Resources"
-             mc:Ignorable="d">
-    <Border Background="{StaticResource TertiaryDarkBrush}"
-            BorderBrush="{StaticResource BorderBrush}"
-            BorderThickness="1"
-            CornerRadius="8"
-            Padding="16"
-            Margin="0,0,0,16">
-        <Grid>
-           <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-           </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <!-- Username -->
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="0"
-                Text="{x:Static res:Strings.UserUsername}"
-                VerticalAlignment="Center"
-                Classes="ModernLabel" />
-            <TextBox
-                Grid.Row="1"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                Classes="ModernTextBox"
-                VerticalAlignment="Center"
-                Margin="8 4 4 4" />
-
-            <!-- Password -->
-            <TextBlock
-                Grid.Row="2"
-                Grid.Column="0"
-                Text="{x:Static res:Strings.UserPassword}"
-                VerticalAlignment="Center"
-                Classes="ModernLabel" />
-            <TextBox Grid.Row="2"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Classes="ModernTextBox"
-                VerticalAlignment="Center"
-                Margin="8 4 4 4"
-                Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
-            <!-- Folder -->
-            <TextBlock
-                Grid.Row="3"
-                Grid.Column="0"
-                Text="{x:Static res:Strings.UserFolder}"
-                VerticalAlignment="Center"
-                Classes="ModernLabel" />
-            <TextBox
-                Grid.Row="3"
-                Grid.Column="1"
-                Text="{Binding Folder, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                Classes="ModernTextBox"
-                VerticalAlignment="Center"
-                Margin="8 4 4 4"
-                IsReadOnly="True" />
-             <Button Grid.Row="3"
-                Grid.Column="2"
-                Content="{x:Static res:Strings.ConfigBrowse}"
-                Classes="SecondaryButton"
-                Margin="8 4 4 4"
-                Click="BrowseUserFolder_Click"
-                Padding="12,8" />
-
-             <!-- Permissions -->
-             <CheckBox
-                Grid.Row="4"
-                Grid.Column="1"
-                Margin="8,4,4,4"
-                Content="{x:Static res:Strings.UserReadonly}"
-                IsChecked="{Binding ReadonlyPermission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                Classes="ModernCheckBox" />
-
-
-             <Button
-                Grid.Row="4"
-                Grid.Column="2"
-                Grid.ColumnSpan="2"
-				Margin="0 8 0 0"
-                Content="{x:Static res:Strings.UserDelete}"
-                Classes="SecondaryButton"
-                Foreground="{StaticResource ErrorBrush}"
-                Click="RemoveUser_Click" />
-        </Grid>
-    </Border>
+             xmlns:controls="using:FtpsServerAvalonia.Controls"
+             xmlns:res="using:FtpsServerAvalonia.Resources">
+	<Border Background="{StaticResource SecondaryDarkBrush}"
+			BorderBrush="{StaticResource BorderBrush}"
+			BorderThickness="1"
+			CornerRadius="8"
+			Padding="12"
+			Margin="0,0,0,12">
+		<StackPanel>
+			<controls:TextField
+				Label="{x:Static res:Strings.UserUsername}"
+				Text="{Binding Login, Mode=TwoWay}"
+				Error="{Binding LoginError}"/>
+			<controls:TextField
+				Label="{x:Static res:Strings.UserPassword}"
+				Text="{Binding Password, Mode=TwoWay}"
+				Error="{Binding PasswordError}"/>
+			<controls:TextFieldWithAction
+				Label="{x:Static res:Strings.UserFolder}"
+				IsReadOnly="True"
+				Text="{Binding Folder, Mode=TwoWay}"
+				ActionText="{x:Static res:Strings.ConfigBrowse}"
+				Error="{Binding FolderError}"
+				ActionClick="BrowseUserFolder_Click"/>
+			<Grid ColumnDefinitions="*,Auto">
+				<controls:CheckboxField
+					Grid.Column="0"
+					Label="{x:Static res:Strings.UserReadonly}"
+					IsChecked="{Binding ReadonlyPermission, Mode=TwoWay}"/>
+				<Button Grid.Column="1"
+						Content="{x:Static res:Strings.UserDelete}"
+						Classes="SecondaryButton"
+						Foreground="{StaticResource ErrorBrush}"
+						VerticalAlignment="Center"
+						Click="RemoveUser_Click"/>
+			</Grid>
+		</StackPanel>
+	</Border>
 </UserControl>

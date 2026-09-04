@@ -115,7 +115,7 @@
     <value>د سند فایل غوره کړئ</value>
   </data>
   <data name="ConfigTitle" xml:space="preserve">
-    <value>کوربه، بندر، سند</value>
+    <value>Port and certificate</value>
   </data>
   <data name="ConfigUseSelfSigned" xml:space="preserve">
     <value>د ځان لاسلیک شوي خودکار تولید شوي سند وکاروئ</value>
@@ -364,5 +364,23 @@ Implicit FTPS مه ټاکئ (ډېر ځله یوازې "FTPS" لیکل شوی و�
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>پاک کړئ</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>The port is the number an FTP client uses to reach this server on the network. The default is 2121.</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>Enter a port from {0} to {1}.</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>Maximum connections must be at least {0}.</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>Enter a username.</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>Enter a password.</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>Choose a folder to share.</value>
   </data>
 </root>

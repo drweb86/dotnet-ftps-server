@@ -112,7 +112,7 @@
     <value>証明書ファイルを選択</value>
   </data>
   <data name="ConfigTitle" xml:space="preserve">
-    <value>ホスト、ポート、証明書</value>
+    <value>ポートと証明書</value>
   </data>
   <data name="ConfigUseSelfSigned" xml:space="preserve">
     <value>自己署名の自動生成証明書を使用</value>
@@ -355,5 +355,26 @@ IP アドレスを推奨します。端末名はネットワークが名前解�
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>クリア</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>ポート</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>ポートは、FTP クライアントがネットワーク上でこのサーバーに接続するために使う番号です。既定値は 2121 です。</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>{0} から {1} のポートを入力してください。</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>最大接続数は {0} 以上にしてください。</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>ユーザー名を入力してください。</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>パスワードを入力してください。</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>共有するフォルダーを選んでください。</value>
   </data>
 </root>

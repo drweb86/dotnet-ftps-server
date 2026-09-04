@@ -112,7 +112,7 @@
     <value>Выберите файл сертификата</value>
   </data>
   <data name="ConfigTitle" xml:space="preserve">
-    <value>Хост, порт, сертификат</value>
+    <value>Порт и сертификат</value>
   </data>
   <data name="ConfigUseSelfSigned" xml:space="preserve">
     <value>Использовать самоподписанный автоматически созданный сертификат</value>
@@ -355,5 +355,26 @@
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>Очистить</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>Порт</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>Порт — это номер, по которому FTP-клиент находит этот сервер в сети. По умолчанию 2121.</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>Укажите порт от {0} до {1}.</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>Максимум подключений должен быть не меньше {0}.</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>Укажите имя пользователя.</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>Укажите пароль.</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>Выберите папку для общего доступа.</value>
   </data>
 </root>

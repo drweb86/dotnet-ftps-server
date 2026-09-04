@@ -112,7 +112,7 @@
     <value>সার্টিফিকেট ফাইল নির্বাচন করুন</value>
   </data>
   <data name="ConfigTitle" xml:space="preserve">
-    <value>হোস্ট, পোর্ট, সার্টিফিকেট</value>
+    <value>Port and certificate</value>
   </data>
   <data name="ConfigUseSelfSigned" xml:space="preserve">
     <value>স্ব-স্বাক্ষরিত স্বয়ংক্রিয়ভাবে তৈরি সার্টিফিকেট ব্যবহার করুন</value>
@@ -361,5 +361,26 @@ Implicit FTPS বেছে নেবেন না (প্রায়ই শু�
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>মুছুন</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>পোর্ট</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>The port is the number an FTP client uses to reach this server on the network. The default is 2121.</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>Enter a port from {0} to {1}.</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>Maximum connections must be at least {0}.</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>Enter a username.</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>Enter a password.</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>Choose a folder to share.</value>
   </data>
 </root>

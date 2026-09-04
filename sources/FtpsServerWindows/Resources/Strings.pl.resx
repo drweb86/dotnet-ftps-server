@@ -115,7 +115,7 @@
     <value>Wybierz plik certyfikatu</value>
   </data>
   <data name="ConfigTitle" xml:space="preserve">
-    <value>Host, Port, Certyfikat</value>
+    <value>Port i certyfikat</value>
   </data>
   <data name="ConfigUseSelfSigned" xml:space="preserve">
     <value>Użyj certyfikatu z podpisem własnym generowanego automatycznie</value>
@@ -364,5 +364,23 @@ Porównaj odcisk w kliencie z wartościami poniżej. Jeśli się zgadzają, zaak
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>Wyczyść</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>Port to numer, którego klient FTP używa, aby dotrzeć do tego serwera w sieci. Domyślnie 2121.</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>Podaj port od {0} do {1}.</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>Maksymalna liczba połączeń musi wynosić co najmniej {0}.</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>Podaj nazwę użytkownika.</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>Podaj hasło.</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>Wybierz folder do udostępnienia.</value>
   </data>
 </root>

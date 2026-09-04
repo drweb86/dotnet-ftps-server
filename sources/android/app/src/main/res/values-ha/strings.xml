@@ -12,7 +12,7 @@
     <string name="menu_start">[ FARA ]</string>
     <string name="menu_stop">[ TSAYA ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">Mai masauki, Tashar, Takaddun shaidar</string>
+    <string name="config_title">Port and certificate</string>
     <string name="config_address">Adireshi</string>
     <string name="config_port">Tashar</string>
     <string name="config_access_info">Ana iya samun damar shiga kwamfutarka a cikin LAN ta sunan ta ko adireshin IP.</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">Idan abokin ciniki ya nuna \"Fingerprint\" kawai (babu sunan algorithm), fara da SHA-256, sa\'an nan SHA-1.</string>
     <string name="connection_details_share_subject">Cikakken bayanin haɗin FTPS Server</string>
     <string name="connection_instruction_title">Umarnin haɗi</string>
+    <string name="config_port_help">The port is the number an FTP client uses to reach this server on the network. The default is 2121.</string>
+    <string name="config_port_validation">Enter a port from %1$s to %2$s.</string>
+    <string name="config_max_connections_validation">Maximum connections must be at least %1$s.</string>
+    <string name="user_username_validation">Enter a username.</string>
+    <string name="user_password_validation">Enter a password.</string>
+    <string name="user_folder_validation">Choose a folder to share.</string>
 </resources>

@@ -4,119 +4,38 @@
              xmlns:controls="clr-namespace:FtpsServerWindows.Controls"
              xmlns:res="clr-namespace:FtpsServerWindows.Resources">
 
-    <Border Background="{StaticResource TertiaryDarkBrush}"
-            BorderBrush="{StaticResource AccentCyanBrush}"
-            BorderThickness="1"
-            CornerRadius="8"
-            Padding="16"
-            Margin="10,0,20,20">
-        <StackPanel>
-            <TextBlock Text="{x:Static res:Strings.ConfigTitle}"
-                       FontSize="18"
-                       FontWeight="SemiBold"
-                       Foreground="{StaticResource TextPrimaryBrush}"
-                       Margin="0,0,0,20"/>
+    <StackPanel>
+        <controls:NumericUpDownField
+            Label="{x:Static res:Strings.ConfigPort}"
+            Help="{x:Static res:Strings.ConfigPortHelp}"
+            Minimum="2121"
+            Maximum="65535"
+            Value="{Binding Port, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Error="{Binding PortError, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+        <controls:NumericUpDownField
+            Label="{x:Static res:Strings.ConfigMaxConnections}"
+            Minimum="2"
+            Maximum="10000"
+            Value="{Binding MaxConnections, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Error="{Binding MaxConnectionsError, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
 
-                <!-- Port -->
-                <TextBlock 
-                    Grid.Column="0"
-                    Grid.Row="0"
-                    Text="Port" Style="{StaticResource ModernLabel}" 
-                    Margin="0,14,12,0"
-                />
-                <controls:NumericUpDown
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Grid.Row="0"
-                    x:Name="PortControl"
-                    Minimum="2121"
-                    Value="{Binding Port, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Margin="0,0,0,16"
-                />
+        <controls:CheckboxField
+            Label="{x:Static res:Strings.ConfigUseSelfSigned}"
+            IsChecked="{Binding CertificateIsSelfSigned, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}"/>
 
-                <!-- Max Connections -->
-                <TextBlock
-                    Grid.Column="0"
-                    Grid.Row="1"
-                    Margin="0,14,12,0"
-                    Text="{x:Static res:Strings.ConfigMaxConnections}"
-                    Style="{StaticResource ModernLabel}"/>
-                <controls:NumericUpDown x:Name="MaxConnectionsControl"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Grid.Row="1"
-                    Minimum="2"
-                    Value="{Binding MaxConnections, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Margin="0,0,0,16"/>
+        <controls:TextFieldWithAction
+            Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            Label="{x:Static res:Strings.ConfigCertFile}"
+            IsReadOnly="True"
+            ActionText="{x:Static res:Strings.ConfigBrowse}"
+            Text="{Binding CertificatePath, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Error="{Binding CertificatePathError, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            ActionClick="BrowseCertificate_Click"/>
 
-                <!-- Certificate -->
-                <CheckBox
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
-                    Grid.Row="2"
-                    x:Name="SelfSignedCertButton"
-                    Content="{x:Static res:Strings.ConfigUseSelfSigned}"
-                    IsChecked="True"
-                    Style="{StaticResource ModernCheckBox}"
-                    Margin="0,0,12,16"
-                    Checked="CertificateSourceChanged"
-                    Unchecked="CertificateSourceChanged"
-                />
-
-                <TextBlock
-                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Grid.Column="0"
-                    Grid.Row="3"
-                    Margin="0,14,12,0"
-                    Text="{x:Static res:Strings.ConfigCertFile}" Style="{StaticResource ModernLabel}"/>
-                <TextBox x:Name="CertPathTextBox"
-                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Grid.Column="1"
-                    Grid.Row="3"
-                    Style="{StaticResource ModernTextBox}"
-                    IsReadOnly="True"
-                    Margin="0,0,0,16"
-                />
-                <Button
-                    Grid.Column="2"
-                    Grid.Row="3"
-                    Content="{x:Static res:Strings.ConfigBrowse}"
-                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Style="{StaticResource SecondaryButton}"
-                    Margin="12,0,0,16"
-                    Click="BrowseCertificate_Click"/>
-
-
-                <TextBlock
-                    Grid.Column="0"
-                    Grid.Row="4"
-                    Margin="0,14,12,0"
-                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Text="{x:Static res:Strings.ConfigCertPassword}" Style="{StaticResource ModernLabel}"/>
-                <TextBox x:Name="CertPasswordBox"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Grid.Row="4"
-                    Margin="0,0,0,16"
-                    Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                    Style="{StaticResource ModernTextBox}"
-                    Text="{Binding CertificatePassword, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 />
-            </Grid>
-        </StackPanel>
-    </Border>
+        <controls:TextField
+            Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
+            Label="{x:Static res:Strings.ConfigCertPassword}"
+            Text="{Binding CertificatePassword, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    </StackPanel>
 </UserControl>

@@ -12,7 +12,7 @@
     <string name="menu_start">[ EEGALI ]</string>
     <string name="menu_stop">[ DHAABI ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">Hoostii, Poortii, Waraqaa Ragaa</string>
+    <string name="config_title">Port and certificate</string>
     <string name="config_address">Teessoo</string>
     <string name="config_port">Poortii</string>
     <string name="config_access_info">Kompuuterri kee LAN keessatti maqaa isaa yookiin teessoo IP isaa fayyadamuun argamuu danda\'a.</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">Maamilaan \"Fingerprint\" qofa yoo agarsiise (maqaa algorithm malee), duraan SHA-256, itti aansuun SHA-1 waliin wal bira qabi.</string>
     <string name="connection_details_share_subject">Bal\'ina quunnamtii FTPS Server</string>
     <string name="connection_instruction_title">Qajeelcha quunnamtii</string>
+    <string name="config_port_help">The port is the number an FTP client uses to reach this server on the network. The default is 2121.</string>
+    <string name="config_port_validation">Enter a port from %1$s to %2$s.</string>
+    <string name="config_max_connections_validation">Maximum connections must be at least %1$s.</string>
+    <string name="user_username_validation">Enter a username.</string>
+    <string name="user_password_validation">Enter a password.</string>
+    <string name="user_folder_validation">Choose a folder to share.</string>
 </resources>

@@ -162,7 +162,7 @@ public partial class AndroidView : UserControl
     private void UpdateSafeAreaPadding(Thickness safeArea, double? height)
     {
         // Add padding to the content panel to account for keyboard and system bars
-        ContentPanel.Margin = new Thickness(0, safeArea.Top, 0, height ?? safeArea.Bottom);
+        ContentPanel.Margin = new Thickness(24, 24 + safeArea.Top, 24, 24 + (height ?? safeArea.Bottom));
     }
 
     private void SaveSettings()
@@ -208,58 +208,36 @@ public partial class AndroidView : UserControl
         try
         {
             SaveSettings();
+            if (!TryValidateForStart())
+                return;
 
             var config = new FtpsServerConfiguration();
 
-            // Server configuration
             config.ServerSettings.Ip = "0.0.0.0";
             config.ServerSettings.Port = _settings.ServerPort;
             config.ServerSettings.MaxConnections = _settings.MaxConnections;
 
-            // Certificate configuration
             if (_settings.CertificateSource == CertificateSourceType.FromFile)
             {
-                if (string.IsNullOrWhiteSpace(_settings.CertificatePath))
-                {
-                    ShowError(Strings.ErrorSelectCertificate);
-                    return;
-                }
-
                 config.ServerSettings.CertificatePath = _settings.CertificatePath;
                 config.ServerSettings.CertificatePassword = _settings.CertificatePassword;
             }
 
-            // Users
-            if (_users.Count == 0)
-            {
-                ShowError(Strings.ErrorAddUser);
-                return;
-            }
-
             foreach (var user in _users)
             {
-                if (string.IsNullOrWhiteSpace(user.Login) ||
-                    string.IsNullOrWhiteSpace(user.Password) ||
-                    string.IsNullOrWhiteSpace(user.Folder))
+                var folderValue = !string.IsNullOrEmpty(user.FolderBookmark)
+                    ? AndroidFolderBookmarkSerializer.Serialise(new AndroidFolderBookmark(user.Folder, user.FolderBookmark))
+                    : user.Folder;
+
+                config.Users.Add(new FtpsServerUserAccount
                 {
-                    ShowError(string.Format(Strings.ErrorIncompleteUserFormat, user.Login));
-                    return;
-                }
-
-                    // On Android, serialize the folder bookmark for the file system provider
-                    var folderValue = !string.IsNullOrEmpty(user.FolderBookmark)
-                        ? AndroidFolderBookmarkSerializer.Serialise(new AndroidFolderBookmark(user.Folder, user.FolderBookmark))
-                        : user.Folder;
-
-                    config.Users.Add(new FtpsServerUserAccount
-                    {
-                        Login = user.Login,
-                        Password = user.Password,
-                        Folder = folderValue,
-                        Read = true,
-                        Write = !user.ReadonlyPermission
-                    });
-                }
+                    Login = user.Login,
+                    Password = user.Password,
+                    Folder = folderValue,
+                    Read = true,
+                    Write = !user.ReadonlyPermission
+                });
+            }
 
             var topLevel = TopLevel.GetTopLevel(App.Instance);
             if (topLevel is null)
@@ -308,7 +286,43 @@ public partial class AndroidView : UserControl
         ConfigExpander.IsVisible = !IsServerRunning;
         UsersExpander.IsVisible = !IsServerRunning;
         LogsExpander.IsVisible = IsServerRunning;
+        if (IsServerRunning)
+            ValidationBar.Text = null;
         App.AndroidKeepAwakeService?.SetKeepScreenOn(IsServerRunning);
+    }
+
+    private string? ValidateUsers()
+    {
+        if (_users.Count == 0)
+            return Strings.ErrorAddUser;
+
+        foreach (var user in _users)
+        {
+            user.LoginError = string.IsNullOrWhiteSpace(user.Login) ? Strings.UserUsernameValidation : null;
+            user.PasswordError = string.IsNullOrWhiteSpace(user.Password) ? Strings.UserPasswordValidation : null;
+            var folderMissing = string.IsNullOrWhiteSpace(user.Folder) && string.IsNullOrWhiteSpace(user.FolderBookmark);
+            user.FolderError = folderMissing ? Strings.UserFolderValidation : null;
+            var error = user.LoginError ?? user.PasswordError ?? user.FolderError;
+            if (error != null)
+                return error;
+        }
+
+        return null;
+    }
+
+    private bool TryValidateForStart()
+    {
+        var configError = ServerConfig.Validate();
+        var usersError = ValidateUsers();
+        var error = configError ?? usersError;
+        ValidationBar.Text = error;
+        if (error == null)
+            return true;
+        if (configError != null)
+            ConfigExpander.IsExpanded = true;
+        else
+            UsersExpander.IsExpanded = true;
+        return false;
     }
 
     private void RefreshConnectionInstruction()
@@ -324,13 +338,7 @@ public partial class AndroidView : UserControl
 
     private void ShowError(string message)
     {
-        ErrorText.Text = message;
-        ErrorBanner.IsVisible = true;
-    }
-
-    private void DismissError_Click(object sender, RoutedEventArgs e)
-    {
-        ErrorBanner.IsVisible = false;
+        ValidationBar.Text = message;
     }
 
     private void ClearLogs_Click(object sender, RoutedEventArgs e)

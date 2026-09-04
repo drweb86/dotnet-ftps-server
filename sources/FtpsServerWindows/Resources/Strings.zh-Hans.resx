@@ -112,7 +112,7 @@
     <value>选择证书文件</value>
   </data>
   <data name="ConfigTitle" xml:space="preserve">
-    <value>主机、端口、证书</value>
+    <value>端口和证书</value>
   </data>
   <data name="ConfigUseSelfSigned" xml:space="preserve">
     <value>使用自签名自动生成的证书</value>
@@ -355,5 +355,26 @@
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>清除</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>端口</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>端口是 FTP 客户端在网络上连接此服务器时使用的号码。默认值为 2121。</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>请输入 {0} 到 {1} 之间的端口。</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>最大连接数必须至少为 {0}。</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>请输入用户名。</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>请输入密码。</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>请选择要共享的文件夹。</value>
   </data>
 </root>

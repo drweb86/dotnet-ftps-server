@@ -12,7 +12,7 @@
     <string name="menu_start">[ MULAI ]</string>
     <string name="menu_stop">[ BERHENTI ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">Host, Port, Sertifikat</string>
+    <string name="config_title">Port and certificate</string>
     <string name="config_address">Alamat</string>
     <string name="config_port">Port</string>
     <string name="config_access_info">PC Anda dapat diakses di LAN melalui nama atau alamat IP-nya.</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">Jika klien hanya menampilkan \"Fingerprint\" (tanpa nama algoritma), bandingkan dulu dengan SHA-256, lalu SHA-1.</string>
     <string name="connection_details_share_subject">Detail koneksi FTPS Server</string>
     <string name="connection_instruction_title">Petunjuk koneksi</string>
+    <string name="config_port_help">The port is the number an FTP client uses to reach this server on the network. The default is 2121.</string>
+    <string name="config_port_validation">Enter a port from %1$s to %2$s.</string>
+    <string name="config_max_connections_validation">Maximum connections must be at least %1$s.</string>
+    <string name="user_username_validation">Enter a username.</string>
+    <string name="user_password_validation">Enter a password.</string>
+    <string name="user_folder_validation">Choose a folder to share.</string>
 </resources>

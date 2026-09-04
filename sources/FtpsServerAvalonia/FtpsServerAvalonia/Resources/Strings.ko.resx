@@ -101,7 +101,7 @@
 
   <!-- Server Configuration -->
   <data name="ConfigTitle" xml:space="preserve">
-    <value>호스트, 포트, 인증서</value>
+    <value>포트 및 인증서</value>
   </data>
   <data name="ConfigAddress" xml:space="preserve">
     <value>주소</value>
@@ -346,5 +346,23 @@ IP 주소를 권장합니다. 기기 이름은 네트워크가 이름을 확인�
   </data>
   <data name="ConnectionInstructionTitle" xml:space="preserve">
     <value>연결 안내</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>포트는 FTP 클라이언트가 네트워크에서 이 서버에 접속할 때 사용하는 번호입니다. 기본값은 2121입니다.</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>{0}에서 {1} 사이의 포트를 입력하세요.</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>최대 연결 수는 최소 {0}이어야 합니다.</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>사용자 이름을 입력하세요.</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>비밀번호를 입력하세요.</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>공유할 폴더를 선택하세요.</value>
   </data>
 </root>

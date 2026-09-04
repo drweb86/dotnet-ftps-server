@@ -112,7 +112,7 @@
     <value>Вибрати файл сертифіката</value>
   </data>
   <data name="ConfigTitle" xml:space="preserve">
-    <value>Хост, Порт, Сертифікат</value>
+    <value>Порт і сертифікат</value>
   </data>
   <data name="ConfigUseSelfSigned" xml:space="preserve">
     <value>Використовувати самопідписаний автоматично згенерований сертифікат</value>
@@ -361,5 +361,26 @@
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>Очистити</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>Порт</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>Порт — це номер, за яким FTP-клієнт знаходить цей сервер у мережі. Типово 2121.</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>Вкажіть порт від {0} до {1}.</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>Максимум з’єднань має бути не менше {0}.</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>Вкажіть ім’я користувача.</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>Вкажіть пароль.</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>Оберіть папку для спільного доступу.</value>
   </data>
 </root>

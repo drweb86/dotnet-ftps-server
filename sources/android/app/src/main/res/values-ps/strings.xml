@@ -12,7 +12,7 @@
     <string name="menu_start">[ پیل کړئ ]</string>
     <string name="menu_stop">[ ودرولئ ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">کوربه، بندر، سند</string>
+    <string name="config_title">Port and certificate</string>
     <string name="config_address">پته</string>
     <string name="config_port">بندر</string>
     <string name="config_access_info">ستاسو کمپیوټر ته د شبکې (LAN) کې د هغه نوم یا IP پته له لارې لاسرسی ممکن دی.</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">که پیرودونکی یوازې \"Fingerprint\" وښيي (بې د الګورېتم نوم)، لومړی SHA-256 بیا SHA-1 سره پرتله کړئ.</string>
     <string name="connection_details_share_subject">د FTPS Server د نښلېدو جزئیات</string>
     <string name="connection_instruction_title">د نښلېدو لارښوونه</string>
+    <string name="config_port_help">The port is the number an FTP client uses to reach this server on the network. The default is 2121.</string>
+    <string name="config_port_validation">Enter a port from %1$s to %2$s.</string>
+    <string name="config_max_connections_validation">Maximum connections must be at least %1$s.</string>
+    <string name="user_username_validation">Enter a username.</string>
+    <string name="user_password_validation">Enter a password.</string>
+    <string name="user_folder_validation">Choose a folder to share.</string>
 </resources>

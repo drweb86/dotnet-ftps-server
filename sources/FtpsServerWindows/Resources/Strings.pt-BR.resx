@@ -112,7 +112,7 @@
     <value>Selecionar Arquivo de Certificado</value>
   </data>
   <data name="ConfigTitle" xml:space="preserve">
-    <value>Host, Porta, Certificado</value>
+    <value>Porta e certificado</value>
   </data>
   <data name="ConfigUseSelfSigned" xml:space="preserve">
     <value>Usar certificado auto-assinado gerado automaticamente</value>
@@ -355,5 +355,26 @@ Compare a impressão no cliente com os valores abaixo. Se coincidirem, aceite o 
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>Limpar</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>Porta</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>A porta é o número que um cliente FTP usa para alcançar este servidor na rede. O padrão é 2121.</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>Informe uma porta de {0} a {1}.</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>O máximo de conexões deve ser pelo menos {0}.</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>Informe um nome de usuário.</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>Informe uma senha.</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>Escolha uma pasta para compartilhar.</value>
   </data>
 </root>

@@ -112,7 +112,7 @@
     <value>Sertifika Dosyası Seç</value>
   </data>
   <data name="ConfigTitle" xml:space="preserve">
-    <value>Ana Bilgisayar, Port, Sertifika</value>
+    <value>Bağlantı noktası ve sertifika</value>
   </data>
   <data name="ConfigUseSelfSigned" xml:space="preserve">
     <value>Otomatik oluşturulan kendinden imzalı sertifika kullan</value>
@@ -361,5 +361,26 @@ Yalnızca AÇIK TLS (AUTH TLS / FTP over TLS) desteklenir.
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>Temizle</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>Bağlantı noktası, bir FTP istemcisinin ağdaki bu sunucuya ulaşmak için kullandığı sayıdır. Varsayılan 2121’dir.</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>{0} ile {1} arasında bir bağlantı noktası girin.</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>En fazla bağlantı sayısı en az {0} olmalıdır.</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>Bir kullanıcı adı girin.</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>Bir parola girin.</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>Paylaşılacak bir klasör seçin.</value>
   </data>
 </root>

@@ -169,6 +169,8 @@ namespace FtpsServerAvalonia
             try
             {
                 SaveSettings();
+                if (!TryValidateForStart())
+                    return;
 
                 var config = new FtpsServerConfiguration();
 
@@ -177,36 +179,14 @@ namespace FtpsServerAvalonia
                 config.ServerSettings.Port = _settings.ServerPort;
                 config.ServerSettings.MaxConnections = _settings.MaxConnections;
 
-                // Certificate configuration
                 if (_settings.CertificateSource == CertificateSourceType.FromFile)
                 {
-                    if (string.IsNullOrWhiteSpace(_settings.CertificatePath))
-                    {
-                        await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, Strings.ErrorSelectCertificate, ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
-                        return;
-                    }
-
                     config.ServerSettings.CertificatePath = _settings.CertificatePath;
                     config.ServerSettings.CertificatePassword = _settings.CertificatePassword;
                 }
 
-                // Users
-                if (_users.Count == 0)
-                {
-                    await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, Strings.ErrorAddUser, ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
-                    return;
-                }
-
                 foreach (var user in _users)
                 {
-                    if (string.IsNullOrWhiteSpace(user.Login) ||
-                        string.IsNullOrWhiteSpace(user.Password) ||
-                        string.IsNullOrWhiteSpace(user.Folder))
-                    {
-                        await MessageBoxManager.GetMessageBoxStandard(Strings.ErrorTitle, string.Format(Strings.ErrorIncompleteUserFormat, user.Login), ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
-                        return;
-                    }
-
                     config.Users.Add(new FtpsServerUserAccount
                     {
                         Login = user.Login,
@@ -257,12 +237,48 @@ namespace FtpsServerAvalonia
         private void UpdateServerStatus()
         {
             MainMenu.UpdateServerStatus(IsServerRunning);
-            ConnectionInstruction.IsVisible = IsServerRunning;
-            ServerConfig.IsVisible = !IsServerRunning;
-            UsersPanel.IsVisible = !IsServerRunning;
-            LogsPanel.IsVisible = IsServerRunning;
+            ConnectionInstructionExpander.IsVisible = IsServerRunning;
+            ConfigExpander.IsVisible = !IsServerRunning;
+            UsersExpander.IsVisible = !IsServerRunning;
+            LogsExpander.IsVisible = IsServerRunning;
             StartStopButtonText.Text = IsServerRunning ? Strings.MenuStop : Strings.MenuStart;
             StartStopButtonText.Foreground = IsServerRunning ? Brushes.PaleVioletRed : Brushes.Green;
+            if (IsServerRunning)
+                ValidationBar.Text = null;
+        }
+
+        private string? ValidateUsers()
+        {
+            if (_users.Count == 0)
+                return Strings.ErrorAddUser;
+
+            foreach (var user in _users)
+            {
+                user.LoginError = string.IsNullOrWhiteSpace(user.Login) ? Strings.UserUsernameValidation : null;
+                user.PasswordError = string.IsNullOrWhiteSpace(user.Password) ? Strings.UserPasswordValidation : null;
+                var folderMissing = string.IsNullOrWhiteSpace(user.Folder) && string.IsNullOrWhiteSpace(user.FolderBookmark);
+                user.FolderError = folderMissing ? Strings.UserFolderValidation : null;
+                var error = user.LoginError ?? user.PasswordError ?? user.FolderError;
+                if (error != null)
+                    return error;
+            }
+
+            return null;
+        }
+
+        private bool TryValidateForStart()
+        {
+            var configError = ServerConfig.Validate();
+            var usersError = ValidateUsers();
+            var error = configError ?? usersError;
+            ValidationBar.Text = error;
+            if (error == null)
+                return true;
+            if (configError != null)
+                ConfigExpander.IsExpanded = true;
+            else
+                UsersExpander.IsExpanded = true;
+            return false;
         }
 
         private void RefreshConnectionInstruction()

@@ -112,7 +112,7 @@
     <value>Seleziona File Certificato</value>
   </data>
   <data name="ConfigTitle" xml:space="preserve">
-    <value>Host, Porta, Certificato</value>
+    <value>Porta e certificato</value>
   </data>
   <data name="ConfigUseSelfSigned" xml:space="preserve">
     <value>Usa certificato autofirmato generato automaticamente</value>
@@ -355,5 +355,26 @@ Confrontare l'impronta nel client con i valori sotto. Se coincidono, accettare i
   </data>
   <data name="ClearLogs" xml:space="preserve">
     <value>Cancella</value>
+  </data>
+  <data name="ConfigPort" xml:space="preserve">
+    <value>Porta</value>
+  </data>
+  <data name="ConfigPortHelp" xml:space="preserve">
+    <value>La porta è il numero che un client FTP usa per raggiungere questo server in rete. Il valore predefinito è 2121.</value>
+  </data>
+  <data name="ConfigPortValidation" xml:space="preserve">
+    <value>Inserisci una porta da {0} a {1}.</value>
+  </data>
+  <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
+    <value>Il numero massimo di connessioni deve essere almeno {0}.</value>
+  </data>
+  <data name="UserUsernameValidation" xml:space="preserve">
+    <value>Inserisci un nome utente.</value>
+  </data>
+  <data name="UserPasswordValidation" xml:space="preserve">
+    <value>Inserisci una password.</value>
+  </data>
+  <data name="UserFolderValidation" xml:space="preserve">
+    <value>Scegli una cartella da condividere.</value>
   </data>
 </root>

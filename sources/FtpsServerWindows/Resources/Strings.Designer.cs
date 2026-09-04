@@ -253,6 +253,15 @@ namespace FtpsServerWindows.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Maximum connections must be at least {0}.
+        /// </summary>
+        public static string ConfigMaxConnectionsValidation {
+            get {
+                return ResourceManager.GetString("ConfigMaxConnectionsValidation", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Name: .
         /// </summary>
         public static string ConfigName {
@@ -280,6 +289,33 @@ namespace FtpsServerWindows.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Port.
+        /// </summary>
+        public static string ConfigPort {
+            get {
+                return ResourceManager.GetString("ConfigPort", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The port is the number an FTP client uses to reach this server on the network. The default is 2121.
+        /// </summary>
+        public static string ConfigPortHelp {
+            get {
+                return ResourceManager.GetString("ConfigPortHelp", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a port from {0} to {1}.
+        /// </summary>
+        public static string ConfigPortValidation {
+            get {
+                return ResourceManager.GetString("ConfigPortValidation", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Select Certificate File.
         /// </summary>
         public static string ConfigSelectCertTitle {
@@ -298,7 +334,7 @@ namespace FtpsServerWindows.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Host, Port, Certificate.
+        ///   Looks up a localized string similar to Port and certificate.
         /// </summary>
         public static string ConfigTitle {
             get {
@@ -730,11 +766,29 @@ namespace FtpsServerWindows.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Choose a folder to share.
+        /// </summary>
+        public static string UserFolderValidation {
+            get {
+                return ResourceManager.GetString("UserFolderValidation", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string UserPassword {
             get {
                 return ResourceManager.GetString("UserPassword", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a password.
+        /// </summary>
+        public static string UserPasswordValidation {
+            get {
+                return ResourceManager.GetString("UserPasswordValidation", resourceCulture);
             }
         }
 
@@ -762,6 +816,15 @@ namespace FtpsServerWindows.Resources {
         public static string UserUsername {
             get {
                 return ResourceManager.GetString("UserUsername", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a username.
+        /// </summary>
+        public static string UserUsernameValidation {
+            get {
+                return ResourceManager.GetString("UserUsernameValidation", resourceCulture);
             }
         }
 

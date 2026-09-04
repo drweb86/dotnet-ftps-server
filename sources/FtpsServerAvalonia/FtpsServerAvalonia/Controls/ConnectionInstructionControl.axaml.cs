@@ -14,9 +14,6 @@ public partial class ConnectionInstructionControl : UserControl
     public static readonly StyledProperty<string> InstructionTextProperty =
         AvaloniaProperty.Register<ConnectionInstructionControl, string>(nameof(InstructionText), defaultValue: string.Empty);
 
-    public static readonly StyledProperty<bool> ShowTitleProperty =
-        AvaloniaProperty.Register<ConnectionInstructionControl, bool>(nameof(ShowTitle), defaultValue: true);
-
     public static readonly StyledProperty<bool> ShowShareButtonProperty =
         AvaloniaProperty.Register<ConnectionInstructionControl, bool>(nameof(ShowShareButton), defaultValue: false);
 
@@ -24,12 +21,6 @@ public partial class ConnectionInstructionControl : UserControl
     {
         get => GetValue(InstructionTextProperty);
         set => SetValue(InstructionTextProperty, value);
-    }
-
-    public bool ShowTitle
-    {
-        get => GetValue(ShowTitleProperty);
-        set => SetValue(ShowTitleProperty, value);
     }
 
     public bool ShowShareButton
@@ -42,7 +33,6 @@ public partial class ConnectionInstructionControl : UserControl
     {
         InitializeComponent();
         ShareConnectionDetailsButton.IsVisible = ShowShareButton;
-        TitleText.IsVisible = ShowTitle;
     }
 
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
@@ -50,17 +40,6 @@ public partial class ConnectionInstructionControl : UserControl
         base.OnPropertyChanged(change);
         if (change.Property == InstructionTextProperty && InstructionTextBlock != null)
             InstructionTextBlock.Text = change.GetNewValue<string>();
-        else if (change.Property == ShowTitleProperty && TitleText != null)
-        {
-            var showTitle = change.GetNewValue<bool>();
-            TitleText.IsVisible = showTitle;
-            if (!showTitle)
-            {
-                OuterBorder.Margin = new Thickness(0);
-                OuterBorder.BorderThickness = new Thickness(0);
-                OuterBorder.Padding = new Thickness(0);
-            }
-        }
         else if (change.Property == ShowShareButtonProperty && ShareConnectionDetailsButton != null)
             ShareConnectionDetailsButton.IsVisible = change.GetNewValue<bool>();
     }

@@ -12,7 +12,7 @@
     <string name="menu_start">[ INICIAR ]</string>
     <string name="menu_stop">[ PARAR ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">Host, Porta, Certificado</string>
+    <string name="config_title">Porta e certificado</string>
     <string name="config_address">Endereço</string>
     <string name="config_port">Porta</string>
     <string name="config_access_info">Seu PC pode ser acessado na LAN por seu nome ou endereço IP.</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">Se o cliente mostrar só \"Fingerprint\" (sem algoritmo), compare primeiro com SHA-256 e depois com SHA-1.</string>
     <string name="connection_details_share_subject">Dados de conexão do FTPS Server</string>
     <string name="connection_instruction_title">Instruções de conexão</string>
+    <string name="config_port_help">A porta é o número que um cliente FTP usa para alcançar este servidor na rede. O padrão é 2121.</string>
+    <string name="config_port_validation">Informe uma porta de %1$s a %2$s.</string>
+    <string name="config_max_connections_validation">O máximo de conexões deve ser pelo menos %1$s.</string>
+    <string name="user_username_validation">Informe um nome de usuário.</string>
+    <string name="user_password_validation">Informe uma senha.</string>
+    <string name="user_folder_validation">Escolha uma pasta para compartilhar.</string>
 </resources>

@@ -7,10 +7,11 @@ import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.siarheikuchuk.ftpsserver.privacy.PrivacyStore
+import com.siarheikuchuk.ftpsserver.R
 import com.siarheikuchuk.ftpsserver.data.AppSettings
 import com.siarheikuchuk.ftpsserver.data.SettingsRepository
 import com.siarheikuchuk.ftpsserver.data.UserAccount
+import com.siarheikuchuk.ftpsserver.privacy.PrivacyStore
 import com.siarheikuchuk.ftpsserver.server.LoadedCertificate
 import com.siarheikuchuk.ftpsserver.service.FtpsForegroundService
 import com.siarheikuchuk.ftpsserver.service.ServerEvents
@@ -28,6 +29,14 @@ data class LogLine(val timestamp: String, val level: String, val message: String
 
 data class NetworkRow(val name: String, val addresses: List<String>)
 
+data class UserFieldErrors(
+    val login: String? = null,
+    val password: String? = null,
+    val folder: String? = null,
+) {
+    val first: String? get() = login ?: password ?: folder
+}
+
 data class UiState(
     val port: Int = 2121,
     val maxConnections: Int = 10,
@@ -41,6 +50,14 @@ data class UiState(
     val networks: List<NetworkRow> = emptyList(),
     val hostName: String = Build.MODEL ?: "Android",
     val certificate: LoadedCertificate? = null,
+    val portError: String? = null,
+    val maxConnectionsError: String? = null,
+    val certificatePathError: String? = null,
+    val userErrors: List<UserFieldErrors> = emptyList(),
+    val configExpanded: Boolean = true,
+    val usersExpanded: Boolean = true,
+    val connectionExpanded: Boolean = true,
+    val logsExpanded: Boolean = true,
 )
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -57,6 +74,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             certificatePath = loaded.certificatePath,
             certificatePassword = loaded.certificatePassword,
             users = loaded.users.toList(),
+            userErrors = List(loaded.users.size) { UserFieldErrors() },
             running = ServerEvents.isRunning.value,
             networks = localNetworks(),
             hostName = Build.MODEL ?: "Android",
@@ -64,7 +82,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         )
         viewModelScope.launch {
             ServerEvents.isRunning.collect { running ->
-                _state.update { it.copy(running = running) }
+                _state.update { it.copy(running = running, error = if (running) null else it.error) }
             }
         }
         viewModelScope.launch {
@@ -88,29 +106,51 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun setPort(value: Int) = _state.update { it.copy(port = value.coerceAtLeast(2121)) }
-    fun setMaxConnections(value: Int) = _state.update { it.copy(maxConnections = value.coerceAtLeast(2)) }
-    fun setUseSelfSigned(value: Boolean) = _state.update { it.copy(useSelfSigned = value) }
+    fun setPort(value: Int) = _state.update { it.copy(port = value, portError = null) }
+    fun nudgePort(delta: Int) = _state.update {
+        it.copy(port = (it.port + delta).coerceIn(PORT_MIN, PORT_MAX), portError = null)
+    }
+    fun setMaxConnections(value: Int) = _state.update { it.copy(maxConnections = value, maxConnectionsError = null) }
+    fun nudgeMaxConnections(delta: Int) = _state.update {
+        it.copy(maxConnections = (it.maxConnections + delta).coerceAtLeast(MAX_CONNECTIONS_MIN), maxConnectionsError = null)
+    }
+    fun setUseSelfSigned(value: Boolean) = _state.update { it.copy(useSelfSigned = value, certificatePathError = null) }
     fun setCertificatePassword(value: String) = _state.update { it.copy(certificatePassword = value) }
     fun dismissError() = _state.update { it.copy(error = null) }
     fun clearLogs() = _state.update { it.copy(logs = emptyList()) }
 
+    fun toggleConfigExpanded() = _state.update { it.copy(configExpanded = !it.configExpanded) }
+    fun toggleUsersExpanded() = _state.update { it.copy(usersExpanded = !it.usersExpanded) }
+    fun toggleConnectionExpanded() = _state.update { it.copy(connectionExpanded = !it.connectionExpanded) }
+    fun toggleLogsExpanded() = _state.update { it.copy(logsExpanded = !it.logsExpanded) }
+
     fun addUser() {
         _state.update {
             val n = it.users.size + 1
-            it.copy(users = it.users + UserAccount("user$n", "password$n", "", "", false))
+            it.copy(
+                users = it.users + UserAccount("user$n", "password$n", "", "", false),
+                userErrors = it.userErrors + UserFieldErrors(),
+            )
         }
     }
 
     fun removeUser(index: Int) {
-        _state.update { it.copy(users = it.users.toMutableList().also { list -> list.removeAt(index) }) }
+        _state.update {
+            it.copy(
+                users = it.users.toMutableList().also { list -> list.removeAt(index) },
+                userErrors = it.userErrors.toMutableList().also { list -> if (index < list.size) list.removeAt(index) },
+            )
+        }
     }
 
     fun updateUser(index: Int, transform: (UserAccount) -> UserAccount) {
         _state.update {
             val list = it.users.toMutableList()
             list[index] = transform(list[index])
-            it.copy(users = list)
+            val errors = it.userErrors.toMutableList()
+            while (errors.size < list.size) errors.add(UserFieldErrors())
+            if (index < errors.size) errors[index] = UserFieldErrors()
+            it.copy(users = list, userErrors = errors)
         }
     }
 
@@ -121,7 +161,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun setCertificateFile(path: String) {
-        _state.update { it.copy(certificatePath = path) }
+        _state.update { it.copy(certificatePath = path, certificatePathError = null) }
     }
 
     fun toggleServer() {
@@ -145,23 +185,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun start() {
         save()
+        if (!validateForStart()) return
         val s = _state.value
-        if (s.users.isEmpty()) {
-            _state.update { it.copy(error = getApplication<Application>().getString(com.siarheikuchuk.ftpsserver.R.string.error_add_user)) }
-            return
-        }
-        for (u in s.users) {
-            if (u.login.isBlank() || u.password.isBlank() || u.folderUri.isBlank()) {
-                _state.update {
-                    it.copy(error = getApplication<Application>().getString(com.siarheikuchuk.ftpsserver.R.string.error_incomplete_user_format, u.login))
-                }
-                return
-            }
-        }
-        if (!s.useSelfSigned && s.certificatePath.isBlank()) {
-            _state.update { it.copy(error = getApplication<Application>().getString(com.siarheikuchuk.ftpsserver.R.string.error_select_certificate)) }
-            return
-        }
         val ctx = getApplication<Application>()
         val intent = FtpsForegroundService.startIntent(ctx).apply {
             putExtra(FtpsForegroundService.EXTRA_PORT, s.port)
@@ -175,6 +200,51 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             putExtra(FtpsForegroundService.EXTRA_WRITES, s.users.map { !it.readonly }.toBooleanArray())
         }
         ContextCompat.startForegroundService(ctx, intent)
+    }
+
+    private fun validateForStart(): Boolean {
+        val app = getApplication<Application>()
+        val s = _state.value
+        val portError = if (s.port < PORT_MIN || s.port > PORT_MAX) {
+            app.getString(R.string.config_port_validation, PORT_MIN, PORT_MAX)
+        } else {
+            null
+        }
+        val maxConnectionsError = if (s.maxConnections < MAX_CONNECTIONS_MIN) {
+            app.getString(R.string.config_max_connections_validation, MAX_CONNECTIONS_MIN)
+        } else {
+            null
+        }
+        val certificatePathError = if (!s.useSelfSigned && s.certificatePath.isBlank()) {
+            app.getString(R.string.error_select_certificate)
+        } else {
+            null
+        }
+        val userErrors = s.users.map { user ->
+            UserFieldErrors(
+                login = if (user.login.isBlank()) app.getString(R.string.user_username_validation) else null,
+                password = if (user.password.isBlank()) app.getString(R.string.user_password_validation) else null,
+                folder = if (user.folderUri.isBlank()) app.getString(R.string.user_folder_validation) else null,
+            )
+        }
+        val usersBanner = when {
+            s.users.isEmpty() -> app.getString(R.string.error_add_user)
+            else -> userErrors.firstNotNullOfOrNull { it.first }
+        }
+        val configError = portError ?: maxConnectionsError ?: certificatePathError
+        val banner = configError ?: usersBanner
+        _state.update {
+            it.copy(
+                portError = portError,
+                maxConnectionsError = maxConnectionsError,
+                certificatePathError = certificatePathError,
+                userErrors = userErrors,
+                error = banner,
+                configExpanded = it.configExpanded || configError != null,
+                usersExpanded = it.usersExpanded || usersBanner != null,
+            )
+        }
+        return banner == null
     }
 
     private fun stop() {
@@ -198,5 +268,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     override fun onCleared() {
         save()
         super.onCleared()
+    }
+
+    companion object {
+        const val PORT_MIN = 2121
+        const val PORT_MAX = 65535
+        const val MAX_CONNECTIONS_MIN = 2
     }
 }

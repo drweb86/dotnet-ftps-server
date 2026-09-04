@@ -175,6 +175,12 @@
                 <Setter Property="CornerRadius" Value="12"/>
                 <Setter Property="Padding" Value="24"/>
             </Style>
+
+            <Style x:Key="FormContent" TargetType="FrameworkElement">
+                <Setter Property="MaxWidth" Value="720"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="Margin" Value="24"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

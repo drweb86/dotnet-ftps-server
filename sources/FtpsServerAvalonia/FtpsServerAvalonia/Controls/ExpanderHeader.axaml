@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:FtpsServerAvalonia.Controls"
+             x:Class="FtpsServerAvalonia.Controls.ExpanderHeader">
+	<StackPanel Orientation="Horizontal" Spacing="8">
+		<TextBlock Text="{Binding Icon, RelativeSource={RelativeSource AncestorType=controls:ExpanderHeader}}"
+				   FontSize="16"
+				   VerticalAlignment="Center"/>
+		<TextBlock Text="{Binding Text, RelativeSource={RelativeSource AncestorType=controls:ExpanderHeader}}"
+				   FontSize="18"
+				   FontWeight="SemiBold"
+				   Foreground="{StaticResource TextPrimaryBrush}"
+				   VerticalAlignment="Center"/>
+	</StackPanel>
+</UserControl>

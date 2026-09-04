@@ -12,7 +12,7 @@
     <string name="menu_start">[ 開始 ]</string>
     <string name="menu_stop">[ 停止 ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">ホスト、ポート、証明書</string>
+    <string name="config_title">ポートと証明書</string>
     <string name="config_address">アドレス</string>
     <string name="config_port">ポート</string>
     <string name="config_access_info">お使いのPCは、LAN内で名前またはIPアドレスでアクセスできます。</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">クライアントがアルゴリズム名なしで \"Fingerprint\" のみを表示する場合は、まず SHA-256、次に SHA-1 と比較してください。</string>
     <string name="connection_details_share_subject">FTPS Server の接続情報</string>
     <string name="connection_instruction_title">接続手順</string>
+    <string name="config_port_help">ポートは、FTP クライアントがネットワーク上でこのサーバーに接続するために使う番号です。既定値は 2121 です。</string>
+    <string name="config_port_validation">%1$s から %2$s のポートを入力してください。</string>
+    <string name="config_max_connections_validation">最大接続数は %1$s 以上にしてください。</string>
+    <string name="user_username_validation">ユーザー名を入力してください。</string>
+    <string name="user_password_validation">パスワードを入力してください。</string>
+    <string name="user_folder_validation">共有するフォルダーを選んでください。</string>
 </resources>

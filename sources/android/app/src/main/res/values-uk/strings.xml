@@ -12,7 +12,7 @@
     <string name="menu_start">[ ЗАПУСТИТИ ]</string>
     <string name="menu_stop">[ ЗУПИНИТИ ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">Хост, Порт, Сертифікат</string>
+    <string name="config_title">Порт і сертифікат</string>
     <string name="config_address">Адреса</string>
     <string name="config_port">Порт</string>
     <string name="config_access_info">Ваш ПК доступний у локальній мережі за його іменем або IP-адресою.</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">Якщо клієнт показує лише «Fingerprint» (без алгоритму), спочатку порівняйте з SHA-256, потім із SHA-1.</string>
     <string name="connection_details_share_subject">Дані з\'єднання FTPS Server</string>
     <string name="connection_instruction_title">Інструкція з підключення</string>
+    <string name="config_port_help">Порт — це номер, за яким FTP-клієнт знаходить цей сервер у мережі. Типово 2121.</string>
+    <string name="config_port_validation">Вкажіть порт від %1$s до %2$s.</string>
+    <string name="config_max_connections_validation">Максимум з’єднань має бути не менше %1$s.</string>
+    <string name="user_username_validation">Вкажіть ім’я користувача.</string>
+    <string name="user_password_validation">Вкажіть пароль.</string>
+    <string name="user_folder_validation">Оберіть папку для спільного доступу.</string>
 </resources>

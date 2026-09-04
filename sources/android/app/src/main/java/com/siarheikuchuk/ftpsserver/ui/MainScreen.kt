@@ -6,20 +6,25 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -60,6 +65,10 @@ private fun fieldColors() = OutlinedTextFieldDefaults.colors(
     focusedLabelColor = AppColors.accent,
     unfocusedLabelColor = AppColors.muted,
     cursorColor = AppColors.accent,
+    errorBorderColor = AppColors.error,
+    errorLabelColor = AppColors.error,
+    errorSupportingTextColor = AppColors.error,
+    errorCursorColor = AppColors.error,
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -108,143 +117,195 @@ fun MainScreen(viewModel: MainViewModel, onOpenPrivacy: () -> Unit) {
             )
         },
     ) { padding ->
-        Column(
+        Box(
             modifier = Modifier
                 .padding(padding)
                 .fillMaxSize()
-                .verticalScroll(scroll)
-                .padding(12.dp),
+                .verticalScroll(scroll),
+            contentAlignment = Alignment.TopCenter,
         ) {
-            Button(
-                onClick = { viewModel.toggleServer() },
-                modifier = Modifier.fillMaxWidth().height(72.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = AppColors.surface,
-                    contentColor = if (state.running) AppColors.error else AppColors.success,
-                ),
+            Column(
+                modifier = Modifier
+                    .widthIn(max = 720.dp)
+                    .fillMaxWidth()
+                    .padding(24.dp),
             ) {
-                Text(
-                    if (state.running) stringResource(R.string.menu_stop) else stringResource(R.string.menu_start),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 22.sp,
-                )
-            }
-
-            if (state.error != null) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 8.dp)
-                        .background(AppColors.error, RoundedCornerShape(4.dp))
-                        .padding(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(state.error!!, color = AppColors.text, modifier = Modifier.weight(1f))
-                    TextButton(onClick = { viewModel.dismissError() }) { Text("X", color = AppColors.text) }
-                }
-            }
-
-            if (!state.running) {
-                SectionCard {
-                    Text(stringResource(R.string.config_title), color = AppColors.text, fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
-                    NumberRow(stringResource(R.string.config_port), state.port, 2121) { viewModel.setPort(it) }
-                    NumberRow(stringResource(R.string.config_max_connections), state.maxConnections, 2) { viewModel.setMaxConnections(it) }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Checkbox(checked = state.useSelfSigned, onCheckedChange = { viewModel.setUseSelfSigned(it) })
-                        Text(stringResource(R.string.config_use_self_signed), color = AppColors.text)
-                    }
-                    if (!state.useSelfSigned) {
-                        Text(stringResource(R.string.config_cert_file), color = AppColors.muted, fontSize = 13.sp)
-                        Text(state.certificatePath.ifBlank { "—" }, color = AppColors.text, fontSize = 13.sp)
-                        OutlinedButton(onClick = { certPicker.launch("*/*") }) { Text(stringResource(R.string.config_browse), color = AppColors.accent) }
-                        OutlinedTextField(
-                            value = state.certificatePassword,
-                            onValueChange = { viewModel.setCertificatePassword(it) },
-                            label = { Text(stringResource(R.string.config_cert_password)) },
-                            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-                            colors = fieldColors(),
-                        )
-                    }
-                }
-
-                SectionCard {
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                        Text(stringResource(R.string.users_tab), color = AppColors.text, fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
-                        OutlinedButton(onClick = { viewModel.addUser() }) { Text(stringResource(R.string.add_user_button), color = AppColors.accent) }
-                    }
-                    state.users.forEachIndexed { index, user ->
-                        UserCard(index, user, viewModel)
-                    }
-                }
-            }
-
-            if (state.running) {
-                SectionCard {
-                    Text(stringResource(R.string.connection_instruction_title), color = AppColors.text, fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
-                    val details = remember(state) { buildConnectionDetails(context, state) }
+                if (state.error != null) {
                     Row(
-                        modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    ) {
-                        var copied by remember { mutableStateOf(false) }
-                        OutlinedButton(
-                            onClick = {
-                                val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                                cm.setPrimaryClip(ClipData.newPlainText(context.getString(R.string.connection_details_share_subject), details))
-                                copied = true
-                            },
-                            modifier = Modifier.weight(1f),
-                        ) {
-                            Text(
-                                if (copied) stringResource(R.string.cert_copied) else stringResource(R.string.config_copy_connection_details),
-                                color = AppColors.accent,
-                            )
-                        }
-                        OutlinedButton(
-                            onClick = {
-                                val send = Intent(Intent.ACTION_SEND).apply {
-                                    type = "text/plain"
-                                    putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.connection_details_share_subject))
-                                    putExtra(Intent.EXTRA_TEXT, details)
-                                }
-                                context.startActivity(Intent.createChooser(send, context.getString(R.string.config_share_connection_details)))
-                            },
-                            modifier = Modifier.weight(1f),
-                        ) {
-                            Text(stringResource(R.string.config_share_connection_details), color = AppColors.accent)
-                        }
-                    }
-                    SelectionContainer {
-                        Text(
-                            details,
-                            color = AppColors.text,
-                            fontSize = 13.sp,
-                            modifier = Modifier.padding(top = 12.dp),
-                        )
-                    }
-                }
-
-                SectionCard {
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                        Text(stringResource(R.string.logs_tab), color = AppColors.text, fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
-                        OutlinedButton(onClick = { viewModel.clearLogs() }) { Text(stringResource(R.string.clear_logs), color = AppColors.accent) }
-                    }
-                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .heightIn(min = 160.dp, max = 320.dp)
-                            .background(AppColors.background, RoundedCornerShape(4.dp))
-                            .padding(8.dp)
-                            .verticalScroll(rememberScrollState()),
+                            .padding(bottom = 8.dp)
+                            .background(AppColors.error, RoundedCornerShape(4.dp))
+                            .padding(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        for (line in state.logs) {
-                            val color = when (line.level) {
-                                "ERROR", "FATAL" -> AppColors.error
-                                "WARN" -> AppColors.warning
-                                "DEBUG" -> AppColors.muted
-                                else -> AppColors.accent
+                        Text(state.error!!, color = AppColors.text, modifier = Modifier.weight(1f))
+                    }
+                }
+
+                Button(
+                    onClick = { viewModel.toggleServer() },
+                    modifier = Modifier.fillMaxWidth().height(72.dp).padding(bottom = 16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = AppColors.surface,
+                        contentColor = if (state.running) AppColors.error else AppColors.success,
+                    ),
+                ) {
+                    Text(
+                        if (state.running) stringResource(R.string.menu_stop) else stringResource(R.string.menu_start),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 22.sp,
+                    )
+                }
+
+                if (!state.running) {
+                    ExpandableSection(
+                        icon = "🔒",
+                        title = stringResource(R.string.config_title),
+                        expanded = state.configExpanded,
+                        onToggle = { viewModel.toggleConfigExpanded() },
+                    ) {
+                        NumberField(
+                            label = stringResource(R.string.config_port),
+                            value = state.port,
+                            error = state.portError,
+                            help = stringResource(R.string.config_port_help),
+                            onNudge = { viewModel.nudgePort(it) },
+                            onValueChange = { viewModel.setPort(it) },
+                        )
+                        NumberField(
+                            label = stringResource(R.string.config_max_connections),
+                            value = state.maxConnections,
+                            error = state.maxConnectionsError,
+                            help = null,
+                            onNudge = { viewModel.nudgeMaxConnections(it) },
+                            onValueChange = { viewModel.setMaxConnections(it) },
+                        )
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(checked = state.useSelfSigned, onCheckedChange = { viewModel.setUseSelfSigned(it) })
+                            Text(stringResource(R.string.config_use_self_signed), color = AppColors.text)
+                        }
+                        if (!state.useSelfSigned) {
+                            OutlinedTextField(
+                                value = state.certificatePath.ifBlank { "" },
+                                onValueChange = {},
+                                readOnly = true,
+                                label = { Text(stringResource(R.string.config_cert_file)) },
+                                isError = state.certificatePathError != null,
+                                supportingText = {
+                                    if (state.certificatePathError != null) {
+                                        Text(state.certificatePathError!!)
+                                    }
+                                },
+                                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                                colors = fieldColors(),
+                            )
+                            OutlinedButton(onClick = { certPicker.launch("*/*") }) {
+                                Text(stringResource(R.string.config_browse), color = AppColors.accent)
                             }
-                            Text("[${line.timestamp}] ${line.level}: ${line.message}", color = color, fontSize = 12.sp, fontFamily = FontFamily.Monospace)
+                            OutlinedTextField(
+                                value = state.certificatePassword,
+                                onValueChange = { viewModel.setCertificatePassword(it) },
+                                label = { Text(stringResource(R.string.config_cert_password)) },
+                                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                                colors = fieldColors(),
+                            )
+                        }
+                    }
+
+                    ExpandableSection(
+                        icon = "👤",
+                        title = stringResource(R.string.users_tab),
+                        expanded = state.usersExpanded,
+                        onToggle = { viewModel.toggleUsersExpanded() },
+                    ) {
+                        OutlinedButton(
+                            onClick = { viewModel.addUser() },
+                            modifier = Modifier.padding(bottom = 8.dp),
+                        ) { Text(stringResource(R.string.add_user_button), color = AppColors.accent) }
+                        state.users.forEachIndexed { index, user ->
+                            UserCard(index, user, state.userErrors.getOrNull(index) ?: UserFieldErrors(), viewModel)
+                        }
+                    }
+                }
+
+                if (state.running) {
+                    ExpandableSection(
+                        icon = "📋",
+                        title = stringResource(R.string.connection_instruction_title),
+                        expanded = state.connectionExpanded,
+                        onToggle = { viewModel.toggleConnectionExpanded() },
+                    ) {
+                        val details = remember(state) { buildConnectionDetails(context, state) }
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            var copied by remember { mutableStateOf(false) }
+                            OutlinedButton(
+                                onClick = {
+                                    val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                    cm.setPrimaryClip(ClipData.newPlainText(context.getString(R.string.connection_details_share_subject), details))
+                                    copied = true
+                                },
+                                modifier = Modifier.weight(1f),
+                            ) {
+                                Text(
+                                    if (copied) stringResource(R.string.cert_copied) else stringResource(R.string.config_copy_connection_details),
+                                    color = AppColors.accent,
+                                )
+                            }
+                            OutlinedButton(
+                                onClick = {
+                                    val send = Intent(Intent.ACTION_SEND).apply {
+                                        type = "text/plain"
+                                        putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.connection_details_share_subject))
+                                        putExtra(Intent.EXTRA_TEXT, details)
+                                    }
+                                    context.startActivity(Intent.createChooser(send, context.getString(R.string.config_share_connection_details)))
+                                },
+                                modifier = Modifier.weight(1f),
+                            ) {
+                                Text(stringResource(R.string.config_share_connection_details), color = AppColors.accent)
+                            }
+                        }
+                        SelectionContainer {
+                            Text(
+                                details,
+                                color = AppColors.text,
+                                fontSize = 13.sp,
+                                modifier = Modifier.padding(top = 12.dp),
+                            )
+                        }
+                    }
+
+                    ExpandableSection(
+                        icon = "📜",
+                        title = stringResource(R.string.logs_tab),
+                        expanded = state.logsExpanded,
+                        onToggle = { viewModel.toggleLogsExpanded() },
+                    ) {
+                        OutlinedButton(
+                            onClick = { viewModel.clearLogs() },
+                            modifier = Modifier.padding(bottom = 8.dp),
+                        ) { Text(stringResource(R.string.clear_logs), color = AppColors.accent) }
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .heightIn(min = 160.dp, max = 320.dp)
+                                .background(AppColors.background, RoundedCornerShape(4.dp))
+                                .padding(8.dp)
+                                .verticalScroll(rememberScrollState()),
+                        ) {
+                            for (line in state.logs) {
+                                val color = when (line.level) {
+                                    "ERROR", "FATAL" -> AppColors.error
+                                    "WARN" -> AppColors.warning
+                                    "DEBUG" -> AppColors.muted
+                                    else -> AppColors.accent
+                                }
+                                Text("[${line.timestamp}] ${line.level}: ${line.message}", color = color, fontSize = 12.sp, fontFamily = FontFamily.Monospace)
+                            }
                         }
                     }
                 }
@@ -254,29 +315,82 @@ fun MainScreen(viewModel: MainViewModel, onOpenPrivacy: () -> Unit) {
 }
 
 @Composable
-private fun SectionCard(content: @Composable () -> Unit) {
+private fun ExpandableSection(
+    icon: String,
+    title: String,
+    expanded: Boolean,
+    onToggle: () -> Unit,
+    content: @Composable ColumnScope.() -> Unit,
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 16.dp)
+            .padding(bottom = 16.dp)
             .border(1.dp, AppColors.accent, RoundedCornerShape(8.dp))
-            .background(AppColors.surface, RoundedCornerShape(8.dp))
-            .padding(16.dp),
-    ) { content() }
-}
-
-@Composable
-private fun NumberRow(label: String, value: Int, min: Int, onChange: (Int) -> Unit) {
-    Row(Modifier.fillMaxWidth().padding(top = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text(label, color = AppColors.muted, modifier = Modifier.weight(1f))
-        OutlinedButton(onClick = { onChange((value - 1).coerceAtLeast(min)) }) { Text(stringResource(R.string.numeric_down), color = AppColors.accent) }
-        Text("$value", color = AppColors.text, modifier = Modifier.padding(horizontal = 12.dp))
-        OutlinedButton(onClick = { onChange(value + 1) }) { Text(stringResource(R.string.numeric_up), color = AppColors.accent) }
+            .background(AppColors.surface, RoundedCornerShape(8.dp)),
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onToggle)
+                .padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(icon, fontSize = 18.sp)
+            Text(
+                title,
+                color = AppColors.text,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 18.sp,
+                modifier = Modifier.weight(1f).padding(start = 8.dp),
+            )
+            Text(if (expanded) "▼" else "▶", color = AppColors.muted)
+        }
+        AnimatedVisibility(visible = expanded) {
+            Column(Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp), content = content)
+        }
     }
 }
 
 @Composable
-private fun UserCard(index: Int, user: com.siarheikuchuk.ftpsserver.data.UserAccount, viewModel: MainViewModel) {
+private fun NumberField(
+    label: String,
+    value: Int,
+    error: String?,
+    help: String?,
+    onNudge: (Int) -> Unit,
+    onValueChange: (Int) -> Unit,
+) {
+    val supporting = error ?: help
+    OutlinedTextField(
+        value = value.toString(),
+        onValueChange = { raw -> raw.toIntOrNull()?.let(onValueChange) },
+        label = { Text(label) },
+        isError = error != null,
+        supportingText = if (supporting != null) {
+            { Text(supporting) }
+        } else {
+            null
+        },
+        trailingIcon = {
+            Row {
+                TextButton(onClick = { onNudge(-1) }) { Text(stringResource(R.string.numeric_down), color = AppColors.accent) }
+                TextButton(onClick = { onNudge(1) }) { Text(stringResource(R.string.numeric_up), color = AppColors.accent) }
+            }
+        },
+        modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+        colors = fieldColors(),
+        singleLine = true,
+    )
+}
+
+@Composable
+private fun UserCard(
+    index: Int,
+    user: com.siarheikuchuk.ftpsserver.data.UserAccount,
+    errors: UserFieldErrors,
+    viewModel: MainViewModel,
+) {
     val folderPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
         if (uri != null) {
             val name = uri.lastPathSegment?.substringAfterLast(':') ?: uri.toString()
@@ -294,6 +408,8 @@ private fun UserCard(index: Int, user: com.siarheikuchuk.ftpsserver.data.UserAcc
             value = user.login,
             onValueChange = { v -> viewModel.updateUser(index) { it.copy(login = v) } },
             label = { Text(stringResource(R.string.user_username)) },
+            isError = errors.login != null,
+            supportingText = { errors.login?.let { Text(it) } },
             modifier = Modifier.fillMaxWidth(),
             colors = fieldColors(),
         )
@@ -301,13 +417,26 @@ private fun UserCard(index: Int, user: com.siarheikuchuk.ftpsserver.data.UserAcc
             value = user.password,
             onValueChange = { v -> viewModel.updateUser(index) { it.copy(password = v) } },
             label = { Text(stringResource(R.string.user_password)) },
+            isError = errors.password != null,
+            supportingText = { errors.password?.let { Text(it) } },
             modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
             colors = fieldColors(),
         )
-        Row(Modifier.fillMaxWidth().padding(top = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text(user.folderName.ifBlank { stringResource(R.string.user_folder) }, color = AppColors.text, modifier = Modifier.weight(1f))
-            OutlinedButton(onClick = { folderPicker.launch(null) }) { Text(stringResource(R.string.config_browse), color = AppColors.accent) }
-        }
+        OutlinedTextField(
+            value = user.folderName.ifBlank { "" },
+            onValueChange = {},
+            readOnly = true,
+            label = { Text(stringResource(R.string.user_folder)) },
+            isError = errors.folder != null,
+            supportingText = { errors.folder?.let { Text(it) } },
+            trailingIcon = {
+                TextButton(onClick = { folderPicker.launch(null) }) {
+                    Text(stringResource(R.string.config_browse), color = AppColors.accent)
+                }
+            },
+            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+            colors = fieldColors(),
+        )
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = user.readonly, onCheckedChange = { v -> viewModel.updateUser(index) { it.copy(readonly = v) } })
             Text(stringResource(R.string.user_readonly), color = AppColors.text, modifier = Modifier.weight(1f))

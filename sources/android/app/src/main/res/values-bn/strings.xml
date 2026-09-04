@@ -12,7 +12,7 @@
     <string name="menu_start">[ শুরু ]</string>
     <string name="menu_stop">[ বন্ধ ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">হোস্ট, পোর্ট, সার্টিফিকেট</string>
+    <string name="config_title">Port and certificate</string>
     <string name="config_address">ঠিকানা</string>
     <string name="config_port">পোর্ট</string>
     <string name="config_access_info">আপনার পিসি LAN-এ এর নাম বা IP ঠিকানা দিয়ে অ্যাক্সেস করা যেতে পারে।</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">ক্লায়েন্ট যদি শুধু \"Fingerprint\" দেখায় (অ্যালগরিদমের নাম ছাড়া), আগে SHA-256 তারপর SHA-1-এর সাথে মেলান।</string>
     <string name="connection_details_share_subject">FTPS Server সংযোগের বিবরণ</string>
     <string name="connection_instruction_title">সংযোগ নির্দেশনা</string>
+    <string name="config_port_help">The port is the number an FTP client uses to reach this server on the network. The default is 2121.</string>
+    <string name="config_port_validation">Enter a port from %1$s to %2$s.</string>
+    <string name="config_max_connections_validation">Maximum connections must be at least %1$s.</string>
+    <string name="user_username_validation">Enter a username.</string>
+    <string name="user_password_validation">Enter a password.</string>
+    <string name="user_folder_validation">Choose a folder to share.</string>
 </resources>

@@ -12,7 +12,7 @@
     <string name="menu_start">[ BẮT ĐẦU ]</string>
     <string name="menu_stop">[ DỪNG ]</string>
     <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
-    <string name="config_title">Máy chủ, Cổng, Chứng chỉ</string>
+    <string name="config_title">Port and certificate</string>
     <string name="config_address">Địa chỉ</string>
     <string name="config_port">Cổng</string>
     <string name="config_access_info">Máy tính của bạn có thể được truy cập trong mạng LAN bằng tên hoặc địa chỉ IP.</string>
@@ -85,4 +85,10 @@
     <string name="connection_details_cert_fingerprint_hint">Nếu máy khách chỉ hiện \"Fingerprint\" (không có tên thuật toán), hãy so với SHA-256 trước, rồi SHA-1.</string>
     <string name="connection_details_share_subject">Chi tiết kết nối FTPS Server</string>
     <string name="connection_instruction_title">Hướng dẫn kết nối</string>
+    <string name="config_port_help">The port is the number an FTP client uses to reach this server on the network. The default is 2121.</string>
+    <string name="config_port_validation">Enter a port from %1$s to %2$s.</string>
+    <string name="config_max_connections_validation">Maximum connections must be at least %1$s.</string>
+    <string name="user_username_validation">Enter a username.</string>
+    <string name="user_password_validation">Enter a password.</string>
+    <string name="user_folder_validation">Choose a folder to share.</string>
 </resources>
