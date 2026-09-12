@@ -69,14 +69,14 @@
 
 			<Expander x:Name="UsersExpander" Classes="SectionExpander" IsExpanded="True">
 				<Expander.Header>
-					<controls:ExpanderHeader Icon="👤" Text="{x:Static res:Strings.UsersTab}" />
+					<controls:ExpanderHeader Icon="👥" Text="{x:Static res:Strings.UsersTab}" />
 				</Expander.Header>
 				<StackPanel>
 					<Button Content="{x:Static res:Strings.AddUserButton}"
 							Classes="SecondaryButton"
 							HorizontalAlignment="Left"
 							Click="AddUser_Click"
-							Margin="0,0,0,8"
+							Margin="0,8,0,8"
 							Padding="12,6"/>
 					<ItemsControl x:Name="UsersItemsControl">
 						<ItemsControl.ItemTemplate>
@@ -97,7 +97,7 @@
 							Classes="SecondaryButton"
 							HorizontalAlignment="Left"
 							Click="ClearLogs_Click"
-							Margin="0,0,0,8"
+							Margin="0,8,0,8"
 							Padding="12,6"/>
 					<Border Background="{StaticResource PrimaryDarkBrush}"
 							CornerRadius="4"
@@ -106,12 +106,13 @@
 							MaxHeight="400">
 						<ScrollViewer x:Name="LogScrollViewer"
 									  VerticalScrollBarVisibility="Auto"
-									  HorizontalScrollBarVisibility="Auto">
+									  HorizontalScrollBarVisibility="Disabled">
 							<ItemsControl x:Name="LogItemsControl">
 								<ItemsControl.ItemTemplate>
 									<DataTemplate>
 										<TextBlock Text="{Binding FormattedMessage}"
 												   Foreground="{Binding Color}"
+												   TextWrapping="Wrap"
 												   Margin="0,2"/>
 									</DataTemplate>
 								</ItemsControl.ItemTemplate>

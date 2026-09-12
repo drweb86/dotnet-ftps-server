@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:res="using:FtpsServerAvalonia.Resources">
 	<StackPanel>
-		<WrapPanel x:Name="ActionButtons" Margin="0,0,0,12">
+		<WrapPanel x:Name="ActionButtons" Margin="0,8,0,12">
 			<Button x:Name="CopyConnectionDetailsButton"
                     Classes="SecondaryButton"
                     Content="{x:Static res:Strings.ConfigCopyConnectionDetails}"
@@ -16,16 +16,14 @@
                     IsVisible="False"
                     Margin="0,0,8,8"/>
 		</WrapPanel>
-		<Border Background="{StaticResource PrimaryDarkBrush}"
+		<Border Background="{StaticResource WindowBackgroundBrush}"
 				CornerRadius="4"
 				Padding="8">
 			<ScrollViewer MaxHeight="420"
 						  VerticalScrollBarVisibility="Auto"
 						  HorizontalScrollBarVisibility="Disabled">
 				<SelectableTextBlock x:Name="InstructionTextBlock"
-									 TextWrapping="Wrap"
-									 FontSize="13"
-									 Foreground="{StaticResource TextPrimaryBrush}"/>
+									 TextWrapping="Wrap"/>
 			</ScrollViewer>
 		</Border>
 	</StackPanel>

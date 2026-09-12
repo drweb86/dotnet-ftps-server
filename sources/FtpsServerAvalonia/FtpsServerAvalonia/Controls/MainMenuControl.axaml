@@ -10,10 +10,10 @@
         <commands:OpenLogsCommand x:Key="OpenLogsCommand"/>
     </UserControl.Resources>
 
-    <Menu WindowDecorationProperties.ElementRole="DecorationsElement" Margin="8">
+    <Menu WindowDecorationProperties.ElementRole="DecorationsElement" Margin="8" VerticalAlignment="Center">
         <MenuItem x:Name="AboutMenuItem"
               Header="{x:Static res:Strings.MenuHeader}"
-              Foreground="{StaticResource TextPrimaryBrush}">
+              VerticalAlignment="Center">
             <MenuItem.Icon>
                 <Image Source="../Assets/FtpsApp.png" />
             </MenuItem.Icon>
@@ -32,13 +32,14 @@
         <MenuItem Header="{x:Static res:Strings.MenuLogs}"
                   FontWeight="Bold"
 				  x:Name="LogsMenuItem"
-                  Foreground="{StaticResource TextPrimaryBrush}"
+                  VerticalAlignment="Center"
                   Command="{StaticResource OpenLogsCommand}" />
 
         <MenuItem Header="{x:Static res:Strings.MenuStart}"
                   x:Name="PlayIcon"
                   Foreground="Green"
                   FontWeight="Bold"
+                  VerticalAlignment="Center"
                   Click="StartStopButton_Click" />
 
         <MenuItem Header="{x:Static res:Strings.MenuStop}"
@@ -46,6 +47,7 @@
                   Click="StartStopButton_Click"
                   FontWeight="Bold"
                   Foreground="PaleVioletRed"
+                  VerticalAlignment="Center"
                   IsVisible="False" />
     </Menu>
 </UserControl>

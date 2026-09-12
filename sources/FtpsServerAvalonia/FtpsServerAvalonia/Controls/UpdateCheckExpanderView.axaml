@@ -5,7 +5,7 @@
 			 xmlns:commands="using:FtpsServerAvalonia.Commands"
 			 xmlns:res="using:FtpsServerAvalonia.Resources"
 			 IsVisible="False"
-             Background="{StaticResource TertiaryDarkBrush}">
+             Background="{StaticResource SecondaryDarkBrush}">
 	<UserControl.Resources>
 		<commands:LatestReleaseCommand x:Key="LatestReleaseCommand"/>
 	</UserControl.Resources>
@@ -25,10 +25,8 @@
             x:Name="updateNewsTitle"
 			TextWrapping="Wrap"
 			Margin="35,8,16,8"
-			VerticalAlignment="Center" 
-            FontSize="18"
-            FontWeight="SemiBold"
-            Foreground="{StaticResource TextPrimaryBrush}"/>
+			VerticalAlignment="Center"
+            Classes="Title"/>
         <Button
             Grid.Row="0"
             Grid.RowSpan="2"
@@ -44,7 +42,7 @@
 			x:Name="updateNews"
 			TextWrapping="Wrap"
 			Margin="35,8,16,8"
-            FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}"
+            FontWeight="SemiBold"
 			VerticalAlignment="Center" />
     </Grid>
 </UserControl>

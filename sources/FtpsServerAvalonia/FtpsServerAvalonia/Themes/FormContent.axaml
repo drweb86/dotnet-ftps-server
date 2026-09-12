@@ -1,0 +1,10 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Style Selector=":is(Control).FormContent">
+		<Setter Property="MinWidth" Value="0" />
+		<Setter Property="MaxWidth" Value="720" />
+		<Setter Property="HorizontalAlignment" Value="Stretch" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="Margin" Value="24" />
+	</Style>
+</Styles>
