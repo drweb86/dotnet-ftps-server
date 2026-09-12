@@ -11,11 +11,13 @@
 
   <ItemGroup>
     <None Remove="FtpsApp.png" />
+    <None Remove="pigeon-corner.png" />
   </ItemGroup>
 
 
   <ItemGroup>
     <Resource Include="FtpsApp.png" />
+    <Resource Include="pigeon-corner.png" />
   </ItemGroup>
 
   <ItemGroup>

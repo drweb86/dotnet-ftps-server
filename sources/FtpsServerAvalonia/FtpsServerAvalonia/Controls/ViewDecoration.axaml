@@ -1,0 +1,10 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="FtpsServerAvalonia.Controls.ViewDecoration"
+             IsHitTestVisible="False">
+	<Image Source="avares://FtpsServerAvalonia/Assets/pigeon-corner.png"
+	       HorizontalAlignment="Right"
+	       VerticalAlignment="Bottom"
+	       MaxWidth="240"
+	       Stretch="Uniform" />
+</UserControl>

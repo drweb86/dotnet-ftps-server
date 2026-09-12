@@ -10,14 +10,16 @@
         MinWidth="720"
         ResizeMode="CanResize">
 
-    <DockPanel Margin="0">
-        <local:MainMenuControl x:Name="MainMenu"
-                               DockPanel.Dock="Top"
-                               VerticalAlignment="Center"
-                               StartStopClicked="MainMenu_StartStopClicked" />
-        <controls:UpdateCheckExpanderView DockPanel.Dock="Top" />
+    <Grid>
+        <controls:ViewDecoration />
+        <DockPanel Margin="0">
+            <local:MainMenuControl x:Name="MainMenu"
+                                   DockPanel.Dock="Top"
+                                   VerticalAlignment="Center"
+                                   StartStopClicked="MainMenu_StartStopClicked" />
+            <controls:UpdateCheckExpanderView DockPanel.Dock="Top" />
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <StackPanel Style="{StaticResource FormContent}">
                 <controls:MessageBar x:Name="ValidationBar" Kind="Error" />
 
@@ -114,6 +116,7 @@
                     </StackPanel>
                 </Expander>
             </StackPanel>
-        </ScrollViewer>
-    </DockPanel>
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
 </Window>
