@@ -132,7 +132,6 @@
 		<Setter Property="Theme" Value="{StaticResource TaskSectionExpander}" />
 		<Setter Property="HorizontalAlignment" Value="Stretch" />
 		<Setter Property="VerticalAlignment" Value="Top" />
-		<Setter Property="Margin" Value="0,0,0,8" />
 		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
 	</Style>
 	<Style Selector="Expander.TaskSection:expanded, Expander.SectionExpander:expanded">

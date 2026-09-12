@@ -12,19 +12,20 @@
 
         <Style TargetType="MenuItem">
             <Setter Property="Padding" Value="8,4" />
-            <Setter Property="Foreground"
-              Value="{StaticResource {x:Static SystemColors.MenuTextBrushKey}}"/>
         </Style>
 
     </UserControl.Resources>
 
     <Menu DockPanel.Dock="Left"
-              Background="{StaticResource PrimaryDarkBrush}"
-              Margin="8">
+              Background="Transparent"
+              Foreground="{StaticResource WindowForegroundBrush}"
+              Margin="8"
+              VerticalAlignment="Center">
 
         <MenuItem x:Name="AboutMenuItem"
               Header="{x:Static res:Strings.MenuHeader}"
-              Foreground="{StaticResource TextPrimaryBrush}">
+              Foreground="{StaticResource WindowForegroundBrush}"
+              VerticalAlignment="Center">
             <MenuItem.Icon>
                 <Image Source="../FtpsApp.png" />
             </MenuItem.Icon>
@@ -43,13 +44,15 @@
 
         <MenuItem Header="{x:Static res:Strings.MenuLogs}"
                   FontWeight="Bold"
-                  Foreground="{StaticResource TextPrimaryBrush}"
+                  Foreground="{StaticResource WindowForegroundBrush}"
+                  VerticalAlignment="Center"
                   Command="{StaticResource OpenLogsCommand}" />
 
         <MenuItem Header="{x:Static res:Strings.MenuStart}"
                   x:Name="PlayIcon"
                   Foreground="Green"
                   FontWeight="Bold"
+                  VerticalAlignment="Center"
                   Click="StartStopButton_Click" />
 
         <MenuItem Header="{x:Static res:Strings.MenuStop}"
@@ -57,6 +60,7 @@
                   Click="StartStopButton_Click"
                   FontWeight="Bold"
                   Foreground="PaleVioletRed"
+                  VerticalAlignment="Center"
                   Visibility="Collapsed" />
     </Menu>
 </UserControl>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:res="clr-namespace:FtpsServerWindows.Resources">
     <StackPanel>
-        <WrapPanel Margin="0,0,0,12">
+        <WrapPanel Margin="0,8,0,12">
             <Button x:Name="CopyConnectionDetailsButton"
                     Content="{x:Static res:Strings.ConfigCopyConnectionDetails}"
                     Style="{StaticResource SecondaryButton}"
@@ -19,9 +19,8 @@
                  HorizontalScrollBarVisibility="Disabled"
                  MaxHeight="420"
                  BorderThickness="0"
-                 Background="{StaticResource PrimaryDarkBrush}"
-                 Foreground="{StaticResource TextPrimaryBrush}"
-                 FontSize="13"
+                 Background="{StaticResource WindowBackgroundBrush}"
+                 Foreground="{StaticResource WindowForegroundBrush}"
                  Padding="8"/>
     </StackPanel>
 </UserControl>

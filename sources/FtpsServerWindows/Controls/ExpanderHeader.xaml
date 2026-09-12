@@ -2,8 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <StackPanel Orientation="Horizontal">
-        <TextBlock x:Name="IconText" FontSize="16" VerticalAlignment="Center" Margin="0,0,8,0"/>
-        <TextBlock x:Name="TitleText" FontSize="18" FontWeight="SemiBold"
-                   Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"/>
+        <TextBlock x:Name="IconText"
+                   VerticalAlignment="Center"
+                   Margin="0,0,8,0"
+                   FontFamily="Segoe UI Symbol"
+                   FontWeight="SemiBold"/>
+        <TextBlock x:Name="TitleText" Style="{StaticResource Title}" VerticalAlignment="Center"/>
     </StackPanel>
 </UserControl>

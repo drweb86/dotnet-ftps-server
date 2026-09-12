@@ -5,58 +5,48 @@
         xmlns:controls="clr-namespace:FtpsServerWindows.Controls"
         xmlns:res="clr-namespace:FtpsServerWindows.Resources"
         Title="{x:Static res:Strings.AppTitle}"
-        Background="{StaticResource PrimaryDarkBrush}"
+        Background="{StaticResource WindowBackgroundBrush}"
+        Foreground="{StaticResource WindowForegroundBrush}"
         MinWidth="720"
         ResizeMode="CanResize">
-
-    <Window.Resources>
-        <Style TargetType="MenuItem">
-            <Setter Property="FontSize" Value="16" />
-        </Style>
-        <Style TargetType="Expander">
-            <Setter Property="Background" Value="{StaticResource TertiaryDarkBrush}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource AccentCyanBrush}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
-            <Setter Property="Margin" Value="0,0,0,16"/>
-            <Setter Property="Padding" Value="8"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        </Style>
-    </Window.Resources>
 
     <DockPanel Margin="0">
         <local:MainMenuControl x:Name="MainMenu"
                                DockPanel.Dock="Top"
+                               VerticalAlignment="Center"
                                StartStopClicked="MainMenu_StartStopClicked" />
         <controls:UpdateCheckExpanderView DockPanel.Dock="Top" />
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <StackPanel Style="{StaticResource FormContent}" HorizontalAlignment="Center">
+            <StackPanel Style="{StaticResource FormContent}">
                 <controls:MessageBar x:Name="ValidationBar" Kind="Error" />
 
                 <Button x:Name="StartStopButton"
                         Style="{StaticResource SecondaryButton}"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
                         MinHeight="48"
-                        Margin="0,0,0,16"
-                        Click="MainMenu_StartStopClicked"
-                        Padding="16,8">
+                        Margin="0,0,0,8"
+                        Click="MainMenu_StartStopClicked">
                     <TextBlock x:Name="StartStopButtonText"
                                Text="{x:Static res:Strings.MenuStart}"
                                Foreground="Green"
-                               FontSize="18"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"/>
                 </Button>
 
-                <Expander x:Name="ConnectionInstructionExpander" IsExpanded="True" Visibility="Collapsed">
+                <Expander x:Name="ConnectionInstructionExpander"
+                          Style="{StaticResource ConnectionInstructionExpander}"
+                          IsExpanded="True"
+                          Visibility="Collapsed">
                     <Expander.Header>
                         <controls:ExpanderHeader Icon="📋" Text="{x:Static res:Strings.ConnectionInstructionTitle}" />
                     </Expander.Header>
                     <controls:ConnectionInstructionControl x:Name="ConnectionInstruction" />
                 </Expander>
 
-                <Expander x:Name="ConfigExpander" IsExpanded="True">
+                <Expander x:Name="ConfigExpander" Style="{StaticResource SectionExpander}" IsExpanded="True">
                     <Expander.Header>
                         <controls:ExpanderHeader Icon="🔒" Text="{x:Static res:Strings.ConfigTitle}" />
                     </Expander.Header>
@@ -69,16 +59,16 @@
                         CertificatePassword="{Binding CertificatePassword, Mode=TwoWay}" />
                 </Expander>
 
-                <Expander x:Name="UsersExpander" IsExpanded="True">
+                <Expander x:Name="UsersExpander" Style="{StaticResource SectionExpander}" IsExpanded="True">
                     <Expander.Header>
-                        <controls:ExpanderHeader Icon="👤" Text="{x:Static res:Strings.UsersTab}" />
+                        <controls:ExpanderHeader Icon="👨" Text="{x:Static res:Strings.UsersTab}" />
                     </Expander.Header>
                     <StackPanel>
                         <Button Content="{x:Static res:Strings.AddUserButton}"
                                 Style="{StaticResource SecondaryButton}"
                                 HorizontalAlignment="Left"
                                 Click="AddUser_Click"
-                                Margin="0,0,0,8"
+                                Margin="0,8,0,8"
                                 Padding="16,8"/>
                         <ItemsControl x:Name="UsersItemsControl">
                             <ItemsControl.ItemTemplate>
@@ -90,7 +80,7 @@
                     </StackPanel>
                 </Expander>
 
-                <Expander x:Name="LogsExpander" IsExpanded="True" Visibility="Collapsed">
+                <Expander x:Name="LogsExpander" Style="{StaticResource SectionExpander}" IsExpanded="True" Visibility="Collapsed">
                     <Expander.Header>
                         <controls:ExpanderHeader Icon="📜" Text="{x:Static res:Strings.LogsTab}" />
                     </Expander.Header>
@@ -99,21 +89,22 @@
                                 Style="{StaticResource SecondaryButton}"
                                 HorizontalAlignment="Left"
                                 Click="ClearLogs_Click"
-                                Margin="0,0,0,8"
+                                Margin="0,8,0,8"
                                 Padding="16,8"/>
-                        <Border Background="{StaticResource PrimaryDarkBrush}"
+                        <Border Background="{StaticResource WindowBackgroundBrush}"
                                 CornerRadius="4"
                                 Padding="8"
                                 MinHeight="200"
                                 MaxHeight="400">
                             <ScrollViewer x:Name="LogScrollViewer"
                                           VerticalScrollBarVisibility="Auto"
-                                          HorizontalScrollBarVisibility="Auto">
+                                          HorizontalScrollBarVisibility="Disabled">
                                 <ItemsControl x:Name="LogItemsControl">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding FormattedMessage}"
                                                        Foreground="{Binding Color}"
+                                                       TextWrapping="Wrap"
                                                        Margin="0,2"/>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>

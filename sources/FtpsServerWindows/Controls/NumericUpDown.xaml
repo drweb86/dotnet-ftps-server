@@ -20,14 +20,12 @@
                     Click="UpButton_Click"
                     Style="{StaticResource SecondaryButton}"
                     Padding="8,2"
-                    FontSize="10"
                     MinWidth="30"/>
             <Button x:Name="DownButton"
                     Content="{x:Static res:Strings.NumericDown}"
                     Click="DownButton_Click"
                     Style="{StaticResource SecondaryButton}"
                     Padding="8,2"
-                    FontSize="10"
                     MinWidth="30"
                     Margin="0,4,0,0"/>
         </StackPanel>
