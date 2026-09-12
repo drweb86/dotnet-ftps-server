@@ -1,8 +1,8 @@
-# 2026.09.07
-(unreleased)
+# 2026.09.12
 
 ## Changes
 - UI: Improve user experience.
+- Update some libraries.
 
 # 2026.09.06
 

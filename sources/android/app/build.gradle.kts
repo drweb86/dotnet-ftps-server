@@ -15,8 +15,8 @@ android {
         applicationId = "com.siarheikuchuk.ftpsserver"
         minSdk = 23
         targetSdk = 36
-        val defaultVersionCode = 20260906
-        val defaultVersionName = "2026.09.06"
+        val defaultVersionCode = 20260912
+        val defaultVersionName = "2026.09.12"
         versionCode = findProperty("appVersionCode")?.toString()?.toIntOrNull() ?: defaultVersionCode
         versionName = findProperty("appVersionName")?.toString()?.takeIf { it.isNotBlank() } ?: defaultVersionName
         buildConfigField("boolean", "SCREENSHOTS", if (screenshots) "true" else "false")
