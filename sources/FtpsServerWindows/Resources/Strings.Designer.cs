@@ -685,6 +685,15 @@ namespace FtpsServerWindows.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Privacy.
+        /// </summary>
+        public static string MenuPrivacy {
+            get {
+                return ResourceManager.GetString("MenuPrivacy", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to ⏵START.
         /// </summary>
         public static string MenuStart {
@@ -726,6 +735,24 @@ namespace FtpsServerWindows.Resources {
         public static string NumericUp {
             get {
                 return ResourceManager.GetString("NumericUp", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string PrivacyLanguage {
+            get {
+                return ResourceManager.GetString("PrivacyLanguage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string PrivacyOk {
+            get {
+                return ResourceManager.GetString("PrivacyOk", resourceCulture);
             }
         }
 

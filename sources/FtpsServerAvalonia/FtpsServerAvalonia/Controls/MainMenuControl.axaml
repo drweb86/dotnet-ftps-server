@@ -7,6 +7,7 @@
     <UserControl.Resources>
         <commands:AboutCommand x:Key="AboutCommand"/>
         <commands:LicenseCommand x:Key="LicenseCommand"/>
+        <commands:PrivacyCommand x:Key="PrivacyCommand"/>
         <commands:OpenLogsCommand x:Key="OpenLogsCommand"/>
     </UserControl.Resources>
 
@@ -26,6 +27,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="{x:Static res:Strings.MenuLicense}" Command="{StaticResource LicenseCommand}" />
+                <MenuItem Header="{x:Static res:Strings.MenuPrivacy}" Command="{StaticResource PrivacyCommand}" />
             </MenuItem.Items>
         </MenuItem>
 

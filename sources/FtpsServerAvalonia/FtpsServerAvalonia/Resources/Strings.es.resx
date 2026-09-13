@@ -365,4 +365,13 @@ Compare la huella del cliente con los valores de abajo. Si coinciden, acepte el 
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Elija una carpeta para compartir.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Privacidad</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
 </root>

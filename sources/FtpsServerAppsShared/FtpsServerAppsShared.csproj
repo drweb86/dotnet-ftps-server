@@ -23,4 +23,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\privacy\desktop\*.md"
+                      Exclude="..\..\privacy\desktop\README.md"
+                      LogicalName="FtpsServerAppsShared.Privacy.%(Filename)%(Extension)" />
+  </ItemGroup>
+
 </Project>

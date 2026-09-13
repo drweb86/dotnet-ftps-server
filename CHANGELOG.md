@@ -1,3 +1,9 @@
+# 2026.09.13
+(unreleased)
+
+## Changes
+- Add privacy documents to desktop apps.
+
 # 2026.09.12
 
 ## Changes

@@ -383,4 +383,13 @@ So sánh vân tay trên máy khách với các giá trị bên dưới. Nếu kh
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Quyền riêng tư</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

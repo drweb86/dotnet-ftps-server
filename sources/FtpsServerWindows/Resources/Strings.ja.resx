@@ -377,4 +377,13 @@ IP アドレスを推奨します。端末名はネットワークが名前解�
   <data name="UserFolderValidation" xml:space="preserve">
     <value>共有するフォルダーを選んでください。</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>プライバシー</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

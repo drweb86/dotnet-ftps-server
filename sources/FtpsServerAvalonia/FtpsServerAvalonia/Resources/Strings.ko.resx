@@ -365,4 +365,13 @@ IP 주소를 권장합니다. 기기 이름은 네트워크가 이름을 확인�
   <data name="UserFolderValidation" xml:space="preserve">
     <value>공유할 폴더를 선택하세요.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>개인정보</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>언어</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>확인</value>
+  </data>
 </root>

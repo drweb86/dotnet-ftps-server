@@ -383,4 +383,13 @@ Fi ìtẹ̀ka ika nínú oníbàárà wé àwọn iye ní ìsàlẹ̀. Tí wọ�
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Ìkọ̀kọ̀</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Èdè</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

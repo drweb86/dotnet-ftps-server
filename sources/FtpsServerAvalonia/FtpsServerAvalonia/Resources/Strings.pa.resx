@@ -371,4 +371,13 @@ Implicit FTPS ਨਾ ਚੁਣੋ (ਅਕਸਰ ਸਿਰਫ਼ "FTPS" ਲਿਖ
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>ਪਰਾਈਵੇਸੀ</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>ਭਾਸ਼ਾ</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>ਠੀਕ ਹੈ</value>
+  </data>
 </root>

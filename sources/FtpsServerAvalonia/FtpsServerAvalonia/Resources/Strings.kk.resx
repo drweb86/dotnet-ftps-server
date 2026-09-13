@@ -371,4 +371,13 @@ Implicit FTPS таңдамаңыз (жиі тек "FTPS" деп белгілен
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Құпиялылық</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Тіл</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

@@ -365,4 +365,13 @@ Implicit FTPS निवडू नका (बहुधा फक्त "FTPS" ल
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>गोपनीयता</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>भाषा</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>ठीक</value>
+  </data>
 </root>

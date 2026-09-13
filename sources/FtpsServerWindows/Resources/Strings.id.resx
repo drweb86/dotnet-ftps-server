@@ -377,4 +377,13 @@ Bandingkan sidik jari di klien dengan nilai di bawah. Jika cocok, terima sertifi
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Privasi</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Bahasa</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

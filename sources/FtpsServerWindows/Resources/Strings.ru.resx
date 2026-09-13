@@ -377,4 +377,13 @@
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Выберите папку для общего доступа.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Конфиденциальность</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

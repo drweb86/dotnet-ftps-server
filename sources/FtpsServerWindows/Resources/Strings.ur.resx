@@ -383,4 +383,13 @@ Implicit FTPS نہ چنیں (اکثر صرف "FTPS" لکھا ہوتا ہے) — 
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>پرائیویسی</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>زبان</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>ٹھیک ہے</value>
+  </data>
 </root>

@@ -371,4 +371,13 @@ client ရှိ လက်ဗွေကို အောက်ပါ တန်ဖ�
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>ကိုယ်ရေးအချက်အလက်</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>ဘာသာစကား</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

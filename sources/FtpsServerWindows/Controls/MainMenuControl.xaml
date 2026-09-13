@@ -7,24 +7,39 @@
     <UserControl.Resources>
         <commands:AboutCommand x:Key="AboutCommand"/>
         <commands:LicenseCommand x:Key="LicenseCommand"/>
+        <commands:PrivacyCommand x:Key="PrivacyCommand"/>
         <commands:OpenLogsCommand x:Key="OpenLogsCommand"/>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
 
         <Style TargetType="MenuItem">
             <Setter Property="Padding" Value="8,4" />
+            <Style.Triggers>
+                <Trigger Property="Role" Value="TopLevelHeader">
+                    <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
+                </Trigger>
+                <Trigger Property="Role" Value="TopLevelItem">
+                    <Setter Property="Foreground" Value="{StaticResource WindowForegroundBrush}"/>
+                </Trigger>
+                <Trigger Property="Role" Value="SubmenuItem">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}"/>
+                    <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Role" Value="SubmenuHeader">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}"/>
+                    <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
     </UserControl.Resources>
 
     <Menu DockPanel.Dock="Left"
               Background="Transparent"
-              Foreground="{StaticResource WindowForegroundBrush}"
               Margin="8"
               VerticalAlignment="Center">
 
         <MenuItem x:Name="AboutMenuItem"
               Header="{x:Static res:Strings.MenuHeader}"
-              Foreground="{StaticResource WindowForegroundBrush}"
               VerticalAlignment="Center">
             <MenuItem.Icon>
                 <Image Source="../FtpsApp.png" />
@@ -39,12 +54,12 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="{x:Static res:Strings.MenuLicense}" Command="{StaticResource LicenseCommand}" />
+                <MenuItem Header="{x:Static res:Strings.MenuPrivacy}" Command="{StaticResource PrivacyCommand}" />
             </MenuItem.Items>
         </MenuItem>
 
         <MenuItem Header="{x:Static res:Strings.MenuLogs}"
                   FontWeight="Bold"
-                  Foreground="{StaticResource WindowForegroundBrush}"
                   VerticalAlignment="Center"
                   Command="{StaticResource OpenLogsCommand}" />
 

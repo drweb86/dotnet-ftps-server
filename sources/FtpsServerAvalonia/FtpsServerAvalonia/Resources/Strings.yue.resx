@@ -371,4 +371,13 @@
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>私隱</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>確定</value>
+  </data>
 </root>

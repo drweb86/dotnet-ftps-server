@@ -371,4 +371,13 @@ Linganisha alama ya kidole kwenye mteja na thamani zilizo hapa chini. Zikilingan
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Faragha</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Lugha</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>Sawa</value>
+  </data>
 </root>

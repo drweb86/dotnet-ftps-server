@@ -45,6 +45,14 @@
 
 <img width="1109" height="614" alt="image" src="https://github.com/user-attachments/assets/da502ae9-01ae-4bfe-9619-653d6395067b" />
 
+## Privacy policy (desktop)
+
+The in-app **Privacy** menu (language selector, same layout as Android) uses:
+
+https://github.com/drweb86/dotnet-ftps-server/blob/main/privacy/desktop/README.md
+
+The English source is [privacy/desktop/en.md](./privacy/desktop/en.md). Localized copies live in the same folder. The desktop policy covers the GitHub update check, project homepage, license, and release links.
+
 **Logs** are located at ```%AppData%/ftps-server/logs```
 
 **Self-Signed Certificate Location**

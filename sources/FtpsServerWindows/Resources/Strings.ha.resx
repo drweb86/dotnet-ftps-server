@@ -383,4 +383,13 @@ Kwatanta fingerprint ɗin abokin ciniki da ƙimar da ke ƙasa. Idan sun dace, ka
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Sirri</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Harshe</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

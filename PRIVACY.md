@@ -1,5 +1,10 @@
 # Privacy policy
 
+Language-selection pages:
+
+- Android: [privacy/android/README.md](./privacy/android/README.md)
+- Desktop (WPF and Avalonia): [privacy/desktop/README.md](./privacy/desktop/README.md)
+
 **FTPS Server** by Siarhei Kuchuk
 
 Application name: FTPS Server

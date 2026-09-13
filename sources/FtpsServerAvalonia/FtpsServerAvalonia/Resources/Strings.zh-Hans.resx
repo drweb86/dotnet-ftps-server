@@ -365,4 +365,13 @@
   <data name="UserFolderValidation" xml:space="preserve">
     <value>请选择要共享的文件夹。</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>确定</value>
+  </data>
 </root>

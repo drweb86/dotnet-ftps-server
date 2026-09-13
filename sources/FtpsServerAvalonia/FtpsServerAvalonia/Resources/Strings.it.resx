@@ -365,4 +365,13 @@ Confrontare l'impronta nel client con i valori sotto. Se coincidono, accettare i
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Scegli una cartella da condividere.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Lingua</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

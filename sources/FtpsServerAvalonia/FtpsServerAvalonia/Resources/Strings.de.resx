@@ -365,4 +365,13 @@ Vergleichen Sie den Fingerprint im Client mit den Werten unten. Stimmen sie übe
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Wählen Sie einen Ordner zum Freigeben.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Datenschutz</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

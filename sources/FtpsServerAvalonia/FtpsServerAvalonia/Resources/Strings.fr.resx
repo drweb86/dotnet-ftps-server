@@ -365,4 +365,13 @@ Comparez l'empreinte du client aux valeurs ci-dessous. Si elles correspondent, a
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choisissez un dossier à partager.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Confidentialité</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

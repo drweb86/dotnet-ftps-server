@@ -383,4 +383,13 @@ Yalnızca AÇIK TLS (AUTH TLS / FTP over TLS) desteklenir.
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Paylaşılacak bir klasör seçin.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Gizlilik</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
 </root>

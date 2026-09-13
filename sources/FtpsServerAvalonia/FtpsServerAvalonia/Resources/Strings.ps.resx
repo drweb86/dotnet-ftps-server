@@ -371,4 +371,13 @@ Implicit FTPS مه ټاکئ (ډېر ځله یوازې "FTPS" لیکل شوی و�
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>محرمیت</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>ژبه</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>ښه</value>
+  </data>
 </root>

@@ -377,4 +377,13 @@ Compare a impressão no cliente com os valores abaixo. Se coincidirem, aceite o 
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Escolha uma pasta para compartilhar.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Privacidade</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

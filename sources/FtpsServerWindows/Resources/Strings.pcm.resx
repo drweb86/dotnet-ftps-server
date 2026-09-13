@@ -377,4 +377,13 @@ Compare di fingerprint for di client with di values below. If dem match, accept 
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

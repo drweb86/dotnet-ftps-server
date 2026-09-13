@@ -383,4 +383,13 @@
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Оберіть папку для спільного доступу.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Конфіденційність</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Мова</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>

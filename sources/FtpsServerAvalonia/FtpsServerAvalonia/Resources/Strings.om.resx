@@ -371,4 +371,13 @@ Ashaaraa qubaa maamilaa gatiiwwan armaan gadii waliin wal bira qabi. Yoo wal sim
   <data name="UserFolderValidation" xml:space="preserve">
     <value>Choose a folder to share.</value>
   </data>
+  <data name="MenuPrivacy" xml:space="preserve">
+    <value>Dhuunfaa</value>
+  </data>
+  <data name="PrivacyLanguage" xml:space="preserve">
+    <value>Afaan</value>
+  </data>
+  <data name="PrivacyOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>
