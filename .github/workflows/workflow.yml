@@ -92,6 +92,14 @@ jobs:
         shell: pwsh
         run: Copy-Item "README.md" "Output\publish\README.md"
 
+      - name: Pack MSIX
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $v = "${{ steps.version.outputs.version }}"
+          & ".\scripts\pack-msix.ps1" -Version $v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
       - name: Install NSIS
         shell: pwsh
         run: choco install nsis -y
@@ -132,6 +140,7 @@ jobs:
           path: |
             Output/*.exe
             Output/*.7z
+            Output/*.msix
 
       - name: Upload Windows artifacts to GitHub Release
         if: github.event_name == 'release'
@@ -142,6 +151,9 @@ jobs:
           $v = "${{ steps.version.outputs.version }}"
           gh release upload "${{ github.event.release.tag_name }}" "Output\ftpsserver_${v}_windows_setup.exe" --clobber
           gh release upload "${{ github.event.release.tag_name }}" "Output\ftpsserver_${v}_windows_archive.7z" --clobber
+          Get-ChildItem "Output\ftpsserver_${v}_windows_*.msix" | ForEach-Object {
+            gh release upload "${{ github.event.release.tag_name }}" $_.FullName --clobber
+          }
 
   build-android:
     runs-on: ubuntu-latest
