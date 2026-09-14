@@ -1,1 +1,1 @@
-Server FTPS per la condivisione sicura di file in rete.
+Server FTPS per file sicuri. Open source, senza pubblicità.

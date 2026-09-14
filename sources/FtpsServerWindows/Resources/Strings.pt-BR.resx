@@ -244,7 +244,7 @@ Recursos:
 - **Várias arquiteturas** - Compatível com x64 e ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Servidor FTPS para compartilhamento seguro de arquivos pela rede.</value>
+    <value>Servidor FTPS para compartilhamento seguro. Código aberto, sem anúncios.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copiar dados de conexão</value>

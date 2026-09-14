@@ -244,7 +244,7 @@ Fitur:
 - **Beberapa arsitektur** - Mendukung x64 dan ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Server FTPS untuk berbagi file secara aman melalui jaringan.</value>
+    <value>Server FTPS berbagi file aman. Sumber terbuka, tanpa iklan.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Salin detail koneksi</value>

@@ -253,7 +253,7 @@ Imkoniyatlar:
 - **Bir nechta arxitektura** - x64 va ARM64 ni qo'llab-quvvatlash</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Tarmoq orqali xavfsiz fayl ulashish uchun FTPS server.</value>
+    <value>Xavfsiz fayl ulashish FTPS serveri. Ochiq kod, reklamasiz.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Ulanish tafsilotlarini nusxalash</value>

@@ -1,1 +1,1 @@
-Tarmoq orqali xavfsiz fayl ulashish uchun FTPS server.
+Xavfsiz fayl ulashish FTPS serveri. Ochiq kod, reklamasiz.

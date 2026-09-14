@@ -244,7 +244,7 @@
 - **బహుళ ఆర్కిటెక్చర్‌లు** - x64 మరియు ARM64ను సపోర్ట్ చేస్తుంది</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>నెట్‌వర్క్‌లో సురక్షితంగా ఫైళ్లను పంచుకోవడానికి FTPS సర్వర్.</value>
+    <value>సురక్షిత ఫైల్ షేర్ FTPS సర్వర్. ఓపెన్ సోర్స్, ప్రకటనలు లేవు.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>కనెక్షన్ వివరాలను కాపీ చేయండి</value>

@@ -250,7 +250,7 @@
 - **একাধিক আর্কিটেকচার** - x64 এবং ARM64 সমর্থন করে</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>নেটওয়ার্কে নিরাপদ ফাইল শেয়ারিংয়ের জন্য FTPS সার্ভার।</value>
+    <value>নিরাপদ ফাইল শেয়ার FTPS সার্ভার। ওপেন সোর্স, বিজ্ঞাপনমুক্ত।</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>সংযোগের বিবরণ কপি করুন</value>

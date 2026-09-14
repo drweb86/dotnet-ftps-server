@@ -253,7 +253,7 @@ Funkcje:
 - **Wiele architektur** - Obsługa x64 i ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Serwer FTPS do bezpiecznego udostępniania plików w sieci.</value>
+    <value>Serwer FTPS do bezpiecznego udostępniania. Open source, bez reklam.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Kopiuj dane połączenia</value>

@@ -244,7 +244,7 @@ Características:
 - **Múltiples arquitecturas** - Compatible con x64 y ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Servidor FTPS para compartir archivos de forma segura a través de la red.</value>
+    <value>Servidor FTPS seguro. Código abierto, sin anuncios.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copiar datos de conexión</value>

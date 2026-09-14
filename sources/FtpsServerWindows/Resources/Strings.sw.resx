@@ -253,7 +253,7 @@ Vipengele:
 - **Miundo mingi** - Inasaidia x64 na ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Seva ya FTPS ya kushiriki faili salama kwenye mtandao.</value>
+    <value>Seva ya FTPS ya kushiriki salama. Chanzo huria, bila matangazo.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Nakili maelezo ya muunganisho</value>

@@ -253,7 +253,7 @@
 - **ဗိသုကာ အမျိုးမျိုး** - x64 နှင့် ARM64 ကို ပံ့ပိုးသည်</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>ကွန်ရက်ပေါ်တွင် ဖိုင်များကို လုံခြုံစွာ မျှဝေရန် FTPS ဆာဗာ။</value>
+    <value>လုံခြုံသော ဖိုင်မျှဝေ FTPS။ ပွင့်လင်းအရင်းအမြစ်၊ ကြော်ငြာမရှိ။</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>ချိတ်ဆက်မှုအသေးစိတ်ကို ကူးယူရန်</value>

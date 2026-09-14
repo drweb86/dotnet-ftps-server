@@ -7,7 +7,3 @@ Ağdaki cihazlar arasında güvenli dosya paylaşımı için FTPS (TLS üzerinde
 - Yol güvenliği - Dizin geçiş saldırılarına karşı koruma
 - UTF-8 - Yerelleştirilmiş karakterleri destekler
 - Kendinden imzalı sertifikalar - TLS sertifikalarını otomatik oluşturun veya kendinizinkini kullanın
-
-Bu Android uygulamasıdır (Kotlin). Reklamsız. Açık kaynak (CC0). Her kullanıcı sistem seçicisiyle bir klasör seçer. Bildirim, ekran kapalıyken aktarımları sürdürür.
-
-Android 6.0 veya daha yenisi gerekir.

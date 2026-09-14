@@ -244,7 +244,7 @@
 - **多种架构** - 支持 x64 和 ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>用于在网络上安全共享文件的 FTPS 服务器。</value>
+    <value>用于安全文件共享的 FTPS 服务器。开源、无广告。</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>复制连接详情</value>

@@ -7,7 +7,3 @@ Imkoniyatlar:
 - Yo'l xavfsizligi - Katalogni aylanib o'tish hujumlaridan himoya
 - UTF-8 - Mahalliylashtirilgan belgilarni qo'llab-quvvatlash
 - O'z-o'zini imzolagan sertifikatlar - TLS sertifikatlarini avtomatik yaratish yoki o'zingiznikini ishlatish
-
-Bu Android ilovasi (Kotlin). Reklamasiz. Ochiq kod (CC0). Har bir foydalanuvchi tizim tanlagichida jild tanlaydi. Bildirishnoma ekran o‘chiqligida ham uzatishni davom ettiradi.
-
-Android 6.0 yoki yangiroq kerak.

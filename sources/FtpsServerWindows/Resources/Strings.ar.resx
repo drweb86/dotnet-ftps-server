@@ -250,7 +250,7 @@
 - **بنى متعددة** - يدعم x64 وARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>خادم FTPS لمشاركة الملفات بأمان عبر الشبكة.</value>
+    <value>خادم FTPS للمشاركة الآمنة. مفتوح المصدر وبدون إعلانات.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>نسخ تفاصيل الاتصال</value>

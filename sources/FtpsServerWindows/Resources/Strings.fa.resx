@@ -253,7 +253,7 @@
 - **چند معماری** - پشتیبانی از x64 و ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>سرور FTPS برای اشتراک‌گذاری امن فایل از طریق شبکه.</value>
+    <value>سرور FTPS برای اشتراک امن. متن‌باز، بدون تبلیغ.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>کپی جزئیات اتصال</value>

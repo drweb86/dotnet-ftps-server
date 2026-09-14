@@ -253,7 +253,7 @@
 - **หลายสถาปัตยกรรม** - รองรับ x64 และ ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>เซิร์ฟเวอร์ FTPS สำหรับแชร์ไฟล์อย่างปลอดภัยผ่านเครือข่าย</value>
+    <value>เซิร์ฟเวอร์ FTPS แชร์ไฟล์ปลอดภัย โอเพนซอร์ส ไม่มีโฆษณา</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>คัดลอกรายละเอียดการเชื่อมต่อ</value>

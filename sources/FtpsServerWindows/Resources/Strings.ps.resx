@@ -253,7 +253,7 @@
 - **ډېرې جوړښتونه** - د x64 او ARM64 ملاتړ</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>د شبکې له لارې د فایلونو خوندي شریکولو لپاره FTPS سرور.</value>
+    <value>د خوندي فایل شریکولو FTPS. خلاص سرچینه، پرته له اعلانونو.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>د نښلېدو جزئیات کاپي کړئ</value>

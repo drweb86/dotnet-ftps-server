@@ -1,1 +1,1 @@
-Server FTPS untuk berbagi file secara aman melalui jaringan.
+Server FTPS berbagi file aman. Sumber terbuka, tanpa iklan.

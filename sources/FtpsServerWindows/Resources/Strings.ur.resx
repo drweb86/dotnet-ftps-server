@@ -250,7 +250,7 @@
 - **متعدد آرکیٹیکچرز** - x64 اور ARM64 کی معاونت</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>نیٹ ورک پر محفوظ فائل اشتراک کے لیے FTPS سرور۔</value>
+    <value>محفوظ فائل اشتراک کا FTPS سرور۔ اوپن سورس، بغیر اشتہار۔</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>کنکشن کی تفصیلات کاپی کریں</value>

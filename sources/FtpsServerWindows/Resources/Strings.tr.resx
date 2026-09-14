@@ -250,7 +250,7 @@
 - **Birden fazla mimari** - x64 ve ARM64 desteği</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Ağ üzerinden güvenli dosya paylaşımı için FTPS sunucusu.</value>
+    <value>Güvenli dosya paylaşımı için FTPS. Açık kaynak, reklamsız.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Bağlantı bilgilerini kopyala</value>

@@ -250,7 +250,7 @@
 - **多種架構** - 支援 x64 同 ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>用嚟喺網絡上安全分享檔案嘅 FTPS 伺服器。</value>
+    <value>用嚟安全分享檔案嘅 FTPS 伺服器。開源、無廣告。</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>複製連線資料</value>

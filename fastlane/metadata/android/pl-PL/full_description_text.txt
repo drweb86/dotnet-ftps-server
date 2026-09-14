@@ -7,7 +7,3 @@ Funkcje:
 - Bezpieczeństwo ścieżek - Ochrona przed atakami directory traversal
 - UTF-8 - Obsługa znaków zlokalizowanych
 - Certyfikaty z podpisem własnym - Automatyczne generowanie certyfikatów TLS lub użycie własnych
-
-To aplikacja na Androida (Kotlin). Bez reklam. Open source (CC0). Każdy użytkownik wybiera folder systemowym selektorem. Powiadomienie utrzymuje transfery przy wyłączonym ekranie.
-
-Wymaga Androida 6.0 lub nowszego.

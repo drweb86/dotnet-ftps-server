@@ -244,7 +244,7 @@
 - **பல கட்டமைப்புகள்** - x64 மற்றும் ARM64 ஐ ஆதரிக்கிறது</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>பிணையத்தில் பாதுகாப்பாக கோப்புகளைப் பகிர FTPS சேவையகம்.</value>
+    <value>பாதுகாப்பான கோப்புப் பகிர்வு FTPS. திறந்த மூலம், விளம்பரம் இல்லை.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>இணைப்பு விவரங்களை நகலெடு</value>

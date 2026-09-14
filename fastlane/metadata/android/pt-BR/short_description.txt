@@ -1,1 +1,1 @@
-Servidor FTPS para compartilhamento seguro de arquivos pela rede.
+Servidor FTPS para compartilhamento seguro. Código aberto, sem anúncios.

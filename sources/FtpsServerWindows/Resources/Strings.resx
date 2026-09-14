@@ -251,7 +251,7 @@ Features:
 - **Multiple Architectures** - Supports x64 and ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>FTPS server for secure file sharing over network.</value>
+    <value>FTPS server for secure file sharing. Open-source, ads-free.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copy connection details</value>

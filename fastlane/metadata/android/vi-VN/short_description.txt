@@ -1,1 +1,1 @@
-Máy chủ FTPS để chia sẻ tệp an toàn qua mạng.
+Máy chủ FTPS chia sẻ tệp an toàn. Mã nguồn mở, không quảng cáo.

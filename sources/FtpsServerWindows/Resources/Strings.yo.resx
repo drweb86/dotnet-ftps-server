@@ -253,7 +253,7 @@
 - **Ọ̀pọ̀lọpọ̀ ìtòlẹ́sẹẹsẹ** - Ṣe àtìlẹ́yìn x64 àti ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Olùpèsè FTPS fún pínpín fáìlì láìléwu lórí nẹ́tíwọ́ọ̀kì.</value>
+    <value>Sáfà FTPS fún pípín fáìlì. Open source, kò sí ìpolówó.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Da àlàyé ìsopọ̀ kọ</value>

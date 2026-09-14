@@ -253,7 +253,7 @@
 - **Бірнеше сәулет** - x64 және ARM64 қолдауы</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Желі арқылы файлдарды қауіпсіз бөлісуге арналған FTPS сервері.</value>
+    <value>Қауіпсіз файл бөлісуге арналған FTPS. Ашық код, жарнамасыз.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Қосылым мәліметтерін көшіру</value>

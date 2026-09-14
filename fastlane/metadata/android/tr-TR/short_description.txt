@@ -1,1 +1,1 @@
-Ağ üzerinden güvenli dosya paylaşımı için FTPS sunucusu.
+Güvenli dosya paylaşımı için FTPS. Açık kaynak, reklamsız.

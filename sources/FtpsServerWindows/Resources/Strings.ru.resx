@@ -244,7 +244,7 @@
 - **Несколько архитектур** - Поддержка x64 и ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>FTPS-сервер для безопасного обмена файлами по сети.</value>
+    <value>FTPS-сервер для безопасного обмена. Открытый код, без рекламы.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Копировать данные подключения</value>

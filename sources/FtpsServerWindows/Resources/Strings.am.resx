@@ -253,7 +253,7 @@
 - **ብዙ አርክቴክቸሮች** - x64 እና ARM64ን ይደግፋል</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>በአውታረ መረብ ላይ ፋይሎችን በደህንነት ለማጋራት የ FTPS አገልጋይ።</value>
+    <value>ደህንነቱ የተጠበቀ FTPS አገልጋይ። ክፍት ምንጭ፣ ማስታወቂያ የለም።</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>የግንኙነት ዝርዝሮችን ቅዳ</value>

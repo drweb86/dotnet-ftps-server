@@ -250,7 +250,7 @@ Tính năng:
 - **Nhiều kiến trúc** - Hỗ trợ x64 và ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Máy chủ FTPS để chia sẻ tệp an toàn qua mạng.</value>
+    <value>Máy chủ FTPS chia sẻ tệp an toàn. Mã nguồn mở, không quảng cáo.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Sao chép chi tiết kết nối</value>

@@ -253,7 +253,7 @@
 - **ਕਈ ਆਰਕੀਟੈਕਚਰ** - x64 ਅਤੇ ARM64 ਦਾ ਸਮਰਥਨ</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>ਨੈੱਟਵਰਕ ਉੱਤੇ ਸੁਰੱਖਿਅਤ ਫਾਈਲ ਸਾਂਝੀ ਕਰਨ ਲਈ FTPS ਸਰਵਰ।</value>
+    <value>ਸੁਰੱਖਿਤ ਫਾਈਲ ਸਾਂਝ FTPS ਸਰਵਰ। ਓਪਨ ਸੋਰਸ, ਇਸ਼ਤਿਹਾਰ ਰਹਿਤ।</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>ਕਨੈਕਸ਼ਨ ਵੇਰਵੇ ਕਾਪੀ ਕਰੋ</value>

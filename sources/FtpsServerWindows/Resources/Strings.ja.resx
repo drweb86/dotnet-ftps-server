@@ -244,7 +244,7 @@
 - **複数のアーキテクチャ** - x64 および ARM64 をサポート</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>ネットワーク上で安全にファイルを共有するための FTPS サーバー。</value>
+    <value>安全なファイル共有用 FTPS。オープンソース、広告なし。</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>接続情報をコピー</value>

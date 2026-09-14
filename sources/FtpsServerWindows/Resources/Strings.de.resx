@@ -244,7 +244,7 @@ Funktionen:
 - **Mehrere Architekturen** - Unterstützt x64 und ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>FTPS-Server für sichere Dateifreigabe über das Netzwerk.</value>
+    <value>FTPS-Server für sichere Dateifreigabe. Open Source, werbefrei.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Verbindungsdaten kopieren</value>

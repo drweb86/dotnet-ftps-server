@@ -253,7 +253,7 @@ Amaloota:
 - **Ijaarsa hedduu** - x64 fi ARM64 deeggara</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Serveerii FTPS faayilota karaa neetiwarkii nageenyaan qooduuf.</value>
+    <value>FTPS qoodinsa nageenyaa. Madda banaa, beeksisa hin qabu.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Bal'ina quunnamtii galchii</value>

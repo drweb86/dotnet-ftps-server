@@ -244,7 +244,7 @@ Features:
 - **Multiple Architectures** - E dey support x64 and ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>FTPS server wey dey share file for network with security.</value>
+    <value>FTPS server wey dey share file. Open source, no advert.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copy di connection details</value>

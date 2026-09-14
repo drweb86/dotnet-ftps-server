@@ -7,7 +7,3 @@ Features:
 - Path Security - Protection against directory traversal attacks
 - UTF-8 - Supports localized characters
 - Self-Signed Certificates - Auto-generate TLS certificates or bring your own
-
-This is the Android app (Kotlin). No ads. Open source (CC0). Each user chooses a folder with the system picker. A notification keeps transfers running with the screen off.
-
-Requires Android 6.0 or newer.

@@ -244,7 +244,7 @@ Funzionalità:
 - **Più architetture** - Supporto di x64 e ARM64</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Server FTPS per la condivisione sicura di file in rete.</value>
+    <value>Server FTPS per file sicuri. Open source, senza pubblicità.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copia dettagli di connessione</value>

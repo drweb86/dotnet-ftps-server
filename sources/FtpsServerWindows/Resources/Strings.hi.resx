@@ -250,7 +250,7 @@
 - **कई आर्किटेक्चर** - x64 और ARM64 का समर्थन</value>
   </data>
   <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>नेटवर्क पर सुरक्षित फ़ाइल साझा करने के लिए FTPS सर्वर।</value>
+    <value>सुरक्षित फ़ाइल साझा FTPS सर्वर। ओपन सोर्स, विज्ञापन-मुक्त।</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>कनेक्शन विवरण कॉपी करें</value>

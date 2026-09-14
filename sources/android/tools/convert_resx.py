@@ -88,11 +88,30 @@ def parse_resx(path: Path) -> dict[str, str]:
     return out
 
 
+STRING_NAME_RE = re.compile(r'<string\s+name="([^"]+)"')
+
+
+def existing_string_names(folder: Path) -> set[str]:
+    """Names already defined beside strings.xml (e.g. strings_privacy.xml)."""
+    names: set[str] = set()
+    if not folder.is_dir():
+        return names
+    for xml in folder.glob("*.xml"):
+        if xml.name == "strings.xml":
+            continue
+        names.update(STRING_NAME_RE.findall(xml.read_text(encoding="utf-8")))
+    return names
+
+
 def write_strings(folder: Path, items: dict[str, str]) -> None:
     folder.mkdir(parents=True, exist_ok=True)
+    skip = existing_string_names(folder)
     lines = ['<?xml version="1.0" encoding="utf-8"?>', "<resources>"]
     for key, value in items.items():
-        lines.append(f'    <string name="{to_snake(key)}">{android_escape(value)}</string>')
+        android_name = to_snake(key)
+        if android_name in skip:
+            continue
+        lines.append(f'    <string name="{android_name}">{android_escape(value)}</string>')
     lines.append("</resources>")
     (folder / "strings.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
