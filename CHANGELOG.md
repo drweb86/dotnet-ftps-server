@@ -1,8 +1,8 @@
-# 2026.09.13
-(unreleased)
+# 2026.09.14
 
 ## Changes
-- Add privacy documents to desktop apps.
+- UI: Add privacy documents to desktop apps.
+- UI: Preparation for Microsoft Store.
 
 # 2026.09.12
 

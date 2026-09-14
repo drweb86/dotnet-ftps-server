@@ -1,5 +1,7 @@
 ﻿# FTPS Server UI Application
 
+<img width="1109" height="614" alt="image" src="https://github.com/user-attachments/assets/da502ae9-01ae-4bfe-9619-653d6395067b" />
+
 <details>
 <summary>Localized to 37 languages (click to expand)</summary>
 
@@ -43,19 +45,22 @@
 
 </details>
 
-<img width="1109" height="614" alt="image" src="https://github.com/user-attachments/assets/da502ae9-01ae-4bfe-9619-653d6395067b" />
-
-## Privacy policy (desktop)
-
-The in-app **Privacy** menu (language selector, same layout as Android) uses:
-
-https://github.com/drweb86/dotnet-ftps-server/blob/main/privacy/desktop/README.md
-
-The English source is [privacy/desktop/en.md](./privacy/desktop/en.md). Localized copies live in the same folder. The desktop policy covers the GitHub update check, project homepage, license, and release links.
+[Privacy](./privacy/desktop/README.md)
 
 **Logs** are located at ```%AppData%/ftps-server/logs```
 
-**Self-Signed Certificate Location**
+**Self-Signed Certificate**
 
 If certificate is not specified, self-signed certificate will be created and stored in ```%localappdata%\FtpsServerLibrary\Certificates```.
+
+## Installation
+
+| OS | Link | Comment | 
+|----|------|---------|
+| Windows | (currently under review) [Microsoft Store](https://apps.microsoft.com/detail/9PHPG7B75S0T) | Best method |
+| Windows | [Windows Setup Asset](https://github.com/drweb86/dotnet-ftps-server/releases/latest) | Setup. |
+| Windows | [Windows Archive 7z](https://github.com/drweb86/dotnet-ftps-server/releases/latest) | Archive in 7z format. For corporate environments with blocked setups execution. |
+| Windows | (currently under review) [Win-Get](./win-get.md) | For IT people. |
+| Linux | [Apt-Get](./Ubuntu.md) | Best method. |
+| Linux | [Linux deb files](https://github.com/drweb86/dotnet-ftps-server/releases/latest) | DEB packages. |
 

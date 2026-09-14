@@ -61,6 +61,14 @@ if ($LastExitCode -ne 0)
 	Exit 1
 }
 
+Write-Output "MSIX..."
+& "$PSScriptRoot\scripts\pack-msix.ps1" -Version $version -RepoRoot $PSScriptRoot
+if ($LastExitCode -ne 0)
+{
+	Write-Error "Fail."
+	Exit 1
+}
+
 Write-Output "Setup..."
 & "C:\Program Files (x86)\NSIS\Bin\makensis.exe" "/DPRODUCT_VERSION=$version" "./scripts/setup.nsi"
 if ($LastExitCode -ne 0)

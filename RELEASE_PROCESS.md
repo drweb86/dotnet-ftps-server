@@ -48,3 +48,14 @@ After a tag that includes the Gradle literals and Fastlane exists:
 
 After F-Droid accepts the app, new GitHub tags that follow **Every release** above are picked up automatically.
 ```
+
+i. Microsoft Store (MSIX)
+
+The GitHub Release includes unsigned `ftpsserver_<version>_windows_x64.msix` and `ftpsserver_<version>_windows_arm64.msix`. They are not a replacement for the NSIS setup. The Store listing is [FTPS Server](https://apps.microsoft.com/detail/9PHPG7B75S0T) (Store ID `9PHPG7B75S0T`). Microsoft re-signs the packages after certification.
+
+1. In Partner Center, open that product and start a new submission.
+2. Upload both architecture packages (or a bundle if you create one).
+3. Declare the restricted capability **runFullTrust**.
+4. Privacy policy URL: the desktop policy at [`privacy/desktop/README.md`](./privacy/desktop/README.md) on the default branch.
+5. Notes for certification: this is a local FTPS server. The user chooses listen ports and folder roots. A self-signed TLS certificate may be stored under `%LOCALAPPDATA%\FtpsServerLibrary\Certificates`. Requires Windows 11 (build 26100 or later). No ads, no in-app purchases.
+6. Submit. Store (MSIX) and GitHub/winget (NSIS) installs do not upgrade each other.
