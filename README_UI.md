@@ -64,7 +64,7 @@ If certificate is not specified, self-signed certificate will be created and sto
 
 | OS | Link | Comment | 
 |----|------|---------|
-| Windows | (currently under review) [Microsoft Store](https://apps.microsoft.com/detail/9PHPG7B75S0T) | Best method |
+| Windows | [Microsoft Store](https://apps.microsoft.com/detail/9PHPG7B75S0T) | Best method |
 | Windows | [Windows Setup Asset](https://github.com/drweb86/dotnet-ftps-server/releases/latest) | Setup. |
 | Windows | [Windows Archive 7z](https://github.com/drweb86/dotnet-ftps-server/releases/latest) | Archive in 7z format. For corporate environments with blocked setups execution. |
 | Windows | (currently under review) [Win-Get](./win-get.md) | For IT people. |
