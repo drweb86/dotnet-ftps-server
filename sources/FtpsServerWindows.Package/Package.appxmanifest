@@ -21,40 +21,41 @@
     <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.26100.0" MaxVersionTested="10.0.26100.0" />
   </Dependencies>
 
+  <!-- Partner Center listing locales, not .NET resx culture names (de vs de-de). -->
   <Resources>
     <Resource Language="en-us" />
-    <Resource Language="am" />
-    <Resource Language="ar" />
-    <Resource Language="bn" />
-    <Resource Language="de" />
-    <Resource Language="es" />
-    <Resource Language="fa" />
-    <Resource Language="fr" />
-    <Resource Language="ha" />
-    <Resource Language="hi" />
-    <Resource Language="id" />
+    <Resource Language="am-et" />
+    <Resource Language="ar-sa" />
+    <Resource Language="bn-in" />
+    <Resource Language="de-de" />
+    <Resource Language="es-es" />
+    <Resource Language="fa-ir" />
+    <Resource Language="fr-fr" />
+    <Resource Language="ha-latn-ng" />
+    <Resource Language="hi-in" />
+    <Resource Language="id-id" />
     <Resource Language="ig-ng" />
-    <Resource Language="it" />
-    <Resource Language="ja" />
-    <Resource Language="kk" />
-    <Resource Language="ko" />
-    <Resource Language="mr" />
-    <Resource Language="ne" />
-    <Resource Language="pa" />
-    <Resource Language="pl" />
+    <Resource Language="it-it" />
+    <Resource Language="ja-jp" />
+    <Resource Language="kk-kz" />
+    <Resource Language="ko-kr" />
+    <Resource Language="mr-in" />
+    <Resource Language="ne-np" />
+    <Resource Language="pa-in" />
+    <Resource Language="pl-pl" />
     <Resource Language="pt-br" />
-    <Resource Language="ru" />
-    <Resource Language="sw" />
-    <Resource Language="ta" />
-    <Resource Language="te" />
-    <Resource Language="th" />
-    <Resource Language="tr" />
-    <Resource Language="uk" />
-    <Resource Language="ur" />
-    <Resource Language="uz" />
-    <Resource Language="vi" />
+    <Resource Language="ru-ru" />
+    <Resource Language="sw-ke" />
+    <Resource Language="ta-in" />
+    <Resource Language="te-in" />
+    <Resource Language="th-th" />
+    <Resource Language="tr-tr" />
+    <Resource Language="uk-ua" />
+    <Resource Language="ur-pk" />
+    <Resource Language="uz-latn-uz" />
+    <Resource Language="vi-vn" />
     <Resource Language="yo-ng" />
-    <Resource Language="zh-Hans" />
+    <Resource Language="zh-cn" />
   </Resources>
 
   <Applications>
