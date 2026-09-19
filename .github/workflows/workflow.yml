@@ -163,18 +163,17 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Java 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
 
       - name: Install Android SDK packages
         run: |
           set -eux
-          export PATH="${ANDROID_SDK_ROOT:-$ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT:-$ANDROID_HOME}/cmdline-tools/bin:$PATH"
           echo "ANDROID_HOME=${ANDROID_HOME:-}"
           echo "ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT:-}"
           command -v sdkmanager
