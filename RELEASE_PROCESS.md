@@ -1,6 +1,14 @@
 # Release process
 
-Put version in
+When a release build fails and you need a new version with the same notes:
+
+```powershell
+powershell -File scripts/patch-version.ps1
+```
+
+That increments the last number in the CHANGELOG heading (`2026.09.19` → `2026.09.20`), updates both Gradle literals, writes the notes under that heading into the Fastlane en-US changelog (plain text, under 500 bytes), and renames the Fastlane file to the new `versionCode`. Then continue from **d**.
+
+Otherwise put the version in by hand:
 
 a. [`CHANGELOG.md`](./CHANGELOG.md) into first line prefixed with '# ':
 

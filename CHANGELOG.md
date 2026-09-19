@@ -1,4 +1,4 @@
-# 2026.09.19
+# 2026.09.20
 
 ## Security
 - Library, Android: require `AUTH TLS` before `USER`/`PASS` (and `PBSZ`/`PROT`) whenever a certificate is loaded, so a plain-FTP client cannot send the password on a clear control channel. Reported by [gitubpatrice](https://gitlab.com/gitubpatrice).
