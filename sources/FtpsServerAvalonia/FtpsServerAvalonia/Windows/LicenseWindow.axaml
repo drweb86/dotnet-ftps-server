@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="using:FtpsServerAvalonia.Resources"
+        x:Class="FtpsServerAvalonia.Windows.LicenseWindow"
+        Title="{x:Static res:Strings.MenuLicense}"
+        Width="720"
+        Height="640"
+        MinWidth="480"
+        MinHeight="360"
+        Background="{StaticResource WindowBackgroundBrush}"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+    <DockPanel Margin="16">
+        <Button x:Name="OkButton"
+                DockPanel.Dock="Bottom"
+                Content="{x:Static res:Strings.PrivacyOk}"
+                Classes="ModernButton"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Margin="0,12,0,0"
+                Click="OkButton_Click"/>
+        <TextBlock DockPanel.Dock="Top"
+                   Text="{x:Static res:Strings.PrivacyLanguage}"
+                   Margin="0,0,0,6"
+                   FontWeight="Medium"/>
+        <ComboBox x:Name="LanguageCombo"
+                  DockPanel.Dock="Top"
+                  DisplayMemberBinding="{Binding NativeName}"
+                  Margin="0,0,0,12"
+                  SelectionChanged="LanguageCombo_SelectionChanged"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel x:Name="DocumentHost" Spacing="0"/>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

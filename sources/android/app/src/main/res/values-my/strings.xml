@@ -33,8 +33,6 @@
     <string name="user_readonly">ဖတ်ရုံသာ</string>
     <string name="user_delete">ဖျက်ရန်</string>
     <string name="user_select_folder_format">အသုံးပြုသူ %1$s အတွက် မျှဝေရန် ဖိုလ်ဒါ ရွေးချယ်ပါ</string>
-    <string name="update_download">ဒေါင်းလုတ်</string>
-    <string name="update_available_format">ဗားရှင်း %1$s အသစ် ရရှိနိုင်သည်။</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">အမှား</string>

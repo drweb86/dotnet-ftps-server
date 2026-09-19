@@ -58,6 +58,10 @@ fun PrivacyPolicyScreen(
     onDismiss: () -> Unit,
     onAgree: () -> Unit = onDismiss,
     onDeclineConfirmed: () -> Unit = {},
+    titleRes: Int = R.string.menu_privacy,
+    loadMarkdown: (android.content.Context, String) -> String = { ctx, file ->
+        loadPrivacyMarkdown(ctx, file)
+    },
 ) {
     val context = LocalContext.current
     val languages = PrivacyLanguages.all
@@ -69,7 +73,7 @@ fun PrivacyPolicyScreen(
     }
     var menuOpen by remember { mutableStateOf(false) }
     var confirmOpen by remember { mutableStateOf(false) }
-    val body = remember(selected.code) { loadPrivacyMarkdown(context, selected.assetFile) }
+    val body = remember(selected.code) { loadMarkdown(context, selected.assetFile) }
     val direction = if (selected.rtl) LayoutDirection.Rtl else LayoutDirection.Ltr
 
     LaunchedEffect(Unit) {
@@ -89,7 +93,7 @@ fun PrivacyPolicyScreen(
             containerColor = AppColors.background,
             topBar = {
                 TopAppBar(
-                    title = { Text(stringResource(R.string.menu_privacy)) },
+                    title = { Text(stringResource(titleRes)) },
                     colors = TopAppBarDefaults.topAppBarColors(
                         containerColor = AppColors.surface,
                         titleContentColor = AppColors.text,

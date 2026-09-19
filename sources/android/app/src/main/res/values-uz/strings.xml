@@ -33,8 +33,6 @@
     <string name="user_readonly">Faqat o\'qish</string>
     <string name="user_delete">O\'chirish</string>
     <string name="user_select_folder_format">%1$s foydalanuvchisi uchun ulashish papkasini tanlang</string>
-    <string name="update_download">Yuklab olish</string>
-    <string name="update_available_format">Yangi %1$s versiyasi mavjud.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Xato</string>

@@ -33,8 +33,6 @@
     <string name="user_readonly">Tylko do odczytu</string>
     <string name="user_delete">Usuń</string>
     <string name="user_select_folder_format">Wybierz folder do udostępnienia dla użytkownika %1$s</string>
-    <string name="update_download">Pobierz</string>
-    <string name="update_available_format">Dostępna jest nowa wersja %1$s.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Błąd</string>

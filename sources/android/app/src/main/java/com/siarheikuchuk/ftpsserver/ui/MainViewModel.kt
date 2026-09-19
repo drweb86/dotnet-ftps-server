@@ -126,9 +126,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun addUser() {
         _state.update {
-            val n = it.users.size + 1
             it.copy(
-                users = it.users + UserAccount("user$n", "password$n", "", "", false),
+                users = it.users + UserAccount("", "", "", "", false),
                 userErrors = it.userErrors + UserFieldErrors(),
             )
         }

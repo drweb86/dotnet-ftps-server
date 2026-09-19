@@ -1,7 +1,6 @@
 using Avalonia.Controls;
-using FtpsServerAppsShared.Services;
+using FtpsServerAvalonia.Windows;
 using System;
-using System.Diagnostics;
 using System.Windows.Input;
 
 namespace FtpsServerAvalonia.Commands;
@@ -12,15 +11,14 @@ public class LicenseCommand : ICommand
     public event EventHandler? CanExecuteChanged;
     #pragma warning restore 67
 
-    public bool CanExecute(object? parameter)
-    {
-        return true;
-    }
+    public bool CanExecute(object? parameter) => true;
 
-    public void Execute(object? parameter)
+    public async void Execute(object? parameter)
     {
-        var launcher = TopLevel.GetTopLevel(App.Instance)?.Launcher;
-        if (launcher is not null)
-            launcher.LaunchUriAsync(new Uri(ApplicationLinks.LicenseUrl));
+        var window = new LicenseWindow();
+        if (App.Instance is Window owner)
+            await window.ShowDialog(owner);
+        else
+            window.Show();
     }
 }

@@ -33,8 +33,6 @@
     <string name="user_readonly">Hanya-Baca</string>
     <string name="user_delete">Hapus</string>
     <string name="user_select_folder_format">Pilih folder untuk dibagikan kepada pengguna %1$s</string>
-    <string name="update_download">Unduh</string>
-    <string name="update_available_format">Versi %1$s baru tersedia.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Kesalahan</string>

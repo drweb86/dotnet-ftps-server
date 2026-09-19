@@ -33,8 +33,6 @@
     <string name="user_readonly">فقط خواندنی</string>
     <string name="user_delete">حذف</string>
     <string name="user_select_folder_format">پوشه‌ای برای اشتراک‌گذاری با کاربر %1$s انتخاب کنید</string>
-    <string name="update_download">دانلود</string>
-    <string name="update_available_format">نسخه جدید %1$s در دسترس است.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">خطا</string>

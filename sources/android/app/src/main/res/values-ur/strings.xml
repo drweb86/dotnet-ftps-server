@@ -33,8 +33,6 @@
     <string name="user_readonly">صرف پڑھنے کے لیے</string>
     <string name="user_delete">حذف کریں</string>
     <string name="user_select_folder_format">صارف %1$s کے لیے اشتراک کرنے کا فولڈر منتخب کریں</string>
-    <string name="update_download">ڈاؤن لوڈ</string>
-    <string name="update_available_format">نیا %1$s ورژن دستیاب ہے۔</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">خرابی</string>

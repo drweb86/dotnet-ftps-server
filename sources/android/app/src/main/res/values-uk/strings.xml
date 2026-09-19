@@ -33,8 +33,6 @@
     <string name="user_readonly">Лише читання</string>
     <string name="user_delete">Видалити</string>
     <string name="user_select_folder_format">Виберіть папку для спільного доступу для користувача %1$s</string>
-    <string name="update_download">Завантажити</string>
-    <string name="update_available_format">Доступна нова версія %1$s.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Помилка</string>

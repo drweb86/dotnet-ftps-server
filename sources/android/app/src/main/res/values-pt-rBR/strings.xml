@@ -33,8 +33,6 @@
     <string name="user_readonly">Somente Leitura</string>
     <string name="user_delete">Excluir</string>
     <string name="user_select_folder_format">Selecionar pasta para compartilhar para o usuário %1$s</string>
-    <string name="update_download">Baixar</string>
-    <string name="update_available_format">Nova versão %1$s disponível.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Erro</string>

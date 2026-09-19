@@ -33,8 +33,6 @@
     <string name="user_readonly">படிக்க மட்டும்</string>
     <string name="user_delete">நீக்கு</string>
     <string name="user_select_folder_format">பயனர் %1$s க்கு பகிர கோப்புறையைத் தேர்ந்தெடுக்கவும்</string>
-    <string name="update_download">பதிவிறக்கு</string>
-    <string name="update_available_format">புதிய %1$s பதிப்பு கிடைக்கிறது.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">பிழை</string>

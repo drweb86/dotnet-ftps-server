@@ -16,7 +16,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.core.app.ActivityCompat
 import com.siarheikuchuk.ftpsserver.privacy.AppPrivateDataWiper
+import com.siarheikuchuk.ftpsserver.privacy.LicenseStore
 import com.siarheikuchuk.ftpsserver.privacy.PrivacyStore
+import com.siarheikuchuk.ftpsserver.privacy.loadLicenseMarkdown
 import com.siarheikuchuk.ftpsserver.ui.FtpsTheme
 import com.siarheikuchuk.ftpsserver.ui.MainScreen
 import com.siarheikuchuk.ftpsserver.ui.MainViewModel
@@ -40,7 +42,11 @@ class MainActivity : ComponentActivity() {
                 var consented by remember {
                     mutableStateOf(!BuildConfig.CHINA_PIPL_POLICY || PrivacyStore.hasConsent(this@MainActivity))
                 }
+                var licenseConsented by remember {
+                    mutableStateOf(!BuildConfig.CHINA_PIPL_POLICY || LicenseStore.hasConsent(this@MainActivity))
+                }
                 var privacyOpen by remember { mutableStateOf(false) }
+                var licenseOpen by remember { mutableStateOf(false) }
 
                 if (BuildConfig.CHINA_PIPL_POLICY && !consented) {
                     PrivacyPolicyScreen(
@@ -53,6 +59,21 @@ class MainActivity : ComponentActivity() {
                         },
                         onDeclineConfirmed = { wipePrivateDataAndExit() },
                     )
+                } else if (BuildConfig.CHINA_PIPL_POLICY && !licenseConsented) {
+                    PrivacyPolicyScreen(
+                        mode = PrivacyScreenMode.ConsentGate,
+                        onDismiss = { },
+                        onAgree = {
+                            LicenseStore.acceptConsent(this@MainActivity)
+                            licenseConsented = true
+                            requestNotificationPermission()
+                        },
+                        onDeclineConfirmed = { wipePrivateDataAndExit() },
+                        titleRes = R.string.menu_license,
+                        loadMarkdown = { ctx, file ->
+                            loadLicenseMarkdown(ctx, file, includeChinaAppendix = true)
+                        },
+                    )
                 } else if (privacyOpen) {
                     PrivacyPolicyScreen(
                         mode = if (BuildConfig.CHINA_PIPL_POLICY) {
@@ -63,15 +84,30 @@ class MainActivity : ComponentActivity() {
                         onDismiss = { privacyOpen = false },
                         onDeclineConfirmed = { wipePrivateDataAndExit() },
                     )
+                } else if (licenseOpen) {
+                    PrivacyPolicyScreen(
+                        mode = if (BuildConfig.CHINA_PIPL_POLICY) {
+                            PrivacyScreenMode.InfoWithWithdraw
+                        } else {
+                            PrivacyScreenMode.Info
+                        },
+                        onDismiss = { licenseOpen = false },
+                        onDeclineConfirmed = { wipePrivateDataAndExit() },
+                        titleRes = R.string.menu_license,
+                        loadMarkdown = { ctx, file ->
+                            loadLicenseMarkdown(ctx, file, includeChinaAppendix = BuildConfig.CHINA_PIPL_POLICY)
+                        },
+                    )
                 } else {
                     MainScreen(
                         viewModel = viewModel,
                         onOpenPrivacy = { privacyOpen = true },
+                        onOpenLicense = { licenseOpen = true },
                     )
                 }
             }
         }
-        if (!BuildConfig.CHINA_PIPL_POLICY || PrivacyStore.hasConsent(this)) {
+        if (!BuildConfig.CHINA_PIPL_POLICY || (PrivacyStore.hasConsent(this) && LicenseStore.hasConsent(this))) {
             requestNotificationPermission()
         }
     }

@@ -33,8 +33,6 @@
     <string name="user_readonly">อ่านอย่างเดียว</string>
     <string name="user_delete">ลบ</string>
     <string name="user_select_folder_format">เลือกโฟลเดอร์เพื่อแชร์ให้ผู้ใช้ %1$s</string>
-    <string name="update_download">ดาวน์โหลด</string>
-    <string name="update_available_format">มีเวอร์ชัน %1$s ใหม่พร้อมใช้งาน</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">ข้อผิดพลาด</string>

@@ -33,8 +33,6 @@
     <string name="user_readonly">Karanta kawai</string>
     <string name="user_delete">Goge</string>
     <string name="user_select_folder_format">Zaɓi babban fayil ɗin don raba ga mai amfani %1$s</string>
-    <string name="update_download">Sauke</string>
-    <string name="update_available_format">Sabon sigar %1$s yana samuwa.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Kuskure</string>

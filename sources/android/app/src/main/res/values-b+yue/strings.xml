@@ -33,8 +33,6 @@
     <string name="user_readonly">唯讀</string>
     <string name="user_delete">刪除</string>
     <string name="user_select_folder_format">揀選要分享畀用戶 %1$s 嘅資料夾</string>
-    <string name="update_download">下載</string>
-    <string name="update_available_format">有新嘅 %1$s 版本可以使用。</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">錯誤</string>

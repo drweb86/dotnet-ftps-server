@@ -33,8 +33,6 @@
     <string name="user_readonly">Salt Okunur</string>
     <string name="user_delete">Sil</string>
     <string name="user_select_folder_format">%1$s kullanıcısı için paylaşılacak klasörü seçin</string>
-    <string name="update_download">İndir</string>
-    <string name="update_available_format">Yeni %1$s sürümü mevcut.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Hata</string>

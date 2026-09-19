@@ -136,8 +136,8 @@ namespace FtpsServerAvalonia
         {
             var newUser = new UserAccount
             {
-                Login = $"user{_users.Count + 1}",
-                Password = $"password{_users.Count + 1}",
+                Login = string.Empty,
+                Password = string.Empty,
                 Folder = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
                 ReadonlyPermission = false,
             };

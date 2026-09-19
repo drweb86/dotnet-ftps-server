@@ -17,7 +17,8 @@ public partial class UpdateCheckExpanderView : UserControl
         Visibility = Visibility.Collapsed;
 
 #if RELEASE
-        _ = CheckForUpdates();
+        if (!WindowsMsixPackage.IsCurrentProcessPackaged)
+            _ = CheckForUpdates();
 #endif
     }
 

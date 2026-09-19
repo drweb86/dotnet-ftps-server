@@ -33,8 +33,6 @@
     <string name="user_readonly">Readonly</string>
     <string name="user_delete">Delete</string>
     <string name="user_select_folder_format">Select folder to share for user %1$s</string>
-    <string name="update_download">Download</string>
-    <string name="update_available_format">New %1$s version dey available.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Error</string>

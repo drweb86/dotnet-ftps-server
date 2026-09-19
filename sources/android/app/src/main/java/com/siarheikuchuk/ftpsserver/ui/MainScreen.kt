@@ -73,7 +73,7 @@ private fun fieldColors() = OutlinedTextFieldDefaults.colors(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(viewModel: MainViewModel, onOpenPrivacy: () -> Unit) {
+fun MainScreen(viewModel: MainViewModel, onOpenPrivacy: () -> Unit, onOpenLicense: () -> Unit) {
     val state by viewModel.state.collectAsState()
     val context = LocalContext.current
     var menuOpen by remember { mutableStateOf(false) }
@@ -105,6 +105,13 @@ fun MainScreen(viewModel: MainViewModel, onOpenPrivacy: () -> Unit) {
                         Text("?", color = AppColors.accent, fontSize = 22.sp, fontWeight = FontWeight.Bold)
                     }
                     DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
+                        DropdownMenuItem(
+                            text = { Text(stringResource(R.string.menu_license)) },
+                            onClick = {
+                                menuOpen = false
+                                onOpenLicense()
+                            },
+                        )
                         DropdownMenuItem(
                             text = { Text(stringResource(R.string.menu_privacy)) },
                             onClick = {

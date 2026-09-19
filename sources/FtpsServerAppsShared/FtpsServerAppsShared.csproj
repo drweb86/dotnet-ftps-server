@@ -27,6 +27,9 @@
     <EmbeddedResource Include="..\..\privacy\desktop\*.md"
                       Exclude="..\..\privacy\desktop\README.md"
                       LogicalName="FtpsServerAppsShared.Privacy.%(Filename)%(Extension)" />
+    <EmbeddedResource Include="..\..\licenses\*.md"
+                      Exclude="..\..\licenses\README.md;..\..\licenses\*.official.md"
+                      LogicalName="FtpsServerAppsShared.License.%(Filename)%(Extension)" />
   </ItemGroup>
 
 </Project>

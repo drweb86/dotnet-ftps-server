@@ -33,8 +33,6 @@
     <string name="user_readonly">केवल पठन</string>
     <string name="user_delete">हटाएं</string>
     <string name="user_select_folder_format">उपयोगकर्ता %1$s के लिए साझा करने हेतु फ़ोल्डर चुनें</string>
-    <string name="update_download">डाउनलोड</string>
-    <string name="update_available_format">नया %1$s संस्करण उपलब्ध है।</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">त्रुटि</string>

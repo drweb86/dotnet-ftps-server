@@ -33,8 +33,6 @@
     <string name="user_readonly">Только чтение</string>
     <string name="user_delete">Удалить</string>
     <string name="user_select_folder_format">Выберите папку для пользователя %1$s</string>
-    <string name="update_download">Скачать</string>
-    <string name="update_available_format">Доступна новая версия %1$s.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Ошибка</string>

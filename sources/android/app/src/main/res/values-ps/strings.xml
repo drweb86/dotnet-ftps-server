@@ -33,8 +33,6 @@
     <string name="user_readonly">یوازې لوستل</string>
     <string name="user_delete">ړنګول</string>
     <string name="user_select_folder_format">د کارونکي %1$s لپاره د شریکولو لپاره فولدر وټاکئ</string>
-    <string name="update_download">ډاونلوډ</string>
-    <string name="update_available_format">نوی %1$s نسخه شتون لري.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">تېروتنه</string>

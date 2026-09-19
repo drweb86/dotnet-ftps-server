@@ -23,6 +23,7 @@ object AppPrivateDataWiper {
         deleteChildren(app.cacheDir)
         app.noBackupFilesDir?.let { deleteChildren(it) }
         PrivacyStore.clearConsent(app)
+        LicenseStore.clearConsent(app)
     }
 
     private fun revokeSafGrants(context: Context) {
@@ -47,8 +48,19 @@ object AppPrivateDataWiper {
 }
 
 fun loadPrivacyMarkdown(context: Context, fileName: String): String {
+    return loadAssetMarkdown(context, "privacy", fileName)
+}
+
+fun loadLicenseMarkdown(context: Context, fileName: String, includeChinaAppendix: Boolean): String {
+    val body = loadAssetMarkdown(context, "license", fileName)
+    if (!includeChinaAppendix) return body
+    val extra = loadAssetMarkdown(context, "license/china-appendix", fileName)
+    return if (extra.isBlank()) body else "$body\n\n$extra"
+}
+
+private fun loadAssetMarkdown(context: Context, folder: String, fileName: String): String {
     fun read(name: String): String? = try {
-        context.assets.open("privacy/$name").bufferedReader().use { it.readText() }
+        context.assets.open("$folder/$name").bufferedReader().use { it.readText() }
             .lineSequence()
             .filterNot { it.trim() == "[Languages](README.md)" }
             .joinToString("\n")

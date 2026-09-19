@@ -33,8 +33,6 @@
     <string name="user_readonly">ለማንበብ ብቻ</string>
     <string name="user_delete">ሰርዝ</string>
     <string name="user_select_folder_format">ለተጠቃሚ %1$s ለማጋራት ፎልደር ይምረጡ</string>
-    <string name="update_download">አውርድ</string>
-    <string name="update_available_format">አዲስ %1$s ስሪት ይገኛል።</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">ስህተት</string>

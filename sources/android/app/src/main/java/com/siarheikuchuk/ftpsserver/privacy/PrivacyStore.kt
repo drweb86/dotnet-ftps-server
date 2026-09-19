@@ -33,6 +33,6 @@ object PrivacyStore {
         skipSettingsSave = true
     }
 
-    private fun prefs(context: Context) =
+    internal fun prefs(context: Context) =
         context.applicationContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 }

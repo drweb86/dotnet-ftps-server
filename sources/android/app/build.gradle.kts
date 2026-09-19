@@ -15,8 +15,8 @@ android {
         applicationId = "com.siarheikuchuk.ftpsserver"
         minSdk = 23
         targetSdk = 36
-        val defaultVersionCode = 20260914
-        val defaultVersionName = "2026.09.14"
+        val defaultVersionCode = 20260919
+        val defaultVersionName = "2026.09.19"
         versionCode = findProperty("appVersionCode")?.toString()?.toIntOrNull() ?: defaultVersionCode
         versionName = findProperty("appVersionName")?.toString()?.takeIf { it.isNotBlank() } ?: defaultVersionName
         buildConfigField("boolean", "SCREENSHOTS", if (screenshots) "true" else "false")
@@ -118,6 +118,33 @@ abstract class CopyPrivacyPoliciesTask : DefaultTask() {
     }
 }
 
+abstract class CopyLicenseDocumentsTask : DefaultTask() {
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val sourceDir: DirectoryProperty
+
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val appendixDir: DirectoryProperty
+
+    @get:OutputDirectory
+    abstract val outputDir: DirectoryProperty
+
+    @TaskAction
+    fun copyLicenses() {
+        copyMdFolder(sourceDir.get().asFile, outputDir.get().asFile.resolve("license"))
+        copyMdFolder(appendixDir.get().asFile, outputDir.get().asFile.resolve("license/china-appendix"))
+    }
+
+    private fun copyMdFolder(source: java.io.File, dest: java.io.File) {
+        dest.deleteRecursively()
+        dest.mkdirs()
+        source.listFiles()
+            ?.filter { it.isFile && it.extension == "md" && !it.name.equals("README.md", ignoreCase = true) }
+            ?.forEach { it.copyTo(dest.resolve(it.name), overwrite = true) }
+    }
+}
+
 androidComponents {
     onVariants { variant ->
         val copyPrivacyPolicies = tasks.register<CopyPrivacyPoliciesTask>(
@@ -125,9 +152,19 @@ androidComponents {
         ) {
             sourceDir.set(rootProject.projectDir.resolve("../../privacy/android"))
         }
+        val copyLicenses = tasks.register<CopyLicenseDocumentsTask>(
+            "copyLicenses${variant.name.replaceFirstChar { it.uppercase() }}",
+        ) {
+            sourceDir.set(rootProject.projectDir.resolve("../../licenses"))
+            appendixDir.set(rootProject.projectDir.resolve("../../licenses/china-appendix"))
+        }
         variant.sources.assets?.addGeneratedSourceDirectory(
             copyPrivacyPolicies,
             CopyPrivacyPoliciesTask::outputDir,
+        )
+        variant.sources.assets?.addGeneratedSourceDirectory(
+            copyLicenses,
+            CopyLicenseDocumentsTask::outputDir,
         )
         if (variant.flavorName == "chinaPiplPolicy" && variant.buildType == "debug") {
             variant.applicationId.set("com.siarheikuchuk.ftpsserver.chinapipl.debug")

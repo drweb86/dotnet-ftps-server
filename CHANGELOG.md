@@ -1,3 +1,14 @@
+# 2026.09.19
+(unreleased)
+
+## Changes
+- UI: Embed localized CC0 license text in Windows, Avalonia, and Android apps (no outbound license link).
+- Android (China edition): require license agreement before use, allow withdrawal, and append China-market terms (developer identity, PRC law, no paid services, uninstall).
+- Android: remove leftover in-app update strings from APK resources.
+- UI: do not prefill `userN` / `passwordN` when adding an account.
+- Windows Store (MSIX): do not check GitHub for updates; the Store delivers updates for that install.
+- UI: Update texts for Windows Store package.
+
 # 2026.09.14
 
 ## Changes

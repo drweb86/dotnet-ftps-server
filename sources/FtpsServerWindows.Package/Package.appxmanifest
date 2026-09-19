@@ -23,6 +23,38 @@
 
   <Resources>
     <Resource Language="en-us" />
+    <Resource Language="am" />
+    <Resource Language="ar" />
+    <Resource Language="bn" />
+    <Resource Language="de" />
+    <Resource Language="es" />
+    <Resource Language="fa" />
+    <Resource Language="fr" />
+    <Resource Language="ha" />
+    <Resource Language="hi" />
+    <Resource Language="id" />
+    <Resource Language="ig-ng" />
+    <Resource Language="it" />
+    <Resource Language="ja" />
+    <Resource Language="kk" />
+    <Resource Language="ko" />
+    <Resource Language="mr" />
+    <Resource Language="ne" />
+    <Resource Language="pa" />
+    <Resource Language="pl" />
+    <Resource Language="pt-br" />
+    <Resource Language="ru" />
+    <Resource Language="sw" />
+    <Resource Language="ta" />
+    <Resource Language="te" />
+    <Resource Language="th" />
+    <Resource Language="tr" />
+    <Resource Language="uk" />
+    <Resource Language="ur" />
+    <Resource Language="uz" />
+    <Resource Language="vi" />
+    <Resource Language="yo-ng" />
+    <Resource Language="zh-Hans" />
   </Resources>
 
   <Applications>

@@ -33,8 +33,6 @@
     <string name="user_readonly">Nur Lesen</string>
     <string name="user_delete">Löschen</string>
     <string name="user_select_folder_format">Ordner für Benutzer %1$s freigeben auswählen</string>
-    <string name="update_download">Herunterladen</string>
-    <string name="update_available_format">Neue Version %1$s verfügbar.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Fehler</string>

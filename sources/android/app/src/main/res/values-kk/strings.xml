@@ -33,8 +33,6 @@
     <string name="user_readonly">Тек оқуға</string>
     <string name="user_delete">Жою</string>
     <string name="user_select_folder_format">%1$s пайдаланушысы үшін бөлісу қалтасын таңдаңыз</string>
-    <string name="update_download">Жүктеп алу</string>
-    <string name="update_available_format">Жаңа %1$s нұсқасы қол жетімді.</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">Қате</string>

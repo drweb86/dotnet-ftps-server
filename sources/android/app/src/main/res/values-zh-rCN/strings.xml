@@ -33,8 +33,6 @@
     <string name="user_readonly">只读</string>
     <string name="user_delete">删除</string>
     <string name="user_select_folder_format">为用户 %1$s 选择要共享的文件夹</string>
-    <string name="update_download">下载</string>
-    <string name="update_available_format">新版本 %1$s 可用。</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">错误</string>

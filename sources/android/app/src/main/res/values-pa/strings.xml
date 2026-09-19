@@ -33,8 +33,6 @@
     <string name="user_readonly">ਸਿਰਫ਼ ਪੜ੍ਹੋ</string>
     <string name="user_delete">ਮਿਟਾਓ</string>
     <string name="user_select_folder_format">ਉਪਭੋਗਤਾ %1$s ਲਈ ਸ਼ੇਅਰ ਕਰਨ ਲਈ ਫੋਲਡਰ ਚੁਣੋ</string>
-    <string name="update_download">ਡਾਊਨਲੋਡ ਕਰੋ</string>
-    <string name="update_available_format">ਨਵਾਂ %1$s ਵਰਜ਼ਨ ਉਪਲਬਧ ਹੈ।</string>
     <string name="numeric_up">▲</string>
     <string name="numeric_down">▼</string>
     <string name="error_title">ਗਲਤੀ</string>
