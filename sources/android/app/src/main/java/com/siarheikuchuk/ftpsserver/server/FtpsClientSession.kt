@@ -3,7 +3,8 @@ package com.siarheikuchuk.ftpsserver.server
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
-import java.net.Inet4Address
+import java.net.Inet6Address
+import java.net.InetAddress
 import java.net.ServerSocket
 import java.net.Socket
 import java.nio.charset.Charset
@@ -65,7 +66,7 @@ class FtpsClientSession(
                 "USER" -> handleUser(argument)
                 "PASS" -> handlePass(argument)
                 "AUTH" -> handleAuth(argument)
-                "PBSZ" -> send(200, "PBSZ=0")
+                "PBSZ" -> handlePbsz()
                 "PROT" -> handleProt(argument)
                 "PWD", "XPWD" -> handlePwd()
                 "CWD", "XCWD" -> handleCwd(argument)
@@ -147,12 +148,14 @@ class FtpsClientSession(
     }
 
     private fun handleUser(name: String) {
+        if (!requireControlTls(530)) return
         username = name
         log.info("[$clientAddress] User login attempt: $name")
         send(331, "Password required")
     }
 
     private fun handlePass(password: String) {
+        if (!requireControlTls(530)) return
         val name = username
         if (name.isNullOrEmpty()) {
             send(503, "Login with USER first")
@@ -196,7 +199,13 @@ class FtpsClientSession(
         }
     }
 
+    private fun handlePbsz() {
+        if (!requireControlTls(534)) return
+        send(200, "PBSZ=0")
+    }
+
     private fun handleProt(argument: String) {
+        if (!requireControlTls(534)) return
         when (argument.uppercase(Locale.ROOT)) {
             "P" -> {
                 dataProtection = DataProtection.Protected
@@ -360,11 +369,11 @@ class FtpsClientSession(
             return
         }
         try { dataListener?.close() } catch (_: Exception) {}
-        val listener = ServerSocket(0)
+        val local = socket.localAddress
+        val listener = ServerSocket(0, 1, local)
         dataListener = listener
         passive = true
-        val local = socket.localAddress
-        val ip = if (local is Inet4Address) local.address else byteArrayOf(127, 0, 0, 1)
+        val ip = pasvIpv4(local)
         val port = listener.localPort
         val response = "Entering Passive Mode (${ip[0].toUByte()},${ip[1].toUByte()},${ip[2].toUByte()},${ip[3].toUByte()},${port / 256},${port % 256})"
         log.debug("[$clientAddress] $response")
@@ -391,7 +400,16 @@ class FtpsClientSession(
             return null
         }
         return try {
-            listener.accept()
+            val accepted = listener.accept()
+            // RFC 2577: the data peer must be the same host as the control connection.
+            if (!samePeer(socket.inetAddress, accepted.inetAddress)) {
+                log.warn("[$clientAddress] Rejected data connection from unexpected address ${accepted.remoteSocketAddress}")
+                try { accepted.close() } catch (_: Exception) {}
+                send(425, "Can't open data connection")
+                null
+            } else {
+                accepted
+            }
         } catch (_: Exception) {
             send(425, "Can't open data connection")
             null
@@ -684,6 +702,35 @@ class FtpsClientSession(
 
     private fun checkAuth() = authenticated && user != null
     private fun dataEncryptedOk() = sslContext == null || dataProtection == DataProtection.Protected
+    private fun controlEncrypted() = socket is SSLSocket
+
+    // When a certificate is loaded, do not accept credentials (or PBSZ/PROT) on a clear control channel.
+    private fun requireControlTls(replyCode: Int): Boolean {
+        if (sslContext == null || controlEncrypted()) return true
+        send(replyCode, "SSL/TLS required on the control channel")
+        return false
+    }
+
+    private fun samePeer(control: InetAddress, data: InetAddress): Boolean {
+        if (control == data) return true
+        return canonicalHost(control).contentEquals(canonicalHost(data))
+    }
+
+    private fun canonicalHost(address: InetAddress): ByteArray {
+        val bytes = address.address
+        if (address is Inet6Address && bytes.size == 16) {
+            val ipv4Mapped = (0..9).all { bytes[it].toInt() == 0 } &&
+                bytes[10] == 0xff.toByte() && bytes[11] == 0xff.toByte()
+            if (ipv4Mapped) return bytes.copyOfRange(12, 16)
+        }
+        return bytes
+    }
+
+    private fun pasvIpv4(local: InetAddress): ByteArray {
+        val bytes = canonicalHost(local)
+        return if (bytes.size == 4) bytes else byteArrayOf(127, 0, 0, 1)
+    }
+
     private fun checkPerm(read: Boolean, write: Boolean): Boolean {
         val u = user ?: return false
         return (!read || u.canRead) && (!write || u.canWrite)

@@ -303,6 +303,9 @@ class FtpsServerClientSession(
 
     private async Task HandleUserAsync(string username)
     {
+        if (!await RequireControlTlsAsync(530))
+            return;
+
         _username = username;
         _log.Info($"[{_clientAddress}] User login attempt: {username}");
         await SendResponseAsync(331, "Password required");
@@ -310,6 +313,9 @@ class FtpsServerClientSession(
 
     private async Task HandlePassAsync(string password)
     {
+        if (!await RequireControlTlsAsync(530))
+            return;
+
         if (string.IsNullOrEmpty(_username))
         {
             await SendResponseAsync(503, "Login with USER first");
@@ -371,11 +377,17 @@ class FtpsServerClientSession(
 
     private async Task HandlePbszAsync()
     {
+        if (!await RequireControlTlsAsync(534))
+            return;
+
         await SendResponseAsync(200, "PBSZ=0");
     }
 
     private async Task HandleProtAsync(string argument)
     {
+        if (!await RequireControlTlsAsync(534))
+            return;
+
         switch (argument.ToUpper())
         {
             case "P":
@@ -631,14 +643,16 @@ class FtpsServerClientSession(
         }
 
         _dataListener?.Stop();
-        _dataListener = new TcpListener(IPAddress.Any, 0);
+        var localIp = NormalizeIp(((IPEndPoint)_controlClient.Client.LocalEndPoint!).Address);
+        _dataListener = new TcpListener(localIp, 0);
         _dataListener.Start();
 
         var endpoint = (IPEndPoint)_dataListener.LocalEndpoint;
         _isPassiveMode = true;
 
-        var localIp = ((IPEndPoint)_controlClient.Client.LocalEndPoint!).Address;
         var ipBytes = localIp.GetAddressBytes();
+        if (ipBytes.Length != 4)
+            ipBytes = [127, 0, 0, 1];
         var port = endpoint.Port;
 
         var response = $"Entering Passive Mode ({ipBytes[0]},{ipBytes[1]},{ipBytes[2]},{ipBytes[3]},{port / 256},{port % 256})";
@@ -668,29 +682,9 @@ class FtpsServerClientSession(
             return;
         }
 
-        if (!_isPassiveMode || _dataListener == null)
-        {
-            await SendResponseAsync(425, "Use PASV first");
+        var dataClient = await AcceptDataClientAsync();
+        if (dataClient is null)
             return;
-        }
-
-        if (!IsDataConnectionEncrypted())
-        {
-            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
-            return;
-        }
-
-        // Accept connection BEFORE sending 150 response
-        TcpClient dataClient;
-        try
-        {
-            dataClient = await _dataListener.AcceptTcpClientAsync();
-        }
-        catch (Exception)
-        {
-            await SendResponseAsync(425, "Can't open data connection");
-            return;
-        }
 
         var path = _path.Append(directory ?? ".");
         var ftpsPath = path.ToFtpsPath();
@@ -755,28 +749,9 @@ class FtpsServerClientSession(
             return;
         }
 
-        if (!_isPassiveMode || _dataListener == null)
-        {
-            await SendResponseAsync(425, "Use PASV first");
+        var dataClient = await AcceptDataClientAsync();
+        if (dataClient is null)
             return;
-        }
-
-        if (!IsDataConnectionEncrypted())
-        {
-            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
-            return;
-        }
-
-        TcpClient dataClient;
-        try
-        {
-            dataClient = await _dataListener.AcceptTcpClientAsync();
-        }
-        catch (Exception)
-        {
-            await SendResponseAsync(425, "Can't open data connection");
-            return;
-        }
 
         var path = _path.Append(directory ?? ".");
         var ftpsPath = path.ToFtpsPath();
@@ -950,29 +925,9 @@ class FtpsServerClientSession(
             return;
         }
 
-        if (!_isPassiveMode || _dataListener == null)
-        {
-            await SendResponseAsync(425, "Use PASV first");
+        var dataClient = await AcceptDataClientAsync();
+        if (dataClient is null)
             return;
-        }
-
-        if (!IsDataConnectionEncrypted())
-        {
-            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
-            return;
-        }
-
-        // Accept connection BEFORE sending 150 response
-        TcpClient dataClient;
-        try
-        {
-            dataClient = await _dataListener.AcceptTcpClientAsync();
-        }
-        catch (Exception)
-        {
-            await SendResponseAsync(425, "Can't open data connection");
-            return;
-        }
 
         var path = _path.Append(directory ?? ".");
         var ftpsPath = path.ToFtpsPath();
@@ -1032,29 +987,9 @@ class FtpsServerClientSession(
             return;
         }
 
-        if (!_isPassiveMode || _dataListener == null)
-        {
-            await SendResponseAsync(425, "Use PASV first");
+        var dataClient = await AcceptDataClientAsync();
+        if (dataClient is null)
             return;
-        }
-
-        if (!IsDataConnectionEncrypted())
-        {
-            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
-            return;
-        }
-
-        // Accept connection BEFORE sending 150 response
-        TcpClient dataClient;
-        try
-        {
-            dataClient = await _dataListener.AcceptTcpClientAsync();
-        }
-        catch (Exception)
-        {
-            await SendResponseAsync(425, "Can't open data connection");
-            return;
-        }
 
         var path = _path.Append(filename);
         var ftpsPath = path.ToFtpsPath();
@@ -1114,29 +1049,9 @@ class FtpsServerClientSession(
             return;
         }
 
-        if (!_isPassiveMode || _dataListener == null)
-        {
-            await SendResponseAsync(425, "Use PASV first");
+        var dataClient = await AcceptDataClientAsync();
+        if (dataClient is null)
             return;
-        }
-
-        if (!IsDataConnectionEncrypted())
-        {
-            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
-            return;
-        }
-
-        // Accept connection BEFORE sending 150 response
-        TcpClient dataClient;
-        try
-        {
-            dataClient = await _dataListener.AcceptTcpClientAsync();
-        }
-        catch (Exception)
-        {
-            await SendResponseAsync(425, "Can't open data connection");
-            return;
-        }
 
         var path = _path.Append(filename);
         var ftpsPath = path.ToFtpsPath();
@@ -1277,6 +1192,70 @@ class FtpsServerClientSession(
     private bool IsDataConnectionEncrypted()
     {
         return _certificate == null || _dataProtection == FtpsServerDataConnectionProtection.Protected;
+    }
+
+    private bool IsControlEncrypted => _sslStream is { IsAuthenticated: true };
+
+    // When a certificate is loaded, do not accept credentials (or PBSZ/PROT) on a clear control channel.
+    private async Task<bool> RequireControlTlsAsync(int replyCode)
+    {
+        if (_certificate == null || IsControlEncrypted)
+            return true;
+
+        await SendResponseAsync(replyCode, "SSL/TLS required on the control channel");
+        return false;
+    }
+
+    private async Task<TcpClient?> AcceptDataClientAsync()
+    {
+        if (!_isPassiveMode || _dataListener == null)
+        {
+            await SendResponseAsync(425, "Use PASV first");
+            return null;
+        }
+
+        if (!IsDataConnectionEncrypted())
+        {
+            await SendResponseAsync(534, "Data connection must be encrypted; use AUTH TLS and PROT P");
+            return null;
+        }
+
+        TcpClient dataClient;
+        try
+        {
+            dataClient = await _dataListener.AcceptTcpClientAsync();
+        }
+        catch (Exception)
+        {
+            await SendResponseAsync(425, "Can't open data connection");
+            return null;
+        }
+
+        // RFC 2577: the data peer must be the same host as the control connection.
+        if (!IsDataPeerFromControlClient(dataClient))
+        {
+            var peer = dataClient.Client.RemoteEndPoint?.ToString() ?? "unknown";
+            _log.Warn($"[{_clientAddress}] Rejected data connection from unexpected address {peer}");
+            dataClient.Close();
+            await SendResponseAsync(425, "Can't open data connection");
+            return null;
+        }
+
+        return dataClient;
+    }
+
+    private bool IsDataPeerFromControlClient(TcpClient dataClient)
+    {
+        if (_controlClient.Client.RemoteEndPoint is not IPEndPoint controlEnd)
+            return false;
+        if (dataClient.Client.RemoteEndPoint is not IPEndPoint dataEnd)
+            return false;
+        return NormalizeIp(controlEnd.Address).Equals(NormalizeIp(dataEnd.Address));
+    }
+
+    private static IPAddress NormalizeIp(IPAddress address)
+    {
+        return address.IsIPv4MappedToIPv6 ? address.MapToIPv4() : address;
     }
 
     private bool CheckPermission(bool read, bool write)
