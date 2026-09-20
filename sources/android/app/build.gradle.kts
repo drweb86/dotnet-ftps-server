@@ -15,8 +15,8 @@ android {
         applicationId = "com.siarheikuchuk.ftpsserver"
         minSdk = 23
         targetSdk = 36
-        val defaultVersionCode = 20260920
-        val defaultVersionName = "2026.09.20"
+        val defaultVersionCode = 20260921
+        val defaultVersionName = "2026.09.21"
         versionCode = findProperty("appVersionCode")?.toString()?.toIntOrNull() ?: defaultVersionCode
         versionName = findProperty("appVersionName")?.toString()?.takeIf { it.isNotBlank() } ?: defaultVersionName
         buildConfigField("boolean", "SCREENSHOTS", if (screenshots) "true" else "false")
@@ -96,6 +96,14 @@ android {
     dependenciesInfo {
         includeInApk = false
         includeInBundle = false
+    }
+}
+
+// F-Droid: AGP ArtProfile output (assets/dexopt/baseline.prof{,m}) is not
+// bit-reproducible across builders, so signature copying fails.
+tasks.whenTaskAdded {
+    if (name.contains("ArtProfile")) {
+        enabled = false
     }
 }
 
