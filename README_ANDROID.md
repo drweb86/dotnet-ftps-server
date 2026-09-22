@@ -21,6 +21,7 @@ The English source is [privacy/android/en.md](./privacy/android/en.md). Localize
 ## Installation
 
 Stores:
+- [FDroid](https://f-droid.org/packages/com.siarheikuchuk.ftpsserver/)
 - [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver)
 - Google Play (see bottom)
 - [Huawei](https://appgallery.huawei.com/app/C118829925)
@@ -64,18 +65,3 @@ The default debug run builds three APKs with different package ids so they can s
 
 Screenshots version uses English locale and has a different id from the release app.
 Debug version will have different id from release app.
-
-
-## Help list FTPS Server on Google Play
-
-Google Play will not publish this app until **12 people** stay in closed testing for **14 days**. If you have an Android phone and a Google account, you can help.
-
-**Do this in order, with the same Google account that is on the phone:**
-
-1. Join the tester group: https://groups.google.com/g/ftpsserver-play-testers  
-   (group email: `ftpsserver-play-testers@googlegroups.com`)
-2. Open this Play link on the phone and tap **Become a tester**:  
-   `https://play.google.com/store/apps/details?id=com.siarheikuchuk.ftpsserver`
-3. Install **FTPS Server** from Play and leave the tester opt-in on for 14 days.
-
-Joining the group alone is not enough. The Play link only works after you have joined the group. Do not leave the group or the test during those 14 days.
