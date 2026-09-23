@@ -309,6 +309,8 @@ jobs:
             sources/tools/winget-pkgs
             sources/tools/ResxSorter
             sources/FtpsServerWindows/Resources
+            fastlane/metadata/android
+            fastlane/metadata/winget
 
       - name: Setup .NET 10
         uses: actions/setup-dotnet@v4
