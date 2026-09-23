@@ -20,24 +20,12 @@ Features:
 
 <img width="760" height="433" alt="image" src="https://github.com/user-attachments/assets/37f8d159-9188-4838-83d4-4ae1b64b7b65" />
 
-## 🎯 Use Cases
-
-- 1. Exchange of files between PC and notebook over WI-FI.
-- 2. Access to PC files from Android file manager over WI-FI.
-- 2. Access Phone files from Far manager over WI-FI.
-
 | Component                      |                                                                                   |
 |--------------------------------|-----------------------------------------------------------------------------------|
-| [UI for Windows and Ubuntu](./README_UI.md) | [Microsoft Store](https://apps.microsoft.com/detail/9phpg7b75s0t)    |
-| [Library](./README_NUGET.md)   | [NUGet Package](https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary)  |
-| [Console](./README_CONSOLE.md) |                                                                                   |
+| [Desktop](./README_UI.md) | [Microsoft Store](https://apps.microsoft.com/detail/9phpg7b75s0t) [Ubuntu](./Ubuntu.md) |
 | [Android](./README_ANDROID.md) | [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver) [Google Play (help wanted, see bottom of page)](./README_ANDROID.md) [Huawei](https://appgallery.huawei.com/app/C118829925) [FDroid](https://f-droid.org/packages/com.siarheikuchuk.ftpsserver/) |
-| [Ubuntu](./Ubuntu.md) |                                                                                   |
+| [Console](./README_CONSOLE.md) |                                                                                   |
+| [Library](./README_NUGET.md)   | [NUGet Package](https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary)  |
 
-[Installation and uninstallation on Ubuntu](./Ubuntu.md)
-
-[Installation on Android](./README_ANDROID.md)
-
-[Connecting to the Server](./Connecting.md)
 
 [Troubleshooting](./Troubleshooting.md)
