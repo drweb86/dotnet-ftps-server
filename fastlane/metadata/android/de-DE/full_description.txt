@@ -1,3 +1,21 @@
-<p>FTPS-Server (FTP über TLS) für sichere Dateifreigabe zwischen Geräten über das Netzwerk.</p>
-<p><b>Funktionen:</b></p>
-<ul><li><b>Benutzerberechtigungen</b> - Granulare Kontrolle über Lese-/Schreibvorgänge</li><li><b>Benutzerbezogene Stammordner</b> - Isolierte Verzeichnisse für jeden Benutzer</li><li><b>Pfadsicherheit</b> - Schutz vor Directory-Traversal-Angriffen</li><li><b>UTF-8</b> - Unterstützt lokalisierte Zeichen</li><li><b>Selbstsignierte Zertifikate</b> - TLS-Zertifikate automatisch erzeugen oder eigene verwenden</li></ul>
+<p>FTPS Server macht dein Telefon oder Tablet zum sicheren FTP-Server für privates Teilen. Teile Fotos, Videos und Dokumente mit einem Computer im selben Wi-Fi, ohne Cloud. Du bestimmst, wer sich verbindet, welchen Ordner er öffnet und ob er nur herunterladen oder auch ändern darf.</p>
+<p><b>Im eigenen Netz teilen, nicht über eine Cloud</b></p>
+<p>Dateien bleiben auf deinem Android-Gerät. Das andere Gerät nutzt diesen FTP-Server im eigenen Netz, ohne Kopie bei jemand anderem.</p>
+<ul><li>Verschiebe Fotos, Videos und Dokumente vom Telefon auf einen PC oder umgekehrt.</li><li>Halte private und geschäftliche Dateien von Cloud-Speichern Dritter fern.</li><li>Zu Hause, im Büro oder über einen Hotspot, den du kontrollierst. Der Client muss im selben Netz sein: dasselbe Wi-Fi, derselbe Hotspot oder dieselbe geteilte Verbindung über USB.</li><li>Der Server läuft bei ausgeschaltetem Bildschirm. Eine Benachrichtigung hält die Übertragungen.</li></ul>
+<p><b>Wer welchen Ordner öffnen darf</b></p>
+<p>Für jede Person oder jedes Gerät ein eigener Zugang, mit begrenzten Rechten.</p>
+<ul><li>Benutzername und Passwort für jede Verbindung.</li><li>Jeder Zugang hat einen eigenen Ordner und sieht die übrigen Dateien auf dem Gerät nicht.</li><li>Voller Zugriff, oder nur Lesen: herunterladen ja, hochladen, umbenennen und löschen nein.</li><li>Kopiere oder teile Adresse, Port und Zugänge, wenn das andere Gerät verbinden soll.</li></ul>
+<p><b>Verschlüsselt, kein einfaches FTP</b></p>
+<p>FTPS Server: explizites FTP über TLS (AUTH TLS). Einfaches FTP ohne Verschlüsselung wird nicht verwendet. Passwort und Dateien sind im Netz verschlüsselt.</p>
+<ul><li>Ein Zugang geht nicht im Klartext hinaus. Übertragungen nutzen FTP über TLS.</li><li>Der erste Start erzeugt ein TLS-Zertifikat, ohne weitere Einrichtung.</li><li>Du kannst auch ein Zertifikat verwenden, das du schon hast.</li><li>Vergleiche den Fingerabdruck des Zertifikats in der App und im Client, um dieses Gerät zu bestätigen.</li><li>Dateinamen in deiner Sprache bleiben erhalten, auch Buchstaben außerhalb des englischen Alphabets.</li></ul>
+<p><b>Was der Server tut</b></p>
+<ul><li>Die App zeigt Adresse und Port für den Client.</li><li>Jeder Zugang zeigt Ordner und ob der Zugriff nur zum Lesen oder voll ist.</li><li>Ein Protokoll zeigt Verbindungen, wenn etwas fehlschlägt.</li><li>Du wählst Port und maximale Zahl gleichzeitiger Clients.</li></ul>
+<p><b>Starte den FTP-Server in vier Schritten</b></p>
+<p>1. Benutzer mit Name und Passwort hinzufügen.<br>2. Ordner für diesen Benutzer wählen.<br>3. Nur-Lesen oder vollen Zugriff wählen.<br>4. Auf dem anderen Gerät einen FTPS-Client öffnen, explizites TLS (AUTH TLS) aktivieren und Adresse, Port und Zugang eingeben.</p>
+<p><b>Passende Clients</b></p>
+<p>Jeder Client mit explizitem FTPS funktioniert. Beispiele: FileZilla und WinSCP unter Windows, FileZilla unter Linux, Cyberduck oder FileZilla auf dem Mac, FTPS-Client auf einem anderen Telefon.</p>
+<p><b>Typische Nutzung</b></p>
+<ul><li>Dateien zwischen Telefon und Laptop im selben Wi-Fi kopieren.</li><li>Telefondateien im Dateimanager des Computers öffnen.</li><li>Zugang nur zum Lesen geben, wenn nur heruntergeladen werden soll.</li></ul>
+<p><b>Was dieser FTP-Server nicht ist</b></p>
+<p>Kein Hochladen zum Entwickler oder in eine Cloud. Kein öffentlicher Anbieter für Dateien. Nur in einem vertrauten Netz, etwa Wi-Fi zu Hause oder im Büro.</p>
+<p>FTPS Server ist quelloffen (CC0-1.0) und ohne Werbung.</p>

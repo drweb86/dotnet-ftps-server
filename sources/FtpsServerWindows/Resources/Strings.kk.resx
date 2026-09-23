@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>kk-KZ</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Қосу</value>
   </data>
@@ -239,21 +236,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>Жарамды:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>Желідегі құрылғылар арасында файлдарды қауіпсіз бөлісуге арналған FTPS (TLS үстінен FTP) сервері.
-
-Мүмкіндіктер:
-- **Пайдаланушы құқықтары** - Оқу/жазу әрекеттерін егжей-тегжейлі басқару
-- **Әр пайдаланушыға түбірлік қалталар** - Әр пайдаланушыға оқшауланған каталогтар
-- **Жол қауіпсіздігі** - Каталогты айналып өту шабуылдарынан қорғау
-- **UTF-8** - Жергілікті таңбаларды қолдау
-- **Windows интерфейсі** - WPF көмегімен жасалған графикалық интерфейс
-- **Өзін-өзі қолтаңбаланған сертификаттар** - TLS сертификаттарын автоматты түрде жасау немесе өз сертификатыңызды пайдалану
-- **Бірнеше сәулет** - x64 және ARM64 қолдауы</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Қауіпсіз файл бөлісуге арналған FTPS. Ашық код, жарнамасыз.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Қосылым мәліметтерін көшіру</value>

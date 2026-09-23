@@ -109,9 +109,6 @@
   <data name="CertValidLabel" xml:space="preserve">
     <value>Valid:</value>
   </data>
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>en-US</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Add</value>
   </data>
@@ -237,21 +234,6 @@
   </data>
   <data name="UserUsername" xml:space="preserve">
     <value>Username</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>FTPS (FTP over TLS) server for secure file sharing between devices over network.
-
-Features:
-- **User Permissions** - Granular control over Read/Write operations
-- **Per-User Root Folders** - Isolated directories for each user
-- **Path Security** - Protection against directory traversal attacks
-- **UTF-8** - Supports localized characters
-- **Windows UI** - Graphical interface built with WPF
-- **Self-Signed Certificates** - Auto-generate TLS certificates or bring your own
-- **Multiple Architectures** - Supports x64 and ARM64</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>FTPS server for secure file sharing. Open-source, ads-free.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copy connection details</value>

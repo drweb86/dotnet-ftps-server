@@ -1,0 +1,10 @@
+Máy chủ FTP an toàn (FTPS) để chia sẻ tệp trên Wi-Fi hoặc mạng cục bộ
+Ảnh, video và tài liệu ở lại trên thiết bị của bạn. Không có gì được tải lên đám mây
+Mỗi người có đăng nhập riêng và một thư mục mà họ không thể rời khỏi
+Tài khoản chỉ đọc, hoặc toàn quyền để tải lên, đổi tên và xóa
+Thông tin đăng nhập và tệp được mã hóa khi truyền bằng FTP over TLS
+Kết nối từ FileZilla, WinSCP hoặc bất kỳ máy khách nào hỗ trợ FTPS tường minh
+Bắt đầu trong vài phút: thêm người dùng, chọn thư mục, rồi kết nối
+Một chứng chỉ TLS được tạo cho bạn, hoặc dùng chứng chỉ bạn đã có
+Tên tệp bằng ngôn ngữ của bạn được giữ, không chỉ chữ cái tiếng Anh
+Mã nguồn mở, dùng miễn phí, không quảng cáo

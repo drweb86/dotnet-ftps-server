@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>ru-RU</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Добавить</value>
   </data>
@@ -230,21 +227,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>Действителен:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>FTPS (FTP поверх TLS) сервер для безопасного обмена файлами между устройствами по сети.
-
-Возможности:
-- **Права пользователей** - Гибкое управление операциями чтения и записи
-- **Корневые папки для каждого пользователя** - Изолированные каталоги для каждого пользователя
-- **Безопасность путей** - Защита от атак с обходом каталогов
-- **UTF-8** - Поддержка локализованных символов
-- **Интерфейс Windows** - Графический интерфейс на WPF
-- **Самоподписанные сертификаты** - Автоматическая генерация TLS-сертификатов или использование своих
-- **Несколько архитектур** - Поддержка x64 и ARM64</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>FTPS-сервер для безопасного обмена. Открытый код, без рекламы.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Копировать данные подключения</value>

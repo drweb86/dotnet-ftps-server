@@ -1,3 +1,21 @@
-<p>Ağdaki cihazlar arasında güvenli dosya paylaşımı için FTPS (TLS üzerinden FTP) sunucusu.</p>
-<p><b>Özellikler:</b></p>
-<ul><li><b>Kullanıcı izinleri</b> - Okuma/yazma işlemleri üzerinde ayrıntılı denetim</li><li><b>Kullanıcı başına kök klasörler</b> - Her kullanıcı için yalıtılmış dizinler</li><li><b>Yol güvenliği</b> - Dizin geçiş saldırılarına karşı koruma</li><li><b>UTF-8</b> - Yerelleştirilmiş karakterleri destekler</li><li><b>Kendinden imzalı sertifikalar</b> - TLS sertifikalarını otomatik oluşturun veya kendinizinkini kullanın</li></ul>
+<p>FTPS Server telefonunuzu veya tabletinizi özel dosya paylaşımı için güvenli bir FTP sunucusuna dönüştürür. Fotoğraf, video ve belgeleri aynı Wi-Fi üzerindeki bir bilgisayarla paylaşın, buluta yüklemeden. Kimin bağlanabileceğini, hangi klasörü açabileceğini ve dosyaları yalnızca indirebileceğini ya da değiştirebileceğini siz seçersiniz.</p>
+<p><b>Dosyaları bulut üzerinden değil, kendi ağınızda paylaşın</b></p>
+<p>Dosyalar Android cihazınızda kalır. Diğer cihaz bu FTP sunucusuna kendi ağınız üzerinden bağlanır, böylece bir kopya başkasının depolama alanında durmaz.</p>
+<ul><li>Fotoğraf, video ve belgeleri telefondan PC'ye veya PC'den telefona taşıyın.</li><li>Kişisel ve iş dosyalarını üçüncü taraf bulut depolarının dışında tutun.</li><li>Evde, ofiste veya sizin yönettiğiniz bir erişim noktasında kullanın. İstemci aynı ağda olmalıdır: aynı Wi-Fi ya da aynı erişim noktası veya USB üzerinden paylaşılan bağlantı.</li><li>Sunucuyu ekran kapalıyken çalışır bırakın. Bir bildirim aktarımların sürmesini sağlar.</li></ul>
+<p><b>Kimin hangi klasörü açabileceğini seçin</b></p>
+<p>Her kişi veya cihaz için ayrı bir giriş ekleyin ve bu girişin neler yapabileceğini sınırlayın.</p>
+<ul><li>Her bağlantı için bir kullanıcı adı ve parola oluşturun.</li><li>Her girişe kendi klasörünü verin. Bu giriş cihazınızdaki diğer dosyalara göz atamaz.</li><li>Tam erişim verin ya da dosya indirebilen ancak yükleyemeyen, yeniden adlandıramayan ve silemeyen salt okunur bir giriş kullanın.</li><li>Diğer cihaz bağlanmaya hazır olduğunda adres, port ve girişleri kopyalayın veya paylaşın.</li></ul>
+<p><b>Düz FTP değil, şifreli aktarım</b></p>
+<p>Bu bir FTPS sunucusudur: açık FTP üzerinden TLS (AUTH TLS). Şifrelemesiz düz FTP kullanılmaz. Parola ve dosyalar ağdan geçerken şifrelenir.</p>
+<ul><li>Giriş bilgileri açık metin olarak gönderilmez. Aktarımda FTP üzerinden TLS kullanılır.</li><li>İlk açılışta sizin için bir TLS sertifikası oluşturulur, böylece ek kurulum olmadan bağlanabilirsiniz.</li><li>Zaten bir sertifikanız varsa onu kullanabilirsiniz.</li><li>Bu cihaza ulaştığınızdan emin olmak için uygulamada gösterilen sertifika parmak izini istemcide gösterilenle karşılaştırın.</li><li>Kendi dilinizdeki dosya adları korunur, İngilizce alfabede olmayan harfler dahil.</li></ul>
+<p><b>Sunucunun ne yaptığını görün</b></p>
+<ul><li>Uygulama, istemciye gireceğiniz adresi ve portu gösterir.</li><li>Her giriş, klasörü ve erişimin salt okunur veya tam olduğu bilgisiyle listelenir.</li><li>Bir şey başarısız olursa ve nedenini görmeniz gerekirse günlük bağlantı etkinliğini gösterir.</li><li>Portu ve aynı anda kaç istemcinin bağlanabileceğini siz seçersiniz.</li></ul>
+<p><b>FTP sunucusunu dört adımda başlatın</b></p>
+<p>1. Kullanıcı adı ve parolayla bir kullanıcı ekleyin.<br>2. Bu kullanıcının açmasına izin verilen klasörü seçin.<br>3. Salt okunur veya tam erişimi seçin.<br>4. Diğer cihazda bir FTPS istemcisi açın, açık TLS (AUTH TLS) seçeneğini açın ve adres, port ve girişi yazın.</p>
+<p><b>Bağlanabilen istemciler</b></p>
+<p>Açık FTPS destekleyen her istemci çalışır. Örnekler: Windows üzerinde FileZilla ve WinSCP, Linux üzerinde FileZilla, Mac üzerinde Cyberduck veya FileZilla ve başka bir telefonda bir FTPS istemcisi.</p>
+<p><b>Tipik kullanımlar</b></p>
+<ul><li>Aynı Wi-Fi üzerindeki bir telefon ile dizüstü bilgisayar arasında dosya kopyalayın.</li><li>Telefon dosyalarını bir masaüstü dosya yöneticisinden açın.</li><li>Birinin yalnızca dosya indirmesi gerektiğinde salt okunur bir giriş verin.</li></ul>
+<p><b>Bu FTP sunucusu ne değildir</b></p>
+<p>Dosyalarınızı geliştiriciye veya bir bulut hizmetine yüklemez. Herkese açık bir dosya barındırıcısı da değildir. Ev veya ofis Wi-Fi gibi güvendiğiniz bir ağda kullanın.</p>
+<p>FTPS Server açık kaynaktır (CC0-1.0) ve reklam içermez.</p>

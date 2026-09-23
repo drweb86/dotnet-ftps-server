@@ -1,0 +1,10 @@
+Olùpèsè FTP tó ní ààbò (FTPS) fún pínpín fáìlì lórí Wi-Fi tàbí nẹtiwọọki agbègbè rẹ
+Àwọn fọ́tò, fídíò, àti ìwé àkọsílẹ̀ ń dúró lórí ẹ̀rọ rẹ. Kò sí ohun tí a gbé sókè sí àwọsánmà
+Olúkúlùkù ní ìwọlé tirẹ̀ àti fódà tí wọn kò lè kúrò nínú rẹ̀
+Àwọn àkántì kíkà nìkan, tàbí ànfààní kíkún láti gbé sókè, yí orúkọ padà, àti paárẹ́
+Ìwọlé àti fáìlì jẹ́ ìpamọ́ ní ìrìnàjò pẹ̀lú FTP lórí TLS
+So pọ̀ láti FileZilla, WinSCP, tàbí olùsopọ̀ èyíkéyìí tó ṣe àtìlẹ́yìn FTPS kedere
+Bẹ̀rẹ̀ ní ìṣẹ́jú: fi olùmúlò kún, yan fódà, lẹ́yìn náà so pọ̀
+A ń ṣẹ̀dá ìwé-ẹ̀rí TLS fún ọ, tàbí lo èyí tí o ti ní
+A ń pa orúkọ fáìlì ní èdè rẹ mọ́, kì í ṣe lẹ́tà Gẹ̀ẹ́sì nìkan
+Orísun ṣíṣí, ó jẹ́ ọ̀fẹ́, kò sí ìpolówó

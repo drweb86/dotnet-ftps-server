@@ -1,0 +1,10 @@
+Uwar garken FTP mai aminci (FTPS) don raba fayiloli a kan Wi-Fi ko sadarwar gida
+Hotuna, bidiyo, da takardu suna zama a na'urarka. Ba a loda komai zuwa gajimare ba
+Kowane mutum yana samun shigarsa da foldar da ba zai iya barin ta ba
+Asusun karatu kawai, ko cikakken damar loda, sake suna, da gogewa
+Shiga da fayiloli suna ɓoye a hanya tare da FTP a kan TLS
+Haɗa daga FileZilla, WinSCP, ko duk wani mai haɗi da ke goyon bayan FTPS bayyananne
+Fara cikin mintuna: ƙara mai amfani, zaɓi folda, sai ka haɗa
+Ana ƙirƙira maka takaddar shaida ta TLS, ko ka yi amfani da wacce kake da ita
+Ana kiyaye sunayen fayil a harshenka, ba haruffan Turanci kawai ba
+Bude tushe, kyauta, babu talla

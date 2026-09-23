@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>sw-KE</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Ongeza</value>
   </data>
@@ -239,21 +236,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>Halali:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>Seva ya FTPS (FTP juu ya TLS) ya kushiriki faili salama kati ya vifaa kwenye mtandao.
-
-Vipengele:
-- **Ruhusa za watumiaji** - Udhibiti wa kina wa shughuli za kusoma/kuandika
-- **Folda kuu kwa kila mtumiaji** - Saraka zilizotenganishwa kwa kila mtumiaji
-- **Usalama wa njia** - Ulinzi dhidi ya mashambulizi ya directory traversal
-- **UTF-8** - Inasaidia herufi zilizotafsiriwa
-- **Kiolesura cha Windows** - Kiolesura cha picha kilichojengwa kwa WPF
-- **Vyeti vilivyotiwa saini na mwenyewe** - Tengeneza vyeti vya TLS kiotomatiki au tumia vyako
-- **Miundo mingi** - Inasaidia x64 na ARM64</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Seva ya FTPS ya kushiriki salama. Chanzo huria, bila matangazo.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Nakili maelezo ya muunganisho</value>

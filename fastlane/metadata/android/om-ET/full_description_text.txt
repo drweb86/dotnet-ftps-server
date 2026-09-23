@@ -1,9 +1,59 @@
-Serveerii FTPS (FTP TLS irratti) meeshaalee gidduutti faayilota karaa neetiwarkii nageenyaan qooduuf.
+FTPS Server bilbila ykn taableetii kee gara sarvarii FTP nageenya qabuutti jijjiira, faayila dhuunfaa qooduuf. Suuraa, viidiyoo fi sanadoota duumessaatti hin ol kaa'in kompitara Wi-Fi wal fakkaataa irratti qoodi. Eenyu walqunnamsiisu, ukkaankaa kam banu, buusuu qofa moo jijjiiruu filadhu.
 
-Amaloota:
+Faayila networkii kee irratti qoodi, duumessaa miti
 
-- Hayyama fayyadamaa - To'annoo bal'aa hojii dubbisuu/barreessuu irratti
-- Folldaraa hundee fayyadamaa tokkoon tokkoo - Galmeewwan adda baafaman fayyadamaa tokkoof
-- Nageenya karaa - Itti yaadannoo haleellaa directory traversal irraa eegumsa
-- UTF-8 - Arfiilee naannoo deeggara
-- Waraqaa ragaa ofiin mallatteeffame - Waraqaa ragaa TLS ofumaan uumi ykn kan kee fayyadami
+Faayiloonni meeshaa Android kee irratti hafa. Meeshaan biraa sarvarii FTP kana networkii keetti walqunnamsiisa; koppiin kuusaa nama biraa irratti hin taa'u.
+
+- Suuraa, viidiyoo fi sanadoota bilbila irraa gara PC, ykn PC irraa gara bilbilaatti sochoosi.
+- Faayila dhuunfaa fi hojii duumessa qaama sadaffaa irraa fageessi.
+- Mana, waajjira, ykn hootispootii ati to'attu irratti fayyadami. Maamilaan networkii wal fakkaataa irra ta'a: Wi-Fi, hootispootii, ykn hidhaa USB wal fakkaataa.
+- Argii cufamee sarvarii hojjechaa dhiisi. Yaadachiisni dabarsa fufa.
+
+Eenyu ukkaankaa kam banu filadhu
+
+Nama ykn meeshaa hundaaf seensa addaa dabali, hojii isaa daangessi.
+
+- Walqunnamtii hundaaf maqaa fayyadamaa fi jecha iccitii uumi.
+- Seensa hundaaf ukkaankaa mataa isaa kenni. Faayilota hafan meeshaa kee sakatta'uu hin danda'u.
+- Dhaqqabummaa guutuu ykn dubbisuu qofa hayyami: buusuu ni danda'a; ol kaa'uu, maqaa jijjiiruu ykn haquu hin danda'u.
+- Meeshaan biraa yommuu qophaa'u teessoo, poortii fi seensota koppii godhi ykn qoodi.
+
+Dabarsa icciteeffame, FTP iccitii hin qabne miti
+
+Kun sarvarii FTPS dha: explicit FTP over TLS (AUTH TLS). FTP iccitii hin qabne hin fayyadamu. Jechi iccitii fi faayiloonni networkii keessa yeroo darban icciteeffamu.
+
+- Seensi ifatti hin ergamu. Dabarsi FTP over TLS fayyadama.
+- Jalqaba irratti ragaan TLS siif uumama; qindaa'ina dabalataa malee walqunnamsiifta.
+- Ragaa duraan yoo qabaatte, isa fayyadami.
+- Ashaaraa qubaa ragaa appii fi maamilaa madaali, meeshaa kana akka geesse beekuuf.
+- Maqaan faayilaa afaan keetiin eegama, qubee Ingiliffaa hin taane dabalatee.
+
+Sarvariin maal hojjetu ilaali
+
+- Appiin teessoo fi poortii maamilatti galchu agarsiisa.
+- Seensi hundi ukkaankaa isaa fi dubbisuu qofa ykn guutuu ta'uu waliin tarreeffama.
+- Yoo waan tokko kufe, galmeen sochii walqunnamtii fi maalif agarsiisa.
+- Poortii fi maamiltoonni meeqa yeroo tokko walqunnamsiisan filadhu.
+
+Sarvarii FTP tarkaanfii afurtiin jalqabi
+
+1. Fayyadamaa dabali, maqaa fayyadamaa fi jecha iccitii waliin.
+2. Ukkaankaa fayyadamaan sun banu hayyamame filadhu.
+3. Dubbisuu qofa ykn dhaqqabummaa guutuu filadhu.
+4. Meeshaa biraa irratti maamilaa FTPS bani, explicit TLS (AUTH TLS) bani, teessoo, poortii fi seensa galchi.
+
+Maamiltoota walqunnamsiisuu danda'an
+
+Maamilaan explicit FTPS deeggaru kamiyyuu ni hojjeta. Fakkeenya: FileZilla fi WinSCP Windows, FileZilla Linux, Cyberduck ykn FileZilla Mac, maamilaa FTPS bilbila biraa.
+
+Fayyadama baramaa
+
+- Faayila bilbila fi laaptoppii Wi-Fi wal fakkaataa gidduutti koppii godhi.
+- Faayila bilbilaa bulchiinsa faayilaa deeskitooppii irraa bani.
+- Namni buusuu qofa qabuuf seensa dubbisuu qofa kenni.
+
+Sarvariin FTP kun maal hin taane
+
+Faayila kee gara misoomaa ykn duumessaatti hin ol kaa'u. Keessummeessaa uummataaf banaa miti. Networkii amantu irratti fayyadami, akka Wi-Fi mana ykn waajjiraa.
+
+FTPS Server madda banaa dha (CC0-1.0) fi beeksisa hin qabu.

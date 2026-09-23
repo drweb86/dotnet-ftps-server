@@ -1,0 +1,10 @@
+Sicherer FTP-Server (FTPS) zum Teilen von Dateien über Wi-Fi oder im lokalen Netz
+Fotos, Videos und Dokumente bleiben auf deinem Gerät. Nichts wird in die Cloud hochgeladen
+Jede Person erhält einen eigenen Zugang und einen Ordner, den sie nicht verlassen kann
+Konten nur zum Lesen oder voller Zugriff zum Hochladen, Umbenennen und Löschen
+Zugänge und Dateien werden bei der Übertragung mit FTP über TLS verschlüsselt
+Verbinde dich mit FileZilla, WinSCP oder jedem Client, der explizites FTPS unterstützt
+In wenigen Minuten starten: Benutzer hinzufügen, Ordner wählen, dann verbinden
+Ein TLS-Zertifikat wird für dich erstellt, oder nutze eines, das du schon hast
+Dateinamen in deiner Sprache bleiben erhalten, nicht nur englische Buchstaben
+Quelloffen und kostenlos nutzbar, ohne Werbung

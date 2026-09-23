@@ -1,3 +1,21 @@
-<p>FTPS (FTP over TLS) server for secure file sharing between devices over network.</p>
-<p><b>Features:</b></p>
-<ul><li><b>User Permissions</b> - Granular control over Read/Write operations</li><li><b>Per-User Root Folders</b> - Isolated directories for each user</li><li><b>Path Security</b> - Protection against directory traversal attacks</li><li><b>UTF-8</b> - Supports localized characters</li><li><b>Self-Signed Certificates</b> - Auto-generate TLS certificates or bring your own</li></ul>
+<p>FTPS Server turns your phone or tablet into a secure FTP server for private file sharing. Share photos, videos, and documents with a computer on the same Wi-Fi, without uploading them to a cloud. You choose who can connect, which folder they can open, and whether they can only download files or also change them.</p>
+<p><b>Share files on your network, not through a cloud</b></p>
+<p>Files stay on your Android device. The other device connects to this FTP server over your own network, so a copy is not sitting on someone else's storage.</p>
+<ul><li>Move photos, videos, and documents from your phone to a PC, or from a PC onto your phone.</li><li>Keep personal and work files off third-party cloud storage.</li><li>Use it at home, in an office, or on a hotspot you control. The client has to be on the same network: the same Wi-Fi, or the same hotspot or USB tethering link.</li><li>Leave the server running with the screen off. A notification keeps transfers going.</li></ul>
+<p><b>Choose who can open which folder</b></p>
+<p>Add a separate login for each person or device, and limit what that login can do.</p>
+<ul><li>Create a username and password for every connection.</li><li>Give each login its own folder. That login cannot browse the rest of the files on your device.</li><li>Allow full access, or a read-only login that can download files but cannot upload, rename, or delete.</li><li>Copy or share the address, port, and logins when the other device is ready to connect.</li></ul>
+<p><b>Encrypted transfer, not plain FTP</b></p>
+<p>This is an FTPS server: explicit FTP over TLS (AUTH TLS). Plain FTP, with no encryption, is not used. The password and the files are encrypted while they cross the network.</p>
+<ul><li>A login is not sent in the clear. Transfers use FTP over TLS.</li><li>The first start creates a TLS certificate for you, so you can connect without extra setup.</li><li>If you already have a certificate, you can use that instead.</li><li>Compare the certificate fingerprint shown in the app with the one shown by your client, so you know you reached this device.</li><li>File names in your own language are preserved, including letters that are not in the English alphabet.</li></ul>
+<p><b>See what the server is doing</b></p>
+<ul><li>The app shows the address and port to enter in the client.</li><li>Each login is listed with its folder and whether access is read-only or full.</li><li>A log shows connection activity when something fails and you need to see why.</li><li>You choose the port and how many clients can be connected at once.</li></ul>
+<p><b>Start the FTP server in four steps</b></p>
+<p>1. Add a user, with a username and a password.<br>2. Pick the folder that user is allowed to open.<br>3. Choose read-only or full access.<br>4. On the other device, open an FTPS client, turn on explicit TLS (AUTH TLS), and enter the address, port, and login.</p>
+<p><b>Clients that can connect</b></p>
+<p>Any client that supports explicit FTPS works. Examples: FileZilla and WinSCP on Windows, FileZilla on Linux, Cyberduck or FileZilla on Mac, and an FTPS client on another phone.</p>
+<p><b>Typical uses</b></p>
+<ul><li>Copy files between a phone and a laptop on the same Wi-Fi.</li><li>Open phone files from a desktop file manager.</li><li>Hand someone a read-only login when they should download files and nothing else.</li></ul>
+<p><b>What this FTP server is not</b></p>
+<p>It does not upload your files to the developer or to a cloud service. It is also not a public file host. Use it on a network you trust, such as home or office Wi-Fi.</p>
+<p>FTPS Server is open source (CC0-1.0) and contains no ads.</p>

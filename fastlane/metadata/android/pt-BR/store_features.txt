@@ -1,0 +1,10 @@
+Servidor FTP seguro (FTPS) para compartilhar arquivos no Wi-Fi ou na rede local
+Fotos, vídeos e documentos ficam no seu dispositivo. Nada é enviado para a nuvem
+Cada pessoa recebe a própria credencial e uma pasta da qual não pode sair
+Contas somente leitura, ou acesso total para enviar, renomear e excluir
+Credenciais e arquivos são criptografados em trânsito com FTP sobre TLS
+Conecte pelo FileZilla, WinSCP ou qualquer cliente com suporte a FTPS explícito
+Comece em minutos: adicione um usuário, escolha uma pasta e depois conecte
+Um certificado TLS é criado para você, ou use um que você já tem
+Nomes de arquivo no seu idioma são mantidos, não só as letras do inglês
+Código aberto e gratuito para usar, sem anúncios

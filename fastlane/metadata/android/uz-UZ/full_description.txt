@@ -1,3 +1,21 @@
-<p>Tarmoqdagi qurilmalar o'rtasida xavfsiz fayl ulashish uchun FTPS (TLS ustidan FTP) server.</p>
-<p><b>Imkoniyatlar:</b></p>
-<ul><li><b>Foydalanuvchi ruxsatlari</b> - O'qish/yozish amallarini batafsil boshqarish</li><li><b>Har bir foydalanuvchi uchun ildiz papkalar</b> - Har bir foydalanuvchi uchun ajratilgan kataloglar</li><li><b>Yo'l xavfsizligi</b> - Katalogni aylanib o'tish hujumlaridan himoya</li><li><b>UTF-8</b> - Mahalliylashtirilgan belgilarni qo'llab-quvvatlash</li><li><b>O'z-o'zini imzolagan sertifikatlar</b> - TLS sertifikatlarini avtomatik yaratish yoki o'zingiznikini ishlatish</li></ul>
+<p>FTPS Server telefon yoki planshetni shaxsiy fayl ulashish uchun xavfsiz FTP serverga aylantiradi. Surat, video va hujjatlarni shu Wi-Fi'dagi kompyuter bilan ulashing, bulutga yuklamasdan. Kim ulanadi, qaysi papka ochiladi, fayllar faqat yuklab olinadimi yoki o'zgartiriladimi: buni siz tanlaysiz.</p>
+<p><b>Fayllarni bulut orqali emas, o'z tarmog'ingizda ulashing</b></p>
+<p>Fayllar Android qurilmangizda qoladi. Boshqa qurilma bu FTP serverga o'z tarmog'ingizdan ulanadi, nusxa birovning saqlash joyida yotmaydi.</p>
+<ul><li>Surat, video va hujjatlarni telefon va PC o'rtasida ko'chiring.</li><li>Shaxsiy va ish fayllarini uchinchi tomon bulutidan tashqarida saqlang.</li><li>Uyda, ofisda yoki o'z ulanish nuqtangizda ishlating. Mijoz shu tarmoqda bo'lsin: shu Wi-Fi, shu ulanish nuqtasi yoki USB ulanishi.</li><li>Ekran o'chiq bo'lsa ham server ishlasin. Bildirishnoma uzatishni davom ettiradi.</li></ul>
+<p><b>Kim qaysi papkani ocha olishini tanlang</b></p>
+<p>Har bir kishi yoki qurilmaga alohida hisob qo'shing va u nima qilishini cheklang.</p>
+<ul><li>Har bir ulanishga foydalanuvchi nomi va parol yarating.</li><li>Har bir hisobga o'z papkasini bering. U qurilmadagi boshqa fayllarni ko'ra olmaydi.</li><li>To'liq ruxsat bering yoki faqat o'qish hisobini tanlang: yuklab oladi, yuklamaydi, qayta nomlamaydi va o'chirmaydi.</li><li>Boshqa qurilma tayyor bo'lsa, manzil, port va hisoblarni nusxalang yoki ulashing.</li></ul>
+<p><b>Oddiy FTP emas, shifrlangan uzatish</b></p>
+<p>Bu FTPS server: aniq FTP, TLS orqali (AUTH TLS). Shifrsiz oddiy FTP ishlatilmaydi. Parol va fayllar tarmoqdan o'tganda shifrlanadi.</p>
+<ul><li>Hisob ma'lumotlari ochiq matnda yuborilmaydi. Uzatishda TLS orqali FTP ishlatiladi.</li><li>Birinchi ishga tushirishda sizga TLS sertifikati yaratiladi, qo'shimcha sozlashsiz ulanasiz.</li><li>Sertifikatingiz bo'lsa, o'rniga uni ishlating.</li><li>Ilovadagi sertifikat barmoq izini mijozdagi bilan solishtiring va shu qurilmaga yetganingizni biling.</li><li>Fayl nomlari o'z tilingizda saqlanadi, ingliz alifbosida yo'q harflar ham.</li></ul>
+<p><b>Server nima qilayotganini ko'ring</b></p>
+<ul><li>Ilova mijozga kiritiladigan manzil va portni ko'rsatadi.</li><li>Har bir hisob papkasi va faqat o'qish yoki to'liq kirishi bilan ko'rsatiladi.</li><li>Muvaffaqiyatsiz bo'lsa, jurnal ulanish faoliyatini ko'rsatadi, sababini ko'rasiz.</li><li>Portni va bir vaqtda nechta mijoz ulanishini siz tanlaysiz.</li></ul>
+<p><b>FTP serverni to'rt qadamda ishga tushiring</b></p>
+<p>1. Foydalanuvchi nomi va paroli bilan foydalanuvchi qo'shing.<br>2. Shu foydalanuvchi ochadigan papkani tanlang.<br>3. Faqat o'qish yoki to'liq kirishni tanlang.<br>4. Boshqa qurilmada FTPS mijozini oching, aniq TLS (AUTH TLS) ni yoqing, manzil, port va hisobni kiriting.</p>
+<p><b>Ulana oladigan mijozlar</b></p>
+<p>Aniq FTPS qo'llab-quvvatlaydigan har qanday mijoz ishlaydi. Misollar: Windows'da FileZilla va WinSCP, Linux'da FileZilla, Mac'da Cyberduck yoki FileZilla, boshqa telefonda FTPS mijoz.</p>
+<p><b>Odatiy foydalanish</b></p>
+<ul><li>Shu Wi-Fi'dagi telefon va noutbuk o'rtasida fayl nusxalang.</li><li>Telefon fayllarini kompyuter fayl menejeridan oching.</li><li>Faqat yuklab olish kerak bo'lsa, faqat o'qish hisobini bering.</li></ul>
+<p><b>Bu FTP server nima emas</b></p>
+<p>Fayllaringizni ishlab chiquvchiga yoki bulut xizmatiga yuklamaydi. Ommaviy fayl xosti ham emas. Ishongan tarmoqda ishlating, masalan uy yoki ofis Wi-Fi'da.</p>
+<p>FTPS Server ochiq manba (CC0-1.0) va unda reklama yo'q.</p>

@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>om-ET</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Dabaluu</value>
   </data>
@@ -239,21 +236,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>Sirrii:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>Serveerii FTPS (FTP TLS irratti) meeshaalee gidduutti faayilota karaa neetiwarkii nageenyaan qooduuf.
-
-Amaloota:
-- **Hayyama fayyadamaa** - To'annoo bal'aa hojii dubbisuu/barreessuu irratti
-- **Folldaraa hundee fayyadamaa tokkoon tokkoo** - Galmeewwan adda baafaman fayyadamaa tokkoof
-- **Nageenya karaa** - Itti yaadannoo haleellaa directory traversal irraa eegumsa
-- **UTF-8** - Arfiilee naannoo deeggara
-- **Windows UI** - Interfeesii fakkii WPF tiin ijaaramte
-- **Waraqaa ragaa ofiin mallatteeffame** - Waraqaa ragaa TLS ofumaan uumi ykn kan kee fayyadami
-- **Ijaarsa hedduu** - x64 fi ARM64 deeggara</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>FTPS qoodinsa nageenyaa. Madda banaa, beeksisa hin qabu.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Bal'ina quunnamtii galchii</value>

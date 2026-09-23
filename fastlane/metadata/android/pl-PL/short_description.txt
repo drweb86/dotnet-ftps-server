@@ -1,1 +1,1 @@
-Serwer FTPS do bezpiecznego udostępniania. Open source, bez reklam.
+Uruchom bezpieczny serwer FTP i udostępniaj pliki w sieci lokalnej, bez reklam.

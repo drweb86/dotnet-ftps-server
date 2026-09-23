@@ -1,3 +1,21 @@
-<p>Máy chủ FTPS (FTP trên TLS) để chia sẻ tệp an toàn giữa các thiết bị qua mạng.</p>
-<p><b>Tính năng:</b></p>
-<ul><li><b>Quyền người dùng</b> - Kiểm soát chi tiết các thao tác đọc/ghi</li><li><b>Thư mục gốc theo người dùng</b> - Thư mục được cô lập cho từng người dùng</li><li><b>Bảo mật đường dẫn</b> - Bảo vệ khỏi các cuộc tấn công directory traversal</li><li><b>UTF-8</b> - Hỗ trợ ký tự đã bản địa hóa</li><li><b>Chứng chỉ tự ký</b> - Tự động tạo chứng chỉ TLS hoặc dùng chứng chỉ của bạn</li></ul>
+<p>FTPS Server biến điện thoại hoặc máy tính bảng của bạn thành máy chủ FTP an toàn để chia sẻ tệp riêng tư. Chia sẻ ảnh, video và tài liệu với máy tính trên cùng Wi-Fi, mà không tải chúng lên đám mây. Bạn chọn ai được kết nối, thư mục nào họ mở được, và họ chỉ được tải tệp xuống hay cũng được sửa tệp.</p>
+<p><b>Chia sẻ tệp trên mạng của bạn, không qua đám mây</b></p>
+<p>Tệp ở lại trên thiết bị Android của bạn. Thiết bị kia kết nối với máy chủ FTP này qua mạng của chính bạn, nên bản sao không nằm trên bộ nhớ của người khác.</p>
+<ul><li>Chuyển ảnh, video và tài liệu từ điện thoại sang PC, hoặc từ PC sang điện thoại.</li><li>Không đưa tệp cá nhân và tệp công việc lên lưu trữ đám mây của bên thứ ba.</li><li>Dùng ở nhà, tại văn phòng, hoặc trên điểm phát sóng do bạn kiểm soát. Máy khách phải ở cùng một mạng: cùng Wi-Fi, hoặc cùng điểm phát sóng hay đường chia sẻ mạng qua USB.</li><li>Để máy chủ chạy khi tắt màn hình. Một thông báo giữ cho việc truyền tiếp tục.</li></ul>
+<p><b>Chọn ai được mở thư mục nào</b></p>
+<p>Thêm một đăng nhập riêng cho mỗi người hoặc mỗi thiết bị, và giới hạn việc đăng nhập đó làm được.</p>
+<ul><li>Tạo tên người dùng và mật khẩu cho mỗi kết nối.</li><li>Cho mỗi đăng nhập một thư mục riêng. Đăng nhập đó không thể duyệt các tệp còn lại trên thiết bị của bạn.</li><li>Cho phép toàn quyền, hoặc một đăng nhập chỉ đọc: tải tệp xuống được nhưng không tải lên, đổi tên hoặc xóa.</li><li>Sao chép hoặc chia sẻ địa chỉ, cổng và thông tin đăng nhập khi thiết bị kia sẵn sàng kết nối.</li></ul>
+<p><b>Truyền đã mã hóa, không phải FTP thường</b></p>
+<p>Đây là máy chủ FTPS: FTP over TLS tường minh (AUTH TLS). FTP thường, không mã hóa, không được dùng. Mật khẩu và tệp được mã hóa khi đi qua mạng.</p>
+<ul><li>Thông tin đăng nhập không được gửi ở dạng không mã hóa. Việc truyền dùng FTP over TLS.</li><li>Lần đầu khởi động sẽ tạo một chứng chỉ TLS cho bạn, nên bạn kết nối được mà không cần thiết lập thêm.</li><li>Nếu bạn đã có chứng chỉ, bạn có thể dùng chứng chỉ đó thay thế.</li><li>So sánh vân tay chứng chỉ mà ứng dụng hiển thị với vân tay mà máy khách hiển thị, để biết bạn đã tới đúng thiết bị này.</li><li>Tên tệp bằng ngôn ngữ của bạn được giữ nguyên, kể cả chữ cái không thuộc bảng chữ cái tiếng Anh.</li></ul>
+<p><b>Xem máy chủ đang làm gì</b></p>
+<ul><li>Ứng dụng hiển thị địa chỉ và cổng để nhập vào máy khách.</li><li>Mỗi đăng nhập được liệt kê cùng thư mục của nó và quyền là chỉ đọc hay toàn quyền.</li><li>Nhật ký cho thấy hoạt động kết nối khi có lỗi và bạn cần xem vì sao.</li><li>Bạn chọn cổng và số máy khách có thể kết nối cùng lúc.</li></ul>
+<p><b>Khởi động máy chủ FTP trong bốn bước</b></p>
+<p>1. Thêm một người dùng, với tên người dùng và mật khẩu.<br>2. Chọn thư mục mà người dùng đó được phép mở.<br>3. Chọn chỉ đọc hoặc toàn quyền.<br>4. Trên thiết bị kia, mở một máy khách FTPS, bật TLS tường minh (AUTH TLS), rồi nhập địa chỉ, cổng và đăng nhập.</p>
+<p><b>Máy khách có thể kết nối</b></p>
+<p>Máy khách nào hỗ trợ FTPS tường minh đều dùng được. Ví dụ: FileZilla và WinSCP trên Windows, FileZilla trên Linux, Cyberduck hoặc FileZilla trên Mac, và một máy khách FTPS trên điện thoại khác.</p>
+<p><b>Cách dùng thường gặp</b></p>
+<ul><li>Sao chép tệp giữa điện thoại và máy tính xách tay trên cùng Wi-Fi.</li><li>Mở tệp trên điện thoại từ trình quản lý tệp trên máy tính để bàn.</li><li>Đưa cho ai đó một đăng nhập chỉ đọc khi họ chỉ nên tải tệp xuống và không làm gì khác.</li></ul>
+<p><b>Máy chủ FTP này không phải là gì</b></p>
+<p>Nó không tải tệp của bạn lên nhà phát triển hoặc một dịch vụ đám mây. Nó cũng không phải máy chủ tệp công khai. Hãy dùng trên mạng bạn tin cậy, chẳng hạn Wi-Fi ở nhà hoặc văn phòng.</p>
+<p>FTPS Server là mã nguồn mở (CC0-1.0) và không chứa quảng cáo.</p>

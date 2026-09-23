@@ -1,0 +1,10 @@
+Wi-Fi yoki mahalliy tarmoqda fayl ulashish uchun xavfsiz FTP server (FTPS)
+Suratlar, videolar va hujjatlar qurilmangizda qoladi. Bulutga hech narsa yuklanmaydi
+Har bir kishi o'z hisobini va undan chiqib ketolmaydigan papkani oladi
+Faqat o'qish hisoblari yoki yuklash, qayta nomlash va o'chirish uchun to'liq ruxsat
+Hisob ma'lumotlari va fayllar uzatish paytida TLS orqali FTP bilan shifrlanadi
+FileZilla, WinSCP yoki aniq FTPS qo'llab-quvvatlaydigan istalgan mijozdan ulaning
+Daqiqalar ichida boshlang: foydalanuvchi qo'shing, papkani tanlang, so'ng ulaning
+Siz uchun TLS sertifikati yaratiladi yoki qo'lingizdagidan foydalaning
+Fayl nomlari o'z tilingizda saqlanadi, faqat ingliz harflari emas
+Ochiq manba, bepul va reklamasiz

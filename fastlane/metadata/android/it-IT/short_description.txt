@@ -1,1 +1,1 @@
-Server FTPS per file sicuri. Open source, senza pubblicità.
+Avvia un server FTP sicuro e condividi file nella rete locale, senza pubblicità.

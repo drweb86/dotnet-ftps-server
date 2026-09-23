@@ -1,1 +1,1 @@
-FTPS server for secure file sharing. Open-source, ads-free.
+Run a secure FTP server and share files on your local network, with no ads.

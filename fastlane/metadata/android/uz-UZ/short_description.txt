@@ -1,1 +1,1 @@
-Xavfsiz fayl ulashish FTPS serveri. Ochiq kod, reklamasiz.
+Xavfsiz FTP server: mahalliy tarmoqda fayl ulashish, reklamasiz.

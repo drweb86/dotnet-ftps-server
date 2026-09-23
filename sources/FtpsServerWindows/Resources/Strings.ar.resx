@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>ar-SA</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ إضافة</value>
   </data>
@@ -236,21 +233,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>صالحة:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>خادم FTPS (FTP عبر TLS) لمشاركة الملفات بأمان بين الأجهزة عبر الشبكة.
-
-الميزات:
-- **أذونات المستخدم** - تحكم دقيق في عمليات القراءة/الكتابة
-- **مجلدات جذر لكل مستخدم** - أدلة معزولة لكل مستخدم
-- **أمان المسارات** - حماية من هجمات اجتياز الدليل
-- **UTF-8** - يدعم الأحرف المترجمة
-- **واجهة Windows** - واجهة رسومية مبنية بـ WPF
-- **شهادات موقعة ذاتيًا** - إنشاء شهادات TLS تلقائيًا أو استخدام شهاداتك
-- **بنى متعددة** - يدعم x64 وARM64</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>خادم FTPS للمشاركة الآمنة. مفتوح المصدر وبدون إعلانات.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>نسخ تفاصيل الاتصال</value>

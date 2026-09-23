@@ -1,9 +1,59 @@
-Serwer FTPS (FTP przez TLS) do bezpiecznego udostępniania plików między urządzeniami w sieci.
+FTPS Server zamienia Twój telefon lub tablet w bezpieczny serwer FTP do prywatnego udostępniania plików. Udostępniaj zdjęcia, filmy i dokumenty komputerowi w tym samym Wi-Fi, bez wysyłania ich do chmury. Wybierasz, kto może się połączyć, który folder może otworzyć oraz czy może tylko pobierać pliki, czy także je zmieniać.
 
-Funkcje:
+Udostępniaj pliki w swojej sieci, nie przez chmurę
 
-- Uprawnienia użytkowników - Szczegółowa kontrola operacji odczytu/zapisu
-- Foldery główne dla każdego użytkownika - Izolowane katalogi dla każdego użytkownika
-- Bezpieczeństwo ścieżek - Ochrona przed atakami directory traversal
-- UTF-8 - Obsługa znaków zlokalizowanych
-- Certyfikaty z podpisem własnym - Automatyczne generowanie certyfikatów TLS lub użycie własnych
+Pliki zostają na Twoim urządzeniu z Android. Drugie urządzenie łączy się z tym serwerem FTP przez Twoją sieć, więc kopia nie leży w magazynie innej osoby.
+
+- Przenoś zdjęcia, filmy i dokumenty z telefonu na PC albo z PC na telefon.
+- Trzymaj pliki prywatne i służbowe z dala od magazynu w chmurze osób trzecich.
+- Używaj go w domu, w biurze albo przez punkt dostępu, który kontrolujesz. Klient musi być w tej samej sieci: to samo Wi-Fi, ten sam punkt dostępu albo to samo łącze udostępniania przez USB.
+- Zostaw serwer włączony przy wyłączonym ekranie. Powiadomienie utrzymuje transfery.
+
+Wybierz, kto może otworzyć który folder
+
+Dodaj osobne logowanie dla każdej osoby lub urządzenia i ogranicz, co to logowanie może robić.
+
+- Utwórz nazwę użytkownika i hasło dla każdego połączenia.
+- Każdemu logowaniu daj własny folder. To logowanie nie może przeglądać pozostałych plików na Twoim urządzeniu.
+- Zezwól na pełny dostęp albo na logowanie tylko do odczytu, które może pobierać pliki, ale nie może ich wysyłać, zmieniać ich nazw ani ich usuwać.
+- Skopiuj lub udostępnij adres, port i logowania, gdy drugie urządzenie jest gotowe do połączenia.
+
+Szyfrowany transfer, nie zwykły FTP
+
+To jest FTPS Server: jawny FTP przez TLS (AUTH TLS). Zwykły FTP, bez szyfrowania, nie jest używany. Hasło i pliki są szyfrowane, gdy przechodzą przez sieć.
+
+- Logowanie nie jest wysyłane otwartym tekstem. Transfery używają FTP przez TLS.
+- Pierwsze uruchomienie tworzy dla Ciebie certyfikat TLS, więc możesz się połączyć bez dodatkowej konfiguracji.
+- Jeśli masz już certyfikat, możesz użyć go zamiast tamtego.
+- Porównaj odcisk certyfikatu pokazany w aplikacji z odciskiem pokazanym przez klienta, aby wiedzieć, że to jest to urządzenie.
+- Nazwy plików w Twoim własnym języku są zachowane, także litery spoza alfabetu angielskiego.
+
+Zobacz, co robi serwer
+
+- Aplikacja pokazuje adres i port do wpisania w kliencie.
+- Każde logowanie jest na liście ze swoim folderem i z informacją, czy dostęp jest tylko do odczytu, czy pełny.
+- Dziennik pokazuje aktywność połączeń, gdy coś się nie uda i musisz zobaczyć, dlaczego.
+- Wybierasz port i to, ilu klientów może być połączonych jednocześnie.
+
+Uruchom serwer FTP w czterech krokach
+
+1. Dodaj użytkownika z nazwą użytkownika i hasłem.
+2. Wybierz folder, który ten użytkownik może otworzyć.
+3. Wybierz dostęp tylko do odczytu albo pełny.
+4. Na drugim urządzeniu otwórz klienta FTPS, włącz jawny TLS (AUTH TLS) i wpisz adres, port oraz logowanie.
+
+Klienci, którzy mogą się połączyć
+
+Działa każdy klient z obsługą jawnego FTPS. Przykłady: FileZilla i WinSCP w systemie Windows, FileZilla w systemie Linux, Cyberduck lub FileZilla na Mac oraz klient FTPS na innym telefonie.
+
+Typowe zastosowania
+
+- Kopiuj pliki między telefonem a laptopem w tym samym Wi-Fi.
+- Otwieraj pliki z telefonu w menedżerze plików na komputerze.
+- Daj komuś logowanie tylko do odczytu, gdy ma pobrać pliki i nic więcej.
+
+Czym ten serwer FTP nie jest
+
+Nie wysyła Twoich plików do twórcy ani do usługi w chmurze. Nie jest też publiczną usługą udostępniania plików. Używaj go w sieci, której ufasz, na przykład w Wi-Fi w domu lub w biurze.
+
+FTPS Server jest oprogramowaniem o otwartym kodzie źródłowym (CC0-1.0) i nie zawiera reklam.

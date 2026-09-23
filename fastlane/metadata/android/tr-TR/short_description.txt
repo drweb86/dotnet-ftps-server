@@ -1,1 +1,1 @@
-Güvenli dosya paylaşımı için FTPS. Açık kaynak, reklamsız.
+Güvenli bir FTP sunucusu çalıştırın, yerel ağda dosya paylaşın, reklamsız.

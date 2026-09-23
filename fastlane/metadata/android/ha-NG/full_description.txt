@@ -1,3 +1,21 @@
-<p>Uwar garken FTPS (FTP akan TLS) don raba fayiloli cikin aminci tsakanin na'urori a kan hanyar sadarwa.</p>
-<p><b>Siffofi:</b></p>
-<ul><li><b>Izinonin mai amfani</b> - Culakulewar aiki na karantawa/rubutu</li><li><b>Folder ɗin tushe na kowane mai amfani</b> - Keɓaɓɓun jagorori ga kowane mai amfani</li><li><b>Tsaron hanya</b> - Kariya daga hare-haren directory traversal</li><li><b>UTF-8</b> - Yana goyon bayan haruffan gida</li><li><b>Takaddun shaida da aka sa hannu da kai</b> - Samar da takaddun TLS ta atomatik ko yi amfani da naku</li></ul>
+<p>FTPS Server yana mai da wayarka ko allon hannu ɗinka uwar garken FTP mai aminci don raba fayiloli a asirce. Raba hotuna, bidiyo, da takardu tare da kwamfuta a Wi-Fi ɗaya, ba tare da lodawa zuwa gajimare ba. Kai ne kake zaɓar wa zai iya haɗawa, wace folda za su iya buɗewa, kuma ko za su iya sauke fayiloli kawai ko ma su canza su.</p>
+<p><b>Raba fayiloli a sadarwarka, ba ta hanyar gajimare ba</b></p>
+<p>Fayiloli suna zama a na'urarka ta Android. Waccan na'urar tana haɗawa da wannan uwar garken FTP ta sadarwarka, don haka kwafi baya zaune a ma'ajiyar wani.</p>
+<ul><li>Motsar da hotuna, bidiyo, da takardu daga wayarka zuwa PC, ko daga PC zuwa wayarka.</li><li>Ajiye fayilolin kai da na aiki a waje da ma'ajiyar gajimare ta wani.</li><li>Yi amfani da shi a gida, a ofis, ko a rabar sadarwar da kake iko da ita. Mai haɗin dole ne ya kasance a sadarwa ɗaya: Wi-Fi ɗaya, ko rabar sadarwa ɗaya ko hanyar haɗin USB.</li><li>Bar uwar garken tana aiki ko allon ya kashe. Sanarwa tana ci gaba da jigilar fayiloli.</li></ul>
+<p><b>Zaɓi wa zai iya buɗe wace folda</b></p>
+<p>Ƙara shiga daban ga kowane mutum ko na'ura, kuma ka iyakance abin da wannan shiga zai iya yi.</p>
+<ul><li>Ƙirƙiri sunan mai amfani da kalmar sirri ga kowane haɗi.</li><li>Ba kowane shiga foldarsa. Wannan shiga ba zai iya duba sauran fayilolin da ke na'urarka ba.</li><li>Ba da cikakken dama, ko shiga na karatu kawai wanda zai iya sauke fayiloli amma ba zai iya loda, sake suna, ko goge ba.</li><li>Kwafi ko raba adireshi, lambar shiga, da shigogi lokacin da waccan na'urar ta shirya haɗawa.</li></ul>
+<p><b>Jigila mai ɓoye, ba FTP mara ɓoye ba</b></p>
+<p>Wannan uwar garken FTPS ce: FTP bayyananne a kan TLS (AUTH TLS). Ba a amfani da FTP mara ɓoye ba. Ana ɓoye kalmar sirri da fayiloli yayin da suke ƙetare sadarwar.</p>
+<ul><li>Ba a aika shiga ba tare da ɓoye ba. Jigila tana amfani da FTP a kan TLS.</li><li>Fara na farko yana ƙirƙira maka takaddar shaida ta TLS, domin ka iya haɗawa ba tare da ƙarin saiti ba.</li><li>Idan kana da takaddar shaida tuni, za ka iya amfani da ita a maimakon.</li><li>Kwatanta alamar yatsar takaddar shaida da aka nuna a manhaja da wadda mai haɗinka ya nuna, domin ka san ka isa wannan na'urar.</li><li>Ana kiyaye sunayen fayil a harshenka, har da haruffa waɗanda ba su cikin haruffan Turanci ba.</li></ul>
+<p><b>Duba abin da uwar garken take yi</b></p>
+<ul><li>Manhaja tana nuna adireshi da lambar shiga da za a shigar a mai haɗin.</li><li>An jera kowane shiga tare da foldarsa da ko dama karatu kawai ce ko cikakke.</li><li>Rajista tana nuna ayyukan haɗi idan wani abu ya gaza kuma kana buƙatar ganin dalili.</li><li>Kai ne kake zaɓar lambar shiga da yawan masu haɗin da za su iya haɗawa lokaci ɗaya.</li></ul>
+<p><b>Fara uwar garken FTP a matakai huɗu</b></p>
+<p>1. Ƙara mai amfani, tare da sunan mai amfani da kalmar sirri.<br>2. Zaɓi foldar da aka amince wa wannan mai amfani ya buɗe.<br>3. Zaɓi karatu kawai ko cikakken dama.<br>4. A waccan na'urar, buɗe mai haɗin FTPS, kunna TLS bayyananne (AUTH TLS), sannan ka shigar da adireshi, lambar shiga, da shiga.</p>
+<p><b>Masu haɗin da za su iya haɗawa</b></p>
+<p>Duk mai haɗin da ke goyon bayan FTPS bayyananne zai yi aiki. Misalai: FileZilla da WinSCP a Windows, FileZilla a Linux, Cyberduck ko FileZilla a Mac, da mai haɗin FTPS a wata waya.</p>
+<p><b>Amfani na yau da kullum</b></p>
+<ul><li>Kwafi fayiloli tsakanin waya da kwamfutar tafi-da-gidanka a Wi-Fi ɗaya.</li><li>Buɗe fayilolin waya daga mai sarrafa fayil na tebur.</li><li>Ka ba wani shiga na karatu kawai idan ya kamata ya sauke fayiloli kuma ba wani abu ba.</li></ul>
+<p><b>Abin da wannan uwar garken FTP ba ta zama ba</b></p>
+<p>Ba ta loda fayilolinka zuwa ga mai ƙirƙira ko zuwa sabis na gajimare ba. Haka kuma ba wurin karɓar fayilolin jama'a ba ce. Yi amfani da ita a sadarwar da kake aminta da ita, kamar Wi-Fi na gida ko na ofis.</p>
+<p>FTPS Server bude tushe ne (CC0-1.0) kuma babu talla a ciki.</p>

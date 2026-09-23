@@ -1,0 +1,10 @@
+Sarvarii FTP nageenya qabu (FTPS), faayila Wi-Fi ykn networkii naannoo irratti qooduuf
+Suuraan, viidiyoon fi sanadoonni meeshaa kee irratti hafa. Wanni kamiyyuu duumessaatti hin ol ka'u
+Namni hundi seensa mataa isaa fi ukkaankaa keessaa bahuu hin dandeenye argata
+Herrega dubbisuu qofa, ykn ol kaa'uu, maqaa jijjiiruu fi haquuf dhaqqabummaa guutuu
+Seensoonni fi faayiloonni yeroo darban FTP over TLS tiin icciteeffamu
+FileZilla, WinSCP, ykn maamilaa explicit FTPS deeggaru kamiinuu walqunnamsiisi
+Daqiiqaa muraasa keessatti jalqabi: fayyadamaa dabali, ukkaankaa filadhu, booda walqunnamsiisi
+Ragaan TLS siif uumama, ykn kan duraan qabdu fayyadami
+Maqaan faayilaa afaan keetiin ni eegama, qubee Ingiliffaa qofa odoo hin taane
+Madda banaa fi bilisa fayyadamamu, beeksisa malee

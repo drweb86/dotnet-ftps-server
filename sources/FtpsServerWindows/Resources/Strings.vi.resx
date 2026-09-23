@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>vi-VN</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Thêm</value>
   </data>
@@ -236,21 +233,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>Hợp lệ:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>Máy chủ FTPS (FTP trên TLS) để chia sẻ tệp an toàn giữa các thiết bị qua mạng.
-
-Tính năng:
-- **Quyền người dùng** - Kiểm soát chi tiết các thao tác đọc/ghi
-- **Thư mục gốc theo người dùng** - Thư mục được cô lập cho từng người dùng
-- **Bảo mật đường dẫn** - Bảo vệ khỏi các cuộc tấn công directory traversal
-- **UTF-8** - Hỗ trợ ký tự đã bản địa hóa
-- **Giao diện Windows** - Giao diện đồ họa được xây dựng bằng WPF
-- **Chứng chỉ tự ký** - Tự động tạo chứng chỉ TLS hoặc dùng chứng chỉ của bạn
-- **Nhiều kiến trúc** - Hỗ trợ x64 và ARM64</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Máy chủ FTPS chia sẻ tệp an toàn. Mã nguồn mở, không quảng cáo.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Sao chép chi tiết kết nối</value>

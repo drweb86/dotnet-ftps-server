@@ -1,0 +1,10 @@
+Secure FTP server (FTPS) for sharing files on your Wi-Fi or local network
+Photos, videos, and documents stay on your device. Nothing is uploaded to the cloud
+Each person gets their own login and a folder they cannot leave
+Read-only accounts, or full access to upload, rename, and delete
+Logins and files are encrypted in transit with FTP over TLS
+Connect from FileZilla, WinSCP, or any client that supports explicit FTPS
+Start in minutes: add a user, choose a folder, then connect
+A TLS certificate is created for you, or use one you already have
+File names in your language are kept, not only English letters
+Open source and free to use, with no ads

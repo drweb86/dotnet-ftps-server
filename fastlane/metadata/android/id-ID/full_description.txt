@@ -1,3 +1,21 @@
-<p>Server FTPS (FTP melalui TLS) untuk berbagi file secara aman antar perangkat melalui jaringan.</p>
-<p><b>Fitur:</b></p>
-<ul><li><b>Izin pengguna</b> - Kontrol terperinci atas operasi baca/tulis</li><li><b>Folder akar per pengguna</b> - Direktori terisolasi untuk setiap pengguna</li><li><b>Keamanan jalur</b> - Perlindungan dari serangan directory traversal</li><li><b>UTF-8</b> - Mendukung karakter yang dilokalkan</li><li><b>Sertifikat self-signed</b> - Buat sertifikat TLS secara otomatis atau gunakan milik Anda</li></ul>
+<p>FTPS Server mengubah ponsel atau tablet Anda menjadi server FTP yang aman untuk berbagi file secara pribadi. Bagikan foto, video, dan dokumen dengan komputer di Wi-Fi yang sama, tanpa mengunggahnya ke cloud. Anda memilih siapa yang dapat terhubung, folder mana yang dapat mereka buka, dan apakah mereka hanya dapat mengunduh file atau juga mengubahnya.</p>
+<p><b>Berbagi file di jaringan Anda, bukan lewat cloud</b></p>
+<p>File tetap di perangkat Android Anda. Perangkat lain terhubung ke server FTP ini lewat jaringan Anda sendiri, jadi salinannya tidak tersimpan di penyimpanan orang lain.</p>
+<ul><li>Pindahkan foto, video, dan dokumen dari ponsel ke PC, atau dari PC ke ponsel.</li><li>Jauhkan file pribadi dan file kerja dari penyimpanan cloud pihak ketiga.</li><li>Pakai di rumah, di kantor, atau pada hotspot yang Anda kendalikan. Klien harus berada di jaringan yang sama: Wi-Fi yang sama, atau hotspot yang sama maupun tautan penambatan USB.</li><li>Biarkan server tetap berjalan saat layar mati. Notifikasi membuat transfer terus berjalan.</li></ul>
+<p><b>Pilih siapa yang boleh membuka folder mana</b></p>
+<p>Tambahkan login terpisah untuk setiap orang atau perangkat, dan batasi apa yang login itu boleh lakukan.</p>
+<ul><li>Buat nama pengguna dan kata sandi untuk setiap koneksi.</li><li>Beri setiap login foldernya sendiri. Login itu tidak dapat menelusuri file lain di perangkat Anda.</li><li>Izinkan akses penuh, atau login hanya baca yang dapat mengunduh file tetapi tidak dapat mengunggah, mengganti nama, atau menghapus.</li><li>Salin atau bagikan alamat, port, dan login saat perangkat lain siap terhubung.</li></ul>
+<p><b>Transfer terenkripsi, bukan FTP biasa</b></p>
+<p>Ini adalah server FTPS: FTP over TLS eksplisit (AUTH TLS). FTP biasa, tanpa enkripsi, tidak digunakan. Kata sandi dan file dienkripsi saat melintasi jaringan.</p>
+<ul><li>Login tidak dikirim dalam bentuk terbuka. Transfer memakai FTP over TLS.</li><li>Saat pertama kali dijalankan, sertifikat TLS dibuat untuk Anda, sehingga Anda dapat terhubung tanpa pengaturan tambahan.</li><li>Jika Anda sudah punya sertifikat, Anda dapat memakai sertifikat itu sebagai gantinya.</li><li>Bandingkan sidik jari sertifikat yang ditampilkan di aplikasi dengan yang ditampilkan klien, supaya Anda tahu bahwa Anda mencapai perangkat ini.</li><li>Nama file dalam bahasa Anda tetap utuh, termasuk huruf yang tidak ada dalam alfabet Inggris.</li></ul>
+<p><b>Lihat apa yang sedang server lakukan</b></p>
+<ul><li>Aplikasi menampilkan alamat dan port untuk dimasukkan di klien.</li><li>Setiap login tercantum bersama foldernya dan apakah aksesnya hanya baca atau penuh.</li><li>Catatan menampilkan aktivitas koneksi ketika sesuatu gagal dan Anda perlu melihat penyebabnya.</li><li>Anda memilih port dan berapa banyak klien yang dapat terhubung sekaligus.</li></ul>
+<p><b>Mulai server FTP dalam empat langkah</b></p>
+<p>1. Tambahkan pengguna, dengan nama pengguna dan kata sandi.<br>2. Pilih folder yang boleh dibuka pengguna itu.<br>3. Pilih hanya baca atau akses penuh.<br>4. Di perangkat lain, buka klien FTPS, aktifkan TLS eksplisit (AUTH TLS), lalu masukkan alamat, port, dan login.</p>
+<p><b>Klien yang dapat terhubung</b></p>
+<p>Klien mana pun yang mendukung FTPS eksplisit dapat dipakai. Contoh: FileZilla dan WinSCP di Windows, FileZilla di Linux, Cyberduck atau FileZilla di Mac, dan klien FTPS di ponsel lain.</p>
+<p><b>Penggunaan umum</b></p>
+<ul><li>Salin file antara ponsel dan laptop di Wi-Fi yang sama.</li><li>Buka file ponsel dari pengelola file desktop.</li><li>Berikan login hanya baca kepada seseorang yang hanya boleh mengunduh file dan tidak melakukan hal lain.</li></ul>
+<p><b>Apa yang bukan server FTP ini</b></p>
+<p>Server ini tidak mengunggah file Anda ke pengembang atau ke layanan cloud. Ini juga bukan host file publik. Pakai di jaringan yang Anda percaya, seperti Wi-Fi rumah atau kantor.</p>
+<p>FTPS Server bersifat sumber terbuka (CC0-1.0) dan tidak berisi iklan.</p>

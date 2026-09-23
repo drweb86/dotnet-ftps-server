@@ -1,0 +1,10 @@
+Seva salama ya FTP (FTPS) ya kushiriki faili kwenye Wi-Fi au mtandao wako wa karibu
+Picha, video, na hati hubaki kwenye kifaa chako. Hakuna kinachopakiwa kwenye wingu
+Kila mtu anapata kuingia kwake na folda asiyoweza kuondoka ndani yake
+Akaunti za kusoma tu, au ufikiaji kamili wa kupakia, kubadilisha jina, na kufuta
+Kuingia na faili husimbwa njiani kwa FTP juu ya TLS
+Unganisha kutoka FileZilla, WinSCP, au mteja yeyote anayetumia FTPS dhahiri
+Anza kwa dakika: ongeza mtumiaji, chagua folda, kisha unganisha
+Cheti cha TLS kinaundwa kwa ajili yako, au tumia ulichonacho tayari
+Majina ya faili katika lugha yako yanahifadhiwa, si herufi za Kiingereza tu
+Chanzo huria na bure kutumia, bila matangazo

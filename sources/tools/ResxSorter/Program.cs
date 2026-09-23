@@ -2,25 +2,17 @@ using System.Text;
 using System.Xml;
 
 // =============================================================================
-// TECHNICAL KEYS IN RESX FILES (DO NOT TRANSLATE)
+// WINGET LOCALE FILES
 // =============================================================================
-// This tool reads special "_Technical_*" keys from .resx files to generate
-// winget manifest locale files. These keys should NOT be translated - they
-// contain technical identifiers used by external systems.
+// Winget copy is not stored in .resx files. Those files are embedded in the
+// Windows app, and the store text is not shown in the UI.
 //
-// Available technical keys:
-//
-// 1. _Technical_WingetLocale
-//    - Purpose: Winget package manager locale identifier
-//    - Example values: "en-US", "de-DE", "zh-CN", "pt-BR"
-//    - Used by: WingetLocaleGenerator to create locale.*.yaml files
-//    - Required for: All languages that should have winget locale files
-//
-// Adding a new language:
-//   1. Create Strings.{culture}.resx file in FtpsServerWindows/Resources
-//   2. Add _Technical_WingetLocale with the appropriate locale code
-//   3. Add Winget_ShortDescription and Winget_Description translations
-//   4. ResxSorter generates locale YAML during winget submission (not committed)
+// For each fastlane locale folder:
+//   fastlane/metadata/winget/{locale}/description.txt   Windows description
+//   fastlane/metadata/android/{locale}/short_description.txt
+// The folder name is the winget locale (en-US, zh-CN, pt-BR). en-US is the
+// default locale. ResxSorter writes the YAML during winget submission; the
+// generated files are not committed.
 // =============================================================================
 
 namespace Codice.SortResX
@@ -152,43 +144,26 @@ namespace Codice.SortResX
     {
         public static void Generate(string sourceDir)
         {
-            var localizationDir = Path.Combine(sourceDir, "FtpsServerWindows", "Resources");
+            var repoRoot = Directory.GetParent(sourceDir)!.FullName;
+            var androidMetadataDir = Path.Combine(repoRoot, "fastlane", "metadata", "android");
+            var wingetMetadataDir = Path.Combine(repoRoot, "fastlane", "metadata", "winget");
             var wingetPkgsDir = Path.Combine(sourceDir, "tools", "winget-pkgs");
 
-            var allResx = Directory.GetFiles(localizationDir, "*.resx")
-                .OrderBy(x => x.Length);
-
-            foreach (var resxPath in allResx)
+            foreach (var localeDir in Directory.GetDirectories(wingetMetadataDir).OrderBy(x => x))
             {
-                var doc = new XmlDocument();
-                doc.Load(resxPath);
+                var wingetLocale = Path.GetFileName(localeDir);
+                var descriptionPath = Path.Combine(localeDir, "description.txt");
+                var shortPath = Path.Combine(androidMetadataDir, wingetLocale, "short_description.txt");
 
-                string? wingetLocale = null;
-                string? shortDescription = null;
-                string? description = null;
-
-                foreach (XmlNode node in doc.SelectNodes("//data")!)
+                if (!File.Exists(descriptionPath) || !File.Exists(shortPath))
                 {
-                    var name = node.Attributes?["name"]?.Value;
-                    if (name == "_Technical_WingetLocale")
-                        wingetLocale = node.SelectSingleNode("value")?.InnerText;
-                    else if (name == "Winget_ShortDescription")
-                        shortDescription = node.SelectSingleNode("value")?.InnerText;
-                    else if (name == "Winget_Description")
-                        description = node.SelectSingleNode("value")?.InnerText;
-                }
-
-                if (string.IsNullOrWhiteSpace(wingetLocale))
-                    continue;
-
-                if (shortDescription == null || description == null)
-                {
-                    Console.WriteLine($"Missing Winget_ keys in {resxPath}, skipping locale generation.");
+                    Console.WriteLine($"Missing winget texts for {wingetLocale}, skipping locale generation.");
                     continue;
                 }
 
-                var culture = ExtractCulture(resxPath);
-                var isDefaultLocale = culture == "";
+                var description = File.ReadAllText(descriptionPath).Replace("\r\n", "\n").TrimEnd('\n', '\r');
+                var shortDescription = File.ReadAllText(shortPath).Replace("\r\n", "\n").Trim();
+                var isDefaultLocale = wingetLocale.Equals("en-US", StringComparison.OrdinalIgnoreCase);
                 var schemaType = isDefaultLocale ? "defaultLocale" : "locale";
                 var manifestType = isDefaultLocale ? "defaultLocale" : "locale";
                 var outputFileName = $"SiarheiKuchuk.FtpsServer.locale.{wingetLocale}.yaml";
@@ -204,7 +179,7 @@ namespace Codice.SortResX
                 writer.WriteLine("PublisherUrl: https://github.com/drweb86");
                 writer.WriteLine("PublisherSupportUrl: https://github.com/drweb86/dotnet-ftps-server/issues");
                 writer.WriteLine("Author: Siarhei Kuchuk");
-                writer.WriteLine("PackageName: FtpsServer");
+                writer.WriteLine("PackageName: FTPS Server");
                 writer.WriteLine("PackageUrl: https://github.com/drweb86/dotnet-ftps-server");
                 writer.WriteLine("License: CC0-1.0");
                 writer.WriteLine("LicenseUrl: https://raw.githubusercontent.com/drweb86/dotnet-ftps-server/refs/heads/main/LICENSE");
@@ -230,13 +205,6 @@ namespace Codice.SortResX
 
                 Console.WriteLine($"Generated {outputPath}");
             }
-        }
-
-        private static string ExtractCulture(string resxPath)
-        {
-            var fileName = Path.GetFileNameWithoutExtension(resxPath);
-            var dotIndex = fileName.IndexOf('.');
-            return dotIndex >= 0 ? fileName[(dotIndex + 1)..] : "";
         }
 
         // Double-quoted: plain YAML scalars fail on embedded ':' (e.g. trailing ':' in translations).

@@ -1,0 +1,10 @@
+Sava FTP nchekwa (FTPS) maka ikesa faịlụ na Wi-Fi ma ọ bụ netwọkụ gị
+Foto, vidiyo, na akwụkwọ na-anọ na ngwaọrụ gị. Ọ dịghị ihe a na-ebugo n'igwe ojii
+Onye ọ bụla na-enweta nbanye nke ya na folda ha na-apụghị ịpụ na ya
+Akaụntụ ịgụ naanị, ma ọ bụ ohere zuru oke ibugo, ịgbanwe aha, na ihichapụ
+Nbanye na faịlụ na-ezochi ka ha na-aga, site na FTP n'elu TLS
+Jikọọ site na FileZilla, WinSCP, ma ọ bụ ngwa njikọ ọ bụla na-akwado FTPS kpọmkwem
+Malite n'ime nkeji: tinye onye ọrụ, họrọ folda, wee jikọọ
+A na-emepụta asambodo TLS maka gị, ma ọ bụ jiri nke ị nwetalarị
+A na-edobe aha faịlụ n'asụsụ gị, ọ bụghị naanị mkpụrụedemede Bekee
+Isi mmalite mepere emepe, n'efu iji, enweghị mgbasa ozi

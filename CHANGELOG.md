@@ -2,6 +2,7 @@
 
 ## Changes
 - Android: disable ART baseline profiles so F-Droid can reproduce the GitHub APK.
+- Fixup ASO complaints.
 
 # 2026.09.20
 

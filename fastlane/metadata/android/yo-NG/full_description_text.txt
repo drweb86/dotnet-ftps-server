@@ -1,9 +1,59 @@
-Olùpèsè FTPS (FTP lórí TLS) fún pínpín fáìlì láìléwu láàárín àwọn ẹ̀rọ lórí nẹ́tíwọ́ọ̀kì.
+FTPS Server ń sọ fóònù tàbí tábílẹ̀tì rẹ di olùpèsè FTP tó ní ààbò fún pínpín fáìlì ní ìkọ̀kọ̀. Pín àwọn fọ́tò, fídíò, àti ìwé àkọsílẹ̀ pẹ̀lú kọ̀mpútà tó wà lórí Wi-Fi kan náà, láì gbé wọn sókè sí àwọsánmà. Ìwọ ni o ń yan ẹni tí ó lè so pọ̀, fódà wo ni wọ́n lè ṣí, àti bóyá wọ́n lè gba fáìlì sílẹ̀ nìkan tàbí kí wọ́n tún lè yí wọn padà.
 
-Àwọn ẹ̀yà:
+Pín fáìlì lórí nẹtiwọọki rẹ, kì í ṣe nípasẹ̀ àwọsánmà
 
-- Àwọn ìyọ̀ǹda olùmúlò - Ìṣàkóso tó kún fún ìṣe kíkà/kíkọ
-- Àwọn fódà gbòngbò fún olùkọ̀ọ̀kan - Àwọn àtòjọ tí a yà sọ́tọ̀ fún olùmúlò kọ̀ọ̀kan
-- Ààbò ọ̀nà - Ààbò lọ́wọ́ ìkọlù directory traversal
-- UTF-8 - Ṣe àtìlẹ́yìn àwọn lẹ́tà tí a ṣe àdàkọ
-- Ìwé-ẹ̀rí tí a fọwọ́ sí fúnrararẹ̀ - Ṣẹ̀dá ìwé-ẹ̀rí TLS fúnra rẹ̀ tàbí lo tìrẹ
+Fáìlì ń dúró lórí ẹ̀rọ Android rẹ. Ẹ̀rọ kejì ń so pọ̀ mọ́ olùpèsè FTP yìí nípasẹ̀ nẹtiwọọki tìrẹ, nítorí náà ẹ̀dà kò jókòó lórí ìfipamọ́ ẹlòmíràn.
+
+- Gbé àwọn fọ́tò, fídíò, àti ìwé àkọsílẹ̀ láti fóònù rẹ lọ sí PC, tàbí láti PC wá sí fóònù rẹ.
+- Pa fáìlì ara ẹni àti iṣẹ́ mọ́ kúrò ní ìfipamọ́ àwọsánmà ẹlòmíràn.
+- Lò ó nílé, ní ọ́fíìsì, tàbí lórí ibùdó ìpín nẹtiwọọki tí o ń darí. Olùsopọ̀ gbọdọ̀ wà lórí nẹtiwọọki kan náà: Wi-Fi kan náà, tàbí ibùdó ìpín kan náà tàbí ìjápọ̀ pínpín USB.
+- Fi olùpèsè sílẹ̀ kí ó máa ṣiṣẹ́ bí ojú ìwòran bá kú. Ìfitónilétí ń jẹ́ kí ìgbéjáde máa lọ.
+
+Yan ẹni tí ó lè ṣí fódà wo
+
+Fi ìwọlé ọtọ̀ọ̀tọ̀ kún fún olúkúlùkù ènìyàn tàbí ẹ̀rọ, kí o sì fi òpin sí ohun tí ìwọlé yẹn lè ṣe.
+
+- Ṣẹ̀dá orúkọ olùmúlò àti ọ̀rọ̀ ìgbaniwọlé fún ìsopọ̀ kọ̀ọ̀kan.
+- Fún ìwọlé kọ̀ọ̀kan ní fódà tirẹ̀. Ìwọlé yẹn kò lè ṣàyẹ̀wò àwọn fáìlì yòókù lórí ẹ̀rọ rẹ.
+- Fàyè gba ànfààní kíkún, tàbí ìwọlé kíkà nìkan tí ó lè gba fáìlì sílẹ̀ ṣùgbọ́n tí kò lè gbé sókè, yí orúkọ padà, tàbí paárẹ́.
+- Ṣe ẹ̀dà tàbí pín àdírẹ́sì, pọti, àti ìwọlé nígbà tí ẹ̀rọ kejì bá ṣetán láti so pọ̀.
+
+Ìgbéjáde tí a pamọ́, kì í ṣe FTP lásán
+
+Èyí jẹ́ olùpèsè FTPS: FTP kedere lórí TLS (AUTH TLS). A kò lo FTP lásán, tí kò ní ìpamọ́. A ń pamọ́ ọ̀rọ̀ ìgbaniwọlé àti fáìlì nígbà tí wọ́n ń rékọjá nẹtiwọọki.
+
+- A kò fi ìwọlé ránṣẹ́ láìsí ìpamọ́. Ìgbéjáde ń lo FTP lórí TLS.
+- Ìbẹ̀rẹ̀ àkọ́kọ́ ń ṣẹ̀dá ìwé-ẹ̀rí TLS fún ọ, kí o lè so pọ̀ láìsí ètò míì.
+- Tí o bá ti ní ìwé-ẹ̀rí, o lè lo ìyẹn dípò.
+- Fi ìtẹ̀ká ìwé-ẹ̀rí tí áàpù náà fi hàn wé èyí tí olùsopọ̀ rẹ fi hàn, kí o lè mọ̀ pé o dé ẹ̀rọ yìí.
+- A ń pa orúkọ fáìlì ní èdè tìrẹ mọ́, títí kan lẹ́tà tí kò sí nínú álífábẹ́ẹ̀tì Gẹ̀ẹ́sì.
+
+Wo ohun tí olùpèsè ń ṣe
+
+- Áàpù náà ń fi àdírẹ́sì àti pọti hàn tí o máa tẹ̀ sínú olùsopọ̀.
+- A ń ṣe àkójọ ìwọlé kọ̀ọ̀kan pẹ̀lú fódà rẹ̀ àti bóyá ànfààní jẹ́ kíkà nìkan tàbí kíkún.
+- Àkọsílẹ̀ ń fi iṣẹ́ ìsopọ̀ hàn nígbà tí nǹkan bá kùnà tí o sì nílò láti rí ìdí.
+- Ìwọ ni o ń yan pọti àti iye àwọn olùsopọ̀ tí ó lè so pọ̀ lẹ́ẹ̀kan náà.
+
+Bẹ̀rẹ̀ olùpèsè FTP ní ìgbésẹ̀ mẹ́rin
+
+1. Fi olùmúlò kún, pẹ̀lú orúkọ olùmúlò àti ọ̀rọ̀ ìgbaniwọlé.
+2. Yan fódà tí a gbà láyè fún olùmúlò yẹn láti ṣí.
+3. Yan kíkà nìkan tàbí ànfààní kíkún.
+4. Lórí ẹ̀rọ kejì, ṣí olùsopọ̀ FTPS, tan TLS kedere (AUTH TLS), kí o sì tẹ àdírẹ́sì, pọti, àti ìwọlé.
+
+Àwọn olùsopọ̀ tí ó lè so pọ̀
+
+Olùsopọ̀ èyíkéyìí tó ṣe àtìlẹ́yìn FTPS kedere ń ṣiṣẹ́. Àpẹẹrẹ: FileZilla àti WinSCP lórí Windows, FileZilla lórí Linux, Cyberduck tàbí FileZilla lórí Mac, àti olùsopọ̀ FTPS lórí fóònù míì.
+
+Àwọn ìlò tó wọ́pọ̀
+
+- Ṣe ẹ̀dà fáìlì láàárín fóònù àti lápítọ̀ọ̀pù lórí Wi-Fi kan náà.
+- Ṣí fáìlì fóònù láti olùṣàkóso fáìlì orí tábìlì.
+- Fún ẹnìkan ní ìwọlé kíkà nìkan nígbà tí wọ́n bá yẹ kí wọ́n gba fáìlì sílẹ̀, kò sì sí ohun míì.
+
+Ohun tí olùpèsè FTP yìí kì í ṣe
+
+Kò gbé fáìlì rẹ sókè sí olùdásílẹ̀ tàbí sí iṣẹ́ àwọsánmà. Kì í ṣe olùgbàlejò fáìlì fún gbogbo ènìyàn. Lò ó lórí nẹtiwọọki tí o gbẹ́kẹ̀ lé, bí i Wi-Fi ilé tàbí ọ́fíìsì.
+
+FTPS Server jẹ́ orísun ṣíṣí (CC0-1.0) kò sì ní ìpolówó.

@@ -1,3 +1,21 @@
-<p>Serveur FTPS (FTP sur TLS) pour le partage sécurisé de fichiers entre appareils sur le réseau.</p>
-<p><b>Fonctionnalités :</b></p>
-<ul><li><b>Autorisations utilisateur</b> - Contrôle granulaire des opérations de lecture/écriture</li><li><b>Dossiers racine par utilisateur</b> - Répertoires isolés pour chaque utilisateur</li><li><b>Sécurité des chemins</b> - Protection contre les attaques par traversée de répertoire</li><li><b>UTF-8</b> - Prise en charge des caractères localisés</li><li><b>Certificats auto-signés</b> - Génération automatique de certificats TLS ou utilisation des vôtres</li></ul>
+<p>FTPS Server fait de votre téléphone ou tablette un serveur FTP sécurisé pour un partage privé. Partagez photos, vidéos et documents avec un ordinateur sur le même Wi-Fi, sans envoi vers un cloud. Vous choisissez qui se connecte, quel dossier il ouvre, et s'il peut seulement télécharger ou aussi modifier.</p>
+<p><b>Partage sur votre réseau, pas via un cloud</b></p>
+<p>Les fichiers restent sur votre appareil Android. L'autre appareil rejoint ce serveur FTP sur votre réseau, sans copie ailleurs.</p>
+<ul><li>Déplacez photos, vidéos et documents du téléphone vers un PC, ou d'un PC vers le téléphone.</li><li>Gardez les fichiers personnels et de travail hors du cloud de tiers.</li><li>À la maison, au bureau ou sur un point d'accès à vous. Le client doit être sur le même réseau: même Wi-Fi, même point d'accès ou même lien de partage USB.</li><li>Le serveur continue avec l'écran éteint. Une notification maintient les transferts.</li></ul>
+<p><b>Qui peut ouvrir quel dossier</b></p>
+<p>Un identifiant par personne ou appareil, avec des droits limités.</p>
+<ul><li>Nom d'utilisateur et mot de passe pour chaque connexion.</li><li>Chaque identifiant a son dossier et ne voit pas le reste des fichiers de l'appareil.</li><li>Accès complet, ou lecture seule: téléchargement oui, mais pas d'envoi, de renommage ni de suppression.</li><li>Copiez ou partagez l'adresse, le port et les identifiants pour connecter l'autre appareil.</li></ul>
+<p><b>Transfert chiffré, pas de FTP en clair</b></p>
+<p>FTPS Server: FTP explicite sur TLS (AUTH TLS). Le FTP simple, sans chiffrement, n'est pas utilisé. Mot de passe et fichiers sont chiffrés sur le réseau.</p>
+<ul><li>L'identifiant n'est pas envoyé en clair. Les transferts utilisent FTP sur TLS.</li><li>Le premier démarrage crée un certificat TLS, sans réglage en plus.</li><li>Vous pouvez utiliser un certificat que vous avez déjà.</li><li>Comparez l'empreinte du certificat dans l'application et dans le client pour confirmer cet appareil.</li><li>Les noms dans votre langue sont gardés, lettres hors alphabet anglais comprises.</li></ul>
+<p><b>Ce que fait le serveur</b></p>
+<ul><li>L'application affiche l'adresse et le port à entrer dans le client.</li><li>Chaque identifiant montre son dossier et un accès en lecture seule ou complet.</li><li>Un journal montre les connexions quand quelque chose échoue.</li><li>Vous choisissez le port et le nombre maximal de clients connectés.</li></ul>
+<p><b>Démarrez le serveur FTP en quatre étapes</b></p>
+<p>1. Ajoutez un utilisateur: nom et mot de passe.<br>2. Choisissez son dossier.<br>3. Choisissez lecture seule ou accès complet.<br>4. Sur l'autre appareil, ouvrez un client FTPS, activez TLS explicite (AUTH TLS), puis entrez adresse, port et identifiant.</p>
+<p><b>Clients compatibles</b></p>
+<p>Tout client en FTPS explicite fonctionne. Exemples: FileZilla et WinSCP sous Windows, FileZilla sous Linux, Cyberduck ou FileZilla sur Mac, et un client FTPS sur un autre téléphone.</p>
+<p><b>Usages typiques</b></p>
+<ul><li>Copiez des fichiers entre un téléphone et un portable sur le même Wi-Fi.</li><li>Ouvrez les fichiers du téléphone dans un gestionnaire de fichiers.</li><li>Donnez un identifiant en lecture seule à qui ne doit que télécharger.</li></ul>
+<p><b>Ce que ce serveur FTP n'est pas</b></p>
+<p>Aucun envoi de vos fichiers au développeur ou vers un cloud. Ce n'est pas un hébergeur public. Réseau de confiance seulement, comme le Wi-Fi de la maison ou du bureau.</p>
+<p>FTPS Server est à code source ouvert (CC0-1.0), sans publicité.</p>

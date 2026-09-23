@@ -1,0 +1,10 @@
+Servidor FTP seguro (FTPS) para compartir archivos por Wi-Fi o en la red local
+Las fotos, los vídeos y los documentos se quedan en tu dispositivo. No se sube nada a la nube
+Cada persona recibe su propio inicio de sesión y una carpeta de la que no puede salir
+Cuentas de solo lectura, o acceso completo para subir, renombrar y eliminar
+Los inicios de sesión y los archivos se cifran en tránsito con FTP sobre TLS
+Conéctate desde FileZilla, WinSCP o cualquier cliente que admita FTPS explícito
+Empieza en minutos: añade un usuario, elige una carpeta y luego conéctate
+Se crea un certificado TLS para ti, o usa uno que ya tengas
+Los nombres de archivo en tu idioma se conservan, no solo las letras inglesas
+Código abierto y gratis, sin anuncios

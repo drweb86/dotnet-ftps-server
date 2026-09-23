@@ -1,1 +1,1 @@
-Serveur FTPS pour partage sécurisé. Open source, sans pub.
+Lancez un serveur FTP sécurisé, partagez des fichiers en réseau local, sans pub.

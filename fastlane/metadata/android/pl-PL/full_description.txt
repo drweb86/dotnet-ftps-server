@@ -1,3 +1,21 @@
-<p>Serwer FTPS (FTP przez TLS) do bezpiecznego udostępniania plików między urządzeniami w sieci.</p>
-<p><b>Funkcje:</b></p>
-<ul><li><b>Uprawnienia użytkowników</b> - Szczegółowa kontrola operacji odczytu/zapisu</li><li><b>Foldery główne dla każdego użytkownika</b> - Izolowane katalogi dla każdego użytkownika</li><li><b>Bezpieczeństwo ścieżek</b> - Ochrona przed atakami directory traversal</li><li><b>UTF-8</b> - Obsługa znaków zlokalizowanych</li><li><b>Certyfikaty z podpisem własnym</b> - Automatyczne generowanie certyfikatów TLS lub użycie własnych</li></ul>
+<p>FTPS Server zamienia Twój telefon lub tablet w bezpieczny serwer FTP do prywatnego udostępniania plików. Udostępniaj zdjęcia, filmy i dokumenty komputerowi w tym samym Wi-Fi, bez wysyłania ich do chmury. Wybierasz, kto może się połączyć, który folder może otworzyć oraz czy może tylko pobierać pliki, czy także je zmieniać.</p>
+<p><b>Udostępniaj pliki w swojej sieci, nie przez chmurę</b></p>
+<p>Pliki zostają na Twoim urządzeniu z Android. Drugie urządzenie łączy się z tym serwerem FTP przez Twoją sieć, więc kopia nie leży w magazynie innej osoby.</p>
+<ul><li>Przenoś zdjęcia, filmy i dokumenty z telefonu na PC albo z PC na telefon.</li><li>Trzymaj pliki prywatne i służbowe z dala od magazynu w chmurze osób trzecich.</li><li>Używaj go w domu, w biurze albo przez punkt dostępu, który kontrolujesz. Klient musi być w tej samej sieci: to samo Wi-Fi, ten sam punkt dostępu albo to samo łącze udostępniania przez USB.</li><li>Zostaw serwer włączony przy wyłączonym ekranie. Powiadomienie utrzymuje transfery.</li></ul>
+<p><b>Wybierz, kto może otworzyć który folder</b></p>
+<p>Dodaj osobne logowanie dla każdej osoby lub urządzenia i ogranicz, co to logowanie może robić.</p>
+<ul><li>Utwórz nazwę użytkownika i hasło dla każdego połączenia.</li><li>Każdemu logowaniu daj własny folder. To logowanie nie może przeglądać pozostałych plików na Twoim urządzeniu.</li><li>Zezwól na pełny dostęp albo na logowanie tylko do odczytu, które może pobierać pliki, ale nie może ich wysyłać, zmieniać ich nazw ani ich usuwać.</li><li>Skopiuj lub udostępnij adres, port i logowania, gdy drugie urządzenie jest gotowe do połączenia.</li></ul>
+<p><b>Szyfrowany transfer, nie zwykły FTP</b></p>
+<p>To jest FTPS Server: jawny FTP przez TLS (AUTH TLS). Zwykły FTP, bez szyfrowania, nie jest używany. Hasło i pliki są szyfrowane, gdy przechodzą przez sieć.</p>
+<ul><li>Logowanie nie jest wysyłane otwartym tekstem. Transfery używają FTP przez TLS.</li><li>Pierwsze uruchomienie tworzy dla Ciebie certyfikat TLS, więc możesz się połączyć bez dodatkowej konfiguracji.</li><li>Jeśli masz już certyfikat, możesz użyć go zamiast tamtego.</li><li>Porównaj odcisk certyfikatu pokazany w aplikacji z odciskiem pokazanym przez klienta, aby wiedzieć, że to jest to urządzenie.</li><li>Nazwy plików w Twoim własnym języku są zachowane, także litery spoza alfabetu angielskiego.</li></ul>
+<p><b>Zobacz, co robi serwer</b></p>
+<ul><li>Aplikacja pokazuje adres i port do wpisania w kliencie.</li><li>Każde logowanie jest na liście ze swoim folderem i z informacją, czy dostęp jest tylko do odczytu, czy pełny.</li><li>Dziennik pokazuje aktywność połączeń, gdy coś się nie uda i musisz zobaczyć, dlaczego.</li><li>Wybierasz port i to, ilu klientów może być połączonych jednocześnie.</li></ul>
+<p><b>Uruchom serwer FTP w czterech krokach</b></p>
+<p>1. Dodaj użytkownika z nazwą użytkownika i hasłem.<br>2. Wybierz folder, który ten użytkownik może otworzyć.<br>3. Wybierz dostęp tylko do odczytu albo pełny.<br>4. Na drugim urządzeniu otwórz klienta FTPS, włącz jawny TLS (AUTH TLS) i wpisz adres, port oraz logowanie.</p>
+<p><b>Klienci, którzy mogą się połączyć</b></p>
+<p>Działa każdy klient z obsługą jawnego FTPS. Przykłady: FileZilla i WinSCP w systemie Windows, FileZilla w systemie Linux, Cyberduck lub FileZilla na Mac oraz klient FTPS na innym telefonie.</p>
+<p><b>Typowe zastosowania</b></p>
+<ul><li>Kopiuj pliki między telefonem a laptopem w tym samym Wi-Fi.</li><li>Otwieraj pliki z telefonu w menedżerze plików na komputerze.</li><li>Daj komuś logowanie tylko do odczytu, gdy ma pobrać pliki i nic więcej.</li></ul>
+<p><b>Czym ten serwer FTP nie jest</b></p>
+<p>Nie wysyła Twoich plików do twórcy ani do usługi w chmurze. Nie jest też publiczną usługą udostępniania plików. Używaj go w sieci, której ufasz, na przykład w Wi-Fi w domu lub w biurze.</p>
+<p>FTPS Server jest oprogramowaniem o otwartym kodzie źródłowym (CC0-1.0) i nie zawiera reklam.</p>

@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>it-IT</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Aggiungi</value>
   </data>
@@ -230,21 +227,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>Valido:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>Server FTPS (FTP su TLS) per la condivisione sicura di file tra dispositivi in rete.
-
-Funzionalità:
-- **Autorizzazioni utente** - Controllo granulare sulle operazioni di lettura/scrittura
-- **Cartelle radice per utente** - Directory isolate per ciascun utente
-- **Sicurezza dei percorsi** - Protezione dagli attacchi di directory traversal
-- **UTF-8** - Supporto dei caratteri localizzati
-- **Interfaccia Windows** - Interfaccia grafica realizzata con WPF
-- **Certificati autofirmati** - Generazione automatica di certificati TLS o uso dei propri
-- **Più architetture** - Supporto di x64 e ARM64</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Server FTPS per file sicuri. Open source, senza pubblicità.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copia dettagli di connessione</value>

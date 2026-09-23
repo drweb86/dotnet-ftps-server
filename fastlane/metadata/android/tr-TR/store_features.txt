@@ -1,0 +1,10 @@
+Wi-Fi veya yerel ağda dosya paylaşmak için güvenli FTP sunucusu (FTPS)
+Fotoğraflar, videolar ve belgeler cihazınızda kalır. Buluta hiçbir şey yüklenmez
+Her kişi kendi girişini ve dışına çıkamayacağı bir klasörü alır
+Salt okunur hesaplar ya da yükleme, yeniden adlandırma ve silme için tam erişim
+Giriş bilgileri ve dosyalar aktarım sırasında FTP üzerinden TLS ile şifrelenir
+FileZilla, WinSCP veya açık FTPS destekleyen herhangi bir istemciden bağlanın
+Dakikalar içinde başlayın: kullanıcı ekleyin, klasör seçin, ardından bağlanın
+Sizin için bir TLS sertifikası oluşturulur ya da elinizdekini kullanın
+Dosya adları kendi dilinizde korunur, yalnızca İngilizce harfler değil
+Açık kaynak, ücretsiz ve reklamsız

@@ -1,0 +1,10 @@
+Server FTP yang aman (FTPS) untuk berbagi file di Wi-Fi atau jaringan lokal
+Foto, video, dan dokumen tetap di perangkat Anda. Tidak ada yang diunggah ke cloud
+Setiap orang mendapat login sendiri dan folder yang tidak bisa mereka tinggalkan
+Akun hanya baca, atau akses penuh untuk mengunggah, mengganti nama, dan menghapus
+Informasi login dan file dienkripsi saat dikirim dengan FTP over TLS
+Hubungkan dari FileZilla, WinSCP, atau klien mana pun yang mendukung FTPS eksplisit
+Mulai dalam beberapa menit: tambah pengguna, pilih folder, lalu hubungkan
+Sertifikat TLS dibuat untuk Anda, atau gunakan sertifikat yang sudah Anda punya
+Nama file dalam bahasa Anda tetap utuh, bukan hanya huruf Inggris
+Sumber terbuka dan gratis dipakai, tanpa iklan

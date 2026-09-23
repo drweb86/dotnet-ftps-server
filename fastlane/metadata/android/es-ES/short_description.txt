@@ -1,1 +1,1 @@
-Servidor FTPS seguro. Código abierto, sin anuncios.
+Inicia un servidor FTP seguro y comparte archivos en tu red local, sin anuncios.

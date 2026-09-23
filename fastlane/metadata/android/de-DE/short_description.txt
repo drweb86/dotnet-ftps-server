@@ -1,1 +1,1 @@
-FTPS-Server für sichere Dateifreigabe. Open Source, werbefrei.
+Starte einen sicheren FTP-Server und teile Dateien im lokalen Netz ohne Werbung.

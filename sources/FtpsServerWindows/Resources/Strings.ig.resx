@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>ig-NG</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Tinye</value>
   </data>
@@ -239,21 +236,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>Dị irè:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>Sava FTPS (FTP n'elu TLS) maka ikesa faịlụ n'ụzọ nchekwa n'etiti ngwaọrụ na netwọkụ.
-
-Njirimara:
-- **Ikike onye ọrụ** - Njikwa zuru ezu nke ọrụ ịgụ/ide
-- **Nchekwa mgbọrọgwụ maka onye ọrụ ọ bụla** - Ndekọ kewapụrụ maka onye ọrụ ọ bụla
-- **Nchekwa ụzọ** - Nchebe megide mwakpo directory traversal
-- **UTF-8** - Na-akwado mkpụrụedemede e mere ka ọ bụrụ nke mpaghara
-- **Windows UI** - Interface eserese ewuru na WPF
-- **Asambodo nke onwe** - Mepụta asambodo TLS na-akpaghị aka ma ọ bụ jiri nke gị
-- **Ọtụtụ ihe owuwu** - Na-akwado x64 na ARM64</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>Sava FTPS maka nkekọrịta. Open source, enweghị mgbasa ozi.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Detuo nkọwa njikọ</value>

@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>fa-IR</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ افزودن</value>
   </data>
@@ -239,21 +236,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>معتبر:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>سرور FTPS (FTP روی TLS) برای اشتراک‌گذاری امن فایل میان دستگاه‌ها از طریق شبکه.
-
-ویژگی‌ها:
-- **مجوزهای کاربر** - کنترل دقیق روی عملیات خواندن/نوشتن
-- **پوشه‌های ریشه برای هر کاربر** - پوشه‌های جداگانه برای هر کاربر
-- **امنیت مسیر** - محافظت در برابر حملات پیمایش پوشه
-- **UTF-8** - پشتیبانی از نویسه‌های محلی‌سازی‌شده
-- **رابط Windows** - رابط گرافیکی ساخته‌شده با WPF
-- **گواهی‌های خودامضا** - تولید خودکار گواهی TLS یا استفاده از گواهی خودتان
-- **چند معماری** - پشتیبانی از x64 و ARM64</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>سرور FTPS برای اشتراک امن. متن‌باز، بدون تبلیغ.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>کپی جزئیات اتصال</value>

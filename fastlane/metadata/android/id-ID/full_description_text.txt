@@ -1,9 +1,59 @@
-Server FTPS (FTP melalui TLS) untuk berbagi file secara aman antar perangkat melalui jaringan.
+FTPS Server mengubah ponsel atau tablet Anda menjadi server FTP yang aman untuk berbagi file secara pribadi. Bagikan foto, video, dan dokumen dengan komputer di Wi-Fi yang sama, tanpa mengunggahnya ke cloud. Anda memilih siapa yang dapat terhubung, folder mana yang dapat mereka buka, dan apakah mereka hanya dapat mengunduh file atau juga mengubahnya.
 
-Fitur:
+Berbagi file di jaringan Anda, bukan lewat cloud
 
-- Izin pengguna - Kontrol terperinci atas operasi baca/tulis
-- Folder akar per pengguna - Direktori terisolasi untuk setiap pengguna
-- Keamanan jalur - Perlindungan dari serangan directory traversal
-- UTF-8 - Mendukung karakter yang dilokalkan
-- Sertifikat self-signed - Buat sertifikat TLS secara otomatis atau gunakan milik Anda
+File tetap di perangkat Android Anda. Perangkat lain terhubung ke server FTP ini lewat jaringan Anda sendiri, jadi salinannya tidak tersimpan di penyimpanan orang lain.
+
+- Pindahkan foto, video, dan dokumen dari ponsel ke PC, atau dari PC ke ponsel.
+- Jauhkan file pribadi dan file kerja dari penyimpanan cloud pihak ketiga.
+- Pakai di rumah, di kantor, atau pada hotspot yang Anda kendalikan. Klien harus berada di jaringan yang sama: Wi-Fi yang sama, atau hotspot yang sama maupun tautan penambatan USB.
+- Biarkan server tetap berjalan saat layar mati. Notifikasi membuat transfer terus berjalan.
+
+Pilih siapa yang boleh membuka folder mana
+
+Tambahkan login terpisah untuk setiap orang atau perangkat, dan batasi apa yang login itu boleh lakukan.
+
+- Buat nama pengguna dan kata sandi untuk setiap koneksi.
+- Beri setiap login foldernya sendiri. Login itu tidak dapat menelusuri file lain di perangkat Anda.
+- Izinkan akses penuh, atau login hanya baca yang dapat mengunduh file tetapi tidak dapat mengunggah, mengganti nama, atau menghapus.
+- Salin atau bagikan alamat, port, dan login saat perangkat lain siap terhubung.
+
+Transfer terenkripsi, bukan FTP biasa
+
+Ini adalah server FTPS: FTP over TLS eksplisit (AUTH TLS). FTP biasa, tanpa enkripsi, tidak digunakan. Kata sandi dan file dienkripsi saat melintasi jaringan.
+
+- Login tidak dikirim dalam bentuk terbuka. Transfer memakai FTP over TLS.
+- Saat pertama kali dijalankan, sertifikat TLS dibuat untuk Anda, sehingga Anda dapat terhubung tanpa pengaturan tambahan.
+- Jika Anda sudah punya sertifikat, Anda dapat memakai sertifikat itu sebagai gantinya.
+- Bandingkan sidik jari sertifikat yang ditampilkan di aplikasi dengan yang ditampilkan klien, supaya Anda tahu bahwa Anda mencapai perangkat ini.
+- Nama file dalam bahasa Anda tetap utuh, termasuk huruf yang tidak ada dalam alfabet Inggris.
+
+Lihat apa yang sedang server lakukan
+
+- Aplikasi menampilkan alamat dan port untuk dimasukkan di klien.
+- Setiap login tercantum bersama foldernya dan apakah aksesnya hanya baca atau penuh.
+- Catatan menampilkan aktivitas koneksi ketika sesuatu gagal dan Anda perlu melihat penyebabnya.
+- Anda memilih port dan berapa banyak klien yang dapat terhubung sekaligus.
+
+Mulai server FTP dalam empat langkah
+
+1. Tambahkan pengguna, dengan nama pengguna dan kata sandi.
+2. Pilih folder yang boleh dibuka pengguna itu.
+3. Pilih hanya baca atau akses penuh.
+4. Di perangkat lain, buka klien FTPS, aktifkan TLS eksplisit (AUTH TLS), lalu masukkan alamat, port, dan login.
+
+Klien yang dapat terhubung
+
+Klien mana pun yang mendukung FTPS eksplisit dapat dipakai. Contoh: FileZilla dan WinSCP di Windows, FileZilla di Linux, Cyberduck atau FileZilla di Mac, dan klien FTPS di ponsel lain.
+
+Penggunaan umum
+
+- Salin file antara ponsel dan laptop di Wi-Fi yang sama.
+- Buka file ponsel dari pengelola file desktop.
+- Berikan login hanya baca kepada seseorang yang hanya boleh mengunduh file dan tidak melakukan hal lain.
+
+Apa yang bukan server FTP ini
+
+Server ini tidak mengunggah file Anda ke pengembang atau ke layanan cloud. Ini juga bukan host file publik. Pakai di jaringan yang Anda percaya, seperti Wi-Fi rumah atau kantor.
+
+FTPS Server bersifat sumber terbuka (CC0-1.0) dan tidak berisi iklan.

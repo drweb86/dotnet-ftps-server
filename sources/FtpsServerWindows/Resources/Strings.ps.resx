@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>ps-AF</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ اضافه کړئ</value>
   </data>
@@ -239,21 +236,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>معتبر:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>د شبکې له لارې د وسایلو ترمنځ د فایلونو خوندي شریکولو لپاره FTPS (پر TLS باندې FTP) سرور.
-
-ځانګړتیاوې:
-- **د کارن اجازې** - د لوستلو/لیکنې عملیاتو باندې دقیق کنټرول
-- **د هر کارن لپاره ریښه فولډرونه** - د هر کارن لپاره جلا لارښودونه
-- **د لارې امنیت** - د ډایرکټري تېرېدو بریدونو څخه ساتنه
-- **UTF-8** - د سیمه‌ییزو توریو ملاتړ
-- **Windows UI** - د WPF سره جوړ شوی ګرافیکي انټرفیس
-- **ځان لاسلیک شوي سندونه** - د TLS سندونه په اتومات ډول جوړ کړئ یا خپل وکاروئ
-- **ډېرې جوړښتونه** - د x64 او ARM64 ملاتړ</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>د خوندي فایل شریکولو FTPS. خلاص سرچینه، پرته له اعلانونو.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>د نښلېدو جزئیات کاپي کړئ</value>

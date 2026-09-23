@@ -1,3 +1,21 @@
-<p>Serveerii FTPS (FTP TLS irratti) meeshaalee gidduutti faayilota karaa neetiwarkii nageenyaan qooduuf.</p>
-<p><b>Amaloota:</b></p>
-<ul><li><b>Hayyama fayyadamaa</b> - To'annoo bal'aa hojii dubbisuu/barreessuu irratti</li><li><b>Folldaraa hundee fayyadamaa tokkoon tokkoo</b> - Galmeewwan adda baafaman fayyadamaa tokkoof</li><li><b>Nageenya karaa</b> - Itti yaadannoo haleellaa directory traversal irraa eegumsa</li><li><b>UTF-8</b> - Arfiilee naannoo deeggara</li><li><b>Waraqaa ragaa ofiin mallatteeffame</b> - Waraqaa ragaa TLS ofumaan uumi ykn kan kee fayyadami</li></ul>
+<p>FTPS Server bilbila ykn taableetii kee gara sarvarii FTP nageenya qabuutti jijjiira, faayila dhuunfaa qooduuf. Suuraa, viidiyoo fi sanadoota duumessaatti hin ol kaa'in kompitara Wi-Fi wal fakkaataa irratti qoodi. Eenyu walqunnamsiisu, ukkaankaa kam banu, buusuu qofa moo jijjiiruu filadhu.</p>
+<p><b>Faayila networkii kee irratti qoodi, duumessaa miti</b></p>
+<p>Faayiloonni meeshaa Android kee irratti hafa. Meeshaan biraa sarvarii FTP kana networkii keetti walqunnamsiisa; koppiin kuusaa nama biraa irratti hin taa'u.</p>
+<ul><li>Suuraa, viidiyoo fi sanadoota bilbila irraa gara PC, ykn PC irraa gara bilbilaatti sochoosi.</li><li>Faayila dhuunfaa fi hojii duumessa qaama sadaffaa irraa fageessi.</li><li>Mana, waajjira, ykn hootispootii ati to'attu irratti fayyadami. Maamilaan networkii wal fakkaataa irra ta'a: Wi-Fi, hootispootii, ykn hidhaa USB wal fakkaataa.</li><li>Argii cufamee sarvarii hojjechaa dhiisi. Yaadachiisni dabarsa fufa.</li></ul>
+<p><b>Eenyu ukkaankaa kam banu filadhu</b></p>
+<p>Nama ykn meeshaa hundaaf seensa addaa dabali, hojii isaa daangessi.</p>
+<ul><li>Walqunnamtii hundaaf maqaa fayyadamaa fi jecha iccitii uumi.</li><li>Seensa hundaaf ukkaankaa mataa isaa kenni. Faayilota hafan meeshaa kee sakatta'uu hin danda'u.</li><li>Dhaqqabummaa guutuu ykn dubbisuu qofa hayyami: buusuu ni danda'a; ol kaa'uu, maqaa jijjiiruu ykn haquu hin danda'u.</li><li>Meeshaan biraa yommuu qophaa'u teessoo, poortii fi seensota koppii godhi ykn qoodi.</li></ul>
+<p><b>Dabarsa icciteeffame, FTP iccitii hin qabne miti</b></p>
+<p>Kun sarvarii FTPS dha: explicit FTP over TLS (AUTH TLS). FTP iccitii hin qabne hin fayyadamu. Jechi iccitii fi faayiloonni networkii keessa yeroo darban icciteeffamu.</p>
+<ul><li>Seensi ifatti hin ergamu. Dabarsi FTP over TLS fayyadama.</li><li>Jalqaba irratti ragaan TLS siif uumama; qindaa'ina dabalataa malee walqunnamsiifta.</li><li>Ragaa duraan yoo qabaatte, isa fayyadami.</li><li>Ashaaraa qubaa ragaa appii fi maamilaa madaali, meeshaa kana akka geesse beekuuf.</li><li>Maqaan faayilaa afaan keetiin eegama, qubee Ingiliffaa hin taane dabalatee.</li></ul>
+<p><b>Sarvariin maal hojjetu ilaali</b></p>
+<ul><li>Appiin teessoo fi poortii maamilatti galchu agarsiisa.</li><li>Seensi hundi ukkaankaa isaa fi dubbisuu qofa ykn guutuu ta'uu waliin tarreeffama.</li><li>Yoo waan tokko kufe, galmeen sochii walqunnamtii fi maalif agarsiisa.</li><li>Poortii fi maamiltoonni meeqa yeroo tokko walqunnamsiisan filadhu.</li></ul>
+<p><b>Sarvarii FTP tarkaanfii afurtiin jalqabi</b></p>
+<p>1. Fayyadamaa dabali, maqaa fayyadamaa fi jecha iccitii waliin.<br>2. Ukkaankaa fayyadamaan sun banu hayyamame filadhu.<br>3. Dubbisuu qofa ykn dhaqqabummaa guutuu filadhu.<br>4. Meeshaa biraa irratti maamilaa FTPS bani, explicit TLS (AUTH TLS) bani, teessoo, poortii fi seensa galchi.</p>
+<p><b>Maamiltoota walqunnamsiisuu danda'an</b></p>
+<p>Maamilaan explicit FTPS deeggaru kamiyyuu ni hojjeta. Fakkeenya: FileZilla fi WinSCP Windows, FileZilla Linux, Cyberduck ykn FileZilla Mac, maamilaa FTPS bilbila biraa.</p>
+<p><b>Fayyadama baramaa</b></p>
+<ul><li>Faayila bilbila fi laaptoppii Wi-Fi wal fakkaataa gidduutti koppii godhi.</li><li>Faayila bilbilaa bulchiinsa faayilaa deeskitooppii irraa bani.</li><li>Namni buusuu qofa qabuuf seensa dubbisuu qofa kenni.</li></ul>
+<p><b>Sarvariin FTP kun maal hin taane</b></p>
+<p>Faayila kee gara misoomaa ykn duumessaatti hin ol kaa'u. Keessummeessaa uummataaf banaa miti. Networkii amantu irratti fayyadami, akka Wi-Fi mana ykn waajjiraa.</p>
+<p>FTPS Server madda banaa dha (CC0-1.0) fi beeksisa hin qabu.</p>

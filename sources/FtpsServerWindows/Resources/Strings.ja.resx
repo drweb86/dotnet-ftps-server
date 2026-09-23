@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>ja-JP</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ 追加</value>
   </data>
@@ -230,21 +227,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>有効期間：</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>ネットワーク上のデバイス間で安全にファイルを共有するための FTPS（TLS 上の FTP）サーバー。
-
-機能:
-- **ユーザー権限** - 読み取り/書き込み操作のきめ細かい制御
-- **ユーザーごとのルートフォルダー** - 各ユーザー用の隔離されたディレクトリ
-- **パスのセキュリティ** - ディレクトリトラバーサル攻撃からの保護
-- **UTF-8** - ローカライズされた文字をサポート
-- **Windows UI** - WPF で構築されたグラフィカルインターフェイス
-- **自己署名証明書** - TLS 証明書の自動生成、または独自の証明書の使用
-- **複数のアーキテクチャ** - x64 および ARM64 をサポート</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>安全なファイル共有用 FTPS。オープンソース、広告なし。</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>接続情報をコピー</value>

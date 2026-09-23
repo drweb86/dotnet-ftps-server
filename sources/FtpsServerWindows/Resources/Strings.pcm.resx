@@ -66,9 +66,6 @@
   <!-- Numeric Up/Down -->
   <!-- Error Messages -->
   <!-- Winget manifest field (DO NOT TRANSLATE) -->
-  <data name="_Technical_WingetLocale" xml:space="preserve">
-    <value>pcm-NG</value>
-  </data>
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Add</value>
   </data>
@@ -230,21 +227,6 @@
   </data>
   <data name="CertValidLabel" xml:space="preserve">
     <value>Valid:</value>
-  </data>
-  <data name="Winget_Description" xml:space="preserve">
-    <value>FTPS (FTP over TLS) server wey dey share file between devices for network with security.
-
-Features:
-- **User Permissions** - Fine-fine control for Read/Write operations
-- **Per-User Root Folders** - Separate directories for each user
-- **Path Security** - Protection from directory traversal attack
-- **UTF-8** - E dey support localized characters
-- **Windows UI** - Graphical interface wey dem build with WPF
-- **Self-Signed Certificates** - Auto-generate TLS certificates or use your own
-- **Multiple Architectures** - E dey support x64 and ARM64</value>
-  </data>
-  <data name="Winget_ShortDescription" xml:space="preserve">
-    <value>FTPS server wey dey share file. Open source, no advert.</value>
   </data>
   <data name="ConfigCopyConnectionDetails" xml:space="preserve">
     <value>Copy di connection details</value>

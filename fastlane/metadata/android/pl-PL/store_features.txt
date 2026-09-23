@@ -1,0 +1,10 @@
+Bezpieczny serwer FTP (FTPS) do udostępniania plików przez Wi-Fi lub w sieci lokalnej
+Zdjęcia, filmy i dokumenty zostają na Twoim urządzeniu. Nic nie trafia do chmury
+Każda osoba dostaje własne logowanie i folder, którego nie może opuścić
+Konta tylko do odczytu albo pełny dostęp do wysyłania, zmiany nazw i usuwania
+Logowania i pliki są szyfrowane w trakcie przesyłania za pomocą FTP przez TLS
+Połącz się przez FileZilla, WinSCP lub dowolnego klienta z obsługą jawnego FTPS
+Zacznij w kilka minut: dodaj użytkownika, wybierz folder, a potem się połącz
+Certyfikat TLS zostanie dla Ciebie utworzony albo użyj takiego, który już masz
+Nazwy plików w Twoim języku są zachowane, nie tylko angielskie litery
+Otwarty kod źródłowy, bezpłatne korzystanie i brak reklam

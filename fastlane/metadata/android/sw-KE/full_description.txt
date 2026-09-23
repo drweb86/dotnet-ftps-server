@@ -1,3 +1,21 @@
-<p>Seva ya FTPS (FTP juu ya TLS) ya kushiriki faili salama kati ya vifaa kwenye mtandao.</p>
-<p><b>Vipengele:</b></p>
-<ul><li><b>Ruhusa za watumiaji</b> - Udhibiti wa kina wa shughuli za kusoma/kuandika</li><li><b>Folda kuu kwa kila mtumiaji</b> - Saraka zilizotenganishwa kwa kila mtumiaji</li><li><b>Usalama wa njia</b> - Ulinzi dhidi ya mashambulizi ya directory traversal</li><li><b>UTF-8</b> - Inasaidia herufi zilizotafsiriwa</li><li><b>Vyeti vilivyotiwa saini na mwenyewe</b> - Tengeneza vyeti vya TLS kiotomatiki au tumia vyako</li></ul>
+<p>FTPS Server hubadilisha simu au kompyuta kibao yako kuwa seva salama ya FTP kwa kushiriki faili kwa faragha. Shiriki picha, video, na hati na kompyuta iliyo kwenye Wi-Fi ile ile, bila kuzipakia kwenye wingu. Wewe unachagua nani anaweza kuunganisha, folda gani wanaweza kufungua, na kama wanaweza kupakua faili tu au pia kuzibadilisha.</p>
+<p><b>Shiriki faili kwenye mtandao wako, si kupitia wingu</b></p>
+<p>Faili hubaki kwenye kifaa chako cha Android. Kifaa kingine kinaunganishwa na seva hii ya FTP kupitia mtandao wako mwenyewe, kwa hiyo nakala haikai kwenye hifadhi ya mtu mwingine.</p>
+<ul><li>Hamisha picha, video, na hati kutoka simu yako kwenda PC, au kutoka PC kwenda simu yako.</li><li>Weka faili binafsi na za kazi nje ya hifadhi ya wingu ya mtu mwingine.</li><li>Itumie nyumbani, ofisini, au kwenye kisambaza mtandao unachodhibiti. Mteja lazima awe kwenye mtandao ule ule: Wi-Fi ile ile, au kisambaza mtandao kile kile au kiungo cha USB cha kushiriki muunganisho.</li><li>Acha seva iendelee kufanya kazi kiwambo kikiwa kimezimwa. Arifa huendeleza uhamishaji.</li></ul>
+<p><b>Chagua nani anaweza kufungua folda gani</b></p>
+<p>Ongeza kuingia tofauti kwa kila mtu au kifaa, na uweke kikomo cha kile kuingia huko kunaweza kufanya.</p>
+<ul><li>Unda jina la mtumiaji na nenosiri kwa kila muunganisho.</li><li>Mpe kila kuingia folda yake. Kuingia huko hakuwezi kuvinjari faili zingine kwenye kifaa chako.</li><li>Ruhusu ufikiaji kamili, au kuingia kwa kusoma tu kunakoweza kupakua faili lakini hakuwezi kupakia, kubadilisha jina, au kufuta.</li><li>Nakili au shiriki anwani, bandari, na kuingia wakati kifaa kingine kiko tayari kuunganisha.</li></ul>
+<p><b>Uhamishaji uliosimbwa, si FTP ya kawaida</b></p>
+<p>Hii ni seva ya FTPS: FTP dhahiri juu ya TLS (AUTH TLS). FTP ya kawaida, bila usimbaji, haitumiki. Nenosiri na faili husimbwa zinapovuka mtandao.</p>
+<ul><li>Kuingia hakutumwi bila usimbaji. Uhamishaji hutumia FTP juu ya TLS.</li><li>Kuanzisha mara ya kwanza huunda cheti cha TLS kwa ajili yako, ili uweze kuunganisha bila usanidi wa ziada.</li><li>Ikiwa tayari una cheti, unaweza kutumia hicho badala yake.</li><li>Linganisha alama ya kidole ya cheti inayoonyeshwa kwenye programu na ile inayoonyeshwa na mteja wako, ili ujue umefika kifaa hiki.</li><li>Majina ya faili katika lugha yako mwenyewe yanahifadhiwa, ikiwa ni pamoja na herufi zisizo katika alfabeti ya Kiingereza.</li></ul>
+<p><b>Ona kile seva inafanya</b></p>
+<ul><li>Programu inaonyesha anwani na bandari ya kuingiza kwenye mteja.</li><li>Kila kuingia kimeorodheshwa na folda yake na kama ufikiaji ni wa kusoma tu au kamili.</li><li>Kumbukumbu inaonyesha shughuli za muunganisho kitu kinaposhindwa na unahitaji kuona kwa nini.</li><li>Unachagua bandari na idadi ya wateja wanaoweza kuunganishwa kwa wakati mmoja.</li></ul>
+<p><b>Anzisha seva ya FTP kwa hatua nne</b></p>
+<p>1. Ongeza mtumiaji, na jina la mtumiaji na nenosiri.<br>2. Chagua folda ambayo mtumiaji huyo anaruhusiwa kufungua.<br>3. Chagua kusoma tu au ufikiaji kamili.<br>4. Kwenye kifaa kingine, fungua mteja wa FTPS, washa TLS dhahiri (AUTH TLS), na uingize anwani, bandari, na kuingia.</p>
+<p><b>Wateja wanaoweza kuunganisha</b></p>
+<p>Mteja yeyote anayetumia FTPS dhahiri hufanya kazi. Mifano: FileZilla na WinSCP kwenye Windows, FileZilla kwenye Linux, Cyberduck au FileZilla kwenye Mac, na mteja wa FTPS kwenye simu nyingine.</p>
+<p><b>Matumizi ya kawaida</b></p>
+<ul><li>Nakili faili kati ya simu na kompyuta mpakato kwenye Wi-Fi ile ile.</li><li>Fungua faili za simu kutoka kwa kidhibiti faili cha dawati.</li><li>Mpe mtu kuingia kwa kusoma tu anapotakiwa kupakua faili na si kingine chochote.</li></ul>
+<p><b>Kile seva hii ya FTP sio</b></p>
+<p>Haipakii faili zako kwa mtengenezaji au kwa huduma ya wingu. Pia si mwenyeji wa faili wa umma. Itumie kwenye mtandao unaouamini, kama Wi-Fi ya nyumbani au ofisini.</p>
+<p>FTPS Server ni chanzo huria (CC0-1.0) na haina matangazo.</p>
