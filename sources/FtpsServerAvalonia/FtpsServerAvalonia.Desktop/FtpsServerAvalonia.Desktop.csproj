@@ -17,6 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\FtpsServerAvalonia\THIRD-PARTY-NOTICES.md" Link="FtpsServerAvalonia.Desktop.THIRD-PARTY-NOTICES.md" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FtpsServerAvalonia\FtpsServerAvalonia.csproj" />
   </ItemGroup>
 </Project>

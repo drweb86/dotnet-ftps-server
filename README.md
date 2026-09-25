@@ -83,6 +83,8 @@ D. Prebuilt APK [look for **android.apk** asset](https://github.com/drweb86/dotn
 
 [NUGet Package](https://www.nuget.org/packages/Siarhei_Kuchuk.FtpsServerLibrary)
 
+The library has no third-party dependencies. Notices for apps that do are next to those apps: `sources/FtpsServerConsole/THIRD-PARTY-NOTICES.md`, `sources/FtpsServerWindows/THIRD-PARTY-NOTICES.md`, `sources/FtpsServerAvalonia/FtpsServerAvalonia/THIRD-PARTY-NOTICES.md`, and `sources/android/THIRD-PARTY-NOTICES.md`.
+
 </details>
 
 <details>

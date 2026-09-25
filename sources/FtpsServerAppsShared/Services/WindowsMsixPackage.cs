@@ -1,5 +1,4 @@
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace FtpsServerAppsShared.Services;
 
@@ -20,9 +19,26 @@ public static class WindowsMsixPackage
 
         try
         {
-            var length = 0;
-            var result = GetCurrentPackageFullName(ref length, null);
-            return result != AppModelErrorNoPackage;
+            // Load kernel32 only after the Windows check. A DllImport would put a
+            // kernel32 P/Invoke into this cross-platform assembly and can fail
+            // Linux, Android, and browser builds when the method is linked.
+            if (!NativeLibrary.TryLoad("kernel32.dll", out var kernel))
+                return false;
+
+            try
+            {
+                if (!NativeLibrary.TryGetExport(kernel, "GetCurrentPackageFullName", out var export))
+                    return false;
+
+                var getName = Marshal.GetDelegateForFunctionPointer<GetCurrentPackageFullNameDelegate>(export);
+                var length = 0;
+                var result = getName(ref length, IntPtr.Zero);
+                return result != AppModelErrorNoPackage;
+            }
+            finally
+            {
+                NativeLibrary.Free(kernel);
+            }
         }
         catch
         {
@@ -30,8 +46,6 @@ public static class WindowsMsixPackage
         }
     }
 
-    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
-    private static extern int GetCurrentPackageFullName(
-        ref int packageFullNameLength,
-        StringBuilder? packageFullName);
+    [UnmanagedFunctionPointer(CallingConvention.Winapi)]
+    private delegate int GetCurrentPackageFullNameDelegate(ref int packageFullNameLength, IntPtr packageFullName);
 }

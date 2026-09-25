@@ -1,0 +1,27 @@
+<Window x:Class="FtpsServerWindows.Windows.ThirdPartyNoticesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="clr-namespace:FtpsServerWindows.Resources"
+        Title="{x:Static res:Strings.MenuThirdPartyNotices}"
+        Width="720"
+        Height="640"
+        MinWidth="480"
+        MinHeight="360"
+        Background="{StaticResource WindowBackgroundBrush}"
+        Foreground="{StaticResource WindowForegroundBrush}"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+    <DockPanel Margin="16">
+        <Button DockPanel.Dock="Bottom"
+                Content="{x:Static res:Strings.PrivacyOk}"
+                Style="{StaticResource ModernButton}"
+                HorizontalAlignment="Stretch"
+                Margin="0,12,0,0"
+                IsCancel="True"
+                Click="OkButton_Click"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel x:Name="DocumentHost"/>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

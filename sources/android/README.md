@@ -2,6 +2,8 @@
 
 This is the **shipped** Android app. GitHub releases and RuStore build this tree, not the Avalonia/.NET Android project.
 
+Third-party components are listed in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) and in the app menu. The .NET library is not part of this app and has no third-party dependencies.
+
 ## Why this exists
 
 FOSS stores (F-Droid and similar) reject .NET/Avalonia APKs because they cannot rebuild them from source on Debian, and they reject packages over **30 MB**. This Gradle/Kotlin app is a few megabytes and is a normal Android source build.

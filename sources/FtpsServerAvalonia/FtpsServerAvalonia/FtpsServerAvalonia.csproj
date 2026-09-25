@@ -9,6 +9,7 @@
   
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+    <EmbeddedResource Include="THIRD-PARTY-NOTICES.md" LogicalName="FtpsServerAvalonia.ThirdPartyNotices.md" />
   </ItemGroup>
 
   <ItemGroup>

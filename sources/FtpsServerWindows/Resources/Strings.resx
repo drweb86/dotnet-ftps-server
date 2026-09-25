@@ -188,6 +188,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>License</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>Third-party notices</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>Logs</value>
   </data>

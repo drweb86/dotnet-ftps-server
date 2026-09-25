@@ -1,0 +1,26 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="using:FtpsServerAvalonia.Resources"
+        x:Class="FtpsServerAvalonia.Windows.ThirdPartyNoticesWindow"
+        Title="{x:Static res:Strings.MenuThirdPartyNotices}"
+        Width="720"
+        Height="640"
+        MinWidth="480"
+        MinHeight="360"
+        Background="{StaticResource WindowBackgroundBrush}"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+    <DockPanel Margin="16">
+        <Button DockPanel.Dock="Bottom"
+                Content="{x:Static res:Strings.PrivacyOk}"
+                Classes="ModernButton"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                Margin="0,12,0,0"
+                Click="OkButton_Click"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel x:Name="DocumentHost" Spacing="0"/>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

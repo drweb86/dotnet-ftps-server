@@ -51,18 +51,23 @@ fun parsePrivacyMarkdown(src: String): List<PrivacyMdBlock> {
 }
 
 fun inlineMarkdownToAnnotated(text: String): AnnotatedString {
+    val withLinks = Regex("""\[([^]]+)]\(([^)]+)\)""").replace(text) { match ->
+        val label = match.groupValues[1]
+        val url = match.groupValues[2]
+        if (label == url) url else "$label ($url)"
+    }
     val builder = AnnotatedString.Builder()
     val regex = Regex("""\*\*(.+?)\*\*""")
     var index = 0
-    for (match in regex.findAll(text)) {
+    for (match in regex.findAll(withLinks)) {
         if (match.range.first > index) {
-            builder.append(text.substring(index, match.range.first))
+            builder.append(withLinks.substring(index, match.range.first))
         }
         val start = builder.length
         builder.append(match.groupValues[1])
         builder.addStyle(SpanStyle(fontWeight = FontWeight.Bold), start, builder.length)
         index = match.range.last + 1
     }
-    if (index < text.length) builder.append(text.substring(index))
+    if (index < withLinks.length) builder.append(withLinks.substring(index))
     return builder.toAnnotatedString()
 }

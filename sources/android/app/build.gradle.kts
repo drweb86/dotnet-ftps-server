@@ -126,6 +126,22 @@ abstract class CopyPrivacyPoliciesTask : DefaultTask() {
     }
 }
 
+abstract class CopyThirdPartyNoticesTask : DefaultTask() {
+    @get:InputFile
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val sourceFile: RegularFileProperty
+
+    @get:OutputDirectory
+    abstract val outputDir: DirectoryProperty
+
+    @TaskAction
+    fun copyNotice() {
+        val dest = outputDir.get().asFile
+        dest.mkdirs()
+        sourceFile.get().asFile.copyTo(dest.resolve("THIRD-PARTY-NOTICES.md"), overwrite = true)
+    }
+}
+
 abstract class CopyLicenseDocumentsTask : DefaultTask() {
     @get:InputDirectory
     @get:PathSensitive(PathSensitivity.RELATIVE)
@@ -160,6 +176,11 @@ androidComponents {
         ) {
             sourceDir.set(rootProject.projectDir.resolve("../../privacy/android"))
         }
+        val copyThirdPartyNotices = tasks.register<CopyThirdPartyNoticesTask>(
+            "copyThirdPartyNotices${variant.name.replaceFirstChar { it.uppercase() }}",
+        ) {
+            sourceFile.set(rootProject.projectDir.resolve("THIRD-PARTY-NOTICES.md"))
+        }
         val copyLicenses = tasks.register<CopyLicenseDocumentsTask>(
             "copyLicenses${variant.name.replaceFirstChar { it.uppercase() }}",
         ) {
@@ -169,6 +190,10 @@ androidComponents {
         variant.sources.assets?.addGeneratedSourceDirectory(
             copyPrivacyPolicies,
             CopyPrivacyPoliciesTask::outputDir,
+        )
+        variant.sources.assets?.addGeneratedSourceDirectory(
+            copyThirdPartyNotices,
+            CopyThirdPartyNoticesTask::outputDir,
         )
         variant.sources.assets?.addGeneratedSourceDirectory(
             copyLicenses,

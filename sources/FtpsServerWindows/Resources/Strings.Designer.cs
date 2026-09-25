@@ -675,6 +675,12 @@ namespace FtpsServerWindows.Resources {
             }
         }
 
+        public static string MenuThirdPartyNotices {
+            get {
+                return ResourceManager.GetString("MenuThirdPartyNotices", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Logs.
         /// </summary>

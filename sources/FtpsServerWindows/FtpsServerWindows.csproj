@@ -36,6 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="THIRD-PARTY-NOTICES.md" LogicalName="FtpsServerWindows.ThirdPartyNotices.md" />
+    <Content Include="THIRD-PARTY-NOTICES.md" Link="FtpsServerWindows.THIRD-PARTY-NOTICES.md" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FtpsServerAppsShared\FtpsServerAppsShared.csproj" />
     <ProjectReference Include="..\FtpsServerLibrary\FtpsServerLibrary.csproj" />
   </ItemGroup>

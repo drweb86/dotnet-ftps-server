@@ -24,6 +24,7 @@ import com.siarheikuchuk.ftpsserver.ui.MainScreen
 import com.siarheikuchuk.ftpsserver.ui.MainViewModel
 import com.siarheikuchuk.ftpsserver.ui.PrivacyPolicyScreen
 import com.siarheikuchuk.ftpsserver.ui.PrivacyScreenMode
+import com.siarheikuchuk.ftpsserver.ui.ThirdPartyNoticesScreen
 
 class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModels()
@@ -47,6 +48,7 @@ class MainActivity : ComponentActivity() {
                 }
                 var privacyOpen by remember { mutableStateOf(false) }
                 var licenseOpen by remember { mutableStateOf(false) }
+                var thirdPartyOpen by remember { mutableStateOf(false) }
 
                 if (BuildConfig.CHINA_PIPL_POLICY && !consented) {
                     PrivacyPolicyScreen(
@@ -84,6 +86,8 @@ class MainActivity : ComponentActivity() {
                         onDismiss = { privacyOpen = false },
                         onDeclineConfirmed = { wipePrivateDataAndExit() },
                     )
+                } else if (thirdPartyOpen) {
+                    ThirdPartyNoticesScreen(onDismiss = { thirdPartyOpen = false })
                 } else if (licenseOpen) {
                     PrivacyPolicyScreen(
                         mode = if (BuildConfig.CHINA_PIPL_POLICY) {
@@ -103,6 +107,7 @@ class MainActivity : ComponentActivity() {
                         viewModel = viewModel,
                         onOpenPrivacy = { privacyOpen = true },
                         onOpenLicense = { licenseOpen = true },
+                        onOpenThirdPartyNotices = { thirdPartyOpen = true },
                     )
                 }
             }
