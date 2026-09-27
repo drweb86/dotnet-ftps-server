@@ -178,6 +178,8 @@ namespace Codice.SortResX
                 writer.WriteLine("Publisher: Siarhei Kuchuk");
                 writer.WriteLine("PublisherUrl: https://github.com/drweb86");
                 writer.WriteLine("PublisherSupportUrl: https://github.com/drweb86/dotnet-ftps-server/issues");
+                if (isDefaultLocale)
+                    writer.WriteLine("PrivacyUrl: https://github.com/drweb86/dotnet-ftps-server/blob/main/privacy/desktop/README.md");
                 writer.WriteLine("Author: Siarhei Kuchuk");
                 writer.WriteLine("PackageName: FTPS Server");
                 writer.WriteLine("PackageUrl: https://github.com/drweb86/dotnet-ftps-server");
