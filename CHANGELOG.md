@@ -1,3 +1,8 @@
+# 2026.09.35
+
+## Changes
+- Android: Another attempt to fix F-Droid build.
+
 # 2026.09.33
 
 ## Changes
