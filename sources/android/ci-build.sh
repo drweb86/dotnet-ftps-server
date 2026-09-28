@@ -21,6 +21,15 @@ mkdir -p "$ANDROID_ROOT/app/src/main/res/drawable"
 cp "$ROOT/sources/FtpsServerAvalonia/FtpsServerAvalonia.Android/Icon.png" \
   "$ANDROID_ROOT/app/src/main/res/drawable/ic_launcher.png"
 python3 "$ANDROID_ROOT/tools/convert_resx.py"
+# F-Droid rebuilds this git tree and does not run the generator. Shipping a
+# dirty res/ tree changes resources.arsc and classes.dex.
+if ! git -C "$ROOT" diff --quiet --ignore-cr-at-eol -- sources/android/app/src/main/res \
+  || [ -n "$(git -C "$ROOT" ls-files --others --exclude-standard -- sources/android/app/src/main/res)" ]; then
+  echo "Android resources do not match the git tree. Commit sources/android/app/src/main/res (convert_resx.py / launcher icon) before releasing."
+  git -C "$ROOT" diff --ignore-cr-at-eol -- sources/android/app/src/main/res
+  git -C "$ROOT" ls-files --others --exclude-standard -- sources/android/app/src/main/res
+  exit 1
+fi
 
 WRAPPER="$ANDROID_ROOT/gradle/wrapper/gradle-wrapper.jar"
 if [ ! -f "$WRAPPER" ]; then

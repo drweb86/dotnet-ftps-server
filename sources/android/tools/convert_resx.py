@@ -90,6 +90,14 @@ def parse_resx(path: Path) -> dict[str, str]:
 
 STRING_NAME_RE = re.compile(r'<string\s+name="([^"]+)"')
 
+# Desktop still has in-app update strings. Android removed them. F-Droid builds
+# the committed resources and does not run this script, so regenerating must
+# not put those strings back into the APK.
+ANDROID_OMIT_RESX_KEYS = {
+    "UpdateDownload",
+    "UpdateAvailableFormat",
+}
+
 
 def existing_string_names(folder: Path) -> set[str]:
     """Names already defined beside strings.xml (e.g. strings_privacy.xml)."""
@@ -108,12 +116,14 @@ def write_strings(folder: Path, items: dict[str, str]) -> None:
     skip = existing_string_names(folder)
     lines = ['<?xml version="1.0" encoding="utf-8"?>', "<resources>"]
     for key, value in items.items():
+        if key in ANDROID_OMIT_RESX_KEYS:
+            continue
         android_name = to_snake(key)
         if android_name in skip:
             continue
         lines.append(f'    <string name="{android_name}">{android_escape(value)}</string>')
     lines.append("</resources>")
-    (folder / "strings.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (folder / "strings.xml").write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
 
 
 def main() -> None:
