@@ -1,4 +1,5 @@
 using FtpsServerAppsShared.Privacy;
+using FtpsServerWindows.Services;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -53,15 +54,16 @@ public partial class PrivacyPolicyWindow : Window
             switch (block)
             {
                 case PrivacyMdBlock.Heading heading:
-                    DocumentHost.Children.Add(new TextBlock
+                    var headingBlock = new TextBlock
                     {
                         Text = heading.Text,
                         FontWeight = FontWeights.Bold,
-                        FontSize = heading.Level == 1 ? 22 : heading.Level == 2 ? 18 : 16,
                         TextWrapping = TextWrapping.Wrap,
                         Margin = new Thickness(0, heading.Level == 1 ? 4 : 16, 0, 8),
                         Foreground = (Brush)FindResource("WindowForegroundBrush"),
-                    });
+                    };
+                    WindowsFontScale.Bind(headingBlock, WindowsFontScale.HeadingKey(heading.Level));
+                    DocumentHost.Children.Add(headingBlock);
                     break;
                 case PrivacyMdBlock.Paragraph paragraph:
                     DocumentHost.Children.Add(CreateRichText(paragraph.Inlines, 0, 10));
@@ -84,8 +86,8 @@ public partial class PrivacyPolicyWindow : Window
             TextWrapping = TextWrapping.Wrap,
             Margin = new Thickness(leftMargin, 0, 0, bottomMargin),
             Foreground = (Brush)FindResource("WindowForegroundBrush"),
-            FontSize = 14,
         };
+        WindowsFontScale.Bind(block, WindowsFontScale.DocumentKey);
         if (!string.IsNullOrEmpty(prefix))
             block.Inlines.Add(new Run(prefix));
 

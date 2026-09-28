@@ -1,6 +1,6 @@
 using System.Globalization;
 using System.Windows;
-using System.Windows.Markup;
+using FtpsServerWindows.Services;
 
 namespace FtpsServerWindows
 {
@@ -17,7 +17,14 @@ namespace FtpsServerWindows
                 CultureInfo.CurrentUICulture = culture;
             }
 
+            WindowsFontScale.Start();
             base.OnStartup(e);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            WindowsFontScale.Stop();
+            base.OnExit(e);
         }
     }
 }

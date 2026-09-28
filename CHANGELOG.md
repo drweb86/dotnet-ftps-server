@@ -3,6 +3,9 @@
 ## Changes
 - Android: build the release APK with JDK 21.0.12.1 and the committed string resources so F-Droid can reproduce it.
 
+## Bug Fixes
+- Windows: follow Settings → Accessibility → Text size, and refresh fonts when the window moves to a display with a different scale.
+
 # 2026.09.29
 
 ## Security
