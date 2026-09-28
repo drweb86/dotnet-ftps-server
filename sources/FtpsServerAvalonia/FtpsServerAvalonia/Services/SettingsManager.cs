@@ -1,6 +1,8 @@
+using FtpsServerAppsShared.Security;
 using FtpsServerAvalonia.Models;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 
 namespace FtpsServerAvalonia.Services
@@ -20,7 +22,12 @@ namespace FtpsServerAvalonia.Services
                 if (File.Exists(SettingsFile))
                 {
                     var json = File.ReadAllText(SettingsFile);
-                    return JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();
+                    var settings = JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();
+                    var migrate = HasPlaintextSecrets(settings);
+                    UnprotectSecrets(settings);
+                    if (migrate)
+                        SaveSettings(settings);
+                    return settings;
                 }
             }
             catch (Exception ex)
@@ -36,13 +43,42 @@ namespace FtpsServerAvalonia.Services
             try
             {
                 Directory.CreateDirectory(SettingsDirectory);
-                var json = JsonSerializer.Serialize(settings);
-                File.WriteAllText(SettingsFile, json);
+                var copy = JsonSerializer.Deserialize<AppSettings>(JsonSerializer.Serialize(settings)) ?? new AppSettings();
+                ProtectSecrets(copy);
+                File.WriteAllText(SettingsFile, JsonSerializer.Serialize(copy));
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error saving settings: {ex.Message}");
             }
+        }
+
+        private static bool HasPlaintextSecrets(AppSettings settings)
+        {
+            if (SecretProtector.IsPlaintextSecret(settings.CertificatePassword))
+                return true;
+
+            return settings.Users?.Any(user => SecretProtector.IsPlaintextSecret(user.Password)) == true;
+        }
+
+        private static void UnprotectSecrets(AppSettings settings)
+        {
+            settings.CertificatePassword = SecretProtector.Unprotect(settings.CertificatePassword);
+            if (settings.Users == null)
+                return;
+
+            foreach (var user in settings.Users)
+                user.Password = SecretProtector.Unprotect(user.Password);
+        }
+
+        private static void ProtectSecrets(AppSettings settings)
+        {
+            settings.CertificatePassword = SecretProtector.Protect(settings.CertificatePassword);
+            if (settings.Users == null)
+                return;
+
+            foreach (var user in settings.Users)
+                user.Password = SecretProtector.Protect(user.Password);
         }
     }
 }

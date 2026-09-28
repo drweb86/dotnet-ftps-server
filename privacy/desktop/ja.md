@@ -2,7 +2,7 @@
 
 # プライバシーポリシー
 
-最終更新日：2026年9月13日
+最終更新日：2026年9月28日
 
 
 **FTPS Server** by Siarhei Kuchuk
@@ -23,6 +23,8 @@
 
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
+
+そのファイル内の FTPS アカウントのパスワードと証明書のパスワードは、保存前にこのコンピューター上で暗号化され、このコンピューターでのみ読み取れます。古いバージョンで保存されたパスワードは、次回アプリを起動したときに暗号化されます。
 
 アプリが自己署名証明書を作成する場合、次の場所に保存されます：
 

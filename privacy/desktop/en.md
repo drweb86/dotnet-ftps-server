@@ -2,7 +2,7 @@
 
 # Privacy policy
 
-Last updated: 13 September 2026
+Last updated: 28 September 2026
 
 **FTPS Server** by Siarhei Kuchuk
 
@@ -18,10 +18,12 @@ The app does not include ads, analytics, crash reporters, or tracking SDKs. The 
 
 ## Data stored on your computer
 
-Application settings (including FTPS usernames and passwords, the server port, connection limits, and optional certificate path and password) are stored only on this computer:
+Application settings (including FTPS usernames, the server port, connection limits, and an optional certificate path) are stored only on this computer:
 
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
+
+FTPS account passwords and the certificate password in that file are encrypted on this computer before they are saved, and can be read only on this computer. A password saved by an older version is encrypted the next time the app starts.
 
 If the app creates a self-signed certificate, it is stored under:
 

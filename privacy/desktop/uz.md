@@ -24,6 +24,8 @@ Ilova sozlamalari (FTPS foydalanuvchi nomlari va parollari, server porti, ulanis
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+Ushbu fayldagi FTPS hisob parollari va sertifikat paroli saqlashdan oldin shu kompyuterda shifrlanadi va faqat shu kompyuterda o‘qiladi. Eski versiya saqlagan parol ilova keyingi marta ochilganda shifrlanadi.
+
 Ilova o‘zini o‘zi imzolagan sertifikat yaratsa, u shu yerda saqlanadi:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

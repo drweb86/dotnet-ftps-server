@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+گذرواژه‌های حساب FTPS و گذرواژه گواهی در این فایل پیش از ذخیره روی این رایانه رمزنگاری می‌شوند و فقط روی همین رایانه قابل خواندن هستند. گذرواژه‌ای که نسخه قدیمی‌تر ذخیره کرده، در اجرای بعدی برنامه رمزنگاری می‌شود.
+
 اگر برنامه گواهی خودامضا بسازد، اینجا ذخیره می‌شود:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

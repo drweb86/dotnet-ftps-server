@@ -2,7 +2,7 @@
 
 # Datenschutzerklärung
 
-Zuletzt aktualisiert: 13. September 2026
+Zuletzt aktualisiert: 28. September 2026
 
 
 **FTPS Server** by Siarhei Kuchuk
@@ -23,6 +23,8 @@ Die Anwendungseinstellungen (einschließlich FTPS-Benutzernamen und -Passwörter
 
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
+
+Die FTPS-Kontopasswörter und das Zertifikatpasswort in dieser Datei werden vor dem Speichern auf diesem Computer verschlüsselt und können nur auf diesem Computer gelesen werden. Ein von einer älteren Version gespeichertes Passwort wird beim nächsten Start der App verschlüsselt.
 
 Wenn die App ein selbstsigniertes Zertifikat erstellt, wird es hier abgelegt:
 

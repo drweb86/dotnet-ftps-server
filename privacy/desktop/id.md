@@ -24,6 +24,8 @@ Pengaturan aplikasi (termasuk nama pengguna dan kata sandi FTPS, port server, ba
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+Kata sandi akun FTPS dan kata sandi sertifikat dalam berkas itu dienkripsi di komputer ini sebelum disimpan, dan hanya dapat dibaca di komputer ini. Kata sandi yang disimpan versi lama dienkripsi saat aplikasi berikutnya dibuka.
+
 Jika aplikasi membuat sertifikat yang ditandatangani sendiri, sertifikat itu disimpan di sini:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

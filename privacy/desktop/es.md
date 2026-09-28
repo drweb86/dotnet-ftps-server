@@ -2,7 +2,7 @@
 
 # Política de privacidad
 
-Última actualización: 13 de septiembre de 2026
+Última actualización: 28 de septiembre de 2026
 
 
 **FTPS Server** by Siarhei Kuchuk
@@ -23,6 +23,8 @@ La configuración de la aplicación (incluidos nombres de usuario y contraseñas
 
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
+
+Las contraseñas de las cuentas FTPS y la contraseña del certificado en ese archivo se cifran en este equipo antes de guardarse, y solo se pueden leer en este equipo. Una contraseña guardada por una versión anterior se cifra la próxima vez que se abre la aplicación.
 
 Si la aplicación crea un certificado autofirmado, se almacena aquí:
 

@@ -24,6 +24,8 @@ Mipangilio ya programu (pamoja na majina ya watumiaji na nywila za FTPS, bandari
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+Manenosiri ya akaunti za FTPS na nenosiri la cheti katika faili hiyo husimbwa kwa njia fiche kwenye kompyuta hii kabla ya kuhifadhiwa, na yanaweza kusomwa kwenye kompyuta hii pekee. Nenosiri lililohifadhiwa na toleo la zamani husimbwa wakati programu inafunguliwa tena.
+
 Ikiwa programu itaunda cheti kilichotiwa saini na yenyewe, huhifadhiwa hapa:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

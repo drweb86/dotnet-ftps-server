@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+ਉਸ ਫ਼ਾਈਲ ਵਿੱਚ FTPS ਖਾਤਿਆਂ ਦੇ ਪਾਸਵਰਡ ਅਤੇ ਸਰਟੀਫਿਕੇਟ ਪਾਸਵਰਡ ਸੰਭਾਲਣ ਤੋਂ ਪਹਿਲਾਂ ਇਸ ਕੰਪਿਊਟਰ ਉੱਤੇ ਇਨਕ੍ਰਿਪਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ, ਅਤੇ ਸਿਰਫ਼ ਇਸ ਕੰਪਿਊਟਰ ਉੱਤੇ ਪੜ੍ਹੇ ਜਾ ਸਕਦੇ ਹਨ। ਪੁਰਾਣੇ ਵਰਜ਼ਨ ਵੱਲੋਂ ਸੰਭਾਲਿਆ ਪਾਸਵਰਡ ਅਗਲੀ ਵਾਰ ਐਪ ਖੁੱਲ੍ਹਣ ਤੇ ਇਨਕ੍ਰਿਪਟ ਹੁੰਦਾ ਹੈ।
+
 ਜੇ ਐਪ ਖੁਦ-ਦਸਤਖਤ ਸਰਟੀਫਿਕੇਟ ਬਣਾਉਂਦੀ ਹੈ, ਤਾਂ ਇਹ ਇੱਥੇ ਸਟੋਰ ਹੁੰਦਾ ਹੈ:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

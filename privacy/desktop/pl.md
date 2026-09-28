@@ -2,7 +2,7 @@
 
 # Polityka prywatności
 
-Ostatnia aktualizacja: 13 września 2026 r.
+Ostatnia aktualizacja: 28 września 2026 r.
 
 
 **FTPS Server** by Siarhei Kuchuk
@@ -23,6 +23,8 @@ Ustawienia aplikacji (w tym nazwy użytkowników i hasła FTPS, port serwera, li
 
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
+
+Hasła kont FTPS i hasło certyfikatu w tym pliku są szyfrowane na tym komputerze przed zapisem i można je odczytać tylko na tym komputerze. Hasło zapisane przez starszą wersję jest szyfrowane przy następnym uruchomieniu aplikacji.
 
 Jeśli aplikacja tworzy certyfikat z podpisem własnym, jest on przechowywany tutaj:
 

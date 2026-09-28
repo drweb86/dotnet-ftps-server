@@ -24,6 +24,8 @@ App settings (including FTPS usernames and passwords, server port, connection li
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+FTPS account passwords and di certificate password for dat file dey encrypt for dis computer before dem save, and only dis computer fit read dem. Password wey old version save go encrypt the next time di app open.
+
 If di app create self-signed certificate, e dey store here:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

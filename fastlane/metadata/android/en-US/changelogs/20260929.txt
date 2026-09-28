@@ -1,0 +1,1 @@
+Windows, Linux: encrypt FTPS account passwords and the certificate password in settings.json (DPAPI current-user on Windows, machine-bound AES on Linux). Passwords saved by an older version are encrypted the next time the app starts.

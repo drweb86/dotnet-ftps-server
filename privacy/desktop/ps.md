@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+په دې فایل کې د FTPS حسابونو پټنومونه او د سند پټنوم له خوندي کېدو مخکې په همدې کمپیوټر کې کوډ کېږي، او یوازې په همدې کمپیوټر کې لوستل کېدای شي. د زړې نسخې خوندي شوی پټنوم د اپلیکیشن په راتلونکي پرانیستلو کې کوډ کېږي.
+
 که اپلیکیشن ځان لاسلیک شوی سند جوړ کړي، دلته ساتل کېږي:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

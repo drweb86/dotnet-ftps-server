@@ -24,6 +24,8 @@ Olùdàgbàsókè kò ṣiṣẹ́ ẹ̀yìn tí ó gba àwọn fáìlì, ọ̀r
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+Àwọn ọ̀rọ̀ ìgbaniwọlé àkántì FTPS àti ọ̀rọ̀ ìgbaniwọlé ìwé-ẹ̀rí nínú fáìlì yẹn ni a ń parí kó tó di fífipamọ́ lórí kọ̀mpútà yìí, àti pé kọ̀mpútà yìí nìkan ló lè kà wọ́n. Ọ̀rọ̀ ìgbaniwọlé tí ẹ̀yà àtẹ̀yìnwá fi pamọ́ yóò parí nígbà tí a bá tún ṣí áàpù.
+
 Tí áàpù bá ṣẹ̀dá ìwé-ẹ̀rí tí ó fọwọ́ sí fúnra rẹ̀, a fi í pamọ́ níbí:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

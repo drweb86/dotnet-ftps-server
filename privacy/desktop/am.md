@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+በዚያ ፋይል ውስጥ ያሉ የFTPS መለያ የይለፍ ቃሎች እና የምስክር ወረቀት የይለፍ ቃል ከመቀመጣቸው በፊት በዚህ ኮምፒውተር ላይ ይመሰጠራሉ፣ እና በዚህ ኮምፒውተር ላይ ብቻ ይነበባሉ። በአሮጌ ስሪት የተቀመጠ የይለፍ ቃል መተግበሪያው በሚቀጥለው ጊዜ ሲከፈት ይመሰጠራል።
+
 መተግበሪያው በራሱ የተፈረመ ምስክር ወረቀት ከፈጠረ እዚህ ይቀመጣል፦
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

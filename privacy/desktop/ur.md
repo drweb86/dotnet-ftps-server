@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+اس فائل میں FTPS اکاؤنٹ کے پاس ورڈ اور سرٹیفکیٹ پاس ورڈ محفوظ کرنے سے پہلے اسی کمپیوٹر پر خفیہ کیے جاتے ہیں، اور صرف اسی کمپیوٹر پر پڑھے جا سکتے ہیں۔ پرانے ورژن کا محفوظ کیا ہوا پاس ورڈ اگلی بار ایپ کھلنے پر خفیہ کیا جاتا ہے۔
+
 اگر ایپ خود دستخط شدہ سرٹیفکیٹ بناتی ہے تو وہ یہاں محفوظ ہوتا ہے:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

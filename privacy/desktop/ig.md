@@ -24,6 +24,8 @@ Ntọala ngwa (gụnyere aha njirimara na paswọọdụ FTPS, ọdụ ụgbọ 
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+Paswọọdụ akaụntụ FTPS na paswọọdụ asambodo dị n’faịlụ ahụ na-ezobe na kọmputa a tupu echekwa ha, ma naanị kọmputa a nwere ike ịgụ ha. Paswọọdụ nke ụdị ochie chekwara ga-ezobe oge a ga-emepe ngwa ọzọ.
+
 Ọ bụrụ na ngwa mepụta asambodo nke onwe, a na-echekwa ya ebe a:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

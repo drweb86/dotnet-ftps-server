@@ -24,6 +24,8 @@ Cài đặt ứng dụng (bao gồm tên người dùng và mật khẩu FTPS, c
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+Mật khẩu tài khoản FTPS và mật khẩu chứng chỉ trong tệp đó được mã hóa trên máy tính này trước khi lưu, và chỉ đọc được trên máy tính này. Mật khẩu do phiên bản cũ lưu sẽ được mã hóa ở lần mở ứng dụng tiếp theo.
+
 Nếu ứng dụng tạo chứng chỉ tự ký, chứng chỉ được lưu tại:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

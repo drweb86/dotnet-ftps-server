@@ -1,5 +1,9 @@
+# 2026.09.29
+
+## Security
+- Windows, Linux: encrypt FTPS account passwords and the certificate password in `settings.json` (DPAPI current-user on Windows, machine-bound AES on Linux). Passwords saved by an older version are encrypted the next time the app starts.
+
 # 2026.09.26
-(unchanged)
 
 ## Changes
 - Documents.

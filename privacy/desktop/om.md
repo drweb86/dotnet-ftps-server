@@ -24,6 +24,8 @@ Sajoo appilikeeshinii (maqaa fayyadamaa fi jecha icciitii FTPS, poortii seervara
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+Jecha icciitii akkaawuntii FTPS fi jecha icciitii sertifikeetii faayila sana keessa jiru osoo hin kuufamin dura kompiitara kana irratti iccitiin kan godhamu yoo ta’u, kompiitara kana irratti qofa dubbifamuu danda’a. Jecha icciitii gosa duraanii kuufame yeroo itti aanutti appii yeroo banamu iccitiin ni godhama.
+
 Yoo appilikeeshiniin sartifikeetii ofiin mallatteesse uume, asitti kuufama:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

@@ -2,7 +2,7 @@
 
 # Politique de confidentialité
 
-Dernière mise à jour : 13 septembre 2026
+Dernière mise à jour : 28 septembre 2026
 
 
 **FTPS Server** by Siarhei Kuchuk
@@ -23,6 +23,8 @@ Les paramètres de l’application (identifiants et mots de passe FTPS, port du 
 
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
+
+Les mots de passe des comptes FTPS et le mot de passe du certificat dans ce fichier sont chiffrés sur cet ordinateur avant d’être enregistrés, et ne peuvent être lus que sur cet ordinateur. Un mot de passe enregistré par une ancienne version est chiffré au prochain démarrage de l’application.
 
 Si l’application crée un certificat auto-signé, il est stocké ici :
 

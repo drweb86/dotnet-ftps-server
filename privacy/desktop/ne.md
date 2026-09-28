@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+त्यस फाइलमा भएका FTPS खाताका पासवर्ड र प्रमाणपत्र पासवर्ड सुरक्षित गर्नुअघि यस कम्प्युटरमा इन्क्रिप्ट गरिन्छन्, र यस कम्प्युटरमा मात्र पढ्न सकिन्छ। पुरानो संस्करणले सुरक्षित गरेको पासवर्ड अर्को पटक एप खोलिँदा इन्क्रिप्ट गरिन्छ।
+
 एपले स्व-हस्ताक्षरित प्रमाणपत्र बनाएमा यहाँ भण्डारण हुन्छ:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+সেই ফাইলে থাকা FTPS অ্যাকাউন্টের পাসওয়ার্ড এবং সার্টিফিকেট পাসওয়ার্ড সংরক্ষণের আগে এই কম্পিউটারে এনক্রিপ্ট করা হয়, এবং শুধু এই কম্পিউটারেই পড়া যায়। পুরোনো সংস্করণে সংরক্ষিত পাসওয়ার্ড পরের বার অ্যাপ চালু হলে এনক্রিপ্ট করা হয়।
+
 অ্যাপ স্ব-স্বাক্ষরিত সার্টিফিকেট তৈরি করলে তা এখানে সংরক্ষিত হয়:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

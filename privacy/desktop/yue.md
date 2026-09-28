@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+呢個檔案入面嘅 FTPS 帳戶密碼同憑證密碼會喺儲存之前喺呢部電腦加密，而且只可以喺呢部電腦讀取。舊版本儲存嘅密碼會喺下次開啟應用程式時加密。
+
 如果應用程式建立自簽憑證，會儲存在呢度：
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

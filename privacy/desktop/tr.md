@@ -2,7 +2,7 @@
 
 # Gizlilik politikası
 
-Son güncelleme: 13 Eylül 2026
+Son güncelleme: 28 Eylül 2026
 
 
 **FTPS Server** by Siarhei Kuchuk
@@ -23,6 +23,8 @@ Uygulama ayarları (FTPS kullanıcı adları ve parolaları, sunucu bağlantı n
 
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
+
+Bu dosyadaki FTPS hesap parolaları ve sertifika parolası kaydedilmeden önce bu bilgisayarda şifrelenir ve yalnızca bu bilgisayarda okunabilir. Eski bir sürümün kaydettiği parola, uygulama bir sonraki açılışında şifrelenir.
 
 Uygulama kendinden imzalı bir sertifika oluşturursa şurada saklanır:
 

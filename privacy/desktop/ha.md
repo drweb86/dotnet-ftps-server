@@ -24,6 +24,8 @@ Saitunan aikace-aikace (ciki har da sunayen masu amfani da kalmomin sirrin FTPS,
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+Kalmomin sirri na asusun FTPS da kalmar sirrin takardar shaida a cikin wannan fayil suna ɓoye a wannan kwamfuta kafin a adana su, kuma wannan kwamfuta ce kaɗai ke iya karanta su. Kalmar sirri da tsohuwar siga ta adana za ta ɓoye a lokacin da aka sake buɗe aikace-aikacen.
+
 Idan aikace-aikacen ya ƙirƙiri takardar shaida da aka sanya hannu da kai, ana adana ta a nan:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

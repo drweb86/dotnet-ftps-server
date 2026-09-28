@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+รหัสผ่านบัญชี FTPS และรหัสผ่านใบรับรองในไฟล์นั้นถูกเข้ารหัสบนคอมพิวเตอร์เครื่องนี้ก่อนบันทึก และอ่านได้เฉพาะบนคอมพิวเตอร์เครื่องนี้ รหัสผ่านที่เวอร์ชันเก่าบันทึกไว้จะถูกเข้ารหัสเมื่อเปิดแอปครั้งถัดไป
+
 หากแอปสร้างใบรับรองที่ลงนามเอง จะถูกเก็บที่นี่:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

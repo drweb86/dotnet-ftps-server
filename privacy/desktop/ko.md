@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+해당 파일의 FTPS 계정 비밀번호와 인증서 비밀번호는 저장하기 전에 이 컴퓨터에서 암호화되며, 이 컴퓨터에서만 읽을 수 있습니다. 이전 버전에서 저장한 비밀번호는 다음에 앱을 실행할 때 암호화됩니다.
+
 앱이 자체 서명 인증서를 만들면 다음 위치에 저장됩니다:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`

@@ -24,6 +24,8 @@
 - Windows: `%LocalAppData%\FtpsServerApp\settings.json`
 - Linux: `~/.local/share/FtpsServerApp/settings.json`
 
+Сол файлдағы FTPS тіркелгі құпиясөздері мен сертификат құпиясөзі сақталар алдында осы компьютерде шифрланады және тек осы компьютерде оқылады. Ескі нұсқа сақтаған құпиясөз келесі іске қосу кезінде шифрланады.
+
 Қолданба өзін-өзі қол қойған сертификат жасаса, ол осында сақталады:
 
 - Windows: `%LocalAppData%\FtpsServerLibrary\Certificates`
