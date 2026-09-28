@@ -162,11 +162,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Java 17
+      # F-Droid buildserver-trixie uses Debian openjdk-21 21.0.12.1+1.
+      # A different JDK changes classes.dex and fails the reproducible APK check.
+      - name: Setup Java 21
         uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21.0.12.1+1'
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
