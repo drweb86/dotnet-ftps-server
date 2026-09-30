@@ -1,0 +1,1 @@
+Android: Rebuild the release APK so F-Droid can match classes.dex and resources.arsc.

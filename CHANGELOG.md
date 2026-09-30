@@ -1,3 +1,8 @@
+# 2026.09.36
+
+## Changes
+- Android: Rebuild the release APK so F-Droid can match classes.dex and resources.arsc.
+
 # 2026.09.35
 
 ## Changes
