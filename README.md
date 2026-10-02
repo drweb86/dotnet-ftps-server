@@ -71,13 +71,17 @@ After installation for linux, the following commands are available: **`ftps-serv
 
 **Android**
 
-A. [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver)
+A. [Google Play](https://play.google.com/store/apps/details?id=com.siarheikuchuk.ftpsserver)
 
-B. [HUAWEI AppGallery](https://appgallery.huawei.com/app/C118829925)
+Best option. Store will keep application up to date.
 
-C. [FDroid](https://f-droid.org/packages/com.siarheikuchuk.ftpsserver/) 
+B. [RuStore](https://www.rustore.ru/catalog/app/com.siarheikuchuk.ftpsserver)
 
-D. Prebuilt APK [look for **android.apk** asset](https://github.com/drweb86/dotnet-ftps-server/releases/latest). Tap the downloaded APK in the browser download list, or open it from the Android `Downloads` app. If Android blocks the install, tap `Settings` and enable `Allow from this source` for the browser or file manager you used, go back and Install. Because app is self-signed, Android will ask you to confirm that you trust the APK before installing it. When Google Play Protect shows a warning for the self-signed APK, choose the option to install anyway if you trust this project. On Samsung devices click Details, Install anyway.
+C. [HUAWEI AppGallery](https://appgallery.huawei.com/app/C118829925)
+
+D. [FDroid](https://f-droid.org/packages/com.siarheikuchuk.ftpsserver/)
+
+E. Prebuilt APK [look for **android.apk** asset](https://github.com/drweb86/dotnet-ftps-server/releases/latest). Tap the downloaded APK in the browser download list, or open it from the Android `Downloads` app. If Android blocks the install, tap `Settings` and enable `Allow from this source` for the browser or file manager you used, go back and Install. Because app is self-signed, Android will ask you to confirm that you trust the APK before installing it. When Google Play Protect shows a warning for the self-signed APK, choose the option to install anyway if you trust this project. On Samsung devices click Details, Install anyway.
 
 **Library**
 
