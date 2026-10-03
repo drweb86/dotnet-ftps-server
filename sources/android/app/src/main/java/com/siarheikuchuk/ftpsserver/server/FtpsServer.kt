@@ -16,6 +16,7 @@ class FtpsServer(
     private val running = AtomicBoolean(false)
     private val active = AtomicInteger(0)
     private val pool = Executors.newCachedThreadPool()
+    private val loginThrottle = LoginThrottle()
     private var listener: ServerSocket? = null
 
     val loadedCertificate: LoadedCertificate? get() = certificate
@@ -46,6 +47,12 @@ class FtpsServer(
                 val client = server.accept()
                 client.keepAlive = true
                 client.tcpNoDelay = true
+                val ipKey = client.inetAddress?.let { LoginThrottle.key(it) }
+                if (ipKey != null && loginThrottle.isLocked(ipKey, System.currentTimeMillis())) {
+                    log.warn("Connection rejected from ${client.remoteSocketAddress}: too many failed logins")
+                    client.close()
+                    continue
+                }
                 val max = config.settings.maxConnections
                 if (active.get() >= max) {
                     log.warn("Connection rejected from ${client.inetAddress}: Max connections reached")
@@ -62,6 +69,7 @@ class FtpsServer(
                             users = config.users,
                             sslContext = certificate?.sslContext,
                             fileSystem = fileSystem,
+                            loginThrottle = loginThrottle,
                         ).handle()
                     } finally {
                         active.decrementAndGet()

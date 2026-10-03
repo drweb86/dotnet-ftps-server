@@ -17,12 +17,18 @@ class FtpsServerClientSession(
     TcpClient controlClient,
     List<FtpsServerUserAccount> users,
     X509Certificate2? certificate,
-    IFtpsServerFileSystemProvider fileSystemProvider)
+    IFtpsServerFileSystemProvider fileSystemProvider,
+    FtpsLoginThrottle loginThrottle)
 {
     private readonly IFtpsServerLog _log = log;
     private readonly TcpClient _controlClient = controlClient;
     private readonly List<FtpsServerUserAccount> _users = users;
     private readonly X509Certificate2? _certificate = certificate;
+    private readonly FtpsLoginThrottle _loginThrottle = loginThrottle;
+    private readonly IPAddress? _clientIp = controlClient.Client.RemoteEndPoint is IPEndPoint endPoint
+        ? FtpsLoginThrottle.Normalize(endPoint.Address)
+        : null;
+    private bool _disconnect;
 
     private System.IO.Stream? _controlStream;
     private System.IO.StreamReader? _reader;
@@ -92,7 +98,7 @@ class FtpsServerClientSession(
 
                 await ProcessCommandAsync(command, argument);
 
-                if (command == "QUIT")
+                if (command == "QUIT" || _disconnect)
                     break;
             }
         }
@@ -328,15 +334,21 @@ class FtpsServerClientSession(
             _user = user;
             _isAuthenticated = true;
             _path = new FtpsServerVirtualPath();
+            if (_clientIp is not null)
+                _loginThrottle.RegisterSuccess(_clientIp);
 
             _log.Info($"[{_clientAddress}] User logged in: {_username}");
             await SendResponseAsync(230, "User logged in");
         }
         else
         {
+            await Task.Delay(FtpsLoginThrottle.FailureDelay);
+            var locked = _clientIp is not null && _loginThrottle.RegisterFailure(_clientIp, DateTime.UtcNow);
             _log.Warn($"[{_clientAddress}] Failed login attempt for user: {_username}");
             _username = null;
             await SendResponseAsync(530, "Login incorrect");
+            if (locked)
+                _disconnect = true;
         }
     }
 

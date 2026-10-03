@@ -4,6 +4,7 @@
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
 - Library, Android: reject Windows reserved device names that include an extension, such as `con.txt`. On Windows, open share paths with the `\\?\` prefix so those names are files, not devices.
 - Android: allow only TLS 1.2 and TLS 1.3 on the control and data connections.
+- Library, Android: after 5 failed logins from one address, pause one second on each failure and refuse that address for 60 seconds. A successful login clears the count.
 
 # 2026.09.36
 

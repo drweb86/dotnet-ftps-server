@@ -18,6 +18,7 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
     private bool _isRunning;
     private X509Certificate2? _serverCertificate;
     private int _activeConnections;
+    private readonly FtpsLoginThrottle _loginThrottle = new();
 
     public X509Certificate2? LoadedCertificate { get; private set; }
 
@@ -76,6 +77,13 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
                 var client = await _listener!.AcceptTcpClientAsync();
                 var endpoint = client.Client.RemoteEndPoint;
 
+                if (endpoint is IPEndPoint remote && _loginThrottle.IsLocked(remote.Address, DateTime.UtcNow))
+                {
+                    _log.Warn($"Connection rejected from {endpoint}: too many failed logins");
+                    client.Close();
+                    continue;
+                }
+
                 var actualMaxConnections = _config.ServerSettings.MaxConnections ?? 10;
                 if (_activeConnections >= actualMaxConnections)
                 {
@@ -117,7 +125,8 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
             client,
             _config.Users,
             _serverCertificate,
-            _ftpsServerFileSystemProvider);
+            _ftpsServerFileSystemProvider,
+            _loginThrottle);
         
         await session.HandleAsync();
     }

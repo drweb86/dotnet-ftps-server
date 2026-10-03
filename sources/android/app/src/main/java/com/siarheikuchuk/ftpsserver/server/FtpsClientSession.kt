@@ -24,6 +24,7 @@ class FtpsClientSession(
     private val users: List<FtpsUserAccount>,
     private val sslContext: SSLContext?,
     private val fileSystem: FileSystemProvider,
+    private val loginThrottle: LoginThrottle,
 ) {
     private var reader: BufferedReader = BufferedReader(InputStreamReader(socket.getInputStream(), LATIN1))
     private var writer: OutputStreamWriter = OutputStreamWriter(socket.getOutputStream(), LATIN1)
@@ -37,6 +38,8 @@ class FtpsClientSession(
     private var passive = false
     private var dataProtection = DataProtection.Clear
     private val clientAddress = socket.remoteSocketAddress?.toString() ?: "unknown"
+    private val clientIpKey = socket.inetAddress?.let { LoginThrottle.key(it) }
+    private var disconnect = false
     private val mlsSelected = mutableSetOf("type", "size", "modify", "perm")
 
     fun handle() {
@@ -50,7 +53,7 @@ class FtpsClientSession(
                 val command = (if (space < 0) line else line.substring(0, space)).uppercase(Locale.ROOT)
                 val argument = if (space < 0) "" else line.substring(space + 1)
                 process(command, argument)
-                if (command == "QUIT") break
+                if (command == "QUIT" || disconnect) break
             }
         } catch (e: Exception) {
             log.error("[$clientAddress] Session error", e)
@@ -166,12 +169,20 @@ class FtpsClientSession(
             user = found
             authenticated = true
             path = VirtualPath()
+            clientIpKey?.let { loginThrottle.registerSuccess(it) }
             log.info("[$clientAddress] User logged in: $name")
             send(230, "User logged in")
         } else {
+            try {
+                Thread.sleep(LoginThrottle.FAILURE_DELAY_MS)
+            } catch (_: InterruptedException) {
+                Thread.currentThread().interrupt()
+            }
+            val locked = clientIpKey?.let { loginThrottle.registerFailure(it, System.currentTimeMillis()) } == true
             log.warn("[$clientAddress] Failed login attempt for user: $name")
             username = null
             send(530, "Login incorrect")
+            if (locked) disconnect = true
         }
     }
 
