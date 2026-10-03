@@ -2,6 +2,7 @@
 
 ## Security
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
+- Library, Android: reject Windows reserved device names that include an extension, such as `con.txt`. On Windows, open share paths with the `\\?\` prefix so those names are files, not devices.
 
 # 2026.09.36
 

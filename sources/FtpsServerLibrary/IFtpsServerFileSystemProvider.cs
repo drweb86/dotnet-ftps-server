@@ -183,6 +183,22 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
                 $"Access denied. The path '{ToString()}' attempts to escape the base directory '{userFolder}'.");
         }
 
+        return ToExtendedLengthPath(fullPath);
+    }
+
+    // The \\?\ prefix makes Windows use the path as a file name, so CON.txt is not the CON device.
+    private static string ToExtendedLengthPath(string fullPath)
+    {
+        if (!OperatingSystem.IsWindows())
+            return fullPath;
+        if (fullPath.StartsWith(@"\\?\", StringComparison.Ordinal))
+            return fullPath;
+
+        var native = fullPath.Replace('/', '\\');
+        if (native.StartsWith(@"\\", StringComparison.Ordinal))
+            return @"\\?\UNC\" + native[2..];
+        if (native.Length >= 3 && native[1] == ':' && native[2] == '\\')
+            return @"\\?\" + native;
         return fullPath;
     }
 

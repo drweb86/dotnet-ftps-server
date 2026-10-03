@@ -34,12 +34,20 @@ class VirtualPath(pathsOrSegments: Iterable<String> = emptyList()) {
                         require(!part.startsWith(' ') && !part.endsWith(' ')) {
                             "Path segment cannot contain space at the beginning or end."
                         }
-                        require(part.lowercase() !in forbidden) { "Path segment '${part.lowercase()}' is forbidden." }
+                        require(!isReservedDeviceName(part)) { "Path segment '${part.lowercase()}' is forbidden." }
                         out += part
                     }
                 }
             }
             return out
+        }
+
+        // Windows treats CON, NUL, COM1, and those names plus any extension (con.txt) as devices.
+        private fun isReservedDeviceName(segment: String): Boolean {
+            var name = segment.trimEnd('.').lowercase()
+            val dot = name.indexOf('.')
+            if (dot >= 0) name = name.substring(0, dot)
+            return name in forbidden
         }
     }
 }

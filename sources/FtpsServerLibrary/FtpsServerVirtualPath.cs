@@ -28,10 +28,20 @@ class FtpsServerVirtualPath(params IEnumerable<string> pathsOrSegments)
             throw new InvalidOperationException("Path segment cannot contain space in the beginning.");
         if (segmentPart.EndsWith(' '))
             throw new InvalidOperationException("Path segment cannot contain space in the end.");
-        var lower = segmentPart.ToLower();
-        if (_forbiddenNames.Contains(lower))
+        var lower = segmentPart.ToLowerInvariant();
+        if (IsReservedDeviceName(lower))
             throw new InvalidOperationException($"Path segment '{lower}' is forbidden.");
         return true;
+    }
+
+    // Windows treats CON, NUL, COM1, and those names plus any extension (con.txt) as devices.
+    private static bool IsReservedDeviceName(string lowerSegment)
+    {
+        var name = lowerSegment.TrimEnd('.');
+        var dot = name.IndexOf('.');
+        if (dot >= 0)
+            name = name[..dot];
+        return _forbiddenNames.Contains(name);
     }
 
     private static List<string> ParsePath(params IEnumerable<string> parts)
