@@ -1,3 +1,8 @@
+# 2026.10.04
+
+## Security
+- Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
+
 # 2026.09.36
 
 ## Changes

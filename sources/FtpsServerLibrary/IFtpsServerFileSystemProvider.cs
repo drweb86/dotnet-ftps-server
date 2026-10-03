@@ -35,7 +35,7 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
     public Task<Stream> FileCreate(string userFolder, IEnumerable<string> parts)
     {
         var file = GetRealPath(userFolder, parts);
-        Stream stream = File.OpenWrite(file);
+        Stream stream = new FileStream(file, FileMode.Create, FileAccess.Write, FileShare.None);
         return Task.FromResult(stream);
     }
 
