@@ -190,6 +190,7 @@ class FtpsClientSession(
             val factory = ctx.socketFactory as SSLSocketFactory
             val ssl = factory.createSocket(socket, socket.inetAddress.hostAddress, socket.port, true) as SSLSocket
             ssl.useClientMode = false
+            restrictTls(ssl)
             ssl.startHandshake()
             socket = ssl
             recreateStreams()
@@ -385,6 +386,7 @@ class FtpsClientSession(
         val factory = sslContext.socketFactory as SSLSocketFactory
         val ssl = factory.createSocket(client, client.inetAddress.hostAddress, client.port, true) as SSLSocket
         ssl.useClientMode = false
+        restrictTls(ssl)
         ssl.startHandshake()
         return ssl
     }
@@ -703,6 +705,15 @@ class FtpsClientSession(
     private fun checkAuth() = authenticated && user != null
     private fun dataEncryptedOk() = sslContext == null || dataProtection == DataProtection.Protected
     private fun controlEncrypted() = socket is SSLSocket
+
+    // Android 6–9 still enable TLS 1.0 and 1.1 by default. Offer only 1.2 and 1.3.
+    private fun restrictTls(ssl: SSLSocket) {
+        val allowed = ssl.supportedProtocols
+            .filter { it == "TLSv1.2" || it == "TLSv1.3" }
+            .toTypedArray()
+        if (allowed.isEmpty()) throw IllegalStateException("TLS 1.2 or 1.3 is not available")
+        ssl.enabledProtocols = allowed
+    }
 
     // When a certificate is loaded, do not accept credentials (or PBSZ/PROT) on a clear control channel.
     private fun requireControlTls(replyCode: Int): Boolean {
