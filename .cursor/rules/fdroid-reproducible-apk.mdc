@@ -1,0 +1,27 @@
+---
+description: Diagnose F-Droid reproducible-APK failures for com.siarheikuchuk.ftpsserver
+globs: sources/android/**/*,.github/workflows/workflow.yml
+alwaysApply: false
+---
+
+# F-Droid reproducible APK
+
+Package `com.siarheikuchuk.ftpsserver`. F-Droid rebuilds the git commit in `metadata/com.siarheikuchuk.ftpsserver.yml` and requires a byte match with the GitHub APK `ftpsserver_<versionName>_android.apk`.
+
+Look here first:
+
+- Build log: `https://f-droid.org/repo/com.siarheikuchuk.ftpsserver_<versionCode>.log.gz`
+- Live catalog: `https://f-droid.org/api/v1/packages/com.siarheikuchuk.ftpsserver` (`suggestedVersionCode`)
+- Metadata: `https://gitlab.com/fdroid/fdroiddata/-/raw/master/metadata/com.siarheikuchuk.ftpsserver.yml`
+
+A Gradle `BUILD SUCCESSFUL` followed by `compared built binary to supplied reference binary but failed` is a content mismatch. `CHUNKED_SHA256 digest mismatch` is that same check, after F-Droid copies the GitHub signature onto its APK.
+
+Version name and code must match on both sides. CI stamps `-PappVersionName` / `-PappVersionCode` from the first `CHANGELOG.md` heading. F-Droid uses `defaultVersionName` and `defaultVersionCode` in `sources/android/app/build.gradle.kts`.
+
+Failures already hit, in order:
+
+1. `assets/dexopt/baseline.prof` differed. `ArtProfile` tasks are disabled in `app/build.gradle.kts`. `baseline.prof` also changes whenever `classes.dex` changes, so fix dex first.
+2. `classes.dex` and `resources.arsc` differed because `ci-build.sh` ran `convert_resx.py` and put desktop strings `UpdateDownload` and `UpdateAvailableFormat` back into every locale. F-Droid does not run that script. Those keys stay in `ANDROID_OMIT_RESX_KEYS`. The release script must fail if `sources/android/app/src/main/res` would change.
+3. The same two files differed because GitHub used Temurin 17 and the F-Droid trixie image uses Debian OpenJDK **21.0.12.1+1**. `actions/setup-java` rejects `21.0.12.1+1`. Pin `java-version: '21.0.12+101.0.LTS'`. Do not float to `21`.
+
+**2026.09.36** (commit `1fab41e`) reproduced on 2026-10-03 09:52 UTC. A success log can exist while the catalog still shows an older version: index signing is a later manual publish, often about a day. Confirm with the package API and whether `https://f-droid.org/repo/com.siarheikuchuk.ftpsserver_<versionCode>.apk` is 404.

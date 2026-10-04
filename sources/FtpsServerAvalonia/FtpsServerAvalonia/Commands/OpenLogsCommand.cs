@@ -3,7 +3,6 @@ using Avalonia.Platform.Storage;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Windows.Input;
 
 namespace FtpsServerAvalonia.Commands;
@@ -18,10 +17,7 @@ public class OpenLogsCommand : ICommand
 
     public bool CanExecute(object? parameter)
     {
-        return RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
-            RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
-
-        // Android does not support it.
+        return !OperatingSystem.IsAndroid();
     }
 
     public void Execute(object? parameter)

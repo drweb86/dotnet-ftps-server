@@ -7,7 +7,6 @@ using FtpsServerAvalonia.Resources;
 using FtpsServerAvalonia.Services;
 using System;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace FtpsServerAvalonia.Controls
 {
@@ -45,21 +44,19 @@ namespace FtpsServerAvalonia.Controls
                 if (folders.Count > 0)
                 {
                     var folder = folders[0];
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
-                        RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    if (OperatingSystem.IsAndroid())
                     {
-                        user.Folder = folder.Path.LocalPath.TrimEnd('/', '\\');
-                        user.FolderBookmark = string.Empty;
-                    }
-                    else
-                    {
-                        // Android - save bookmark for persistent access
                         var bookmark = await folder.SaveBookmarkAsync();
                         if (bookmark is not null)
                         {
                             user.Folder = folder.Name;
                             user.FolderBookmark = bookmark;
                         }
+                    }
+                    else
+                    {
+                        user.Folder = folder.Path.LocalPath.TrimEnd('/', '\\');
+                        user.FolderBookmark = string.Empty;
                     }
                 }
             }

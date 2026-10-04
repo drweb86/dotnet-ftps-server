@@ -50,7 +50,7 @@ See
 | Users[].Read                            | Yes       |               | Can user read folder contents and download files.                               |
 | Users[].Write                           | Yes       |               | Can user create, upload, write, delete, rename operations on files and folders. |
 
-If certificate is not specified, self-signed certificate will be created and stored in %localappdata%\FtpsServerLibrary\Certificates.
+If certificate is not specified, self-signed certificate will be created and stored in %localappdata%\FtpsServerLibrary\Certificates. On Windows and Linux its password is random and stored beside the file with an OS-backed key (DPAPI for the current user, or a key derived from the Linux machine id). A certificate saved by an older version with the password `test` is rewritten with that key the next time the server starts. Android and macOS keep the password `test`.
 
 ## 🚀 Run
 

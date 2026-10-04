@@ -1,36 +1,29 @@
+using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace FtpsServerAppsShared.Security;
+namespace FtpsServerLibrary;
 
 /// <summary>
-/// Protects persisted secrets with an OS-backed key.
+/// Protects the auto-generated PFX password with an OS-backed key.
 /// Windows uses DPAPI scoped to the current user. Linux uses AES-256 with a key
-/// derived from the machine id, so a copied settings file cannot be read elsewhere.
+/// derived from the machine id, so a copied certificate file cannot be opened elsewhere.
 /// </summary>
-public static class SecretProtector
+static class FtpsCertificatePasswordProtector
 {
-    public const string Prefix = "enc::";
+    private const string Prefix = "enc::";
 
-    public static bool IsPlaintextSecret(string? value) =>
-        !string.IsNullOrWhiteSpace(value) &&
-        !value.StartsWith(Prefix, StringComparison.Ordinal);
-
-    public static string Protect(string? value)
+    public static string Protect(string value)
     {
-        if (string.IsNullOrWhiteSpace(value))
-            return value ?? "";
-        if (value.StartsWith(Prefix, StringComparison.Ordinal))
-            return value;
-
         var protectedBytes = ProtectBytes(Encoding.UTF8.GetBytes(value));
         return Prefix + Convert.ToBase64String(protectedBytes);
     }
 
-    public static string Unprotect(string? value)
+    public static string Unprotect(string value)
     {
-        if (string.IsNullOrEmpty(value) || !value.StartsWith(Prefix, StringComparison.Ordinal))
-            return value ?? "";
+        if (!value.StartsWith(Prefix, StringComparison.Ordinal))
+            return value;
 
         var protectedBytes = Convert.FromBase64String(value[Prefix.Length..]);
         return Encoding.UTF8.GetString(UnprotectBytes(protectedBytes));
@@ -39,23 +32,23 @@ public static class SecretProtector
     private static byte[] ProtectBytes(byte[] plainBytes)
     {
         if (OperatingSystem.IsWindows())
-            return CurrentUserDpapi.Protect(plainBytes);
+            return FtpsDpapi.Protect(plainBytes);
 
         if (OperatingSystem.IsLinux())
             return ProtectWithMachineKey(plainBytes);
 
-        throw new PlatformNotSupportedException("Secret protection is available on Windows and Linux.");
+        throw new PlatformNotSupportedException("Certificate password protection is available on Windows and Linux.");
     }
 
     private static byte[] UnprotectBytes(byte[] protectedBytes)
     {
         if (OperatingSystem.IsWindows())
-            return CurrentUserDpapi.Unprotect(protectedBytes);
+            return FtpsDpapi.Unprotect(protectedBytes);
 
         if (OperatingSystem.IsLinux())
             return UnprotectWithMachineKey(protectedBytes);
 
-        throw new PlatformNotSupportedException("Secret protection is available on Windows and Linux.");
+        throw new PlatformNotSupportedException("Certificate password protection is available on Windows and Linux.");
     }
 
     private static byte[] ProtectWithMachineKey(byte[] plainBytes)
@@ -75,20 +68,8 @@ public static class SecretProtector
 
     private static byte[] UnprotectWithMachineKey(byte[] protectedBytes)
     {
-        try
-        {
-            return DecryptWithKey(protectedBytes, LinuxKey.Value);
-        }
-        catch (CryptographicException)
-        {
-            return DecryptWithKey(protectedBytes, LegacyLinuxKey.Value);
-        }
-    }
-
-    private static byte[] DecryptWithKey(byte[] protectedBytes, byte[] key)
-    {
         using var aes = Aes.Create();
-        aes.Key = key;
+        aes.Key = LinuxKey.Value;
 
         var ivLength = aes.BlockSize / 8;
         if (protectedBytes.Length <= ivLength)
@@ -105,13 +86,12 @@ public static class SecretProtector
         return decryptor.TransformFinalBlock(ciphertext, 0, ciphertext.Length);
     }
 
-    private static readonly Lazy<byte[]> LinuxKey = new(() => DeriveLinuxKey("SiarheiKuchuk.FtpsServer.v1"));
-    private static readonly Lazy<byte[]> LegacyLinuxKey = new(() => DeriveLinuxKey("FtpsServer.Linux.SecretService.v1"));
+    private static readonly Lazy<byte[]> LinuxKey = new(DeriveLinuxKey);
 
-    private static byte[] DeriveLinuxKey(string saltText)
+    private static byte[] DeriveLinuxKey()
     {
         var machineId = GetMachineId();
-        var salt = Encoding.UTF8.GetBytes(saltText);
+        var salt = Encoding.UTF8.GetBytes("SiarheiKuchuk.FtpsServerLibrary.v1");
         return Rfc2898DeriveBytes.Pbkdf2(machineId, salt, 100_000, HashAlgorithmName.SHA256, 32);
     }
 

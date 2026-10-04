@@ -4,7 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using FtpsServerAvalonia.Models;
 using FtpsServerAvalonia.Resources;
-using System.Runtime.InteropServices;
+using System;
 
 namespace FtpsServerAvalonia.Controls;
 
@@ -136,9 +136,7 @@ public partial class ServerConfigurationControl : UserControl
     private void RefreshCertificateUserProvidedVisibility()
     {
         CertificateUserProvidedVisibility = CertificateSource == CertificateSourceType.FromFile;
-        var canUseCustomCert = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
-            RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
-        if (!canUseCustomCert)
+        if (OperatingSystem.IsAndroid())
         {
             CertificateIsSelfSigned = true;
             CertificateSource = CertificateSourceType.SelfSigned;
