@@ -18,7 +18,7 @@ Android app has Avalonia and Kotlin versions.
 
 <details>
 
-<summary>📦 Installation for Windows, Ubuntu, Android</summary>
+<summary>📦 Installation for Windows, Linux, Android</summary>
 
 **Windows**
 
@@ -34,7 +34,9 @@ C. Binaries [look for windows_archive.7z](https://github.com/drweb86/dotnet-ftps
 
 Binaries are good if setups and zip archives are blocked by corporate policies. Application will check for self-updates however you should manually update the application.
 
-**Ubuntu**
+**Linux**
+
+Debian, Ubuntu, and derivatives
 
 A. Installation via APT Repository
 
@@ -66,6 +68,28 @@ Installation of preview:
 Uninstallation:
 
 `wget -O - https://raw.githubusercontent.com/drweb86/dotnet-ftps-server/master/scripts/ubuntu-uninstall.sh | bash`
+
+Fedora, RHEL, Rocky, Alma, and openSUSE
+
+RPM [look for asset linux_x86_64.rpm and linux_aarch64.rpm](https://github.com/drweb86/dotnet-ftps-server/releases/latest)
+
+`sudo dnf install ./ftpsserver_*_linux_*.rpm`
+
+openSUSE: `sudo zypper install ./ftpsserver_*_linux_*.rpm`
+
+Arch Linux, Manjaro, and EndeavourOS
+
+Pacman [look for asset linux_x86_64.pkg.tar.zst and linux_aarch64.pkg.tar.zst](https://github.com/drweb86/dotnet-ftps-server/releases/latest)
+
+`sudo pacman -U ftpsserver_*_linux_*.pkg.tar.zst`
+
+Other glibc Linux (amd64 and arm64)
+
+Tarball [look for asset linux_amd64.tar.gz and linux_arm64.tar.gz](https://github.com/drweb86/dotnet-ftps-server/releases/latest)
+
+`sudo tar -C / -xzf ftpsserver_*_linux_*.tar.gz`
+
+The tarball unpacks into `/usr`. The system needs glibc, libstdc++, libX11, and fontconfig.
 
 After installation for linux, the following commands are available: **`ftps-server-ui`** — graphical user interface; **`ftps-server`** — console tool.
 
