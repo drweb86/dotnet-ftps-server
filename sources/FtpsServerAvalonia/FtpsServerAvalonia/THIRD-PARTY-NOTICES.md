@@ -12,26 +12,26 @@ NLog.Schema is an XML schema used by the IDE. It is not copied into the publishe
 
 ### BSD-2-Clause
 
-- **NLog.Extensions.Logging** 6.2.0. Copyright (c) 2004-2026 NLog Project. [https://github.com/NLog/NLog.Extensions.Logging](https://github.com/NLog/NLog.Extensions.Logging)
+- **NLog.Extensions.Logging** 6.2.1. Copyright (c) 2004-2026 NLog Project. [https://github.com/NLog/NLog.Extensions.Logging](https://github.com/NLog/NLog.Extensions.Logging)
 
 ### BSD-3-Clause
 
-- **NLog** 6.2.0. Copyright (c) 2004-2026 NLog Project. Authors: Jarek Kowalski, Kim Christensen, Julian Verdurmen. [https://nlog-project.org/](https://nlog-project.org/)
+- **NLog** 6.2.1. Copyright (c) 2004-2026 NLog Project. Authors: Jarek Kowalski, Kim Christensen, Julian Verdurmen. [https://nlog-project.org/](https://nlog-project.org/)
 
 ### MIT
 
 - **.NET Runtime** 10. Copyright (c) .NET Foundation and Contributors. [https://dot.net/](https://dot.net/)
-- **Avalonia** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
-- **Avalonia.Fonts.Inter** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. The Inter typeface itself is OFL-1.1. [https://avaloniaui.net/](https://avaloniaui.net/)
-- **Avalonia.FreeDesktop** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
-- **Avalonia.FreeDesktop.AtSpi** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
-- **Avalonia.HarfBuzz** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
-- **Avalonia.Native** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
-- **Avalonia.Remote.Protocol** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
-- **Avalonia.Skia** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
-- **Avalonia.Themes.Fluent** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
-- **Avalonia.Win32** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
-- **Avalonia.X11** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.Fonts.Inter** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. The Inter typeface itself is OFL-1.1. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.FreeDesktop** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.FreeDesktop.AtSpi** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.HarfBuzz** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.Native** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.Remote.Protocol** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.Skia** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.Themes.Fluent** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.Win32** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.X11** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. [https://avaloniaui.net/](https://avaloniaui.net/)
 - **CommunityToolkit.Mvvm** 8.4.2. (c) .NET Foundation and Contributors. All rights reserved. [https://github.com/CommunityToolkit/dotnet](https://github.com/CommunityToolkit/dotnet)
 - **DialogHost.Avalonia** 0.12.1-nightly.0.1. Copyright © SKProCH. [https://github.com/AvaloniaUtils/DialogHost.Avalonia/](https://github.com/AvaloniaUtils/DialogHost.Avalonia/)
 - **HarfBuzzSharp** 8.3.1.3. © Microsoft Corporation. All rights reserved. [https://go.microsoft.com/fwlink/](https://go.microsoft.com/fwlink/)
@@ -57,7 +57,7 @@ NLog.Schema is an XML schema used by the IDE. It is not copied into the publishe
 
 ## Desktop build also includes
 
-- **Avalonia.Desktop** 12.1.2. Copyright 2013-2026 © The AvaloniaUI Project. MIT. [https://avaloniaui.net/](https://avaloniaui.net/)
+- **Avalonia.Desktop** 12.1.3. Copyright 2013-2026 © The AvaloniaUI Project. MIT. [https://avaloniaui.net/](https://avaloniaui.net/)
 
 Windows desktop builds also include **Avalonia.Angle.Windows.Natives** 2.1.27548.20260419. Its license text is below. It is not part of the Linux build.
 
@@ -65,9 +65,9 @@ Windows desktop builds also include **Avalonia.Angle.Windows.Natives** 2.1.27548
 
 These projects are not the shipped Android app (that app is the Kotlin project and has its own notice). They are not part of the desktop or console builds.
 
-- **Avalonia.Android** 12.1.1. MIT. Copyright 2013-2026 © The AvaloniaUI Project.
-- **Avalonia.iOS** 12.1.1. MIT. Copyright 2013-2026 © The AvaloniaUI Project.
-- **Avalonia.Browser** 12.1.1. MIT. Copyright 2013-2026 © The AvaloniaUI Project.
+- **Avalonia.Android** 12.1.3. MIT. Copyright 2013-2026 © The AvaloniaUI Project.
+- **Avalonia.iOS** 12.1.3. MIT. Copyright 2013-2026 © The AvaloniaUI Project.
+- **Avalonia.Browser** 12.1.3. MIT. Copyright 2013-2026 © The AvaloniaUI Project.
 - **Xamarin.AndroidX.Core.SplashScreen** 1.2.0.3. .NET binding. Upstream AndroidX is Apache-2.0.
 - **Xamarin.AndroidX.Core.Core.Ktx** 1.19.0.1. .NET binding. Upstream AndroidX is Apache-2.0.
 

@@ -10,11 +10,11 @@ NLog.Schema is an XML schema used by the IDE. It is not copied into the publishe
 
 ## BSD-2-Clause
 
-- **NLog.Extensions.Logging** 6.2.0. Copyright (c) 2004-2026 NLog Project. [https://github.com/NLog/NLog.Extensions.Logging](https://github.com/NLog/NLog.Extensions.Logging)
+- **NLog.Extensions.Logging** 6.2.1. Copyright (c) 2004-2026 NLog Project. [https://github.com/NLog/NLog.Extensions.Logging](https://github.com/NLog/NLog.Extensions.Logging)
 
 ## BSD-3-Clause
 
-- **NLog** 6.2.0. Copyright (c) 2004-2026 NLog Project. Authors: Jarek Kowalski, Kim Christensen, Julian Verdurmen. [https://nlog-project.org/](https://nlog-project.org/)
+- **NLog** 6.2.1. Copyright (c) 2004-2026 NLog Project. Authors: Jarek Kowalski, Kim Christensen, Julian Verdurmen. [https://nlog-project.org/](https://nlog-project.org/)
 
 ## MIT
 

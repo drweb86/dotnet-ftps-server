@@ -36,6 +36,9 @@
 ## New Features
 - Support for Linux (not Ubuntu only)
 
+## Changes
+- Console, Windows, Avalonia: NLog 6.2.1 and Avalonia 12.1.3. The third-party notices list those versions.
+
 # 2026.09.36
 
 ## Changes
