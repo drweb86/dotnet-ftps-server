@@ -5,6 +5,10 @@
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
 
 ## Security Hardening
+- Library: allow only forward-secret AEAD cipher suites with TLS 1.2 and TLS 1.3. RC4, 3DES, CBC, and RSA key transport are refused. On Linux and macOS the server offers only those suites. On Windows and Android the operating system still chooses the suite, and the server closes the connection when the result is not one of those suites.
+- Library: the generated certificate includes the machine's current IPv4 addresses, and it is replaced when one of those addresses is missing. The fingerprint changes when that happens. The server listens on IPv4, so IPv6 addresses are not added.
+- Android: once the keystore key exists, a settings password that is not encrypted is refused and the file is left unchanged. A password saved by an older version is still read on the first start, before that key exists, and is encrypted then.
+- Avalonia Android: same rule for settings passwords. Windows and Linux still accept a plaintext password.
 - Library, Android: a protected data connection must resume the control connection's TLS session. A new handshake from another process on the same address is refused. The source address must still match.
 - Android: the generated certificate includes the phone's current IPv4 addresses, and it is replaced when one of those addresses is missing. The fingerprint on the connection card changes when that happens.
 - Library, Android: refuse to delete or move the shared folder. `RMD /` no longer removes the folder an account is rooted at. On Android, uploading a file onto a directory name no longer deletes that directory.

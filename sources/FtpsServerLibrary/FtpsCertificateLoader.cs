@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -104,6 +107,8 @@ class FtpsCertificateLoader(IFtpsServerLog log, IFtpsServerFileSystemProvider fi
         sanBuilder.AddIpAddress(IPAddress.IPv6Loopback);
         sanBuilder.AddDnsName("localhost");
         sanBuilder.AddDnsName(Environment.MachineName);
+        foreach (var address in AdvertisedIpv4())
+            sanBuilder.AddIpAddress(address);
 
         X500DistinguishedName distinguishedName = new($"CN=FtpsServerLibrary-SelfSigned-Certificates");
 
@@ -196,8 +201,45 @@ class FtpsCertificateLoader(IFtpsServerLog log, IFtpsServerFileSystemProvider fi
 
     private static bool IsCertificateCurrent(X509Certificate2 certificate)
     {
-        return certificate.NotAfter > DateTime.UtcNow.AddDays(7) &&
-            certificate.NotBefore <= DateTime.UtcNow;
+        if (certificate.NotAfter <= DateTime.UtcNow.AddDays(7) || certificate.NotBefore > DateTime.UtcNow)
+            return false;
+
+        var present = new HashSet<IPAddress>();
+        foreach (var extension in certificate.Extensions)
+        {
+            if (extension is X509SubjectAlternativeNameExtension san)
+            {
+                foreach (var address in san.EnumerateIPAddresses())
+                    present.Add(address);
+            }
+        }
+
+        foreach (var address in AdvertisedIpv4())
+        {
+            if (!present.Contains(address))
+                return false;
+        }
+
+        return true;
+    }
+
+    private static IEnumerable<IPAddress> AdvertisedIpv4()
+    {
+        var seen = new HashSet<IPAddress>();
+        foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
+        {
+            if (nic.OperationalStatus != OperationalStatus.Up || nic.NetworkInterfaceType == NetworkInterfaceType.Loopback)
+                continue;
+
+            foreach (var unicast in nic.GetIPProperties().UnicastAddresses)
+            {
+                var address = unicast.Address;
+                if (address.AddressFamily != AddressFamily.InterNetwork || IPAddress.IsLoopback(address))
+                    continue;
+                if (seen.Add(address))
+                    yield return address;
+            }
+        }
     }
 
     private static X509KeyStorageFlags CreateKeyStorageFlags =>

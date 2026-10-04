@@ -27,6 +27,7 @@ static class AndroidKeystoreSecretProtection
     {
         AndroidSecretProtection.Protect = Protect;
         AndroidSecretProtection.Unprotect = Unprotect;
+        AndroidSecretProtection.HasKey = KeyExists;
     }
 
     private static byte[] Protect(byte[] plainBytes)
@@ -74,6 +75,14 @@ static class AndroidKeystoreSecretProtection
         keyStore.Load(null, null);
         return keyStore.GetKey(Alias, null)
             ?? throw new InvalidOperationException("Android Keystore did not return ftps_settings_v1.");
+    }
+
+    private static bool KeyExists()
+    {
+        using var keyStore = KeyStore.GetInstance(StoreName)
+            ?? throw new InvalidOperationException("AndroidKeyStore is not available.");
+        keyStore.Load(null, null);
+        return keyStore.ContainsAlias(Alias);
     }
 
     private static void EnsureKey()

@@ -463,7 +463,7 @@ class FtpsServerClientSession(
             try
             {
                 _sslStream = new SslStream(_controlStream!, false);
-                await _sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
+                await AuthenticateServerAsync(_sslStream);
 
                 _controlStream = _sslStream;
 
@@ -475,6 +475,7 @@ class FtpsServerClientSession(
             catch (Exception ex)
             {
                 _log.Error(ex, $"[{_clientAddress}] TLS negotiation failed");
+                _disconnect = true;
             }
         }
         else
@@ -1289,6 +1290,24 @@ class FtpsServerClientSession(
         return false;
     }
 
+    private async Task AuthenticateServerAsync(SslStream sslStream)
+    {
+        await sslStream.AuthenticateAsServerAsync(new SslServerAuthenticationOptions
+        {
+            ServerCertificate = _certificate,
+            ClientCertificateRequired = false,
+            EnabledSslProtocols = SslProtocols.Tls12 | SslProtocols.Tls13,
+            CertificateRevocationCheckMode = X509RevocationMode.NoCheck,
+            CipherSuitesPolicy = FtpsTlsSuites.Policy,
+        });
+
+        if (FtpsTlsSuites.IsAllowed(sslStream.NegotiatedCipherSuite))
+            return;
+
+        _log.Warn($"[{_clientAddress}] Rejected cipher suite {sslStream.NegotiatedCipherSuite}");
+        throw new AuthenticationException($"Cipher suite {sslStream.NegotiatedCipherSuite} is not allowed.");
+    }
+
     private async Task<System.IO.Stream> ProtectDataConnectionAsync(System.IO.Stream dataStream)
     {
         if (_dataProtection != FtpsServerDataConnectionProtection.Protected || _certificate == null)
@@ -1297,7 +1316,7 @@ class FtpsServerClientSession(
         var sslStream = new SslStream(dataStream, false);
         try
         {
-            await sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
+            await AuthenticateServerAsync(sslStream);
             if (_sslStream == null || !FtpsTlsSession.SameAsControl(_sslStream, sslStream))
             {
                 _log.Warn($"[{_clientAddress}] Rejected data connection: TLS session was not resumed from the control connection");

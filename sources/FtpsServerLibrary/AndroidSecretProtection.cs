@@ -12,6 +12,10 @@ public static class AndroidSecretProtection
 
     public static Func<byte[], byte[]>? Unprotect { get; set; }
 
+    public static Func<bool>? HasKey { get; set; }
+
+    public static bool KeyExists() => HasKey?.Invoke() == true;
+
     public static byte[] ProtectBytes(byte[] plainBytes)
     {
         var protect = Protect ?? throw new PlatformNotSupportedException(

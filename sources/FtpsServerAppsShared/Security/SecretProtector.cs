@@ -32,7 +32,15 @@ public static class SecretProtector
     public static string Unprotect(string? value)
     {
         if (string.IsNullOrEmpty(value) || !value.StartsWith(Prefix, StringComparison.Ordinal))
+        {
+            // Android gained settings encryption in this release. A clear password is still
+            // accepted until the keystore key exists, so an older file can be read once.
+            // Windows and Linux keep accepting a clear password.
+            if (OperatingSystem.IsAndroid() && IsPlaintextSecret(value) && AndroidSecretProtection.KeyExists())
+                throw new CryptographicException("Settings secret is not protected.");
+
             return value ?? "";
+        }
 
         var protectedBytes = Convert.FromBase64String(value[Prefix.Length..]);
         return Encoding.UTF8.GetString(UnprotectBytes(protectedBytes));

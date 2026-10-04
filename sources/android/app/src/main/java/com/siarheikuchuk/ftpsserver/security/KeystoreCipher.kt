@@ -32,7 +32,15 @@ class KeystoreCipher(context: Context) {
     }
 
     fun decrypt(stored: String): String {
-        if (!stored.startsWith(PREFIX)) return stored
+        if (!stored.startsWith(PREFIX)) {
+            // This release is the first to encrypt settings. A clear password is still
+            // accepted until the keystore key exists, so an older file can be read once
+            // and then encrypted. After that key exists, a clear value is refused.
+            if (stored.isNotBlank() && hasKey()) {
+                throw IllegalArgumentException("Settings secret is not protected.")
+            }
+            return stored
+        }
         val blob = Base64.decode(stored.substring(PREFIX.length), Base64.DEFAULT)
         if (blob.size <= IV_LENGTH) {
             throw IllegalArgumentException("Protected secret is too short.")
@@ -42,6 +50,11 @@ class KeystoreCipher(context: Context) {
         val cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(Cipher.DECRYPT_MODE, secretKey(), GCMParameterSpec(GCM_TAG_BITS, iv))
         return cipher.doFinal(ciphertext).toString(Charsets.UTF_8)
+    }
+
+    private fun hasKey(): Boolean {
+        val keyStore = KeyStore.getInstance(ANDROID_KEYSTORE).apply { load(null) }
+        return keyStore.containsAlias(ALIAS)
     }
 
     private fun secretKey(): SecretKey {

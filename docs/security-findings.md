@@ -1,18 +1,10 @@
 # Security findings
 
-Review date: 4 October 2026. Updated after fixes for items 3, 4, 5, 6, 7, 11, 12, 13, 14, and 15.
+Review date: 4 October 2026. Updated after fixes for items 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, and 18.
 
 Items below are still open. Numbers are unchanged. Items 1 and 2 were accepted on purpose and live in `docs/mitigated-security-findings.md`; do not reopen them unless that file says the decision no longer holds. Fixed items are at the end. Odd numbers from the original list are the native Android Kotlin app (`sources/android`). Where the same issue exists in the .NET library or the .NET apps, the next number is that counterpart. The .NET code is `FtpsServerLibrary`, used by the Windows app, the Avalonia app, the console host, and the Avalonia Android view.
 
 File commands in both implementations require a successful TLS login, and paths stay inside the folder configured for that account.
-
-## 8. Cipher suites follow the operating system
-
-- **Severity:** Low
-- **Platform:** .NET
-- **Location:** `sources/FtpsServerLibrary/FtpsServerClientSession.cs` (line 370, and the same `AuthenticateAsServerAsync` call on each data connection)
-
-The library allows TLS 1.2 and TLS 1.3 and does not set `CipherSuitesPolicy`. Suite selection is whatever the host OS still enables. Current Windows and Linux defaults leave RC4 and 3DES disabled. The Android app refuses those suites itself (item 7, fixed). A machine whose OS policy still allows a weak suite will negotiate it, because this server does not refuse it.
 
 ## 9. Account passwords are shown, copied, and shared
 
@@ -29,30 +21,6 @@ The connection card prints each account password. Copy places that text on the c
 - **Location:** `sources/FtpsServerAppsShared/Helpers/ConnectionDetailsText.cs` (line 129); clipboard copy in `sources/FtpsServerWindows/Controls/ConnectionInstructionControl.xaml.cs` (line 37) and `sources/FtpsServerAvalonia/FtpsServerAvalonia/Controls/ConnectionInstructionControl.axaml.cs` (line 52); share in the Avalonia Android view (`AndroidView.axaml`, `ShowShareButton="True"`)
 
 Windows, Avalonia desktop, and Avalonia Android build the same connection card, including each account password. Copy puts that text on the clipboard. The Avalonia Android view also shares it. The user-password and certificate-password fields are plain text boxes; `PasswordChar` is never set.
-
-## 16. Self-signed name omits the LAN address
-
-- **Severity:** Low
-- **Platform:** .NET
-- **Location:** `sources/FtpsServerLibrary/FtpsCertificateLoader.cs` (`CreateSelfSignedServerCertificate`, line 102)
-
-The generated certificate includes IPv4 and IPv6 loopback, `localhost`, and `Environment.MachineName`. It does not include the LAN addresses the connection card lists. A client that connects by IP still cannot match the name, and the practical check is the SHA-256 fingerprint, as in item 15. Connecting by the machine’s hostname can match, which the Android certificate does not allow.
-
-## 17. A plaintext settings value skips the keystore
-
-- **Severity:** Low
-- **Platform:** Android Kotlin
-- **Location:** `sources/android/app/src/main/java/com/siarheikuchuk/ftpsserver/security/KeystoreCipher.kt` (line 35)
-
-`decrypt()` returns the stored string unchanged when it does not start with `enc::`. A local writer of `settings.json` can plant a known account password without the hardware-backed key. Other apps cannot write that file. This matters after root, a restored copy of the file, or another bug that can edit it.
-
-## 18. A plaintext settings value skips OS protection
-
-- **Severity:** Low
-- **Platform:** .NET
-- **Location:** `sources/FtpsServerAppsShared/Security/SecretProtector.cs` (`Unprotect`, line 32); callers in `sources/FtpsServerWindows/Services/SettingsManager.cs` and `sources/FtpsServerAvalonia/FtpsServerAvalonia/Services/SettingsManager.cs`
-
-`Unprotect` returns the value unchanged when it is empty or does not start with `enc::`. Windows (DPAPI), Linux (machine-id key), and the Avalonia Android build (Android Keystore) all use this helper for account passwords and the certificate password. A local writer of the settings file can plant a known password, and the next load accepts it. The normal save path encrypts the value again, so this is a bypass of the protector, not the steady-state storage format.
 
 ## Fixed
 
@@ -125,3 +93,31 @@ A protected data connection must resume the control TLS session, and the source 
 - **Was:** Low
 
 The generated certificate includes the phone's current IPv4 addresses, plus `127.0.0.1` and `localhost`. It is replaced when one of those addresses is missing or the certificate expires within 7 days. The fingerprint on the connection card changes when the certificate is replaced. A certificate the user supplied is left as it is. Item 16 is the .NET counterpart and is still open.
+
+### 17. A plaintext settings value skips the keystore
+
+- **Platform:** Android Kotlin
+- **Was:** Low
+
+Once the keystore key exists, a settings password without the `enc::` prefix is refused and the file is left unchanged. Before that key exists, a password stored by an older version is still read and then encrypted. Settings encryption starts in this release, so that first read is how an existing install is upgraded.
+
+### 18. A plaintext settings value skips OS protection
+
+- **Platform:** .NET
+- **Was:** Low
+
+Windows and Linux still accept a plaintext settings password. Avalonia Android refuses one once the keystore key exists, and leaves the file unchanged, same as item 17. A password stored before that key exists is still read and then encrypted.
+
+### 8. Cipher suites follow the operating system
+
+- **Platform:** .NET
+- **Was:** Low
+
+Control and data connections allow only forward-secret AEAD suites with TLS 1.2 and TLS 1.3. RC4, 3DES, CBC, and RSA key transport are refused. Linux and macOS offer only those suites. Windows and Android cannot set that list, so the server closes the connection when the negotiated suite is not one of them.
+
+### 16. Self-signed name omits the LAN address
+
+- **Platform:** .NET
+- **Was:** Low
+
+The generated certificate includes the machine's current IPv4 addresses, plus loopback, `localhost`, and the machine name. It is replaced when one of those IPv4 addresses is missing or the certificate expires within 7 days. The fingerprint changes when the certificate is replaced. A certificate the caller supplied is left as it is. The listener is IPv4 only, so IPv6 addresses are not added.
