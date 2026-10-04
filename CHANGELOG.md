@@ -37,6 +37,7 @@
 - Android: reject a `..` segment in the storage-picker folder walk instead of moving to the parent document.
 - Library: reject a symlink or junction inside the share when its target is outside the user folder. Those links are also omitted from directory listings. A link that stays inside the share is still listed and can be opened.
 - Console app does not allow to save account passwords in plaintext.
+- Some tests were added to address security-critical code.
 
 ## New Features
 - Support for Linux (not Ubuntu only)

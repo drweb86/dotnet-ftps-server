@@ -14,6 +14,7 @@
   <Project Path="FtpsServerAvalonia/FtpsServerAvalonia.Desktop/FtpsServerAvalonia.Desktop.csproj" />
   <Project Path="FtpsServerAvalonia/FtpsServerAvalonia/FtpsServerAvalonia.csproj" />
   <Project Path="FtpsServerConsole/FtpsServerConsole.csproj" />
+  <Project Path="FtpsServerLibrary.Tests/FtpsServerLibrary.Tests.csproj" />
   <Project Path="FtpsServerLibrary/FtpsServerLibrary.csproj" Id="11bedc33-7b62-4588-8396-28d9907cf3a7" />
   <Project Path="FtpsServerWindows/FtpsServerWindows.csproj" />
 </Solution>
