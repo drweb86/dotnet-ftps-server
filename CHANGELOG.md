@@ -5,6 +5,8 @@
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
 
 ## Security Hardening
+- Avalonia Android: encrypt FTP passwords and the certificate password in `settings.json` with an Android Keystore key, using the same rules as the Kotlin app. A copied settings file cannot be read on another device, and an edited file is rejected. Passwords saved by an older version are encrypted the next time the app starts. If decryption fails, later saves do not replace the file.
+- Library: on Android, store the auto-generated certificate password with that Keystore key. An existing `Self-Signed.pfx` that still uses the password `test` is rewritten on the next start, and the certificate stays the same.
 - Android: encrypt FTP passwords and the certificate password in `settings.json` with an Android Keystore key. A copied settings file cannot be read on another device, and an edited file is rejected. Passwords saved by an older version are encrypted the next time the app starts. If decryption fails, the existing file is left in place.
 - Android: release builds allow no cleartext HTTP and trust only system certificate authorities. A user-installed CA cannot read the app's own connections, and the unused emulator exception for `10.0.2.2` stays in debug builds only.
 - Android: exclude app-private files from cloud backup and phone-to-phone transfer. `settings.json` and the server certificate are not copied to the user's Google account or onto another device. `allowBackup="false"` was already set; Android 12 and later also need these extraction rules, because device transfer can still run when that flag is off.
@@ -12,7 +14,7 @@
 - Library, Android: reject Windows reserved device names that include an extension, such as `con.txt`. On Windows, open share paths with the `\\?\` prefix so those names are files, not devices.
 - Android: allow only TLS 1.2 and TLS 1.3 on the control and data connections.
 - Library, Android: after 5 failed logins from one address, pause one second on each failure and refuse that address for 60 seconds. A successful login clears the count.
-- Library: on Windows and Linux, store the auto-generated certificate password with an OS key. An existing `Self-Signed.pfx` that still uses the password `test` is rewritten on the next start. Android and macOS keep `test`.
+- Library: on Windows and Linux, store the auto-generated certificate password with an OS key. An existing `Self-Signed.pfx` that still uses the password `test` is rewritten on the next start. macOS keeps `test`.
 - Library, Android: send a fixed error line to the FTP client. The exception, including the real path, stays in the log.
 - Android: reject a `..` segment in the storage-picker folder walk instead of moving to the parent document.
 - Library: reject a symlink or junction inside the share when its target is outside the user folder. Those links are also omitted from directory listings. A link that stays inside the share is still listed and can be opened.

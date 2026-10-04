@@ -14,6 +14,7 @@ namespace FtpsServerAvalonia.Services
             "FtpsServerApp");
         
         private static readonly string SettingsFile = Path.Combine(SettingsDirectory, "settings.json");
+        private static bool blockSave;
 
         public static AppSettings LoadSettings()
         {
@@ -25,6 +26,7 @@ namespace FtpsServerAvalonia.Services
                     var settings = JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();
                     var migrate = HasPlaintextSecrets(settings);
                     UnprotectSecrets(settings);
+                    blockSave = false;
                     if (migrate)
                         SaveSettings(settings);
                     return settings;
@@ -32,14 +34,20 @@ namespace FtpsServerAvalonia.Services
             }
             catch (Exception ex)
             {
+                blockSave = true;
                 Console.WriteLine($"Error loading settings: {ex.Message}");
+                return new AppSettings();
             }
 
+            blockSave = false;
             return new AppSettings();
         }
 
         public static void SaveSettings(AppSettings settings)
         {
+            if (blockSave)
+                return;
+
             try
             {
                 Directory.CreateDirectory(SettingsDirectory);

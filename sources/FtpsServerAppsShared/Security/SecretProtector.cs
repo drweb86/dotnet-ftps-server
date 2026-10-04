@@ -1,3 +1,4 @@
+using FtpsServerLibrary;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -7,6 +8,7 @@ namespace FtpsServerAppsShared.Security;
 /// Protects persisted secrets with an OS-backed key.
 /// Windows uses DPAPI scoped to the current user. Linux uses AES-256 with a key
 /// derived from the machine id, so a copied settings file cannot be read elsewhere.
+/// Android uses a key registered from the app, kept in Android Keystore.
 /// </summary>
 public static class SecretProtector
 {
@@ -38,24 +40,30 @@ public static class SecretProtector
 
     private static byte[] ProtectBytes(byte[] plainBytes)
     {
+        if (OperatingSystem.IsAndroid())
+            return AndroidSecretProtection.ProtectBytes(plainBytes);
+
         if (OperatingSystem.IsWindows())
             return CurrentUserDpapi.Protect(plainBytes);
 
         if (OperatingSystem.IsLinux())
             return ProtectWithMachineKey(plainBytes);
 
-        throw new PlatformNotSupportedException("Secret protection is available on Windows and Linux.");
+        throw new PlatformNotSupportedException("Secret protection is available on Windows, Linux, and Android.");
     }
 
     private static byte[] UnprotectBytes(byte[] protectedBytes)
     {
+        if (OperatingSystem.IsAndroid())
+            return AndroidSecretProtection.UnprotectBytes(protectedBytes);
+
         if (OperatingSystem.IsWindows())
             return CurrentUserDpapi.Unprotect(protectedBytes);
 
         if (OperatingSystem.IsLinux())
             return UnprotectWithMachineKey(protectedBytes);
 
-        throw new PlatformNotSupportedException("Secret protection is available on Windows and Linux.");
+        throw new PlatformNotSupportedException("Secret protection is available on Windows, Linux, and Android.");
     }
 
     private static byte[] ProtectWithMachineKey(byte[] plainBytes)

@@ -27,5 +27,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FtpsServerAvalonia\FtpsServerAvalonia.csproj" />
+    <ProjectReference Include="..\..\FtpsServerLibrary\FtpsServerLibrary.csproj" />
   </ItemGroup>
 </Project>

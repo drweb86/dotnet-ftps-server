@@ -134,7 +134,7 @@ class FtpsCertificateLoader(IFtpsServerLog log, IFtpsServerFileSystemProvider fi
         var certificateFile = System.IO.Path.Combine(directory, "Self-Signed.pfx")!;
         var passwordFile = System.IO.Path.Combine(directory, "Self-Signed.password");
         var callerPassword = ftpsServerSettings.CertificatePassword;
-        var protectPassword = (OperatingSystem.IsWindows() || OperatingSystem.IsLinux()) &&
+        var protectPassword = (OperatingSystem.IsWindows() || OperatingSystem.IsLinux() || OperatingSystem.IsAndroid()) &&
             string.IsNullOrEmpty(callerPassword);
         const string legacyPassword = "test";
 
