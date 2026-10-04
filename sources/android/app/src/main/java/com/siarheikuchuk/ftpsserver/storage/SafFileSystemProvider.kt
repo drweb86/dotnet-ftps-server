@@ -27,10 +27,7 @@ class SafFileSystemProvider(private val context: Context) : FileSystemProvider {
         var current = root(uriString)
         for (part in parts) {
             if (part.isEmpty() || part == ".") continue
-            if (part == "..") {
-                current = current.parentFile ?: current
-                continue
-            }
+            if (part == "..") throw FileNotFoundException("Directory not found: $part")
             current = current.findFile(part)?.takeIf { it.isDirectory }
                 ?: throw java.io.FileNotFoundException("Directory not found: $part")
         }

@@ -35,12 +35,7 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
                 continue;
 
             if (part == "..")
-            {
-                var parent = await currentFolder.GetParentAsync();
-                if (parent != null)
-                    currentFolder = parent;
-                continue;
-            }
+                throw new DirectoryNotFoundException($"Directory not found: {part}");
 
             var items = await currentFolder.GetItemsAsync().ToListAsync();
             var nextFolder = items.OfType<IStorageFolder>().FirstOrDefault(f => f.Name == part) ?? throw new DirectoryNotFoundException($"Directory not found: {part}");
