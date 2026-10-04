@@ -85,7 +85,7 @@
     <string name="connection_instruction_title">连接说明</string>
     <string name="config_port_help">端口是 FTP 客户端在网络上连接此服务器时使用的号码。默认值为 2121。</string>
     <string name="config_port_validation">请输入 %1$s 到 %2$s 之间的端口。</string>
-    <string name="config_max_connections_validation">最大连接数必须至少为 %1$s。</string>
+    <string name="config_max_connections_validation">最大连接数必须在 %1$s 到 %2$s 之间。</string>
     <string name="user_username_validation">请输入用户名。</string>
     <string name="user_password_validation">请输入密码。</string>
     <string name="user_folder_validation">请选择要共享的文件夹。</string>

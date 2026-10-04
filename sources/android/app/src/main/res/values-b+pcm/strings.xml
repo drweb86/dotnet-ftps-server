@@ -85,7 +85,7 @@
     <string name="connection_instruction_title">How to connect</string>
     <string name="config_port_help">The port is the number an FTP client uses to reach this server on the network. The default is 2121.</string>
     <string name="config_port_validation">Enter a port from %1$s to %2$s.</string>
-    <string name="config_max_connections_validation">Maximum connections must be at least %1$s.</string>
+    <string name="config_max_connections_validation">Maximum connections must be from %1$s to %2$s.</string>
     <string name="user_username_validation">Enter a username.</string>
     <string name="user_password_validation">Enter a password.</string>
     <string name="user_folder_validation">Choose a folder to share.</string>

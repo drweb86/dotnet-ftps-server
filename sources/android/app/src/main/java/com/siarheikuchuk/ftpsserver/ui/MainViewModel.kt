@@ -13,6 +13,7 @@ import com.siarheikuchuk.ftpsserver.data.AppSettings
 import com.siarheikuchuk.ftpsserver.data.SettingsRepository
 import com.siarheikuchuk.ftpsserver.data.UserAccount
 import com.siarheikuchuk.ftpsserver.privacy.PrivacyStore
+import com.siarheikuchuk.ftpsserver.server.FtpsServerSettings
 import com.siarheikuchuk.ftpsserver.server.LoadedCertificate
 import com.siarheikuchuk.ftpsserver.service.FtpsForegroundService
 import com.siarheikuchuk.ftpsserver.service.ServerEvents
@@ -124,7 +125,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
     fun setMaxConnections(value: Int) = _state.update { it.copy(maxConnections = value, maxConnectionsError = null) }
     fun nudgeMaxConnections(delta: Int) = _state.update {
-        it.copy(maxConnections = (it.maxConnections + delta).coerceAtLeast(MAX_CONNECTIONS_MIN), maxConnectionsError = null)
+        it.copy(maxConnections = (it.maxConnections + delta).coerceIn(MAX_CONNECTIONS_MIN, MAX_CONNECTIONS_MAX), maxConnectionsError = null)
     }
     fun setUseSelfSigned(value: Boolean) = _state.update { it.copy(useSelfSigned = value, certificatePathError = null) }
     fun setCertificatePassword(value: String) = _state.update { it.copy(certificatePassword = value) }
@@ -209,8 +210,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         } else {
             null
         }
-        val maxConnectionsError = if (s.maxConnections < MAX_CONNECTIONS_MIN) {
-            app.getString(R.string.config_max_connections_validation, MAX_CONNECTIONS_MIN)
+        val maxConnectionsError = if (s.maxConnections < MAX_CONNECTIONS_MIN || s.maxConnections > MAX_CONNECTIONS_MAX) {
+            app.getString(R.string.config_max_connections_validation, MAX_CONNECTIONS_MIN, MAX_CONNECTIONS_MAX)
         } else {
             null
         }
@@ -274,5 +275,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         const val PORT_MIN = 2121
         const val PORT_MAX = 65535
         const val MAX_CONNECTIONS_MIN = 2
+        const val MAX_CONNECTIONS_MAX = FtpsServerSettings.MAX_CONNECTIONS_UPPER_BOUND
     }
 }

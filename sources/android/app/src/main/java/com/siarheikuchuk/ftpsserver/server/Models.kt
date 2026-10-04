@@ -14,7 +14,17 @@ data class FtpsServerSettings(
     val maxConnections: Int = 10,
     val certificatePath: String? = null,
     val certificatePassword: String? = null,
-)
+) {
+    companion object {
+        const val MAX_CONNECTIONS_UPPER_BOUND = 100
+
+        fun effectiveMaxConnections(configured: Int): Int {
+            if (configured < 1) return 1
+            if (configured > MAX_CONNECTIONS_UPPER_BOUND) return MAX_CONNECTIONS_UPPER_BOUND
+            return configured
+        }
+    }
+}
 
 data class FtpsServerConfig(
     val settings: FtpsServerSettings,

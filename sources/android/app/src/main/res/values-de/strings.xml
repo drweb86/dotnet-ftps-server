@@ -85,7 +85,7 @@
     <string name="connection_instruction_title">Verbindungsanleitung</string>
     <string name="config_port_help">Der Port ist die Nummer, die ein FTP-Client verwendet, um diesen Server im Netzwerk zu erreichen. Standard ist 2121.</string>
     <string name="config_port_validation">Geben Sie einen Port von %1$s bis %2$s ein.</string>
-    <string name="config_max_connections_validation">Die maximale Anzahl Verbindungen muss mindestens %1$s betragen.</string>
+    <string name="config_max_connections_validation">Die maximale Anzahl Verbindungen muss zwischen %1$s und %2$s liegen.</string>
     <string name="user_username_validation">Geben Sie einen Benutzernamen ein.</string>
     <string name="user_password_validation">Geben Sie ein Passwort ein.</string>
     <string name="user_folder_validation">Wählen Sie einen Ordner zum Freigeben.</string>

@@ -1,12 +1,11 @@
 package com.siarheikuchuk.ftpsserver.server
 
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.net.Inet6Address
 import java.net.InetAddress
 import java.net.ServerSocket
 import java.net.Socket
+import java.net.SocketTimeoutException
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 import java.text.SimpleDateFormat
@@ -26,8 +25,9 @@ class FtpsClientSession(
     private val fileSystem: FileSystemProvider,
     private val loginThrottle: LoginThrottle,
 ) {
-    private var reader: BufferedReader = BufferedReader(InputStreamReader(socket.getInputStream(), LATIN1))
     private var writer: OutputStreamWriter = OutputStreamWriter(socket.getOutputStream(), LATIN1)
+    private var pushedByte = -1
+    private val controlByte = ByteArray(1)
     private var encoding: Charset = LATIN1
     private var username: String? = null
     private var user: FtpsUserAccount? = null
@@ -62,7 +62,7 @@ class FtpsClientSession(
         try {
             send(220, "FTPS Server Ready")
             while (!stopping) {
-                val line = reader.readLine() ?: break
+                val line = readCommandLine() ?: break
                 val logLine = if (line.startsWith("PASS ", ignoreCase = true)) "PASS ****" else line
                 log.debug("[$clientAddress] >> $logLine")
                 val space = line.indexOf(' ')
@@ -146,13 +146,13 @@ class FtpsClientSession(
         if (args.isNotEmpty() && args[0].equals("UTF8", true)) {
             if (args.size == 1 || args[1].equals("ON", true)) {
                 encoding = StandardCharsets.UTF_8
-                recreateStreams()
+                recreateStreams(clearPushback = false)
                 send(200, "UTF8 mode enabled")
                 return
             }
             if (args[1].equals("OFF", true)) {
                 encoding = LATIN1
-                recreateStreams()
+                recreateStreams(clearPushback = false)
                 send(200, "UTF8 mode disabled")
                 return
             }
@@ -160,10 +160,50 @@ class FtpsClientSession(
         send(501, "Invalid OPTS command")
     }
 
-    private fun recreateStreams() {
+    private fun recreateStreams(clearPushback: Boolean) {
+        if (clearPushback) pushedByte = -1
         writer.flush()
         writer = OutputStreamWriter(socket.getOutputStream(), encoding)
-        reader = BufferedReader(InputStreamReader(socket.getInputStream(), encoding))
+    }
+
+    private fun readCommandLine(): String? {
+        val timeoutMs = if (authenticated) AUTHENTICATED_IDLE_MS else UNAUTHENTICATED_IDLE_MS
+        val deadline = System.currentTimeMillis() + timeoutMs
+        val raw = java.io.ByteArrayOutputStream()
+        try {
+            while (true) {
+                val next = readControlByte(deadline)
+                if (next < 0) return if (raw.size() == 0) null else String(raw.toByteArray(), encoding)
+                if (next == '\n'.code) return String(raw.toByteArray(), encoding)
+                if (next == '\r'.code) {
+                    val following = readControlByte(deadline)
+                    if (following >= 0 && following != '\n'.code) pushedByte = following
+                    return String(raw.toByteArray(), encoding)
+                }
+                if (raw.size() >= MAX_COMMAND_LINE_LENGTH) {
+                    log.warn("[$clientAddress] Closed control connection: command line exceeded $MAX_COMMAND_LINE_LENGTH characters")
+                    return null
+                }
+                raw.write(next)
+            }
+        } catch (_: SocketTimeoutException) {
+            log.warn("[$clientAddress] Closed control connection: idle for ${timeoutMs / 1000} seconds")
+            return null
+        }
+    }
+
+    private fun readControlByte(deadlineMs: Long): Int {
+        if (pushedByte >= 0) {
+            val pushed = pushedByte
+            pushedByte = -1
+            return pushed
+        }
+        val remaining = deadlineMs - System.currentTimeMillis()
+        if (remaining <= 0) throw SocketTimeoutException()
+        socket.soTimeout = remaining.coerceAtMost(Int.MAX_VALUE.toLong()).toInt().coerceAtLeast(1)
+        val read = socket.getInputStream().read(controlByte)
+        if (read <= 0) return -1
+        return controlByte[0].toInt() and 0xFF
     }
 
     private fun handleUser(name: String) {
@@ -220,7 +260,7 @@ class FtpsClientSession(
             restrictTls(ssl)
             ssl.startHandshake()
             socket = ssl
-            recreateStreams()
+            recreateStreams(clearPushback = true)
             log.info("[$clientAddress] TLS enabled on control connection")
         } catch (e: Exception) {
             sessionError("[$clientAddress] TLS negotiation failed", e)
@@ -762,13 +802,31 @@ class FtpsClientSession(
     private fun dataEncryptedOk() = sslContext == null || dataProtection == DataProtection.Protected
     private fun controlEncrypted() = socket is SSLSocket
 
-    // Android 6–9 still enable TLS 1.0 and 1.1 by default. Offer only 1.2 and 1.3.
+    // Android 6–9 still enable TLS 1.0 and 1.1 by default. Offer only 1.2 and 1.3,
+    // and only forward-secret AEAD suites. RC4, 3DES, CBC, and RSA key transport stay off.
     private fun restrictTls(ssl: SSLSocket) {
         val allowed = ssl.supportedProtocols
             .filter { it == "TLSv1.2" || it == "TLSv1.3" }
             .toTypedArray()
         if (allowed.isEmpty()) throw IllegalStateException("TLS 1.2 or 1.3 is not available")
         ssl.enabledProtocols = allowed
+        val suites = ssl.supportedCipherSuites.filter { suiteAllowed(it) }.toTypedArray()
+        if (suites.isEmpty()) throw IllegalStateException("No forward-secret AEAD cipher suite is available")
+        ssl.enabledCipherSuites = suites
+    }
+
+    private fun suiteAllowed(name: String): Boolean {
+        val upper = name.uppercase(Locale.US)
+        if (upper.contains("NULL") || upper.contains("EXPORT") || upper.contains("ANON") ||
+            upper.contains("RC4") || upper.contains("3DES") || upper.contains("CBC") ||
+            upper.contains("_DES_") || upper.contains("MD5")
+        ) {
+            return false
+        }
+        if (upper.startsWith("TLS_AES_") || upper.startsWith("TLS_CHACHA20_")) return true
+        val aead = upper.contains("GCM") || upper.contains("CHACHA20")
+        val ephemeral = upper.contains("ECDHE") || upper.contains("_DHE_")
+        return aead && ephemeral
     }
 
     // When a certificate is loaded, do not accept credentials (or PBSZ/PROT) on a clear control channel.
@@ -825,6 +883,9 @@ class FtpsClientSession(
 
     companion object {
         private val LATIN1 = Charset.forName("ISO-8859-1")
+        private const val MAX_COMMAND_LINE_LENGTH = 8192
+        private const val UNAUTHENTICATED_IDLE_MS = 30_000L
+        private const val AUTHENTICATED_IDLE_MS = 5 * 60_000L
         private val MLS_FACTS = listOf("type", "size", "modify", "perm")
         private fun mlsType(name: String, isDir: Boolean) = when (name) {
             "." -> "cdir"

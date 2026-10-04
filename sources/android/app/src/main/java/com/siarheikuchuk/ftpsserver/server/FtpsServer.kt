@@ -20,10 +20,16 @@ class FtpsServer(
     private val gate = Any()
     private val sessions = mutableSetOf<FtpsClientSession>()
     private var listener: ServerSocket? = null
+    private var maxConnections = 10
 
     val loadedCertificate: LoadedCertificate? get() = certificate
 
     fun start() {
+        val requestedMax = config.settings.maxConnections
+        maxConnections = FtpsServerSettings.effectiveMaxConnections(requestedMax)
+        if (requestedMax != maxConnections) {
+            log.warn("Max connections $requestedMax is outside 1..${FtpsServerSettings.MAX_CONNECTIONS_UPPER_BOUND}. Using $maxConnections.")
+        }
         val port = config.settings.port
         val bind = InetAddress.getByName(config.settings.ip)
         listener = ServerSocket(port, 50, bind)
@@ -60,8 +66,7 @@ class FtpsServer(
                     client.close()
                     continue
                 }
-                val max = config.settings.maxConnections
-                if (active.get() >= max) {
+                if (active.get() >= maxConnections) {
                     log.warn("Connection rejected from ${client.inetAddress}: Max connections reached")
                     client.close()
                     continue

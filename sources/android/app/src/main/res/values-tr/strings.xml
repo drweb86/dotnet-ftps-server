@@ -85,7 +85,7 @@
     <string name="connection_instruction_title">Bağlantı talimatı</string>
     <string name="config_port_help">Bağlantı noktası, bir FTP istemcisinin ağdaki bu sunucuya ulaşmak için kullandığı sayıdır. Varsayılan 2121’dir.</string>
     <string name="config_port_validation">%1$s ile %2$s arasında bir bağlantı noktası girin.</string>
-    <string name="config_max_connections_validation">En fazla bağlantı sayısı en az %1$s olmalıdır.</string>
+    <string name="config_max_connections_validation">En fazla bağlantı sayısı %1$s ile %2$s arasında olmalıdır.</string>
     <string name="user_username_validation">Bir kullanıcı adı girin.</string>
     <string name="user_password_validation">Bir parola girin.</string>
     <string name="user_folder_validation">Paylaşılacak bir klasör seçin.</string>

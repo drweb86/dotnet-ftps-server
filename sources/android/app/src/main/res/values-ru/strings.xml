@@ -85,7 +85,7 @@
     <string name="connection_instruction_title">Инструкция по подключению</string>
     <string name="config_port_help">Порт — это номер, по которому FTP-клиент находит этот сервер в сети. По умолчанию 2121.</string>
     <string name="config_port_validation">Укажите порт от %1$s до %2$s.</string>
-    <string name="config_max_connections_validation">Максимум подключений должен быть не меньше %1$s.</string>
+    <string name="config_max_connections_validation">Максимум подключений должен быть от %1$s до %2$s.</string>
     <string name="user_username_validation">Укажите имя пользователя.</string>
     <string name="user_password_validation">Укажите пароль.</string>
     <string name="user_folder_validation">Выберите папку для общего доступа.</string>
