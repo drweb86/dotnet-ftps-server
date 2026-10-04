@@ -1,6 +1,6 @@
 # Security findings
 
-Review date: 4 October 2026. Updated after fixes for items 3, 4, 5, 6, and 7.
+Review date: 4 October 2026. Updated after fixes for items 3, 4, 5, 6, 7, 13, and 14.
 
 Items below are still open. Numbers are unchanged. Items 1 and 2 were accepted on purpose and live in `docs/mitigated-security-findings.md`; do not reopen them unless that file says the decision no longer holds. Fixed items are at the end. Odd numbers from the original list are the native Android Kotlin app (`sources/android`). Where the same issue exists in the .NET library or the .NET apps, the next number is that counterpart. The .NET code is `FtpsServerLibrary`, used by the Windows app, the Avalonia app, the console host, and the Avalonia Android view.
 
@@ -45,22 +45,6 @@ Passive mode rejects a data socket whose address differs from the control connec
 - **Location:** `sources/FtpsServerLibrary/FtpsServerClientSession.cs` (`IsDataPeerFromControlClient`, line 1259)
 
 `AcceptDataClientAsync` compares the normalized control and data addresses and does not check TLS session resumption. The same shared-IP race as item 11 applies. Active mode (`PORT` / `EPRT`) is not implemented here either.
-
-## 13. A write account can delete the shared root
-
-- **Severity:** Low
-- **Platform:** Android Kotlin
-- **Location:** `sources/android/app/src/main/java/com/siarheikuchuk/ftpsserver/storage/SafFileSystemProvider.kt` (line 69)
-
-`RMD /` resolves to an empty virtual path. `directoryDelete()` then calls `delete()` on the tree URI itself, which removes the folder the user granted. `STOR` of a name that already belongs to a directory also deletes that directory before creating a file. Both require write permission.
-
-## 14. A write account can delete the shared folder
-
-- **Severity:** Low
-- **Platform:** .NET
-- **Location:** `sources/FtpsServerLibrary/IFtpsServerFileSystemProvider.cs` (`DirectoryDelete`, line 82; `IsInsideBase`, line 275)
-
-An empty virtual path is treated as the user folder: the trimmed path equals the base, so the containment check allows it. `Directory.Delete(actualFolder, recursive: true)` then removes that folder and everything under it. A write-enabled account can do this with `RMD /`. `STOR` onto an existing directory name does not delete the directory; that part of item 13 is specific to the Android Storage Access Framework provider.
 
 ## 15. Self-signed name does not match the address clients use
 
@@ -130,3 +114,17 @@ A control connection that sends nothing for 30 seconds before login, or sits idl
 - **Was:** Medium
 
 Control and data sockets enable TLS 1.2 and TLS 1.3 only, and only forward-secret AEAD suites. RC4, 3DES, CBC, and RSA key transport are left disabled. Item 8 is the .NET counterpart and is still open.
+
+### 13. A write account can delete the shared root
+
+- **Platform:** Android Kotlin
+- **Was:** Low
+
+`RMD /` and a rename of the granted folder are refused. Uploading a file onto a directory name fails instead of deleting that directory.
+
+### 14. A write account can delete the shared folder
+
+- **Platform:** .NET
+- **Was:** Low
+
+`RMD /` and a rename of the user folder are refused, including when a link inside the share points back at that folder. Deleting a directory that is inside the share still works.

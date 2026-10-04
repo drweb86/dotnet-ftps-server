@@ -67,6 +67,7 @@ class SafFileSystemProvider(private val context: Context) : FileSystemProvider {
         }
 
     override fun directoryDelete(userFolder: String, parts: List<String>) {
+        if (parts.isEmpty()) error("Cannot delete the shared folder")
         val folder = navigateFolder(userFolder, parts)
         if (!folder.delete()) error("Failed to delete directory")
     }
@@ -77,6 +78,7 @@ class SafFileSystemProvider(private val context: Context) : FileSystemProvider {
     }
 
     override fun directoryMove(userFolder: String, fromParts: List<String>, toParts: List<String>) {
+        if (fromParts.isEmpty()) error("Cannot move the shared folder")
         val from = navigateFolder(userFolder, fromParts)
         val destParent = navigateFolder(userFolder, toParts.dropLast(1))
         val newName = toParts.last()
@@ -109,7 +111,7 @@ class SafFileSystemProvider(private val context: Context) : FileSystemProvider {
         require(parts.isNotEmpty()) { "File path is empty" }
         val folder = navigateFolder(userFolder, parts.dropLast(1))
         val name = parts.last()
-        folder.findFile(name)?.delete()
+        deleteFileIfPresent(folder, name)
         val file = createExactFile(folder, name)
         return context.contentResolver.openOutputStream(file.uri, "w")
             ?: error("Cannot open file for write: $name")
@@ -158,8 +160,14 @@ class SafFileSystemProvider(private val context: Context) : FileSystemProvider {
         }
     }
 
+    private fun deleteFileIfPresent(parent: DocumentFile, name: String) {
+        val existing = parent.findFile(name) ?: return
+        if (existing.isDirectory) error("Cannot replace a directory with a file: $name")
+        existing.delete()
+    }
+
     private fun createExactFile(parent: DocumentFile, displayName: String): DocumentFile {
-        parent.findFile(displayName)?.delete()
+        deleteFileIfPresent(parent, displayName)
         val created = parent.createFile(MIME_BINARY, displayName)
             ?: error("Failed to create file: $displayName")
         if (created.name != null && created.name != displayName) {

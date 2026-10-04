@@ -81,7 +81,14 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
 
     public Task DirectoryDelete(string userFolder, IEnumerable<string> parts)
     {
-        var actualFolder = GetRealPath(userFolder, parts);
+        var partList = parts as IReadOnlyCollection<string> ?? parts.ToList();
+        if (partList.Count == 0)
+            throw new UnauthorizedAccessException("Cannot delete the shared folder");
+
+        var actualFolder = GetRealPath(userFolder, partList);
+        if (IsSharedRoot(userFolder, actualFolder))
+            throw new UnauthorizedAccessException("Cannot delete the shared folder");
+
         Directory.Delete(actualFolder, true);
         return Task.CompletedTask;
     }
@@ -272,6 +279,23 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
         return path.Replace('\\', '/');
     }
 
+    private static bool IsSharedRoot(string userFolder, string actualPath)
+    {
+        var root = Path.GetFullPath(userFolder).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+        var candidate = StripExtendedPrefix(actualPath).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+        var comparison = OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+        return string.Equals(root, candidate, comparison);
+    }
+
+    private static string StripExtendedPrefix(string path)
+    {
+        if (path.StartsWith(@"\\?\UNC\", StringComparison.OrdinalIgnoreCase))
+            return @"\\" + path[@"\\?\UNC\".Length..];
+        if (path.StartsWith(@"\\?\", StringComparison.Ordinal))
+            return path[4..];
+        return path;
+    }
+
     private static bool IsInsideBase(string normalizedBase, string fullPath)
     {
         if (fullPath.StartsWith(normalizedBase, StringComparison.OrdinalIgnoreCase))
@@ -305,7 +329,14 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
 
     public Task DirectoryMove(string userFolder, IEnumerable<string> fromParts, IEnumerable<string> toParts)
     {
-        var from = GetRealPath(userFolder, fromParts);
+        var fromList = fromParts as IReadOnlyCollection<string> ?? fromParts.ToList();
+        if (fromList.Count == 0)
+            throw new UnauthorizedAccessException("Cannot move the shared folder");
+
+        var from = GetRealPath(userFolder, fromList);
+        if (IsSharedRoot(userFolder, from))
+            throw new UnauthorizedAccessException("Cannot move the shared folder");
+
         var to = GetRealPath(userFolder, toParts);
 
         Directory.Move(from, to);

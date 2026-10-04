@@ -102,6 +102,9 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
 
     public async Task DirectoryDelete(string serializedFolderBookmark, IEnumerable<string> parts)
     {
+        if (!parts.Any())
+            throw new UnauthorizedAccessException("Cannot delete the shared folder");
+
         var folder = await NavigateToFolder(serializedFolderBookmark, parts);
         await folder.DeleteAsync();
     }
@@ -114,6 +117,9 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
 
     public async Task DirectoryMove(string serializedFolderBookmark, IEnumerable<string> fromParts, IEnumerable<string> toParts)
     {
+        if (!fromParts.Any())
+            throw new UnauthorizedAccessException("Cannot move the shared folder");
+
         var fromFolder = await NavigateToFolder(serializedFolderBookmark, fromParts);
 
         var toPartsList = toParts.ToList();
