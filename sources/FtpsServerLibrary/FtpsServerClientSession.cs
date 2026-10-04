@@ -58,6 +58,8 @@ class FtpsServerClientSession(
     private const int MaxCommandLineLength = 8192;
     private static readonly TimeSpan UnauthenticatedIdleTimeout = TimeSpan.FromSeconds(30);
     private static readonly TimeSpan AuthenticatedIdleTimeout = TimeSpan.FromMinutes(5);
+    private static readonly TimeSpan DataConnectTimeout = TimeSpan.FromSeconds(30);
+    private static readonly TimeSpan DataIdleTimeout = TimeSpan.FromSeconds(60);
     private readonly char[] _controlChar = new char[1];
 
     private static readonly string[] MlsSupportedFacts = ["type", "size", "modify", "perm"];
@@ -463,7 +465,8 @@ class FtpsServerClientSession(
             try
             {
                 _sslStream = new SslStream(_controlStream!, false);
-                await AuthenticateServerAsync(_sslStream);
+                using var handshakeTimeout = new CancellationTokenSource(DataConnectTimeout);
+                await AuthenticateServerAsync(_sslStream, handshakeTimeout.Token);
 
                 _controlStream = _sslStream;
 
@@ -821,7 +824,6 @@ class FtpsServerClientSession(
                 dataStream = await ProtectDataConnectionAsync(dataStream);
 
                 using (dataStream)
-                using (var dataWriter = new System.IO.StreamWriter(dataStream, Encoding.UTF8) { AutoFlush = true })
                 {
                     if (await fileSystemProvider.DirectoryExists(_user!.Folder, path.Segments))
                     {
@@ -833,8 +835,7 @@ class FtpsServerClientSession(
                             var modified = FormatUnixListDate(entry.LastWriteTime);
 
                             var line = $"{permissions} 1 owner group {size,15} {modified} {entry.FileName}";
-                            dataWriter.NewLine = "\r\n";
-                            await dataWriter.WriteLineAsync(line);
+                            await WriteWithIdleTimeoutAsync(dataStream, Encoding.UTF8.GetBytes(line + "\r\n"));
                         }
                     }
                 }
@@ -887,17 +888,17 @@ class FtpsServerClientSession(
                 dataStream = await ProtectDataConnectionAsync(dataStream);
 
                 using (dataStream)
-                using (var dataWriter = new System.IO.StreamWriter(dataStream, Encoding.UTF8) { AutoFlush = true, NewLine = "\r\n" })
                 {
                     var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_user.Folder, path.Segments);
                     foreach (var entry in entries)
                     {
-                        await dataWriter.WriteLineAsync(FormatMlsRecord(
+                        var line = FormatMlsRecord(
                             MlsTypeForName(entry.FileName, entry.IsDirectory),
                             entry.LastWriteTime,
                             entry.Length,
                             entry.IsDirectory,
-                            entry.FileName));
+                            entry.FileName);
+                        await WriteWithIdleTimeoutAsync(dataStream, Encoding.UTF8.GetBytes(line + "\r\n"));
                     }
                 }
             }
@@ -1050,7 +1051,6 @@ class FtpsServerClientSession(
                 dataStream = await ProtectDataConnectionAsync(dataStream);
 
                 using (dataStream)
-                using (var dataWriter = new System.IO.StreamWriter(dataStream, Encoding.UTF8) { AutoFlush = true })
                 {
                     if (await fileSystemProvider.DirectoryExists(_user.Folder, path.Segments))
                     {
@@ -1058,7 +1058,7 @@ class FtpsServerClientSession(
 
                         foreach (var entry in entries)
                         {
-                            await dataWriter.WriteLineAsync(entry.FileName);
+                            await WriteWithIdleTimeoutAsync(dataStream, Encoding.UTF8.GetBytes(entry.FileName + "\r\n"));
                         }
                     }
                 }
@@ -1114,7 +1114,7 @@ class FtpsServerClientSession(
                 using (dataStream)
                 using (var fileStream = await fileSystemProvider.FileOpenRead(_user.Folder, path.Segments))
                 {
-                    await fileStream.CopyToAsync(dataStream);
+                    await CopyWithIdleTimeoutAsync(fileStream, dataStream);
                 }
             }
 
@@ -1162,7 +1162,7 @@ class FtpsServerClientSession(
                 using (dataStream)
                 using (var fileStream = await fileSystemProvider.FileCreate(_user!.Folder, path.Segments))
                 {
-                    await dataStream.CopyToAsync(fileStream);
+                    await CopyWithIdleTimeoutAsync(dataStream, fileStream);
                 }
             }
 
@@ -1290,7 +1290,7 @@ class FtpsServerClientSession(
         return false;
     }
 
-    private async Task AuthenticateServerAsync(SslStream sslStream)
+    private async Task AuthenticateServerAsync(SslStream sslStream, CancellationToken cancellationToken = default)
     {
         await sslStream.AuthenticateAsServerAsync(new SslServerAuthenticationOptions
         {
@@ -1299,7 +1299,7 @@ class FtpsServerClientSession(
             EnabledSslProtocols = SslProtocols.Tls12 | SslProtocols.Tls13,
             CertificateRevocationCheckMode = X509RevocationMode.NoCheck,
             CipherSuitesPolicy = FtpsTlsSuites.Policy,
-        });
+        }, cancellationToken);
 
         if (FtpsTlsSuites.IsAllowed(sslStream.NegotiatedCipherSuite))
             return;
@@ -1316,7 +1316,8 @@ class FtpsServerClientSession(
         var sslStream = new SslStream(dataStream, false);
         try
         {
-            await AuthenticateServerAsync(sslStream);
+            using var handshakeTimeout = new CancellationTokenSource(DataConnectTimeout);
+            await AuthenticateServerAsync(sslStream, handshakeTimeout.Token);
             if (_sslStream == null || !FtpsTlsSession.SameAsControl(_sslStream, sslStream))
             {
                 _log.Warn($"[{_clientAddress}] Rejected data connection: TLS session was not resumed from the control connection");
@@ -1349,7 +1350,14 @@ class FtpsServerClientSession(
         TcpClient dataClient;
         try
         {
-            dataClient = await _dataListener.AcceptTcpClientAsync();
+            using var acceptTimeout = new CancellationTokenSource(DataConnectTimeout);
+            dataClient = await _dataListener.AcceptTcpClientAsync(acceptTimeout.Token);
+        }
+        catch (OperationCanceledException)
+        {
+            _log.Warn($"[{_clientAddress}] No data connection arrived within {DataConnectTimeout.TotalSeconds:0} seconds");
+            await SendResponseAsync(425, "Can't open data connection");
+            return null;
         }
         catch (Exception)
         {
@@ -1423,6 +1431,51 @@ class FtpsServerClientSession(
         return (read ? _user.Read : true) &&
             (write ? _user.Write : true);
 #pragma warning restore IDE0075 // Simplify conditional expression
+    }
+
+    // A transfer that moves no bytes must not hold the session slot forever. The budget
+    // restarts on every read and write, so a slow-but-moving transfer is never cut off.
+    private static async Task CopyWithIdleTimeoutAsync(System.IO.Stream source, System.IO.Stream destination)
+    {
+        var buffer = new byte[81920];
+        while (true)
+        {
+            using var idle = new CancellationTokenSource(DataIdleTimeout);
+            int read;
+            try
+            {
+                read = await source.ReadAsync(buffer, idle.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                throw new TimeoutException("Data connection idle timeout while reading.");
+            }
+
+            if (read == 0)
+                return;
+
+            try
+            {
+                await destination.WriteAsync(buffer.AsMemory(0, read), idle.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                throw new TimeoutException("Data connection idle timeout while writing.");
+            }
+        }
+    }
+
+    private static async Task WriteWithIdleTimeoutAsync(System.IO.Stream stream, byte[] bytes)
+    {
+        using var idle = new CancellationTokenSource(DataIdleTimeout);
+        try
+        {
+            await stream.WriteAsync(bytes, idle.Token);
+        }
+        catch (OperationCanceledException)
+        {
+            throw new TimeoutException("Data connection idle timeout while writing.");
+        }
     }
 
     private async Task SendControlLineAsync(string line)

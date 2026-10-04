@@ -44,6 +44,8 @@ class FtpsClientSession(
     private val clientIpKey = socket.inetAddress?.let { LoginThrottle.key(it) }
     private var disconnect = false
     private val mlsSelected = mutableSetOf("type", "size", "modify", "perm")
+    @Volatile private var transferProgressMs = 0L
+    @Volatile private var transferActive = false
 
     fun close() {
         val pasv: ServerSocket?
@@ -439,6 +441,7 @@ class FtpsClientSession(
         closePasv()
         val local = socket.localAddress
         val listener = ServerSocket(0, 1, local)
+        listener.soTimeout = DATA_CONNECT_TIMEOUT_MS.toInt()
         synchronized(ioLock) {
             if (stopping) {
                 try { listener.close() } catch (_: Exception) {}
@@ -460,6 +463,7 @@ class FtpsClientSession(
         val ssl = factory.createSocket(client, client.inetAddress.hostAddress, client.port, true) as SSLSocket
         ssl.useClientMode = false
         ssl.enableSessionCreation = false
+        ssl.soTimeout = DATA_IDLE_TIMEOUT_MS.toInt()
         restrictTls(ssl)
         ssl.startHandshake()
         val control = socket as? SSLSocket
@@ -499,9 +503,54 @@ class FtpsClientSession(
             } else {
                 retainData(accepted)
             }
+        } catch (_: SocketTimeoutException) {
+            log.warn("[$clientAddress] No data connection arrived within ${DATA_CONNECT_TIMEOUT_MS / 1000} seconds")
+            send(425, "Can't open data connection")
+            null
         } catch (_: Exception) {
             send(425, "Can't open data connection")
             null
+        }
+    }
+
+    // A transfer that moves no bytes must not hold the session slot forever. The watchdog
+    // closes the data socket after DATA_IDLE_TIMEOUT_MS without progress; closing unblocks
+    // a read or write stuck in the transfer loop. Progress restarts the budget.
+    private fun beginTransferWatchdog(socket: Socket) {
+        transferProgressMs = System.currentTimeMillis()
+        transferActive = true
+        val watchdog = Thread {
+            while (transferActive && !stopping) {
+                try {
+                    Thread.sleep(5_000)
+                } catch (_: InterruptedException) {
+                    return@Thread
+                }
+                if (transferActive && System.currentTimeMillis() - transferProgressMs > DATA_IDLE_TIMEOUT_MS) {
+                    log.warn("[$clientAddress] Closed data connection: no bytes moved for ${DATA_IDLE_TIMEOUT_MS / 1000} seconds")
+                    try {
+                        socket.close()
+                    } catch (_: Exception) {
+                    }
+                    return@Thread
+                }
+            }
+        }
+        watchdog.isDaemon = true
+        watchdog.start()
+    }
+
+    private fun endTransferWatchdog() {
+        transferActive = false
+    }
+
+    private fun copyWithProgress(input: java.io.InputStream, output: java.io.OutputStream) {
+        val buffer = ByteArray(64 * 1024)
+        while (true) {
+            val n = input.read(buffer)
+            if (n < 0) return
+            output.write(buffer, 0, n)
+            transferProgressMs = System.currentTimeMillis()
         }
     }
 
@@ -540,13 +589,19 @@ class FtpsClientSession(
             wrapData(dataClient).use { sock ->
                 OutputStreamWriter(sock.getOutputStream(), StandardCharsets.UTF_8).use { out ->
                     if (fileSystem.directoryExists(user!!.folder, p.parts)) {
-                        for (entry in fileSystem.directoryEntries(user!!.folder, p.parts)) {
-                            val permissions = if (entry.isDirectory) "drwxr-xr-x" else "-rw-r--r--"
-                            val size = if (entry.isDirectory) "0" else entry.length.toString()
-                            val modified = formatUnixListDate(entry.lastWriteTimeMillis)
-                            out.write("$permissions 1 owner group ${size.padStart(15)} $modified ${entry.fileName}\r\n")
+                        beginTransferWatchdog(sock)
+                        try {
+                            for (entry in fileSystem.directoryEntries(user!!.folder, p.parts)) {
+                                val permissions = if (entry.isDirectory) "drwxr-xr-x" else "-rw-r--r--"
+                                val size = if (entry.isDirectory) "0" else entry.length.toString()
+                                val modified = formatUnixListDate(entry.lastWriteTimeMillis)
+                                out.write("$permissions 1 owner group ${size.padStart(15)} $modified ${entry.fileName}\r\n")
+                                transferProgressMs = System.currentTimeMillis()
+                            }
+                            out.flush()
+                        } finally {
+                            endTransferWatchdog()
                         }
-                        out.flush()
                     }
                 }
             }
@@ -576,10 +631,16 @@ class FtpsClientSession(
             send(150, "Opening data connection")
             wrapData(dataClient).use { sock ->
                 OutputStreamWriter(sock.getOutputStream(), StandardCharsets.UTF_8).use { out ->
-                    for (entry in fileSystem.directoryEntries(user!!.folder, p.parts)) {
-                        out.write(formatMlsRecord(mlsType(entry.fileName, entry.isDirectory), entry.lastWriteTimeMillis, entry.length, entry.isDirectory, entry.fileName) + "\r\n")
+                    beginTransferWatchdog(sock)
+                    try {
+                        for (entry in fileSystem.directoryEntries(user!!.folder, p.parts)) {
+                            out.write(formatMlsRecord(mlsType(entry.fileName, entry.isDirectory), entry.lastWriteTimeMillis, entry.length, entry.isDirectory, entry.fileName) + "\r\n")
+                            transferProgressMs = System.currentTimeMillis()
+                        }
+                        out.flush()
+                    } finally {
+                        endTransferWatchdog()
                     }
-                    out.flush()
                 }
             }
             send(226, "Transfer complete")
@@ -640,10 +701,16 @@ class FtpsClientSession(
             wrapData(dataClient).use { sock ->
                 OutputStreamWriter(sock.getOutputStream(), StandardCharsets.UTF_8).use { out ->
                     if (fileSystem.directoryExists(user!!.folder, p.parts)) {
-                        for (entry in fileSystem.directoryEntries(user!!.folder, p.parts)) {
-                            out.write(entry.fileName + "\r\n")
+                        beginTransferWatchdog(sock)
+                        try {
+                            for (entry in fileSystem.directoryEntries(user!!.folder, p.parts)) {
+                                out.write(entry.fileName + "\r\n")
+                                transferProgressMs = System.currentTimeMillis()
+                            }
+                            out.flush()
+                        } finally {
+                            endTransferWatchdog()
                         }
-                        out.flush()
                     }
                 }
             }
@@ -672,9 +739,14 @@ class FtpsClientSession(
         send(150, "Opening data connection")
         try {
             wrapData(dataClient).use { sock ->
-                fileSystem.fileOpenRead(user!!.folder, p.parts).use { input ->
-                    input.copyTo(sock.getOutputStream())
-                    sock.getOutputStream().flush()
+                beginTransferWatchdog(sock)
+                try {
+                    fileSystem.fileOpenRead(user!!.folder, p.parts).use { input ->
+                        copyWithProgress(input, sock.getOutputStream())
+                        sock.getOutputStream().flush()
+                    }
+                } finally {
+                    endTransferWatchdog()
                 }
             }
             log.info("[$clientAddress] Download complete: $p")
@@ -698,9 +770,14 @@ class FtpsClientSession(
         send(150, "Opening data connection for ${p.toFtpsPath()}")
         try {
             wrapData(dataClient).use { sock ->
-                fileSystem.fileCreate(user!!.folder, p.parts).use { output ->
-                    sock.getInputStream().copyTo(output)
-                    output.flush()
+                beginTransferWatchdog(sock)
+                try {
+                    fileSystem.fileCreate(user!!.folder, p.parts).use { output ->
+                        copyWithProgress(sock.getInputStream(), output)
+                        output.flush()
+                    }
+                } finally {
+                    endTransferWatchdog()
                 }
             }
             send(226, "Transfer complete")
@@ -848,10 +925,12 @@ class FtpsClientSession(
         val dataSession = data.session ?: return false
         val controlId = controlSession.id ?: ByteArray(0)
         val dataId = dataSession.id ?: ByteArray(0)
+        // TLS 1.2 resumes the cached session object, so an equal id identifies the control session.
         if (controlId.isNotEmpty() && dataId.isNotEmpty() && controlId.contentEquals(dataId)) return true
-        if (controlSession.creationTime != 0L && controlSession.creationTime == dataSession.creationTime) return true
-        // TLS 1.3 uses a new session id for the resumed connection. Session creation is
-        // already disabled, so a full handshake never reaches this check.
+        // TLS 1.3 gives the resumed connection a new session id. Session creation is disabled
+        // on the data socket, so only a session this server issued earlier can reach this check.
+        // The peer address is still verified by the caller. A creation-time match is not proof
+        // of the same session (millisecond resolution) and is no longer accepted.
         return controlSession.protocol == "TLSv1.3" && dataSession.protocol == "TLSv1.3"
     }
 
@@ -905,6 +984,8 @@ class FtpsClientSession(
         private const val MAX_COMMAND_LINE_LENGTH = 8192
         private const val UNAUTHENTICATED_IDLE_MS = 30_000L
         private const val AUTHENTICATED_IDLE_MS = 5 * 60_000L
+        private const val DATA_CONNECT_TIMEOUT_MS = 30_000L
+        private const val DATA_IDLE_TIMEOUT_MS = 60_000L
         private val MLS_FACTS = listOf("type", "size", "modify", "perm")
         private fun mlsType(name: String, isDir: Boolean) = when (name) {
             "." -> "cdir"

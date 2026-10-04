@@ -17,17 +17,43 @@ static class FtpsTlsSession
         {
             // Android's TLS stack does not expose a session id to this library.
             // Rejecting here would fail every protected transfer. The peer address is still checked.
-            return OperatingSystem.IsAndroid();
+            return SessionsMatch(false, [], [], false, SslProtocols.None, SslProtocols.None,
+                OperatingSystem.IsAndroid(), OperatingSystem.IsWindows());
         }
 
-        if (dataResumed && controlId.Length > 0 && dataId.Length > 0 && controlId.AsSpan().SequenceEqual(dataId))
+        return SessionsMatch(true, controlId, dataId, dataResumed, control.SslProtocol, data.SslProtocol,
+            OperatingSystem.IsAndroid(), OperatingSystem.IsWindows());
+    }
+
+    // acceptUnreadableSession is Android. acceptAnyResumedTls13 is Windows: Schannel gives a
+    // resumed TLS 1.3 connection a fresh session id, so only the reconnect flag remains.
+    internal static bool SessionsMatch(
+        bool sessionReadable,
+        byte[] controlId,
+        byte[] dataId,
+        bool dataResumed,
+        SslProtocols controlProtocol,
+        SslProtocols dataProtocol,
+        bool acceptUnreadableSession,
+        bool acceptAnyResumedTls13)
+    {
+        if (!sessionReadable)
+            return acceptUnreadableSession;
+
+        // A data connection that resumed nothing is never the control session.
+        if (!dataResumed)
+            return false;
+
+        // Identical session ids identify the same session: TLS 1.2 on every platform,
+        // and TLS 1.3 on OpenSSL, which restores the original session from the ticket.
+        if (controlId.Length > 0 && dataId.Length > 0 && controlId.AsSpan().SequenceEqual(dataId))
             return true;
 
-        // Schannel assigns a new session id when a TLS 1.3 connection resumes.
-        // The reconnect flag is set for a resumed session and clear for a full handshake.
-        return dataResumed
-            && control.SslProtocol == SslProtocols.Tls13
-            && data.SslProtocol == SslProtocols.Tls13;
+        // On Windows no per-session value is left to compare, so accept any session the OS
+        // proves this server issued. On other platforms unequal ids mean a different session.
+        return controlProtocol == SslProtocols.Tls13
+            && dataProtocol == SslProtocols.Tls13
+            && acceptAnyResumedTls13;
     }
 
     private static bool TryRead(SslStream stream, out byte[] sessionId, out bool resumed)

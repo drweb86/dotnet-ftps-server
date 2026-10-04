@@ -39,10 +39,12 @@ The connection card, Copy, and Share include each account password, together wit
 
 The normal app sets `FLAG_SECURE`, so the recent-apps thumbnail cannot capture the screen. A build made with `-Pscreenshots=true` does not set that flag, so store screenshots can still be taken. That build uses the package id `com.siarheikuchuk.ftpsserver.screenshots` and is not a release a user installs. Do not treat the missing flag on that build as a finding, and do not remove the screenshots build.
 
-## 10. UpdateChecker advertises deflate but only decodes gzip
+## TLS 1.3 data connections accept any resumed session on Windows and Android
 
-- **Status:** Fixed
-- **Platform:** .NET
-- **Location:** `sources/FtpsServerAppsShared/Services/UpdateChecker.cs`
+- **Status:** Accepted (residual after hardening)
+- **Platform:** .NET on Windows, Android Kotlin, Avalonia Android
+- **Location:** `sources/FtpsServerLibrary/FtpsTlsSession.cs` (`SameAsControl`), `sources/android/app/src/main/java/com/siarheikuchuk/ftpsserver/server/FtpsClientSession.kt` (`sameTlsSession`)
 
-The request used to send `Accept-Encoding: gzip, deflate` and always decode the body with `GZipStream`. An uncompressed or deflated response failed to parse, and the update check reported no update. `HttpClientHandler.AutomaticDecompression` now accepts gzip, deflate, and Brotli, and leaves an uncompressed body unchanged.
+The data connection must resume the control connection's TLS session. Where a stable per-session value exists, it is compared: TLS 1.2 on every platform, and TLS 1.3 on OpenSSL (Linux), which restores the original session from the ticket. On Windows, Schannel reports a fresh session id for every resumed TLS 1.3 connection and only the reconnect flag survives (verified on Windows 11, .NET 10), so the resumed flag is the strongest signal available; Conscrypt on Android behaves the same, and the data socket also has `enableSessionCreation = false`, so only a session this server issued can pass. Avalonia on Android cannot read a session id at all and falls back to the peer-address check.
+
+The residual risk: a client on the same source address as a victim (shared NAT) that resumes its own TLS 1.3 session and wins the race to the victim's passive port is accepted as the data channel. The attacker must share the victim's address, guess the ephemeral port, and beat the real client, so this is accepted. TLS 1.3 exporter keying material was considered and rejected: a resumed connection re-keys, so its exporter output differs from the control connection's.

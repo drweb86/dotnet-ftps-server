@@ -296,14 +296,24 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
         return path;
     }
 
+    // Linux file systems are case-sensitive: a case-variant sibling of the share
+    // (e.g. /srv/FTP next to /srv/ftp) is a different directory and must not pass.
+    internal static StringComparison PathComparison =>
+        OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+
     private static bool IsInsideBase(string normalizedBase, string fullPath)
     {
-        if (fullPath.StartsWith(normalizedBase, StringComparison.OrdinalIgnoreCase))
+        return IsInsideBase(normalizedBase, fullPath, PathComparison);
+    }
+
+    internal static bool IsInsideBase(string normalizedBase, string fullPath, StringComparison comparison)
+    {
+        if (fullPath.StartsWith(normalizedBase, comparison))
             return true;
 
         var trimmedBase = normalizedBase.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
         var trimmedPath = fullPath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
-        return string.Equals(trimmedPath, trimmedBase, StringComparison.OrdinalIgnoreCase);
+        return string.Equals(trimmedPath, trimmedBase, comparison);
     }
 
     // The \\?\ prefix makes Windows use the path as a file name, so CON.txt is not the CON device.
