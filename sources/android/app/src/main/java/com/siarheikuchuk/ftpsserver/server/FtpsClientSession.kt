@@ -18,13 +18,14 @@ import javax.net.ssl.SSLSocket
 import javax.net.ssl.SSLSocketFactory
 
 class FtpsClientSession(
-    private val log: FtpsLog,
+    log: FtpsLog,
     private var socket: Socket,
     private val users: List<FtpsUserAccount>,
     private val sslContext: SSLContext?,
     private val fileSystem: FileSystemProvider,
     private val loginThrottle: LoginThrottle,
 ) {
+    private val log: FtpsLog = SanitizingLog(log)
     private var writer: OutputStreamWriter = OutputStreamWriter(socket.getOutputStream(), LATIN1)
     private var pushedByte = -1
     private val controlByte = ByteArray(1)
@@ -970,8 +971,9 @@ class FtpsClientSession(
         log.error(message, error)
     }
 
-    private fun sendLine(line: String) {
+    private fun sendLine(rawLine: String) {
         if (stopping) return
+        val line = SafeText.sanitize(rawLine)
         log.debug("[$clientAddress] << $line")
         val bytes = (line + "\r\n").toByteArray(encoding)
         socket.getOutputStream().write(bytes)

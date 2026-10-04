@@ -21,7 +21,7 @@ class FtpsServerClientSession(
     IFtpsServerFileSystemProvider fileSystemProvider,
     FtpsLoginThrottle loginThrottle)
 {
-    private readonly IFtpsServerLog _log = log;
+    private readonly IFtpsServerLog _log = new FtpsSanitizingLog(log);
     private readonly TcpClient _controlClient = controlClient;
     private readonly List<FtpsServerUserAccount> _users = users;
     private readonly X509Certificate2? _certificate = certificate;
@@ -1482,6 +1482,7 @@ class FtpsServerClientSession(
     {
         if (_aborted)
             return;
+        line = FtpsSafeText.Sanitize(line);
         _log.Debug($"[{_clientAddress}] << {line}");
         var bytes = _currentEncoding.GetBytes(line + "\r\n");
         await _controlStream!.WriteAsync(bytes);
