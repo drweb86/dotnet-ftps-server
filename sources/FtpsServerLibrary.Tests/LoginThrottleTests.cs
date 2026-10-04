@@ -106,6 +106,47 @@ public class LoginThrottleTests
         Assert.False(throttle.IsLocked(ip, Now.Add(FtpsLoginThrottle.Lockout)));
     }
 
+    [Fact]
+    public void FailuresAreForgottenOneWindowAfterTheLast()
+    {
+        var throttle = new FtpsLoginThrottle();
+        var ip = IPAddress.Parse("198.51.100.20");
+
+        for (var i = 1; i < FtpsLoginThrottle.FailureLimit; i++)
+            Assert.False(throttle.RegisterFailure(ip, Now));
+
+        Assert.False(throttle.RegisterFailure(ip, Now.Add(FtpsLoginThrottle.Lockout)));
+        Assert.False(throttle.IsLocked(ip, Now.Add(FtpsLoginThrottle.Lockout)));
+    }
+
+    [Fact]
+    public void FailureInsideTheWindowKeepsCounting()
+    {
+        var throttle = new FtpsLoginThrottle();
+        var ip = IPAddress.Parse("198.51.100.21");
+
+        for (var i = 1; i < FtpsLoginThrottle.FailureLimit; i++)
+            Assert.False(throttle.RegisterFailure(ip, Now.AddSeconds(50 * i)));
+
+        Assert.True(throttle.RegisterFailure(ip, Now.AddSeconds(50 * FtpsLoginThrottle.FailureLimit)));
+    }
+
+    [Fact]
+    public void StaleAddressesAreSweptOnTheNextFailure()
+    {
+        var throttle = new FtpsLoginThrottle();
+        for (var i = 0; i < 100; i++)
+            throttle.RegisterFailure(IPAddress.Parse($"198.51.100.{i}"), Now);
+        throttle.RegisterFailure(IPAddress.Parse("198.51.100.200"), Now);
+        for (var i = 0; i < FtpsLoginThrottle.FailureLimit; i++)
+            throttle.RegisterFailure(IPAddress.Parse("198.51.100.201"), Now);
+        Assert.Equal(102, throttle.Count);
+
+        throttle.RegisterFailure(IPAddress.Parse("203.0.113.200"), Now.Add(FtpsLoginThrottle.Lockout));
+
+        Assert.Equal(1, throttle.Count);
+    }
+
     private static FtpsLoginThrottle Locked(string address)
     {
         var throttle = new FtpsLoginThrottle();

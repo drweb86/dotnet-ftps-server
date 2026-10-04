@@ -6,6 +6,7 @@
 - Windows, Avalonia: the GitHub update check decompresses the response encoding it receives, including an uncompressed body.
 
 ## Security Hardening
+- Library, Android: failed logins are forgotten 60 seconds after the last one, and stale entries are removed from the login throttle. Before, an address that failed fewer than 5 times kept its entry, and its count, until the server stopped.
 - Library: on Windows the self-signed certificate key is no longer written to a permanent key container. Before, every server start left a copy of the private key under %AppData%\Microsoft\Crypto\Keys, and every new certificate left one under %ProgramData%\Microsoft\Crypto\RSA\MachineKeys. The key is now held in a temporary container that is removed when the server stops.
 - Android: the control connection is closed when the TLS handshake after AUTH TLS fails, as the .NET server already does. Before, the session went on in cleartext.
 - Library, Android: control characters such as ESC and BEL in client text are replaced with `?` in replies and in the log. A client can no longer put terminal escape sequences into a log viewed in a terminal.

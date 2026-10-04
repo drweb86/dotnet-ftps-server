@@ -48,3 +48,27 @@ The normal app sets `FLAG_SECURE`, so the recent-apps thumbnail cannot capture t
 The data connection must resume the control connection's TLS session. Where a stable per-session value exists, it is compared: TLS 1.2 on every platform, and TLS 1.3 on OpenSSL (Linux), which restores the original session from the ticket. On Windows, Schannel reports a fresh session id for every resumed TLS 1.3 connection and only the reconnect flag survives (verified on Windows 11, .NET 10), so the resumed flag is the strongest signal available; Conscrypt on Android behaves the same, and the data socket also has `enableSessionCreation = false`, so only a session this server issued can pass. Avalonia on Android cannot read a session id at all and falls back to the peer-address check.
 
 The residual risk: a client on the same source address as a victim (shared NAT) that resumes its own TLS 1.3 session and wins the race to the victim's passive port is accepted as the data channel. The attacker must share the victim's address, guess the ephemeral port, and beat the real client, so this is accepted. TLS 1.3 exporter keying material was considered and rejected: a resumed connection re-keys, so its exporter output differs from the control connection's.
+
+## 9 (lifetime). Self-signed certificate is valid for 10 years
+
+- **Status:** Accepted
+- **Platform:** .NET and Android Kotlin
+- **Location:** `sources/FtpsServerLibrary/FtpsCertificateLoader.cs` (`CreateSelfSigned`, 3650 days), `sources/android/app/src/main/java/com/siarheikuchuk/ftpsserver/server/Certificates.kt` (`notAfter`, 3650 days)
+
+The generated certificate stays valid for 10 years. Clients trust it by fingerprint, not through a certificate authority. A shorter validity would limit a copied private key only for clients that reject an expired certificate they already trusted, and copying the key requires access to the user profile, which already gives more than the key. Each renewal changes the fingerprint, so every client would have to trust the new one, and the certificate is replaced only on server start, so a server left running past the 7-day margin would serve an expired certificate until restarted. A certificate with 7 days or less left, or one missing a current IPv4 address, is still replaced on the next start. Do not shorten the validity without a renewal that works while the server runs.
+
+## 5. Password comparison is not constant-time
+
+- **Status:** Accepted
+- **Platform:** .NET and Android Kotlin
+- **Location:** `sources/FtpsServerLibrary/FtpsServerClientSession.cs` (`HandlePassAsync`, `user.Password == password`), `sources/android/app/src/main/java/com/siarheikuchuk/ftpsserver/server/FtpsClientSession.kt` (`handlePass`, `found.password == password`)
+
+Both checks use plain string equality, which returns early on a length mismatch or on the first block that differs. The difference cannot be measured from the network. String equality in .NET compares 16 or 32 bytes per vector step, so a password of up to 8-16 characters is compared in one step, and the difference between a match and a mismatch is a few nanoseconds. Android uses a native comparison of the same kind. A remote timing attack has to recover that difference through TLS and network jitter measured in microseconds to milliseconds, which takes a very large number of samples for each guessed position. The login throttle allows 5 failures per address, then a 60 second lockout and a 1 second delay after each failure, so collecting those samples from one address takes years. `FixedTimeEquals` would not change any of this, and the length would still differ in timing. Revisit only if the throttle is removed or passwords are compared somewhere a local caller can time them precisely.
+
+## 11. Symlink validation is check-then-open (TOCTOU)
+
+- **Status:** Accepted
+- **Platform:** .NET
+- **Location:** `sources/FtpsServerLibrary/IFtpsServerFileSystemProvider.cs` (`GetRealPath`, `ResolveLinks`) and its callers (`FileCreate`, `FileOpenRead`, moves, deletes)
+
+`GetRealPath` checks containment, resolves each link and returns a path string. The file is then opened by that path in a separate step. A process that replaces a directory or file in the share with a symlink or junction between the two steps can redirect the open, or a STOR, outside the share. An FTP client cannot do this, because the server has no command that creates a link. It takes a local process that can write inside the shared folder. That process gains something only if it runs as a different OS account from the server and the server account can reach files it cannot. A process running as the same account already has the same file access. Closing the race needs handle-based I/O on every platform (`openat2` with `RESOLVE_BENEATH` on Linux, handle-relative opens on Windows), which is a large change for this narrow case. Requirement: do not share a folder that an untrusted local account can write to.

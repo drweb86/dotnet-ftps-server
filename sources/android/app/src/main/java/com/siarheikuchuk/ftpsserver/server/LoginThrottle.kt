@@ -5,13 +5,19 @@ import java.net.InetAddress
 
 class LoginThrottle {
     private val byIp = HashMap<String, Entry>()
+    private var nextSweepMs = 0L
 
-    private class Entry(var failures: Int = 0, var lockedUntilMs: Long = 0L)
+    // Failures are forgotten one lockout window after the last one, so an address that
+    // fails a few times and never returns does not keep its entry for the whole uptime.
+    private class Entry(var failures: Int = 0, var lockedUntilMs: Long = 0L, var lastFailureMs: Long = 0L) {
+        fun isStale(nowMs: Long): Boolean =
+            if (lockedUntilMs != 0L) lockedUntilMs <= nowMs else lastFailureMs + LOCKOUT_MS <= nowMs
+    }
 
     fun isLocked(ip: String, nowMs: Long): Boolean = synchronized(byIp) {
         val entry = byIp[ip] ?: return false
         if (entry.lockedUntilMs > nowMs) return true
-        if (entry.lockedUntilMs != 0L) byIp.remove(ip)
+        if (entry.isStale(nowMs)) byIp.remove(ip)
         false
     }
 
@@ -22,10 +28,12 @@ class LoginThrottle {
     }
 
     fun registerFailure(ip: String, nowMs: Long): Boolean = synchronized(byIp) {
+        sweepStale(nowMs)
         var entry = byIp[ip]
         if (entry != null && entry.lockedUntilMs > nowMs) return true
-        if (entry == null || entry.lockedUntilMs != 0L) entry = Entry()
+        if (entry == null || entry.isStale(nowMs)) entry = Entry()
         entry.failures += 1
+        entry.lastFailureMs = nowMs
         if (entry.failures >= FAILURE_LIMIT) {
             entry.lockedUntilMs = nowMs + LOCKOUT_MS
             byIp[ip] = entry
@@ -34,6 +42,13 @@ class LoginThrottle {
         entry.lockedUntilMs = 0L
         byIp[ip] = entry
         false
+    }
+
+    // Called while holding byIp. Runs at most once per lockout window.
+    private fun sweepStale(nowMs: Long) {
+        if (nowMs < nextSweepMs) return
+        nextSweepMs = nowMs + LOCKOUT_MS
+        byIp.values.removeAll { it.isStale(nowMs) }
     }
 
     companion object {
