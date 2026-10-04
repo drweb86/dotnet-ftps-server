@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -64,22 +65,33 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val repo = SettingsRepository(application)
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state
+    private var canPersistSettings = true
 
     init {
-        val loaded = repo.load()
-        _state.value = UiState(
-            port = loaded.serverPort,
-            maxConnections = loaded.maxConnections,
-            useSelfSigned = loaded.useSelfSigned,
-            certificatePath = loaded.certificatePath,
-            certificatePassword = loaded.certificatePassword,
-            users = loaded.users.toList(),
-            userErrors = List(loaded.users.size) { UserFieldErrors() },
-            running = ServerEvents.isRunning.value,
-            networks = localNetworks(),
-            hostName = Build.MODEL ?: "Android",
-            certificate = ServerEvents.loadedCertificate.value,
-        )
+        try {
+            val loaded = repo.load()
+            _state.value = UiState(
+                port = loaded.serverPort,
+                maxConnections = loaded.maxConnections,
+                useSelfSigned = loaded.useSelfSigned,
+                certificatePath = loaded.certificatePath,
+                certificatePassword = loaded.certificatePassword,
+                users = loaded.users.toList(),
+                userErrors = List(loaded.users.size) { UserFieldErrors() },
+                running = ServerEvents.isRunning.value,
+                networks = localNetworks(),
+                hostName = Build.MODEL ?: "Android",
+                certificate = ServerEvents.loadedCertificate.value,
+            )
+        } catch (e: Exception) {
+            canPersistSettings = false
+            Log.e(TAG, "Saved settings could not be read", e)
+            _state.value = UiState(
+                error = application.getString(R.string.error_settings_unreadable),
+                networks = localNetworks(),
+                hostName = Build.MODEL ?: "Android",
+            )
+        }
         viewModelScope.launch {
             ServerEvents.isRunning.collect { running ->
                 _state.update { it.copy(running = running, error = if (running) null else it.error) }
@@ -168,7 +180,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun save() {
-        if (PrivacyStore.skipSettingsSave) return
+        if (!canPersistSettings || PrivacyStore.skipSettingsSave) return
         val s = _state.value
         repo.save(
             AppSettings(
@@ -270,6 +282,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     companion object {
+        private const val TAG = "MainViewModel"
         const val PORT_MIN = 2121
         const val PORT_MAX = 65535
         const val MAX_CONNECTIONS_MIN = 2

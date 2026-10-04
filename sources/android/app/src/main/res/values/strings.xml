@@ -38,6 +38,7 @@
     <string name="numeric_down">▼</string>
     <string name="error_title">Error</string>
     <string name="error_select_certificate">Please select a certificate file.</string>
+    <string name="error_settings_unreadable">Saved settings could not be read. They were left unchanged.</string>
     <string name="error_add_user">Please add at least one user.</string>
     <string name="error_incomplete_user_format">User %1$s has incomplete information.</string>
     <string name="error_start_server_format">Failed to start server: %1$s</string>

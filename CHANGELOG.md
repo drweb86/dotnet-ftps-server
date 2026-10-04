@@ -5,6 +5,7 @@
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
 
 ## Security Hardening
+- Android: encrypt FTP passwords and the certificate password in `settings.json` with an Android Keystore key. A copied settings file cannot be read on another device, and an edited file is rejected. Passwords saved by an older version are encrypted the next time the app starts. If decryption fails, the existing file is left in place.
 - Android: release builds allow no cleartext HTTP and trust only system certificate authorities. A user-installed CA cannot read the app's own connections, and the unused emulator exception for `10.0.2.2` stays in debug builds only.
 - Android: exclude app-private files from cloud backup and phone-to-phone transfer. `settings.json` and the server certificate are not copied to the user's Google account or onto another device. `allowBackup="false"` was already set; Android 12 and later also need these extraction rules, because device transfer can still run when that flag is off.
 - Avalonia Android: turn backup and cleartext traffic off, and apply the same network and extraction rules. The manifest previously left backup at the platform default (on), and its network security config was not packaged, so a user-installed CA and Auto Backup could both reach app data.
