@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FtpsServerLibrary;
@@ -113,15 +114,16 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
                     continue;
                 }
 
-                if (_activeConnections >= _maxConnections)
+                // Sessions decrement the counter on their own threads, so every change is atomic.
+                if (Volatile.Read(ref _activeConnections) >= _maxConnections)
                 {
                     _log.Warn($"Connection rejected from {endpoint}: Max connections reached");
                     client.Close();
                     continue;
                 }
 
-                _activeConnections++;
-                _log.Info($"Client connected: {endpoint} (Active: {_activeConnections})");
+                var active = Interlocked.Increment(ref _activeConnections);
+                _log.Info($"Client connected: {endpoint} (Active: {active})");
 
                 var session = new FtpsServerClientSession(
                     _log,
@@ -135,9 +137,9 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
                 {
                     if (!_isRunning)
                     {
-                        _activeConnections--;
+                        active = Interlocked.Decrement(ref _activeConnections);
                         client.Close();
-                        _log.Info($"Client disconnected: {endpoint} (Active: {_activeConnections})");
+                        _log.Info($"Client disconnected: {endpoint} (Active: {active})");
                         continue;
                     }
 
@@ -154,8 +156,8 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
                     {
                         lock (_sessionsLock)
                             _sessions.Remove(session);
-                        _activeConnections--;
-                        _log.Info($"Client disconnected: {endpoint} (Active: {_activeConnections})");
+                        var remaining = Interlocked.Decrement(ref _activeConnections);
+                        _log.Info($"Client disconnected: {endpoint} (Active: {remaining})");
                     }
                 });
             }

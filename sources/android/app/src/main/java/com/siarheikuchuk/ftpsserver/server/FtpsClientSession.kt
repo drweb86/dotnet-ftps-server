@@ -47,6 +47,7 @@ class FtpsClientSession(
     private val mlsSelected = mutableSetOf("type", "size", "modify", "perm")
     @Volatile private var transferProgressMs = 0L
     @Volatile private var transferActive = false
+    private val connectedMs = System.currentTimeMillis()
 
     fun close() {
         val pasv: ServerSocket?
@@ -170,8 +171,13 @@ class FtpsClientSession(
     }
 
     private fun readCommandLine(): String? {
-        val timeoutMs = if (authenticated) AUTHENTICATED_IDLE_MS else UNAUTHENTICATED_IDLE_MS
-        val deadline = System.currentTimeMillis() + timeoutMs
+        val now = System.currentTimeMillis()
+        val timeoutMs = if (authenticated) AUTHENTICATED_IDLE_MS else unauthenticatedReadTimeoutMs(now - connectedMs)
+        if (timeoutMs <= 0) {
+            log.warn("[$clientAddress] Closed control connection: not logged in within ${LOGIN_TIMEOUT_MS / 1000} seconds")
+            return null
+        }
+        val deadline = now + timeoutMs
         val raw = java.io.ByteArrayOutputStream()
         try {
             while (true) {
@@ -221,6 +227,14 @@ class FtpsClientSession(
         val name = username
         if (name.isNullOrEmpty()) {
             send(503, "Login with USER first")
+            return
+        }
+        // A connection opened before the lockout must not keep guessing through it.
+        if (clientIpKey != null && loginThrottle.isLocked(clientIpKey, System.currentTimeMillis())) {
+            log.warn("[$clientAddress] Rejected login for user $name: too many failed logins")
+            username = null
+            send(530, "Login incorrect")
+            disconnect = true
             return
         }
         val found = users.firstOrNull { it.login == name }
@@ -986,10 +1000,17 @@ class FtpsClientSession(
         private val LATIN1 = Charset.forName("ISO-8859-1")
         private const val MAX_COMMAND_LINE_LENGTH = 8192
         private const val UNAUTHENTICATED_IDLE_MS = 30_000L
+        private const val LOGIN_TIMEOUT_MS = 60_000L
         private const val AUTHENTICATED_IDLE_MS = 5 * 60_000L
         private const val DATA_CONNECT_TIMEOUT_MS = 30_000L
         private const val DATA_IDLE_TIMEOUT_MS = 60_000L
         private val MLS_FACTS = listOf("type", "size", "modify", "perm")
+
+        // NOOP and FEAT need no login, so an idle timer alone lets a client that never logs in
+        // keep a connection slot forever. Before login the budget also ends at a fixed deadline
+        // counted from connect. Zero or less means the deadline has passed.
+        private fun unauthenticatedReadTimeoutMs(sinceConnectMs: Long): Long =
+            minOf(UNAUTHENTICATED_IDLE_MS, LOGIN_TIMEOUT_MS - sinceConnectMs)
         private fun mlsType(name: String, isDir: Boolean) = when (name) {
             "." -> "cdir"
             ".." -> "pdir"

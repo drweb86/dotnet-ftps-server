@@ -6,6 +6,9 @@
 - Windows, Avalonia: the GitHub update check decompresses the response encoding it receives, including an uncompressed body.
 
 ## Security Hardening
+- Library, Android: a client must log in within 60 seconds of connecting. Before, commands that need no login, such as NOOP, restarted the 30-second idle timer, so a client without a password could hold every connection slot for as long as it kept sending them.
+- Library, Android: a connection opened before a login lockout can no longer log in during it. Before, PASS compared the password before checking the lockout, so each connection opened in advance got one more guess, and a correct one logged in. An address could make about 5 + (max connections − 1) guesses per minute instead of 5.
+- Library: the active connection count is updated atomically. Before, connects and disconnects on different threads could lose updates, and the count could drift until the server refused every connection or went over the limit.
 - Library, Android: failed logins are forgotten 60 seconds after the last one, and stale entries are removed from the login throttle. Before, an address that failed fewer than 5 times kept its entry, and its count, until the server stopped.
 - Library: on Windows the self-signed certificate key is no longer written to a permanent key container. Before, every server start left a copy of the private key under %AppData%\Microsoft\Crypto\Keys, and every new certificate left one under %ProgramData%\Microsoft\Crypto\RSA\MachineKeys. The key is now held in a temporary container that is removed when the server stops.
 - Android: the control connection is closed when the TLS handshake after AUTH TLS fails, as the .NET server already does. Before, the session went on in cleartext.

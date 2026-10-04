@@ -56,8 +56,10 @@ class FtpsServerClientSession(
     private FtpsServerDataConnectionProtection _dataProtection = FtpsServerDataConnectionProtection.Clear;
 
     private const int MaxCommandLineLength = 8192;
-    private static readonly TimeSpan UnauthenticatedIdleTimeout = TimeSpan.FromSeconds(30);
+    internal static readonly TimeSpan UnauthenticatedIdleTimeout = TimeSpan.FromSeconds(30);
+    internal static readonly TimeSpan LoginTimeout = TimeSpan.FromSeconds(60);
     private static readonly TimeSpan AuthenticatedIdleTimeout = TimeSpan.FromMinutes(5);
+    private readonly long _connectedTicks = Environment.TickCount64;
     private static readonly TimeSpan DataConnectTimeout = TimeSpan.FromSeconds(30);
     private static readonly TimeSpan DataIdleTimeout = TimeSpan.FromSeconds(60);
     private readonly char[] _controlChar = new char[1];
@@ -280,7 +282,15 @@ class FtpsServerClientSession(
         if (reader is null)
             return null;
 
-        var timeout = _isAuthenticated ? AuthenticatedIdleTimeout : UnauthenticatedIdleTimeout;
+        var timeout = _isAuthenticated
+            ? AuthenticatedIdleTimeout
+            : UnauthenticatedReadTimeout(TimeSpan.FromMilliseconds(Environment.TickCount64 - _connectedTicks));
+        if (timeout <= TimeSpan.Zero)
+        {
+            _log.Warn($"[{_clientAddress}] Closed control connection: not logged in within {LoginTimeout.TotalSeconds:0} seconds");
+            return null;
+        }
+
         using var idle = new CancellationTokenSource(timeout);
         var line = new StringBuilder();
         try
@@ -316,6 +326,15 @@ class FtpsServerClientSession(
             _log.Warn($"[{_clientAddress}] Closed control connection: idle for {timeout.TotalSeconds:0} seconds");
             return null;
         }
+    }
+
+    // NOOP and FEAT need no login, so an idle timer alone lets a client that never logs in
+    // keep a connection slot forever. Before login the budget also ends at a fixed deadline
+    // counted from connect. Zero or less means the deadline has passed.
+    internal static TimeSpan UnauthenticatedReadTimeout(TimeSpan sinceConnect)
+    {
+        var remaining = LoginTimeout - sinceConnect;
+        return remaining < UnauthenticatedIdleTimeout ? remaining : UnauthenticatedIdleTimeout;
     }
 
     private async Task<int> ReadControlCharAsync(System.IO.StreamReader reader, CancellationToken cancellationToken)
@@ -423,6 +442,16 @@ class FtpsServerClientSession(
         if (string.IsNullOrEmpty(_username))
         {
             await SendResponseAsync(503, "Login with USER first");
+            return;
+        }
+
+        // A connection opened before the lockout must not keep guessing through it.
+        if (_clientIp is not null && _loginThrottle.IsLocked(_clientIp, DateTime.UtcNow))
+        {
+            _log.Warn($"[{_clientAddress}] Rejected login for user {_username}: too many failed logins");
+            _username = null;
+            await SendResponseAsync(530, "Login incorrect");
+            _disconnect = true;
             return;
         }
 
