@@ -267,6 +267,7 @@ class FtpsClientSession(
             log.info("[$clientAddress] TLS enabled on control connection")
         } catch (e: Exception) {
             sessionError("[$clientAddress] TLS negotiation failed", e)
+            disconnect = true
         }
     }
 
