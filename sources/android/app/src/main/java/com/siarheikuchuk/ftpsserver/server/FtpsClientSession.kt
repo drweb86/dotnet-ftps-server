@@ -107,7 +107,7 @@ class FtpsClientSession(
             send(550, "Permission denied")
         } catch (e: Exception) {
             log.error("[$clientAddress] Command error: $command", e)
-            send(550, "Error: ${e.message}")
+            send(550, "Error")
         }
     }
 
@@ -283,7 +283,7 @@ class FtpsClientSession(
             send(257, "\"${p.toFtpsPath()}\" created")
         } catch (e: Exception) {
             log.error("Failed to create directory: ${p.toFtpsPath()}", e)
-            send(550, "Cannot create directory: ${e.message}")
+            send(550, "Cannot create directory")
         }
     }
 
@@ -303,7 +303,7 @@ class FtpsClientSession(
             }
         } catch (e: Exception) {
             log.error("Failed to delete directory: ${p.toFtpsPath()}", e)
-            send(550, "Cannot remove directory: ${e.message}")
+            send(550, "Cannot remove directory")
         }
     }
 
@@ -323,7 +323,7 @@ class FtpsClientSession(
             }
         } catch (e: Exception) {
             log.error("Failed to delete file: ${p.toFtpsPath()}", e)
-            send(550, "Cannot delete file: ${e.message}")
+            send(550, "Cannot delete file")
         }
     }
 
@@ -369,7 +369,7 @@ class FtpsClientSession(
             }
         } catch (e: Exception) {
             log.error("rename failed", e)
-            send(550, "Rename failed: ${e.message}")
+            send(550, "Rename failed")
         } finally {
             renameFrom = null
         }
@@ -461,7 +461,7 @@ class FtpsClientSession(
             send(226, "Transfer complete")
         } catch (e: Exception) {
             log.error("List failed", e)
-            send(550, "List failed: ${e.message}")
+            send(550, "List failed")
         } finally {
             closePasv()
         }
@@ -493,7 +493,7 @@ class FtpsClientSession(
             send(226, "Transfer complete")
         } catch (e: Exception) {
             log.error("MLSD failed", e)
-            send(550, "MLSD failed: ${e.message}")
+            send(550, "MLSD failed")
         } finally {
             closePasv()
         }
@@ -558,7 +558,7 @@ class FtpsClientSession(
             send(226, "Transfer complete")
         } catch (e: Exception) {
             log.error("List failed", e)
-            send(550, "List failed: ${e.message}")
+            send(550, "List failed")
         } finally {
             closePasv()
         }
@@ -589,7 +589,7 @@ class FtpsClientSession(
             send(226, "Transfer complete")
         } catch (e: Exception) {
             log.error("Download failed: ${p.toFtpsPath()}", e)
-            send(550, "Transfer failed: ${e.message}")
+            send(550, "Transfer failed")
         } finally {
             closePasv()
         }
@@ -614,7 +614,7 @@ class FtpsClientSession(
             send(226, "Transfer complete")
         } catch (e: Exception) {
             log.error("Upload failed: ${p.toFtpsPath()}", e)
-            send(550, "Transfer failed: ${e.message}")
+            send(550, "Transfer failed")
         } finally {
             closePasv()
         }

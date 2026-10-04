@@ -222,7 +222,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             _log.Error(ex, $"[{_clientAddress}] Command error: {command}");
-            await SendResponseAsync(550, $"Error: {ex.Message}");
+            await SendResponseAsync(550, "Error");
         }
     }
 
@@ -492,7 +492,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, $"Failed to create directory: {ftpsPath}");
-            await SendResponseAsync(550, $"Cannot create directory: {ex.Message}");
+            await SendResponseAsync(550, "Cannot create directory");
         }
     }
 
@@ -524,7 +524,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, $"Failed to delete directory: {ftpsPath}");
-            await SendResponseAsync(550, $"Cannot remove directory: {ex.Message}");
+            await SendResponseAsync(550, "Cannot remove directory");
         }
     }
 
@@ -556,7 +556,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, $"Failed to delete file: {ftpsPath}");
-            await SendResponseAsync(550, $"Cannot delete file: {ex.Message}");
+            await SendResponseAsync(550, "Cannot delete file");
         }
     }
 
@@ -626,7 +626,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, "rename failed");
-            await SendResponseAsync(550, $"Rename failed: {ex.Message}");
+            await SendResponseAsync(550, "Rename failed");
         }
         finally
         {
@@ -743,7 +743,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, "List failed");
-            await SendResponseAsync(550, $"List failed: {ex.Message}");
+            await SendResponseAsync(550, "List failed");
         }
         finally
         {
@@ -812,7 +812,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, "MLSD failed");
-            await SendResponseAsync(550, $"MLSD failed: {ex.Message}");
+            await SendResponseAsync(550, "MLSD failed");
         }
         finally
         {
@@ -981,7 +981,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, "List failed");
-            await SendResponseAsync(550, $"List failed: {ex.Message}");
+            await SendResponseAsync(550, "List failed");
         }
         finally
         {
@@ -1043,7 +1043,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, $"Download failed: {ftpsPath}");
-            await SendResponseAsync(550, $"Transfer failed: {ex.Message}");
+            await SendResponseAsync(550, "Transfer failed");
         }
         finally
         {
@@ -1097,7 +1097,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, $"Upload failed: {ftpsPath}");
-            await SendResponseAsync(550, $"Transfer failed: {ex.Message}");
+            await SendResponseAsync(550, "Transfer failed");
         }
         finally
         {
@@ -1134,7 +1134,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, $"{ftpsPath} SIZE command failed");
-            await SendResponseAsync(550, $"Error: {ex.Message}");
+            await SendResponseAsync(550, "Error");
         }
     }
 
@@ -1166,7 +1166,7 @@ class FtpsServerClientSession(
         catch (Exception ex)
         {
             LogError(ex, $"{ftpsPath} MDTM command failed");
-            await SendResponseAsync(550, $"Error: {ex.Message}");
+            await SendResponseAsync(550, "Error");
         }
     }
 

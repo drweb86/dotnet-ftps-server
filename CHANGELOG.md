@@ -9,6 +9,7 @@
 - Android: allow only TLS 1.2 and TLS 1.3 on the control and data connections.
 - Library, Android: after 5 failed logins from one address, pause one second on each failure and refuse that address for 60 seconds. A successful login clears the count.
 - Library: on Windows and Linux, store the auto-generated certificate password with an OS key. An existing `Self-Signed.pfx` that still uses the password `test` is rewritten on the next start. Android and macOS keep `test`.
+- Library, Android: send a fixed error line to the FTP client. The exception, including the real path, stays in the log.
 
 # 2026.09.36
 
