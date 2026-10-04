@@ -1,4 +1,4 @@
-﻿using System.IO.Compression;
+﻿using System.Net;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -8,19 +8,18 @@ public static class UpdateChecker
 {
     private static async Task<string> GetResponse(string url)
     {
-        using HttpClient client = new();
+        using var client = new HttpClient(new HttpClientHandler
+        {
+            AutomaticDecompression = DecompressionMethods.All
+        });
         using var request = new HttpRequestMessage(HttpMethod.Get, new Uri(url));
         request.Headers.TryAddWithoutValidation("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*");
-        request.Headers.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate");
         request.Headers.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0");
         request.Headers.TryAddWithoutValidation("Accept-Charset", "ISO-8859-1");
 
         using var response = await client.SendAsync(request).ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
-        await using var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-        await using var decompressedStream = new GZipStream(responseStream, CompressionMode.Decompress);
-        using var streamReader = new StreamReader(decompressedStream);
-        return await streamReader.ReadToEndAsync().ConfigureAwait(false);
+        return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
     }
 
     public static async Task<AppUpdateInfo> CheckForUpdateGithub()

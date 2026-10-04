@@ -3,6 +3,7 @@
 
 ## Bug Fixes
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
+- Windows, Avalonia: the GitHub update check reads a gzip, deflate, Brotli, or uncompressed response.
 
 ## Security Hardening
 - Android, Windows, Avalonia: mask the account password and the certificate password until the user chooses Show. On Android, the recent-apps thumbnail no longer captures the screen. The connection card, Copy, and Share still include the password, because that text is the setup guide.

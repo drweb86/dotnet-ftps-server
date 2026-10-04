@@ -2,7 +2,7 @@
 
 Review date: 4 October 2026.
 
-These items were reviewed and accepted. A later review should skip them. Reopen an item only if the code that the decision relies on has changed.
+These items were reviewed and then fixed or accepted. A later review should skip them. Reopen an item only if the code that the decision relies on has changed.
 
 The server listens on IPv4 only (`0.0.0.0`). File commands still require TLS and a password. Failed logins from one address are limited to 5 attempts, then a 1 second delay and a 60 second lockout.
 
@@ -38,3 +38,11 @@ The connection card, Copy, and Share include each account password, together wit
 - **Location:** `sources/android/app/build.gradle.kts` (`screenshots`), `BuildConfig.SCREENSHOTS`, `MainActivity.kt`
 
 The normal app sets `FLAG_SECURE`, so the recent-apps thumbnail cannot capture the screen. A build made with `-Pscreenshots=true` does not set that flag, so store screenshots can still be taken. That build uses the package id `com.siarheikuchuk.ftpsserver.screenshots` and is not a release a user installs. Do not treat the missing flag on that build as a finding, and do not remove the screenshots build.
+
+## 10. UpdateChecker advertises deflate but only decodes gzip
+
+- **Status:** Fixed
+- **Platform:** .NET
+- **Location:** `sources/FtpsServerAppsShared/Services/UpdateChecker.cs`
+
+The request used to send `Accept-Encoding: gzip, deflate` and always decode the body with `GZipStream`. An uncompressed or deflated response failed to parse, and the update check reported no update. `HttpClientHandler.AutomaticDecompression` now accepts gzip, deflate, and Brotli, and leaves an uncompressed body unchanged.
