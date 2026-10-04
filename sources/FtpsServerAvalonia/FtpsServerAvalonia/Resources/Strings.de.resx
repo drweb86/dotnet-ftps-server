@@ -354,7 +354,7 @@ Vergleichen Sie den Fingerprint im Client mit den Werten unten. Stimmen sie übe
     <value>Geben Sie einen Port von {0} bis {1} ein.</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>Die maximale Anzahl Verbindungen muss mindestens {0} betragen.</value>
+    <value>Die maximale Anzahl Verbindungen muss zwischen {0} und {1} liegen.</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>Geben Sie einen Benutzernamen ein.</value>

@@ -15,6 +15,7 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
     private bool _isRunning;
     private X509Certificate2? _serverCertificate;
     private int _activeConnections;
+    private int _maxConnections = 10;
     private readonly FtpsLoginThrottle _loginThrottle = new();
 
     public X509Certificate2? LoadedCertificate { get; private set; }
@@ -38,6 +39,11 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
                     _log.Info($"Created user directory for {user.Login}: {user.Folder}");
                 }
             }
+
+            var configuredMax = _config.ServerSettings.MaxConnections;
+            _maxConnections = FtpsServerSettings.EffectiveMaxConnections(configuredMax);
+            if (configuredMax is int requested && requested != _maxConnections)
+                _log.Warn($"Max connections {requested} is outside 1..{FtpsServerSettings.MaxConnectionsUpperBound}. Using {_maxConnections}.");
 
             var actualIp = _config.ServerSettings.Ip ?? "0.0.0.0";
             var actualPort = _config.ServerSettings.Port ?? 2121;
@@ -81,8 +87,7 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
                     continue;
                 }
 
-                var actualMaxConnections = _config.ServerSettings.MaxConnections ?? 10;
-                if (_activeConnections >= actualMaxConnections)
+                if (_activeConnections >= _maxConnections)
                 {
                     _log.Warn($"Connection rejected from {endpoint}: Max connections reached");
                     client.Close();

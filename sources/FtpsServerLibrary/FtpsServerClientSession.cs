@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FtpsServerLibrary;
@@ -35,6 +36,7 @@ class FtpsServerClientSession(
     private System.IO.StreamWriter? _writer;
     private SslStream? _sslStream;
 
+    private int _pushedChar = -1;
     private string? _username;
     private FtpsServerUserAccount? _user;
     private bool _isAuthenticated;
@@ -49,6 +51,11 @@ class FtpsServerClientSession(
 
     // FTPS data connection protection level
     private FtpsServerDataConnectionProtection _dataProtection = FtpsServerDataConnectionProtection.Clear;
+
+    private const int MaxCommandLineLength = 8192;
+    private static readonly TimeSpan UnauthenticatedIdleTimeout = TimeSpan.FromSeconds(30);
+    private static readonly TimeSpan AuthenticatedIdleTimeout = TimeSpan.FromMinutes(5);
+    private readonly char[] _controlChar = new char[1];
 
     private static readonly string[] MlsSupportedFacts = ["type", "size", "modify", "perm"];
     private readonly HashSet<string> _mlsSelectedFacts = new(StringComparer.OrdinalIgnoreCase)
@@ -84,7 +91,7 @@ class FtpsServerClientSession(
                 return;
 
             string? line;
-            while ((line = await _reader.ReadLineAsync()) != null)
+            while ((line = await ReadCommandLineAsync()) != null)
             {
                 // Don't log passwords
                 var logLine = line.StartsWith("PASS ", StringComparison.OrdinalIgnoreCase)
@@ -230,8 +237,69 @@ class FtpsServerClientSession(
     {
         if (_controlStream is null)
             return;
+        _pushedChar = -1;
         _reader = new System.IO.StreamReader(_controlStream, _currentEncoding, leaveOpen: true);
         _writer = new System.IO.StreamWriter(_controlStream, _currentEncoding) { AutoFlush = true };
+    }
+
+    // A client that never logs in must not hold a connection slot, and one command
+    // line must not grow without a bound. StreamReader.ReadLineAsync does neither.
+    private async Task<string?> ReadCommandLineAsync()
+    {
+        var reader = _reader;
+        if (reader is null)
+            return null;
+
+        var timeout = _isAuthenticated ? AuthenticatedIdleTimeout : UnauthenticatedIdleTimeout;
+        using var idle = new CancellationTokenSource(timeout);
+        var line = new StringBuilder();
+        try
+        {
+            while (true)
+            {
+                var next = await ReadControlCharAsync(reader, idle.Token);
+                if (next < 0)
+                    return line.Length == 0 ? null : line.ToString();
+
+                var ch = (char)next;
+                if (ch == '\n')
+                    return line.ToString();
+                if (ch == '\r')
+                {
+                    var following = await ReadControlCharAsync(reader, idle.Token);
+                    if (following >= 0 && following != '\n')
+                        _pushedChar = following;
+                    return line.ToString();
+                }
+
+                if (line.Length >= MaxCommandLineLength)
+                {
+                    _log.Warn($"[{_clientAddress}] Closed control connection: command line exceeded {MaxCommandLineLength} characters");
+                    return null;
+                }
+
+                line.Append(ch);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            _log.Warn($"[{_clientAddress}] Closed control connection: idle for {timeout.TotalSeconds:0} seconds");
+            return null;
+        }
+    }
+
+    private async Task<int> ReadControlCharAsync(System.IO.StreamReader reader, CancellationToken cancellationToken)
+    {
+        if (_pushedChar >= 0)
+        {
+            var pushed = _pushedChar;
+            _pushedChar = -1;
+            return pushed;
+        }
+
+        Memory<char> buffer = _controlChar;
+        var read = await reader.ReadAsync(buffer, cancellationToken);
+        return read == 0 ? -1 : _controlChar[0];
     }
 
     private async Task HandleOptsAsync(string argument)

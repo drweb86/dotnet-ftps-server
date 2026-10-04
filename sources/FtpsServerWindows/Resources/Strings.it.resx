@@ -348,7 +348,7 @@ Confrontare l'impronta nel client con i valori sotto. Se coincidono, accettare i
     <value>Inserisci una porta da {0} a {1}.</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>Il numero massimo di connessioni deve essere almeno {0}.</value>
+    <value>Il numero massimo di connessioni deve essere compreso tra {0} e {1}.</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>Inserisci un nome utente.</value>

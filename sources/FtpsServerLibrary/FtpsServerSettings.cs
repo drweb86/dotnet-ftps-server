@@ -20,11 +20,27 @@ public class FtpsServerSettings
     public int? Port { get; set; } = 2121;
 
     /// <summary>
+    /// Highest simultaneous connection count the server will accept.
+    /// A larger configured value is reduced to this limit.
+    /// </summary>
+    public const int MaxConnectionsUpperBound = 100;
+
+    /// <summary>
     /// Maximum number of simultaneous server connections.
     /// Optional parameter.
-    /// Default value: 10.
+    /// Default value: 10. Values above <see cref="MaxConnectionsUpperBound"/> are reduced to that limit.
     /// </summary>
     public int? MaxConnections { get; set; } = 10;
+
+    public static int EffectiveMaxConnections(int? configured)
+    {
+        var value = configured ?? 10;
+        if (value < 1)
+            return 1;
+        if (value > MaxConnectionsUpperBound)
+            return MaxConnectionsUpperBound;
+        return value;
+    }
 
     #region Certificate Source
 

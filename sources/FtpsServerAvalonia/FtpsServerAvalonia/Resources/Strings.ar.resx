@@ -360,7 +360,7 @@
     <value>أدخل منفذًا من {0} إلى {1}.</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>يجب أن يكون الحد الأقصى للاتصالات {0} على الأقل.</value>
+    <value>يجب أن يكون الحد الأقصى للاتصالات بين {0} و{1}.</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>أدخل اسم مستخدم.</value>

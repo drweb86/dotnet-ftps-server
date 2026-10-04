@@ -1,3 +1,4 @@
+using FtpsServerLibrary;
 using FtpsServerWindows.Models;
 using FtpsServerWindows.Resources;
 using Microsoft.Win32;
@@ -113,8 +114,8 @@ public partial class ServerConfigurationControl : UserControl
         PortError = Port < PortMinimum || Port > PortMaximum
             ? string.Format(Strings.ConfigPortValidation, PortMinimum, PortMaximum)
             : null;
-        MaxConnectionsError = MaxConnections < MaxConnectionsMinimum
-            ? string.Format(Strings.ConfigMaxConnectionsValidation, MaxConnectionsMinimum)
+        MaxConnectionsError = MaxConnections < MaxConnectionsMinimum || MaxConnections > FtpsServerSettings.MaxConnectionsUpperBound
+            ? string.Format(Strings.ConfigMaxConnectionsValidation, MaxConnectionsMinimum, FtpsServerSettings.MaxConnectionsUpperBound)
             : null;
         CertificatePathError = CertificateSource == CertificateSourceType.FromFile && string.IsNullOrWhiteSpace(CertificatePath)
             ? Strings.ErrorSelectCertificate

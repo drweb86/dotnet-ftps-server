@@ -354,7 +354,7 @@ Compare la huella del cliente con los valores de abajo. Si coinciden, acepte el 
     <value>Introduzca un puerto entre {0} y {1}.</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>El máximo de conexiones debe ser al menos {0}.</value>
+    <value>El máximo de conexiones debe estar entre {0} y {1}.</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>Introduzca un nombre de usuario.</value>

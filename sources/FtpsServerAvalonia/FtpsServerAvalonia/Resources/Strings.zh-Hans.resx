@@ -354,7 +354,7 @@
     <value>请输入 {0} 到 {1} 之间的端口。</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>最大连接数必须至少为 {0}。</value>
+    <value>最大连接数必须在 {0} 到 {1} 之间。</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>请输入用户名。</value>

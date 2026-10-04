@@ -354,7 +354,7 @@ Porównaj odcisk w kliencie z wartościami poniżej. Jeśli się zgadzają, zaak
     <value>Podaj port od {0} do {1}.</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>Maksymalna liczba połączeń musi wynosić co najmniej {0}.</value>
+    <value>Maksymalna liczba połączeń musi wynosić od {0} do {1}.</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>Podaj nazwę użytkownika.</value>

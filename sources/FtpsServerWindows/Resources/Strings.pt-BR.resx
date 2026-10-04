@@ -348,7 +348,7 @@ Compare a impressão no cliente com os valores abaixo. Se coincidirem, aceite o 
     <value>Informe uma porta de {0} a {1}.</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>O máximo de conexões deve ser pelo menos {0}.</value>
+    <value>O máximo de conexões deve estar entre {0} e {1}.</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>Informe um nome de usuário.</value>

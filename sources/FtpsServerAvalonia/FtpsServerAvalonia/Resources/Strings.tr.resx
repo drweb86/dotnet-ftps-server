@@ -360,7 +360,7 @@ Yalnızca AÇIK TLS (AUTH TLS / FTP over TLS) desteklenir.
     <value>{0} ile {1} arasında bir bağlantı noktası girin.</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>En fazla bağlantı sayısı en az {0} olmalıdır.</value>
+    <value>En fazla bağlantı sayısı {0} ile {1} arasında olmalıdır.</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>Bir kullanıcı adı girin.</value>

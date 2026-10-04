@@ -360,7 +360,7 @@
     <value>Вкажіть порт від {0} до {1}.</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>Максимум з’єднань має бути не менше {0}.</value>
+    <value>Максимум з’єднань має бути від {0} до {1}.</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>Вкажіть ім’я користувача.</value>

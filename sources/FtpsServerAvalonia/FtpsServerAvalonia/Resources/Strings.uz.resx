@@ -360,7 +360,7 @@ Mijozdagi barmoq izini quyidagi qiymatlar bilan solishtiring. Mos kelsa, sertifi
     <value>Enter a port from {0} to {1}.</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>Maximum connections must be at least {0}.</value>
+    <value>Maximum connections must be from {0} to {1}.</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>Enter a username.</value>

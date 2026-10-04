@@ -354,7 +354,7 @@ Comparez l'empreinte du client aux valeurs ci-dessous. Si elles correspondent, a
     <value>Saisissez un port entre {0} et {1}.</value>
   </data>
   <data name="ConfigMaxConnectionsValidation" xml:space="preserve">
-    <value>Le nombre maximal de connexions doit être au moins {0}.</value>
+    <value>Le nombre maximal de connexions doit être compris entre {0} et {1}.</value>
   </data>
   <data name="UserUsernameValidation" xml:space="preserve">
     <value>Saisissez un nom d’utilisateur.</value>

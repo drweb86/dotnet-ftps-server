@@ -528,9 +528,9 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
             return false;
         }
 
-        if (config.ServerSettings.MaxConnections.HasValue && config.ServerSettings.MaxConnections.Value < 1)
+        if (config.ServerSettings.MaxConnections is < 1 or > FtpsServerSettings.MaxConnectionsUpperBound)
         {
-            _logger.Error($"Invalid maximum connections number: {config.ServerSettings.MaxConnections}");
+            _logger.Error($"Invalid maximum connections number: {config.ServerSettings.MaxConnections}. Use 1..{FtpsServerSettings.MaxConnectionsUpperBound}.");
             return false;
         }
 
