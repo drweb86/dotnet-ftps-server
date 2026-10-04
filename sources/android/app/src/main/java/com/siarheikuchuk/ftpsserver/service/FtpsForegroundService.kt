@@ -105,7 +105,7 @@ class FtpsForegroundService : Service() {
                 ServerEvents.log("ERROR", if (error != null) "$message: ${error.message}" else message)
         }
         try {
-            val cert: LoadedCertificate = Certificates.loadOrCreate(filesDir, settings, log)
+            val cert: LoadedCertificate = Certificates.loadOrCreate(this, filesDir, settings, log)
             ServerEvents.certificate(cert)
             val ftps = FtpsServer(log, FtpsServerConfig(settings, users), SafFileSystemProvider(this), cert)
             ftps.start()
