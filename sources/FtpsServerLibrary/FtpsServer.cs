@@ -87,6 +87,13 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
         foreach (var session in sessions)
             session.Abort();
 
+        // A certificate the library loaded keeps its private key in a temporary key container
+        // on Windows; disposing it removes that container. A caller-supplied one stays theirs.
+        if (_serverCertificate is not null && !ReferenceEquals(_serverCertificate, _config.ServerSettings.X509Certificate))
+            _serverCertificate.Dispose();
+        _serverCertificate = null;
+        LoadedCertificate = null;
+
         _log.Info("Server stopped");
     }
 

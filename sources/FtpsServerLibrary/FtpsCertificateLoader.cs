@@ -126,7 +126,7 @@ class FtpsCertificateLoader(IFtpsServerLog log, IFtpsServerFileSystemProvider fi
         request.CertificateExtensions.Add(sanBuilder.Build());
 
         var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)), new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
-        return X509CertificateLoader.LoadPkcs12(certificate.Export(X509ContentType.Pfx, password), password, CreateKeyStorageFlags);
+        return X509CertificateLoader.LoadPkcs12(certificate.Export(X509ContentType.Pfx, password), password, KeyStorageFlags);
     }
 
     private X509Certificate2 GetOrCreateCertificate(FtpsServerSettings ftpsServerSettings)
@@ -242,21 +242,17 @@ class FtpsCertificateLoader(IFtpsServerLog log, IFtpsServerFileSystemProvider fi
         }
     }
 
-    private static X509KeyStorageFlags CreateKeyStorageFlags =>
-        OperatingSystem.IsWindows() || OperatingSystem.IsLinux()
-            ? X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet
-            : X509KeyStorageFlags.Exportable;
-
-    private static X509KeyStorageFlags LoadKeyStorageFlags =>
-        OperatingSystem.IsWindows() || OperatingSystem.IsLinux()
-            ? X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet
-            : X509KeyStorageFlags.Exportable;
+    // The key lives in Self-Signed.pfx. On Windows the default key set imports it into a
+    // per-user container that is deleted again when the certificate is disposed. PersistKeySet
+    // left a container behind on every start, and MachineKeySet put one under ProgramData.
+    // Exportable is needed to write the PFX after creating or re-protecting it.
+    private const X509KeyStorageFlags KeyStorageFlags = X509KeyStorageFlags.Exportable;
 
     private X509Certificate2? TryLoadPkcs12(string certificateFile, string password)
     {
         try
         {
-            return X509CertificateLoader.LoadPkcs12FromFile(certificateFile, password, LoadKeyStorageFlags);
+            return X509CertificateLoader.LoadPkcs12FromFile(certificateFile, password, KeyStorageFlags);
         }
         catch (Exception e)
         {
