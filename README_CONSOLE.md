@@ -59,6 +59,8 @@ You can skip specifying certain parameters. In this case console will take it fr
 }
 ```
 
+Passwords in the configuration file can be stored in plaintext or encrypted. A configuration saved by the interactive setup encrypts `CertificatePassword` and every `Users[].Password` with an OS key (DPAPI on Windows, a key derived from the machine id on Linux); such values start with `enc::` and can only be read on the same machine and user. Plaintext values still load, so hand-written files keep working, but a warning is logged — save the file again from the interactive setup to encrypt it. macOS does not support this encryption; configuration files there stay plaintext and should be protected with file permissions.
+
 | Parameter                               | Required  | Default value | Remarks                                                                                                                 |
 |-----------------------------------------|-----------|---------------|-------------------------------------------------------------------------------------------------------------------------|
 | ServerSettings.Ip                       | No        | 0.0.0.0       | The IP address server will be listening to. 0.0.0.0 - listen on every available network interface.                      |
@@ -123,6 +125,8 @@ ftps-server.exe -- \
 | --user "admin#admin#F:\\ftp server\\admin#RW"         |  |  | User with login admin and password admin with foilder F:\ftp server\admin with Read and Write permissions. |
 | --user "reader#read123#F:\\ftp server\\reader#R"      |  |  | User with login admin and password read123 with foilder F:\ftp server\reader with Read permission.         |
 | --user "dropbox#dropbox123#F:\\ftp server\\dropbox#W" |  |  | User with login admin and password dropbox123 with foilder F:\ftp server\dropbox with Write permission.    |
+
+Note: `--user` and `--certpass` put passwords on the command line, where they are visible in the shell history and in the process list while the server runs. Prefer `--config` with a saved configuration file, which keeps passwords encrypted.
 
 You can specify some settings in settings file and some settings as arguments. 
 Specified by arguments parameters will have priority.

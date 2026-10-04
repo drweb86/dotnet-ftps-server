@@ -14,6 +14,9 @@ public static class SecretProtector
 {
     public const string Prefix = "enc::";
 
+    public static bool IsSupported =>
+        OperatingSystem.IsWindows() || OperatingSystem.IsLinux() || OperatingSystem.IsAndroid();
+
     public static bool IsPlaintextSecret(string? value) =>
         !string.IsNullOrWhiteSpace(value) &&
         !value.StartsWith(Prefix, StringComparison.Ordinal);

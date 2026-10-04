@@ -1,5 +1,6 @@
 using FtpsServerApp.Helpers;
 using FtpsServerAppsShared.Helpers;
+using FtpsServerAppsShared.Security;
 using FtpsServerAppsShared.Services;
 using FtpsServerLibrary;
 using NLog;
@@ -253,13 +254,58 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
         try
         {
             var json = File.ReadAllText(path);
-            return JsonSerializer.Deserialize<FtpsServerConfiguration>(json, _jsonSerializerOptions);
+            var config = JsonSerializer.Deserialize<FtpsServerConfiguration>(json, _jsonSerializerOptions);
+            if (config != null)
+                UnprotectSecrets(config, path);
+            return config;
         }
         catch (Exception ex)
         {
             _logger.Error(ex, $"Error loading configuration from {path}");
             return null;
         }
+    }
+
+    // Secrets in the file are "enc::" values protected with an OS key. Plaintext still
+    // loads (Unprotect passes it through), so older and hand-written files keep working.
+    private static void UnprotectSecrets(FtpsServerConfiguration config, string path)
+    {
+        var hadPlaintext = HasPlaintextSecrets(config);
+
+        if (!string.IsNullOrEmpty(config.ServerSettings.CertificatePassword))
+            config.ServerSettings.CertificatePassword = SecretProtector.Unprotect(config.ServerSettings.CertificatePassword);
+        foreach (var user in config.Users)
+        {
+            if (!string.IsNullOrEmpty(user.Password))
+                user.Password = SecretProtector.Unprotect(user.Password);
+        }
+
+        if (hadPlaintext && SecretProtector.IsSupported)
+            _logger.Warn($"Configuration {path} stores passwords in plaintext. Save it again from the interactive setup to encrypt them.");
+    }
+
+    private static bool HasPlaintextSecrets(FtpsServerConfiguration config)
+    {
+        if (SecretProtector.IsPlaintextSecret(config.ServerSettings.CertificatePassword))
+            return true;
+        return config.Users.Any(user => SecretProtector.IsPlaintextSecret(user.Password));
+    }
+
+    // The server compares plaintext passwords, so protect a copy and leave config untouched.
+    private static FtpsServerConfiguration CopyWithProtectedSecrets(FtpsServerConfiguration config)
+    {
+        var copy = JsonSerializer.Deserialize<FtpsServerConfiguration>(
+            JsonSerializer.Serialize(config, _jsonSerializerOptions), _jsonSerializerOptions) ?? new FtpsServerConfiguration();
+
+        if (SecretProtector.IsPlaintextSecret(copy.ServerSettings.CertificatePassword))
+            copy.ServerSettings.CertificatePassword = SecretProtector.Protect(copy.ServerSettings.CertificatePassword);
+        foreach (var user in copy.Users)
+        {
+            if (SecretProtector.IsPlaintextSecret(user.Password))
+                user.Password = SecretProtector.Protect(user.Password);
+        }
+
+        return copy;
     }
 
     static FtpsServerConfiguration ParseCommandLineArguments(string[] args, FtpsServerConfiguration config)
@@ -475,6 +521,8 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
                 if (SaveConfigurationToFile(config, fileName, GetOptions()))
                 {
                     Console.WriteLine($"\nConfiguration saved to: {Path.GetFullPath(fileName)}");
+                    if (SecretProtector.IsSupported)
+                        Console.WriteLine("Passwords in the file are encrypted with an OS key; they can only be read on this machine.");
                     Console.WriteLine($"\nTo use this configuration later, run:");
                     Console.WriteLine($"  ftps-server --config {fileName}");
                 }
@@ -507,7 +555,10 @@ If no arguments are provided, the server looks for 'appsettings.json' in the cur
     {
         try
         {
-            var json = JsonSerializer.Serialize(config, options);
+            var toSave = SecretProtector.IsSupported && HasPlaintextSecrets(config)
+                ? CopyWithProtectedSecrets(config)
+                : config;
+            var json = JsonSerializer.Serialize(toSave, options);
             File.WriteAllText(fileName, json);
             _logger.Info($"Configuration saved to {fileName}");
             return true;
