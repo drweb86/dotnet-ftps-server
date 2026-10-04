@@ -1,6 +1,6 @@
 # Security findings
 
-Review date: 4 October 2026. Updated after fixes for items 3, 4, 5, 6, 7, 13, and 14.
+Review date: 4 October 2026. Updated after fixes for items 3, 4, 5, 6, 7, 11, 12, 13, 14, and 15.
 
 Items below are still open. Numbers are unchanged. Items 1 and 2 were accepted on purpose and live in `docs/mitigated-security-findings.md`; do not reopen them unless that file says the decision no longer holds. Fixed items are at the end. Odd numbers from the original list are the native Android Kotlin app (`sources/android`). Where the same issue exists in the .NET library or the .NET apps, the next number is that counterpart. The .NET code is `FtpsServerLibrary`, used by the Windows app, the Avalonia app, the console host, and the Avalonia Android view.
 
@@ -29,30 +29,6 @@ The connection card prints each account password. Copy places that text on the c
 - **Location:** `sources/FtpsServerAppsShared/Helpers/ConnectionDetailsText.cs` (line 129); clipboard copy in `sources/FtpsServerWindows/Controls/ConnectionInstructionControl.xaml.cs` (line 37) and `sources/FtpsServerAvalonia/FtpsServerAvalonia/Controls/ConnectionInstructionControl.axaml.cs` (line 52); share in the Avalonia Android view (`AndroidView.axaml`, `ShowShareButton="True"`)
 
 Windows, Avalonia desktop, and Avalonia Android build the same connection card, including each account password. Copy puts that text on the clipboard. The Avalonia Android view also shares it. The user-password and certificate-password fields are plain text boxes; `PasswordChar` is never set.
-
-## 11. Data connection is tied to the client IP only
-
-- **Severity:** Low
-- **Platform:** Android Kotlin
-- **Location:** `sources/android/app/src/main/java/com/siarheikuchuk/ftpsserver/server/FtpsClientSession.kt` (line 417)
-
-Passive mode rejects a data socket whose address differs from the control connection. It does not require the data handshake to resume the control TLS session. A process that shares the client’s source IP can connect first and complete its own handshake. There is no `PORT` or `EPRT` command.
-
-## 12. Data connection is tied to the client IP only
-
-- **Severity:** Low
-- **Platform:** .NET
-- **Location:** `sources/FtpsServerLibrary/FtpsServerClientSession.cs` (`IsDataPeerFromControlClient`, line 1259)
-
-`AcceptDataClientAsync` compares the normalized control and data addresses and does not check TLS session resumption. The same shared-IP race as item 11 applies. Active mode (`PORT` / `EPRT`) is not implemented here either.
-
-## 15. Self-signed name does not match the address clients use
-
-- **Severity:** Low
-- **Platform:** Android Kotlin
-- **Location:** `sources/android/app/src/main/java/com/siarheikuchuk/ftpsserver/server/Certificates.kt` (line 166)
-
-The generated certificate lists only `127.0.0.1` and `localhost`. The connection card tells the user to connect to the phone’s LAN address, which cannot match that name. Clients warn on every connection. A device on the same network can present a different certificate unless the user compares the SHA-256 fingerprint the card shows.
 
 ## 16. Self-signed name omits the LAN address
 
@@ -128,3 +104,24 @@ Control and data sockets enable TLS 1.2 and TLS 1.3 only, and only forward-secre
 - **Was:** Low
 
 `RMD /` and a rename of the user folder are refused, including when a link inside the share points back at that folder. Deleting a directory that is inside the share still works.
+
+### 11. Data connection is tied to the client IP only
+
+- **Platform:** Android Kotlin
+- **Was:** Low
+
+A protected data connection must resume a TLS session already cached for this server. A new handshake is refused, and the source address must still match the control connection. TLS 1.2 must present that control connection's session id. TLS 1.3 uses a new session id on the resumed connection, so a resumed TLS 1.3 session is accepted after session creation is disabled.
+
+### 12. Data connection is tied to the client IP only
+
+- **Platform:** .NET
+- **Was:** Low
+
+A protected data connection must resume the control TLS session, and the source address must still match. TLS 1.2 must present that control connection's session id. On Windows, TLS 1.3 assigns a new session id to the resumed connection, so the server accepts it only when Schannel marks the handshake as a reconnect. A full handshake is refused. On Android, the runtime does not expose the session id, so the address check remains.
+
+### 15. Self-signed name does not match the address clients use
+
+- **Platform:** Android Kotlin
+- **Was:** Low
+
+The generated certificate includes the phone's current IPv4 addresses, plus `127.0.0.1` and `localhost`. It is replaced when one of those addresses is missing or the certificate expires within 7 days. The fingerprint on the connection card changes when the certificate is replaced. A certificate the user supplied is left as it is. Item 16 is the .NET counterpart and is still open.

@@ -459,8 +459,15 @@ class FtpsClientSession(
         val factory = sslContext.socketFactory as SSLSocketFactory
         val ssl = factory.createSocket(client, client.inetAddress.hostAddress, client.port, true) as SSLSocket
         ssl.useClientMode = false
+        ssl.enableSessionCreation = false
         restrictTls(ssl)
         ssl.startHandshake()
+        val control = socket as? SSLSocket
+        if (control == null || !sameTlsSession(control, ssl)) {
+            log.warn("[$clientAddress] Rejected data connection: TLS session was not resumed from the control connection")
+            try { ssl.close() } catch (_: Exception) {}
+            throw javax.net.ssl.SSLHandshakeException("Data connection did not resume the control TLS session")
+        }
         synchronized(ioLock) {
             if (stopping) {
                 try { ssl.close() } catch (_: Exception) {}
@@ -834,6 +841,18 @@ class FtpsClientSession(
         if (sslContext == null || controlEncrypted()) return true
         send(replyCode, "SSL/TLS required on the control channel")
         return false
+    }
+
+    private fun sameTlsSession(control: SSLSocket, data: SSLSocket): Boolean {
+        val controlSession = control.session ?: return false
+        val dataSession = data.session ?: return false
+        val controlId = controlSession.id ?: ByteArray(0)
+        val dataId = dataSession.id ?: ByteArray(0)
+        if (controlId.isNotEmpty() && dataId.isNotEmpty() && controlId.contentEquals(dataId)) return true
+        if (controlSession.creationTime != 0L && controlSession.creationTime == dataSession.creationTime) return true
+        // TLS 1.3 uses a new session id for the resumed connection. Session creation is
+        // already disabled, so a full handshake never reaches this check.
+        return controlSession.protocol == "TLSv1.3" && dataSession.protocol == "TLSv1.3"
     }
 
     private fun samePeer(control: InetAddress, data: InetAddress): Boolean {

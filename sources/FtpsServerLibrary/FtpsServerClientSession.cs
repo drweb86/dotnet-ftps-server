@@ -817,12 +817,7 @@ class FtpsServerClientSession(
                 System.IO.Stream dataStream = dataClient.GetStream();
 
                 // Apply SSL/TLS if protection is enabled
-                if (_dataProtection == FtpsServerDataConnectionProtection.Protected && _certificate != null)
-                {
-                    var sslStream = new SslStream(dataStream, false);
-                    await sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
-                    dataStream = sslStream;
-                }
+                dataStream = await ProtectDataConnectionAsync(dataStream);
 
                 using (dataStream)
                 using (var dataWriter = new System.IO.StreamWriter(dataStream, Encoding.UTF8) { AutoFlush = true })
@@ -888,12 +883,7 @@ class FtpsServerClientSession(
             {
                 System.IO.Stream dataStream = dataClient.GetStream();
 
-                if (_dataProtection == FtpsServerDataConnectionProtection.Protected && _certificate != null)
-                {
-                    var sslStream = new SslStream(dataStream, false);
-                    await sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
-                    dataStream = sslStream;
-                }
+                dataStream = await ProtectDataConnectionAsync(dataStream);
 
                 using (dataStream)
                 using (var dataWriter = new System.IO.StreamWriter(dataStream, Encoding.UTF8) { AutoFlush = true, NewLine = "\r\n" })
@@ -1056,12 +1046,7 @@ class FtpsServerClientSession(
                 System.IO.Stream dataStream = dataClient.GetStream();
 
                 // Apply SSL/TLS if protection is enabled
-                if (_dataProtection == FtpsServerDataConnectionProtection.Protected && _certificate != null)
-                {
-                    var sslStream = new SslStream(dataStream, false);
-                    await sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
-                    dataStream = sslStream;
-                }
+                dataStream = await ProtectDataConnectionAsync(dataStream);
 
                 using (dataStream)
                 using (var dataWriter = new System.IO.StreamWriter(dataStream, Encoding.UTF8) { AutoFlush = true })
@@ -1123,12 +1108,7 @@ class FtpsServerClientSession(
                 System.IO.Stream dataStream = dataClient.GetStream();
 
                 // Apply SSL/TLS if protection is enabled
-                if (_dataProtection == FtpsServerDataConnectionProtection.Protected && _certificate != null)
-                {
-                    var sslStream = new SslStream(dataStream, false);
-                    await sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
-                    dataStream = sslStream;
-                }
+                dataStream = await ProtectDataConnectionAsync(dataStream);
 
                 using (dataStream)
                 using (var fileStream = await fileSystemProvider.FileOpenRead(_user.Folder, path.Segments))
@@ -1176,12 +1156,7 @@ class FtpsServerClientSession(
                 System.IO.Stream dataStream = dataClient.GetStream();
 
                 // Apply SSL/TLS if protection is enabled
-                if (_dataProtection == FtpsServerDataConnectionProtection.Protected && _certificate != null)
-                {
-                    var sslStream = new SslStream(dataStream, false);
-                    await sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
-                    dataStream = sslStream;
-                }
+                dataStream = await ProtectDataConnectionAsync(dataStream);
 
                 using (dataStream)
                 using (var fileStream = await fileSystemProvider.FileCreate(_user!.Folder, path.Segments))
@@ -1312,6 +1287,30 @@ class FtpsServerClientSession(
 
         await SendResponseAsync(replyCode, "SSL/TLS required on the control channel");
         return false;
+    }
+
+    private async Task<System.IO.Stream> ProtectDataConnectionAsync(System.IO.Stream dataStream)
+    {
+        if (_dataProtection != FtpsServerDataConnectionProtection.Protected || _certificate == null)
+            return dataStream;
+
+        var sslStream = new SslStream(dataStream, false);
+        try
+        {
+            await sslStream.AuthenticateAsServerAsync(_certificate, false, SslProtocols.Tls12 | SslProtocols.Tls13, false);
+            if (_sslStream == null || !FtpsTlsSession.SameAsControl(_sslStream, sslStream))
+            {
+                _log.Warn($"[{_clientAddress}] Rejected data connection: TLS session was not resumed from the control connection");
+                throw new AuthenticationException("Data connection did not resume the control TLS session");
+            }
+
+            return sslStream;
+        }
+        catch
+        {
+            await sslStream.DisposeAsync();
+            throw;
+        }
     }
 
     private async Task<TcpClient?> AcceptDataClientAsync()

@@ -4,6 +4,9 @@ import android.content.Context
 import android.util.Base64
 import com.siarheikuchuk.ftpsserver.security.KeystoreCipher
 import java.io.File
+import java.net.Inet4Address
+import java.net.InetAddress
+import java.net.NetworkInterface
 import java.security.KeyPairGenerator
 import java.security.KeyStore
 import java.security.SecureRandom
@@ -110,8 +113,45 @@ object Certificates {
         return Base64.encodeToString(bytes, Base64.NO_WRAP)
     }
 
-    private fun isCurrent(loaded: LoadedCertificate): Boolean =
-        loaded.x509.notAfter.time > System.currentTimeMillis() + WEEK_MS
+    private fun isCurrent(loaded: LoadedCertificate): Boolean {
+        if (loaded.x509.notAfter.time <= System.currentTimeMillis() + WEEK_MS) return false
+        val present = sanIpv4(loaded.x509)
+        return advertisedIpv4().all { it in present }
+    }
+
+    private fun advertisedIpv4(): Set<String> {
+        val ips = linkedSetOf<String>()
+        val ifaces = NetworkInterface.getNetworkInterfaces() ?: return ips
+        for (nic in ifaces) {
+            if (!nic.isUp || nic.isLoopback) continue
+            for (addr in nic.inetAddresses) {
+                if (addr.isLoopbackAddress || addr !is Inet4Address) continue
+                addr.hostAddress?.let { ips += it }
+            }
+        }
+        return ips
+    }
+
+    private fun sanIpv4(cert: X509Certificate): Set<String> {
+        val ips = mutableSetOf<String>()
+        val names = try {
+            cert.subjectAlternativeNames
+        } catch (_: Exception) {
+            null
+        } ?: return ips
+        for (name in names) {
+            if (name.size < 2) continue
+            val type = (name[0] as? Number)?.toInt() ?: continue
+            if (type != 7) continue
+            when (val value = name[1]) {
+                is String -> ips += value
+                is ByteArray -> {
+                    if (value.size == 4) InetAddress.getByAddress(value).hostAddress?.let { ips += it }
+                }
+            }
+        }
+        return ips
+    }
 
     private fun loadPkcs12(file: File, password: String): KeyStore {
         val ks = KeyStore.getInstance("PKCS12")
@@ -163,12 +203,14 @@ object Certificates {
             false,
             KeyUsage(KeyUsage.digitalSignature or KeyUsage.keyEncipherment or KeyUsage.dataEncipherment),
         )
-        val names = GeneralNames(
-            arrayOf(
-                GeneralName(GeneralName.iPAddress, "127.0.0.1"),
-                GeneralName(GeneralName.dNSName, "localhost"),
-            )
+        val san = mutableListOf(
+            GeneralName(GeneralName.iPAddress, "127.0.0.1"),
+            GeneralName(GeneralName.dNSName, "localhost"),
         )
+        for (ip in advertisedIpv4()) {
+            if (ip != "127.0.0.1") san += GeneralName(GeneralName.iPAddress, ip)
+        }
+        val names = GeneralNames(san.toTypedArray())
         builder.addExtension(Extension.subjectAlternativeName, false, names)
         val signer = JcaContentSignerBuilder("SHA256withRSA").setProvider(bc).build(keyPair.private)
         val cert = JcaX509CertificateConverter().setProvider(bc).getCertificate(builder.build(signer))

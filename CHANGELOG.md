@@ -5,6 +5,8 @@
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
 
 ## Security Hardening
+- Library, Android: a protected data connection must resume the control connection's TLS session. A new handshake from another process on the same address is refused. The source address must still match.
+- Android: the generated certificate includes the phone's current IPv4 addresses, and it is replaced when one of those addresses is missing. The fingerprint on the connection card changes when that happens.
 - Library, Android: refuse to delete or move the shared folder. `RMD /` no longer removes the folder an account is rooted at. On Android, uploading a file onto a directory name no longer deletes that directory.
 - Android: on the control and data connections, allow only forward-secret AEAD cipher suites with TLS 1.2 and TLS 1.3. RC4, 3DES, CBC, and RSA key transport are disabled.
 - Android: close a control connection that sends nothing for 30 seconds before login, or sits idle for 5 minutes after login, and refuse a command line longer than 8192 characters. Simultaneous connections are capped at 100. An unauthenticated client can no longer hold every slot indefinitely or grow one command without a bound.
