@@ -869,5 +869,23 @@ namespace FtpsServerWindows.Resources {
                 return ResourceManager.GetString("UsersTab", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Show.
+        /// </summary>
+        public static string PasswordShow {
+            get {
+                return ResourceManager.GetString("PasswordShow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Hide.
+        /// </summary>
+        public static string PasswordHide {
+            get {
+                return ResourceManager.GetString("PasswordHide", resourceCulture);
+            }
+        }
     }
 }

@@ -154,6 +154,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>Nywila</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>Onyesha</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>Ficha</value>
+  </data>
   <data name="UserFolder" xml:space="preserve">
     <value>Folda</value>
   </data>

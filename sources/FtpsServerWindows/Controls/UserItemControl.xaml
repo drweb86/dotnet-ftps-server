@@ -16,6 +16,7 @@
                 Error="{Binding LoginError}"/>
             <controls:TextField
                 Label="{x:Static res:Strings.UserPassword}"
+                IsPassword="True"
                 Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Error="{Binding PasswordError}"/>
             <controls:TextFieldWithAction

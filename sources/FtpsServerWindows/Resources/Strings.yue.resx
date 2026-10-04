@@ -179,6 +179,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>密碼</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>顯示</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>隱藏</value>
+  </data>
   <data name="UserReadonly" xml:space="preserve">
     <value>唯讀</value>
   </data>

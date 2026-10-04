@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -38,6 +39,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -55,6 +59,37 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.siarheikuchuk.ftpsserver.BuildConfig
 import com.siarheikuchuk.ftpsserver.R
+
+@Composable
+private fun PasswordField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    modifier: Modifier = Modifier,
+    error: String? = null,
+) {
+    var visible by remember { mutableStateOf(false) }
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(label) },
+        isError = error != null,
+        supportingText = { error?.let { Text(it) } },
+        visualTransformation = if (visible) VisualTransformation.None else PasswordVisualTransformation(),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        trailingIcon = {
+            TextButton(onClick = { visible = !visible }) {
+                Text(
+                    stringResource(if (visible) R.string.password_hide else R.string.password_show),
+                    color = AppColors.accent,
+                )
+            }
+        },
+        modifier = modifier,
+        colors = fieldColors(),
+        singleLine = true,
+    )
+}
 
 @Composable
 private fun fieldColors() = OutlinedTextFieldDefaults.colors(
@@ -222,12 +257,11 @@ fun MainScreen(
                             OutlinedButton(onClick = { certPicker.launch("*/*") }) {
                                 Text(stringResource(R.string.config_browse), color = AppColors.accent)
                             }
-                            OutlinedTextField(
+                            PasswordField(
                                 value = state.certificatePassword,
                                 onValueChange = { viewModel.setCertificatePassword(it) },
-                                label = { Text(stringResource(R.string.config_cert_password)) },
+                                label = stringResource(R.string.config_cert_password),
                                 modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-                                colors = fieldColors(),
                             )
                         }
                     }
@@ -432,14 +466,12 @@ private fun UserCard(
             modifier = Modifier.fillMaxWidth(),
             colors = fieldColors(),
         )
-        OutlinedTextField(
+        PasswordField(
             value = user.password,
             onValueChange = { v -> viewModel.updateUser(index) { it.copy(password = v) } },
-            label = { Text(stringResource(R.string.user_password)) },
-            isError = errors.password != null,
-            supportingText = { errors.password?.let { Text(it) } },
+            label = stringResource(R.string.user_password),
+            error = errors.password,
             modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-            colors = fieldColors(),
         )
         OutlinedTextField(
             value = user.folderName.ifBlank { "" },

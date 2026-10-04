@@ -8,10 +8,23 @@
 		<TextBlock Margin="0 0 0 8"
 				   Classes="ModernLabel"
 				   Text="{Binding #Root.Label}" />
-		<TextBox Text="{Binding #Root.Text, Mode=TwoWay}"
-				 Classes="ModernTextBox"
-				 PlaceholderText="{Binding #Root.Placeholder}"
-				 PasswordChar="{Binding #Root.PasswordChar}" />
+		<Grid ColumnDefinitions="*,Auto">
+			<TextBox x:Name="Input"
+					 Grid.Column="0"
+					 Text="{Binding #Root.Text, Mode=TwoWay}"
+					 Classes="ModernTextBox"
+					 VerticalAlignment="Center"
+					 PlaceholderText="{Binding #Root.Placeholder}"
+					 PasswordChar="{Binding #Root.PasswordChar}" />
+			<Button x:Name="Reveal"
+					Grid.Column="1"
+					Margin="8 0 0 0"
+					Classes="SecondaryButton"
+					VerticalAlignment="Center"
+					Content="{Binding #Root.RevealText}"
+					IsVisible="{Binding #Root.IsPassword}"
+					Click="Reveal_Click" />
+		</Grid>
 		<TextBlock Margin="0 8 0 0"
 				IsVisible="{Binding #Root.Help, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
 				Text="{Binding #Root.Help}"

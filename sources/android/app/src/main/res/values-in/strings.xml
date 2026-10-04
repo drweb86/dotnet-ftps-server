@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</string>
     <string name="user_username">Nama Pengguna</string>
     <string name="user_password">Kata Sandi</string>
+    <string name="password_show">Tampilkan</string>
+    <string name="password_hide">Sembunyikan</string>
     <string name="user_folder">Folder</string>
     <string name="user_readonly">Hanya-Baca</string>
     <string name="user_delete">Hapus</string>

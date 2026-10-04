@@ -154,6 +154,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>የሚስጥር ቃል</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>አሳይ</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>ደብቅ</value>
+  </data>
   <data name="UserFolder" xml:space="preserve">
     <value>ፎልደር</value>
   </data>

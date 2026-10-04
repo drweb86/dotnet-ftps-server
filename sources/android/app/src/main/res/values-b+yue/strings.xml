@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</string>
     <string name="user_username">用戶名稱</string>
     <string name="user_password">密碼</string>
+    <string name="password_show">顯示</string>
+    <string name="password_hide">隱藏</string>
     <string name="user_folder">資料夾</string>
     <string name="user_readonly">唯讀</string>
     <string name="user_delete">刪除</string>

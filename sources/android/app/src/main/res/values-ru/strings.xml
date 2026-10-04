@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Файлы сертификатов (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|Все файлы (*.*)|*.*</string>
     <string name="user_username">Имя пользователя</string>
     <string name="user_password">Пароль</string>
+    <string name="password_show">Показать</string>
+    <string name="password_hide">Скрыть</string>
     <string name="user_folder">Папка</string>
     <string name="user_readonly">Только чтение</string>
     <string name="user_delete">Удалить</string>

@@ -154,6 +154,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>Пароль</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>Показати</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>Сховати</value>
+  </data>
   <data name="UserFolder" xml:space="preserve">
     <value>Папка</value>
   </data>

@@ -869,5 +869,17 @@ namespace FtpsServerAvalonia.Resources {
                 return ResourceManager.GetString("CertValidLabel", resourceCulture);
             }
         }
+
+        public static string PasswordShow {
+            get {
+                return ResourceManager.GetString("PasswordShow", resourceCulture);
+            }
+        }
+
+        public static string PasswordHide {
+            get {
+                return ResourceManager.GetString("PasswordHide", resourceCulture);
+            }
+        }
     }
 }

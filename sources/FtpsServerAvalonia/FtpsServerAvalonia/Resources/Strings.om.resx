@@ -154,6 +154,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>Jecha Darbii</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>Agarsiisi</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>Dhoksi</value>
+  </data>
   <data name="UserFolder" xml:space="preserve">
     <value>Dirree</value>
   </data>

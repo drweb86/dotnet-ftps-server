@@ -154,6 +154,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>Parol</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>Ko'rsatish</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>Yashirish</value>
+  </data>
   <data name="UserFolder" xml:space="preserve">
     <value>Papka</value>
   </data>

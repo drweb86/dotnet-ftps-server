@@ -153,6 +153,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>पासवर्ड</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>दाखवा</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>लपवा</value>
+  </data>
   <data name="UserFolder" xml:space="preserve">
     <value>फोल्डर</value>
   </data>

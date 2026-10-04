@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</string>
     <string name="user_username">ชื่อผู้ใช้</string>
     <string name="user_password">รหัสผ่าน</string>
+    <string name="password_show">แสดง</string>
+    <string name="password_hide">ซ่อน</string>
     <string name="user_folder">โฟลเดอร์</string>
     <string name="user_readonly">อ่านอย่างเดียว</string>
     <string name="user_delete">ลบ</string>

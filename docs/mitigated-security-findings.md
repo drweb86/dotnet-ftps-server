@@ -23,3 +23,18 @@ Binding to Wi-Fi only was considered and rejected. Another device on the same Wi
 - **Location:** `sources/FtpsServerLibrary/FtpsServerSettings.cs`, `FtpsServer.cs`; hosts set `0.0.0.0` in `sources/FtpsServerWindows/MainWindow.xaml.cs`, `sources/FtpsServerAvalonia/FtpsServerAvalonia/MainWindow.axaml.cs`, and `sources/FtpsServerAvalonia/FtpsServerAvalonia/Views/AndroidView.axaml.cs`
 
 The library default remains `0.0.0.0`. That is the usual “listen on this machine” choice for the Windows app, the Avalonia desktop app, and the console host. The listener is IPv4, same as item 1. The console can still be given a single address with `--ip`. The Avalonia Android view uses the same address for the same reason as the Kotlin app.
+
+## 9 and 10. Connection instructions include the password
+
+- **Status:** Accepted
+- **Platform:** Android Kotlin and .NET
+
+The connection card, Copy, and Share include each account password, together with the host, port, encryption mode, login, and certificate fingerprint. That text is how the user sets up a client on another device after installing the app. The account form and the certificate-password field are masked until the user chooses Show. Do not remove the password from the card, from Copy, or from Share.
+
+## Screenshots build
+
+- **Status:** Accepted
+- **Platform:** Android Kotlin
+- **Location:** `sources/android/app/build.gradle.kts` (`screenshots`), `BuildConfig.SCREENSHOTS`, `MainActivity.kt`
+
+The normal app sets `FLAG_SECURE`, so the recent-apps thumbnail cannot capture the screen. A build made with `-Pscreenshots=true` does not set that flag, so store screenshots can still be taken. That build uses the package id `com.siarheikuchuk.ftpsserver.screenshots` and is not a release a user installs. Do not treat the missing flag on that build as a finding, and do not remove the screenshots build.

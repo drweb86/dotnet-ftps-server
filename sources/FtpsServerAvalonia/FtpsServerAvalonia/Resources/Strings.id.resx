@@ -153,6 +153,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>Kata Sandi</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>Tampilkan</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>Sembunyikan</value>
+  </data>
   <data name="UserFolder" xml:space="preserve">
     <value>Folder</value>
   </data>

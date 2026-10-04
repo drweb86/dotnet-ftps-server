@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</string>
     <string name="user_username">Kullanıcı Adı</string>
     <string name="user_password">Parola</string>
+    <string name="password_show">Göster</string>
+    <string name="password_hide">Gizle</string>
     <string name="user_folder">Klasör</string>
     <string name="user_readonly">Salt Okunur</string>
     <string name="user_delete">Sil</string>

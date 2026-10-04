@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Fichiers de Certificat (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|Tous les Fichiers (*.*)|*.*</string>
     <string name="user_username">Nom d\'Utilisateur</string>
     <string name="user_password">Mot de Passe</string>
+    <string name="password_show">Afficher</string>
+    <string name="password_hide">Masquer</string>
     <string name="user_folder">Dossier</string>
     <string name="user_readonly">Lecture Seule</string>
     <string name="user_delete">Supprimer</string>

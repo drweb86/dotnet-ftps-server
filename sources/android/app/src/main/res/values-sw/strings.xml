@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</string>
     <string name="user_username">Jina la Mtumiaji</string>
     <string name="user_password">Nywila</string>
+    <string name="password_show">Onyesha</string>
+    <string name="password_hide">Ficha</string>
     <string name="user_folder">Folda</string>
     <string name="user_readonly">Soma Tu</string>
     <string name="user_delete">Futa</string>

@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</string>
     <string name="user_username">Maqaa Fayyadamaa</string>
     <string name="user_password">Jecha Darbii</string>
+    <string name="password_show">Agarsiisi</string>
+    <string name="password_hide">Dhoksi</string>
     <string name="user_folder">Dirree</string>
     <string name="user_readonly">Dubbisuu qofa</string>
     <string name="user_delete">Haqi</string>

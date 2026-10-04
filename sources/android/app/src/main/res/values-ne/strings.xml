@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</string>
     <string name="user_username">प्रयोगकर्तानाम</string>
     <string name="user_password">पासवर्ड</string>
+    <string name="password_show">देखाउनुहोस्</string>
+    <string name="password_hide">लुकाउनुहोस्</string>
     <string name="user_folder">फोल्डर</string>
     <string name="user_readonly">केवल पढ्नका लागि</string>
     <string name="user_delete">मेटाउनुस्</string>

@@ -5,6 +5,7 @@
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
 
 ## Security Hardening
+- Android, Windows, Avalonia: mask the account password and the certificate password until the user chooses Show. On Android, the recent-apps thumbnail no longer captures the screen. The connection card, Copy, and Share still include the password, because that text is the setup guide.
 - Library: allow only forward-secret AEAD cipher suites with TLS 1.2 and TLS 1.3. RC4, 3DES, CBC, and RSA key transport are refused. On Linux and macOS the server offers only those suites. On Windows and Android the operating system still chooses the suite, and the server closes the connection when the result is not one of those suites.
 - Library: the generated certificate includes the machine's current IPv4 addresses, and it is replaced when one of those addresses is missing. The fingerprint changes when that happens. The server listens on IPv4, so IPv6 addresses are not added.
 - Android: once the keystore key exists, a settings password that is not encrypted is refused and the file is left unchanged. A password saved by an older version is still read on the first start, before that key exists, and is encrypted then.

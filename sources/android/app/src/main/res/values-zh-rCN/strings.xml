@@ -29,6 +29,8 @@
     <string name="config_cert_filter">证书文件 (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|所有文件 (*.*)|*.*</string>
     <string name="user_username">用户名</string>
     <string name="user_password">密码</string>
+    <string name="password_show">显示</string>
+    <string name="password_hide">隐藏</string>
     <string name="user_folder">文件夹</string>
     <string name="user_readonly">只读</string>
     <string name="user_delete">删除</string>

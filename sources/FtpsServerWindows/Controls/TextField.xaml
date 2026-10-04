@@ -10,8 +10,33 @@
         <TextBlock Margin="0,0,0,8"
                    Style="{StaticResource ModernLabel}"
                    Text="{Binding Label, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-        <TextBox Style="{StaticResource ModernTextBox}"
-                 Text="{Binding Text, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TextBox x:Name="Input"
+                         Style="{StaticResource ModernTextBox}"
+                         Text="{Binding Text, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <PasswordBox x:Name="Secret"
+                             Visibility="Collapsed"
+                             Background="{StaticResource SecondaryDarkBrush}"
+                             Foreground="{StaticResource WindowForegroundBrush}"
+                             CaretBrush="{StaticResource WindowForegroundBrush}"
+                             BorderBrush="{StaticResource BorderBrush}"
+                             BorderThickness="1"
+                             Padding="8,6"
+                             PasswordChanged="Secret_PasswordChanged"/>
+            </Grid>
+            <Button x:Name="Reveal"
+                    Grid.Column="1"
+                    Margin="8,0,0,0"
+                    Style="{StaticResource SecondaryButton}"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed"
+                    Click="Reveal_Click"/>
+        </Grid>
         <TextBlock Margin="0,8,0,0"
                    Style="{StaticResource ModernLabel}"
                    TextWrapping="Wrap"

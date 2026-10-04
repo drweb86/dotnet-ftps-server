@@ -182,6 +182,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>စကားဝှက်</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>ပြရန်</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>ဖျောက်ရန်</value>
+  </data>
   <data name="UserReadonly" xml:space="preserve">
     <value>ဖတ်ရုံသာ</value>
   </data>

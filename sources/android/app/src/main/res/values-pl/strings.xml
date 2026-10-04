@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</string>
     <string name="user_username">Nazwa użytkownika</string>
     <string name="user_password">Hasło</string>
+    <string name="password_show">Pokaż</string>
+    <string name="password_hide">Ukryj</string>
     <string name="user_folder">Folder</string>
     <string name="user_readonly">Tylko do odczytu</string>
     <string name="user_delete">Usuń</string>

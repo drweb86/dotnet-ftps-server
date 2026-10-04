@@ -182,6 +182,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>पासवर्ड</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>देखाउनुहोस्</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>लुकाउनुहोस्</value>
+  </data>
   <data name="UserReadonly" xml:space="preserve">
     <value>केवल पढ्नका लागि</value>
   </data>

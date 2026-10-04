@@ -154,6 +154,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>پټنوم</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>ښکاره</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>پټول</value>
+  </data>
   <data name="UserFolder" xml:space="preserve">
     <value>فولدر</value>
   </data>

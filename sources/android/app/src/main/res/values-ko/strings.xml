@@ -29,6 +29,8 @@
     <string name="config_cert_filter">인증서 파일 (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|모든 파일 (*.*)|*.*</string>
     <string name="user_username">사용자 이름</string>
     <string name="user_password">비밀번호</string>
+    <string name="password_show">표시</string>
+    <string name="password_hide">숨기기</string>
     <string name="user_folder">폴더</string>
     <string name="user_readonly">읽기 전용</string>
     <string name="user_delete">삭제</string>

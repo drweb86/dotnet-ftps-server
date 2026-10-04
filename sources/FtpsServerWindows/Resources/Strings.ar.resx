@@ -179,6 +179,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>كلمة المرور</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>إظهار</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>إخفاء</value>
+  </data>
   <data name="UserReadonly" xml:space="preserve">
     <value>للقراءة فقط</value>
   </data>

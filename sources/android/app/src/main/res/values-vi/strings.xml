@@ -29,6 +29,8 @@
     <string name="config_cert_filter">Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</string>
     <string name="user_username">Tên đăng nhập</string>
     <string name="user_password">Mật khẩu</string>
+    <string name="password_show">Hiện</string>
+    <string name="password_hide">Ẩn</string>
     <string name="user_folder">Thư mục</string>
     <string name="user_readonly">Chỉ đọc</string>
     <string name="user_delete">Xóa</string>

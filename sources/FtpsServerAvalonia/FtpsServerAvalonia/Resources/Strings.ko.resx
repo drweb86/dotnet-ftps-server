@@ -153,6 +153,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>비밀번호</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>표시</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>숨기기</value>
+  </data>
   <data name="UserFolder" xml:space="preserve">
     <value>폴더</value>
   </data>

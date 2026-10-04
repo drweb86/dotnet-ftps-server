@@ -36,6 +36,7 @@
         <controls:TextField
             Visibility="{Binding CertificateUserProvidedVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}"
             Label="{x:Static res:Strings.ConfigCertPassword}"
+            IsPassword="True"
             Text="{Binding CertificatePassword, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
     </StackPanel>
 </UserControl>

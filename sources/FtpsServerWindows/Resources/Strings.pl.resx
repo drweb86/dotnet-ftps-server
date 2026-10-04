@@ -182,6 +182,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>Hasło</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>Pokaż</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>Ukryj</value>
+  </data>
   <data name="UserReadonly" xml:space="preserve">
     <value>Tylko do odczytu</value>
   </data>

@@ -179,6 +179,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>Parola</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>Göster</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>Gizle</value>
+  </data>
   <data name="UserReadonly" xml:space="preserve">
     <value>Salt Okunur</value>
   </data>

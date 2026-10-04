@@ -30,6 +30,8 @@
     <string name="config_cert_filter">Certificate Files (*.pfx;*.pem;*.der)|*.pfx;*.pem;*.der|All Files (*.*)|*.*</string>
     <string name="user_username">Username</string>
     <string name="user_password">Password</string>
+    <string name="password_show">Show</string>
+    <string name="password_hide">Hide</string>
     <string name="user_folder">Folder</string>
     <string name="user_readonly">Readonly</string>
     <string name="user_delete">Delete</string>

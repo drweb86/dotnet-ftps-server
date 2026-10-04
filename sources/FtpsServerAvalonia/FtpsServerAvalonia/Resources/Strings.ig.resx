@@ -154,6 +154,12 @@
   <data name="UserPassword" xml:space="preserve">
     <value>Paswọọdụ</value>
   </data>
+  <data name="PasswordShow" xml:space="preserve">
+    <value>Gosi</value>
+  </data>
+  <data name="PasswordHide" xml:space="preserve">
+    <value>Zoo</value>
+  </data>
   <data name="UserFolder" xml:space="preserve">
     <value>Folda</value>
   </data>
