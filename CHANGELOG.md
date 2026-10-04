@@ -5,6 +5,7 @@
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
 
 ## Security Hardening
+- Android: the running server reads accounts from saved settings instead of the service start intent. Passwords are no longer visible in the activity manager, and a restarted service keeps the saved port and accounts.
 - Android: store the generated certificate password with the Android Keystore key. An existing `Self-Signed.pfx` that still uses the password `test` is rewritten on the next start, and the certificate stays the same. A copied certificate file no longer opens with `test`.
 - Avalonia Android: encrypt FTP passwords and the certificate password in `settings.json` with an Android Keystore key, using the same rules as the Kotlin app. A copied settings file cannot be read on another device, and an edited file is rejected. Passwords saved by an older version are encrypted the next time the app starts. If decryption fails, later saves do not replace the file.
 - Library: on Android, store the auto-generated certificate password with that Keystore key. An existing `Self-Signed.pfx` that still uses the password `test` is rewritten on the next start, and the certificate stays the same.

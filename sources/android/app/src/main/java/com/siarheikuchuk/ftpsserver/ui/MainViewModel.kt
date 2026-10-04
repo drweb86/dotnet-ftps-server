@@ -197,20 +197,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private fun start() {
         save()
         if (!validateForStart()) return
-        val s = _state.value
         val ctx = getApplication<Application>()
-        val intent = FtpsForegroundService.startIntent(ctx).apply {
-            putExtra(FtpsForegroundService.EXTRA_PORT, s.port)
-            putExtra(FtpsForegroundService.EXTRA_MAX, s.maxConnections)
-            putExtra(FtpsForegroundService.EXTRA_SELF_SIGNED, s.useSelfSigned)
-            putExtra(FtpsForegroundService.EXTRA_CERT_PATH, s.certificatePath)
-            putExtra(FtpsForegroundService.EXTRA_CERT_PASSWORD, s.certificatePassword)
-            putExtra(FtpsForegroundService.EXTRA_LOGINS, s.users.map { it.login }.toTypedArray())
-            putExtra(FtpsForegroundService.EXTRA_PASSWORDS, s.users.map { it.password }.toTypedArray())
-            putExtra(FtpsForegroundService.EXTRA_FOLDERS, s.users.map { it.folderUri }.toTypedArray())
-            putExtra(FtpsForegroundService.EXTRA_WRITES, s.users.map { !it.readonly }.toBooleanArray())
-        }
-        ContextCompat.startForegroundService(ctx, intent)
+        ContextCompat.startForegroundService(ctx, FtpsForegroundService.startIntent(ctx))
     }
 
     private fun validateForStart(): Boolean {

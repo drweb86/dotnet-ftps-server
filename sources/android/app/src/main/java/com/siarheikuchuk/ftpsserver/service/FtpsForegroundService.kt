@@ -14,6 +14,7 @@ import android.os.PowerManager
 import androidx.core.app.NotificationCompat
 import com.siarheikuchuk.ftpsserver.MainActivity
 import com.siarheikuchuk.ftpsserver.R
+import com.siarheikuchuk.ftpsserver.data.SettingsRepository
 import com.siarheikuchuk.ftpsserver.server.Certificates
 import com.siarheikuchuk.ftpsserver.server.FtpsLog
 import com.siarheikuchuk.ftpsserver.server.FtpsServer
@@ -44,12 +45,12 @@ class FtpsForegroundService : Service() {
                 stopSelf()
                 return START_NOT_STICKY
             }
-            else -> startServer(intent)
+            else -> startServer()
         }
         return START_STICKY
     }
 
-    private fun startServer(intent: Intent?) {
+    private fun startServer() {
         // startForegroundService() requires startForeground() even when the
         // server is already running; otherwise Android shows "not responding".
         enterForeground()
@@ -72,31 +73,6 @@ class FtpsForegroundService : Service() {
             acquire()
         }
 
-        val port = intent?.getIntExtra(EXTRA_PORT, 2121) ?: 2121
-        val maxConn = intent?.getIntExtra(EXTRA_MAX, 10) ?: 10
-        val selfSigned = intent?.getBooleanExtra(EXTRA_SELF_SIGNED, true) ?: true
-        val certPath = intent?.getStringExtra(EXTRA_CERT_PATH)
-        val certPassword = intent?.getStringExtra(EXTRA_CERT_PASSWORD)
-        val logins = intent?.getStringArrayExtra(EXTRA_LOGINS) ?: emptyArray()
-        val passwords = intent?.getStringArrayExtra(EXTRA_PASSWORDS) ?: emptyArray()
-        val folders = intent?.getStringArrayExtra(EXTRA_FOLDERS) ?: emptyArray()
-        val writes = intent?.getBooleanArrayExtra(EXTRA_WRITES) ?: BooleanArray(logins.size) { true }
-
-        val users = logins.indices.map { i ->
-            FtpsUserAccount(
-                login = logins[i],
-                password = passwords[i],
-                folder = folders[i],
-                canRead = true,
-                canWrite = writes.getOrElse(i) { true },
-            )
-        }
-        val settings = FtpsServerSettings(
-            port = port,
-            maxConnections = maxConn,
-            certificatePath = if (selfSigned) null else certPath,
-            certificatePassword = certPassword,
-        )
         val log = object : FtpsLog {
             override fun debug(message: String) = ServerEvents.log("DEBUG", message)
             override fun info(message: String) = ServerEvents.log("INFO", message)
@@ -105,6 +81,22 @@ class FtpsForegroundService : Service() {
                 ServerEvents.log("ERROR", if (error != null) "$message: ${error.message}" else message)
         }
         try {
+            val saved = SettingsRepository(this).load()
+            val users = saved.users.map { user ->
+                FtpsUserAccount(
+                    login = user.login,
+                    password = user.password,
+                    folder = user.folderUri,
+                    canRead = true,
+                    canWrite = !user.readonly,
+                )
+            }
+            val settings = FtpsServerSettings(
+                port = saved.serverPort,
+                maxConnections = saved.maxConnections,
+                certificatePath = if (saved.useSelfSigned) null else saved.certificatePath,
+                certificatePassword = saved.certificatePassword,
+            )
             val cert: LoadedCertificate = Certificates.loadOrCreate(this, filesDir, settings, log)
             ServerEvents.certificate(cert)
             val ftps = FtpsServer(log, FtpsServerConfig(settings, users), SafFileSystemProvider(this), cert)
@@ -177,15 +169,6 @@ class FtpsForegroundService : Service() {
 
     companion object {
         const val ACTION_STOP = "com.siarheikuchuk.ftpsserver.STOP"
-        const val EXTRA_PORT = "port"
-        const val EXTRA_MAX = "max"
-        const val EXTRA_SELF_SIGNED = "selfSigned"
-        const val EXTRA_CERT_PATH = "certPath"
-        const val EXTRA_CERT_PASSWORD = "certPassword"
-        const val EXTRA_LOGINS = "logins"
-        const val EXTRA_PASSWORDS = "passwords"
-        const val EXTRA_FOLDERS = "folders"
-        const val EXTRA_WRITES = "writes"
         private const val CHANNEL_ID = "ftps-server"
         private const val NOTIFICATION_ID = 1
 
