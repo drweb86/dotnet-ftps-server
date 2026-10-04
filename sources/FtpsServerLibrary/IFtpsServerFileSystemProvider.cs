@@ -96,6 +96,7 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
     public Task<IEnumerable<FtpsServerFileSystemEntry>> DirectoryGetFileSystemEntries(string userFolder, IEnumerable<string> parts)
     {
         var folder = GetRealPath(userFolder, parts);
+        var normalizedBase = NormalizeBase(userFolder);
         var result = new List<FtpsServerFileSystemEntry>();
 
         var folderInfo = new DirectoryInfo(folder);
@@ -109,7 +110,7 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
 
         result.AddRange(Directory
             .GetFileSystemEntries(folder)
-            .Where(x => !IsHiddenSystemDirectory(x))
+            .Where(x => TryFollowLink(userFolder, normalizedBase, x, out _) && !IsHiddenSystemDirectory(x))
             .Select(x =>
             {
                 var fullName = Path.Combine(folder, x);
@@ -147,15 +148,7 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
     {
         ArgumentNullException.ThrowIfNullOrEmpty(userFolder, nameof(userFolder));
 
-        // Normalize the base path
-        string normalizedBase = Path.GetFullPath(userFolder);
-
-        // Ensure base path ends with directory separator
-        if (!normalizedBase.EndsWith(Path.DirectorySeparatorChar.ToString()) &&
-            !normalizedBase.EndsWith(Path.AltDirectorySeparatorChar.ToString()))
-        {
-            normalizedBase += Path.DirectorySeparatorChar;
-        }
+        string normalizedBase = NormalizeBase(userFolder);
 
         // Convert virtual path to system-appropriate path
         string virtualPathStr = string.Join("/", parts);
@@ -202,7 +195,31 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
         return current;
     }
 
+    private static string NormalizeBase(string userFolder)
+    {
+        var normalizedBase = Path.GetFullPath(userFolder);
+        if (!normalizedBase.EndsWith(Path.DirectorySeparatorChar.ToString()) &&
+            !normalizedBase.EndsWith(Path.AltDirectorySeparatorChar.ToString()))
+        {
+            normalizedBase += Path.DirectorySeparatorChar;
+        }
+
+        return normalizedBase;
+    }
+
     private static string FollowLink(string userFolder, string normalizedBase, string path)
+    {
+        if (!TryFollowLink(userFolder, normalizedBase, path, out var resolved))
+        {
+            throw new UnauthorizedAccessException(
+                $"Access denied. The link '{path}' points outside the base directory '{normalizedBase}'.");
+        }
+
+        return resolved;
+    }
+
+    // Returns false when the path is a symlink or junction whose target leaves the user folder.
+    private static bool TryFollowLink(string userFolder, string normalizedBase, string path, out string resolved)
     {
         var current = path;
         for (var hop = 0; hop < 32; hop++)
@@ -214,30 +231,38 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
             }
             catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException)
             {
-                return current;
+                resolved = current;
+                return true;
             }
 
             if ((attributes & FileAttributes.ReparsePoint) == 0)
-                return current;
+            {
+                resolved = current;
+                return true;
+            }
 
             var isDirectory = (attributes & FileAttributes.Directory) != 0;
             var link = isDirectory
                 ? Directory.ResolveLinkTarget(current, returnFinalTarget: false)
                 : File.ResolveLinkTarget(current, returnFinalTarget: false);
             if (link is null)
-                return current;
+            {
+                resolved = current;
+                return true;
+            }
 
             var target = AlignSlashes(userFolder, Path.GetFullPath(link.FullName));
             if (!IsInsideBase(normalizedBase, target))
             {
-                throw new UnauthorizedAccessException(
-                    $"Access denied. The link '{current}' points outside the base directory '{normalizedBase}'.");
+                resolved = path;
+                return false;
             }
 
             current = target.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
         }
 
-        throw new UnauthorizedAccessException($"Access denied. The link '{path}' is too deeply nested.");
+        resolved = path;
+        return false;
     }
 
     private static string AlignSlashes(string userFolder, string path)
