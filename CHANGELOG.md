@@ -11,6 +11,7 @@
 - Library: on Windows and Linux, store the auto-generated certificate password with an OS key. An existing `Self-Signed.pfx` that still uses the password `test` is rewritten on the next start. Android and macOS keep `test`.
 - Library, Android: send a fixed error line to the FTP client. The exception, including the real path, stays in the log.
 - Android: reject a `..` segment in the storage-picker folder walk instead of moving to the parent document.
+- Library: reject a symlink or junction inside the share when its target is outside the user folder.
 
 # 2026.09.36
 

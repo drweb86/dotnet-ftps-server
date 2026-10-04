@@ -177,13 +177,84 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
 
 
         // Security check: ensure the result is within the base path
-        if (!fullPath.StartsWith(normalizedBase, StringComparison.OrdinalIgnoreCase))
+        if (!IsInsideBase(normalizedBase, fullPath))
         {
             throw new UnauthorizedAccessException(
                 $"Access denied. The path '{ToString()}' attempts to escape the base directory '{userFolder}'.");
         }
 
+        fullPath = ResolveLinks(userFolder, normalizedBase, fullPath);
         return ToExtendedLengthPath(fullPath);
+    }
+
+    // A symlink or junction keeps a name inside the share, so the text check above accepts it.
+    // Walk each existing part, and reject a link whose target is outside the user folder.
+    private static string ResolveLinks(string userFolder, string normalizedBase, string fullPath)
+    {
+        var relative = fullPath.Length > normalizedBase.Length ? fullPath[normalizedBase.Length..] : "";
+        if (relative.Length == 0)
+            return fullPath;
+
+        var current = normalizedBase.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+        foreach (var segment in relative.Split([Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar], StringSplitOptions.RemoveEmptyEntries))
+            current = FollowLink(userFolder, normalizedBase, Path.Combine(current, segment));
+
+        return current;
+    }
+
+    private static string FollowLink(string userFolder, string normalizedBase, string path)
+    {
+        var current = path;
+        for (var hop = 0; hop < 32; hop++)
+        {
+            FileAttributes attributes;
+            try
+            {
+                attributes = File.GetAttributes(current);
+            }
+            catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException)
+            {
+                return current;
+            }
+
+            if ((attributes & FileAttributes.ReparsePoint) == 0)
+                return current;
+
+            var isDirectory = (attributes & FileAttributes.Directory) != 0;
+            var link = isDirectory
+                ? Directory.ResolveLinkTarget(current, returnFinalTarget: false)
+                : File.ResolveLinkTarget(current, returnFinalTarget: false);
+            if (link is null)
+                return current;
+
+            var target = AlignSlashes(userFolder, Path.GetFullPath(link.FullName));
+            if (!IsInsideBase(normalizedBase, target))
+            {
+                throw new UnauthorizedAccessException(
+                    $"Access denied. The link '{current}' points outside the base directory '{normalizedBase}'.");
+            }
+
+            current = target.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+        }
+
+        throw new UnauthorizedAccessException($"Access denied. The link '{path}' is too deeply nested.");
+    }
+
+    private static string AlignSlashes(string userFolder, string path)
+    {
+        if (userFolder.Contains('\\'))
+            return path.Replace('/', '\\');
+        return path.Replace('\\', '/');
+    }
+
+    private static bool IsInsideBase(string normalizedBase, string fullPath)
+    {
+        if (fullPath.StartsWith(normalizedBase, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        var trimmedBase = normalizedBase.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+        var trimmedPath = fullPath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+        return string.Equals(trimmedPath, trimmedBase, StringComparison.OrdinalIgnoreCase);
     }
 
     // The \\?\ prefix makes Windows use the path as a file name, so CON.txt is not the CON device.
