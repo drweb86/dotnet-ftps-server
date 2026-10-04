@@ -17,6 +17,8 @@ class FtpsServer(
     private val active = AtomicInteger(0)
     private val pool = Executors.newCachedThreadPool()
     private val loginThrottle = LoginThrottle()
+    private val gate = Any()
+    private val sessions = mutableSetOf<FtpsClientSession>()
     private var listener: ServerSocket? = null
 
     val loadedCertificate: LoadedCertificate? get() = certificate
@@ -31,12 +33,17 @@ class FtpsServer(
     }
 
     fun stop() {
-        running.set(false)
+        val open: List<FtpsClientSession>
+        synchronized(gate) {
+            running.set(false)
+            open = sessions.toList()
+        }
         try {
             listener?.close()
         } catch (_: Exception) {
         }
         listener = null
+        for (session in open) session.close()
         log.info("Server stopped")
     }
 
@@ -61,17 +68,33 @@ class FtpsServer(
                 }
                 active.incrementAndGet()
                 log.info("Client connected: ${client.remoteSocketAddress} (Active: ${active.get()})")
+                val session = FtpsClientSession(
+                    log = log,
+                    socket = client,
+                    users = config.users,
+                    sslContext = certificate?.sslContext,
+                    fileSystem = fileSystem,
+                    loginThrottle = loginThrottle,
+                )
+                val started = synchronized(gate) {
+                    if (!running.get()) {
+                        false
+                    } else {
+                        sessions.add(session)
+                        true
+                    }
+                }
+                if (!started) {
+                    active.decrementAndGet()
+                    try { client.close() } catch (_: Exception) {}
+                    log.info("Client disconnected: ${client.remoteSocketAddress} (Active: ${active.get()})")
+                    continue
+                }
                 pool.execute {
                     try {
-                        FtpsClientSession(
-                            log = log,
-                            socket = client,
-                            users = config.users,
-                            sslContext = certificate?.sslContext,
-                            fileSystem = fileSystem,
-                            loginThrottle = loginThrottle,
-                        ).handle()
+                        session.handle()
                     } finally {
+                        synchronized(gate) { sessions.remove(session) }
                         active.decrementAndGet()
                         log.info("Client disconnected: ${client.remoteSocketAddress} (Active: ${active.get()})")
                     }

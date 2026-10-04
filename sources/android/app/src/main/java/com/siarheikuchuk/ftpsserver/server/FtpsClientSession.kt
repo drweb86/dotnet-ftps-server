@@ -34,7 +34,10 @@ class FtpsClientSession(
     private var authenticated = false
     private var path = VirtualPath()
     private var renameFrom: VirtualPath? = null
+    private val ioLock = Any()
+    @Volatile private var stopping = false
     private var dataListener: ServerSocket? = null
+    private var dataSocket: Socket? = null
     private var passive = false
     private var dataProtection = DataProtection.Clear
     private val clientAddress = socket.remoteSocketAddress?.toString() ?: "unknown"
@@ -42,10 +45,23 @@ class FtpsClientSession(
     private var disconnect = false
     private val mlsSelected = mutableSetOf("type", "size", "modify", "perm")
 
+    fun close() {
+        val pasv: ServerSocket?
+        val data: Socket?
+        synchronized(ioLock) {
+            stopping = true
+            pasv = dataListener
+            data = dataSocket
+        }
+        try { socket.close() } catch (_: Exception) {}
+        try { pasv?.close() } catch (_: Exception) {}
+        try { data?.close() } catch (_: Exception) {}
+    }
+
     fun handle() {
         try {
             send(220, "FTPS Server Ready")
-            while (true) {
+            while (!stopping) {
                 val line = reader.readLine() ?: break
                 val logLine = if (line.startsWith("PASS ", ignoreCase = true)) "PASS ****" else line
                 log.debug("[$clientAddress] >> $logLine")
@@ -56,7 +72,7 @@ class FtpsClientSession(
                 if (command == "QUIT" || disconnect) break
             }
         } catch (e: Exception) {
-            log.error("[$clientAddress] Session error", e)
+            sessionError("[$clientAddress] Session error", e)
         } finally {
             try { socket.close() } catch (_: Exception) {}
             try { dataListener?.close() } catch (_: Exception) {}
@@ -106,7 +122,7 @@ class FtpsClientSession(
             log.warn("[$clientAddress] Access denied: ${e.message}")
             send(550, "Permission denied")
         } catch (e: Exception) {
-            log.error("[$clientAddress] Command error: $command", e)
+            sessionError("[$clientAddress] Command error: $command", e)
             send(550, "Error")
         }
     }
@@ -207,7 +223,7 @@ class FtpsClientSession(
             recreateStreams()
             log.info("[$clientAddress] TLS enabled on control connection")
         } catch (e: Exception) {
-            log.error("[$clientAddress] TLS negotiation failed", e)
+            sessionError("[$clientAddress] TLS negotiation failed", e)
         }
     }
 
@@ -256,7 +272,7 @@ class FtpsClientSession(
                 send(550, "Directory not found")
             }
         } catch (e: SecurityException) {
-            log.error("[$clientAddress] Attempt to change directory to: $directory", e)
+            sessionError("[$clientAddress] Attempt to change directory to: $directory", e)
             send(550, "Directory not found")
         }
     }
@@ -282,7 +298,7 @@ class FtpsClientSession(
             fileSystem.createDirectory(user!!.folder, p.parts)
             send(257, "\"${p.toFtpsPath()}\" created")
         } catch (e: Exception) {
-            log.error("Failed to create directory: ${p.toFtpsPath()}", e)
+            sessionError("Failed to create directory: ${p.toFtpsPath()}", e)
             send(550, "Cannot create directory")
         }
     }
@@ -302,7 +318,7 @@ class FtpsClientSession(
                 send(550, "Directory not found")
             }
         } catch (e: Exception) {
-            log.error("Failed to delete directory: ${p.toFtpsPath()}", e)
+            sessionError("Failed to delete directory: ${p.toFtpsPath()}", e)
             send(550, "Cannot remove directory")
         }
     }
@@ -322,7 +338,7 @@ class FtpsClientSession(
                 send(550, "File not found")
             }
         } catch (e: Exception) {
-            log.error("Failed to delete file: ${p.toFtpsPath()}", e)
+            sessionError("Failed to delete file: ${p.toFtpsPath()}", e)
             send(550, "Cannot delete file")
         }
     }
@@ -368,7 +384,7 @@ class FtpsClientSession(
                 else -> send(550, "Rename failed")
             }
         } catch (e: Exception) {
-            log.error("rename failed", e)
+            sessionError("rename failed", e)
             send(550, "Rename failed")
         } finally {
             renameFrom = null
@@ -380,10 +396,16 @@ class FtpsClientSession(
             send(530, "Not logged in")
             return
         }
-        try { dataListener?.close() } catch (_: Exception) {}
+        closePasv()
         val local = socket.localAddress
         val listener = ServerSocket(0, 1, local)
-        dataListener = listener
+        synchronized(ioLock) {
+            if (stopping) {
+                try { listener.close() } catch (_: Exception) {}
+                return
+            }
+            dataListener = listener
+        }
         passive = true
         val ip = pasvIpv4(local)
         val port = listener.localPort
@@ -399,6 +421,13 @@ class FtpsClientSession(
         ssl.useClientMode = false
         restrictTls(ssl)
         ssl.startHandshake()
+        synchronized(ioLock) {
+            if (stopping) {
+                try { ssl.close() } catch (_: Exception) {}
+                throw java.net.SocketException("Server stopped")
+            }
+            dataSocket = ssl
+        }
         return ssl
     }
 
@@ -421,7 +450,7 @@ class FtpsClientSession(
                 send(425, "Can't open data connection")
                 null
             } else {
-                accepted
+                retainData(accepted)
             }
         } catch (_: Exception) {
             send(425, "Can't open data connection")
@@ -430,9 +459,25 @@ class FtpsClientSession(
     }
 
     private fun closePasv() {
-        try { dataListener?.close() } catch (_: Exception) {}
-        dataListener = null
+        val pasv: ServerSocket?
+        synchronized(ioLock) {
+            pasv = dataListener
+            dataListener = null
+            dataSocket = null
+        }
+        try { pasv?.close() } catch (_: Exception) {}
         passive = false
+    }
+
+    private fun retainData(accepted: Socket): Socket? {
+        synchronized(ioLock) {
+            if (stopping) {
+                try { accepted.close() } catch (_: Exception) {}
+                return null
+            }
+            dataSocket = accepted
+            return accepted
+        }
     }
 
     private fun handleList(directory: String) {
@@ -460,7 +505,7 @@ class FtpsClientSession(
             }
             send(226, "Transfer complete")
         } catch (e: Exception) {
-            log.error("List failed", e)
+            sessionError("List failed", e)
             send(550, "List failed")
         } finally {
             closePasv()
@@ -492,7 +537,7 @@ class FtpsClientSession(
             }
             send(226, "Transfer complete")
         } catch (e: Exception) {
-            log.error("MLSD failed", e)
+            sessionError("MLSD failed", e)
             send(550, "MLSD failed")
         } finally {
             closePasv()
@@ -557,7 +602,7 @@ class FtpsClientSession(
             }
             send(226, "Transfer complete")
         } catch (e: Exception) {
-            log.error("List failed", e)
+            sessionError("List failed", e)
             send(550, "List failed")
         } finally {
             closePasv()
@@ -588,7 +633,7 @@ class FtpsClientSession(
             log.info("[$clientAddress] Download complete: $p")
             send(226, "Transfer complete")
         } catch (e: Exception) {
-            log.error("Download failed: ${p.toFtpsPath()}", e)
+            sessionError("Download failed: ${p.toFtpsPath()}", e)
             send(550, "Transfer failed")
         } finally {
             closePasv()
@@ -613,7 +658,7 @@ class FtpsClientSession(
             }
             send(226, "Transfer complete")
         } catch (e: Exception) {
-            log.error("Upload failed: ${p.toFtpsPath()}", e)
+            sessionError("Upload failed: ${p.toFtpsPath()}", e)
             send(550, "Transfer failed")
         } finally {
             closePasv()
@@ -764,7 +809,13 @@ class FtpsClientSession(
 
     private fun send(code: Int, message: String) = sendLine("$code $message")
 
+    private fun sessionError(message: String, error: Exception) {
+        if (stopping) return
+        log.error(message, error)
+    }
+
     private fun sendLine(line: String) {
+        if (stopping) return
         log.debug("[$clientAddress] << $line")
         val bytes = (line + "\r\n").toByteArray(encoding)
         socket.getOutputStream().write(bytes)

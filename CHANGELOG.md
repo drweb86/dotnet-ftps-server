@@ -5,6 +5,7 @@
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
 
 ## Security Hardening
+- Library, Android: stopping the server closes every open control and data connection. A transfer that has already started no longer keeps reading or writing the shared folder after Stop.
 - Library: close a control connection that sends nothing for 30 seconds before login, or sits idle for 5 minutes after login, and refuse a command line longer than 8192 characters. Simultaneous connections are capped at 100. An unauthenticated client can no longer hold every slot indefinitely or grow one command without a bound.
 - Android: the running server reads accounts from saved settings instead of the service start intent. Passwords are no longer visible in the activity manager, and a restarted service keeps the saved port and accounts.
 - Android: store the generated certificate password with the Android Keystore key. An existing `Self-Signed.pfx` that still uses the password `test` is rewritten on the next start, and the certificate stays the same. A copied certificate file no longer opens with `test`.

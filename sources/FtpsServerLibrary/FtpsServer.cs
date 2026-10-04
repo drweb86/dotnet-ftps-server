@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
@@ -12,11 +13,13 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
     private readonly IFtpsServerFileSystemProvider _ftpsServerFileSystemProvider = ftpsServerFileSystemProvider;
     private readonly IFtpsServerLog _log = log;
     private TcpListener? _listener;
-    private bool _isRunning;
+    private volatile bool _isRunning;
     private X509Certificate2? _serverCertificate;
     private int _activeConnections;
     private int _maxConnections = 10;
     private readonly FtpsLoginThrottle _loginThrottle = new();
+    private readonly object _sessionsLock = new();
+    private readonly List<FtpsServerClientSession> _sessions = new();
 
     public X509Certificate2? LoadedCertificate { get; private set; }
 
@@ -66,8 +69,24 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
 
     public void Stop()
     {
-        _isRunning = false;
-        _listener?.Stop();
+        FtpsServerClientSession[] sessions;
+        lock (_sessionsLock)
+        {
+            _isRunning = false;
+            sessions = _sessions.ToArray();
+        }
+
+        try
+        {
+            _listener?.Stop();
+        }
+        catch (Exception)
+        {
+        }
+
+        foreach (var session in sessions)
+            session.Abort();
+
         _log.Info("Server stopped");
     }
 
@@ -97,14 +116,37 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
                 _activeConnections++;
                 _log.Info($"Client connected: {endpoint} (Active: {_activeConnections})");
 
+                var session = new FtpsServerClientSession(
+                    _log,
+                    client,
+                    _config.Users,
+                    _serverCertificate,
+                    _ftpsServerFileSystemProvider,
+                    _loginThrottle);
+
+                lock (_sessionsLock)
+                {
+                    if (!_isRunning)
+                    {
+                        _activeConnections--;
+                        client.Close();
+                        _log.Info($"Client disconnected: {endpoint} (Active: {_activeConnections})");
+                        continue;
+                    }
+
+                    _sessions.Add(session);
+                }
+
                 _ = Task.Run(async () =>
                 {
                     try
                     {
-                        await HandleClientAsync(client);
+                        await session.HandleAsync();
                     }
                     finally
                     {
+                        lock (_sessionsLock)
+                            _sessions.Remove(session);
                         _activeConnections--;
                         _log.Info($"Client disconnected: {endpoint} (Active: {_activeConnections})");
                     }
@@ -120,16 +162,4 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
         }
     }
 
-    private async Task HandleClientAsync(TcpClient client)
-    {
-        var session = new FtpsServerClientSession(
-            _log,
-            client,
-            _config.Users,
-            _serverCertificate,
-            _ftpsServerFileSystemProvider,
-            _loginThrottle);
-        
-        await session.HandleAsync();
-    }
 }

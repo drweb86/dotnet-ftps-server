@@ -30,6 +30,9 @@ class FtpsServerClientSession(
         ? FtpsLoginThrottle.Normalize(endPoint.Address)
         : null;
     private bool _disconnect;
+    private readonly object _abortLock = new();
+    private volatile bool _aborted;
+    private TcpClient? _dataClient;
 
     private System.IO.Stream? _controlStream;
     private System.IO.StreamReader? _reader;
@@ -71,12 +74,32 @@ class FtpsServerClientSession(
 
     private void LogError(Exception exception, string text)
     {
+        if (_aborted)
+            return;
         _log.Error(exception, $"[{_user?.Login}]: {text}");
     }
 
     private void LogError(string text)
     {
+        if (_aborted)
+            return;
         _log.Error(new Exception(text), $"[{_user?.Login}]: {text}");
+    }
+
+    internal void Abort()
+    {
+        TcpListener? listener;
+        TcpClient? data;
+        lock (_abortLock)
+        {
+            _aborted = true;
+            listener = _dataListener;
+            data = _dataClient;
+        }
+
+        try { _controlClient.Close(); } catch { }
+        try { listener?.Stop(); } catch { }
+        try { data?.Close(); } catch { }
     }
 
     public async Task HandleAsync()
@@ -111,12 +134,13 @@ class FtpsServerClientSession(
         }
         catch (Exception ex)
         {
-            _log.Error(ex, $"[{_clientAddress}] Session error");
+            if (!_aborted)
+                _log.Error(ex, $"[{_clientAddress}] Session error");
         }
         finally
         {
-            _controlClient?.Close();
-            _dataListener?.Stop();
+            try { _controlClient.Close(); } catch { }
+            try { _dataListener?.Stop(); } catch { }
         }
     }
 
@@ -223,11 +247,15 @@ class FtpsServerClientSession(
         }
         catch (UnauthorizedAccessException ex)
         {
+            if (_aborted)
+                return;
             _log.Warn($"[{_clientAddress}] Access denied: {ex.Message}");
             await SendResponseAsync(550, "Permission denied");
         }
         catch (Exception ex)
         {
+            if (_aborted)
+                return;
             _log.Error(ex, $"[{_clientAddress}] Command error: {command}");
             await SendResponseAsync(550, "Error");
         }
@@ -722,10 +750,20 @@ class FtpsServerClientSession(
             return;
         }
 
-        _dataListener?.Stop();
+        StopDataListener();
         var localIp = NormalizeIp(((IPEndPoint)_controlClient.Client.LocalEndPoint!).Address);
-        _dataListener = new TcpListener(localIp, 0);
-        _dataListener.Start();
+        var listener = new TcpListener(localIp, 0);
+        listener.Start();
+        lock (_abortLock)
+        {
+            if (_aborted)
+            {
+                try { listener.Stop(); } catch { }
+                return;
+            }
+
+            _dataListener = listener;
+        }
 
         var endpoint = (IPEndPoint)_dataListener.LocalEndpoint;
         _isPassiveMode = true;
@@ -815,9 +853,7 @@ class FtpsServerClientSession(
         }
         finally
         {
-            _dataListener?.Stop();
-            _dataListener = null;
-            _isPassiveMode = false;
+            StopDataListener();
         }
     }
 
@@ -884,9 +920,7 @@ class FtpsServerClientSession(
         }
         finally
         {
-            _dataListener?.Stop();
-            _dataListener = null;
-            _isPassiveMode = false;
+            StopDataListener();
         }
     }
 
@@ -1053,9 +1087,7 @@ class FtpsServerClientSession(
         }
         finally
         {
-            _dataListener?.Stop();
-            _dataListener = null;
-            _isPassiveMode = false;
+            StopDataListener();
         }
     }
 
@@ -1115,9 +1147,7 @@ class FtpsServerClientSession(
         }
         finally
         {
-            _dataListener?.Stop();
-            _dataListener = null;
-            _isPassiveMode = false;
+            StopDataListener();
         }
     }
 
@@ -1169,9 +1199,7 @@ class FtpsServerClientSession(
         }
         finally
         {
-            _dataListener?.Stop();
-            _dataListener = null;
-            _isPassiveMode = false;
+            StopDataListener();
         }
     }
 
@@ -1307,6 +1335,8 @@ class FtpsServerClientSession(
         }
         catch (Exception)
         {
+            if (_aborted)
+                return null;
             await SendResponseAsync(425, "Can't open data connection");
             return null;
         }
@@ -1321,7 +1351,36 @@ class FtpsServerClientSession(
             return null;
         }
 
-        return dataClient;
+        return TrackDataClient(dataClient);
+    }
+
+    private TcpClient? TrackDataClient(TcpClient client)
+    {
+        lock (_abortLock)
+        {
+            if (_aborted)
+            {
+                try { client.Close(); } catch { }
+                return null;
+            }
+
+            _dataClient = client;
+            return client;
+        }
+    }
+
+    private void StopDataListener()
+    {
+        TcpListener? listener;
+        lock (_abortLock)
+        {
+            listener = _dataListener;
+            _dataListener = null;
+            _dataClient = null;
+        }
+
+        try { listener?.Stop(); } catch { }
+        _isPassiveMode = false;
     }
 
     private bool IsDataPeerFromControlClient(TcpClient dataClient)
@@ -1350,6 +1409,8 @@ class FtpsServerClientSession(
 
     private async Task SendControlLineAsync(string line)
     {
+        if (_aborted)
+            return;
         _log.Debug($"[{_clientAddress}] << {line}");
         var bytes = _currentEncoding.GetBytes(line + "\r\n");
         await _controlStream!.WriteAsync(bytes);

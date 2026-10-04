@@ -15,8 +15,10 @@ class LoginThrottle {
         false
     }
 
-    fun registerSuccess(ip: String) = synchronized(byIp) {
-        byIp.remove(ip)
+    fun registerSuccess(ip: String) {
+        synchronized(byIp) {
+            byIp.remove(ip)
+        }
     }
 
     fun registerFailure(ip: String, nowMs: Long): Boolean = synchronized(byIp) {
