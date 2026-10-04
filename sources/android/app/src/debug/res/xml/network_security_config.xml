@@ -5,4 +5,8 @@
             <certificates src="system" />
         </trust-anchors>
     </base-config>
+    <!-- Emulator alias for the host machine. Debug resources replace main; they do not merge. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.0.2.2</domain>
+    </domain-config>
 </network-security-config>

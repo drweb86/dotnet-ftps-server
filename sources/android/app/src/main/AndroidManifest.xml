@@ -12,6 +12,8 @@
     <application
         android:name=".FtpsServerApp"
         android:allowBackup="false"
+        android:fullBackupContent="@xml/backup_rules"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_label"
         android:supportsRtl="true"
