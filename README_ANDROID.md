@@ -17,8 +17,8 @@ This is current version.
 Build in Powershell:
 
 ```powershell
-./sources/android/check-local.ps1
-./sources/android/check-local.ps1 -Install
+./build-android.ps1
+./build-android.ps1 -Install
 ```
 
 The default debug run builds three APKs with different package ids so they can sit on one phone: screenshots (`general`, English-only), general debug, and China PIPL debug (`-ChinaPipl` is not required for that). `-Install` installs all three.

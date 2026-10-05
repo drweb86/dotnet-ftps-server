@@ -2,6 +2,7 @@
 # Updates CHANGELOG.md, both Gradle version literals, and the Fastlane en-US changelog file.
 # Regenerates committed Android strings.xml from the desktop resx files so the release
 # tag matches what F-Droid builds without running the converter.
+# Then runs build-android.ps1 so the bumped version is built.
 
 [CmdletBinding()]
 param(
@@ -165,3 +166,9 @@ Write-Output "Updated: CHANGELOG.md"
 Write-Output "Updated: sources/android/app/build.gradle.kts"
 Write-Output "Updated: fastlane/metadata/android/en-US/changelogs/$newCode.txt"
 Write-Output "Updated: sources/android/app/src/main/res (convert_resx.py)"
+
+$buildAndroid = Join-Path $RepoRoot "build-android.ps1"
+& $buildAndroid
+if ($LASTEXITCODE -ne 0) {
+    throw "build-android.ps1 failed with exit code $LASTEXITCODE."
+}
