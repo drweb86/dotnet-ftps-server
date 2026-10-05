@@ -11,6 +11,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,6 +28,8 @@ import com.siarheikuchuk.ftpsserver.ui.MainViewModel
 import com.siarheikuchuk.ftpsserver.ui.PrivacyPolicyScreen
 import com.siarheikuchuk.ftpsserver.ui.PrivacyScreenMode
 import com.siarheikuchuk.ftpsserver.ui.ThirdPartyNoticesScreen
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 
 class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModels()
@@ -38,12 +42,21 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Block capture until composition knows whether the connection card is open.
+        // The password is plain text only in that expanded section.
         if (!BuildConfig.SCREENSHOTS) {
             window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
         }
         enableEdgeToEdge()
         setContent {
             FtpsTheme {
+                val connectionDetailsOpen by remember {
+                    viewModel.state
+                        .map { it.running && it.connectionExpanded }
+                        .distinctUntilChanged()
+                }.collectAsState(
+                    initial = viewModel.state.value.let { it.running && it.connectionExpanded },
+                )
                 var consented by remember {
                     mutableStateOf(!BuildConfig.CHINA_PIPL_POLICY || PrivacyStore.hasConsent(this@MainActivity))
                 }
@@ -53,6 +66,10 @@ class MainActivity : ComponentActivity() {
                 var privacyOpen by remember { mutableStateOf(false) }
                 var licenseOpen by remember { mutableStateOf(false) }
                 var thirdPartyOpen by remember { mutableStateOf(false) }
+                val showingMain = consented && licenseConsented && !privacyOpen && !licenseOpen && !thirdPartyOpen
+                SideEffect {
+                    setScreenshotBlocked(!BuildConfig.SCREENSHOTS && showingMain && connectionDetailsOpen)
+                }
 
                 if (BuildConfig.CHINA_PIPL_POLICY && !consented) {
                     PrivacyPolicyScreen(
@@ -118,6 +135,14 @@ class MainActivity : ComponentActivity() {
         }
         if (!BuildConfig.CHINA_PIPL_POLICY || (PrivacyStore.hasConsent(this) && LicenseStore.hasConsent(this))) {
             requestNotificationPermission()
+        }
+    }
+
+    private fun setScreenshotBlocked(blocked: Boolean) {
+        if (blocked) {
+            window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+        } else {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
         }
     }
 

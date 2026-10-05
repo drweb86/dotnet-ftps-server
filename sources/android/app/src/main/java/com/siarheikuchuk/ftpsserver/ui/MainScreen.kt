@@ -342,22 +342,30 @@ fun MainScreen(
                             onClick = { viewModel.clearLogs() },
                             modifier = Modifier.padding(bottom = 8.dp),
                         ) { Text(stringResource(R.string.clear_logs), color = AppColors.accent) }
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .heightIn(min = 160.dp, max = 320.dp)
-                                .background(AppColors.background, RoundedCornerShape(4.dp))
-                                .padding(8.dp)
-                                .verticalScroll(rememberScrollState()),
-                        ) {
-                            for (line in state.logs) {
-                                val color = when (line.level) {
-                                    "ERROR", "FATAL" -> AppColors.error
-                                    "WARN" -> AppColors.warning
-                                    "DEBUG" -> AppColors.muted
-                                    else -> AppColors.accent
+                        SelectionContainer(modifier = Modifier.fillMaxWidth()) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .heightIn(min = 160.dp, max = 320.dp)
+                                    .background(AppColors.background, RoundedCornerShape(4.dp))
+                                    .padding(8.dp)
+                                    .verticalScroll(rememberScrollState()),
+                            ) {
+                                for (line in state.logs) {
+                                    val color = when (line.level) {
+                                        "ERROR", "FATAL" -> AppColors.error
+                                        "WARN" -> AppColors.warning
+                                        "DEBUG" -> AppColors.muted
+                                        else -> AppColors.accent
+                                    }
+                                    Text(
+                                        "[${line.timestamp}] ${line.level}: ${line.message}",
+                                        color = color,
+                                        fontSize = 12.sp,
+                                        fontFamily = FontFamily.Monospace,
+                                        modifier = Modifier.fillMaxWidth(),
+                                    )
                                 }
-                                Text("[${line.timestamp}] ${line.level}: ${line.message}", color = color, fontSize = 12.sp, fontFamily = FontFamily.Monospace)
                             }
                         }
                     }

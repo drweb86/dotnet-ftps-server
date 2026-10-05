@@ -37,7 +37,7 @@ The connection card, Copy, and Share include each account password, together wit
 - **Platform:** Android Kotlin
 - **Location:** `sources/android/app/build.gradle.kts` (`screenshots`), `BuildConfig.SCREENSHOTS`, `MainActivity.kt`
 
-The normal app sets `FLAG_SECURE`, so the recent-apps thumbnail cannot capture the screen. A build made with `-Pscreenshots=true` does not set that flag, so store screenshots can still be taken. That build uses the package id `com.siarheikuchuk.ftpsserver.screenshots` and is not a release a user installs. Do not treat the missing flag on that build as a finding, and do not remove the screenshots build.
+The normal app sets `FLAG_SECURE` while the server is running and the connection-details section is expanded, because that section shows the account password in clear text. Collapsing the section, stopping the server, or leaving the main screen clears the flag, so a screenshot or recent-apps thumbnail can be taken when the password is not on screen. A build made with `-Pscreenshots=true` never sets the flag, so store screenshots can still be taken with the section open. That build uses the package id `com.siarheikuchuk.ftpsserver.screenshots` and is not a release a user installs. Do not treat the missing flag on that build as a finding, and do not remove the screenshots build.
 
 ## TLS 1.3 data connections accept any resumed session on Windows and Android
 
