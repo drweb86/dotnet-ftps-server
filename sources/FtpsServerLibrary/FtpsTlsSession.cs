@@ -40,9 +40,17 @@ static class FtpsTlsSession
         if (!sessionReadable)
             return acceptUnreadableSession;
 
-        // A data connection that resumed nothing is never the control session.
+        // Schannel resumes one TLS 1.3 ticket only a handful of times, then finishes a full
+        // handshake while the client is still on that control connection. A resumed Windows
+        // TLS 1.3 session also gets a new id, so the reconnect flag never proved this was the
+        // control session. The peer address is checked separately. TLS 1.2 and OpenSSL still
+        // have a session id that has to match, and a full handshake there is rejected.
         if (!dataResumed)
-            return false;
+        {
+            return acceptAnyResumedTls13
+                && controlProtocol == SslProtocols.Tls13
+                && dataProtocol == SslProtocols.Tls13;
+        }
 
         // Identical session ids identify the same session: TLS 1.2 on every platform,
         // and TLS 1.3 on OpenSSL, which restores the original session from the ticket.

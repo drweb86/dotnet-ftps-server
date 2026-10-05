@@ -15,13 +15,27 @@ public class TlsSessionTests
     }
 
     [Fact]
-    public void DataConnectionThatDidNotResumeIsRejected()
+    public void DataConnectionThatDidNotResumeIsRejectedWhereTheSessionIdLasts()
     {
         Assert.False(Match(dataResumed: false, controlId: IdA, dataId: IdA));
         Assert.False(Match(
             dataResumed: false,
             controlId: IdA,
             dataId: IdA,
+            controlProtocol: SslProtocols.Tls13,
+            dataProtocol: SslProtocols.Tls13,
+            acceptAnyResumedTls13: false));
+        Assert.False(Match(
+            dataResumed: false,
+            controlId: IdA,
+            dataId: IdA,
+            controlProtocol: SslProtocols.Tls12,
+            dataProtocol: SslProtocols.Tls12,
+            acceptAnyResumedTls13: true));
+        Assert.True(Match(
+            dataResumed: false,
+            controlId: IdA,
+            dataId: IdB,
             controlProtocol: SslProtocols.Tls13,
             dataProtocol: SslProtocols.Tls13,
             acceptAnyResumedTls13: true));
@@ -69,6 +83,11 @@ public class TlsSessionTests
             false, [], [], false, SslProtocols.None, SslProtocols.None,
             OperatingSystem.IsAndroid(), OperatingSystem.IsWindows());
         Assert.Equal(OperatingSystem.IsAndroid(), unreadable);
+
+        var fullHandshakeTls13 = FtpsTlsSession.SessionsMatch(
+            true, IdA, IdB, false, SslProtocols.Tls13, SslProtocols.Tls13,
+            OperatingSystem.IsAndroid(), OperatingSystem.IsWindows());
+        Assert.Equal(OperatingSystem.IsWindows(), fullHandshakeTls13);
     }
 
     private static bool Match(
