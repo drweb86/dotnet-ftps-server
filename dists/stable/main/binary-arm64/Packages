@@ -1,0 +1,18 @@
+Package: ftps-server
+Version: 2026.10.08
+Architecture: arm64
+Maintainer: Siarhei Kuchuk <https://github.com/drweb86>
+Installed-Size: 117076
+Depends: libc6, libgcc-s1, libstdc++6, libx11-6, libfontconfig1
+Filename: pool/main/ftpsserver_2026.10.08_linux_arm64.deb
+Size: 37249272
+MD5sum: 6d13cef08c8946f5a10ebb3af4dbb1f8
+SHA1: f7ad24dcf4aba58876ed75954c9de09698246785
+SHA256: e471c59eb85f33a414192c0362c645cd1aa6c72ce3b999e5606a39d50f14b530
+Section: net
+Priority: optional
+Homepage: https://github.com/drweb86/dotnet-ftps-server
+Description: FTPS (FTP over TLS) server for sharing files between devices
+License: CC0-1.0
+Vendor: none
+
