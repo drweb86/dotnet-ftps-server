@@ -1,12 +1,10 @@
-# 2026.10.07
-
-## Build Fixes
-- Android build attempt fix.
+# 2026.10.08
 
 ## New Features
 - Library, Android: the default listen address accepts IPv4 and IPv6 at the same time. IPv6 clients use EPSV; PASV stays available for IPv4. The self-signed certificate includes the machine's stable IPv6 addresses, and the Android connection card lists them.
 
 ## Bug Fixes
+- Android: a protected data connection no longer disables TLS session creation. BoringSSL rejects that handshake with `SESSION_MAY_NOT_BE_CREATED` when the client does not resume a ticket, so directory listings failed after login. TLS 1.2 still requires the control connection's session id. TLS 1.3 keeps the same-address check.
 - Windows, Avalonia, Android: the connection instructions list IPv6 addresses when the server is listening for IPv6, including a link-local address without its zone id.
 - Windows, Avalonia, Android: the Third-party notices menu label is translated.
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.

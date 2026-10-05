@@ -521,7 +521,6 @@ class FtpsClientSession(
         val factory = sslContext.socketFactory as SSLSocketFactory
         val ssl = factory.createSocket(client, client.inetAddress.hostAddress, client.port, true) as SSLSocket
         ssl.useClientMode = false
-        ssl.enableSessionCreation = false
         ssl.soTimeout = DATA_IDLE_TIMEOUT_MS.toInt()
         restrictTls(ssl)
         ssl.startHandshake()
@@ -987,10 +986,11 @@ class FtpsClientSession(
         val dataId = dataSession.id ?: ByteArray(0)
         // TLS 1.2 resumes the cached session object, so an equal id identifies the control session.
         if (controlId.isNotEmpty() && dataId.isNotEmpty() && controlId.contentEquals(dataId)) return true
-        // TLS 1.3 gives the resumed connection a new session id. Session creation is disabled
-        // on the data socket, so only a session this server issued earlier can reach this check.
-        // The peer address is still verified by the caller. A creation-time match is not proof
-        // of the same session (millisecond resolution) and is no longer accepted.
+        // TLS 1.3 gives the resumed connection a new session id, so the id cannot identify
+        // the control session. Disabling session creation is not a substitute: BoringSSL
+        // then fails the handshake with SESSION_MAY_NOT_BE_CREATED whenever the client
+        // does not present a resumable ticket, and the listing never starts. The peer
+        // address is still verified by the caller.
         return controlSession.protocol == "TLSv1.3" && dataSession.protocol == "TLSv1.3"
     }
 
