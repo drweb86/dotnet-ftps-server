@@ -133,7 +133,7 @@ fun MainScreen(
                 title = {
                     val version = BuildConfig.VERSION_NAME.substringBefore('-')
                     Text(
-                        "${stringResource(R.string.app_title)} - ${stringResource(R.string.developer_name)} - V$version"
+                        "${stringResource(R.string.app_label)} - ${stringResource(R.string.developer_name)} - V$version"
                     )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(

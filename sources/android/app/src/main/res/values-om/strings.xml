@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">Fayyadamtoota</string>
     <string name="add_user_button">+ Dabaluu</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Marsariitii</string>
     <string name="menu_license">Hayyama</string>
     <string name="menu_third_party_notices">Beeksisoota qaama sadaffaa</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">Haqi</string>
     <string name="menu_start">[ EEGALI ]</string>
     <string name="menu_stop">[ DHAABI ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Port and certificate</string>
     <string name="config_address">Teessoo</string>
     <string name="config_port">Poortii</string>

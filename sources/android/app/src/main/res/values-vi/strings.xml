@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">Người dùng</string>
     <string name="add_user_button">+ Thêm</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Trang web</string>
     <string name="menu_license">Giấy phép</string>
     <string name="menu_third_party_notices">Thông báo của bên thứ ba</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">Xóa</string>
     <string name="menu_start">[ BẮT ĐẦU ]</string>
     <string name="menu_stop">[ DỪNG ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Port and certificate</string>
     <string name="config_address">Địa chỉ</string>
     <string name="config_port">Cổng</string>

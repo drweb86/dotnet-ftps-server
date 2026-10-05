@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">Користувачі</string>
     <string name="add_user_button">+ Додати</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Веб-сайт</string>
     <string name="menu_license">Ліцензія</string>
     <string name="menu_third_party_notices">Повідомлення про сторонні компоненти</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">Очистити</string>
     <string name="menu_start">[ ЗАПУСТИТИ ]</string>
     <string name="menu_stop">[ ЗУПИНИТИ ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Порт і сертифікат</string>
     <string name="config_address">Адреса</string>
     <string name="config_port">Порт</string>

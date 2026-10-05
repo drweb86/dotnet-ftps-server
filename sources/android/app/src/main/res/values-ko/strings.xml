@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">사용자</string>
     <string name="add_user_button">+ 추가</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">웹사이트</string>
     <string name="menu_license">라이선스</string>
     <string name="menu_third_party_notices">서드파티 고지</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">지우기</string>
     <string name="menu_start">[ 시작 ]</string>
     <string name="menu_stop">[ 중지 ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">포트 및 인증서</string>
     <string name="config_address">주소</string>
     <string name="config_port">포트</string>

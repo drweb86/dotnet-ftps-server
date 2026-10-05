@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">ユーザー</string>
     <string name="add_user_button">+ 追加</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">ウェブサイト</string>
     <string name="menu_license">ライセンス</string>
     <string name="menu_third_party_notices">サードパーティに関する通知</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">クリア</string>
     <string name="menu_start">[ 開始 ]</string>
     <string name="menu_stop">[ 停止 ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">ポートと証明書</string>
     <string name="config_address">アドレス</string>
     <string name="config_port">ポート</string>

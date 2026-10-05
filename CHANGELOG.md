@@ -1,4 +1,7 @@
-# 2026.10.04
+# 2026.10.07
+
+## Build Fixes
+- Android build attempt fix.
 
 ## New Features
 - Library, Android: the default listen address accepts IPv4 and IPv6 at the same time. IPv6 clients use EPSV; PASV stays available for IPv4. The self-signed certificate includes the machine's stable IPv6 addresses, and the Android connection card lists them.

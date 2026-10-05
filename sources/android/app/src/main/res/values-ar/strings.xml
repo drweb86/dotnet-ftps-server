@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">المستخدمون</string>
     <string name="add_user_button">+ إضافة</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">الموقع الإلكتروني</string>
     <string name="menu_license">الترخيص</string>
     <string name="menu_third_party_notices">إشعارات الجهات الخارجية</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">مسح</string>
     <string name="menu_start">[ تشغيل ]</string>
     <string name="menu_stop">[ إيقاف ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">المنفذ والشهادة</string>
     <string name="config_address">العنوان</string>
     <string name="config_port">المنفذ</string>

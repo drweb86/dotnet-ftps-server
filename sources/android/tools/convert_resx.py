@@ -81,10 +81,6 @@ def parse_resx(path: Path) -> dict[str, str]:
         if value_el is None or value_el.text is None:
             continue
         out[name] = value_el.text
-    # Store listing and launcher use the English product name; do not localize it.
-    out["AppTitle"] = "FTPS Server"
-    out["MenuHeader"] = "FTPS Server"
-    out["MenuAboutFormat"] = "FTPS Server - Siarhei Kuchuk - V{0}"
     return out
 
 
@@ -92,10 +88,14 @@ STRING_NAME_RE = re.compile(r'<string\s+name="([^"]+)"')
 
 # Desktop still has in-app update strings. Android removed them. F-Droid builds
 # the committed resources and does not run this script, so regenerating must
-# not put those strings back into the APK.
+# not put those strings back into the APK. The product name is hardcoded in
+# strings_android.xml as app_label and must not be copied into translations.
 ANDROID_OMIT_RESX_KEYS = {
     "UpdateDownload",
     "UpdateAvailableFormat",
+    "AppTitle",
+    "MenuHeader",
+    "MenuAboutFormat",
 }
 
 

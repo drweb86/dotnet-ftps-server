@@ -1,5 +1,7 @@
 # Bump the current release version by one patch (last number) after a failed build.
 # Updates CHANGELOG.md, both Gradle version literals, and the Fastlane en-US changelog file.
+# Regenerates committed Android strings.xml from the desktop resx files so the release
+# tag matches what F-Droid builds without running the converter.
 
 [CmdletBinding()]
 param(
@@ -141,6 +143,19 @@ if ((Test-Path -LiteralPath $oldFastlane) -and ($oldFastlane -ne $newFastlane)) 
     Move-Item -LiteralPath $oldFastlane -Destination $newFastlane -Force
 }
 
+$convertScript = Join-Path $RepoRoot "sources\android\tools\convert_resx.py"
+$python = Get-Command python -ErrorAction SilentlyContinue
+if (-not $python) {
+    $python = Get-Command python3 -ErrorAction SilentlyContinue
+}
+if (-not $python) {
+    throw "python is required to regenerate Android strings.xml ($convertScript)."
+}
+& $python.Source $convertScript
+if ($LASTEXITCODE -ne 0) {
+    throw "convert_resx.py failed with exit code $LASTEXITCODE."
+}
+
 Write-Utf8Text $changelogPath $changelog
 Write-Utf8Text $gradlePath $nameReplaced
 Write-Utf8Text $newFastlane $fastlaneText
@@ -149,3 +164,4 @@ Write-Output "Version $oldName ($oldCode) -> $newName ($newCode)"
 Write-Output "Updated: CHANGELOG.md"
 Write-Output "Updated: sources/android/app/build.gradle.kts"
 Write-Output "Updated: fastlane/metadata/android/en-US/changelogs/$newCode.txt"
+Write-Output "Updated: sources/android/app/src/main/res (convert_resx.py)"

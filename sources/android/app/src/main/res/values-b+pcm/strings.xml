@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">Users dem</string>
     <string name="add_user_button">+ Add</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Web-Site</string>
     <string name="menu_license">License</string>
     <string name="menu_third_party_notices">Third-party notice dem</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">Clear</string>
     <string name="menu_start">[ START ]</string>
     <string name="menu_stop">[ STOP ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Port and certificate</string>
     <string name="config_address">Address</string>
     <string name="config_port">Port</string>

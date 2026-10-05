@@ -6,4 +6,5 @@
     <string name="notification_channel">FTPS Server</string>
     <string name="notification_title">FTPS Server is running</string>
     <string name="notification_text">File transfers stay active while this notification is shown.</string>
+    <string name="error_settings_unreadable">Saved settings could not be read. They were left unchanged.</string>
 </resources>

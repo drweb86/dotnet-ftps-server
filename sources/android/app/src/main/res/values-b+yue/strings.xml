@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">用戶</string>
     <string name="add_user_button">+ 新增</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">網站</string>
     <string name="menu_license">授權條款</string>
     <string name="menu_third_party_notices">第三方聲明</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">清除</string>
     <string name="menu_start">[ 啟動 ]</string>
     <string name="menu_stop">[ 停止 ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Port and certificate</string>
     <string name="config_address">地址</string>
     <string name="config_port">端口</string>

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">वापरकर्ते</string>
     <string name="add_user_button">+ जोडा</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">वेब-साइट</string>
     <string name="menu_license">परवाना</string>
     <string name="menu_third_party_notices">तृतीय-पक्ष सूचना</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">साफ करा</string>
     <string name="menu_start">[ सुरू करा ]</string>
     <string name="menu_stop">[ थांबवा ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Port and certificate</string>
     <string name="config_address">पत्ता</string>
     <string name="config_port">पोर्ट</string>

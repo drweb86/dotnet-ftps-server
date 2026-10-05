@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">Pengguna</string>
     <string name="add_user_button">+ Tambah</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Situs Web</string>
     <string name="menu_license">Lisensi</string>
     <string name="menu_third_party_notices">Pemberitahuan pihak ketiga</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">Hapus</string>
     <string name="menu_start">[ MULAI ]</string>
     <string name="menu_stop">[ BERHENTI ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Port and certificate</string>
     <string name="config_address">Alamat</string>
     <string name="config_port">Port</string>

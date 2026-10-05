@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_title">FTPS Server</string>
     <string name="users_tab">အသုံးပြုသူများ</string>
     <string name="add_user_button">+ ထည့်ရန်</string>
-    <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">ဝဘ်ဆိုက်</string>
     <string name="menu_license">လိုင်စင်</string>
     <string name="menu_third_party_notices">ပြင်ပအဖွဲ့အစည်း အသိပေးချက်များ</string>
@@ -12,7 +10,6 @@
     <string name="clear_logs">ရှင်းလင်းရန်</string>
     <string name="menu_start">[ စတင်ရန် ]</string>
     <string name="menu_stop">[ ရပ်တန့်ရန် ]</string>
-    <string name="menu_about_format">FTPS Server - Siarhei Kuchuk - V%1$s</string>
     <string name="config_title">Port and certificate</string>
     <string name="config_address">လိပ်စာ</string>
     <string name="config_port">ပို့</string>
