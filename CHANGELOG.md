@@ -5,6 +5,7 @@
 - Library, Android: the default listen address accepts IPv4 and IPv6 at the same time. IPv6 clients use EPSV; PASV stays available for IPv4. The self-signed certificate includes the machine's stable IPv6 addresses, and the Android connection card lists them.
 
 ## Bug Fixes
+- Windows, Avalonia, Android: the connection instructions list IPv6 addresses when the server is listening for IPv6, including a link-local address without its zone id.
 - Windows, Avalonia, Android: the Third-party notices menu label is translated.
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
 - Windows, Avalonia: the GitHub update check decompresses the response encoding it receives, including an uncompressed body.

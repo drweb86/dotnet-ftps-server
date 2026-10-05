@@ -170,6 +170,41 @@ public sealed class FtpsServerOperationsTests : IAsyncLifetime
     }
 
     [Fact]
+    public async Task RenamedDirectoryWithSpaces_CanBeEnteredLeftAndListed()
+    {
+        await using var client = await ConnectAsync(write: true);
+
+        Assert.Empty(await NamedEntries(client));
+
+        Assert.Equal("257", (await client.Execute("MKD Папка 1")).Code);
+        Assert.True(Directory.Exists(Disk(_writeRoot, "/Папка 1")));
+        Assert.Equal(["Папка 1"], await NamedEntries(client));
+
+        Assert.Equal("250", (await client.Execute("CWD Папка 1")).Code);
+        Assert.Equal("/Папка 1", QuotedPath(await client.Execute("PWD")));
+        Assert.Empty(await NamedEntries(client));
+
+        Assert.Equal("257", (await client.Execute("MKD Папка 10")).Code);
+        Assert.True(Directory.Exists(Disk(_writeRoot, "/Папка 1/Папка 10")));
+        Assert.Equal(["Папка 10"], await NamedEntries(client));
+
+        Assert.Equal("350", (await client.Execute("RNFR /Папка 1/Папка 10")).Code);
+        Assert.Equal("250", (await client.Execute("RNTO /Папка 1/Папка 10 12")).Code);
+        Assert.False(Directory.Exists(Disk(_writeRoot, "/Папка 1/Папка 10")));
+        Assert.True(Directory.Exists(Disk(_writeRoot, "/Папка 1/Папка 10 12")));
+        Assert.Equal(["Папка 10 12"], await NamedEntries(client));
+
+        Assert.Equal("250", (await client.Execute("CWD Папка 10 12")).Code);
+        Assert.Equal("/Папка 1/Папка 10 12", QuotedPath(await client.Execute("PWD")));
+        Assert.Empty(await NamedEntries(client));
+
+        Assert.Equal("250", (await client.Execute("CWD ..")).Code);
+        Assert.Equal("/Папка 1", QuotedPath(await client.Execute("PWD")));
+        Assert.Equal(["Папка 10 12"], await NamedEntries(client));
+        Assert.Equal(["Папка 10 12"], await NamedEntries(client));
+    }
+
+    [Fact]
     public async Task LegacyDirectoryAliases_ChangeTheSameDirectories()
     {
         await using var client = await ConnectAsync(write: true);
@@ -419,6 +454,16 @@ public sealed class FtpsServerOperationsTests : IAsyncLifetime
         }
 
         Assert.Fail("Expected the server to refuse the command with 550");
+    }
+
+    private static async Task<string[]> NamedEntries(AsyncFtpClient client)
+    {
+        var listing = await client.GetListing();
+        return listing
+            .Select(item => item.Name)
+            .Where(name => name is not "." and not "..")
+            .Order(StringComparer.Ordinal)
+            .ToArray();
     }
 
     private static string QuotedPath(FtpReply reply)

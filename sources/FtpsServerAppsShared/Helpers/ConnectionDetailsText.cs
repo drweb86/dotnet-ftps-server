@@ -56,26 +56,54 @@ public sealed class ConnectionDetailsRequestEventArgs : EventArgs
 
 public static class ConnectionDetailsText
 {
-    public static IReadOnlyList<string> CollectHostValues(string? hostName)
+    // A zone id belongs to this machine, so a link-local IPv6 address is listed without one.
+    public static IReadOnlyList<string> CollectHostValues(string? hostName, string? listenAddress = null)
     {
         var hosts = new List<string>();
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var wildcard = IsWildcard(listenAddress);
         foreach (var nic in NetworkHelper.GetMyLocalIps())
         {
             foreach (var addr in nic.Addresses)
             {
-                if (IPAddress.IsLoopback(addr) || addr.IsIPv6LinkLocal)
+                var normalized = Normalize(addr);
+                if (IPAddress.IsLoopback(normalized) || normalized.IsIPv6Multicast)
                     continue;
-                var value = addr.ToString();
+                if (!wildcard && !SameAddress(listenAddress, normalized))
+                    continue;
+                var value = normalized.ToString();
                 if (seen.Add(value))
                     hosts.Add(value);
             }
         }
 
-        if (!string.IsNullOrWhiteSpace(hostName) && seen.Add(hostName))
+        if (!wildcard && hosts.Count == 0 && listenAddress is not null && seen.Add(listenAddress.Trim()))
+            hosts.Add(listenAddress.Trim());
+
+        if (wildcard && !string.IsNullOrWhiteSpace(hostName) && seen.Add(hostName))
             hosts.Add(hostName);
 
         return hosts;
+    }
+
+    private static bool IsWildcard(string? listenAddress)
+    {
+        var text = (listenAddress ?? "").Trim();
+        return text.Length == 0 || text is "0.0.0.0" or "::" or "::0";
+    }
+
+    private static bool SameAddress(string? listenAddress, IPAddress address)
+    {
+        return IPAddress.TryParse(listenAddress, out var bound) && Normalize(bound).Equals(address);
+    }
+
+    private static IPAddress Normalize(IPAddress address)
+    {
+        if (address.IsIPv4MappedToIPv6)
+            address = address.MapToIPv4();
+        if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6 && address.ScopeId != 0)
+            address = new IPAddress(address.GetAddressBytes());
+        return address;
     }
 
     public static string Build(ConnectionDetailsInput input, ConnectionDetailsStrings strings)

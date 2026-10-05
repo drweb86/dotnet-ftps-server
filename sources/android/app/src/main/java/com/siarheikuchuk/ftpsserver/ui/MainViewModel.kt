@@ -256,8 +256,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         val ifaces = NetworkInterface.getNetworkInterfaces() ?: return rows
         for (nic in ifaces) {
             if (!nic.isUp || nic.isLoopback) continue
+            // A zone id belongs to this device, so a link-local IPv6 address is listed without one.
             val addrs = nic.inetAddresses.toList()
-                .filter { !it.isLoopbackAddress && !it.isLinkLocalAddress && !it.isMulticastAddress }
+                .filter { !it.isLoopbackAddress && !it.isMulticastAddress }
                 .map { it.hostAddress?.substringBefore('%') ?: it.toString() }
             if (addrs.isNotEmpty()) rows += NetworkRow(nic.displayName ?: nic.name, addrs)
         }
