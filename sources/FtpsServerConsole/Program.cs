@@ -52,9 +52,10 @@ class Program
             var server = new FtpsServer(new FileLog(), config, new FtpsServerFileSystemProvider());
             
             _logger.Info($"FTPS Server Starting...");
-            var ipAddress = config.ServerSettings.Ip == "0.0.0.0" ? "all" : config.ServerSettings.Ip;
+            var listenAll = config.ServerSettings.Ip is null or "" or "0.0.0.0" or "::" or "::0";
+            var ipAddress = listenAll ? "all" : config.ServerSettings.Ip;
             _logger.Info($"IP Address: {ipAddress}");
-            if (config.ServerSettings.Ip == "0.0.0.0")
+            if (listenAll)
             {
                 var nis = NetworkHelper.GetMyLocalIps();
                 foreach (var ni in nis)
@@ -136,7 +137,7 @@ Options:
   The IP address server will be listening to.
   Optional parameter.
   Default value: 0.0.0.0.
-  0.0.0.0 - listen on every available network interface.
+  0.0.0.0, ::, and ::0 listen on every IPv4 and IPv6 interface.
 
   --port <number>
   The Port for server to listen to.

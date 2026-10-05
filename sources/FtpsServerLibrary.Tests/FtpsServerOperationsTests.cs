@@ -8,12 +8,15 @@ using FluentFTP.Exceptions;
 
 namespace FtpsServerLibrary.Tests;
 
+[Collection("FtpsServer")]
 public sealed class FtpsServerOperationsTests : IAsyncLifetime
 {
     private const string WriterLogin = "writer";
     private const string WriterPassword = "writer-pass";
     private const string ReaderLogin = "reader";
     private const string ReaderPassword = "reader-pass";
+    private const string Utf8Login = "utf8";
+    private const string Utf8Password = "пароль";
     private static readonly byte[] SeededText = Encoding.UTF8.GetBytes("чтение — café\n");
 
     private string _writeRoot = "";
@@ -32,39 +35,55 @@ public sealed class FtpsServerOperationsTests : IAsyncLifetime
         File.WriteAllBytes(Path.Combine(notes, "файл.txt"), SeededText);
 
         _certificate = CreateCertificate();
-        _port = FreePort();
-        var config = new FtpsServerConfiguration
+        await FtpsTestGate.Start.WaitAsync();
+        try
         {
-            ServerSettings = new FtpsServerSettings
+            _port = FreePort();
+            var config = new FtpsServerConfiguration
             {
-                Ip = "127.0.0.1",
-                Port = _port,
-                MaxConnections = 20,
-                X509Certificate = _certificate,
-            },
-            Users =
-            [
-                new FtpsServerUserAccount
+                ServerSettings = new FtpsServerSettings
                 {
-                    Login = WriterLogin,
-                    Password = WriterPassword,
-                    Folder = _writeRoot,
-                    Read = true,
-                    Write = true,
+                    Ip = "127.0.0.1",
+                    Port = _port,
+                    MaxConnections = 20,
+                    X509Certificate = _certificate,
                 },
-                new FtpsServerUserAccount
-                {
-                    Login = ReaderLogin,
-                    Password = ReaderPassword,
-                    Folder = _readRoot,
-                    Read = true,
-                    Write = false,
-                },
-            ],
-        };
+                Users =
+                [
+                    new FtpsServerUserAccount
+                    {
+                        Login = WriterLogin,
+                        Password = WriterPassword,
+                        Folder = _writeRoot,
+                        Read = true,
+                        Write = true,
+                    },
+                    new FtpsServerUserAccount
+                    {
+                        Login = ReaderLogin,
+                        Password = ReaderPassword,
+                        Folder = _readRoot,
+                        Read = true,
+                        Write = false,
+                    },
+                    new FtpsServerUserAccount
+                    {
+                        Login = Utf8Login,
+                        Password = Utf8Password,
+                        Folder = _writeRoot,
+                        Read = true,
+                        Write = true,
+                    },
+                ],
+            };
 
-        _server = new FtpsServer(new QuietLog(), config, new FtpsServerFileSystemProvider());
-        await _server.StartAsync();
+            _server = new FtpsServer(new QuietLog(), config, new FtpsServerFileSystemProvider());
+            await _server.StartAsync();
+        }
+        finally
+        {
+            FtpsTestGate.Start.Release();
+        }
     }
 
     public Task DisposeAsync()
@@ -103,7 +122,7 @@ public sealed class FtpsServerOperationsTests : IAsyncLifetime
         Assert.Contains("MDTM", features, StringComparison.Ordinal);
         Assert.Contains("MLST type*;size*;modify*;perm*;", features, StringComparison.Ordinal);
         Assert.Contains("UTF8", features, StringComparison.Ordinal);
-        Assert.DoesNotContain("EPSV", features, StringComparison.Ordinal);
+        Assert.Contains("EPSV", features, StringComparison.Ordinal);
         Assert.DoesNotContain("EPRT", features, StringComparison.Ordinal);
         Assert.DoesNotContain("REST", features, StringComparison.Ordinal);
         Assert.DoesNotContain("HASH", features, StringComparison.Ordinal);
@@ -300,12 +319,58 @@ public sealed class FtpsServerOperationsTests : IAsyncLifetime
         Assert.False(Directory.Exists(Disk(_writeRoot, "/renamed-root")));
     }
 
-    private async Task<AsyncFtpClient> ConnectAsync(bool write)
+    [Fact]
+    public async Task Utf8Password_LogsInAndWritesAFile()
+    {
+        // FluentFTP logs in before it turns UTF-8 on. A Russian password has to be sent
+        // after OPTS UTF8 ON, which is what FileZilla and WinSCP do.
+        await using var client = new Utf8LoginClient("127.0.0.1", Utf8Login, Utf8Password, _port, new FtpConfig
+        {
+            EncryptionMode = FtpEncryptionMode.Explicit,
+            DataConnectionType = FtpDataConnectionType.PASV,
+            DataConnectionEncryption = true,
+            ValidateAnyCertificate = true,
+            ConnectTimeout = 15000,
+            ReadTimeout = 20000,
+            DataConnectionConnectTimeout = 15000,
+            DataConnectionReadTimeout = 20000,
+            RetryAttempts = 0,
+            SslSessionLength = 0,
+        });
+        client.Encoding = new UTF8Encoding(false);
+        await client.Connect();
+
+        var text = Encoding.UTF8.GetBytes("проверка\n");
+        var status = await client.UploadBytes(text, "/проверка.txt", FtpRemoteExists.Overwrite, createRemoteDir: false);
+        Assert.Equal(FtpStatus.Success, status);
+        Assert.Equal(text, await File.ReadAllBytesAsync(Path.Combine(_writeRoot, "проверка.txt")));
+    }
+
+    private sealed class Utf8LoginClient : AsyncFtpClient
+    {
+        public Utf8LoginClient(string host, string user, string password, int port, FtpConfig config)
+            : base(host, user, password, port, config)
+        {
+        }
+
+        protected override async Task Authenticate(string userName, string password, string account, CancellationToken token)
+        {
+            var utf8 = await Execute("OPTS UTF8 ON", token);
+            if (!utf8.Success)
+                throw new InvalidOperationException(utf8.Message);
+            await base.Authenticate(userName, password, account, token);
+        }
+    }
+
+    private Task<AsyncFtpClient> ConnectAsync(bool write) =>
+        ConnectAsync(write ? WriterLogin : ReaderLogin, write ? WriterPassword : ReaderPassword);
+
+    private async Task<AsyncFtpClient> ConnectAsync(string login, string password)
     {
         var client = new AsyncFtpClient(
             "127.0.0.1",
-            write ? WriterLogin : ReaderLogin,
-            write ? WriterPassword : ReaderPassword,
+            login,
+            password,
             _port,
             new FtpConfig
             {

@@ -63,7 +63,7 @@ Passwords in the configuration file can be stored in plaintext or encrypted. A c
 
 | Parameter                               | Required  | Default value | Remarks                                                                                                                 |
 |-----------------------------------------|-----------|---------------|-------------------------------------------------------------------------------------------------------------------------|
-| ServerSettings.Ip                       | No        | 0.0.0.0       | The IP address server will be listening to. 0.0.0.0 - listen on every available network interface.                      |
+| ServerSettings.Ip                       | No        | 0.0.0.0       | The IP address the server listens on. 0.0.0.0, ::, and ::0 listen on every IPv4 and IPv6 interface. A specific address listens on that address only. |
 | ServerSettings.Port                     | No        | 2121          | The Port for server to listen to.                                                                                       |
 | ServerSettings.MaxConnections           | No        | 10            | Maximum number of simultaneous server connections.                                                                      |
 | ServerSettings.CertificatePath          | No        |               | PEM, DER or PKCS#12 PFX file. PFX file is opened with CertificatePassword (if specified).                               |
@@ -114,7 +114,7 @@ ftps-server.exe -- \
 |------------------------------------------------|-----------|---------------------------------------------------|------------------------------------------------------------------------------------------------------|
 | --help                                         | No        |                                                   | Show the help message.                                                                               |
 | --config configuration.json                    | No        | appsettings.json near executable file (if exists) | Path to JSON configuration file.                                                                     |
-| --ip 0.0.0.0                                   | No        | 0.0.0.0                                           | The IP address server will be listening to. 0.0.0.0 - listen on every available network interface.   |
+| --ip 0.0.0.0                                   | No        | 0.0.0.0                                           | The IP address the server listens on. 0.0.0.0, ::, and ::0 listen on every IPv4 and IPv6 interface. A specific address listens on that address only. |
 | --port 2121                                    | No        | 2121                                              | The Port for server to listen to.                                                                    |
 | --maxconnections 10                            | No        | 10                                                | Maximum number of simultaneous server connections.                                                   |
 | --cert file.pfx                                | No        |                                                   | PEM, DER or PKCS#12 PFX file. PFX file is opened with certpass (if specified).                       |

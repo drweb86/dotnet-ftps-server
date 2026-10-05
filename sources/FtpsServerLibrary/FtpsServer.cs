@@ -13,7 +13,7 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
     private readonly FtpsServerConfiguration _config = config;
     private readonly IFtpsServerFileSystemProvider _ftpsServerFileSystemProvider = ftpsServerFileSystemProvider;
     private readonly IFtpsServerLog _log = log;
-    private TcpListener? _listener;
+    private readonly List<TcpListener> _listeners = new();
     private volatile bool _isRunning;
     private X509Certificate2? _serverCertificate;
     private int _activeConnections;
@@ -52,14 +52,21 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
             var actualIp = _config.ServerSettings.Ip ?? "0.0.0.0";
             var actualPort = _config.ServerSettings.Port ?? 2121;
 
-            _listener = new TcpListener(IPAddress.Parse(actualIp), actualPort);
-            
-            _listener.Start();
+            StartListeners(actualIp, actualPort);
             _isRunning = true;
 
-            _log.Info($"FTPS Server started successfully on {actualIp}:{actualPort} (Explicit encryption)");
+            var bound = new System.Text.StringBuilder();
+            foreach (var listener in _listeners)
+            {
+                if (bound.Length > 0)
+                    bound.Append(" and ");
+                bound.Append(listener.LocalEndpoint);
+            }
 
-            _ = Task.Run(AcceptClientsAsync);
+            _log.Info($"FTPS Server started successfully on {bound} (Explicit encryption)");
+
+            foreach (var listener in _listeners.ToArray())
+                _ = Task.Run(() => AcceptClientsAsync(listener));
         }
         catch (Exception ex)
         {
@@ -77,13 +84,18 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
             sessions = _sessions.ToArray();
         }
 
-        try
+        foreach (var listener in _listeners.ToArray())
         {
-            _listener?.Stop();
+            try
+            {
+                listener.Stop();
+            }
+            catch (Exception)
+            {
+            }
         }
-        catch (Exception)
-        {
-        }
+
+        _listeners.Clear();
 
         foreach (var session in sessions)
             session.Abort();
@@ -98,13 +110,73 @@ public class FtpsServer(IFtpsServerLog log, FtpsServerConfiguration config, IFtp
         _log.Info("Server stopped");
     }
 
-    private async Task AcceptClientsAsync()
+    // 0.0.0.0 and :: mean every interface. One dual-stack socket accepts both families.
+    // When the OS refuses a dual-stack socket, IPv4 and IPv6 are bound separately.
+    private void StartListeners(string configuredIp, int port)
+    {
+        if (!IsWildcard(configuredIp))
+        {
+            Listen(IPAddress.Parse(configuredIp), port, dualStack: false);
+            return;
+        }
+
+        try
+        {
+            Listen(IPAddress.IPv6Any, port, dualStack: true);
+            return;
+        }
+        catch (Exception ex)
+        {
+            _log.Warn($"Dual-stack listen on [::]:{port} failed ({ex.Message}). Binding IPv4 and IPv6 separately.");
+        }
+
+        Exception? failure = null;
+        try
+        {
+            Listen(IPAddress.Any, port, dualStack: false);
+        }
+        catch (Exception ex)
+        {
+            failure = ex;
+            _log.Warn($"IPv4 listen on 0.0.0.0:{port} failed ({ex.Message}).");
+        }
+
+        try
+        {
+            Listen(IPAddress.IPv6Any, port, dualStack: false);
+        }
+        catch (Exception ex)
+        {
+            failure ??= ex;
+            _log.Warn($"IPv6 listen on [::]:{port} failed ({ex.Message}).");
+        }
+
+        if (_listeners.Count == 0)
+            throw failure ?? new InvalidOperationException("Could not bind a listen socket.");
+    }
+
+    private void Listen(IPAddress address, int port, bool dualStack)
+    {
+        var listener = new TcpListener(address, port);
+        if (address.AddressFamily == AddressFamily.InterNetworkV6)
+            listener.Server.DualMode = dualStack;
+        listener.Start();
+        _listeners.Add(listener);
+    }
+
+    private static bool IsWildcard(string configuredIp)
+    {
+        var text = configuredIp.Trim();
+        return text.Length == 0 || text is "0.0.0.0" or "::" or "::0";
+    }
+
+    private async Task AcceptClientsAsync(TcpListener listener)
     {
         while (_isRunning)
         {
             try
             {
-                var client = await _listener!.AcceptTcpClientAsync();
+                var client = await listener.AcceptTcpClientAsync();
                 var endpoint = client.Client.RemoteEndPoint;
 
                 if (endpoint is IPEndPoint remote && _loginThrottle.IsLocked(remote.Address, DateTime.UtcNow))

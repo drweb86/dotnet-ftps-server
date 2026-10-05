@@ -40,6 +40,7 @@ class FtpsClientSession(
     private var dataListener: ServerSocket? = null
     private var dataSocket: Socket? = null
     private var passive = false
+    private var extendedPassiveOnly = false
     private var dataProtection = DataProtection.Clear
     private val clientAddress = socket.remoteSocketAddress?.toString() ?: "unknown"
     private val clientIpKey = socket.inetAddress?.let { LoginThrottle.key(it) }
@@ -104,6 +105,7 @@ class FtpsClientSession(
                     else send(200, "Type set to ${argument.uppercase(Locale.ROOT)}")
                 }
                 "PASV" -> handlePasv()
+                "EPSV" -> handleEpsv(argument)
                 "LIST" -> handleList(argument)
                 "MLSD" -> handleMlsd(argument)
                 "MLST" -> handleMlst(argument)
@@ -454,8 +456,45 @@ class FtpsClientSession(
             send(530, "Not logged in")
             return
         }
+        if (extendedPassiveOnly) {
+            send(501, "EPSV ALL in effect")
+            return
+        }
+        if (canonicalHost(socket.localAddress).size != 4) {
+            send(522, "Network protocol not supported, use (2)")
+            return
+        }
+        enterPassive(extended = false)
+    }
+
+    // EPSV carries only the port. The client connects to the same address it used for the
+    // control connection, which is how an IPv6 transfer works. PASV cannot name an IPv6 address.
+    private fun handleEpsv(argument: String) {
+        if (!checkAuth()) {
+            send(530, "Not logged in")
+            return
+        }
+        val requested = argument.trim()
+        if (requested.equals("ALL", ignoreCase = true)) {
+            extendedPassiveOnly = true
+            send(200, "EPSV ALL ok")
+            return
+        }
+        if (requested.isNotEmpty() && requested != "1" && requested != "2") {
+            send(501, "Invalid EPSV argument")
+            return
+        }
+        val family = if (canonicalHost(socket.localAddress).size == 4) "1" else "2"
+        if (requested.isNotEmpty() && requested != family) {
+            send(522, "Network protocol not supported, use ($family)")
+            return
+        }
+        enterPassive(extended = true)
+    }
+
+    private fun enterPassive(extended: Boolean) {
         closePasv()
-        val local = socket.localAddress
+        val local = bindAddress(socket.localAddress)
         val listener = ServerSocket(0, 1, local)
         listener.soTimeout = DATA_CONNECT_TIMEOUT_MS.toInt()
         synchronized(ioLock) {
@@ -466,11 +505,15 @@ class FtpsClientSession(
             dataListener = listener
         }
         passive = true
-        val ip = pasvIpv4(local)
         val port = listener.localPort
-        val response = "Entering Passive Mode (${ip[0].toUByte()},${ip[1].toUByte()},${ip[2].toUByte()},${ip[3].toUByte()},${port / 256},${port % 256})"
+        val response = if (extended) {
+            "Entering Extended Passive Mode (|||$port|)"
+        } else {
+            val ip = canonicalHost(local)
+            "Entering Passive Mode (${ip[0].toUByte()},${ip[1].toUByte()},${ip[2].toUByte()},${ip[3].toUByte()},${port / 256},${port % 256})"
+        }
         log.debug("[$clientAddress] $response")
-        send(227, response)
+        send(if (extended) 229 else 227, response)
     }
 
     private fun wrapData(client: Socket): Socket {
@@ -501,7 +544,7 @@ class FtpsClientSession(
     private fun acceptData(): Socket? {
         val listener = dataListener
         if (!passive || listener == null) {
-            send(425, "Use PASV first")
+            send(425, "Use PASV or EPSV first")
             return null
         }
         if (!dataEncryptedOk()) {
@@ -842,6 +885,7 @@ class FtpsClientSession(
             " AUTH TLS",
             " PBSZ",
             " PROT",
+            " EPSV",
             " SIZE",
             " MDTM",
             " MLST $mlst",
@@ -965,9 +1009,9 @@ class FtpsClientSession(
         return bytes
     }
 
-    private fun pasvIpv4(local: InetAddress): ByteArray {
+    private fun bindAddress(local: InetAddress): InetAddress {
         val bytes = canonicalHost(local)
-        return if (bytes.size == 4) bytes else byteArrayOf(127, 0, 0, 1)
+        return if (bytes.size == 4) InetAddress.getByAddress(bytes) else local
     }
 
     private fun checkPerm(read: Boolean, write: Boolean): Boolean {

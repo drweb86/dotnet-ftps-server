@@ -8,7 +8,8 @@ public class FtpsServerSettings
     /// The IP address server will be listening to.
     /// Optional parameter.
     /// Default value: 0.0.0.0.
-    /// 0.0.0.0 - listen on every available network interface.
+    /// 0.0.0.0, ::, and ::0 listen on every IPv4 and IPv6 interface.
+    /// Any other address listens on that address only.
     /// </summary>
     public string? Ip { get; set; } = "0.0.0.0";
 

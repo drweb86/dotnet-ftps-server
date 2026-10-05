@@ -8,6 +8,7 @@ using System.Text;
 namespace FtpsServerLibrary.Tests;
 
 // The lockout must also stop connections that were opened before it started.
+[Collection("FtpsServer")]
 public class LoginLockoutSessionTests : IDisposable
 {
     private const string Login = "alice";
@@ -16,21 +17,31 @@ public class LoginLockoutSessionTests : IDisposable
     private readonly string _folder = Directory.CreateTempSubdirectory("ftps-lockout-").FullName;
     private readonly X509Certificate2 _certificate = CreateCertificate();
     private readonly FtpsServer _server;
-    private readonly int _port = FreePort();
+    private readonly int _port;
 
     public LoginLockoutSessionTests()
     {
-        var config = new FtpsServerConfiguration
+        FtpsTestGate.Start.Wait();
+        try
         {
-            ServerSettings = new FtpsServerSettings
+            _port = FreePort();
+            var config = new FtpsServerConfiguration
             {
-                Ip = IPAddress.Loopback.ToString(),
-                Port = _port,
-                X509Certificate = _certificate,
-            },
-            Users = [new FtpsServerUserAccount { Login = Login, Password = Password, Folder = _folder, Read = true, Write = true }],
-        };
-        _server = new FtpsServer(new NullLog(), config, new FtpsServerFileSystemProvider());
+                ServerSettings = new FtpsServerSettings
+                {
+                    Ip = IPAddress.Loopback.ToString(),
+                    Port = _port,
+                    X509Certificate = _certificate,
+                },
+                Users = [new FtpsServerUserAccount { Login = Login, Password = Password, Folder = _folder, Read = true, Write = true }],
+            };
+            _server = new FtpsServer(new NullLog(), config, new FtpsServerFileSystemProvider());
+            _server.StartAsync().GetAwaiter().GetResult();
+        }
+        finally
+        {
+            FtpsTestGate.Start.Release();
+        }
     }
 
     public void Dispose()
@@ -43,8 +54,6 @@ public class LoginLockoutSessionTests : IDisposable
     [Fact]
     public async Task OpenConnectionCannotLogInDuringLockout()
     {
-        await _server.StartAsync();
-
         await using (var control = await TestClient.ConnectTlsAsync(_port))
         {
             Assert.StartsWith("331", await control.CommandAsync($"USER {Login}"));

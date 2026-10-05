@@ -17,7 +17,6 @@ import com.siarheikuchuk.ftpsserver.server.FtpsServerSettings
 import com.siarheikuchuk.ftpsserver.server.LoadedCertificate
 import com.siarheikuchuk.ftpsserver.service.FtpsForegroundService
 import com.siarheikuchuk.ftpsserver.service.ServerEvents
-import java.net.Inet4Address
 import java.net.NetworkInterface
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -258,8 +257,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         for (nic in ifaces) {
             if (!nic.isUp || nic.isLoopback) continue
             val addrs = nic.inetAddresses.toList()
-                .filter { !it.isLoopbackAddress && it is Inet4Address }
-                .map { it.hostAddress ?: it.toString() }
+                .filter { !it.isLoopbackAddress && !it.isLinkLocalAddress && !it.isMulticastAddress }
+                .map { it.hostAddress?.substringBefore('%') ?: it.toString() }
             if (addrs.isNotEmpty()) rows += NetworkRow(nic.displayName ?: nic.name, addrs)
         }
         return rows

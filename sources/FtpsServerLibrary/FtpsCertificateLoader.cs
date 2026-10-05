@@ -107,7 +107,7 @@ class FtpsCertificateLoader(IFtpsServerLog log, IFtpsServerFileSystemProvider fi
         sanBuilder.AddIpAddress(IPAddress.IPv6Loopback);
         sanBuilder.AddDnsName("localhost");
         sanBuilder.AddDnsName(Environment.MachineName);
-        foreach (var address in AdvertisedIpv4())
+        foreach (var address in AdvertisedAddresses())
             sanBuilder.AddIpAddress(address);
 
         X500DistinguishedName distinguishedName = new($"CN=FtpsServerLibrary-SelfSigned-Certificates");
@@ -214,7 +214,7 @@ class FtpsCertificateLoader(IFtpsServerLog log, IFtpsServerFileSystemProvider fi
             }
         }
 
-        foreach (var address in AdvertisedIpv4())
+        foreach (var address in AdvertisedAddresses())
         {
             if (!present.Contains(address))
                 return false;
@@ -223,7 +223,10 @@ class FtpsCertificateLoader(IFtpsServerLog log, IFtpsServerFileSystemProvider fi
         return true;
     }
 
-    private static IEnumerable<IPAddress> AdvertisedIpv4()
+    // Global and unique-local addresses go on the certificate. Link-local addresses need a
+    // zone id the certificate cannot store, and temporary privacy addresses change often
+    // enough that including them would replace the certificate and its fingerprint.
+    private static IEnumerable<IPAddress> AdvertisedAddresses()
     {
         var seen = new HashSet<IPAddress>();
         foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
@@ -233,13 +236,30 @@ class FtpsCertificateLoader(IFtpsServerLog log, IFtpsServerFileSystemProvider fi
 
             foreach (var unicast in nic.GetIPProperties().UnicastAddresses)
             {
-                var address = unicast.Address;
-                if (address.AddressFamily != AddressFamily.InterNetwork || IPAddress.IsLoopback(address))
+                if (!IsAdvertised(unicast))
                     continue;
-                if (seen.Add(address))
-                    yield return address;
+                if (seen.Add(unicast.Address))
+                    yield return unicast.Address;
             }
         }
+    }
+
+    private static bool IsAdvertised(UnicastIPAddressInformation unicast)
+    {
+        var address = unicast.Address;
+        if (IPAddress.IsLoopback(address) || address.IsIPv4MappedToIPv6)
+            return false;
+        if (address.AddressFamily == AddressFamily.InterNetwork)
+            return true;
+        if (address.AddressFamily != AddressFamily.InterNetworkV6)
+            return false;
+        if (address.IsIPv6LinkLocal || address.IsIPv6Multicast)
+            return false;
+        // Windows temporary privacy addresses change often enough to replace the certificate
+        // and its fingerprint. Other systems do not assign that origin.
+        if (!OperatingSystem.IsWindows())
+            return true;
+        return unicast.SuffixOrigin != SuffixOrigin.Random;
     }
 
     // The key lives in Self-Signed.pfx. On Windows the default key set imports it into a

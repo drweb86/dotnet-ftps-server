@@ -54,6 +54,7 @@ class FtpsServerClientSession(
 
     // FTPS data connection protection level
     private FtpsServerDataConnectionProtection _dataProtection = FtpsServerDataConnectionProtection.Clear;
+    private bool _extendedPassiveOnly;
 
     private const int MaxCommandLineLength = 8192;
     internal static readonly TimeSpan UnauthenticatedIdleTimeout = TimeSpan.FromSeconds(30);
@@ -203,6 +204,9 @@ class FtpsServerClientSession(
                     break;
                 case "PASV":
                     await HandlePasvAsync();
+                    break;
+                case "EPSV":
+                    await HandleEpsvAsync(argument);
                     break;
                 case "LIST":
                     await HandleListAsync(argument);
@@ -783,8 +787,59 @@ class FtpsServerClientSession(
             return;
         }
 
+        if (_extendedPassiveOnly)
+        {
+            await SendResponseAsync(501, "EPSV ALL in effect");
+            return;
+        }
+
+        if (ControlAddress().AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
+        {
+            await SendResponseAsync(522, "Network protocol not supported, use (2)");
+            return;
+        }
+
+        await EnterPassiveAsync(extended: false);
+    }
+
+    // EPSV carries only the port. The client connects to the same address it used for the
+    // control connection, which is how an IPv6 transfer works. PASV cannot name an IPv6 address.
+    private async Task HandleEpsvAsync(string argument)
+    {
+        if (!CheckAuthentication())
+        {
+            await SendResponseAsync(530, "Not logged in");
+            return;
+        }
+
+        var requested = argument.Trim();
+        if (requested.Equals("ALL", StringComparison.OrdinalIgnoreCase))
+        {
+            _extendedPassiveOnly = true;
+            await SendResponseAsync(200, "EPSV ALL ok");
+            return;
+        }
+
+        if (requested.Length > 0 && requested is not ("1" or "2"))
+        {
+            await SendResponseAsync(501, "Invalid EPSV argument");
+            return;
+        }
+
+        var family = ControlAddress().AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork ? "1" : "2";
+        if (requested.Length > 0 && requested != family)
+        {
+            await SendResponseAsync(522, $"Network protocol not supported, use ({family})");
+            return;
+        }
+
+        await EnterPassiveAsync(extended: true);
+    }
+
+    private async Task EnterPassiveAsync(bool extended)
+    {
         StopDataListener();
-        var localIp = NormalizeIp(((IPEndPoint)_controlClient.Client.LocalEndPoint!).Address);
+        var localIp = ControlAddress();
         var listener = new TcpListener(localIp, 0);
         listener.Start();
         lock (_abortLock)
@@ -800,15 +855,29 @@ class FtpsServerClientSession(
 
         var endpoint = (IPEndPoint)_dataListener.LocalEndpoint;
         _isPassiveMode = true;
-
-        var ipBytes = localIp.GetAddressBytes();
-        if (ipBytes.Length != 4)
-            ipBytes = [127, 0, 0, 1];
         var port = endpoint.Port;
 
-        var response = $"Entering Passive Mode ({ipBytes[0]},{ipBytes[1]},{ipBytes[2]},{ipBytes[3]},{port / 256},{port % 256})";
+        string response;
+        int code;
+        if (extended)
+        {
+            code = 229;
+            response = $"Entering Extended Passive Mode (|||{port}|)";
+        }
+        else
+        {
+            var ipBytes = localIp.GetAddressBytes();
+            code = 227;
+            response = $"Entering Passive Mode ({ipBytes[0]},{ipBytes[1]},{ipBytes[2]},{ipBytes[3]},{port / 256},{port % 256})";
+        }
+
         _log.Debug($"[{_clientAddress}] {response}");
-        await SendResponseAsync(227, response);
+        await SendResponseAsync(code, response);
+    }
+
+    private IPAddress ControlAddress()
+    {
+        return NormalizeIp(((IPEndPoint)_controlClient.Client.LocalEndPoint!).Address);
     }
 
     // Unix ls -l: time if modified in the last six months, otherwise year.
@@ -1282,6 +1351,7 @@ class FtpsServerClientSession(
             " AUTH TLS",
             " PBSZ",
             " PROT",
+            " EPSV",
             " SIZE",
             " MDTM",
             " MLST " + mlstFacts,
@@ -1366,7 +1436,7 @@ class FtpsServerClientSession(
     {
         if (!_isPassiveMode || _dataListener == null)
         {
-            await SendResponseAsync(425, "Use PASV first");
+            await SendResponseAsync(425, "Use PASV or EPSV first");
             return null;
         }
 

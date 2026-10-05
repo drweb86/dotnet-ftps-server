@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Base64
 import com.siarheikuchuk.ftpsserver.security.KeystoreCipher
 import java.io.File
-import java.net.Inet4Address
+import java.net.Inet6Address
 import java.net.InetAddress
 import java.net.NetworkInterface
 import java.security.KeyPairGenerator
@@ -115,24 +115,42 @@ object Certificates {
 
     private fun isCurrent(loaded: LoadedCertificate): Boolean {
         if (loaded.x509.notAfter.time <= System.currentTimeMillis() + WEEK_MS) return false
-        val present = sanIpv4(loaded.x509)
-        return advertisedIpv4().all { it in present }
+        val present = sanAddresses(loaded.x509)
+        return advertisedAddresses().all { it in present }
     }
 
-    private fun advertisedIpv4(): Set<String> {
+    // Global and unique-local addresses go on the certificate. Link-local addresses need a
+    // zone id the certificate cannot store.
+    private fun advertisedHosts(): List<String> {
         val ips = linkedSetOf<String>()
-        val ifaces = NetworkInterface.getNetworkInterfaces() ?: return ips
+        val ifaces = NetworkInterface.getNetworkInterfaces() ?: return emptyList()
         for (nic in ifaces) {
             if (!nic.isUp || nic.isLoopback) continue
             for (addr in nic.inetAddresses) {
-                if (addr.isLoopbackAddress || addr !is Inet4Address) continue
-                addr.hostAddress?.let { ips += it }
+                if (!isAdvertised(addr)) continue
+                addr.hostAddress?.substringBefore('%')?.let { ips += it }
             }
         }
-        return ips
+        return ips.toList()
     }
 
-    private fun sanIpv4(cert: X509Certificate): Set<String> {
+    private fun advertisedAddresses(): Set<String> =
+        advertisedHosts().mapNotNull { addressKey(it) }.toSet()
+
+    private fun isAdvertised(addr: InetAddress): Boolean {
+        if (addr.isLoopbackAddress || addr.isLinkLocalAddress || addr.isMulticastAddress) return false
+        if (addr is Inet6Address) {
+            val bytes = addr.address
+            val mapped = bytes.size == 16 &&
+                (0..9).all { bytes[it].toInt() == 0 } &&
+                bytes[10] == 0xff.toByte() &&
+                bytes[11] == 0xff.toByte()
+            return !mapped
+        }
+        return true
+    }
+
+    private fun sanAddresses(cert: X509Certificate): Set<String> {
         val ips = mutableSetOf<String>()
         val names = try {
             cert.subjectAlternativeNames
@@ -144,13 +162,25 @@ object Certificates {
             val type = (name[0] as? Number)?.toInt() ?: continue
             if (type != 7) continue
             when (val value = name[1]) {
-                is String -> ips += value
+                is String -> addressKey(value)?.let { ips += it }
                 is ByteArray -> {
-                    if (value.size == 4) InetAddress.getByAddress(value).hostAddress?.let { ips += it }
+                    if (value.size == 4 || value.size == 16) {
+                        InetAddress.getByAddress(value).hostAddress?.let { addressKey(it)?.let { key -> ips += key } }
+                    }
                 }
             }
         }
         return ips
+    }
+
+    private fun addressKey(text: String?): String? {
+        if (text.isNullOrBlank()) return null
+        val host = text.substringBefore('%')
+        return try {
+            InetAddress.getByName(host).address.joinToString(":") { "%02x".format(it) }
+        } catch (_: Exception) {
+            host
+        }
     }
 
     private fun loadPkcs12(file: File, password: String): KeyStore {
@@ -205,10 +235,11 @@ object Certificates {
         )
         val san = mutableListOf(
             GeneralName(GeneralName.iPAddress, "127.0.0.1"),
+            GeneralName(GeneralName.iPAddress, "::1"),
             GeneralName(GeneralName.dNSName, "localhost"),
         )
-        for (ip in advertisedIpv4()) {
-            if (ip != "127.0.0.1") san += GeneralName(GeneralName.iPAddress, ip)
+        for (addr in advertisedHosts()) {
+            san += GeneralName(GeneralName.iPAddress, addr)
         }
         val names = GeneralNames(san.toTypedArray())
         builder.addExtension(Extension.subjectAlternativeName, false, names)

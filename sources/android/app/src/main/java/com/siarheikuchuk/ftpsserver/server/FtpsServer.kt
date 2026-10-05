@@ -1,6 +1,7 @@
 package com.siarheikuchuk.ftpsserver.server
 
 import java.net.InetAddress
+import java.net.InetSocketAddress
 import java.net.ServerSocket
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicBoolean
@@ -19,7 +20,7 @@ class FtpsServer(
     private val loginThrottle = LoginThrottle()
     private val gate = Any()
     private val sessions = mutableSetOf<FtpsClientSession>()
-    private var listener: ServerSocket? = null
+    private val listeners = mutableListOf<ServerSocket>()
     private var maxConnections = 10
 
     val loadedCertificate: LoadedCertificate? get() = certificate
@@ -31,11 +32,45 @@ class FtpsServer(
             log.warn("Max connections $requestedMax is outside 1..${FtpsServerSettings.MAX_CONNECTIONS_UPPER_BOUND}. Using $maxConnections.")
         }
         val port = config.settings.port
-        val bind = InetAddress.getByName(config.settings.ip)
-        listener = ServerSocket(port, 50, bind)
+        openListeners(config.settings.ip, port)
         running.set(true)
-        log.info("FTPS Server started successfully on ${config.settings.ip}:$port (Explicit encryption)")
-        pool.execute { acceptLoop() }
+        val bound = listeners.joinToString(" and ") { it.localSocketAddress?.toString() ?: config.settings.ip }
+        log.info("FTPS Server started successfully on $bound (Explicit encryption)")
+        for (socket in listeners.toList()) {
+            pool.execute { acceptLoop(socket) }
+        }
+    }
+
+    // 0.0.0.0 and :: listen on every interface. IPv6 is opened first. On a dual-stack
+    // socket that already accepts IPv4, the IPv4 bind fails and that one socket serves both.
+    private fun openListeners(ip: String, port: Int) {
+        if (!isWildcard(ip)) {
+            listeners += ServerSocket(port, 50, InetAddress.getByName(ip))
+            return
+        }
+
+        try {
+            val v6 = ServerSocket()
+            v6.reuseAddress = true
+            v6.bind(InetSocketAddress(InetAddress.getByName("::"), port), 50)
+            listeners += v6
+        } catch (e: Exception) {
+            log.warn("IPv6 listen on [::]:$port failed (${e.message}).")
+        }
+
+        try {
+            listeners += ServerSocket(port, 50, InetAddress.getByName("0.0.0.0"))
+        } catch (e: Exception) {
+            if (listeners.isEmpty()) throw e
+            log.info("IPv4 shares the IPv6 socket on port $port.")
+        }
+
+        if (listeners.isEmpty()) error("Could not bind a listen socket.")
+    }
+
+    private fun isWildcard(ip: String): Boolean {
+        val text = ip.trim()
+        return text.isEmpty() || text == "0.0.0.0" || text == "::" || text == "::0"
     }
 
     fun stop() {
@@ -44,17 +79,18 @@ class FtpsServer(
             running.set(false)
             open = sessions.toList()
         }
-        try {
-            listener?.close()
-        } catch (_: Exception) {
+        for (socket in listeners.toList()) {
+            try {
+                socket.close()
+            } catch (_: Exception) {
+            }
         }
-        listener = null
+        listeners.clear()
         for (session in open) session.close()
         log.info("Server stopped")
     }
 
-    private fun acceptLoop() {
-        val server = listener ?: return
+    private fun acceptLoop(server: ServerSocket) {
         while (running.get()) {
             try {
                 val client = server.accept()
