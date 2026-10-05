@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ 新增</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>你嘅電腦可以透過名稱或 IP 地址喺區域網絡入面存取。</value>
   </data>
@@ -134,13 +131,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>錯誤</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
-    <comment>Format: {0} = version number</comment>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS Server</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>授權條款</value>

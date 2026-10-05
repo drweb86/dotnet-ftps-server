@@ -40,7 +40,7 @@
               VerticalAlignment="Center">
 
         <MenuItem x:Name="AboutMenuItem"
-              Header="{x:Static res:Strings.MenuHeader}"
+              Header="FTPS Server - Siarhei Kuchuk"
               VerticalAlignment="Center">
             <MenuItem.Icon>
                 <Image Source="../FtpsApp.png" />

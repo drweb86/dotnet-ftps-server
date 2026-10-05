@@ -60,9 +60,6 @@
   </resheader>
 
   <!-- Main Window -->
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS சேவையகம்</value>
-  </data>
   <data name="UsersTab" xml:space="preserve">
     <value>பயனர்கள்</value>
   </data>
@@ -71,9 +68,6 @@
   </data>
 
   <!-- Main Menu -->
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS சேவையகம்</value>
-  </data>
   <data name="MenuWebSite" xml:space="preserve">
     <value>இணையதளம்</value>
   </data>
@@ -94,9 +88,6 @@
   </data>
   <data name="MenuStop" xml:space="preserve">
     <value>[ நிறுத்து ]</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS சேவையகம் - V{0}</value>
   </data>
 
   <!-- Server Configuration -->

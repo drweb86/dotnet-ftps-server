@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Fi kun</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>A le wọle si kọmputa rẹ ni LAN nipasẹ orukọ rẹ tabi adirẹsi IP rẹ.</value>
   </data>
@@ -137,13 +134,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Aṣiṣe</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
-    <comment>Format: {0} = version number</comment>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS Server</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>Iwe-aṣẹ</value>

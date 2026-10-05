@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Добавить</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Сервер</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>К вашему ПК можно получить доступ в локальной сети по имени или IP-адресу.</value>
   </data>
@@ -131,12 +128,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Ошибка</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Сервер - V{0}</value>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS Сервер</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>Лицензия</value>

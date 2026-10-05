@@ -1,5 +1,4 @@
 using FtpsServerAppsShared.Services;
-using FtpsServerWindows.Resources;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -23,9 +22,7 @@ namespace FtpsServerWindows
         {
             InitializeComponent();
 
-            // Set menu item header with version
-            var version = CopyrightInfo.Version;
-            AboutMenuItem.Header = string.Format(Strings.MenuAboutFormat, CopyrightInfo.Version.ToString(3));
+            AboutMenuItem.Header = $"FTPS Server - Siarhei Kuchuk - V{CopyrightInfo.Version.ToString(3)}";
         }
 
         private void StartStopButton_Click(object sender, RoutedEventArgs e)

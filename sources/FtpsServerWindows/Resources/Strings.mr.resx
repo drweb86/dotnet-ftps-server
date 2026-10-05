@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ जोडा</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>तुमचा PC LAN मध्ये त्याच्या नावाने किंवा IP पत्त्याद्वारे ऍक्सेस केला जाऊ शकतो.</value>
   </data>
@@ -131,12 +128,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>त्रुटी</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS Server</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>परवाना</value>

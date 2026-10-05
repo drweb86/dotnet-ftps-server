@@ -14,7 +14,7 @@
 
     <Menu WindowDecorationProperties.ElementRole="DecorationsElement" Margin="8" VerticalAlignment="Center">
         <MenuItem x:Name="AboutMenuItem"
-              Header="{x:Static res:Strings.MenuHeader}"
+              Header="FTPS Server - Siarhei Kuchuk"
               VerticalAlignment="Center">
             <MenuItem.Icon>
                 <Image Source="../Assets/FtpsApp.png" />

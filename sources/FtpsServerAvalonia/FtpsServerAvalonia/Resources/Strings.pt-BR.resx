@@ -60,9 +60,6 @@
   </resheader>
 
   <!-- Main Window -->
-  <data name="AppTitle" xml:space="preserve">
-    <value>Servidor FTPS</value>
-  </data>
   <data name="UsersTab" xml:space="preserve">
     <value>Usuários</value>
   </data>
@@ -71,9 +68,6 @@
   </data>
 
   <!-- Main Menu -->
-  <data name="MenuHeader" xml:space="preserve">
-    <value>Servidor FTPS</value>
-  </data>
   <data name="MenuWebSite" xml:space="preserve">
     <value>Site</value>
   </data>
@@ -94,9 +88,6 @@
   </data>
   <data name="MenuStop" xml:space="preserve">
     <value>[ PARAR ]</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>Servidor FTPS - V{0}</value>
   </data>
 
   <!-- Server Configuration -->

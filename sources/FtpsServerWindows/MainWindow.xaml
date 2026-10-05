@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:FtpsServerWindows"
         xmlns:controls="clr-namespace:FtpsServerWindows.Controls"
         xmlns:res="clr-namespace:FtpsServerWindows.Resources"
-        Title="{x:Static res:Strings.AppTitle}"
+        Title="FTPS Server - Siarhei Kuchuk"
         Background="{StaticResource WindowBackgroundBrush}"
         Foreground="{StaticResource WindowForegroundBrush}"
         MinWidth="720"

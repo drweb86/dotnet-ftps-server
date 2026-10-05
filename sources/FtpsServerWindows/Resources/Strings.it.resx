@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Aggiungi</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>Il tuo PC è accessibile nella LAN tramite il suo nome o indirizzo IP.</value>
   </data>
@@ -131,12 +128,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Errore</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS Server</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>Licenza</value>

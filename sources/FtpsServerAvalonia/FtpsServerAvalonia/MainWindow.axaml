@@ -3,7 +3,7 @@
         xmlns:controls="using:FtpsServerAvalonia.Controls"
         xmlns:res="using:FtpsServerAvalonia.Resources"
         x:Class="FtpsServerAvalonia.MainWindow"
-        Title="{x:Static res:Strings.AppTitle}"
+        Title="FTPS Server - Siarhei Kuchuk"
         MinWidth="720"
         CanResize="True"
         Background="{StaticResource WindowBackgroundBrush}">

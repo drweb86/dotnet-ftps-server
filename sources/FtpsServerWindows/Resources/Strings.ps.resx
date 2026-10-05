@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ اضافه کړئ</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>ستاسو کمپیوټر ته د شبکې (LAN) کې د هغه نوم یا IP پته له لارې لاسرسی ممکن دی.</value>
   </data>
@@ -137,13 +134,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>تېروتنه</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
-    <comment>Format: {0} = version number</comment>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS Server</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>جواز</value>

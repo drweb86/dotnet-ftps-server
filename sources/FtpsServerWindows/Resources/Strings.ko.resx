@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ 추가</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS 서버</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>귀하의 PC는 LAN에서 이름 또는 IP 주소로 액세스할 수 있습니다.</value>
   </data>
@@ -131,12 +128,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>오류</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS 서버 - V{0}</value>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS 서버</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>라이선스</value>

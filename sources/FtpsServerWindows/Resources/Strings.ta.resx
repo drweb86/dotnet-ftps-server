@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ சேர்</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS சேவையகம்</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>உங்கள் கணினியை LAN-ல் அதன் பெயர் அல்லது IP முகவரி மூலம் அணுகலாம்.</value>
   </data>
@@ -131,12 +128,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>பிழை</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS சேவையகம் - V{0}</value>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS சேவையகம்</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>உரிமம்</value>

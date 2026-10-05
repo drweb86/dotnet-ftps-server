@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ 添加</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS 服务器</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>您的计算机可以通过其名称或IP地址在局域网中访问。</value>
   </data>
@@ -131,12 +128,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>错误</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS 服务器 - V{0}</value>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS 服务器</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>许可证</value>

@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ జోడించు</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS సర్వర్</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>మీ PC ని LAN లో దాని పేరు లేదా IP అడ్రస్ ద్వారా యాక్సెస్ చేయవచ్చు.</value>
   </data>
@@ -131,12 +128,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>దోషం</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS సర్వర్ - V{0}</value>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS సర్వర్</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>లైసెన్స్</value>

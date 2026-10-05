@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ ထည့်ရန်</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>သင့်ကွန်ပျူတာကို LAN တွင် ၎င်း၏နာမည် သို့မဟုတ် IP လိပ်စာဖြင့် ဝင်ရောက်နိုင်သည်။</value>
   </data>
@@ -137,13 +134,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>အမှား</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
-    <comment>Format: {0} = version number</comment>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS Server</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>လိုင်စင်</value>

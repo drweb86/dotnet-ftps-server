@@ -60,9 +60,6 @@
   </resheader>
 
   <!-- Main Window -->
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
   <data name="UsersTab" xml:space="preserve">
     <value>ผู้ใช้</value>
   </data>
@@ -71,9 +68,6 @@
   </data>
 
   <!-- Main Menu -->
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS Server</value>
-  </data>
   <data name="MenuWebSite" xml:space="preserve">
     <value>เว็บไซต์</value>
   </data>
@@ -94,10 +88,6 @@
   </data>
   <data name="MenuStop" xml:space="preserve">
     <value>[ หยุด ]</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS Server - V{0}</value>
-    <comment>Format: {0} = version number</comment>
   </data>
 
   <!-- Server Configuration -->

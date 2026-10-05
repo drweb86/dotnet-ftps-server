@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ Ajouter</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>Serveur FTPS</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>Votre PC peut être accessible sur le réseau local par son nom ou son adresse IP.</value>
   </data>
@@ -131,12 +128,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Erreur</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>Serveur FTPS - V{0}</value>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>Serveur FTPS</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>Licence</value>

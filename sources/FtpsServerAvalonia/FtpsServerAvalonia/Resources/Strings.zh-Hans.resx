@@ -60,9 +60,6 @@
   </resheader>
 
   <!-- Main Window -->
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPS 服务器</value>
-  </data>
   <data name="UsersTab" xml:space="preserve">
     <value>用户</value>
   </data>
@@ -71,9 +68,6 @@
   </data>
 
   <!-- Main Menu -->
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPS 服务器</value>
-  </data>
   <data name="MenuWebSite" xml:space="preserve">
     <value>网站</value>
   </data>
@@ -94,9 +88,6 @@
   </data>
   <data name="MenuStop" xml:space="preserve">
     <value>[ 停止 ]</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPS 服务器 - V{0}</value>
   </data>
 
   <!-- Server Configuration -->

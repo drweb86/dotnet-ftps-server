@@ -69,9 +69,6 @@
   <data name="AddUserButton" xml:space="preserve">
     <value>+ 追加</value>
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FTPSサーバー</value>
-  </data>
   <data name="ConfigAccessInfo" xml:space="preserve">
     <value>お使いのPCは、LAN内で名前またはIPアドレスでアクセスできます。</value>
   </data>
@@ -131,12 +128,6 @@
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>エラー</value>
-  </data>
-  <data name="MenuAboutFormat" xml:space="preserve">
-    <value>FTPSサーバー - V{0}</value>
-  </data>
-  <data name="MenuHeader" xml:space="preserve">
-    <value>FTPSサーバー</value>
   </data>
   <data name="MenuLicense" xml:space="preserve">
     <value>ライセンス</value>

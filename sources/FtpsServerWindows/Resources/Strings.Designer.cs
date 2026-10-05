@@ -163,15 +163,6 @@ namespace FtpsServerWindows.Resources {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to FTPS Server.
-        /// </summary>
-        public static string AppTitle {
-            get {
-                return ResourceManager.GetString("AppTitle", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string ConfigAddress {
@@ -645,24 +636,6 @@ namespace FtpsServerWindows.Resources {
         public static string LogsTab {
             get {
                 return ResourceManager.GetString("LogsTab", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to FTPS Server - V{0}.
-        /// </summary>
-        public static string MenuAboutFormat {
-            get {
-                return ResourceManager.GetString("MenuAboutFormat", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to FTPS Server.
-        /// </summary>
-        public static string MenuHeader {
-            get {
-                return ResourceManager.GetString("MenuHeader", resourceCulture);
             }
         }
 

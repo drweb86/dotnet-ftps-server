@@ -4,7 +4,6 @@ using Avalonia.Interactivity;
 using Avalonia.Threading;
 using FtpsServerAppsShared.Services;
 using FtpsServerAvalonia.Commands;
-using FtpsServerAvalonia.Resources;
 using System;
 
 namespace FtpsServerAvalonia.Controls
@@ -26,9 +25,7 @@ namespace FtpsServerAvalonia.Controls
         {
             InitializeComponent();
 
-            // Set menu item header with version
-            var version = CopyrightInfo.Version;
-            AboutMenuItem.Header = string.Format(Strings.MenuAboutFormat, CopyrightInfo.Version.ToString(3));
+            AboutMenuItem.Header = $"FTPS Server - Siarhei Kuchuk - V{CopyrightInfo.Version.ToString(3)}";
 
             LogsMenuItem.IsVisible = new OpenLogsCommand()
                 .CanExecute(this);
