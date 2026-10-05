@@ -132,6 +132,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>라이선스</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>서드파티 고지</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>로그</value>
   </data>

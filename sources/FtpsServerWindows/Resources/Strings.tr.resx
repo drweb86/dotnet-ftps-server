@@ -135,6 +135,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>Lisans</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>Üçüncü taraf bildirimleri</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>Günlükler</value>
   </data>

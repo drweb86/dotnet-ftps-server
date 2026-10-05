@@ -138,6 +138,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>Lasisin</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>Sanarwar wasu ɓangarori</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>Rikodin</value>
   </data>

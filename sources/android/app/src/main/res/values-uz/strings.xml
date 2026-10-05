@@ -6,6 +6,7 @@
     <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Veb-sayt</string>
     <string name="menu_license">Litsenziya</string>
+    <string name="menu_third_party_notices">Uchinchi tomon bildirishnomalari</string>
     <string name="menu_logs">Jurnallar</string>
     <string name="logs_tab">Server jurnallari</string>
     <string name="clear_logs">Tozalash</string>

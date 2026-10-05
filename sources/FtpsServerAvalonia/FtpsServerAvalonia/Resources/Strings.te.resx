@@ -74,6 +74,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>లైసెన్స్</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>మూడవ పక్ష నోటీసులు</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>లాగ్‌లు</value>
   </data>

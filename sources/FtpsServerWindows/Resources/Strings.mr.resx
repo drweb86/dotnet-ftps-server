@@ -132,6 +132,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>परवाना</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>तृतीय-पक्ष सूचना</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>लॉग</value>
   </data>

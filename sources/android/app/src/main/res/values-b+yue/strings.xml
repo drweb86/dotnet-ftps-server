@@ -6,6 +6,7 @@
     <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">網站</string>
     <string name="menu_license">授權條款</string>
+    <string name="menu_third_party_notices">第三方聲明</string>
     <string name="menu_logs">日誌</string>
     <string name="logs_tab">伺服器日誌</string>
     <string name="clear_logs">清除</string>

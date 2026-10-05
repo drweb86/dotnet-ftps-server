@@ -6,6 +6,7 @@
     <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Веб-сайт</string>
     <string name="menu_license">Лицензия</string>
+    <string name="menu_third_party_notices">Үшінші тарап хабарламалары</string>
     <string name="menu_logs">Журналдар</string>
     <string name="logs_tab">Сервер журналдары</string>
     <string name="clear_logs">Тазалау</string>

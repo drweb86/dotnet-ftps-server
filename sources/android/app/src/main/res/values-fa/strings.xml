@@ -6,6 +6,7 @@
     <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">وب‌سایت</string>
     <string name="menu_license">مجوز</string>
+    <string name="menu_third_party_notices">اعلامیه‌های شخص ثالث</string>
     <string name="menu_logs">گزارش‌ها</string>
     <string name="logs_tab">گزارش‌های سرور</string>
     <string name="clear_logs">پاک کردن</string>

@@ -138,6 +138,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>Лицензия</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>Үшінші тарап хабарламалары</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>Журналдар</value>
   </data>

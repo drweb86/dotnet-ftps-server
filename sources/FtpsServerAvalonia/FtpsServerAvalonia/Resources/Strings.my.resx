@@ -74,6 +74,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>လိုင်စင်</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>ပြင်ပအဖွဲ့အစည်း အသိပေးချက်များ</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>မှတ်တမ်းများ</value>
   </data>

@@ -74,6 +74,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>Litsenziya</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>Uchinchi tomon bildirishnomalari</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>Jurnallar</value>
   </data>

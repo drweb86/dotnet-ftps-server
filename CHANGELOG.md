@@ -2,6 +2,7 @@
 (unpublished)
 
 ## Bug Fixes
+- Windows, Avalonia, Android: the Third-party notices menu label is translated.
 - Library: truncate an existing file on upload so a shorter STOR does not keep the previous contents.
 - Windows, Avalonia: the GitHub update check decompresses the response encoding it receives, including an uncompressed body.
 

@@ -74,6 +74,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>授權條款</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>第三方聲明</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>日誌</value>
   </data>

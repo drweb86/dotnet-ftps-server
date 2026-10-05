@@ -6,6 +6,7 @@
     <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">ویب پاڼه</string>
     <string name="menu_license">جواز</string>
+    <string name="menu_third_party_notices">د دریمې ډلې خبرتیاوې</string>
     <string name="menu_logs">لاګونه</string>
     <string name="logs_tab">د سرور لاګونه</string>
     <string name="clear_logs">پاک کړئ</string>

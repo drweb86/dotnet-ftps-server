@@ -6,6 +6,7 @@
     <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Trang web</string>
     <string name="menu_license">Giấy phép</string>
+    <string name="menu_third_party_notices">Thông báo của bên thứ ba</string>
     <string name="menu_logs">Nhật ký</string>
     <string name="logs_tab">Nhật ký máy chủ</string>
     <string name="clear_logs">Xóa</string>

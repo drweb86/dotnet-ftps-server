@@ -138,6 +138,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>Leseni</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>Arifa za wahusika wengine</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>Kumbukumbu</value>
   </data>

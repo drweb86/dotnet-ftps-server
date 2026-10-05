@@ -138,6 +138,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>इजाजतपत्र</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>तेस्रो-पक्ष सूचनाहरू</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>लगहरू</value>
   </data>

@@ -74,6 +74,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>جواز</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>د دریمې ډلې خبرتیاوې</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>لاګونه</value>
   </data>

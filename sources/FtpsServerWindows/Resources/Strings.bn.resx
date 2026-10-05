@@ -135,6 +135,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>লাইসেন্স</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>তৃতীয় পক্ষের বিজ্ঞপ্তি</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>লগ</value>
   </data>

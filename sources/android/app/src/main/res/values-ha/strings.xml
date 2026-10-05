@@ -6,6 +6,7 @@
     <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Shafin yanar gizo</string>
     <string name="menu_license">Lasisin</string>
+    <string name="menu_third_party_notices">Sanarwar wasu ɓangarori</string>
     <string name="menu_logs">Rikodin</string>
     <string name="logs_tab">Rikodin Uwar Garke</string>
     <string name="clear_logs">Share</string>

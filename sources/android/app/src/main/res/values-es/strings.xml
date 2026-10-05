@@ -6,6 +6,7 @@
     <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Sitio Web</string>
     <string name="menu_license">Licencia</string>
+    <string name="menu_third_party_notices">Avisos de terceros</string>
     <string name="menu_logs">Registros</string>
     <string name="logs_tab">Registros del Servidor</string>
     <string name="clear_logs">Limpiar</string>

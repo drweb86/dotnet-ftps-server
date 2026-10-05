@@ -6,6 +6,7 @@
     <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">الموقع الإلكتروني</string>
     <string name="menu_license">الترخيص</string>
+    <string name="menu_third_party_notices">إشعارات الجهات الخارجية</string>
     <string name="menu_logs">السجلات</string>
     <string name="logs_tab">سجلات الخادم</string>
     <string name="clear_logs">مسح</string>

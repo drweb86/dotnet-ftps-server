@@ -135,6 +135,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>لائسنس</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>فریق ثالث کے نوٹس</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>نوشتہ جات</value>
   </data>

@@ -74,6 +74,9 @@
   <data name="MenuLicense" xml:space="preserve">
     <value>Ліцензія</value>
   </data>
+  <data name="MenuThirdPartyNotices" xml:space="preserve">
+    <value>Повідомлення про сторонні компоненти</value>
+  </data>
   <data name="MenuLogs" xml:space="preserve">
     <value>Журнали</value>
   </data>

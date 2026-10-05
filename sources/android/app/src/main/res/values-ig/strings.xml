@@ -6,6 +6,7 @@
     <string name="menu_header">FTPS Server</string>
     <string name="menu_web_site">Webụsaịtị</string>
     <string name="menu_license">Ikike</string>
+    <string name="menu_third_party_notices">Ọkwa ndị ọzọ</string>
     <string name="menu_logs">Ndekọ</string>
     <string name="logs_tab">Ndekọ Sava</string>
     <string name="clear_logs">Hichapụ</string>
