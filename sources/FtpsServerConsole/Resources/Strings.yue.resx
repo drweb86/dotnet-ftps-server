@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>載入唔到 appsettings.json。會用預設值。</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>已取消設定。</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>留空就用自簽憑證。</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>憑證檔一定要以 .pfx、.pem 或 .der 結尾。</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>憑證路徑係資料夾，唔係檔案：{0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>簽發者：{0}（同主體一樣，自簽）</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>搵唔到憑證檔：{0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>呢個伺服器使用自簽憑證。FTP 客戶端連接嗰陣可能會顯示安全警告。如果提示，喺接受之前將客戶端顯示嘅指紋同下面嘅數值比較。</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>憑證通知</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>如果檔案冇密碼，請留空。</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>伺服器憑證</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>序號：{0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>憑證存放區嘅名稱、位置同主體一定要一齊設定。</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>主體：{0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>類型：{0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>自簽</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>有效期：{0} 至 {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>已設定用戶：{0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>無法由 {0} 載入設定。</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>已由 {0} 載入設定。</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>之後要用呢個設定，請執行：ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>無法儲存設定：{0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>已儲存 {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>設定已儲存到 {0}。</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0}：版權所有 (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>建立資料夾 {0}？</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>用戶 {0} 列出咗多次。</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>加密：顯式</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>嚴重錯誤：{0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>建立唔到資料夾：{0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>已建立 {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>路徑係檔案，唔係資料夾：{0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>資料夾唔存在：{0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>請揀要共用嘅資料夾。</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>用法：
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+選項：
+
+  --help
+      顯示呢個說明。
+
+  --config &lt;path&gt;
+      JSON 設定檔。
+
+  --ip &lt;address&gt;
+      聆聽嘅 IP 地址。預設：0.0.0.0。0.0.0.0、:: 同 ::0 會聆聽所有 IPv4 同 IPv6 介面。
+
+  --port &lt;number&gt;
+      聆聽埠。預設：2121。允許範圍：2121-65535。
+
+  --maxconnections &lt;number&gt;
+      同時連線上限。預設：10。允許範圍：2-100。
+
+  --cert &lt;path&gt;
+      憑證檔（.pfx、.pem 或 .der）。如果設咗密碼，.pfx 會用 --certpass 打開。
+
+  --certpass &lt;password&gt;
+      憑證檔密碼。
+
+  --certstorename &lt;name&gt;
+      存放區名稱：AuthRoot、CertificateAuthority、My、Root 或 TrustedPublisher。要同 --certstorelocation 同 --certstoresubject 一齊指定。
+
+  --certstorelocation &lt;location&gt;
+      存放區位置：CurrentUser 或 LocalMachine。要同 --certstorename 同 --certstoresubject 一齊指定。
+
+  --certstoresubject &lt;subject&gt;
+      喺憑證存放區搵嘅主體名稱。要同 --certstorename 同 --certstorelocation 一齊指定。
+
+  --user &lt;login#password#folder#permissions&gt;
+      新增用戶。權限：R（讀取）、W（寫入）或 RW。資料夾一定要已經存在。四個欄位入面唔好用 #。
+
+例子：
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+冇參數嗰陣，如果目前資料夾有 appsettings.json，就會載入佢。
+冇設定用戶嗰陣，會開始互動式設定。
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter 接受醒目嘅預設值。上下鍵選擇。Esc 取消。</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>互動式設定</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>請輸入有效嘅 IP 地址。</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>最大連線數一定要喺 {0} 到 {1} 之間。</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} 一定要係整數。</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>請輸入 {0} 到 {1} 之間嘅埠。</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>未知嘅憑證存放區位置：{0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>未知嘅憑證存放區名稱：{0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP 地址：{0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>所有介面</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>可以用電腦名稱 {0} 連接。</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>選項 {0} 需要一個值。</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} 網絡「{1}」（{2}）：{3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>唔係</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>請輸入密碼。</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>唯讀</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>讀取同寫入</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>請揀讀取、寫入或者兩者。</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>唯寫</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>設定 {0} 用明文儲存密碼。請喺互動式設定再儲存一次，將佢哋加密。</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>聆聽埠：{0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>按 Q 停止伺服器。</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>憑證密碼</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>憑證檔</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>設定檔</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>資料夾</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP 地址</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>最大連線數</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>密碼</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>權限</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>聆聽埠</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>用戶名</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>取代現有檔案 {0}？</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>儲存呢個設定？</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>檔案入面嘅密碼用作業系統金鑰加密，只可以喺呢部電腦讀取。</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS 伺服器啟動緊。</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>伺服器已停止。</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>關閉緊伺服器。</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>已新增用戶 {0}（{1}）。</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>--user 嘅值一定要係 login#password#folder#permissions。</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>用戶 {0}：{1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>請輸入用戶名。</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>加完用戶之後請留空。</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>已設定用戶：{0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>至少需要一個用戶。</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>請新增至少一個用戶。</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>用戶</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>設定無效。</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>係</value></data>
+</root>

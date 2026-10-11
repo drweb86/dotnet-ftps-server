@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>โหลด appsettings.json ไม่ได้ จะใช้ค่าเริ่มต้น</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>ยกเลิกการกำหนดค่าแล้ว</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>เว้นว่างเพื่อใช้ใบรับรองที่ลงนามเอง</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>ไฟล์ใบรับรองต้องลงท้ายด้วย .pfx, .pem หรือ .der</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>เส้นทางใบรับรองเป็นโฟลเดอร์ ไม่ใช่ไฟล์: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>ผู้ออก: {0} (เหมือนเรื่องที่ระบุ ลงนามเอง)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>ไม่พบไฟล์ใบรับรอง: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>เซิร์ฟเวอร์นี้ใช้ใบรับรองที่ลงนามเอง ไคลเอนต์ FTP อาจแสดงคำเตือนความปลอดภัยเมื่อเชื่อมต่อ ถ้ามีข้อความให้เปรียบเทียบลายนิ้วมือในไคลเอนต์กับค่าด้านล่างก่อนยอมรับ</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>ประกาศเกี่ยวกับใบรับรอง</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>เว้นว่างถ้าไฟล์ไม่มีรหัสผ่าน</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>ใบรับรองของเซิร์ฟเวอร์</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>หมายเลขลำดับ: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>ต้องระบุชื่อ ตำแหน่ง และเรื่องของที่เก็บใบรับรองพร้อมกัน</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>เรื่อง: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>ชนิด: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>ลงนามเอง</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>ใช้ได้: {0} ถึง {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>ผู้ใช้ที่กำหนดค่าแล้ว: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>โหลดการกำหนดค่าจาก {0} ไม่ได้</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>โหลดการกำหนดค่าจาก {0} แล้ว</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>หากต้องการใช้การกำหนดค่านี้ภายหลัง ให้รัน: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>บันทึกการกำหนดค่าไม่ได้: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>บันทึกแล้ว: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>บันทึกการกำหนดค่าไปที่ {0} แล้ว</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : ลิขสิทธิ์ (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>สร้างโฟลเดอร์ {0} หรือไม่?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>ผู้ใช้ {0} ถูกระบุมากกว่าหนึ่งครั้ง</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>การเข้ารหัส: แบบชัดแจ้ง</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>ข้อผิดพลาดร้ายแรง: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>สร้างโฟลเดอร์ไม่ได้: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>สร้างแล้ว: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>เส้นทางเป็นไฟล์ ไม่ใช่โฟลเดอร์: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>ไม่มีโฟลเดอร์: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>เลือกโฟลเดอร์ที่จะแชร์</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>วิธีใช้:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+ตัวเลือก:
+
+  --help
+      แสดงความช่วยเหลือนี้
+
+  --config &lt;path&gt;
+      ไฟล์การกำหนดค่า JSON
+
+  --ip &lt;address&gt;
+      ที่อยู่ IP สำหรับรอรับการเชื่อมต่อ ค่าเริ่มต้น: 0.0.0.0 ค่า 0.0.0.0, :: และ ::0 รอรับบนทุกอินเทอร์เฟซ IPv4 และ IPv6
+
+  --port &lt;number&gt;
+      พอร์ตสำหรับรอรับการเชื่อมต่อ ค่าเริ่มต้น: 2121 ช่วงที่อนุญาต: 2121-65535
+
+  --maxconnections &lt;number&gt;
+      จำนวนการเชื่อมต่อพร้อมกันสูงสุด ค่าเริ่มต้น: 10 ช่วงที่อนุญาต: 2-100
+
+  --cert &lt;path&gt;
+      ไฟล์ใบรับรอง (.pfx, .pem หรือ .der) ไฟล์ .pfx จะเปิดด้วย --certpass เมื่อตั้งรหัสผ่าน
+
+  --certpass &lt;password&gt;
+      รหัสผ่านของไฟล์ใบรับรอง
+
+  --certstorename &lt;name&gt;
+      ชื่อที่เก็บ: AuthRoot, CertificateAuthority, My, Root หรือ TrustedPublisher ระบุคู่กับ --certstorelocation และ --certstoresubject
+
+  --certstorelocation &lt;location&gt;
+      ตำแหน่งที่เก็บ: CurrentUser หรือ LocalMachine ระบุคู่กับ --certstorename และ --certstoresubject
+
+  --certstoresubject &lt;subject&gt;
+      ชื่อเรื่องที่จะค้นในที่เก็บใบรับรอง ระบุคู่กับ --certstorename และ --certstorelocation
+
+  --user &lt;login#password#folder#permissions&gt;
+      เพิ่มผู้ใช้ สิทธิ์: R (อ่าน), W (เขียน) หรือ RW โฟลเดอร์ต้องมีอยู่แล้ว อย่าใช้ # ในสี่ช่อง
+
+ตัวอย่าง:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+ถ้าไม่มีอาร์กิวเมนต์ จะโหลด appsettings.json จากโฟลเดอร์ปัจจุบันเมื่อมีไฟล์นั้น
+ถ้ายังไม่กำหนดผู้ใช้ การตั้งค่าแบบโต้ตอบจะเริ่มขึ้น
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter ยอมรับค่าเริ่มต้นที่เน้น ลูกศรขึ้นลงใช้เลือก Esc ยกเลิก</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>การกำหนดค่าแบบโต้ตอบ</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>ป้อนที่อยู่ IP ที่ถูกต้อง</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>จำนวนการเชื่อมต่อสูงสุดต้องอยู่ระหว่าง {0} ถึง {1}</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} ต้องเป็นจำนวนเต็ม</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>ป้อนพอร์ตตั้งแต่ {0} ถึง {1}</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>ตำแหน่งที่เก็บใบรับรองที่ไม่รู้จัก: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>ชื่อที่เก็บใบรับรองที่ไม่รู้จัก: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>ที่อยู่ IP: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>ทุกอินเทอร์เฟซ</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>เชื่อมต่อได้โดยใช้ชื่อคอมพิวเตอร์ {0}</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>ตัวเลือก {0} ต้องมีค่า</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>เครือข่าย {0} '{1}' ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>ไม่ใช่</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>ป้อนรหัสผ่าน</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>อ่านอย่างเดียว</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>อ่านและเขียน</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>เลือกอ่าน เขียน หรือทั้งสองอย่าง</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>เขียนอย่างเดียว</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>การกำหนดค่า {0} เก็บรหัสผ่านเป็นข้อความธรรมดา บันทึกอีกครั้งจากการตั้งค่าแบบโต้ตอบเพื่อเข้ารหัส</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>พอร์ตรอรับ: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>กด Q เพื่อหยุดเซิร์ฟเวอร์</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>รหัสผ่านใบรับรอง</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>ไฟล์ใบรับรอง</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>ไฟล์การกำหนดค่า</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>โฟลเดอร์</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>ที่อยู่ IP</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>การเชื่อมต่อสูงสุด</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>รหัสผ่าน</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>สิทธิ์</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>พอร์ตรอรับ</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>ชื่อผู้ใช้</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>แทนที่ไฟล์ที่มีอยู่ {0} หรือไม่?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>บันทึกการกำหนดค่านี้หรือไม่?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>รหัสผ่านในไฟล์ถูกเข้ารหัสด้วยกุญแจของระบบปฏิบัติการ และอ่านได้เฉพาะบนคอมพิวเตอร์นี้</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>เซิร์ฟเวอร์ FTPS กำลังเริ่มทำงาน</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>หยุดเซิร์ฟเวอร์แล้ว</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>กำลังปิดเซิร์ฟเวอร์</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>เพิ่มผู้ใช้ {0} แล้ว ({1})</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>ค่า --user ต้องอยู่ในรูปแบบ login#password#folder#permissions</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>ผู้ใช้ {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>ป้อนชื่อผู้ใช้</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>เว้นว่างเมื่อเพิ่มผู้ใช้เสร็จแล้ว</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>ผู้ใช้ที่กำหนดค่าแล้ว: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>ต้องมีผู้ใช้อย่างน้อยหนึ่งคน</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>โปรดเพิ่มผู้ใช้อย่างน้อยหนึ่งคน</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>ผู้ใช้</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>การกำหนดค่าไม่ถูกต้อง</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>ใช่</value></data>
+</root>

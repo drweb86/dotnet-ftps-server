@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>تعذر تحميل appsettings.json. ستُستخدم القيم الافتراضية.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>أُلغي الإعداد.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>اتركه فارغًا لاستخدام شهادة موقعة ذاتيًا.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>يجب أن ينتهي ملف الشهادة بـ .pfx أو .pem أو .der.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>مسار الشهادة مجلد وليس ملفًا: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>المُصدِر: {0} (نفس الموضوع، موقّعة ذاتيًا)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>لم يُعثر على ملف الشهادة: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>يستخدم هذا الخادم شهادة موقَّعة ذاتياً. قد تعرض برامج FTP تحذيرًا أمنيًا عند الاتصال. إذا طُلب منك ذلك، قارن البصمة المعروضة في برنامجك مع القيم أدناه قبل القبول.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>إشعار الشهادة</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>اتركه فارغًا إذا لم يكن للملف كلمة مرور.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>شهادة الخادم</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>الرقم التسلسلي: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>يجب تعيين اسم مخزن الشهادات وموقعه وموضوعه معًا.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>الموضوع: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>النوع: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>موقَّعة ذاتيًا</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>صالحة: من {0} إلى {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>المستخدمون المُعدّون: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>فشل تحميل الإعداد من {0}.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>تم تحميل الإعداد من {0}.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>لاستخدام هذا الإعداد لاحقًا، شغّل: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>تعذر حفظ الإعداد: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>تم الحفظ: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>تم حفظ الإعداد في {0}.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : حقوق النشر (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>إنشاء المجلد {0}؟</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>المستخدم {0} مذكور أكثر من مرة.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>التشفير: صريح</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>خطأ فادح: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>تعذر إنشاء المجلد: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>تم الإنشاء: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>المسار ملف وليس مجلدًا: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>المجلد غير موجود: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>اختر مجلدًا للمشاركة.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>الاستخدام:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+الخيارات:
+
+  --help
+      إظهار هذه التعليمات.
+
+  --config &lt;path&gt;
+      ملف إعداد JSON.
+
+  --ip &lt;address&gt;
+      عنوان IP للاستماع. الافتراضي: 0.0.0.0. العناوين 0.0.0.0 و :: و ::0 تستمع على كل واجهات IPv4 و IPv6.
+
+  --port &lt;number&gt;
+      منفذ الاستماع. الافتراضي: 2121. المسموح: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      الحد الأقصى للاتصالات المتزامنة. الافتراضي: 10. المسموح: 2-100.
+
+  --cert &lt;path&gt;
+      ملف شهادة (.pfx أو .pem أو .der). يُفتح ملف .pfx باستخدام --certpass عند تعيين كلمة مرور.
+
+  --certpass &lt;password&gt;
+      كلمة مرور ملف الشهادة.
+
+  --certstorename &lt;name&gt;
+      اسم المخزن: AuthRoot أو CertificateAuthority أو My أو Root أو TrustedPublisher. يُحدَّد مع --certstorelocation و --certstoresubject.
+
+  --certstorelocation &lt;location&gt;
+      موقع المخزن: CurrentUser أو LocalMachine. يُحدَّد مع --certstorename و --certstoresubject.
+
+  --certstoresubject &lt;subject&gt;
+      اسم الموضوع للبحث في مخزن الشهادات. يُحدَّد مع --certstorename و --certstorelocation.
+
+  --user &lt;login#password#folder#permissions&gt;
+      إضافة مستخدم. الأذونات: R (قراءة) أو W (كتابة) أو RW. يجب أن يكون المجلد موجودًا مسبقًا. لا تستخدم # داخل الحقول الأربعة.
+
+أمثلة:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+بدون وسيطات، يُحمَّل appsettings.json من المجلد الحالي إذا كان الملف موجودًا.
+إذا لم يُضبط أي مستخدم، يبدأ الإعداد التفاعلي.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter يقبل القيمة المميزة. السهمان لأعلى ولأسفل يختاران. Esc يلغي.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>إعداد تفاعلي</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>أدخل عنوان IP صالحًا.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>يجب أن يكون الحد الأقصى للاتصالات بين {0} و{1}.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>يجب أن يكون {0} عددًا صحيحًا.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>أدخل منفذًا من {0} إلى {1}.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>موقع مخزن شهادات غير معروف: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>اسم مخزن شهادات غير معروف: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>عنوان IP: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>كل الواجهات</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>يمكنك الاتصال باستخدام اسم الكمبيوتر {0}.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>الخيار {0} يحتاج إلى قيمة.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>شبكة {0} «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>لا</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>أدخل كلمة مرور.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>للقراءة فقط</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>قراءة وكتابة</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>اختر القراءة أو الكتابة أو كليهما.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>للكتابة فقط</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>يخزّن الإعداد {0} كلمات المرور كنص واضح. احفظه مرة أخرى من الإعداد التفاعلي لتشفيرها.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>منفذ الاستماع: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>اضغط Q لإيقاف الخادم.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>كلمة مرور الشهادة</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>ملف الشهادة</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>ملف الإعداد</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>المجلد</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>عنوان IP</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>الحد الأقصى للاتصالات</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>كلمة المرور</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>الأذونات</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>منفذ الاستماع</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>اسم المستخدم</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>استبدال الملف الموجود {0}؟</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>حفظ هذا الإعداد؟</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>كلمات المرور في الملف مشفرة بمفتاح نظام التشغيل ولا يمكن قراءتها إلا على هذا الكمبيوتر.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>خادم FTPS قيد البدء.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>توقف الخادم.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>جارٍ إيقاف الخادم.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>أُضيف المستخدم {0} ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>يجب أن تكون قيمة --user بالشكل login#password#folder#permissions.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>المستخدم {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>أدخل اسم مستخدم.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>اتركه فارغًا عند الانتهاء من إضافة المستخدمين.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>المستخدمون المُعدّون: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>مطلوب مستخدم واحد على الأقل.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>يرجى إضافة مستخدم واحد على الأقل.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>المستخدمون</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>الإعداد غير صالح.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>نعم</value></data>
+</root>

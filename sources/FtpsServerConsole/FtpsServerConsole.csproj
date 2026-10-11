@@ -16,6 +16,10 @@
     <ProjectReference Include="..\FtpsServerAppsShared\FtpsServerAppsShared.csproj" />
     <ProjectReference Include="..\FtpsServerLibrary\FtpsServerLibrary.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="FtpsServerLibrary.Tests" />
+  </ItemGroup>
 	
 	<ItemGroup>
 		<Content Include="THIRD-PARTY-NOTICES.md" Link="ftps-server.THIRD-PARTY-NOTICES.md" CopyToOutputDirectory="PreserveNewest" />

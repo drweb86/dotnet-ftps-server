@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json లోడ్ కాలేదు. అప్రమేయ విలువలు వాడబడుతున్నాయి.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>కాన్ఫిగరేషన్ రద్దు అయింది.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>స్వయం-సంతకం సర్టిఫికేట్ కోసం ఖాళీగా ఉంచండి.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>సర్టిఫికేట్ ఫైల్ .pfx, .pem లేదా .der తో అంతం కావాలి.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>సర్టిఫికేట్ మార్గం ఫైల్ కాదు, ఫోల్డర్: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>జారీదారు: {0} (విషయంతో సమానం, స్వయం-సంతకం)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>సర్టిఫికేట్ ఫైల్ దొరకలేదు: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>ఈ సర్వర్ స్వయం-సంతకం చేసిన సర్టిఫికేట్ ఉపయోగిస్తుంది. FTP క్లయింట్లు కనెక్ట్ అవుతున్నప్పుడు భద్రతా హెచ్చరిక చూపవచ్చు. అడిగితే, అంగీకరించే ముందు మీ క్లయింట్‌లో చూపిన వేలిముద్రను క్రింది విలువలతో పోల్చండి.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>సర్టిఫికేట్ నోటీసు</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>ఫైల్‌కు పాస్‌వర్డ్ లేకపోతే ఖాళీగా ఉంచండి.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>సర్వర్ సర్టిఫికేట్</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>సీరియల్ నంబర్: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>సర్టిఫికేట్ స్టోర్ పేరు, స్థానం మరియు విషయం కలిపి ఇవ్వాలి.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>విషయం: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>రకం: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>స్వయం-సంతకం</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>చెల్లుబాటు: {0} నుండి {1} వరకు</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>సెట్ చేసిన వినియోగదారులు: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>{0} నుండి కాన్ఫిగరేషన్ లోడ్ కాలేదు.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>కాన్ఫిగరేషన్ {0} నుండి లోడ్ అయింది.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>ఈ కాన్ఫిగరేషన్‌ను తర్వాత వాడటానికి నడపండి: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>కాన్ఫిగరేషన్ సేవ్ కాలేదు: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>సేవ్ అయింది: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>కాన్ఫిగరేషన్ {0} లో సేవ్ అయింది.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : కాపీరైట్ (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>{0} ఫోల్డర్ సృష్టించాలా?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>వినియోగదారు {0} ఒకటి కంటే ఎక్కువసార్లు ఉన్నాడు.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>ఎన్‌క్రిప్షన్: స్పష్టం</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>తీవ్రమైన దోషం: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>ఫోల్డర్ సృష్టించలేకపోయింది: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>సృష్టించబడింది: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>మార్గం ఫోల్డర్ కాదు, ఫైల్: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>ఫోల్డర్ లేదు: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>పంచుకోవడానికి ఒక ఫోల్డర్‌ను ఎంచుకోండి.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>వాడుక:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+ఎంపికలు:
+
+  --help
+      ఈ సహాయాన్ని చూపించు.
+
+  --config &lt;path&gt;
+      JSON కాన్ఫిగరేషన్ ఫైల్.
+
+  --ip &lt;address&gt;
+      వినే IP అడ్రస్. అప్రమేయం: 0.0.0.0. 0.0.0.0, :: మరియు ::0 ప్రతి IPv4 మరియు IPv6 ఇంటర్‌ఫేస్‌పై వింటాయి.
+
+  --port &lt;number&gt;
+      వినే పోర్ట్. అప్రమేయం: 2121. అనుమతి: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      ఒకేసారి గరిష్ట కనెక్షన్‌లు. అప్రమేయం: 10. అనుమతి: 2-100.
+
+  --cert &lt;path&gt;
+      సర్టిఫికేట్ ఫైల్ (.pfx, .pem లేదా .der). పాస్‌వర్డ్ ఉంటే .pfx ఫైల్ --certpass తో తెరవబడుతుంది.
+
+  --certpass &lt;password&gt;
+      సర్టిఫికేట్ ఫైల్ పాస్‌వర్డ్.
+
+  --certstorename &lt;name&gt;
+      స్టోర్ పేరు: AuthRoot, CertificateAuthority, My, Root లేదా TrustedPublisher. --certstorelocation మరియు --certstoresubject తో కలిపి ఇవ్వండి.
+
+  --certstorelocation &lt;location&gt;
+      స్టోర్ స్థానం: CurrentUser లేదా LocalMachine. --certstorename మరియు --certstoresubject తో కలిపి ఇవ్వండి.
+
+  --certstoresubject &lt;subject&gt;
+      సర్టిఫికేట్ స్టోర్‌లో వెతకాల్సిన విషయం పేరు. --certstorename మరియు --certstorelocation తో కలిపి ఇవ్వండి.
+
+  --user &lt;login#password#folder#permissions&gt;
+      వినియోగదారుని జోడిస్తుంది. అనుమతులు: R (చదవడం), W (రాయడం) లేదా RW. ఫోల్డర్ ముందే ఉండాలి. నాలుగు ఫీల్డ్‌ల లోపల # వాడకండి.
+
+ఉదాహరణలు:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+ఆర్గ్యుమెంట్‌లు లేకపోతే, ప్రస్తుత ఫోల్డర్‌లో appsettings.json ఉంటే అది లోడ్ అవుతుంది.
+వినియోగదారులు సెట్ కాకపోతే ఇంటరాక్టివ్ సెటప్ మొదలవుతుంది.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter హైలైట్ చేసిన అప్రమేయాన్ని అంగీకరిస్తుంది. పైకి కిందికి ఎంపిక చేస్తాయి. Esc రద్దు చేస్తుంది.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>ఇంటరాక్టివ్ కాన్ఫిగరేషన్</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>చెల్లుబాటు అయ్యే IP అడ్రస్ ఇవ్వండి.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>గరిష్ట కనెక్షన్‌లు {0} నుండి {1} వరకు ఉండాలి.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} పూర్ణాంకం అయి ఉండాలి.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>{0} నుండి {1} వరకు పోర్ట్ ఇవ్వండి.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>తెలియని సర్టిఫికేట్ స్టోర్ స్థానం: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>తెలియని సర్టిఫికేట్ స్టోర్ పేరు: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP అడ్రస్: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>అన్ని ఇంటర్‌ఫేస్‌లు</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>కంప్యూటర్ పేరు {0} ద్వారా కనెక్ట్ కావచ్చు.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>{0} ఎంపికకు విలువ కావాలి.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} నెట్‌వర్క్ «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>కాదు</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>ఒక పాస్‌వర్డ్ ఇవ్వండి.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>చదవడం మాత్రమే</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>చదవడం మరియు రాయడం</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>చదవడం, రాయడం లేదా రెండూ ఎంచుకోండి.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>రాయడం మాత్రమే</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>కాన్ఫిగరేషన్ {0} పాస్‌వర్డ్‌లను సాదా వచనంగా ఉంచుతుంది. ఎన్‌క్రిప్ట్ చేయడానికి ఇంటరాక్టివ్ సెటప్ నుండి మళ్లీ సేవ్ చేయండి.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>వినే పోర్ట్: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>సర్వర్‌ను ఆపడానికి Q నొక్కండి.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>సర్టిఫికేట్ పాస్‌వర్డ్</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>సర్టిఫికేట్ ఫైల్</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>కాన్ఫిగరేషన్ ఫైల్</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>ఫోల్డర్</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP అడ్రస్</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>గరిష్ట కనెక్షన్‌లు</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>పాస్‌వర్డ్</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>అనుమతులు</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>వినే పోర్ట్</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>యూజర్‌నేమ్</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>ఉన్న ఫైల్ {0} మార్చాలా?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>ఈ కాన్ఫిగరేషన్ సేవ్ చేయాలా?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>ఫైల్‌లోని పాస్‌వర్డ్‌లు ఆపరేటింగ్ సిస్టమ్ కీతో ఎన్‌క్రిప్ట్ అయ్యి ఈ కంప్యూటర్‌లో మాత్రమే చదవబడతాయి.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS సర్వర్ ప్రారంభమవుతోంది.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>సర్వర్ ఆగింది.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>సర్వర్ ఆపబడుతోంది.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>వినియోగదారు {0} జోడించబడ్డారు ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>--user విలువ login#password#folder#permissions రూపంలో ఉండాలి.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>వినియోగదారు {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>ఒక యూజర్‌నేమ్ ఇవ్వండి.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>వినియోగదారులను జోడించడం అయిపోతే ఖాళీగా ఉంచండి.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>సెట్ చేసిన వినియోగదారులు: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>కనీసం ఒక వినియోగదారు అవసరం.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>దయచేసి కనీసం ఒక వినియోగదారుని జోడించండి.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>వినియోగదారులు</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>కాన్ఫిగరేషన్ చెల్లదు.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>అవును</value></data>
+</root>

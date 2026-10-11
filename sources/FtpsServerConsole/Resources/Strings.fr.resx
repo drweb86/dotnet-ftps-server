@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>Impossible de charger appsettings.json. Les valeurs par défaut sont utilisées.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Configuration annulée.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Laissez vide pour utiliser un certificat auto-signé.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Le fichier de certificat doit se terminer par .pfx, .pem ou .der.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Le chemin du certificat est un dossier, pas un fichier : {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Émetteur : {0} (identique au sujet, auto-signé)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Fichier de certificat introuvable : {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Ce serveur utilise un certificat auto-signé. Les clients FTP peuvent afficher un avertissement de sécurité à la connexion. Si on vous le demande, comparez l'empreinte affichée dans le client avec les valeurs ci-dessous avant d'accepter.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Avis de certificat</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Laissez vide si le fichier n'a pas de mot de passe.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Certificat du serveur</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Numéro de série : {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Le nom, l'emplacement et le sujet du magasin de certificats doivent être indiqués ensemble.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Sujet : {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Type : {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>Auto-signé</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>Valide : du {0} au {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Utilisateurs configurés : {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>Impossible de charger la configuration depuis {0}.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>Configuration chargée depuis {0}.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Pour réutiliser cette configuration : ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>Impossible d'enregistrer la configuration : {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>Enregistré : {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>Configuration enregistrée dans {0}.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : droit d'auteur (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>Créer le dossier {0} ?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>L'utilisateur {0} est indiqué plus d'une fois.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Chiffrement : explicite</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Erreur fatale : {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>Impossible de créer le dossier : {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>Créé : {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Le chemin est un fichier, pas un dossier : {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Le dossier n'existe pas : {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Choisissez un dossier à partager.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Utilisation :
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Options :
+
+  --help
+      Afficher cette aide.
+
+  --config &lt;path&gt;
+      Fichier de configuration JSON.
+
+  --ip &lt;address&gt;
+      Adresse IP d'écoute. Valeur par défaut : 0.0.0.0. 0.0.0.0, :: et ::0 écoutent sur toutes les interfaces IPv4 et IPv6.
+
+  --port &lt;number&gt;
+      Port d'écoute. Valeur par défaut : 2121. Valeurs autorisées : 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Nombre maximal de connexions simultanées. Valeur par défaut : 10. Valeurs autorisées : 2-100.
+
+  --cert &lt;path&gt;
+      Fichier de certificat (.pfx, .pem ou .der). Un fichier .pfx est ouvert avec --certpass si un mot de passe est défini.
+
+  --certpass &lt;password&gt;
+      Mot de passe du fichier de certificat.
+
+  --certstorename &lt;name&gt;
+      Nom du magasin : AuthRoot, CertificateAuthority, My, Root ou TrustedPublisher. À indiquer avec --certstorelocation et --certstoresubject.
+
+  --certstorelocation &lt;location&gt;
+      Emplacement du magasin : CurrentUser ou LocalMachine. À indiquer avec --certstorename et --certstoresubject.
+
+  --certstoresubject &lt;subject&gt;
+      Nom du sujet à chercher dans le magasin de certificats. À indiquer avec --certstorename et --certstorelocation.
+
+  --user &lt;login#password#folder#permissions&gt;
+      Ajouter un utilisateur. Droits : R (lecture), W (écriture) ou RW. Le dossier doit déjà exister. N'utilisez pas # dans les quatre champs.
+
+Exemples :
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Sans argument, appsettings.json du dossier courant est chargé s'il existe.
+Si aucun utilisateur n'est configuré, la configuration interactive démarre.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Entrée accepte la valeur mise en évidence. Haut et bas choisissent. Échap annule.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Configuration interactive</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Saisissez une adresse IP valide.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Le nombre maximal de connexions doit être compris entre {0} et {1}.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} doit être un nombre entier.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>Saisissez un port de {0} à {1}.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Emplacement de magasin de certificats inconnu : {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Nom de magasin de certificats inconnu : {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>Adresse IP : {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>toutes les interfaces</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>Vous pouvez vous connecter avec le nom de l'ordinateur {0}.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>L'option {0} nécessite une valeur.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>Réseau {0} « {1} » ({2}) : {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>Non</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Saisissez un mot de passe.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Lecture seule</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Lecture et écriture</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Choisissez lecture, écriture, ou les deux.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Écriture seule</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>La configuration {0} stocke les mots de passe en clair. Enregistrez-la de nouveau depuis la configuration interactive pour les chiffrer.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Port d'écoute : {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Appuyez sur Q pour arrêter le serveur.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Mot de passe du certificat</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Fichier de certificat</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Fichier de configuration</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Dossier</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>Adresse IP</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Connexions maximales</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Mot de passe</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Autorisations</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Port d'écoute</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Nom d'utilisateur</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Remplacer le fichier existant {0} ?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Enregistrer cette configuration ?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Les mots de passe du fichier sont chiffrés avec une clé du système et ne peuvent être lus que sur cet ordinateur.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>Le serveur FTPS démarre.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Serveur arrêté.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Arrêt du serveur.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>Utilisateur {0} ajouté ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>Une valeur --user doit avoir la forme login#password#folder#permissions.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Utilisateur {0} : {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Saisissez un nom d'utilisateur.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Laissez vide lorsque vous avez fini d'ajouter des utilisateurs.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Utilisateurs configurés : {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>Au moins un utilisateur est requis.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Ajoutez au moins un utilisateur.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Utilisateurs</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>La configuration n'est pas valide.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Oui</value></data>
+</root>

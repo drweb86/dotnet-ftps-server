@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json لوڈ نہیں ہو سکی۔ طے شدہ قدریں استعمال ہو رہی ہیں۔</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>کنفیگریشن منسوخ ہو گئی۔</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>خود دستخط شدہ سرٹیفکیٹ کے لیے خالی چھوڑیں۔</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>سرٹیفکیٹ فائل .pfx، .pem یا .der پر ختم ہونی چاہیے۔</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>سرٹیفکیٹ کا راستہ فائل نہیں، فولڈر ہے: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>جاری کنندہ: {0} (موضوع جیسا، خود دستخط شدہ)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>سرٹیفکیٹ فائل نہیں ملی: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>یہ سرور خود دستخط شدہ سرٹیفکیٹ استعمال کرتا ہے۔ FTP کلائنٹس کنیکٹ ہوتے وقت سیکیورٹی وارننگ دکھا سکتے ہیں۔ اگر کہا جائے تو قبول کرنے سے پہلے اپنے کلائنٹ میں دکھائے گئے فنگر پرنٹ کا نیچے دی گئی قدروں سے موازنہ کریں۔</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>سرٹیفکیٹ اطلاع</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>اگر فائل کا پاس ورڈ نہ ہو تو خالی چھوڑیں۔</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>سرور سرٹیفکیٹ</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>سیریل نمبر: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>سرٹیفکیٹ اسٹور کا نام، مقام اور موضوع ایک ساتھ دینے ہوں گے۔</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>موضوع: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>قسم: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>خود دستخط شدہ</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>درست: {0} سے {1} تک</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>کنفیگر کیے گئے صارف: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>{0} سے کنفیگریشن لوڈ نہیں ہو سکی۔</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>کنفیگریشن {0} سے لوڈ ہوئی۔</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>یہ کنفیگریشن بعد میں استعمال کرنے کے لیے چلائیں: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>کنفیگریشن محفوظ نہیں ہو سکی: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>محفوظ: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>کنفیگریشن {0} میں محفوظ ہوئی۔</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : جملہ حقوق (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>فولڈر {0} بنایا جائے؟</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>صارف {0} ایک سے زیادہ بار درج ہے۔</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>خفیہ کاری: واضح</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>سنگین خرابی: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>فولڈر نہیں بن سکا: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>بن گیا: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>راستہ فولڈر نہیں، فائل ہے: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>فولڈر موجود نہیں: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>شیئر کرنے کے لیے ایک فولڈر چنیں۔</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>استعمال:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+اختیارات:
+
+  --help
+      یہ مدد دکھائیں۔
+
+  --config &lt;path&gt;
+      JSON کنفیگریشن فائل۔
+
+  --ip &lt;address&gt;
+      سننے کے لیے IP پتہ۔ طے شدہ: 0.0.0.0۔ 0.0.0.0، :: اور ::0 ہر IPv4 اور IPv6 انٹرفیس پر سنتے ہیں۔
+
+  --port &lt;number&gt;
+      سننے کے لیے پورٹ۔ طے شدہ: 2121۔ اجازت: 2121-65535۔
+
+  --maxconnections &lt;number&gt;
+      بیک وقت زیادہ سے زیادہ کنکشن۔ طے شدہ: 10۔ اجازت: 2-100۔
+
+  --cert &lt;path&gt;
+      سرٹیفکیٹ فائل (.pfx، .pem یا .der)۔ پاس ورڈ ہو تو .pfx فائل --certpass سے کھلتی ہے۔
+
+  --certpass &lt;password&gt;
+      سرٹیفکیٹ فائل کا پاس ورڈ۔
+
+  --certstorename &lt;name&gt;
+      اسٹور کا نام: AuthRoot، CertificateAuthority، My، Root یا TrustedPublisher۔ --certstorelocation اور --certstoresubject کے ساتھ دیں۔
+
+  --certstorelocation &lt;location&gt;
+      اسٹور کا مقام: CurrentUser یا LocalMachine۔ --certstorename اور --certstoresubject کے ساتھ دیں۔
+
+  --certstoresubject &lt;subject&gt;
+      سرٹیفکیٹ اسٹور میں تلاش کے لیے موضوع کا نام۔ --certstorename اور --certstorelocation کے ساتھ دیں۔
+
+  --user &lt;login#password#folder#permissions&gt;
+      صارف شامل کرتا ہے۔ اجازتیں: R (پڑھنا)، W (لکھنا) یا RW۔ فولڈر پہلے سے موجود ہونا چاہیے۔ چار خانوں کے اندر # استعمال نہ کریں۔
+
+مثالیں:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+دلائل کے بغیر، موجودہ فولڈر میں appsettings.json ہو تو وہ لوڈ ہوتی ہے۔
+اگر کوئی صارف سیٹ نہ ہو تو انٹرایکٹو سیٹ اپ شروع ہوتا ہے۔
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter نمایاں طے شدہ قدر قبول کرتا ہے۔ اوپر اور نیچے منتخب کرتے ہیں۔ Esc منسوخ کرتا ہے۔</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>انٹرایکٹو کنفیگریشن</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>درست IP پتہ درج کریں۔</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>زیادہ سے زیادہ کنکشن {0} سے {1} تک ہونے چاہییں۔</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} ایک مکمل عدد ہونا چاہیے۔</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>{0} سے {1} تک پورٹ درج کریں۔</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>نامعلوم سرٹیفکیٹ اسٹور مقام: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>نامعلوم سرٹیفکیٹ اسٹور نام: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP پتہ: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>تمام انٹرفیس</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>کمپیوٹر کے نام {0} سے جڑا جا سکتا ہے۔</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>اختیار {0} کو قدر درکار ہے۔</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} نیٹ ورک «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>نہیں</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>پاس ورڈ درج کریں۔</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>صرف پڑھنا</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>پڑھنا اور لکھنا</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>پڑھنا، لکھنا یا دونوں چنیں۔</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>صرف لکھنا</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>کنفیگریشن {0} پاس ورڈ سادہ متن میں رکھتی ہے۔ خفیہ کاری کے لیے انٹرایکٹو سیٹ اپ سے دوبارہ محفوظ کریں۔</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>سننے والا پورٹ: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>سرور روکنے کے لیے Q دبائیں۔</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>سرٹیفکیٹ پاس ورڈ</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>سرٹیفکیٹ فائل</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>کنفیگریشن فائل</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>فولڈر</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP پتہ</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>زیادہ سے زیادہ کنکشن</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>پاس ورڈ</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>اجازتیں</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>سننے والا پورٹ</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>صارف نام</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>موجودہ فائل {0} بدلی جائے؟</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>یہ کنفیگریشن محفوظ کی جائے؟</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>فائل کے پاس ورڈ آپریٹنگ سسٹم کی کلید سے خفیہ ہیں اور صرف اس کمپیوٹر پر پڑھے جا سکتے ہیں۔</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS سرور شروع ہو رہا ہے۔</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>سرور رک گیا۔</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>سرور بند ہو رہا ہے۔</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>صارف {0} شامل ہوا ({1})۔</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>--user کی قدر login#password#folder#permissions کی شکل میں ہونی چاہیے۔</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>صارف {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>صارف نام درج کریں۔</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>صارف شامل کرنا ختم ہونے پر خالی چھوڑیں۔</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>کنفیگر کیے گئے صارف: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>کم از کم ایک صارف ضروری ہے۔</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>براہ کرم کم از کم ایک صارف شامل کریں۔</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>صارفین</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>کنفیگریشن درست نہیں۔</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>ہاں</value></data>
+</root>

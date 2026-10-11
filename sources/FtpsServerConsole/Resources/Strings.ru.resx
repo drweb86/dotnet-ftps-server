@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>Не удалось загрузить appsettings.json. Используются значения по умолчанию.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Настройка отменена.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Оставьте пустым, чтобы использовать самоподписанный сертификат.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Файл сертификата должен заканчиваться на .pfx, .pem или .der.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Путь к сертификату — это папка, а не файл: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Издатель: {0} (тот же, что и субъект, самоподписанный)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Файл сертификата не найден: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Этот сервер использует самоподписанный сертификат. FTP-клиенты могут отображать предупреждение безопасности при подключении. При появлении запроса сравните отпечаток, показанный в вашем клиенте, со значениями ниже перед принятием.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Уведомление о сертификате</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Оставьте пустым, если у файла нет пароля.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Сертификат сервера</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Серийный номер: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Имя, расположение и субъект хранилища сертификатов нужно указать вместе.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Субъект: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Тип: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>Самоподписанный</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>Действителен: с {0} по {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Настроено пользователей: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>Не удалось загрузить конфигурацию из {0}.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>Конфигурация загружена из {0}.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Чтобы использовать эту конфигурацию позже, выполните: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>Не удалось сохранить конфигурацию: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>Сохранено: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>Конфигурация сохранена в {0}.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : авторские права (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>Создать папку {0}?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>Пользователь {0} указан больше одного раза.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Шифрование: явное</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Неустранимая ошибка: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>Не удалось создать папку: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>Создано: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Путь является файлом, а не папкой: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Папка не существует: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Выберите папку для общего доступа.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Использование:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Параметры:
+
+  --help
+      Показать эту справку.
+
+  --config &lt;path&gt;
+      Файл конфигурации JSON.
+
+  --ip &lt;address&gt;
+      IP-адрес для прослушивания. По умолчанию: 0.0.0.0. Адреса 0.0.0.0, :: и ::0 слушают все интерфейсы IPv4 и IPv6.
+
+  --port &lt;number&gt;
+      Порт для прослушивания. По умолчанию: 2121. Допустимо: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Максимум одновременных подключений. По умолчанию: 10. Допустимо: 2-100.
+
+  --cert &lt;path&gt;
+      Файл сертификата (.pfx, .pem или .der). Файл .pfx открывается с --certpass, если задан пароль.
+
+  --certpass &lt;password&gt;
+      Пароль файла сертификата.
+
+  --certstorename &lt;name&gt;
+      Имя хранилища: AuthRoot, CertificateAuthority, My, Root или TrustedPublisher. Укажите вместе с --certstorelocation и --certstoresubject.
+
+  --certstorelocation &lt;location&gt;
+      Расположение хранилища: CurrentUser или LocalMachine. Укажите вместе с --certstorename и --certstoresubject.
+
+  --certstoresubject &lt;subject&gt;
+      Имя субъекта для поиска в хранилище сертификатов. Укажите вместе с --certstorename и --certstorelocation.
+
+  --user &lt;login#password#folder#permissions&gt;
+      Добавить пользователя. Права: R (чтение), W (запись) или RW. Папка уже должна существовать. Не используйте # внутри четырёх полей.
+
+Примеры:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Без аргументов загружается appsettings.json из текущей папки, если этот файл есть.
+Если пользователи не заданы, запускается интерактивная настройка.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter принимает подсвеченное значение. Стрелки вверх и вниз выбирают. Esc отменяет.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Интерактивная настройка</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Укажите действительный IP-адрес.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Максимум подключений должен быть от {0} до {1}.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} должно быть целым числом.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>Укажите порт от {0} до {1}.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Неизвестное расположение хранилища сертификатов: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Неизвестное имя хранилища сертификатов: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP-адрес: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>все интерфейсы</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>Подключиться можно по имени компьютера {0}.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>Для параметра {0} нужно значение.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>Сеть {0} «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>Нет</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Укажите пароль.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Только чтение</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Чтение и запись</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Выберите чтение, запись или оба права.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Только запись</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>В конфигурации {0} пароли хранятся открытым текстом. Сохраните её снова из интерактивной настройки, чтобы зашифровать их.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Порт: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Нажмите Q, чтобы остановить сервер.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Пароль сертификата</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Файл сертификата</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Файл конфигурации</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Папка</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP-адрес</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Максимум подключений</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Пароль</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Права доступа</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Порт</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Имя пользователя</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Заменить существующий файл {0}?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Сохранить эту конфигурацию?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Пароли в файле зашифрованы ключом операционной системы и читаются только на этом компьютере.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>Сервер FTPS запускается.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Сервер остановлен.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Сервер останавливается.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>Добавлен пользователь {0} ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>Значение --user должно иметь вид login#password#folder#permissions.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Пользователь {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Укажите имя пользователя.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Оставьте пустым, когда закончите добавлять пользователей.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Настроено пользователей: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>Нужен хотя бы один пользователь.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Пожалуйста, добавьте хотя бы одного пользователя.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Пользователи</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Конфигурация недействительна.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Да</value></data>
+</root>

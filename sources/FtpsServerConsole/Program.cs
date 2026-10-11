@@ -1,109 +1,73 @@
 using FtpsServerApp.Helpers;
 using FtpsServerAppsShared.Helpers;
-using FtpsServerAppsShared.Security;
-using FtpsServerAppsShared.Services;
+using FtpsServerConsole.Resources;
 using FtpsServerLibrary;
 using NLog;
 using System.Globalization;
-using System.Net;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace FtpsServerConsole;
 
 class Program
 {
-    private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+    private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     static async Task Main(string[] args)
     {
         try
         {
             ShowBanner();
-            
-            // Parse configuration
-            var config = LoadConfiguration(args);
-            
-            if (config == null || config.Users.Count == 0)
+            var parsed = CommandLine.Parse(args);
+            if (parsed.HelpRequested)
             {
                 ShowHelp();
-
-                Console.WriteLine("\n--- Interactive Configuration ---");
-                Console.WriteLine("Press Enter to accept default values shown in [brackets]\n");
-
-                config = CreateInteractiveConfiguration();
-                if (config == null)
-                {
-                    _logger.Info("Configuration cancelled by user");
-                    return;
-                }
-            }
-
-            // Validate configuration
-            if (!ValidateConfiguration(config))
-            {
-                _logger.Error("Configuration validation failed");
                 return;
             }
 
-            // Create and start server
+            if (parsed.Errors.Count > 0)
+            {
+                ReportErrors(parsed.Errors);
+                Environment.ExitCode = 1;
+                return;
+            }
+
+            var config = parsed.Configuration;
+            if (config.Users.Count == 0)
+            {
+                ShowHelp();
+                config = InteractiveSetup.Run(config) ?? throw new OperationCanceledException();
+            }
+
+            var errors = ConfigurationValidator.Validate(config);
+            if (errors.Count > 0)
+            {
+                ReportErrors(errors);
+                Environment.ExitCode = 1;
+                return;
+            }
+
             var server = new FtpsServer(new FileLog(), config, new FtpsServerFileSystemProvider());
-            
-            _logger.Info($"FTPS Server Starting...");
-            var listenAll = config.ServerSettings.Ip is null or "" or "0.0.0.0" or "::" or "::0";
-            var ipAddress = listenAll ? "all" : config.ServerSettings.Ip;
-            _logger.Info($"IP Address: {ipAddress}");
-            if (listenAll)
-            {
-                var nis = NetworkHelper.GetMyLocalIps();
-                foreach (var ni in nis)
-                {
-                    var ips = string.Join("; ", ni.Addresses);
-                    _logger.Info($"- {ni.InterfaceType} network '{ni.Name}' ({ni.Description}): {ips}");
-                }
-            }
-            _logger.Info($"You can connect to machine by its name {Environment.MachineName}");
-            
-            _logger.Info($"Port: {config.ServerSettings.Port}");
-            _logger.Info($"Users Configured: {config.Users.Count}");
-            _logger.Info($"Encryption: Explicit");
-
+            DescribeStartup(config);
             await server.StartAsync();
+            DescribeCertificate(server);
 
-            if (server.LoadedCertificate != null)
-            {
-                var certInfo = CertificateInfoHelper.GetInfo(server.LoadedCertificate);
-                if (certInfo.IsSelfSigned)
-                {
-                    _logger.Warn("=== Certificate Notice ===");
-                    _logger.Warn("This server uses a self-signed certificate.");
-                    _logger.Warn("FTP clients may show a security warning when connecting.");
-                    _logger.Warn("If prompted, compare the fingerprint shown in your client with the values below before accepting.");
-                    _logger.Info("Server Certificate");
-                    _logger.Info("-------------------------------------------");
-                    _logger.Info($"Type:    Self-signed");
-                    _logger.Info($"Subject: {certInfo.Subject}");
-                    _logger.Info($"Issuer:  {certInfo.Issuer} (same as subject — self-signed)");
-                    _logger.Info($"Valid:   {certInfo.ValidFrom} to {certInfo.ValidTo}");
-                    _logger.Info($"Serial:  {certInfo.SerialNumber}");
-                    _logger.Info($"SHA-256: {certInfo.Sha256Fingerprint}");
-                    _logger.Info($"SHA-1:   {certInfo.Sha1Fingerprint}");
-                }
-            }
-
-            Console.WriteLine("\nPress 'Q' to stop the server...");
+            CliPrompt.Note(Strings.ConsolePressQ);
             while (Console.ReadKey(true).Key != ConsoleKey.Q) { }
-            
-            _logger.Info("Shutting down server...");
+
+            Logger.Info(Strings.ConsoleShuttingDown);
             server.Stop();
-            _logger.Info("Server stopped");
+            Logger.Info(Strings.ConsoleServerStopped);
+        }
+        catch (OperationCanceledException)
+        {
+            Logger.Info(Strings.ConsoleCancelled);
+            Environment.ExitCode = 1;
         }
         catch (Exception ex)
         {
-            _logger.Fatal(ex, "Fatal error starting server");
-            Console.WriteLine($"Fatal error: {ex.Message}");
+            Logger.Fatal(ex, Strings.Format(Strings.ConsoleFatal, ex.Message));
+            CliPrompt.Error(Strings.Format(Strings.ConsoleFatal, ex.Message));
+            Environment.ExitCode = 1;
         }
         finally
         {
@@ -113,500 +77,62 @@ class Program
 
     static void ShowBanner()
     {
-        var version = Assembly.GetExecutingAssembly().GetName().Version ?? throw new InvalidProgramException("Failed to get assembly from !");
-        var copyright = string.Format(CultureInfo.CurrentUICulture, "FTPS Server {0} : Copyright (c) 2025-{1} Siarhei Kuchuk", version, DateTime.Now.Year);
-        Console.WriteLine(copyright);
+        var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0";
+        // The product name stays in English in every language.
+        Console.WriteLine("FTPS Server " + Strings.Format(Strings.ConsoleCopyright, version, DateTime.Now.Year));
     }
 
-    static void ShowHelp()
+    static void ShowHelp() => Console.WriteLine(Strings.ConsoleHelp);
+
+    static void ReportErrors(IReadOnlyList<string> errors)
     {
-        Console.WriteLine(@"
-Usage:
-  ftps-server [options]
-  ftps-server --config <path-to-json>
-
-Options:
-
-  --help
-  Show this help message.
-
-  --config <path to configuration json>
-  Path to JSON configuration file.
-
-  --ip <address>
-  The IP address server will be listening to.
-  Optional parameter.
-  Default value: 0.0.0.0.
-  0.0.0.0, ::, and ::0 listen on every IPv4 and IPv6 interface.
-
-  --port <number>
-  The Port for server to listen to.
-  Optional parameter.
-  Default value: 2121.
-
-  Certificate source:
-
-  --cert <path to pfx, pem or der file>
-  PEM, DER or PKCS#12 PFX file.
-  Optional parameter.
-  PFX file is opened with CertificatePassword (if specified).
-  
-  --certpass <password>
-  Certificate password.
-  Optional parameter.
-  When specified, will be used for opening certificate from cert argument.
-  
-  --certstorename <store name>
-  Certificate store name. Possible values: AuthRoot, CertificateAuthority, My, Root, TrustedPublisher.
-  Optional parameter.
-  Used when certstorename, certstorelocation and certstoresubject are together specified.
-
-  --certstorelocation <user>
-  Certificate store name. Possible values: AuthRoot, CertificateAuthority, My, Root, TrustedPublisher.
-  Used when certstorename, certstorelocation and certstoresubject are together specified.
-  Optional parameter.
-
-  --certstoresubject <store subject>
-  Certificate store subject by which certificate will be searched in certificate store and location. 
-  Used when certstorename, certstorelocation and certstoresubject are together specified.
-  Optional parameter.
-
-  --user ""admin#admin#F:\ftp server\admin#RW""
-  User with login admin and password admin with foilder F:\ftp server\admin with Read and Write permissions.
-
-  --user ""reader#read123#F:\ftp server\reader#R""
-  User with login admin and password read123 with foilder F:\ftp server\reader with Read permission.
-
-  --user ""dropbox#dropbox123#F:\ftp server\dropbox#W""
-  User with login admin and password dropbox123 with foilder F:\ftp server\dropbox with Write permission.
-
-Examples:
-  ftps-server --config settings.json
-  ftps-server --ip 0.0.0.0 --port 2121
-  ftps-server --user ""admin#admin#F:\ftp server\admin#RW""
-  ftps-server --cert server.pfx --certpass mypassword
-
-If no arguments are provided, the server looks for 'appsettings.json' in the current directory.
-");
-    }
-
-    static FtpsServerConfiguration? LoadConfiguration(string[] args)
-    {
-        FtpsServerConfiguration? config;
-
-        // Check for help
-        if (args.Any(a => a == "--help" || a == "-h" || a == "/?"))
+        CliPrompt.Error(Strings.ConsoleValidationFailed);
+        foreach (var error in errors)
         {
-            return null;
+            CliPrompt.Error(error);
+            Logger.Error(error);
         }
+    }
 
-        // Check for config file argument
-        var configIndex = Array.IndexOf(args, "--config");
-        if (configIndex >= 0 && configIndex + 1 < args.Length)
+    static void DescribeStartup(FtpsServerConfiguration config)
+    {
+        Logger.Info(Strings.ConsoleServerStarting);
+        var listenAll = config.ServerSettings.Ip is null or "" or "0.0.0.0" or "::" or "::0";
+        var ipAddress = listenAll ? Strings.ConsoleListenAll : config.ServerSettings.Ip;
+        Logger.Info(Strings.Format(Strings.ConsoleIpAddress, ipAddress));
+        if (listenAll)
         {
-            var configPath = args[configIndex + 1];
-            config = LoadFromJson(configPath);
-            if (config == null)
+            foreach (var ni in NetworkHelper.GetMyLocalIps())
             {
-                _logger.Error($"Failed to load configuration from {configPath}");
-                return null;
-            }
-            _logger.Info($"Configuration loaded from {configPath}");
-        }
-        else if (File.Exists("appsettings.json") && args.Length == 0)
-        {
-            // Load default config file if no arguments provided
-            config = LoadFromJson("appsettings.json");
-            if (config == null)
-            {
-                _logger.Warn("Failed to load appsettings.json, using defaults");
-                config = new FtpsServerConfiguration();
-            }
-            else
-            {
-                _logger.Info("Configuration loaded from appsettings.json");
-            }
-        }
-        else
-        {
-            // Create default configuration
-            config = new FtpsServerConfiguration();
-        }
-
-        // Override with command-line arguments
-        config = ParseCommandLineArguments(args, config);
-
-        return config;
-    }
-
-    static readonly JsonSerializerOptions _jsonSerializerOptions = new()
-    {
-        PropertyNameCaseInsensitive = true,
-        ReadCommentHandling = JsonCommentHandling.Skip,
-        AllowTrailingCommas = true,
-        Converters =
-        {
-            new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
-        }
-    };
-
-    static FtpsServerConfiguration? LoadFromJson(string path)
-    {
-        try
-        {
-            var json = File.ReadAllText(path);
-            var config = JsonSerializer.Deserialize<FtpsServerConfiguration>(json, _jsonSerializerOptions);
-            if (config != null)
-                UnprotectSecrets(config, path);
-            return config;
-        }
-        catch (Exception ex)
-        {
-            _logger.Error(ex, $"Error loading configuration from {path}");
-            return null;
-        }
-    }
-
-    // Secrets in the file are "enc::" values protected with an OS key. Plaintext still
-    // loads (Unprotect passes it through), so older and hand-written files keep working.
-    private static void UnprotectSecrets(FtpsServerConfiguration config, string path)
-    {
-        var hadPlaintext = HasPlaintextSecrets(config);
-
-        if (!string.IsNullOrEmpty(config.ServerSettings.CertificatePassword))
-            config.ServerSettings.CertificatePassword = SecretProtector.Unprotect(config.ServerSettings.CertificatePassword);
-        foreach (var user in config.Users)
-        {
-            if (!string.IsNullOrEmpty(user.Password))
-                user.Password = SecretProtector.Unprotect(user.Password);
-        }
-
-        if (hadPlaintext && SecretProtector.IsSupported)
-            _logger.Warn($"Configuration {path} stores passwords in plaintext. Save it again from the interactive setup to encrypt them.");
-    }
-
-    private static bool HasPlaintextSecrets(FtpsServerConfiguration config)
-    {
-        if (SecretProtector.IsPlaintextSecret(config.ServerSettings.CertificatePassword))
-            return true;
-        return config.Users.Any(user => SecretProtector.IsPlaintextSecret(user.Password));
-    }
-
-    // The server compares plaintext passwords, so protect a copy and leave config untouched.
-    private static FtpsServerConfiguration CopyWithProtectedSecrets(FtpsServerConfiguration config)
-    {
-        var copy = JsonSerializer.Deserialize<FtpsServerConfiguration>(
-            JsonSerializer.Serialize(config, _jsonSerializerOptions), _jsonSerializerOptions) ?? new FtpsServerConfiguration();
-
-        if (SecretProtector.IsPlaintextSecret(copy.ServerSettings.CertificatePassword))
-            copy.ServerSettings.CertificatePassword = SecretProtector.Protect(copy.ServerSettings.CertificatePassword);
-        foreach (var user in copy.Users)
-        {
-            if (SecretProtector.IsPlaintextSecret(user.Password))
-                user.Password = SecretProtector.Protect(user.Password);
-        }
-
-        return copy;
-    }
-
-    static FtpsServerConfiguration ParseCommandLineArguments(string[] args, FtpsServerConfiguration config)
-    {
-        for (int i = 0; i < args.Length; i++)
-        {
-            switch (args[i])
-            {
-                case "--ip":
-                    if (i + 1 < args.Length)
-                        config.ServerSettings.Ip = args[++i];
-                    break;
-
-                case "--port":
-                    if (i + 1 < args.Length && int.TryParse(args[++i], out int port))
-                        config.ServerSettings.Port = port;
-                    break;
-
-                case "--maxconnections":
-                    if (i + 1 < args.Length && int.TryParse(args[++i], out int maxConnections))
-                        config.ServerSettings.MaxConnections = maxConnections;
-                    break;
-
-                case "--cert":
-                    if (i + 1 < args.Length)
-                        config.ServerSettings.CertificatePath = args[++i];
-                    break;
-
-                case "--certpass":
-                    if (i + 1 < args.Length)
-                        config.ServerSettings.CertificatePassword = args[++i];
-                    break;
-
-                case "--certstorename":
-                    if (i + 1 < args.Length && Enum.TryParse<StoreName>(args[++i], out var storeName))
-                        config.ServerSettings.CertificateStoreName = storeName;
-                    break;
-
-                case "--certstorelocation":
-                    if (i + 1 < args.Length && Enum.TryParse<StoreLocation>(args[++i], out var storeLocation))
-                        config.ServerSettings.CertificateStoreLocation = storeLocation;
-                    break;
-
-                case "--certstoresubject":
-                    if (i + 1 < args.Length)
-                        config.ServerSettings.CertificateStoreSubject = args[++i];
-                    break;
-
-                case "--user":
-                    if (i + 1 < args.Length)
-                    {
-                        var userInfo = args[++i].Split('#');
-                        if (userInfo.Length == 4)
-                        {
-                            var user = new FtpsServerUserAccount
-                            {
-                                Login = userInfo[0],
-                                Password = userInfo[1],
-                                Folder = userInfo[2],
-                                Read = userInfo[3].ToUpper().Contains('R'),
-                                Write = userInfo[3].ToUpper().Contains('W'),
-                            };
-                            config.Users.Add(user);
-                        }
-                    }
-                    break;
+                var ips = string.Join("; ", ni.Addresses);
+                Logger.Info(Strings.Format(Strings.ConsoleNetworkLine, ni.InterfaceType, ni.Name, ni.Description, ips));
             }
         }
 
-        return config;
+        Logger.Info(Strings.Format(Strings.ConsoleMachineName, Environment.MachineName));
+        Logger.Info(Strings.Format(Strings.ConsolePortLabel, config.ServerSettings.Port));
+        Logger.Info(Strings.Format(Strings.ConsoleUsersConfigured, config.Users.Count));
+        Logger.Info(Strings.ConsoleEncryption);
     }
 
-    static FtpsServerConfiguration? CreateInteractiveConfiguration()
+    static void DescribeCertificate(FtpsServer server)
     {
-        try
-        {
-            var config = new FtpsServerConfiguration();
+        if (server.LoadedCertificate == null)
+            return;
 
-            // IP Address
-            Console.Write($"IP Address [0.0.0.0]: ");
-            var ip = Console.ReadLine()?.Trim();
-            if (!string.IsNullOrEmpty(ip))
-            {
-                config.ServerSettings.Ip = ip;
-            }
+        var certInfo = CertificateInfoHelper.GetInfo(server.LoadedCertificate);
+        if (!certInfo.IsSelfSigned)
+            return;
 
-            // Port
-            Console.Write($"Port [2121]: ");
-            var portInput = Console.ReadLine()?.Trim();
-            if (!string.IsNullOrEmpty(portInput) && int.TryParse(portInput, out int port))
-            {
-                config.ServerSettings.Port = port;
-            }
-
-            // Certificate (optional)
-            Console.Write("Certificate path (optional, press Enter to skip): ");
-            var certPath = Console.ReadLine()?.Trim();
-            if (!string.IsNullOrEmpty(certPath))
-            {
-                config.ServerSettings.CertificatePath = certPath;
-
-                Console.Write("Certificate password (optional, press Enter to skip): ");
-                var certPass = Console.ReadLine()?.Trim();
-                if (!string.IsNullOrEmpty(certPass))
-                {
-                    config.ServerSettings.CertificatePassword = certPass;
-                }
-            }
-
-            // Users
-            Console.WriteLine("\n=== User Configuration ===");
-            Console.WriteLine("At least one user is required.");
-            Console.WriteLine("Permissions: R (Read), W (Write), RW (Read and Write)\n");
-
-            int userCount = 1;
-            while (true)
-            {
-                Console.WriteLine($"--- User {userCount} ---");
-
-                Console.Write("Username (or press Enter to finish): ");
-                var username = Console.ReadLine()?.Trim();
-
-                if (string.IsNullOrEmpty(username))
-                {
-                    if (config.Users.Count == 0)
-                    {
-                        Console.WriteLine("At least one user is required!\n");
-                        continue;
-                    }
-                    break;
-                }
-
-                Console.Write("Password: ");
-                var password = Console.ReadLine()?.Trim();
-                if (string.IsNullOrEmpty(password))
-                {
-                    Console.WriteLine("Password cannot be empty!\n");
-                    continue;
-                }
-
-                var desktopDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                Console.Write($"Folder path [{desktopDir}]: ");
-                var folder = Console.ReadLine()?.Trim();
-                if (string.IsNullOrEmpty(folder))
-                {
-                    folder = desktopDir;
-                }
-
-                if (!Directory.Exists(folder))
-                {
-                    Console.Write($"Directory '{folder}' does not exist. Create it? (y/n): ");
-                    var createDir = Console.ReadLine()?.Trim().ToLower();
-                    if (createDir == "y" || createDir == "yes")
-                    {
-                        try
-                        {
-                            Directory.CreateDirectory(folder);
-                            Console.WriteLine($"Directory created: {folder}");
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Failed to create directory: {ex.Message}\n");
-                            continue;
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("User not added. Directory must exist.\n");
-                        continue;
-                    }
-                }
-
-                Console.Write("Permissions (R/W/RW) [RW]: ");
-                var permissions = Console.ReadLine()?.Trim().ToUpper();
-                if (string.IsNullOrEmpty(permissions))
-                {
-                    permissions = "RW";
-                }
-
-                var user = new FtpsServerUserAccount
-                {
-                    Login = username,
-                    Password = password,
-                    Folder = folder,
-                    Read = permissions.Contains('R'),
-                    Write = permissions.Contains('W'),
-                };
-
-                config.Users.Add(user);
-                Console.WriteLine($"User '{user.Login}' added successfully with {permissions} permissions.\n");
-                userCount++;
-            }
-
-            Console.WriteLine($"\nConfiguration complete! {config.Users.Count} user(s) configured.");
-
-            // Ask if user wants to save configuration
-            Console.Write("\nSave this configuration to a file? (y/n): ");
-            var saveConfig = Console.ReadLine()?.Trim().ToLower();
-            if (saveConfig == "y" || saveConfig == "yes")
-            {
-                Console.Write("Configuration file name [ftps-config.json]: ");
-                var fileName = Console.ReadLine()?.Trim();
-                if (string.IsNullOrEmpty(fileName))
-                {
-                    fileName = "ftps-config.json";
-                }
-
-                if (!fileName.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
-                {
-                    fileName += ".json";
-                }
-
-                if (SaveConfigurationToFile(config, fileName, GetOptions()))
-                {
-                    Console.WriteLine($"\nConfiguration saved to: {Path.GetFullPath(fileName)}");
-                    if (SecretProtector.IsSupported)
-                        Console.WriteLine("Passwords in the file are encrypted with an OS key; they can only be read on this machine.");
-                    Console.WriteLine($"\nTo use this configuration later, run:");
-                    Console.WriteLine($"  ftps-server --config {fileName}");
-                }
-            }
-
-            return config;
-        }
-        catch (Exception ex)
-        {
-            _logger.Error(ex, "Error during interactive configuration");
-            Console.WriteLine($"Error: {ex.Message}");
-            return null;
-        }
-    }
-
-    private static JsonSerializerOptions GetOptions()
-    {
-        return new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-            Converters =
-                {
-                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
-                }
-        };
-    }
-
-    static bool SaveConfigurationToFile(FtpsServerConfiguration config, string fileName, JsonSerializerOptions options)
-    {
-        try
-        {
-            var toSave = SecretProtector.IsSupported && HasPlaintextSecrets(config)
-                ? CopyWithProtectedSecrets(config)
-                : config;
-            var json = JsonSerializer.Serialize(toSave, options);
-            File.WriteAllText(fileName, json);
-            _logger.Info($"Configuration saved to {fileName}");
-            return true;
-        }
-        catch (Exception ex)
-        {
-            _logger.Error(ex, $"Failed to save configuration to {fileName}");
-            Console.WriteLine($"Failed to save configuration: {ex.Message}");
-            return false;
-        }
-    }
-
-    static bool ValidateConfiguration(FtpsServerConfiguration config)
-    {
-        if (config.ServerSettings.Port.HasValue && config.ServerSettings.Port < 1 || config.ServerSettings.Port > 65535)
-        {
-            _logger.Error($"Invalid port number: {config.ServerSettings.Port}");
-            return false;
-        }
-
-        if (config.ServerSettings.MaxConnections is < 1 or > FtpsServerSettings.MaxConnectionsUpperBound)
-        {
-            _logger.Error($"Invalid maximum connections number: {config.ServerSettings.MaxConnections}. Use 1..{FtpsServerSettings.MaxConnectionsUpperBound}.");
-            return false;
-        }
-
-        if (config.ServerSettings.Ip != null && !IPAddress.TryParse(config.ServerSettings.Ip, out _))
-        {
-            _logger.Error($"Invalid IP address: {config.ServerSettings.Ip}");
-            return false;
-        }
-
-        if (config.Users.Count == 0)
-        {
-            _logger.Warn("No users configured.");
-            return false;
-        }
-
-        if (!string.IsNullOrEmpty(config.ServerSettings.CertificatePath))
-        {
-            if (!File.Exists(config.ServerSettings.CertificatePath))
-            {
-                _logger.Error($"Certificate file not found: {config.ServerSettings.CertificatePath}");
-                return false;
-            }
-        }
-
-        return true;
+        Logger.Warn(Strings.ConsoleCertNoticeTitle);
+        Logger.Warn(Strings.ConsoleCertNoticeBody);
+        Logger.Info(Strings.ConsoleCertSection);
+        Logger.Info(Strings.Format(Strings.ConsoleCertType, Strings.ConsoleCertTypeSelfSigned));
+        Logger.Info(Strings.Format(Strings.ConsoleCertSubject, certInfo.Subject));
+        Logger.Info(Strings.Format(Strings.ConsoleCertIssuer, certInfo.Issuer));
+        Logger.Info(Strings.Format(Strings.ConsoleCertValid, certInfo.ValidFrom, certInfo.ValidTo));
+        Logger.Info(Strings.Format(Strings.ConsoleCertSerial, certInfo.SerialNumber));
+        Logger.Info(Strings.Format(Strings.ConsoleCertSha256, certInfo.Sha256Fingerprint));
+        Logger.Info(Strings.Format(Strings.ConsoleCertSha1, certInfo.Sha1Fingerprint));
     }
 }

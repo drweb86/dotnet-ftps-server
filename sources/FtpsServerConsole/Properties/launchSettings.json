@@ -1,8 +1,7 @@
 {
   "profiles": {
     "FtpsServerConsole": {
-      "commandName": "Project",
-      "commandLineArgs": "--user \"a#1#F:\\ftp server#RW\""
+      "commandName": "Project"
     }
   }
 }

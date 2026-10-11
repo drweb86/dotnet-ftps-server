@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>An kasa loda appsettings.json. Ana amfani da tsoffin ƙimomi.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>An soke saitin.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Bar shi fanko don takardar shaida da aka sanya hannu kai tsaye.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Fayil ɗin takardar shaida dole ya ƙare da .pfx, .pem ko .der.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Hanyar takardar shaida babban fayil ne, ba fayil ba: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Mai bayarwa: {0} (iri ɗaya da batu, an sanya hannu kai tsaye)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Ba a sami fayil ɗin takardar shaida ba: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Wannan uwar garken yana amfani da takardar shaida da aka sanya hannu kai tsaye. Abokan ciniki na FTP na iya nuna gargaɗi na tsaro yayin haɗi. Idan an tambaye ku, kwatanta sawun yatsa da aka nuna a abokin ciniki ɗinku da ƙimar da ke ƙasa kafin yarda.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Sanarwar takardar shaida</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Bar shi fanko idan fayil ba shi da kalmar wucewa.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Takardar shaida ta uwar garken</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Lamba ta jerin: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Dole a saita sunan ajiyar takardar shaida, wurin, da batu tare.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Batu: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Nau'i: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>An sanya hannu kai tsaye</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>Ingantacce: daga {0} zuwa {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Masu amfani da aka saita: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>An kasa loda saitin daga {0}.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>An loda saitin daga {0}.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Don amfani da wannan saitin daga baya, gudanar: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>An kasa ajiye saitin: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>An ajiye: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>An ajiye saitin a {0}.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : Haƙƙin mallaka (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>A ƙirƙiri babban fayil {0}?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>An jera mai amfani {0} fiye da sau ɗaya.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Ɓoyewa: a bayyane</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Kuskure mai tsanani: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>An kasa ƙirƙirar babban fayil: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>An ƙirƙira: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Hanya fayil ce, ba babban fayil ba: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Babban fayil ba ya wanzu: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Zaɓi babban fayil da za a raba.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Amfani:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Zaɓuɓɓuka:
+
+  --help
+      Nuna wannan taimakon.
+
+  --config &lt;path&gt;
+      Fayil ɗin saitin JSON.
+
+  --ip &lt;address&gt;
+      Adireshin IP da za a saurara. Tsoho: 0.0.0.0. 0.0.0.0, :: da ::0 suna sauraron kowane fuskar IPv4 da IPv6.
+
+  --port &lt;number&gt;
+      Tashar sauraro. Tsoho: 2121. An yarda: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Yawan haɗin kai mafi yawa a lokaci ɗaya. Tsoho: 10. An yarda: 2-100.
+
+  --cert &lt;path&gt;
+      Fayil ɗin takardar shaida (.pfx, .pem ko .der). Fayil ɗin .pfx yana buɗewa da --certpass idan an saita kalmar wucewa.
+
+  --certpass &lt;password&gt;
+      Kalmar wucewa ta fayil ɗin takardar shaida.
+
+  --certstorename &lt;name&gt;
+      Sunan ajiya: AuthRoot, CertificateAuthority, My, Root ko TrustedPublisher. Saita tare da --certstorelocation da --certstoresubject.
+
+  --certstorelocation &lt;location&gt;
+      Wurin ajiya: CurrentUser ko LocalMachine. Saita tare da --certstorename da --certstoresubject.
+
+  --certstoresubject &lt;subject&gt;
+      Sunan batu da za a nemo a ajiyar takardar shaida. Saita tare da --certstorename da --certstorelocation.
+
+  --user &lt;login#password#folder#permissions&gt;
+      Yana ƙara mai amfani. Izini: R (karantawa), W (rubutawa) ko RW. Babban fayil dole ya riga ya wanzu. Kada a yi amfani da # a cikin filaye huɗu.
+
+Misalai:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Ba tare da hujja ba, appsettings.json a babban fayil na yanzu yana lodawa idan fayil ɗin yana wanzu.
+Idan ba a saita mai amfani ba, saitin mu'amala yana farawa.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter yana karɓar tsohon da aka haskaka. Sama da ƙasa suna zaɓa. Esc yana soke.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Saitin mu'amala</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Shigar da adireshin IP mai inganci.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Yawan haɗin kai mafi yawa dole ya kasance daga {0} zuwa {1}.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} dole ya zama lamba ɗaya tilo.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>Shigar da tasha daga {0} zuwa {1}.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Wurin ajiyar takardar shaida da ba a sani ba: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Sunan ajiyar takardar shaida da ba a sani ba: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>Adireshin IP: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>dukkannin fuskoki</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>Za a iya haɗawa ta sunan kwamfuta {0}.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>Zaɓi {0} yana buƙatar ƙima.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>Hanyar sadarwa {0} «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>A'a</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Shigar da kalmar wucewa.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Karantawa kawai</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Karantawa da rubutawa</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Zaɓi karantawa, rubutawa, ko duka biyun.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Rubutawa kawai</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>Saitin {0} yana adana kalmomin wucewa a rubutu a bayyane. Ajiye shi kuma daga saitin mu'amala don ɓoye su.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Tashar sauraro: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Danna Q don tsayar da uwar garken.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Kalmar wucewa ta takardar shaida</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Fayil ɗin takardar shaida</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Fayil ɗin saitin</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Babban fayil</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>Adireshin IP</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Yawan haɗin kai mafi yawa</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Kalmar wucewa</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Izini</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Tashar sauraro</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Sunan mai amfani</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>A maye gurbin fayil da ke akwai {0}?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>A ajiye wannan saitin?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>An ɓoye kalmomin wucewa a fayil da makullin tsarin aiki kuma ana iya karanta su a wannan kwamfuta kawai.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>Uwar garken FTPS yana farawa.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>An tsayar da uwar garken.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Ana rufe uwar garken.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>An ƙara mai amfani {0} ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>Ƙimar --user dole ta zama login#password#folder#permissions.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Mai amfani {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Shigar da sunan mai amfani.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Bar shi fanko idan kun gama ƙara masu amfani.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Masu amfani da aka saita: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>Ana buƙatar mai amfani ɗaya aƙalla.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Da fatan za a ƙara mai amfani ɗaya aƙalla.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Masu amfani</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Saitin ba shi da inganci.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Eh</value></data>
+</root>

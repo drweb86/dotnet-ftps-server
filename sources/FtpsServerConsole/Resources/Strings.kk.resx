@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json жүктелмеді. Әдепкі мәндер қолданылады.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Баптау болдырылмады.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Өздігінен қол қойылған куәлік үшін бос қалдырыңыз.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Куәлік файлы .pfx, .pem немесе .der деп аяқталуы керек.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Куәлік жолы файл емес, қалта: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Берген: {0} (тақырыппен бірдей, өздігінен қол қойылған)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Куәлік файлы табылмады: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Бұл сервер өздігінен қол қойылған куәлікті қолданады. FTP клиенттері қосылғанда қауіпсіздік ескертуін көрсетуі мүмкін. Сұралса, қабылдамас бұрын клиенттегі саусақ ізін төмендегі мәндермен салыстырыңыз.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Куәлік туралы хабар</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Файлда құпиясөз болмаса, бос қалдырыңыз.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Сервер куәлігі</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Сериялық нөмір: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Куәлік қоймасының атауы, орны және тақырыбы бірге берілуі керек.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Тақырып: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Түрі: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>Өздігінен қол қойылған</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>Жарамды: {0} бастап {1} дейін</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Бапталған пайдаланушылар: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>{0} ішінен баптау жүктелмеді.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>Баптау {0} ішінен жүктелді.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Бұл баптауды кейін қолдану үшін орындаңыз: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>Баптау сақталмады: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>Сақталды: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>Баптау {0} ішіне сақталды.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : авторлық құқық (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>{0} қалтасы жасалсын ба?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>{0} пайдаланушысы бірнеше рет көрсетілген.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Шифрлау: айқын</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Ауыр қате: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>Қалта жасалмады: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>Жасалды: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Жол файл, қалта емес: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Қалта жоқ: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Бөлісетін қалтаны таңдаңыз.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Қолдану:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Параметрлер:
+
+  --help
+      Осы анықтаманы көрсету.
+
+  --config &lt;path&gt;
+      JSON баптау файлы.
+
+  --ip &lt;address&gt;
+      Тыңдалатын IP мекенжай. Әдепкі: 0.0.0.0. 0.0.0.0, :: және ::0 барлық IPv4 және IPv6 интерфейстерін тыңдайды.
+
+  --port &lt;number&gt;
+      Тыңдалатын порт. Әдепкі: 2121. Рұқсат: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Бір мезгілдегі ең көп қосылым. Әдепкі: 10. Рұқсат: 2-100.
+
+  --cert &lt;path&gt;
+      Куәлік файлы (.pfx, .pem немесе .der). Құпиясөз болса, .pfx файлы --certpass арқылы ашылады.
+
+  --certpass &lt;password&gt;
+      Куәлік файлының құпиясөзі.
+
+  --certstorename &lt;name&gt;
+      Қойма атауы: AuthRoot, CertificateAuthority, My, Root немесе TrustedPublisher. --certstorelocation және --certstoresubjectпен бірге беріңіз.
+
+  --certstorelocation &lt;location&gt;
+      Қойма орны: CurrentUser немесе LocalMachine. --certstorename және --certstoresubjectпен бірге беріңіз.
+
+  --certstoresubject &lt;subject&gt;
+      Куәлік қоймасынан ізделетін тақырып атауы. --certstorename және --certstorelocationмен бірге беріңіз.
+
+  --user &lt;login#password#folder#permissions&gt;
+      Пайдаланушы қосады. Құқықтар: R (оқу), W (жазу) немесе RW. Қалта бұрыннан болуы керек. Төрт өрістің ішінде # қолданбаңыз.
+
+Мысалдар:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Аргументсіз болса, ағымдағы қалтадағы appsettings.json файлы бар болса жүктеледі.
+Пайдаланушы бапталмаса, интерактивті баптау басталады.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter бөлектелген әдепкі мәнді қабылдайды. Жоғары және төмен таңдайды. Esc болдырмайды.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Интерактивті баптау</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Жарамды IP мекенжайын енгізіңіз.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Ең көп қосылым {0} мен {1} арасында болуы керек.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} бүтін сан болуы керек.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>{0} мен {1} арасындағы портты енгізіңіз.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Белгісіз куәлік қоймасының орны: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Белгісіз куәлік қоймасының атауы: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP мекенжай: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>барлық интерфейстер</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>Компьютер атауы {0} арқылы қосылуға болады.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>{0} параметріне мән керек.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} желісі «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>Жоқ</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Құпиясөзді енгізіңіз.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Тек оқу</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Оқу және жазу</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Оқуды, жазуды немесе екеуін де таңдаңыз.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Тек жазу</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>{0} баптауы құпиясөздерді ашық мәтінмен сақтайды. Шифрлау үшін интерактивті баптаудан қайта сақтаңыз.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Тыңдау порты: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Серверді тоқтату үшін Q басыңыз.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Куәлік құпиясөзі</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Куәлік файлы</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Баптау файлы</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Қалта</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP мекенжай</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Ең көп қосылым</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Құпиясөз</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Құқықтар</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Тыңдау порты</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Пайдаланушы аты</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Бар файл {0} ауыстырылсын ба?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Осы баптау сақталсын ба?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Файлдағы құпиясөздер операциялық жүйе кілтімен шифрланған және тек осы компьютерде оқылады.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS сервері іске қосылуда.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Сервер тоқтатылды.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Сервер жабылуда.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>{0} пайдаланушысы қосылды ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>--user мәні login#password#folder#permissions түрінде болуы керек.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Пайдаланушы {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Пайдаланушы атын енгізіңіз.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Пайдаланушыларды қосып болғанда бос қалдырыңыз.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Бапталған пайдаланушылар: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>Кемінде бір пайдаланушы керек.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Кемінде бір пайдаланушы қосыңыз.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Пайдаланушылар</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Баптау жарамсыз.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Иә</value></data>
+</root>

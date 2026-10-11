@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json tidak dapat dimuat. Nilai bawaan akan dipakai.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Konfigurasi dibatalkan.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Kosongkan untuk memakai sertifikat yang ditandatangani sendiri.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Berkas sertifikat harus berakhiran .pfx, .pem, atau .der.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Jalur sertifikat adalah folder, bukan berkas: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Penerbit: {0} (sama dengan subjek, ditandatangani sendiri)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Berkas sertifikat tidak ditemukan: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Server ini memakai sertifikat yang ditandatangani sendiri. Klien FTP dapat menampilkan peringatan keamanan saat tersambung. Jika diminta, bandingkan sidik jari di klien dengan nilai di bawah sebelum menerima.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Pemberitahuan sertifikat</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Kosongkan jika berkas tidak bersandi.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Sertifikat server</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Nomor seri: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Nama, lokasi, dan subjek penyimpanan sertifikat harus diisi bersama.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Subjek: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Jenis: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>Ditandatangani sendiri</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>Berlaku: {0} sampai {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Pengguna yang dikonfigurasi: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>Gagal memuat konfigurasi dari {0}.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>Konfigurasi dimuat dari {0}.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Untuk memakai konfigurasi ini nanti, jalankan: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>Tidak dapat menyimpan konfigurasi: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>Tersimpan: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>Konfigurasi disimpan ke {0}.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : hak cipta (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>Buat folder {0}?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>Pengguna {0} tercantum lebih dari sekali.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Enkripsi: eksplisit</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Galat fatal: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>Tidak dapat membuat folder: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>Dibuat: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Jalur adalah berkas, bukan folder: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Folder tidak ada: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Pilih folder untuk dibagikan.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Penggunaan:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Opsi:
+
+  --help
+      Tampilkan bantuan ini.
+
+  --config &lt;path&gt;
+      Berkas konfigurasi JSON.
+
+  --ip &lt;address&gt;
+      Alamat IP yang didengarkan. Bawaan: 0.0.0.0. 0.0.0.0, ::, dan ::0 mendengarkan semua antarmuka IPv4 dan IPv6.
+
+  --port &lt;number&gt;
+      Porta yang didengarkan. Bawaan: 2121. Diizinkan: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Jumlah sambungan bersamaan maksimum. Bawaan: 10. Diizinkan: 2-100.
+
+  --cert &lt;path&gt;
+      Berkas sertifikat (.pfx, .pem, atau .der). Berkas .pfx dibuka dengan --certpass jika kata sandi diisi.
+
+  --certpass &lt;password&gt;
+      Kata sandi berkas sertifikat.
+
+  --certstorename &lt;name&gt;
+      Nama penyimpanan: AuthRoot, CertificateAuthority, My, Root, atau TrustedPublisher. Isi bersama --certstorelocation dan --certstoresubject.
+
+  --certstorelocation &lt;location&gt;
+      Lokasi penyimpanan: CurrentUser atau LocalMachine. Isi bersama --certstorename dan --certstoresubject.
+
+  --certstoresubject &lt;subject&gt;
+      Nama subjek yang dicari di penyimpanan sertifikat. Isi bersama --certstorename dan --certstorelocation.
+
+  --user &lt;login#password#folder#permissions&gt;
+      Menambahkan pengguna. Izin: R (baca), W (tulis), atau RW. Folder harus sudah ada. Jangan memakai # di dalam empat bidang.
+
+Contoh:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Tanpa argumen, appsettings.json di folder saat ini dimuat jika berkas itu ada.
+Jika belum ada pengguna, penyiapan interaktif dimulai.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter menerima nilai bawaan yang disorot. Atas dan bawah memilih. Esc membatalkan.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Penyiapan interaktif</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Masukkan alamat IP yang valid.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Sambungan maksimum harus antara {0} dan {1}.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} harus berupa bilangan bulat.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>Masukkan porta dari {0} sampai {1}.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Lokasi penyimpanan sertifikat tidak dikenal: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Nama penyimpanan sertifikat tidak dikenal: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>Alamat IP: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>semua antarmuka</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>Anda dapat tersambung memakai nama komputer {0}.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>Opsi {0} memerlukan nilai.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>Jaringan {0} '{1}' ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>Tidak</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Masukkan kata sandi.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Hanya baca</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Baca dan tulis</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Pilih baca, tulis, atau keduanya.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Hanya tulis</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>Konfigurasi {0} menyimpan kata sandi sebagai teks polos. Simpan lagi dari penyiapan interaktif untuk mengenkripsinya.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Porta dengar: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Tekan Q untuk menghentikan server.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Kata sandi sertifikat</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Berkas sertifikat</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Berkas konfigurasi</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Direktori</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>Alamat IP</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Sambungan maksimum</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Kata sandi</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Izin</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Porta dengar</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Nama pengguna</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Ganti berkas yang ada {0}?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Simpan konfigurasi ini?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Kata sandi dalam berkas dienkripsi dengan kunci sistem operasi dan hanya dapat dibaca di komputer ini.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>Server FTPS sedang dimulai.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Server dihentikan.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Mematikan server.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>Pengguna {0} ditambahkan ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>Nilai --user harus berbentuk login#password#folder#permissions.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Pengguna {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Masukkan nama pengguna.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Kosongkan setelah selesai menambahkan pengguna.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Pengguna yang dikonfigurasi: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>Diperlukan sedikitnya satu pengguna.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Tambahkan sedikitnya satu pengguna.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Pengguna</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Konfigurasi tidak valid.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Ya</value></data>
+</root>

@@ -1,0 +1,101 @@
+using System.Globalization;
+using System.Resources;
+
+namespace FtpsServerConsole.Resources;
+
+internal static class Strings
+{
+    private static readonly ResourceManager Resources = new("FtpsServerConsole.Resources.Strings", typeof(Strings).Assembly);
+
+    public static string Format(string format, params object?[] args) =>
+        string.Format(CultureInfo.CurrentUICulture, format, args);
+
+    private static string Get(string name) => Resources.GetString(name, CultureInfo.CurrentUICulture) ?? name;
+
+    public static string ConsoleAppSettingsFailed => Get(nameof(ConsoleAppSettingsFailed));
+    public static string ConsoleCancelled => Get(nameof(ConsoleCancelled));
+    public static string ConsoleCertEmptyHint => Get(nameof(ConsoleCertEmptyHint));
+    public static string ConsoleCertExtension => Get(nameof(ConsoleCertExtension));
+    public static string ConsoleCertIsFolder => Get(nameof(ConsoleCertIsFolder));
+    public static string ConsoleCertIssuer => Get(nameof(ConsoleCertIssuer));
+    public static string ConsoleCertMissing => Get(nameof(ConsoleCertMissing));
+    public static string ConsoleCertNoticeBody => Get(nameof(ConsoleCertNoticeBody));
+    public static string ConsoleCertNoticeTitle => Get(nameof(ConsoleCertNoticeTitle));
+    public static string ConsoleCertPasswordHint => Get(nameof(ConsoleCertPasswordHint));
+    public static string ConsoleCertSection => Get(nameof(ConsoleCertSection));
+    public static string ConsoleCertSerial => Get(nameof(ConsoleCertSerial));
+    public static string ConsoleCertSha1 => Get(nameof(ConsoleCertSha1));
+    public static string ConsoleCertSha256 => Get(nameof(ConsoleCertSha256));
+    public static string ConsoleCertStoreIncomplete => Get(nameof(ConsoleCertStoreIncomplete));
+    public static string ConsoleCertSubject => Get(nameof(ConsoleCertSubject));
+    public static string ConsoleCertType => Get(nameof(ConsoleCertType));
+    public static string ConsoleCertTypeSelfSigned => Get(nameof(ConsoleCertTypeSelfSigned));
+    public static string ConsoleCertValid => Get(nameof(ConsoleCertValid));
+    public static string ConsoleConfigComplete => Get(nameof(ConsoleConfigComplete));
+    public static string ConsoleConfigLoaded => Get(nameof(ConsoleConfigLoaded));
+    public static string ConsoleConfigLoadFailed => Get(nameof(ConsoleConfigLoadFailed));
+    public static string ConsoleConfigRunHint => Get(nameof(ConsoleConfigRunHint));
+    public static string ConsoleConfigSaved => Get(nameof(ConsoleConfigSaved));
+    public static string ConsoleConfigSavedLog => Get(nameof(ConsoleConfigSavedLog));
+    public static string ConsoleConfigSaveFailed => Get(nameof(ConsoleConfigSaveFailed));
+    public static string ConsoleCopyright => Get(nameof(ConsoleCopyright));
+    public static string ConsoleCreateFolder => Get(nameof(ConsoleCreateFolder));
+    public static string ConsoleDuplicateUser => Get(nameof(ConsoleDuplicateUser));
+    public static string ConsoleEncryption => Get(nameof(ConsoleEncryption));
+    public static string ConsoleFatal => Get(nameof(ConsoleFatal));
+    public static string ConsoleFolderCreateFailed => Get(nameof(ConsoleFolderCreateFailed));
+    public static string ConsoleFolderCreated => Get(nameof(ConsoleFolderCreated));
+    public static string ConsoleFolderIsFile => Get(nameof(ConsoleFolderIsFile));
+    public static string ConsoleFolderMissing => Get(nameof(ConsoleFolderMissing));
+    public static string ConsoleFolderRequired => Get(nameof(ConsoleFolderRequired));
+    public static string ConsoleHelp => Get(nameof(ConsoleHelp));
+    public static string ConsoleInteractiveHint => Get(nameof(ConsoleInteractiveHint));
+    public static string ConsoleInteractiveTitle => Get(nameof(ConsoleInteractiveTitle));
+    public static string ConsoleInvalidIp => Get(nameof(ConsoleInvalidIp));
+    public static string ConsoleInvalidMaxConnections => Get(nameof(ConsoleInvalidMaxConnections));
+    public static string ConsoleInvalidNumber => Get(nameof(ConsoleInvalidNumber));
+    public static string ConsoleInvalidPort => Get(nameof(ConsoleInvalidPort));
+    public static string ConsoleInvalidStoreLocation => Get(nameof(ConsoleInvalidStoreLocation));
+    public static string ConsoleInvalidStoreName => Get(nameof(ConsoleInvalidStoreName));
+    public static string ConsoleIpAddress => Get(nameof(ConsoleIpAddress));
+    public static string ConsoleListenAll => Get(nameof(ConsoleListenAll));
+    public static string ConsoleMachineName => Get(nameof(ConsoleMachineName));
+    public static string ConsoleMissingOptionValue => Get(nameof(ConsoleMissingOptionValue));
+    public static string ConsoleNetworkLine => Get(nameof(ConsoleNetworkLine));
+    public static string ConsoleNo => Get(nameof(ConsoleNo));
+    public static string ConsolePasswordRequired => Get(nameof(ConsolePasswordRequired));
+    public static string ConsolePermissionRead => Get(nameof(ConsolePermissionRead));
+    public static string ConsolePermissionReadWrite => Get(nameof(ConsolePermissionReadWrite));
+    public static string ConsolePermissionRequired => Get(nameof(ConsolePermissionRequired));
+    public static string ConsolePermissionWrite => Get(nameof(ConsolePermissionWrite));
+    public static string ConsolePlaintextSecrets => Get(nameof(ConsolePlaintextSecrets));
+    public static string ConsolePortLabel => Get(nameof(ConsolePortLabel));
+    public static string ConsolePressQ => Get(nameof(ConsolePressQ));
+    public static string ConsolePromptCertPassword => Get(nameof(ConsolePromptCertPassword));
+    public static string ConsolePromptCertPath => Get(nameof(ConsolePromptCertPath));
+    public static string ConsolePromptConfigFile => Get(nameof(ConsolePromptConfigFile));
+    public static string ConsolePromptFolder => Get(nameof(ConsolePromptFolder));
+    public static string ConsolePromptIp => Get(nameof(ConsolePromptIp));
+    public static string ConsolePromptMaxConnections => Get(nameof(ConsolePromptMaxConnections));
+    public static string ConsolePromptPassword => Get(nameof(ConsolePromptPassword));
+    public static string ConsolePromptPermissions => Get(nameof(ConsolePromptPermissions));
+    public static string ConsolePromptPort => Get(nameof(ConsolePromptPort));
+    public static string ConsolePromptUsername => Get(nameof(ConsolePromptUsername));
+    public static string ConsoleReplaceFile => Get(nameof(ConsoleReplaceFile));
+    public static string ConsoleSaveConfig => Get(nameof(ConsoleSaveConfig));
+    public static string ConsoleSecretsEncrypted => Get(nameof(ConsoleSecretsEncrypted));
+    public static string ConsoleServerStarting => Get(nameof(ConsoleServerStarting));
+    public static string ConsoleServerStopped => Get(nameof(ConsoleServerStopped));
+    public static string ConsoleShuttingDown => Get(nameof(ConsoleShuttingDown));
+    public static string ConsoleUserAdded => Get(nameof(ConsoleUserAdded));
+    public static string ConsoleUserArgument => Get(nameof(ConsoleUserArgument));
+    public static string ConsoleUserIssue => Get(nameof(ConsoleUserIssue));
+    public static string ConsoleUserNameRequired => Get(nameof(ConsoleUserNameRequired));
+    public static string ConsoleUsernameHint => Get(nameof(ConsoleUsernameHint));
+    public static string ConsoleUsersConfigured => Get(nameof(ConsoleUsersConfigured));
+    public static string ConsoleUsersHint => Get(nameof(ConsoleUsersHint));
+    public static string ConsoleUsersRequired => Get(nameof(ConsoleUsersRequired));
+    public static string ConsoleUsersTitle => Get(nameof(ConsoleUsersTitle));
+    public static string ConsoleValidationFailed => Get(nameof(ConsoleValidationFailed));
+    public static string ConsoleYes => Get(nameof(ConsoleYes));
+}

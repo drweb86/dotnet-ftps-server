@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json ကို ဖွင့်၍မရပါ။ မူလတန်ဖိုးများကို သုံးနေသည်။</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>ပြင်ဆင်မှုကို ပယ်ဖျက်လိုက်သည်။</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>ကိုယ်တိုင်လက်မှတ်ရေးထိုး လက်မှတ်အတွက် ဗလာထားပါ။</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>လက်မှတ်ဖိုင်သည် .pfx၊ .pem သို့မဟုတ် .der ဖြင့် ဆုံးရမည်။</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>လက်မှတ်လမ်းကြောင်းသည် ဖိုင်မဟုတ်၊ ဖိုလ်ဒါဖြစ်သည်: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>ထုတ်ပေးသူ: {0} (ဘာသာရပ်နှင့် တူသည်၊ ကိုယ်တိုင်လက်မှတ်ရေးထိုး)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>လက်မှတ်ဖိုင် မတွေ့ပါ: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>ဤဆာဗာသည် ကိုယ်တိုင်လက်မှတ်ရေးထိုးထားသော လက်မှတ်ကို အသုံးပြုသည်။ FTP client များသည် ချိတ်ဆက်သောအခါ လုံခြုံရေးသတိပေးချက် ပြနိုင်သည်။ မေးမြန်းပါက လက်ခံမတိုင်မီ သင့် client တွင် ပြသသော fingerprint ကို အောက်ဖော်ပြပါ တန်ဖိုးများနှင့် နှိုင်းယှဉ်ပါ။</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>လက်မှတ် အကြောင်းကြားချက်</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>ဖိုင်တွင် စကားဝှက်မရှိလျှင် ဗလာထားပါ။</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>ဆာဗာ လက်မှတ်</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>စီရီယယ် နံပါတ်: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>လက်မှတ်သိုလှောင်ခန်း၏ အမည်၊ နေရာနှင့် ဘာသာရပ်ကို အတူတူ ပေးရမည်။</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>ဘာသာရပ်: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>အမျိုးအစား: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>ကိုယ်တိုင်လက်မှတ်ရေးထိုး</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>သက်တမ်းရှိသည်: {0} မှ {1} အထိ</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>သတ်မှတ်ထားသော အသုံးပြုသူများ: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>{0} မှ ပြင်ဆင်မှုကို ဖွင့်၍မရပါ။</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>ပြင်ဆင်မှုကို {0} မှ ဖွင့်လိုက်သည်။</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>ဤပြင်ဆင်မှုကို နောက်မှ သုံးရန် ဖွင့်ပါ: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>ပြင်ဆင်မှုကို သိမ်း၍မရပါ: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>သိမ်းပြီး: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>ပြင်ဆင်မှုကို {0} တွင် သိမ်းလိုက်သည်။</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : မူပိုင်ခွင့် (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>ဖိုလ်ဒါ {0} ကို ဖန်တီးမလား။</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>အသုံးပြုသူ {0} ကို တစ်ကြိမ်ထက် ပိုဖော်ပြထားသည်။</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>ကုဒ်ဝှက်ခြင်း: တိကျပြတ်သား</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>ပြင်းထန်သော အမှား: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>ဖိုလ်ဒါကို ဖန်တီး၍မရပါ: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>ဖန်တီးပြီး: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>လမ်းကြောင်းသည် ဖိုလ်ဒါမဟုတ်၊ ဖိုင်ဖြစ်သည်: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>ဖိုလ်ဒါ မရှိပါ: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>မျှဝေရန် ဖိုလ်ဒါတစ်ခု ရွေးပါ။</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>အသုံးပြုပုံ:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+ရွေးချယ်စရာများ:
+
+  --help
+      ဤအကူအညီကို ပြပါ။
+
+  --config &lt;path&gt;
+      JSON ပြင်ဆင်မှုဖိုင်။
+
+  --ip &lt;address&gt;
+      နားထောင်မည့် IP လိပ်စာ။ မူလ: 0.0.0.0။ 0.0.0.0၊ :: နှင့် ::0 သည် IPv4 နှင့် IPv6 အင်တာဖေ့စ်တိုင်းတွင် နားထောင်သည်။
+
+  --port &lt;number&gt;
+      နားထောင်မည့် ပို့တ်။ မူလ: 2121။ ခွင့်ပြု: 2121-65535။
+
+  --maxconnections &lt;number&gt;
+      တစ်ပြိုင်နက် အများဆုံး ချိတ်ဆက်မှု။ မူလ: 10။ ခွင့်ပြု: 2-100။
+
+  --cert &lt;path&gt;
+      လက်မှတ်ဖိုင် (.pfx၊ .pem သို့မဟုတ် .der)။ စကားဝှက်ရှိလျှင် .pfx ဖိုင်ကို --certpass ဖြင့် ဖွင့်သည်။
+
+  --certpass &lt;password&gt;
+      လက်မှတ်ဖိုင် စကားဝှက်။
+
+  --certstorename &lt;name&gt;
+      သိုလှောင်ခန်းအမည်: AuthRoot၊ CertificateAuthority၊ My၊ Root သို့မဟုတ် TrustedPublisher။ --certstorelocation နှင့် --certstoresubject တို့နှင့်အတူ ပေးပါ။
+
+  --certstorelocation &lt;location&gt;
+      သိုလှောင်ခန်းနေရာ: CurrentUser သို့မဟုတ် LocalMachine။ --certstorename နှင့် --certstoresubject တို့နှင့်အတူ ပေးပါ။
+
+  --certstoresubject &lt;subject&gt;
+      လက်မှတ်သိုလှောင်ခန်းတွင် ရှာမည့် ဘာသာရပ်အမည်။ --certstorename နှင့် --certstorelocation တို့နှင့်အတူ ပေးပါ။
+
+  --user &lt;login#password#folder#permissions&gt;
+      အသုံးပြုသူ ထည့်သည်။ ခွင့်ပြုချက်: R (ဖတ်)၊ W (ရေး) သို့မဟုတ် RW။ ဖိုလ်ဒါ ရှိပြီးသား ဖြစ်ရမည်။ ကွက်လပ်လေးခုအတွင်း # မသုံးပါနှင့်။
+
+ဥပမာများ:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+အငြင်းအခုံမရှိလျှင် လက်ရှိဖိုလ်ဒါထဲက appsettings.json ရှိပါက ၎င်းကို ဖွင့်သည်။
+အသုံးပြုသူ မသတ်မှတ်ထားလျှင် အပြန်အလှန် ပြင်ဆင်မှု စတင်သည်။
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter သည် မီးမောင်းထိုးထားသော မူလတန်ဖိုးကို လက်ခံသည်။ အပေါ်နှင့် အောက်က ရွေးသည်။ Esc က ပယ်ဖျက်သည်။</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>အပြန်အလှန် ပြင်ဆင်မှု</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>မှန်ကန်သော IP လိပ်စာ ထည့်ပါ။</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>အများဆုံး ချိတ်ဆက်မှုသည် {0} မှ {1} အတွင်း ဖြစ်ရမည်။</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} သည် ကိန်းပြည့် ဖြစ်ရမည်။</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>{0} မှ {1} အထိ ပို့တ် ထည့်ပါ။</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>မသိသော လက်မှတ်သိုလှောင်ခန်း နေရာ: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>မသိသော လက်မှတ်သိုလှောင်ခန်း အမည်: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP လိပ်စာ: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>အင်တာဖေ့စ်အားလုံး</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>ကွန်ပျူတာအမည် {0} ဖြင့် ချိတ်ဆက်နိုင်သည်။</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>ရွေးချယ်မှု {0} အတွက် တန်ဖိုး လိုသည်။</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} ကွန်ရက် «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>မဟုတ်</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>စကားဝှက် ထည့်ပါ။</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>ဖတ်ရန်သာ</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>ဖတ်ခြင်းနှင့် ရေးခြင်း</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>ဖတ်ခြင်း၊ ရေးခြင်း သို့မဟုတ် နှစ်ခုလုံးကို ရွေးပါ။</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>ရေးရန်သာ</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>ပြင်ဆင်မှု {0} သည် စကားဝှက်များကို ပကတိစာသားအဖြစ် သိမ်းသည်။ ကုဒ်ဝှက်ရန် အပြန်အလှန် ပြင်ဆင်မှုမှ ထပ်သိမ်းပါ။</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>နားထောင်သော ပို့တ်: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>ဆာဗာကို ရပ်ရန် Q ကို နှိပ်ပါ။</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>လက်မှတ် စကားဝှက်</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>လက်မှတ်ဖိုင်</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>ပြင်ဆင်မှုဖိုင်</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>ဖိုလ်ဒါ</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP လိပ်စာ</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>အများဆုံး ချိတ်ဆက်မှု</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>စကားဝှက်</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>ခွင့်ပြုချက်များ</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>နားထောင်သော ပို့တ်</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>အသုံးပြုသူအမည်</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>ရှိပြီးသား ဖိုင် {0} ကို အစားထိုးမလား။</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>ဤပြင်ဆင်မှုကို သိမ်းမလား။</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>ဖိုင်ထဲက စကားဝှက်များကို လည်ပတ်စနစ်သော့ဖြင့် ကုဒ်ဝှက်ထားပြီး ဤကွန်ပျူတာတွင်သာ ဖတ်နိုင်သည်။</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS ဆာဗာ စတင်နေသည်။</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>ဆာဗာ ရပ်သွားသည်။</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>ဆာဗာကို ပိတ်နေသည်။</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>အသုံးပြုသူ {0} ကို ထည့်ပြီး ({1})။</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>--user တန်ဖိုးသည် login#password#folder#permissions ပုံစံ ဖြစ်ရမည်။</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>အသုံးပြုသူ {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>အသုံးပြုသူအမည် ထည့်ပါ။</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>အသုံးပြုသူထည့်ပြီးလျှင် ဗလာထားပါ။</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>သတ်မှတ်ထားသော အသုံးပြုသူများ: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>အနည်းဆုံး အသုံးပြုသူတစ်ဦး လိုသည်။</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>ကျေးဇူးပြု၍ အသုံးပြုသူ တစ်ဦးဦး ထည့်ပါ။</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>အသုံးပြုသူများ</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>ပြင်ဆင်မှု မမှန်ပါ။</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>ဟုတ်ကဲ့</value></data>
+</root>

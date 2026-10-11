@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json መጫን አልተቻለም። ነባሪ እሴቶች እየተጠቀሙ ነው።</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>ውቅሩ ተሰርዟል።</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>ራስን ለፈረመ ሰርተፊኬት ባዶ ይተዉት።</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>የሰርተፊኬት ፋይል በ .pfx፣ .pem ወይም .der መጨረስ አለበት።</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>የሰርተፊኬት መንገድ ፋይል አይደለም፣ ፎልደር ነው: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>አስተላላፊ: {0} (እንደ ርዕሰ ጉዳዩ፣ ራስን የፈረመ)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>የሰርተፊኬት ፋይል አልተገኘም: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>ይህ አገልጋይ ራስን የፈረመ ሰርተፊኬት ይጠቀማል። FTP ደንበኞች በሚያገናኙ ጊዜ የደህንነት ማስጠንቀቂያ ሊያሳዩ ይችላሉ። ከተጠየቁ፣ ከመቀበልዎ በፊት ደንበኛዎ ውስጥ የሚታየውን ፊንገርፕሪንት ከታች ካሉ ዋጋዎች ጋር ያወዳድሩ።</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>ሰርተፊኬት ማሳወቂያ</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>ፋይሉ የሚስጥር ቃል ከሌለው ባዶ ይተዉት።</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>የአገልጋይ ሰርተፊኬት</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>ተከታታይ ቁጥር: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>የሰርተፊኬት መደብር ስም፣ ቦታ እና ርዕሰ ጉዳይ አብረው መሰጠት አለባቸው።</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>ርዕሰ ጉዳይ: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>አይነት: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>ራስን ፈርሞ</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>ተቀባይነት: ከ {0} እስከ {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>የተዋቀሩ ተጠቃሚዎች: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>ከ {0} ውቅር መጫን አልተቻለም።</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>ውቅር ከ {0} ተጭኗል።</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>ይህን ውቅር በኋላ ለመጠቀም ያሂዱ: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>ውቅሩን ማስቀመጥ አልተቻለም: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>ተቀምጧል: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>ውቅር በ {0} ተቀምጧል።</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : የቅጂ መብት (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>ፎልደር {0} ይፈጠር?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>ተጠቃሚ {0} ከአንድ ጊዜ በላይ ተዘርዝሯል።</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>ምስጠራ: ግልጽ</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>ከባድ ስህተት: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>ፎልደሩን መፍጠር አልተቻለም: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>ተፈጥሯል: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>መንገዱ ፎልደር አይደለም፣ ፋይል ነው: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>ፎልደሩ የለም: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>ለማጋራት ፎልደር ይምረጡ።</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>አጠቃቀም:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+አማራጮች:
+
+  --help
+      ይህን እገዛ አሳይ።
+
+  --config &lt;path&gt;
+      የ JSON ውቅር ፋይል።
+
+  --ip &lt;address&gt;
+      የሚሰማው የ IP አድራሻ። ነባሪ: 0.0.0.0። 0.0.0.0፣ :: እና ::0 በእያንዳንዱ IPv4 እና IPv6 በይነገጽ ይሰማሉ።
+
+  --port &lt;number&gt;
+      የሚሰማው ወደብ። ነባሪ: 2121። የተፈቀደ: 2121-65535።
+
+  --maxconnections &lt;number&gt;
+      በአንድ ጊዜ ከፍተኛ ግንኙነቶች። ነባሪ: 10። የተፈቀደ: 2-100።
+
+  --cert &lt;path&gt;
+      የሰርተፊኬት ፋይል (.pfx፣ .pem ወይም .der)። የሚስጥር ቃል ካለ .pfx ፋይል በ --certpass ይከፈታል።
+
+  --certpass &lt;password&gt;
+      የሰርተፊኬት ፋይል የሚስጥር ቃል።
+
+  --certstorename &lt;name&gt;
+      የመደብር ስም: AuthRoot፣ CertificateAuthority፣ My፣ Root ወይም TrustedPublisher። ከ --certstorelocation እና --certstoresubject ጋር አብረው ይስጡ።
+
+  --certstorelocation &lt;location&gt;
+      የመደብር ቦታ: CurrentUser ወይም LocalMachine። ከ --certstorename እና --certstoresubject ጋር አብረው ይስጡ።
+
+  --certstoresubject &lt;subject&gt;
+      በሰርተፊኬት መደብር ውስጥ የሚፈለግ የርዕሰ ጉዳይ ስም። ከ --certstorename እና --certstorelocation ጋር አብረው ይስጡ።
+
+  --user &lt;login#password#folder#permissions&gt;
+      ተጠቃሚ ይጨምራል። ፈቃዶች: R (ማንበብ)፣ W (መጻፍ) ወይም RW። ፎልደሩ አስቀድሞ ሊኖር ይገባል። በአራቱ መስኮች ውስጥ # አይጠቀሙ።
+
+ምሳሌዎች:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+ክርክር ከሌለ በአሁኑ ፎልደር ውስጥ appsettings.json ካለ ይጫናል።
+ተጠቃሚ ካልተዋቀረ መስተጋብራዊ ማዋቀር ይጀምራል።
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter የተመረጠውን ነባሪ ይቀበላል። ወደ ላይ እና ወደ ታች ይመርጣሉ። Esc ይሰርዛል።</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>መስተጋብራዊ ውቅር</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>ትክክለኛ የ IP አድራሻ ያስገቡ።</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>ከፍተኛ ግንኙነቶች ከ {0} እስከ {1} መሆን አለባቸው።</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} ሙሉ ቁጥር መሆን አለበት።</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>ከ {0} እስከ {1} ወደብ ያስገቡ።</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>ያልታወቀ የሰርተፊኬት መደብር ቦታ: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>ያልታወቀ የሰርተፊኬት መደብር ስም: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>የ IP አድራሻ: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>ሁሉም በይነገጾች</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>በኮምፒውተር ስም {0} መገናኘት ይቻላል።</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>አማራጭ {0} እሴት ይፈልጋል።</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} አውታረ መረብ «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>አይ</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>የሚስጥር ቃል ያስገቡ።</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>ማንበብ ብቻ</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>ማንበብ እና መጻፍ</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>ማንበብ፣ መጻፍ ወይም ሁለቱንም ይምረጡ።</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>መጻፍ ብቻ</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>ውቅር {0} የሚስጥር ቃላትን በግልጽ ጽሑፍ ያስቀምጣል። ለማመስጠር ከመስተጋብራዊ ማዋቀር እንደገና ያስቀምጡ።</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>የሚሰማ ወደብ: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>አገልጋዩን ለማቆም Q ይጫኑ።</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>የሰርተፊኬት የሚስጥር ቃል</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>የሰርተፊኬት ፋይል</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>የውቅር ፋይል</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>ፎልደር</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>የ IP አድራሻ</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>ከፍተኛ ግንኙነቶች</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>የሚስጥር ቃል</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>ፈቃዶች</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>የሚሰማ ወደብ</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>የተጠቃሚ ስም</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>ያለው ፋይል {0} ይተካ?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>ይህ ውቅር ይቀመጥ?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>በፋይሉ ውስጥ ያሉ የሚስጥር ቃላት በስርዓተ ክወና ቁልፍ ተመስጥረዋል እና በዚህ ኮምፒውተር ላይ ብቻ ይነበባሉ።</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>የ FTPS አገልጋይ እየጀመረ ነው።</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>አገልጋዩ ቆሟል።</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>አገልጋዩ እየተዘጋ ነው።</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>ተጠቃሚ {0} ታክሏል ({1})።</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>የ --user እሴት login#password#folder#permissions መሆን አለበት።</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>ተጠቃሚ {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>የተጠቃሚ ስም ያስገቡ።</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>ተጠቃሚዎችን ጨምረው ሲጨርሱ ባዶ ይተዉት።</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>የተዋቀሩ ተጠቃሚዎች: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>ቢያንስ አንድ ተጠቃሚ ያስፈልጋል።</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>እባክዎ ቢያንስ አንድ ተጠቃሚ ያክሉ።</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>ተጠቃሚዎች</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>ውቅሩ ትክክል አይደለም።</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>አዎ</value></data>
+</root>

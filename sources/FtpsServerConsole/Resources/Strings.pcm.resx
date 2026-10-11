@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>E no fit load appsettings.json. E go use di default values.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Setup don cancel.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Leave am empty if you wan use certificate wey sign imself.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Di certificate file must end for .pfx, .pem or .der.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Di certificate path na folda, e no be file: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Who give am: {0} (same as subject, e sign imself)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Certificate file no dey: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Dis server dey use certificate wey sign imself. FTP client fit show security warning when dem dey connect. If dem ask you, compare di fingerprint wey your client show with di values wey dey below before you accept am.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Notice about certificate</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Leave am empty if di file no get password.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Di server certificate</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Serial number: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Name, place and subject of di certificate store must set together.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Subject wey dey: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Kind: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>E sign imself</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>E valid from {0} reach {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Users wey you don set: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>E no fit load setup from {0}.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>Setup don load from {0}.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>If you wan use dis setup later, run: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>E no fit save di setup: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>E don save {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>Setup don save for {0}.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : Na Siarhei Kuchuk get di copyright (c) 2025-{1}</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>Make di folda {0}?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>User {0} don show more than one time.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>How e encrypt: explicit way</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Serious error: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>E no fit create di folda: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>E don create {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Di path na file, e no be folda: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Folda no dey: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Choose folda wey you wan share.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>How you go take am:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Wetin you fit set:
+
+  --help
+      Show dis help.
+
+  --config &lt;path&gt;
+      JSON file wey hold di setup.
+
+  --ip &lt;address&gt;
+      IP address wey e go listen for. Di default na 0.0.0.0. 0.0.0.0, :: and ::0 dey listen for every IPv4 and IPv6 interface.
+
+  --port &lt;number&gt;
+      Port wey e go listen for. Di default na 2121. Wetin dey allowed: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      How many connection fit dey at once. Di default na 10. Wetin dey allowed: 2-100.
+
+  --cert &lt;path&gt;
+      File wey be certificate (.pfx, .pem or .der). If password dey, .pfx file go open with --certpass.
+
+  --certpass &lt;password&gt;
+      Password wey di certificate file get.
+
+  --certstorename &lt;name&gt;
+      Name of di store: AuthRoot, CertificateAuthority, My, Root or TrustedPublisher. Put am together with --certstorelocation and --certstoresubject.
+
+  --certstorelocation &lt;location&gt;
+      Where di store dey: CurrentUser or LocalMachine. Put am together with --certstorename and --certstoresubject.
+
+  --certstoresubject &lt;subject&gt;
+      Subject name wey you wan find for di certificate store. Put am together with --certstorename and --certstorelocation.
+
+  --user &lt;login#password#folder#permissions&gt;
+      E go add one user. Permission: R (read), W (write) or RW. Di folda must don dey already. No put # inside di four fields.
+
+Example dem:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+If you no put argument, appsettings.json for di current folda go load if di file dey.
+If user never set, interactive setup go start.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter go take di default wey dey shine. Up and down go choose. Esc go cancel.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Interactive setup</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Put correct IP address.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Max connection must dey from {0} reach {1}.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} must be full number.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>Put port from {0} reach {1}.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>E no sabi where certificate store dey: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>E no sabi di certificate store name: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP address wey e dey use: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>every interface</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>You fit connect with computer name {0}.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>Option {0} need value.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>Network {0} wey dem call «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>No be so</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Put password.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Read alone</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Read plus write</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Choose read, write or di two.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Write alone</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>Setup {0} dey keep password as plain text. Save am again from interactive setup make e encrypt dem.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Port wey e dey listen: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Press Q make di server stop.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Password for certificate</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>File wey be certificate</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Setup file</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Folda</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP wey e go listen</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Max connection</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Pasiwọd</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Wetin e fit do</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Port wey e dey listen</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>User nem</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Replace di file wey dey {0}?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Save dis setup?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Password for di file don encrypt with OS key and na only dis machine fit read am.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS server dey start.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Server don stop.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Server dey shut down.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>User {0} don add ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>Di --user value must be login#password#folder#permissions.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Dis user {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Put user nem.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Leave am empty when you don finish to add users.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Users wey don set: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>You need at least one user.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Abeg add at least one user.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Users dem</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Di setup no correct.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Na so</value></data>
+</root>

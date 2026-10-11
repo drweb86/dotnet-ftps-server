@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json بارگذاری نشد. مقدارهای پیش‌فرض به کار می‌روند.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>پیکربندی لغو شد.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>برای گواهی خودامضا خالی بگذارید.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>پرونده گواهی باید به .pfx، .pem یا .der ختم شود.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>مسیر گواهی پوشه است، نه پرونده: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>صادرکننده: {0} (همان موضوع، خودامضا)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>پرونده گواهی پیدا نشد: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>این کارساز از گواهی خودامضا استفاده می‌کند. کلاینت‌های FTP هنگام اتصال ممکن است هشدار امنیتی نشان دهند. اگر خواسته شد، پیش از پذیرش اثرانگشت کلاینت را با مقدارهای زیر مقایسه کنید.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>اطلاعیه گواهی</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>اگر پرونده گذرواژه ندارد خالی بگذارید.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>گواهی کارساز</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>شماره سریال: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>نام، مکان و موضوع انبار گواهی باید با هم داده شوند.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>موضوع: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>گونه: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>خودامضا</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>معتبر: از {0} تا {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>کاربران پیکربندی‌شده: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>بارگذاری پیکربندی از {0} ناموفق بود.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>پیکربندی از {0} بارگذاری شد.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>برای استفاده بعدی این پیکربندی اجرا کنید: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>پیکربندی ذخیره نشد: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>ذخیره شد: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>پیکربندی در {0} ذخیره شد.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : حق نشر (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>پوشه {0} ساخته شود؟</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>کاربر {0} بیش از یک بار آمده است.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>رمزگذاری: صریح</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>خطای مهلک: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>پوشه ساخته نشد: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>ساخته شد: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>مسیر پرونده است، نه پوشه: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>پوشه وجود ندارد: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>پوشه‌ای برای اشتراک انتخاب کنید.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>کاربرد:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+گزینه‌ها:
+
+  --help
+      این راهنما را نشان می‌دهد.
+
+  --config &lt;path&gt;
+      پرونده پیکربندی JSON.
+
+  --ip &lt;address&gt;
+      نشانی IP برای شنیدن. پیش‌فرض: 0.0.0.0. مقدارهای 0.0.0.0 و :: و ::0 روی همه رابط‌های IPv4 و IPv6 گوش می‌دهند.
+
+  --port &lt;number&gt;
+      درگاه شنیدن. پیش‌فرض: 2121. مجاز: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      بیشینه اتصال هم‌زمان. پیش‌فرض: 10. مجاز: 2-100.
+
+  --cert &lt;path&gt;
+      پرونده گواهی (.pfx، .pem یا .der). پرونده .pfx در صورت داشتن گذرواژه با --certpass باز می‌شود.
+
+  --certpass &lt;password&gt;
+      گذرواژه پرونده گواهی.
+
+  --certstorename &lt;name&gt;
+      نام انبار: AuthRoot، CertificateAuthority، My، Root یا TrustedPublisher. همراه --certstorelocation و --certstoresubject بدهید.
+
+  --certstorelocation &lt;location&gt;
+      جای انبار: CurrentUser یا LocalMachine. همراه --certstorename و --certstoresubject بدهید.
+
+  --certstoresubject &lt;subject&gt;
+      نام موضوع برای جستجو در انبار گواهی. همراه --certstorename و --certstorelocation بدهید.
+
+  --user &lt;login#password#folder#permissions&gt;
+      کاربر می‌افزاید. مجوزها: R (خواندن)، W (نوشتن) یا RW. پوشه باید از قبل وجود داشته باشد. درون چهار فیلد از # استفاده نکنید.
+
+نمونه‌ها:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+بدون آرگومان، اگر appsettings.json در پوشه جاری باشد بارگذاری می‌شود.
+اگر کاربری تنظیم نشده باشد، راه‌اندازی تعاملی آغاز می‌شود.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter مقدار برجسته پیش‌فرض را می‌پذیرد. بالا و پایین انتخاب می‌کنند. Esc لغو می‌کند.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>راه‌اندازی تعاملی</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>یک نشانی IP معتبر وارد کنید.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>بیشینه اتصال باید بین {0} و {1} باشد.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} باید یک عدد صحیح باشد.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>درگاهی از {0} تا {1} وارد کنید.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>مکان ناشناخته انبار گواهی: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>نام ناشناخته انبار گواهی: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>نشانی IP: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>همه رابط‌ها</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>می‌توانید با نام رایانه {0} وصل شوید.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>گزینه {0} به مقدار نیاز دارد.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>شبکه {0} «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>خیر</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>گذرواژه را وارد کنید.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>فقط خواندن</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>خواندن و نوشتن</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>خواندن، نوشتن یا هر دو را انتخاب کنید.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>فقط نوشتن</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>پیکربندی {0} گذرواژه‌ها را به صورت متن ساده نگه می‌دارد. برای رمزگذاری، دوباره از راه‌اندازی تعاملی ذخیره کنید.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>درگاه شنیدن: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>برای توقف کارساز Q را بزنید.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>گذرواژه گواهی</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>پرونده گواهی</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>پرونده پیکربندی</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>پوشه</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>نشانی IP</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>بیشینه اتصال</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>گذرواژه</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>مجوزها</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>درگاه شنیدن</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>نام کاربر</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>پرونده موجود {0} جایگزین شود؟</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>این پیکربندی ذخیره شود؟</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>گذرواژه‌های پرونده با کلید سیستم‌عامل رمز شده‌اند و فقط روی این رایانه خوانده می‌شوند.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>کارساز FTPS در حال شروع است.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>کارساز متوقف شد.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>کارساز در حال خاموش شدن است.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>کاربر {0} افزوده شد ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>مقدار --user باید به شکل login#password#folder#permissions باشد.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>کاربر {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>نام کاربر را وارد کنید.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>وقتی افزودن کاربران تمام شد خالی بگذارید.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>کاربران پیکربندی‌شده: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>دست‌کم یک کاربر لازم است.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>لطفاً دست‌کم یک کاربر اضافه کنید.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>کاربران</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>پیکربندی معتبر نیست.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>بله</value></data>
+</root>

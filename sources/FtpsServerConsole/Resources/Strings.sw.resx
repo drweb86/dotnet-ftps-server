@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>Haikuweza kupakia appsettings.json. Thamani chaguomsingi zinatumika.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Usanidi umeghairiwa.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Acha tupu ili kutumia cheti kilichosainiwa chenyewe.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Faili la cheti lazima liishie kwa .pfx, .pem au .der.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Njia ya cheti ni folda, si faili: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Mtoa cheti: {0} (sawa na mada, limesainiwa lenyewe)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Faili la cheti halikupatikana: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Seva hii inatumia cheti kilichosainiwa yenyewe. Wateja wa FTP wanaweza kuonyesha onyo la usalama wakati wa kuunganisha. Ukiombwa, linganisha alama ya kidole iliyoonyeshwa katika mteja wako na maadili hapa chini kabla ya kukubali.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Arifa ya cheti</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Acha tupu ikiwa faili halina nywila.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Cheti cha seva</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Nambari ya mfululizo: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Jina, mahali na mada ya hifadhi ya cheti lazima viwekwe pamoja.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Mada: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Aina: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>Imesainiwa yenyewe</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>Halali: {0} hadi {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Watumiaji waliosanidiwa: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>Imeshindwa kupakia usanidi kutoka {0}.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>Usanidi umepakiwa kutoka {0}.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Ili kutumia usanidi huu baadaye, endesha: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>Haikuweza kuhifadhi usanidi: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>Imehifadhiwa: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>Usanidi umehifadhiwa katika {0}.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : Hakimiliki (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>Unda folda {0}?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>Mtumiaji {0} ameorodheshwa zaidi ya mara moja.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Usimbaji: wazi</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Hitilafu mbaya: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>Haikuweza kuunda folda: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>Imeundwa: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Njia ni faili, si folda: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Folda haipo: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Chagua folda ya kushiriki.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Matumizi:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Chaguo:
+
+  --help
+      Onyesha msaada huu.
+
+  --config &lt;path&gt;
+      Faili ya usanidi wa JSON.
+
+  --ip &lt;address&gt;
+      Anwani ya IP ya kusikiliza. Chaguomsingi: 0.0.0.0. 0.0.0.0, :: na ::0 husikiliza kila kiolesura cha IPv4 na IPv6.
+
+  --port &lt;number&gt;
+      Bandari ya kusikiliza. Chaguomsingi: 2121. Inaruhusiwa: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Idadi ya juu ya miunganisho kwa wakati mmoja. Chaguomsingi: 10. Inaruhusiwa: 2-100.
+
+  --cert &lt;path&gt;
+      Faili la cheti (.pfx, .pem au .der). Faili ya .pfx hufunguliwa kwa --certpass ikiwa nywila imewekwa.
+
+  --certpass &lt;password&gt;
+      Nywila ya faili la cheti.
+
+  --certstorename &lt;name&gt;
+      Jina la hifadhi: AuthRoot, CertificateAuthority, My, Root au TrustedPublisher. Weka pamoja na --certstorelocation na --certstoresubject.
+
+  --certstorelocation &lt;location&gt;
+      Mahali pa hifadhi: CurrentUser au LocalMachine. Weka pamoja na --certstorename na --certstoresubject.
+
+  --certstoresubject &lt;subject&gt;
+      Jina la mada la kutafuta katika hifadhi ya cheti. Weka pamoja na --certstorename na --certstorelocation.
+
+  --user &lt;login#password#folder#permissions&gt;
+      Huongeza mtumiaji. Ruhusa: R (kusoma), W (kuandika) au RW. Folda lazima iwepo tayari. Usitumie # ndani ya sehemu nne.
+
+Mifano:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Bila hoja, appsettings.json katika folda ya sasa hupakiwa ikiwa faili hilo lipo.
+Mtumiaji asipowekwa, usanidi wa maingiliano huanzishwa.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter hukubali chaguomsingi lililoangaziwa. Juu na chini huchagua. Esc hughairi.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Usanidi wa maingiliano</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Weka anwani halali ya IP.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Miunganisho ya juu lazima iwe kutoka {0} hadi {1}.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} lazima liwe nambari kamili.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>Weka bandari kutoka {0} hadi {1}.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Mahali pasipojulikana pa hifadhi ya cheti: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Jina lisilojulikana la hifadhi ya cheti: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>Anwani ya IP: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>violesura vyote</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>Unaweza kuunganisha kwa jina la kompyuta {0}.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>Chaguo {0} linahitaji thamani.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>Mtandao {0} «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>Hapana</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Weka nywila.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Kusoma tu</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Kusoma na kuandika</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Chagua kusoma, kuandika, au vyote.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Kuandika tu</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>Usanidi {0} huhifadhi nywila kama maandishi wazi. Hifadhi tena kutoka usanidi wa maingiliano ili kuzisimba.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Bandari ya kusikiliza: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Bonyeza Q ili kusimamisha seva.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Nywila ya cheti</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Faili la cheti</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Faili ya usanidi</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Folda</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>Anwani ya IP</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Miunganisho ya juu</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Nywila</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Ruhusa</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Bandari ya kusikiliza</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Jina la mtumiaji</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Badilisha faili lililopo {0}?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Hifadhi usanidi huu?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Nywila katika faili zimesimbwa kwa ufunguo wa mfumo wa uendeshaji na zinasomwa tu kwenye kompyuta hii.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>Seva ya FTPS inaanza.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Seva imesimama.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Seva inazimwa.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>Mtumiaji {0} ameongezwa ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>Thamani ya --user lazima iwe login#password#folder#permissions.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Mtumiaji {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Weka jina la mtumiaji.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Acha tupu ukimaliza kuongeza watumiaji.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Watumiaji waliosanidiwa: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>Mtumiaji angalau mmoja anahitajika.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Tafadhali ongeza mtumiaji angalau mmoja.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Watumiaji</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Usanidi si halali.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Ndiyo</value></data>
+</root>

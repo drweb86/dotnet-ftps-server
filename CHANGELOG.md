@@ -1,3 +1,9 @@
+# 2026.10.11
+(unpublished)
+
+## Changes
+- Console: localized.
+
 # 2026.10.08
 
 ## New Features

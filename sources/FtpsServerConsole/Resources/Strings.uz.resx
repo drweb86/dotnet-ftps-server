@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json yuklanmadi. Standart qiymatlar ishlatiladi.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Sozlash bekor qilindi.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>O'zi imzolagan sertifikat uchun bo'sh qoldiring.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Sertifikat fayli .pfx, .pem yoki .der bilan tugashi kerak.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Sertifikat yo'li fayl emas, jild: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Beruvchi: {0} (mavzu bilan bir xil, o'zi imzolagan)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Sertifikat fayli topilmadi: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Bu server o'zi imzolagan sertifikatdan foydalanadi. FTP mijozlari ulanishda xavfsizlik ogohlantirishini ko'rsatishi mumkin. So'ralsa, qabul qilishdan oldin mijozdagi barmoq izini quyidagi qiymatlar bilan solishtiring.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Sertifikat haqida xabar</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Faylda parol bo'lmasa, bo'sh qoldiring.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Server sertifikati</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Seriya raqami: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Sertifikat omborining nomi, joyi va mavzusi birga berilishi kerak.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Mavzu: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Turi: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>O'zi imzolagan</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>Amal qiladi: {0} dan {1} gacha</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Sozlangan foydalanuvchilar: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>{0} dan sozlama yuklanmadi.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>Sozlama {0} dan yuklandi.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Bu sozlamani keyin ishlatish uchun bajaring: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>Sozlama saqlanmadi: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>Saqlandi: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>Sozlama {0} ga saqlandi.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : mualliflik huquqi (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>{0} jildi yaratilsinmi?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>{0} foydalanuvchisi bir necha marta ko'rsatilgan.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Shifrlash: aniq</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Jiddiy xato: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>Jild yaratilmadi: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>Yaratildi: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Yo'l fayl, jild emas: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Jild mavjud emas: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Ulashish uchun jildni tanlang.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Foydalanish:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Parametrlar:
+
+  --help
+      Bu yordamni ko'rsatish.
+
+  --config &lt;path&gt;
+      JSON sozlash fayli.
+
+  --ip &lt;address&gt;
+      Tinglanadigan IP manzil. Standart: 0.0.0.0. 0.0.0.0, :: va ::0 barcha IPv4 va IPv6 interfeyslarini tinglaydi.
+
+  --port &lt;number&gt;
+      Tinglanadigan port. Standart: 2121. Ruxsat: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Bir vaqtdagi eng ko'p ulanish. Standart: 10. Ruxsat: 2-100.
+
+  --cert &lt;path&gt;
+      Sertifikat fayli (.pfx, .pem yoki .der). Parol bo'lsa, .pfx fayli --certpass bilan ochiladi.
+
+  --certpass &lt;password&gt;
+      Sertifikat faylining paroli.
+
+  --certstorename &lt;name&gt;
+      Ombor nomi: AuthRoot, CertificateAuthority, My, Root yoki TrustedPublisher. --certstorelocation va --certstoresubject bilan birga bering.
+
+  --certstorelocation &lt;location&gt;
+      Ombor joyi: CurrentUser yoki LocalMachine. --certstorename va --certstoresubject bilan birga bering.
+
+  --certstoresubject &lt;subject&gt;
+      Sertifikat omborida qidiriladigan mavzu nomi. --certstorename va --certstorelocation bilan birga bering.
+
+  --user &lt;login#password#folder#permissions&gt;
+      Foydalanuvchi qo'shadi. Huquqlar: R (o'qish), W (yozish) yoki RW. Jild oldindan mavjud bo'lishi kerak. To'rtta maydon ichida # ishlatmang.
+
+Misollar:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Argument bo'lmasa, joriy jilddagi appsettings.json mavjud bo'lsa yuklanadi.
+Foydalanuvchi sozlanmagan bo'lsa, interaktiv sozlash boshlanadi.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter belgilangan standart qiymatni qabul qiladi. Yuqori va past tanlaydi. Esc bekor qiladi.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Interaktiv sozlash</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Yaroqli IP manzilini kiriting.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Eng ko'p ulanish {0} dan {1} gacha bo'lishi kerak.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} butun son bo'lishi kerak.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>{0} dan {1} gacha port kiriting.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Noma'lum sertifikat ombori joyi: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Noma'lum sertifikat ombori nomi: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP manzil: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>barcha interfeyslar</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>Kompyuter nomi {0} orqali ulanish mumkin.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>{0} parametri qiymat talab qiladi.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} tarmog'i «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>Yo'q</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Parolni kiriting.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Faqat o'qish</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>O'qish va yozish</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>O'qish, yozish yoki ikkalasini tanlang.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Faqat yozish</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>{0} sozlamasi parollarni ochiq matn sifatida saqlaydi. Shifrlash uchun interaktiv sozlashdan qayta saqlang.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Tinglash porti: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Serverni to'xtatish uchun Q ni bosing.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Sertifikat paroli</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Sertifikat fayli</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Sozlash fayli</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Jild</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP manzil</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Eng ko'p ulanish</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Parol</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Huquqlar</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Tinglash porti</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Foydalanuvchi nomi</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Mavjud {0} fayli almashtirilsinmi?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Bu sozlama saqlansinmi?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Fayldagi parollar operatsion tizim kaliti bilan shifrlangan va faqat shu kompyuterda o'qiladi.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS serveri ishga tushmoqda.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Server to'xtatildi.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Server yopilmoqda.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>{0} foydalanuvchisi qo'shildi ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>--user qiymati login#password#folder#permissions ko'rinishida bo'lishi kerak.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Foydalanuvchi {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Foydalanuvchi nomini kiriting.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Foydalanuvchilarni qo'shib bo'lgach, bo'sh qoldiring.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Sozlangan foydalanuvchilar: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>Kamida bitta foydalanuvchi kerak.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Kamida bitta foydalanuvchi qo'shing.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Foydalanuvchilar</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Sozlama yaroqsiz.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Ha</value></data>
+</root>

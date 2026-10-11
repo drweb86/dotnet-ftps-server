@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>Ko le kó appsettings.json wọle. Awọn iye aiyipada ni a n lo.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Iṣeto ti fagile.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Fi silẹ ṣofo fun iwe-ẹri ti ara ẹni fọwọsi.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Faili iwe-ẹri gbọdọ pari pẹlu .pfx, .pem tabi .der.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Ọna iwe-ẹri jẹ folda, kii ṣe faili: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Olupese: {0} (kannaa bi koko, ara ẹni fọwọsi)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>A ko ri faili iwe-ẹri: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Olupin yii nlo iwe-ẹri ti ara ẹni fọwọsi. Awọn onibara FTP le ṣe afihan ikilọ aabo nigbati wọn n sopọ. Ti a ba beere lọwọ rẹ, ṣe afiwe itọka ika ọwọ ti o han ninu onibara rẹ pẹlu awọn iye ni isalẹ ṣaaju gbigba.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Akiyesi iwe-ẹri</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Fi silẹ ṣofo ti faili ko ba ni ọrọ igbaniwọle.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Iwe-ẹri olupin</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Nọmba tẹlẹtẹlẹ: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Orukọ, ibi ati koko ile ipamọ iwe-ẹri gbọdọ wa papọ.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Koko: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Iru: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>Ara ẹni fọwọsi</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>O wulo: {0} si {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Awọn olumulo ti a ṣeto: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>A kuna lati kó iṣeto wọle lati {0}.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>A kó iṣeto wọle lati {0}.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Lati lo iṣeto yii nigbamii, ṣe: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>A ko le fi iṣeto pamọ: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>A fi pamọ: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>A fi iṣeto pamọ si {0}.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : Ẹtọ oniwe (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>Ṣẹda folda {0}?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>A ṣe atokọ olumulo {0} ju ẹẹkan lọ.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Ìpamọ: kedere</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Aṣiṣe nla: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>A ko le ṣẹda folda: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>A ti ṣẹda: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Ọna jẹ faili, kii ṣe folda: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Folda ko si: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Yan folda kan lati pin.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Lilo:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Awọn aṣayan:
+
+  --help
+      Fi iranlọwọ yii han.
+
+  --config &lt;path&gt;
+      Faili iṣeto JSON.
+
+  --ip &lt;address&gt;
+      Adirẹsi IP ti yoo gbọ. Aiyipada: 0.0.0.0. 0.0.0.0, :: ati ::0 n gbọ lori gbogbo wiwo IPv4 ati IPv6.
+
+  --port &lt;number&gt;
+      Pootu ti yoo gbọ. Aiyipada: 2121. A gba: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Iye idapọ ti o pọ julọ ni akoko kan. Aiyipada: 10. A gba: 2-100.
+
+  --cert &lt;path&gt;
+      Faili iwe-ẹri (.pfx, .pem tabi .der). Faili .pfx yoo ṣi pẹlu --certpass ti ọrọ igbaniwọle ba wa.
+
+  --certpass &lt;password&gt;
+      Ọrọ igbaniwọle faili iwe-ẹri.
+
+  --certstorename &lt;name&gt;
+      Orukọ ile ipamọ: AuthRoot, CertificateAuthority, My, Root tabi TrustedPublisher. Fi pọ pẹlu --certstorelocation ati --certstoresubject.
+
+  --certstorelocation &lt;location&gt;
+      Ibi ile ipamọ: CurrentUser tabi LocalMachine. Fi pọ pẹlu --certstorename ati --certstoresubject.
+
+  --certstoresubject &lt;subject&gt;
+      Orukọ koko lati wa ninu ile ipamọ iwe-ẹri. Fi pọ pẹlu --certstorename ati --certstorelocation.
+
+  --user &lt;login#password#folder#permissions&gt;
+      N fi olumulo kun. Aṣẹ: R (kika), W (kikọ) tabi RW. Folda gbọdọ ti wa tẹlẹ. Ma lo # ninu awọn aaye mẹrin.
+
+Awọn apẹẹrẹ:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Laisi awọn ariyanjiyan, appsettings.json ninu folda lọwọlọwọ yoo kó wọle ti faili ba wa.
+Ti olumulo ko ba ṣeto, iṣeto ibaraenisepo yoo bẹrẹ.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter gba aiyipada ti a ṣe afihan. Oke ati isalẹ n yan. Esc n fagile.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Iṣeto ibaraenisepo</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Tẹ adirẹsi IP to tọ.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Iye idapọ ti o pọ julọ gbọdọ jẹ lati {0} si {1}.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} gbọdọ jẹ nọmba odidi.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>Tẹ pootu lati {0} si {1}.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Ibi ile ipamọ iwe-ẹri ti a ko mọ: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Orukọ ile ipamọ iwe-ẹri ti a ko mọ: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>Adirẹsi IP: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>gbogbo awọn wiwo</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>O le sopọ nipa orukọ kọmputa {0}.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>Aṣayan {0} nilo iye kan.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>Nẹtiwọọki {0} «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>Rara</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Tẹ ọrọ igbaniwọle.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Kika nikan</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Kika ati kikọ</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Yan kika, kikọ, tabi mejeeji.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Kikọ nikan</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>Iṣeto {0} n tọju awọn ọrọ igbaniwọle gẹgẹ bi ọrọ lasan. Fi pamọ lẹẹkansi lati iṣeto ibaraenisepo lati pa wọn mọ.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Pootu igbọran: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Tẹ Q lati da olupin duro.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Ọrọ igbaniwọle iwe-ẹri</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Faili iwe-ẹri</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Faili iṣeto</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Folda</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>Adirẹsi IP</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Iye idapọ ti o pọ julọ</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Ọrọ igbaniwọle</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Awọn aṣẹ</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Pootu igbọran</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Orukọ olumulo</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Rọpo faili to wa {0}?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Fi iṣeto yii pamọ?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Awọn ọrọ igbaniwọle ninu faili ti wa ni ipamọ pẹlu bọtini eto iṣẹ ati pe a le ka wọn lori ẹrọ yii nikan.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>Olupin FTPS n bẹrẹ.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Olupin ti duro.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Olupin n pa.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>A fi olumulo {0} kun ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>Iye --user gbọdọ jẹ login#password#folder#permissions.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Olumulo {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Tẹ orukọ olumulo.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Fi silẹ ṣofo nigbati o ba pari fifi awọn olumulo kun.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Awọn olumulo ti a ṣeto: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>Olumulo kan o kere ju ni a nilo.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Jọwọ fi olumulo kan kere ju kun.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Awọn olumulo</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Iṣeto ko tọ.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Bẹẹni</value></data>
+</root>

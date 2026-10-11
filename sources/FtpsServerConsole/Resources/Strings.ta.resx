@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json ஏற்ற முடியவில்லை. இயல்பு மதிப்புகள் பயன்படுத்தப்படுகின்றன.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>கட்டமைப்பு ரத்து செய்யப்பட்டது.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>சுய-கையொப்பமிட்ட சான்றிதழுக்கு காலியாக விடுங்கள்.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>சான்றிதழ் கோப்பு .pfx, .pem அல்லது .der என்று முடிய வேண்டும்.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>சான்றிதழ் பாதை ஒரு கோப்பு அல்ல, கோப்புறை: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>வழங்குநர்: {0} (பொருளைப் போலவே, சுய-கையொப்பமிட்டது)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>சான்றிதழ் கோப்பு காணப்படவில்லை: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>இந்த சேவையகம் சுய-கையொப்பமிட்ட சான்றிதழைப் பயன்படுத்துகிறது. FTP கிளையன்டுகள் இணைக்கும்போது பாதுகாப்பு எச்சரிக்கையை காட்டலாம். கேட்கப்பட்டால், ஏற்றுக்கொள்வதற்கு முன் உங்கள் கிளையன்டில் காட்டப்பட்ட கைரேகையை கீழே உள்ள மதிப்புகளுடன் ஒப்பிடவும்.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>சான்றிதழ் அறிவிப்பு</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>கோப்பில் கடவுச்சொல் இல்லையென்றால் காலியாக விடுங்கள்.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>சேவையக சான்றிதழ்</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>வரிசை எண்: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>சான்றிதழ் சேமிப்பகத்தின் பெயர், இடம் மற்றும் பொருள் ஒன்றாக அமைக்கப்பட வேண்டும்.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>பொருள்: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>வகை: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>சுய-கையொப்பமிட்டது</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>செல்லுபடியாகும்: {0} முதல் {1} வரை</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>அமைக்கப்பட்ட பயனர்கள்: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>{0} இலிருந்து கட்டமைப்பை ஏற்ற முடியவில்லை.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>கட்டமைப்பு {0} இலிருந்து ஏற்றப்பட்டது.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>இந்த கட்டமைப்பை பின்னர் பயன்படுத்த இயக்கவும்: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>கட்டமைப்பைச் சேமிக்க முடியவில்லை: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>சேமிக்கப்பட்டது: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>கட்டமைப்பு {0} இல் சேமிக்கப்பட்டது.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : பதிப்புரிமை (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>{0} கோப்புறையை உருவாக்கவா?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>பயனர் {0} ஒன்றுக்கு மேல் முறை பட்டியலிடப்பட்டுள்ளார்.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>மறைகுறியாக்கம்: வெளிப்படையானது</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>கடுமையான பிழை: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>கோப்புறையை உருவாக்க முடியவில்லை: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>உருவாக்கப்பட்டது: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>பாதை ஒரு கோப்புறை அல்ல, கோப்பு: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>கோப்புறை இல்லை: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>பகிர ஒரு கோப்புறையைத் தேர்ந்தெடுக்கவும்.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>பயன்பாடு:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+விருப்பங்கள்:
+
+  --help
+      இந்த உதவியைக் காட்டும்.
+
+  --config &lt;path&gt;
+      JSON கட்டமைப்பு கோப்பு.
+
+  --ip &lt;address&gt;
+      கேட்க வேண்டிய IP முகவரி. இயல்பு: 0.0.0.0. 0.0.0.0, :: மற்றும் ::0 ஒவ்வொரு IPv4 மற்றும் IPv6 இடைமுகத்திலும் கேட்கும்.
+
+  --port &lt;number&gt;
+      கேட்க வேண்டிய போர்ட். இயல்பு: 2121. அனுமதி: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      ஒரே நேரத்தில் அதிகபட்ச இணைப்புகள். இயல்பு: 10. அனுமதி: 2-100.
+
+  --cert &lt;path&gt;
+      சான்றிதழ் கோப்பு (.pfx, .pem அல்லது .der). கடவுச்சொல் இருந்தால் .pfx கோப்பு --certpass மூலம் திறக்கப்படும்.
+
+  --certpass &lt;password&gt;
+      சான்றிதழ் கோப்பின் கடவுச்சொல்.
+
+  --certstorename &lt;name&gt;
+      சேமிப்பகப் பெயர்: AuthRoot, CertificateAuthority, My, Root அல்லது TrustedPublisher. --certstorelocation மற்றும் --certstoresubject உடன் சேர்த்து அமையுங்கள்.
+
+  --certstorelocation &lt;location&gt;
+      சேமிப்பக இடம்: CurrentUser அல்லது LocalMachine. --certstorename மற்றும் --certstoresubject உடன் சேர்த்து அமையுங்கள்.
+
+  --certstoresubject &lt;subject&gt;
+      சான்றிதழ் சேமிப்பகத்தில் தேட வேண்டிய பொருள் பெயர். --certstorename மற்றும் --certstorelocation உடன் சேர்த்து அமையுங்கள்.
+
+  --user &lt;login#password#folder#permissions&gt;
+      ஒரு பயனரைச் சேர்க்கும். அனுமதிகள்: R (படி), W (எழுது) அல்லது RW. கோப்புறை ஏற்கெனவே இருக்க வேண்டும். நான்கு புலங்களுக்குள்ளும் # பயன்படுத்த வேண்டாம்.
+
+எடுத்துக்காட்டுகள்:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+வாதங்கள் இல்லையென்றால், நடப்பு கோப்புறையில் appsettings.json இருந்தால் அது ஏற்றப்படும்.
+பயனர்கள் அமைக்கப்படவில்லை என்றால் ஊடாடும் அமைப்பு தொடங்கும்.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter தனிப்படுத்தப்பட்ட இயல்பை ஏற்கும். மேலும் கீழும் தேர்வு செய்யும். Esc ரத்து செய்யும்.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>ஊடாடும் கட்டமைப்பு</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>செல்லுபடியாகும் IP முகவரியை உள்ளிடுங்கள்.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>அதிகபட்ச இணைப்புகள் {0} முதல் {1} வரை இருக்க வேண்டும்.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} ஒரு முழு எண்ணாக இருக்க வேண்டும்.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>{0} முதல் {1} வரையிலான போர்ட்டை உள்ளிடுங்கள்.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>தெரியாத சான்றிதழ் சேமிப்பக இடம்: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>தெரியாத சான்றிதழ் சேமிப்பகப் பெயர்: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP முகவரி: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>அனைத்து இடைமுகங்கள்</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>கணினி பெயர் {0} வழியாக இணைக்கலாம்.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>{0} விருப்பத்திற்கு ஒரு மதிப்பு தேவை.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} பிணையம் «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>இல்லை</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>ஒரு கடவுச்சொல்லை உள்ளிடுங்கள்.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>படி மட்டும்</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>படித்தல் மற்றும் எழுதுதல்</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>படித்தல், எழுதுதல் அல்லது இரண்டையும் தேர்ந்தெடுக்கவும்.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>எழுது மட்டும்</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>கட்டமைப்பு {0} கடவுச்சொற்களை வெறும் உரையாக வைக்கிறது. மறைகுறியாக்க இடைவினை அமைப்பிலிருந்து மீண்டும் சேமிக்கவும்.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>கேட்கும் போர்ட்: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>சேவையகத்தை நிறுத்த Q அழுத்தவும்.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>சான்றிதழ் கடவுச்சொல்</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>சான்றிதழ் கோப்பு</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>கட்டமைப்பு கோப்பு</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>கோப்புறை</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP முகவரி</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>அதிகபட்ச இணைப்புகள்</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>கடவுச்சொல்</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>அனுமதிகள்</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>கேட்கும் போர்ட்</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>பயனர்பெயர்</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>இருக்கும் கோப்பு {0} மாற்றப்படவா?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>இந்த கட்டமைப்பைச் சேமிக்கவா?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>கோப்பில் உள்ள கடவுச்சொற்கள் இயக்க முறைமை சாவியால் மறைகுறியாக்கப்பட்டு இந்த கணினியில் மட்டுமே படிக்கப்படும்.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS சேவையகம் தொடங்குகிறது.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>சேவையகம் நிறுத்தப்பட்டது.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>சேவையகம் நிறுத்தப்படுகிறது.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>பயனர் {0} சேர்க்கப்பட்டார் ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>--user மதிப்பு login#password#folder#permissions வடிவில் இருக்க வேண்டும்.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>பயனர் {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>ஒரு பயனர்பெயரை உள்ளிடுங்கள்.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>பயனர்களைச் சேர்த்து முடிந்ததும் காலியாக விடுங்கள்.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>அமைக்கப்பட்ட பயனர்கள்: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>குறைந்தது ஒரு பயனர் தேவை.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>குறைந்தது ஒரு பயனரையாவது சேர்க்கவும்.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>பயனர்கள்</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>கட்டமைப்பு செல்லுபடியாகாது.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>ஆம்</value></data>
+</root>

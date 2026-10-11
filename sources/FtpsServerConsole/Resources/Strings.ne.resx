@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json लोड हुन सकेन। पूर्वनिर्धारित मानहरू प्रयोग भइरहेका छन्।</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>कन्फिगरेसन रद्द भयो।</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>स्व-हस्ताक्षरित प्रमाणपत्रका लागि खाली छोड्नुस्।</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>प्रमाणपत्र फाइल .pfx, .pem वा .der मा अन्त्य हुनुपर्छ।</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>प्रमाणपत्रको बाटो फाइल होइन, फोल्डर हो: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>जारीकर्ता: {0} (विषय जस्तै, स्व-हस्ताक्षरित)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>प्रमाणपत्र फाइल फेला परेन: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>यो सर्भरले स्व-हस्ताक्षरित प्रमाणपत्र प्रयोग गर्छ। FTP क्लाइन्टहरूले जडान गर्दा सुरक्षा चेतावनी देखाउन सक्छन्। सोधिएमा, स्वीकार गर्नु अघि आफ्नो क्लाइन्टमा देखाइएको फिंगरप्रिन्टलाई तल दिइएका मानहरूसँग तुलना गर्नुहोस्।</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>प्रमाणपत्र सूचना</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>फाइलमा पासवर्ड नभए खाली छोड्नुस्।</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>सर्भर प्रमाणपत्र</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>क्रम संख्या: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>प्रमाणपत्र स्टोरको नाम, स्थान र विषय सँगै दिनुपर्छ।</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>विषय: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>प्रकार: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>स्व-हस्ताक्षरित</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>वैध: {0} देखि {1} सम्म</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>कन्फिगर गरिएका प्रयोगकर्ता: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>{0} बाट कन्फिगरेसन लोड हुन सकेन।</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>कन्फिगरेसन {0} बाट लोड भयो।</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>यो कन्फिगरेसन पछि प्रयोग गर्न चलाउनुस्: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>कन्फिगरेसन सुरक्षित हुन सकेन: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>सुरक्षित: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>कन्फिगरेसन {0} मा सुरक्षित भयो।</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : प्रतिलिपि अधिकार (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>फोल्डर {0} बनाउने?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>प्रयोगकर्ता {0} एकभन्दा बढी पटक दिइएको छ।</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>इन्क्रिप्सन: स्पष्ट</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>गम्भीर त्रुटि: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>फोल्डर बनाउन सकिएन: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>बन्यो: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>बाटो फोल्डर होइन, फाइल हो: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>फोल्डर छैन: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>साझा गर्न एउटा फोल्डर छान्नुस्।</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>प्रयोग:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+विकल्पहरू:
+
+  --help
+      यो सहायता देखाउनुस्।
+
+  --config &lt;path&gt;
+      JSON कन्फिगरेसन फाइल।
+
+  --ip &lt;address&gt;
+      सुन्ने IP ठेगाना। पूर्वनिर्धारित: 0.0.0.0। 0.0.0.0, :: र ::0 हरेक IPv4 र IPv6 इन्टरफेसमा सुन्छन्।
+
+  --port &lt;number&gt;
+      सुन्ने पोर्ट। पूर्वनिर्धारित: 2121। अनुमति: 2121-65535।
+
+  --maxconnections &lt;number&gt;
+      एकैसाथ अधिकतम जडान। पूर्वनिर्धारित: 10। अनुमति: 2-100।
+
+  --cert &lt;path&gt;
+      प्रमाणपत्र फाइल (.pfx, .pem वा .der)। पासवर्ड भए .pfx फाइल --certpass ले खोलिन्छ।
+
+  --certpass &lt;password&gt;
+      प्रमाणपत्र फाइलको पासवर्ड।
+
+  --certstorename &lt;name&gt;
+      स्टोरको नाम: AuthRoot, CertificateAuthority, My, Root वा TrustedPublisher। --certstorelocation र --certstoresubject सँगै दिनुस्।
+
+  --certstorelocation &lt;location&gt;
+      स्टोरको स्थान: CurrentUser वा LocalMachine। --certstorename र --certstoresubject सँगै दिनुस्।
+
+  --certstoresubject &lt;subject&gt;
+      प्रमाणपत्र स्टोरमा खोजिने विषय नाम। --certstorename र --certstorelocation सँगै दिनुस्।
+
+  --user &lt;login#password#folder#permissions&gt;
+      प्रयोगकर्ता थप्छ। अनुमति: R (पढ्ने), W (लेख्ने) वा RW। फोल्डर पहिलेदेखि हुनुपर्छ। चार क्षेत्रभित्र # प्रयोग नगर्नुस्।
+
+उदाहरणहरू:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+तर्क नभए हालको फोल्डरमा appsettings.json भए त्यो लोड हुन्छ।
+प्रयोगकर्ता सेट नभए अन्तरक्रियात्मक सेटअप सुरु हुन्छ।
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter हाइलाइट गरिएको पूर्वनिर्धारित मान स्वीकार्छ। माथि र तल छान्छन्। Esc रद्द गर्छ।</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>अन्तरक्रियात्मक कन्फिगरेसन</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>मान्य IP ठेगाना दिनुस्।</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>अधिकतम जडान {0} देखि {1} सम्म हुनुपर्छ।</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} पूर्णाङ्क हुनुपर्छ।</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>{0} देखि {1} सम्मको पोर्ट दिनुस्।</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>अज्ञात प्रमाणपत्र स्टोर स्थान: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>अज्ञात प्रमाणपत्र स्टोर नाम: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP ठेगाना: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>सबै इन्टरफेस</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>कम्प्युटर नाम {0} बाट जोडिन सकिन्छ।</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>विकल्प {0} लाई मान चाहिन्छ।</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} सञ्जाल «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>होइन</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>पासवर्ड दिनुस्।</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>पढ्ने मात्र</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>पढ्ने र लेख्ने</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>पढ्ने, लेख्ने वा दुवै छान्नुस्।</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>लेख्ने मात्र</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>कन्फिगरेसन {0} ले पासवर्ड सादा पाठमा राख्छ। इन्क्रिप्ट गर्न अन्तरक्रियात्मक सेटअपबाट फेरि सुरक्षित गर्नुस्।</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>सुन्ने पोर्ट: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>सर्भर रोक्न Q थिच्नुस्।</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>प्रमाणपत्र पासवर्ड</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>प्रमाणपत्र फाइल</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>कन्फिगरेसन फाइल</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>फोल्डर</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP ठेगाना</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>अधिकतम जडान</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>पासवर्ड</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>अनुमतिहरू</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>सुन्ने पोर्ट</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>प्रयोगकर्तानाम</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>भएको फाइल {0} बदल्ने?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>यो कन्फिगरेसन सुरक्षित गर्ने?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>फाइलका पासवर्ड अपरेटिङ सिस्टमको साँचोले इन्क्रिप्ट छन् र यो कम्प्युटरमा मात्र पढिन्छन्।</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS सर्भर सुरु हुँदै छ।</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>सर्भर रोकियो।</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>सर्भर बन्द हुँदै छ।</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>प्रयोगकर्ता {0} थपियो ({1})।</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>--user को मान login#password#folder#permissions रूपमा हुनुपर्छ।</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>प्रयोगकर्ता {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>प्रयोगकर्तानाम दिनुस्।</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>प्रयोगकर्ता थपिसकेपछि खाली छोड्नुस्।</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>कन्फिगर गरिएका प्रयोगकर्ता: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>कम्तीमा एक प्रयोगकर्ता चाहिन्छ।</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>कृपया कम्तीमा एक प्रयोगकर्ता थप्नुस्।</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>प्रयोगकर्ताहरू</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>कन्फिगरेसन मान्य छैन।</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>हो</value></data>
+</root>

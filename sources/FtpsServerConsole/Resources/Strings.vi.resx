@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>Không tải được appsettings.json. Sẽ dùng giá trị mặc định.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Đã hủy cấu hình.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Để trống để dùng chứng chỉ tự ký.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Tệp chứng chỉ phải kết thúc bằng .pfx, .pem hoặc .der.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Đường dẫn chứng chỉ là thư mục, không phải tệp: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Nhà phát hành: {0} (trùng chủ thể, tự ký)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Không tìm thấy tệp chứng chỉ: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Máy chủ này dùng chứng chỉ tự ký. Máy khách FTP có thể hiện cảnh báo bảo mật khi kết nối. Nếu được hỏi, hãy so dấu vân tay trên máy khách với các giá trị bên dưới trước khi chấp nhận.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Thông báo chứng chỉ</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Để trống nếu tệp không có mật khẩu.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Chứng chỉ máy chủ</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Số sê-ri: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Phải đặt cùng lúc tên, vị trí và chủ thể của kho chứng chỉ.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Chủ thể: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Loại: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>Tự ký</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>Hiệu lực: từ {0} đến {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Người dùng đã cấu hình: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>Không tải được cấu hình từ {0}.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>Đã tải cấu hình từ {0}.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Để dùng cấu hình này sau, hãy chạy: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>Không lưu được cấu hình: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>Đã lưu {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>Đã lưu cấu hình vào {0}.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : bản quyền (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>Tạo thư mục {0}?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>Người dùng {0} được liệt kê nhiều lần.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Mã hóa: tường minh</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Lỗi nghiêm trọng: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>Không tạo được thư mục: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>Đã tạo {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Đường dẫn là tệp, không phải thư mục: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Thư mục không tồn tại: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Hãy chọn thư mục để chia sẻ.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Cách dùng:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Tùy chọn:
+
+  --help
+      Hiện trợ giúp này.
+
+  --config &lt;path&gt;
+      Tệp cấu hình JSON.
+
+  --ip &lt;address&gt;
+      Địa chỉ IP để lắng nghe. Mặc định: 0.0.0.0. 0.0.0.0, :: và ::0 lắng nghe mọi giao diện IPv4 và IPv6.
+
+  --port &lt;number&gt;
+      Cổng lắng nghe. Mặc định: 2121. Cho phép: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Số kết nối đồng thời tối đa. Mặc định: 10. Cho phép: 2-100.
+
+  --cert &lt;path&gt;
+      Tệp chứng chỉ (.pfx, .pem hoặc .der). Tệp .pfx được mở bằng --certpass khi có mật khẩu.
+
+  --certpass &lt;password&gt;
+      Mật khẩu tệp chứng chỉ.
+
+  --certstorename &lt;name&gt;
+      Tên kho: AuthRoot, CertificateAuthority, My, Root hoặc TrustedPublisher. Đặt cùng --certstorelocation và --certstoresubject.
+
+  --certstorelocation &lt;location&gt;
+      Vị trí kho: CurrentUser hoặc LocalMachine. Đặt cùng --certstorename và --certstoresubject.
+
+  --certstoresubject &lt;subject&gt;
+      Tên chủ thể để tìm trong kho chứng chỉ. Đặt cùng --certstorename và --certstorelocation.
+
+  --user &lt;login#password#folder#permissions&gt;
+      Thêm người dùng. Quyền: R (đọc), W (ghi) hoặc RW. Thư mục phải đã tồn tại. Không dùng # trong bốn trường.
+
+Ví dụ:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Không có đối số thì tải appsettings.json trong thư mục hiện tại nếu tệp đó tồn tại.
+Khi chưa cấu hình người dùng, thiết lập tương tác sẽ bắt đầu.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter nhận giá trị mặc định được tô sáng. Mũi tên lên xuống để chọn. Esc để hủy.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Thiết lập tương tác</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Nhập địa chỉ IP hợp lệ.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Số kết nối tối đa phải từ {0} đến {1}.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} phải là số nguyên.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>Nhập cổng từ {0} đến {1}.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Vị trí kho chứng chỉ không xác định: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Tên kho chứng chỉ không xác định: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>Địa chỉ IP: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>mọi giao diện</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>Bạn có thể kết nối bằng tên máy {0}.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>Tùy chọn {0} cần một giá trị.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>Mạng {0} '{1}' ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>Không</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Nhập mật khẩu.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Chỉ đọc</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Đọc và ghi</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Chọn đọc, ghi hoặc cả hai.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Chỉ ghi</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>Cấu hình {0} lưu mật khẩu dạng văn bản thuần. Hãy lưu lại từ thiết lập tương tác để mã hóa chúng.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Cổng lắng nghe: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Nhấn Q để dừng máy chủ.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Mật khẩu chứng chỉ</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Tệp chứng chỉ</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Tệp cấu hình</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Thư mục</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>Địa chỉ IP</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Số kết nối tối đa</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Mật khẩu</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Quyền</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Cổng lắng nghe</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Tên người dùng</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Thay tệp hiện có {0}?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Lưu cấu hình này?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Mật khẩu trong tệp được mã hóa bằng khóa hệ điều hành và chỉ đọc được trên máy này.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>Máy chủ FTPS đang khởi động.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Đã dừng máy chủ.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Đang tắt máy chủ.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>Đã thêm người dùng {0} ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>Giá trị --user phải có dạng login#password#folder#permissions.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Người dùng {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Nhập tên người dùng.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Để trống khi bạn thêm xong người dùng.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Người dùng đã cấu hình: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>Cần ít nhất một người dùng.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Hãy thêm ít nhất một người dùng.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Người dùng</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Cấu hình không hợp lệ.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Có</value></data>
+</root>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json fe'uu hin dandeenye. Gatiin durtii fayyadamaa jira.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Qindaa'inni haqameera.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Waraqaa ragaa of mallatteesseef duwwaa dhiisi.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Faayilli waraqaa ragaa .pfx, .pem ykn .der tiin xumuramuu qaba.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Daandii waraqaa ragaa galma malee faayila miti: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Baastuu: {0} (mataduree wajjin wal qixa, of mallatteessee)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Faayilli waraqaa ragaa hin argamne: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Sarvaariin kun waraqaa ragaa of mallatteessee fayyadama. Maamiltoonni FTP yeroo walqunnamtii akeekkachiisa nageenyaa agarsiisuu danda'u. Yoo gaafatame, fudhachuu dura mallattoo quba maamila keessan irratti mul'atu gatiwwan armaan gadii wajjin wal bira qabaa.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Beeksisa waraqaa ragaa</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Faayilli jecha darbii hin qabu taanaan duwwaa dhiisi.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Waraqaa ragaa sarvaarii</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Lakkoofsa tartiiba: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Maqaan, bakki fi matadureen kuusaa waraqaa ragaa waliin kennamuu qabu.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Mataduree: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Gosa: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>Of mallatteessee</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>Sirrii: {0} hanga {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Fayyadamtoota qindaa'an: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>Qindaa'ina {0} irraa fe'uu hin dandeenye.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>Qindaa'inni {0} irraa fe'ameera.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Qindaa'ina kana booda fayyadamuuf hojjedhu: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>Qindaa'ina kuusuu hin dandeenye: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>Kuufame: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>Qindaa'inni {0} keessatti kuufameera.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : Mirga waraabbii (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>Galma {0} uumu?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>Fayyadamaan {0} al tokkoo ol tarreeffameera.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Iccitessuu: iftoomina</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Dogoggora cimaa: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>Galma uumuu hin dandeenye: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>Uumameera: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Daandiin faayila malee galma miti: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Galma hin jiru: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Galma qooduuf tokko filadhu.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Fayyadama:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Filannoo:
+
+  --help
+      Gargaarsa kana agarsiisi.
+
+  --config &lt;path&gt;
+      Faayilii qindaa'ina JSON.
+
+  --ip &lt;address&gt;
+      Teessoo IP dhaggeeffamu. Durtii: 0.0.0.0. 0.0.0.0, :: fi ::0 fuula IPv4 fi IPv6 hunda dhaggeeffatu.
+
+  --port &lt;number&gt;
+      Poortii dhaggeeffamu. Durtii: 2121. Hayyamame: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Walqunnamtii hedduminaa yeroo tokkotti. Durtii: 10. Hayyamame: 2-100.
+
+  --cert &lt;path&gt;
+      Faayilii waraqaa ragaa (.pfx, .pem ykn .der). Yoo jechi darbii jiraate faayilli .pfx --certpass tiin banama.
+
+  --certpass &lt;password&gt;
+      Jecha darbii faayilii waraqaa ragaa.
+
+  --certstorename &lt;name&gt;
+      Maqaa kuusaa: AuthRoot, CertificateAuthority, My, Root ykn TrustedPublisher. --certstorelocation fi --certstoresubject wajjin kenni.
+
+  --certstorelocation &lt;location&gt;
+      Bakka kuusaa: CurrentUser ykn LocalMachine. --certstorename fi --certstoresubject wajjin kenni.
+
+  --certstoresubject &lt;subject&gt;
+      Maqaa mataduree kuusaa waraqaa ragaa keessatti barbaadamu. --certstorename fi --certstorelocation wajjin kenni.
+
+  --user &lt;login#password#folder#permissions&gt;
+      Fayyadamaa dabala. Hayyama: R (dubbisuu), W (barreessuu) ykn RW. Dirreen dursee jiraachuu qaba. Kutaa afur keessatti # hin fayyadamin.
+
+Fakkeenya:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Yaadni hin jiru taanaan, appsettings.json galma ammaa keessa yoo jiraate ni fe'ama.
+Fayyadamaan yoo hin qindaa'in, qindaa'inni waliin hojjetu ni jalqaba.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter gatii durtii ifee jiru fudhata. Ol fi gadi ni filatu. Esc ni haqa.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Qindaa'ina waliin hojjetu</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Teessoo IP sirrii galchi.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>Walqunnamtiin hedduminaa {0} hanga {1} ta'uu qaba.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} lakkoofsa guutuu ta'uu qaba.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>Poortii {0} hanga {1} galchi.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Bakka kuusaa waraqaa ragaa hin beekamne: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Maqaa kuusaa waraqaa ragaa hin beekamne: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>Teessoo IP: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>fuulota hunda</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>Maqaa kompiitaraa {0} tiin wal qunnamuu dandeessa.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>Filannoon {0} gatii barbaada.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>Neetworkii {0} «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>Lakki</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Jecha darbii galchi.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Dubbisuu qofa</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Dubbisuu fi barreessuu</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Dubbisuu, barreessuu ykn lamaan filadhu.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Barreessuu qofa</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>Qindaa'inni {0} jecha darbii barruu qulqulluun kuusa. Icciteessuuf qindaa'ina waliin hojjetu irraa deebistee kuusi.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Poortii dhaggeeffannaa: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Sarvaarii dhaabuuf Q dhiibi.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Jecha darbii waraqaa ragaa</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Faayilii waraqaa ragaa</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Faayilii qindaa'inaa</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Galma</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>Teessoo IP</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>Walqunnamtii hedduminaa</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Jecha darbii</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>Hayyama</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Poortii dhaggeeffannaa</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Maqaa fayyadamaa</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Faayila jiru {0} bakka buusuu?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Qindaa'ina kana kuusuu?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Jechi darbii faayilaa furtuu sirna hojii tiin iccitessameera, kompiitara kana irratti qofa dubbifama.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>Sarvaariin FTPS jalqabaa jira.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Sarvaariin dhaabateera.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Sarvaariin cufamaa jira.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>Fayyadamaan {0} dabalamera ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>Gatiin --user login#password#folder#permissions ta'uu qaba.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Fayyadamaa {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Maqaa fayyadamaa galchi.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Fayyadamtoota dabaluun yommuu xumurtu duwwaa dhiisi.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Fayyadamtoota qindaa'an: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>Fayyadamaa tokko yoo xiqqaate barbaachisa.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Maaloo fayyadamaa tokko yoo xiqqaate dabali.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Fayyadamtoota</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Qindaa'inni sirrii miti.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Eeyyee</value></data>
+</root>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json yüklenemedi. Varsayılan değerler kullanılacak.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>Kurulum iptal edildi.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>Kendinden imzalı sertifika için boş bırakın.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>Sertifika dosyası .pfx, .pem veya .der ile bitmelidir.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>Sertifika yolu bir dosya değil, klasör: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>Veren: {0} (konu ile aynı, kendinden imzalı)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>Sertifika dosyası bulunamadı: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>Bu sunucu kendinden imzalı bir sertifika kullanır. FTP istemcileri bağlanırken güvenlik uyarısı gösterebilir. İstenirse, kabul etmeden önce istemcideki parmak izini aşağıdaki değerlerle karşılaştırın.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>Sertifika uyarısı</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>Dosyanın parolası yoksa boş bırakın.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>Sunucu sertifikası</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>Seri numarası: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>Sertifika deposunun adı, konumu ve konusu birlikte verilmelidir.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>Konu: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>Tür: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>Kendinden imzalı</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>Geçerlilik: {0} - {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>Yapılandırılan kullanıcılar: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>{0} konumundan yapılandırma yüklenemedi.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>Yapılandırma {0} konumundan yüklendi.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>Bu yapılandırmayı sonra kullanmak için çalıştırın: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>Yapılandırma kaydedilemedi: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>Kaydedildi: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>Yapılandırma {0} konumuna kaydedildi.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : telif hakkı (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>{0} klasörü oluşturulsun mu?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>{0} kullanıcısı birden fazla kez listelenmiş.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>Şifreleme: açık</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>Kritik hata: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>Klasör oluşturulamadı: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>Oluşturuldu: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>Yol bir klasör değil, dosya: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>Klasör yok: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>Paylaşılacak bir klasör seçin.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>Kullanım:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+Seçenekler:
+
+  --help
+      Bu yardımı gösterir.
+
+  --config &lt;path&gt;
+      JSON yapılandırma dosyası.
+
+  --ip &lt;address&gt;
+      Dinlenecek IP adresi. Varsayılan: 0.0.0.0. 0.0.0.0, :: ve ::0 tüm IPv4 ve IPv6 arabirimlerini dinler.
+
+  --port &lt;number&gt;
+      Dinlenecek bağlantı noktası. Varsayılan: 2121. İzin verilen: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      Aynı andaki en fazla bağlantı. Varsayılan: 10. İzin verilen: 2-100.
+
+  --cert &lt;path&gt;
+      Sertifika dosyası (.pfx, .pem veya .der). Parola varsa .pfx dosyası --certpass ile açılır.
+
+  --certpass &lt;password&gt;
+      Sertifika dosyasının parolası.
+
+  --certstorename &lt;name&gt;
+      Depo adı: AuthRoot, CertificateAuthority, My, Root veya TrustedPublisher. --certstorelocation ve --certstoresubject ile birlikte verin.
+
+  --certstorelocation &lt;location&gt;
+      Depo konumu: CurrentUser veya LocalMachine. --certstorename ve --certstoresubject ile birlikte verin.
+
+  --certstoresubject &lt;subject&gt;
+      Sertifika deposunda aranacak konu adı. --certstorename ve --certstorelocation ile birlikte verin.
+
+  --user &lt;login#password#folder#permissions&gt;
+      Kullanıcı ekler. İzinler: R (okuma), W (yazma) veya RW. Klasör önceden var olmalıdır. Dört alanın içinde # kullanmayın.
+
+Örnekler:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+Argüman yoksa, varsa geçerli klasördeki appsettings.json yüklenir.
+Hiç kullanıcı yapılandırılmamışsa etkileşimli kurulum başlar.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter vurgulanan varsayılanı kabul eder. Yukarı ve aşağı seçer. Esc iptal eder.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>Etkileşimli kurulum</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>Geçerli bir IP adresi girin.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>En fazla bağlantı {0} ile {1} arasında olmalıdır.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} bir tam sayı olmalıdır.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>{0} ile {1} arasında bir bağlantı noktası girin.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>Bilinmeyen sertifika deposu konumu: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>Bilinmeyen sertifika deposu adı: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP adresi: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>tüm arabirimler</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>Bilgisayar adı {0} ile bağlanabilirsiniz.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>{0} seçeneğinin bir değeri olmalı.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} ağı '{1}' ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>Hayır</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>Bir parola girin.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>Salt okunur</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>Okuma ve yazma</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>Okuma, yazma veya ikisini birden seçin.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>Salt yazılır</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>{0} yapılandırması parolaları düz metin olarak saklıyor. Şifrelemek için etkileşimli kurulumdan yeniden kaydedin.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>Dinleme noktası: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>Sunucuyu durdurmak için Q tuşuna basın.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>Sertifika parolası</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>Sertifika dosyası</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>Yapılandırma dosyası</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>Klasör</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP adresi</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>En fazla bağlantı</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>Parola</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>İzinler</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>Dinleme noktası</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>Kullanıcı adı</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>Var olan {0} dosyası değiştirilsin mi?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>Bu yapılandırma kaydedilsin mi?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>Dosyadaki parolalar bir işletim sistemi anahtarıyla şifrelenir ve yalnızca bu bilgisayarda okunabilir.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS sunucusu başlıyor.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>Sunucu durduruldu.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>Sunucu kapatılıyor.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>{0} kullanıcısı eklendi ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>--user değeri login#password#folder#permissions biçiminde olmalıdır.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>Kullanıcı {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>Bir kullanıcı adı girin.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>Kullanıcı eklemeyi bitirince boş bırakın.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>Yapılandırılan kullanıcılar: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>En az bir kullanıcı gerekli.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>Lütfen en az bir kullanıcı ekleyin.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>Kullanıcılar</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>Yapılandırma geçerli değil.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>Evet</value></data>
+</root>

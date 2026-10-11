@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json লোড করা যায়নি। পূর্বনির্ধারিত মান ব্যবহৃত হচ্ছে।</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>কনফিগারেশন বাতিল হয়েছে।</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>স্ব-স্বাক্ষরিত সার্টিফিকেটের জন্য খালি রাখুন।</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>সার্টিফিকেট ফাইল .pfx, .pem বা .der দিয়ে শেষ হতে হবে।</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>সার্টিফিকেটের পথ একটি ফোল্ডার, ফাইল নয়: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>ইস্যুকারী: {0} (বিষয়ের মতো, স্ব-স্বাক্ষরিত)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>সার্টিফিকেট ফাইল পাওয়া যায়নি: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>এই সার্ভারটি একটি স্ব-স্বাক্ষরিত সার্টিফিকেট ব্যবহার করে। সংযোগের সময় FTP ক্লায়েন্ট নিরাপত্তা সতর্কতা দেখাতে পারে। যদি জিজ্ঞাসা করা হয়, গ্রহণ করার আগে আপনার ক্লায়েন্টে দেখানো ফিঙ্গারপ্রিন্ট নীচের মানগুলির সাথে তুলনা করুন।</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>সার্টিফিকেট বিজ্ঞপ্তি</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>ফাইলে পাসওয়ার্ড না থাকলে খালি রাখুন।</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>সার্ভার সার্টিফিকেট</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>ক্রমিক নম্বর: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>সার্টিফিকেট স্টোরের নাম, অবস্থান ও বিষয় একসঙ্গে দিতে হবে।</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>বিষয়: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>ধরন: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>স্ব-স্বাক্ষরিত</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>বৈধ: {0} থেকে {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>কনফিগার করা ব্যবহারকারী: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>{0} থেকে কনফিগারেশন লোড করা যায়নি।</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>{0} থেকে কনফিগারেশন লোড হয়েছে।</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>পরে এই কনফিগারেশন ব্যবহার করতে চালান: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>কনফিগারেশন সংরক্ষণ করা যায়নি: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>সংরক্ষিত: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>কনফিগারেশন {0}-এ সংরক্ষিত হয়েছে।</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : কপিরাইট (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>{0} ফোল্ডার তৈরি করবেন?</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>ব্যবহারকারী {0} একাধিকবার উল্লেখ করা হয়েছে।</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>এনক্রিপশন: স্পষ্ট</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>মারাত্মক ত্রুটি: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>ফোল্ডার তৈরি করা যায়নি: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>তৈরি হয়েছে: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>পথটি একটি ফাইল, ফোল্ডার নয়: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>ফোল্ডার নেই: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>ভাগ করার জন্য একটি ফোল্ডার বেছে নিন।</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>ব্যবহার:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+বিকল্প:
+
+  --help
+      এই সহায়তা দেখান।
+
+  --config &lt;path&gt;
+      JSON কনফিগারেশন ফাইল।
+
+  --ip &lt;address&gt;
+      যে IP ঠিকানায় শোনা হবে। পূর্বনির্ধারিত: 0.0.0.0। 0.0.0.0, :: এবং ::0 প্রতিটি IPv4 ও IPv6 ইন্টারফেসে শোনে।
+
+  --port &lt;number&gt;
+      যে পোর্টে শোনা হবে। পূর্বনির্ধারিত: 2121। অনুমোদিত: 2121-65535।
+
+  --maxconnections &lt;number&gt;
+      একসঙ্গে সর্বোচ্চ সংযোগ। পূর্বনির্ধারিত: 10। অনুমোদিত: 2-100।
+
+  --cert &lt;path&gt;
+      সার্টিফিকেট ফাইল (.pfx, .pem বা .der)। পাসওয়ার্ড থাকলে .pfx ফাইল --certpass দিয়ে খোলা হয়।
+
+  --certpass &lt;password&gt;
+      সার্টিফিকেট ফাইলের পাসওয়ার্ড।
+
+  --certstorename &lt;name&gt;
+      স্টোরের নাম: AuthRoot, CertificateAuthority, My, Root বা TrustedPublisher। --certstorelocation ও --certstoresubject এর সাথে একসঙ্গে দিন।
+
+  --certstorelocation &lt;location&gt;
+      স্টোরের অবস্থান: CurrentUser বা LocalMachine। --certstorename ও --certstoresubject এর সাথে একসঙ্গে দিন।
+
+  --certstoresubject &lt;subject&gt;
+      সার্টিফিকেট স্টোরে খোঁজার বিষয়ের নাম। --certstorename ও --certstorelocation এর সাথে একসঙ্গে দিন।
+
+  --user &lt;login#password#folder#permissions&gt;
+      একজন ব্যবহারকারী যোগ করে। অনুমতি: R (পঠন), W (লিখন) বা RW। ফোল্ডার আগে থেকে থাকতে হবে। চারটি ঘরের ভিতরে # ব্যবহার করবেন না।
+
+উদাহরণ:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+কোনো আর্গুমেন্ট না থাকলে বর্তমান ফোল্ডারে appsettings.json থাকলে সেটি লোড হয়।
+কোনো ব্যবহারকারী সেট না থাকলে ইন্টারঅ্যাকটিভ সেটআপ শুরু হয়।
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter চিহ্নিত পূর্বনির্ধারিত মান গ্রহণ করে। উপরে ও নিচে বেছে নেয়। Esc বাতিল করে।</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>ইন্টারঅ্যাকটিভ কনফিগারেশন</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>একটি বৈধ IP ঠিকানা লিখুন।</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>সর্বোচ্চ সংযোগ {0} থেকে {1} এর মধ্যে হতে হবে।</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} একটি পূর্ণসংখ্যা হতে হবে।</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>{0} থেকে {1} পর্যন্ত একটি পোর্ট লিখুন।</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>অজানা সার্টিফিকেট স্টোর অবস্থান: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>অজানা সার্টিফিকেট স্টোরের নাম: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>IP ঠিকানা: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>সব ইন্টারফেস</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>কম্পিউটারের নাম {0} দিয়ে সংযোগ করতে পারেন।</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>{0} বিকল্পের একটি মান দরকার।</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} নেটওয়ার্ক «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>না</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>একটি পাসওয়ার্ড লিখুন।</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>শুধু পড়া</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>পড়া ও লেখা</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>পড়া, লেখা বা উভয় বেছে নিন।</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>শুধু লেখা</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>কনফিগারেশন {0} পাসওয়ার্ড খোলা লেখায় রাখে। এনক্রিপ্ট করতে ইন্টারঅ্যাকটিভ সেটআপ থেকে আবার সংরক্ষণ করুন।</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>শোনার পোর্ট: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>সার্ভার থামাতে Q চাপুন।</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>সার্টিফিকেট পাসওয়ার্ড</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>সার্টিফিকেট ফাইল</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>কনফিগারেশন ফাইল</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>ফোল্ডার</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>IP ঠিকানা</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>সর্বোচ্চ সংযোগ</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>পাসওয়ার্ড</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>অনুমতি</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>শোনার পোর্ট</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>ব্যবহারকারীর নাম</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>বিদ্যমান ফাইল {0} প্রতিস্থাপন করবেন?</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>এই কনফিগারেশন সংরক্ষণ করবেন?</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>ফাইলের পাসওয়ার্ড অপারেটিং সিস্টেমের চাবি দিয়ে এনক্রিপ্ট করা এবং শুধু এই কম্পিউটারে পড়া যায়।</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>FTPS সার্ভার চালু হচ্ছে।</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>সার্ভার বন্ধ হয়েছে।</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>সার্ভার বন্ধ করা হচ্ছে।</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>ব্যবহারকারী {0} যোগ হয়েছে ({1})।</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>--user এর মান login#password#folder#permissions আকারে হতে হবে।</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>ব্যবহারকারী {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>একটি ব্যবহারকারীর নাম লিখুন।</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>ব্যবহারকারী যোগ শেষ হলে খালি রাখুন।</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>কনফিগার করা ব্যবহারকারী: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>অন্তত একজন ব্যবহারকারী লাগবে।</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>অনুগ্রহ করে অন্তত একজন ব্যবহারকারী যোগ করুন।</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>ব্যবহারকারী</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>কনফিগারেশন বৈধ নয়।</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>হ্যাঁ</value></data>
+</root>

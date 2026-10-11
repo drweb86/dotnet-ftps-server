@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ConsoleAppSettingsFailed" xml:space="preserve"><value>appsettings.json بار نه شو. تلواله ارزښتونه کارېږي.</value></data>
+  <data name="ConsoleCancelled" xml:space="preserve"><value>سازنه لغوه شوه.</value></data>
+  <data name="ConsoleCertEmptyHint" xml:space="preserve"><value>د ځان لاسلیک سند لپاره تش پرېږدئ.</value></data>
+  <data name="ConsoleCertExtension" xml:space="preserve"><value>د سند فایل باید په .pfx، .pem یا .der پای ته ورسېږي.</value></data>
+  <data name="ConsoleCertIsFolder" xml:space="preserve"><value>د سند لار فایل نه دی، فولدر دی: {0}</value></data>
+  <data name="ConsoleCertIssuer" xml:space="preserve"><value>صادرونکی: {0} (د موضوع په څېر، ځان لاسلیک)</value></data>
+  <data name="ConsoleCertMissing" xml:space="preserve"><value>د سند فایل ونه موندل شو: {0}</value></data>
+  <data name="ConsoleCertNoticeBody" xml:space="preserve"><value>دا سرور یو ځان لاسلیک سند کاروي. FTP پیرودونکي ممکن د وصل پر مهال د خوندیتوب خبرداری وښيي. که وغوښتل شي، د منلو دمخه د خپل پیرودونکي کې ښودل شوي ګوته نقشه د لاندې ارزښتونو سره پرتله کړئ.</value></data>
+  <data name="ConsoleCertNoticeTitle" xml:space="preserve"><value>د سند خبر</value></data>
+  <data name="ConsoleCertPasswordHint" xml:space="preserve"><value>که فایل پټنوم ونه لري، تش پرېږدئ.</value></data>
+  <data name="ConsoleCertSection" xml:space="preserve"><value>د سرور سند</value></data>
+  <data name="ConsoleCertSerial" xml:space="preserve"><value>د سلسلې شمېره: {0}</value></data>
+  <data name="ConsoleCertSha1" xml:space="preserve"><value>SHA-1: {0}</value></data>
+  <data name="ConsoleCertSha256" xml:space="preserve"><value>SHA-256: {0}</value></data>
+  <data name="ConsoleCertStoreIncomplete" xml:space="preserve"><value>د سند زېرمې نوم، ځای او موضوع باید یوځای ورکړل شي.</value></data>
+  <data name="ConsoleCertSubject" xml:space="preserve"><value>موضوع: {0}</value></data>
+  <data name="ConsoleCertType" xml:space="preserve"><value>ډول: {0}</value></data>
+  <data name="ConsoleCertTypeSelfSigned" xml:space="preserve"><value>ځان لاسلیک</value></data>
+  <data name="ConsoleCertValid" xml:space="preserve"><value>معتبر: له {0} تر {1}</value></data>
+  <data name="ConsoleConfigComplete" xml:space="preserve"><value>ټاکل شوي کارونکي: {0}</value></data>
+  <data name="ConsoleConfigLoadFailed" xml:space="preserve"><value>له {0} څخه سازنه بار نه شوه.</value></data>
+  <data name="ConsoleConfigLoaded" xml:space="preserve"><value>سازنه له {0} څخه بار شوه.</value></data>
+  <data name="ConsoleConfigRunHint" xml:space="preserve"><value>دا سازنه وروسته د کارولو لپاره وچلوئ: ftps-server --config {0}</value></data>
+  <data name="ConsoleConfigSaveFailed" xml:space="preserve"><value>سازنه خوندي نه شوه: {0}</value></data>
+  <data name="ConsoleConfigSaved" xml:space="preserve"><value>خوندي شو: {0}</value></data>
+  <data name="ConsoleConfigSavedLog" xml:space="preserve"><value>سازنه په {0} کې خوندي شوه.</value></data>
+  <data name="ConsoleCopyright" xml:space="preserve"><value>{0} : د کاپي حق (c) 2025-{1} Siarhei Kuchuk</value></data>
+  <data name="ConsoleCreateFolder" xml:space="preserve"><value>فولدر {0} جوړ شي؟</value></data>
+  <data name="ConsoleDuplicateUser" xml:space="preserve"><value>کارونکی {0} له یو ځل زیات راغلی دی.</value></data>
+  <data name="ConsoleEncryption" xml:space="preserve"><value>کوډیزونه: څرګند</value></data>
+  <data name="ConsoleFatal" xml:space="preserve"><value>سخت تېروتنه: {0}</value></data>
+  <data name="ConsoleFolderCreateFailed" xml:space="preserve"><value>فولدر جوړ نه شو: {0}</value></data>
+  <data name="ConsoleFolderCreated" xml:space="preserve"><value>جوړ شو: {0}</value></data>
+  <data name="ConsoleFolderIsFile" xml:space="preserve"><value>لار فولدر نه دی، فایل دی: {0}</value></data>
+  <data name="ConsoleFolderMissing" xml:space="preserve"><value>فولدر نشته: {0}</value></data>
+  <data name="ConsoleFolderRequired" xml:space="preserve"><value>د شریکولو لپاره یو فولدر وټاکئ.</value></data>
+  <data name="ConsoleHelp" xml:space="preserve"><value>کارونه:
+  ftps-server [options]
+  ftps-server --config &lt;path-to-json&gt;
+
+انتخابونه:
+
+  --help
+      دا مرسته وښایاست.
+
+  --config &lt;path&gt;
+      د JSON د سازونې فایل.
+
+  --ip &lt;address&gt;
+      د اورېدو لپاره د IP پته. تلواله: 0.0.0.0. 0.0.0.0، :: او ::0 په هر IPv4 او IPv6 انټرفیس اوري.
+
+  --port &lt;number&gt;
+      د اورېدو بندر. تلواله: 2121. اجازه: 2121-65535.
+
+  --maxconnections &lt;number&gt;
+      په یو وخت کې د اتصال اعظمي شمېر. تلواله: 10. اجازه: 2-100.
+
+  --cert &lt;path&gt;
+      د سند فایل (.pfx، .pem یا .der). که پټنوم وي، .pfx فایل د --certpass په واسطه خلاصېږي.
+
+  --certpass &lt;password&gt;
+      د سند فایل پټنوم.
+
+  --certstorename &lt;name&gt;
+      د زېرمې نوم: AuthRoot، CertificateAuthority، My، Root یا TrustedPublisher. له --certstorelocation او --certstoresubject سره یوځای ورکړئ.
+
+  --certstorelocation &lt;location&gt;
+      د زېرمې ځای: CurrentUser یا LocalMachine. له --certstorename او --certstoresubject سره یوځای ورکړئ.
+
+  --certstoresubject &lt;subject&gt;
+      په سند زېرمه کې د لټون موضوع نوم. له --certstorename او --certstorelocation سره یوځای ورکړئ.
+
+  --user &lt;login#password#folder#permissions&gt;
+      کارونکی زیاتوي. اجازې: R (لوستل)، W (لیکل) یا RW. فولدر باید مخکې شتون ولري. په څلورو برخو کې # مه کاروئ.
+
+بېلګې:
+  ftps-server --config settings.json
+  ftps-server --ip 0.0.0.0 --port 2121 --user "admin#secret#C:\ftp\admin#RW"
+  ftps-server --cert server.pfx --certpass secret
+
+پرته له آرګومنټونو، که په اوسني فولدر کې appsettings.json وي نو هغه بارېږي.
+که کارونکی نه وي ټاکل شوی، متقابل تنظیم پیلېږي.
+</value></data>
+  <data name="ConsoleInteractiveHint" xml:space="preserve"><value>Enter روښانه تلواله ارزښت مني. پورته او ښکته ټاکي. Esc لغوه کوي.</value></data>
+  <data name="ConsoleInteractiveTitle" xml:space="preserve"><value>متقابل تنظیم</value></data>
+  <data name="ConsoleInvalidIp" xml:space="preserve"><value>یوه سمه د IP پته ولیکئ.</value></data>
+  <data name="ConsoleInvalidMaxConnections" xml:space="preserve"><value>د اتصال اعظمي شمېر باید له {0} تر {1} وي.</value></data>
+  <data name="ConsoleInvalidNumber" xml:space="preserve"><value>{0} باید بشپړ شمېر وي.</value></data>
+  <data name="ConsoleInvalidPort" xml:space="preserve"><value>له {0} تر {1} بندر ولیکئ.</value></data>
+  <data name="ConsoleInvalidStoreLocation" xml:space="preserve"><value>د سند زېرمې ناپېژندلی ځای: {0}</value></data>
+  <data name="ConsoleInvalidStoreName" xml:space="preserve"><value>د سند زېرمې ناپېژندلی نوم: {0}</value></data>
+  <data name="ConsoleIpAddress" xml:space="preserve"><value>د IP پته: {0}</value></data>
+  <data name="ConsoleListenAll" xml:space="preserve"><value>ټول انټرفیسونه</value></data>
+  <data name="ConsoleMachineName" xml:space="preserve"><value>د کمپیوټر په نوم {0} نښلول کېدای شي.</value></data>
+  <data name="ConsoleMissingOptionValue" xml:space="preserve"><value>انتخاب {0} ارزښت ته اړتیا لري.</value></data>
+  <data name="ConsoleNetworkLine" xml:space="preserve"><value>{0} شبکه «{1}» ({2}): {3}</value></data>
+  <data name="ConsoleNo" xml:space="preserve"><value>نه</value></data>
+  <data name="ConsolePasswordRequired" xml:space="preserve"><value>پټنوم ولیکئ.</value></data>
+  <data name="ConsolePermissionRead" xml:space="preserve"><value>یوازې لوستل</value></data>
+  <data name="ConsolePermissionReadWrite" xml:space="preserve"><value>لوستل او لیکل</value></data>
+  <data name="ConsolePermissionRequired" xml:space="preserve"><value>لوستل، لیکل یا دواړه وټاکئ.</value></data>
+  <data name="ConsolePermissionWrite" xml:space="preserve"><value>یوازې لیکل</value></data>
+  <data name="ConsolePlaintextSecrets" xml:space="preserve"><value>سازنه {0} پټنومونه په ساده متن ساتي. د کوډیزون لپاره له متقابل تنظیم څخه بیا خوندي کړئ.</value></data>
+  <data name="ConsolePortLabel" xml:space="preserve"><value>د اورېدو بندر: {0}</value></data>
+  <data name="ConsolePressQ" xml:space="preserve"><value>د سرور د درولو لپاره Q ووهئ.</value></data>
+  <data name="ConsolePromptCertPassword" xml:space="preserve"><value>د سند پټنوم</value></data>
+  <data name="ConsolePromptCertPath" xml:space="preserve"><value>د سند فایل</value></data>
+  <data name="ConsolePromptConfigFile" xml:space="preserve"><value>د سازونې فایل</value></data>
+  <data name="ConsolePromptFolder" xml:space="preserve"><value>فولدر</value></data>
+  <data name="ConsolePromptIp" xml:space="preserve"><value>د IP پته</value></data>
+  <data name="ConsolePromptMaxConnections" xml:space="preserve"><value>د اتصال اعظمي شمېر</value></data>
+  <data name="ConsolePromptPassword" xml:space="preserve"><value>پټنوم</value></data>
+  <data name="ConsolePromptPermissions" xml:space="preserve"><value>اجازې</value></data>
+  <data name="ConsolePromptPort" xml:space="preserve"><value>د اورېدو بندر</value></data>
+  <data name="ConsolePromptUsername" xml:space="preserve"><value>د کارونکي نوم</value></data>
+  <data name="ConsoleReplaceFile" xml:space="preserve"><value>شته فایل {0} بدل شي؟</value></data>
+  <data name="ConsoleSaveConfig" xml:space="preserve"><value>دا سازنه خوندي شي؟</value></data>
+  <data name="ConsoleSecretsEncrypted" xml:space="preserve"><value>د فایل پټنومونه د عملیاتي سیسټم په کیلي کوډ شوي او یوازې په دې کمپیوټر کې لوستل کېږي.</value></data>
+  <data name="ConsoleServerStarting" xml:space="preserve"><value>د FTPS سرور پیلېږي.</value></data>
+  <data name="ConsoleServerStopped" xml:space="preserve"><value>سرور ودرېد.</value></data>
+  <data name="ConsoleShuttingDown" xml:space="preserve"><value>سرور بندېږي.</value></data>
+  <data name="ConsoleUserAdded" xml:space="preserve"><value>کارونکی {0} زیات شو ({1}).</value></data>
+  <data name="ConsoleUserArgument" xml:space="preserve"><value>د --user ارزښت باید د login#password#folder#permissions په بڼه وي.</value></data>
+  <data name="ConsoleUserIssue" xml:space="preserve"><value>کارونکی {0}: {1}</value></data>
+  <data name="ConsoleUserNameRequired" xml:space="preserve"><value>د کارونکي نوم ولیکئ.</value></data>
+  <data name="ConsoleUsernameHint" xml:space="preserve"><value>کله چې کارونکي زیات کړئ، تش پرېږدئ.</value></data>
+  <data name="ConsoleUsersConfigured" xml:space="preserve"><value>ټاکل شوي کارونکي: {0}</value></data>
+  <data name="ConsoleUsersHint" xml:space="preserve"><value>لږترلږه یو کارونکی اړین دی.</value></data>
+  <data name="ConsoleUsersRequired" xml:space="preserve"><value>مهرباني وکړئ لږترلږه یو کارونکی اضافه کړئ.</value></data>
+  <data name="ConsoleUsersTitle" xml:space="preserve"><value>کارونکي</value></data>
+  <data name="ConsoleValidationFailed" xml:space="preserve"><value>سازنه سمه نه ده.</value></data>
+  <data name="ConsoleYes" xml:space="preserve"><value>هو</value></data>
+</root>
