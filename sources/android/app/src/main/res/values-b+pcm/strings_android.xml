@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Choose dis folder again. Android no dey allow access to am again.</string>
+    <string name="config_access_info_android">You fit access dis device for LAN by im name or IP address.</string>
+    <string name="notification_title">FTPS Server dey run</string>
+    <string name="notification_text">File transfer go still dey go as long as dis notification dey show.</string>
+    <string name="error_settings_unreadable">E no fit read di settings wey dem save. Dem no change am.</string>
+</resources>

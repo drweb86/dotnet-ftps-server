@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">ဤဖိုလ်ဒါကို ထပ်ရွေးပါ။ Android က ၎င်းကို ဝင်ရောက်ခွင့် မပေးတော့ပါ။</string>
+    <string name="config_access_info_android">ဤစက်ကို LAN တွင် ၎င်း၏နာမည် သို့မဟုတ် IP လိပ်စာဖြင့် ဝင်ရောက်နိုင်သည်။</string>
+    <string name="notification_title">FTPS Server အလုပ်လုပ်နေသည်</string>
+    <string name="notification_text">ဤအကြောင်းကြားချက် ပေါ်နေသမျှ ဖိုင်လွှဲပြောင်းမှု ဆက်လက်လုပ်ဆောင်နေသည်။</string>
+    <string name="error_settings_unreadable">သိမ်းထားသော ဆက်တင်များကို ဖတ်၍မရပါ။ ၎င်းတို့ကို မပြောင်းဘဲထားသည်။</string>
+</resources>

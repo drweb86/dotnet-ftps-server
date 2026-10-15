@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Hãy chọn lại thư mục này. Android không còn cho phép truy cập thư mục này.</string>
+    <string name="config_access_info_android">Thiết bị này có thể được truy cập trong mạng LAN bằng tên hoặc địa chỉ IP.</string>
+    <string name="notification_title">FTPS Server đang chạy</string>
+    <string name="notification_text">Việc truyền tệp vẫn tiếp tục khi thông báo này được hiển thị.</string>
+    <string name="error_settings_unreadable">Không đọc được các cài đặt đã lưu. Chúng được giữ nguyên.</string>
+</resources>

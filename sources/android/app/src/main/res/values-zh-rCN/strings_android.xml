@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">请再次选择此文件夹。Android 已不再允许访问它。</string>
+    <string name="config_access_info_android">此设备可以通过其名称或 IP 地址在局域网中访问。</string>
+    <string name="notification_title">FTPS Server 正在运行</string>
+    <string name="notification_text">显示此通知时，文件传输会保持进行。</string>
+    <string name="error_settings_unreadable">无法读取已保存的设置。这些设置未被更改。</string>
+</resources>

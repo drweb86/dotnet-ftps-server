@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Choisissez à nouveau ce dossier. Android n\'y autorise plus l\'accès.</string>
+    <string name="config_access_info_android">Cet appareil est accessible sur le réseau local par son nom ou son adresse IP.</string>
+    <string name="notification_title">FTPS Server est en cours d\'exécution</string>
+    <string name="notification_text">Les transferts de fichiers restent actifs tant que cette notification est affichée.</string>
+    <string name="error_settings_unreadable">Les paramètres enregistrés n\'ont pas pu être lus. Ils n\'ont pas été modifiés.</string>
+</resources>

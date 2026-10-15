@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">این پوشه را دوباره انتخاب کنید. اندروید دیگر اجازه دسترسی به آن را نمی‌دهد.</string>
+    <string name="config_access_info_android">به این دستگاه می‌توان در شبکه محلی از طریق نام یا نشانی IP آن دسترسی داشت.</string>
+    <string name="notification_title">FTPS Server در حال اجراست</string>
+    <string name="notification_text">تا وقتی این اعلان دیده می‌شود، انتقال فایل ادامه دارد.</string>
+    <string name="error_settings_unreadable">تنظیمات ذخیره‌شده خوانده نشد. آن‌ها بدون تغییر ماندند.</string>
+</resources>

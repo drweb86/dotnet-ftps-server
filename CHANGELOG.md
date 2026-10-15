@@ -4,6 +4,9 @@
 ## Changes
 - Console: localized.
 
+## Bug Fixes
+- Android: Fix lost access to chosen paths.
+
 # 2026.10.08
 
 ## New Features

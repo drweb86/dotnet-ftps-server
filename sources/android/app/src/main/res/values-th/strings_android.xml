@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">เลือกโฟลเดอร์นี้อีกครั้ง Android ไม่อนุญาตให้เข้าถึงอีกต่อไป</string>
+    <string name="config_access_info_android">อุปกรณ์นี้สามารถเข้าถึงได้ใน LAN ด้วยชื่อหรือที่อยู่ IP</string>
+    <string name="notification_title">FTPS Server กำลังทำงาน</string>
+    <string name="notification_text">การถ่ายโอนไฟล์ยังทำงานอยู่ขณะที่การแจ้งเตือนนี้แสดงอยู่</string>
+    <string name="error_settings_unreadable">ไม่สามารถอ่านการตั้งค่าที่บันทึกไว้ได้ การตั้งค่าไม่ถูกเปลี่ยนแปลง</string>
+</resources>

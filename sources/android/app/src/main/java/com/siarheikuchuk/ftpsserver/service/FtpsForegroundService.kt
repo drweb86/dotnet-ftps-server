@@ -22,6 +22,7 @@ import com.siarheikuchuk.ftpsserver.server.FtpsServerConfig
 import com.siarheikuchuk.ftpsserver.server.FtpsServerSettings
 import com.siarheikuchuk.ftpsserver.server.FtpsUserAccount
 import com.siarheikuchuk.ftpsserver.server.LoadedCertificate
+import com.siarheikuchuk.ftpsserver.storage.PersistedFolderGrant
 import com.siarheikuchuk.ftpsserver.storage.SafFileSystemProvider
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -45,18 +46,18 @@ class FtpsForegroundService : Service() {
                 stopSelf()
                 return START_NOT_STICKY
             }
-            else -> startServer()
+            else -> if (!startServer()) return START_NOT_STICKY
         }
         return START_STICKY
     }
 
-    private fun startServer() {
+    private fun startServer(): Boolean {
         // startForegroundService() requires startForeground() even when the
         // server is already running; otherwise Android shows "not responding".
         enterForeground()
         if (server != null) {
             ServerEvents.running(true)
-            return
+            return true
         }
 
         val pm = getSystemService(POWER_SERVICE) as PowerManager
@@ -81,8 +82,19 @@ class FtpsForegroundService : Service() {
                 ServerEvents.log("ERROR", if (error != null) "$message: ${error.message}" else message)
         }
         try {
-            val saved = SettingsRepository(this).load()
-            val users = saved.users.map { user ->
+            val repo = SettingsRepository(this)
+            val saved = repo.load()
+            val reconciled = saved.users.map { user ->
+                val live = PersistedFolderGrant.liveUri(this, user.folderUri, needsWrite = !user.readonly)
+                if (user.folderUri.isNotBlank() && live == null) {
+                    throw IllegalStateException(getString(R.string.user_folder_access_lost))
+                }
+                if (live != null && live != user.folderUri) user.copy(folderUri = live) else user
+            }
+            if (reconciled.zip(saved.users).any { (updated, original) -> updated.folderUri != original.folderUri }) {
+                repo.save(saved.copy(users = reconciled.toMutableList()))
+            }
+            val users = reconciled.map { user ->
                 FtpsUserAccount(
                     login = user.login,
                     password = user.password,
@@ -103,10 +115,12 @@ class FtpsForegroundService : Service() {
             ftps.start()
             server = ftps
             ServerEvents.running(true)
+            return true
         } catch (e: Exception) {
             ServerEvents.failed(e.message ?: e.toString())
             stopServer()
             stopSelf()
+            return false
         }
     }
 

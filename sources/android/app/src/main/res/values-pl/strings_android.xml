@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Wybierz ten folder ponownie. Android nie zezwala już na dostęp do niego.</string>
+    <string name="config_access_info_android">To urządzenie jest dostępne w sieci LAN za pomocą nazwy lub adresu IP.</string>
+    <string name="notification_title">FTPS Server jest uruchomiony</string>
+    <string name="notification_text">Transfery plików trwają, dopóki to powiadomienie jest widoczne.</string>
+    <string name="error_settings_unreadable">Nie można odczytać zapisanych ustawień. Pozostały bez zmian.</string>
+</resources>

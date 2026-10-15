@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">このフォルダーをもう一度選んでください。Android がこのフォルダーへのアクセスを許可しなくなりました。</string>
+    <string name="config_access_info_android">このデバイスは、LAN内で名前またはIPアドレスでアクセスできます。</string>
+    <string name="notification_title">FTPS Server は実行中です</string>
+    <string name="notification_text">この通知が表示されている間、ファイル転送は続行されます。</string>
+    <string name="error_settings_unreadable">保存された設定を読み取れませんでした。設定は変更されていません。</string>
+</resources>

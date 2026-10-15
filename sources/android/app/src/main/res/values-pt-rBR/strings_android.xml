@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Escolha esta pasta novamente. O Android não permite mais o acesso a ela.</string>
+    <string name="config_access_info_android">Este dispositivo pode ser acessado na LAN por seu nome ou endereço IP.</string>
+    <string name="notification_title">O FTPS Server está em execução</string>
+    <string name="notification_text">As transferências de arquivos continuam enquanto esta notificação estiver visível.</string>
+    <string name="error_settings_unreadable">Não foi possível ler as configurações salvas. Elas não foram alteradas.</string>
+</resources>

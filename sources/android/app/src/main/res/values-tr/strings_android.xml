@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Bu klasörü yeniden seçin. Android artık bu klasöre erişime izin vermiyor.</string>
+    <string name="config_access_info_android">Bu cihaza LAN\'da adı veya IP adresi ile erişilebilir.</string>
+    <string name="notification_title">FTPS Server çalışıyor</string>
+    <string name="notification_text">Bu bildirim göründüğü sürece dosya aktarımları sürer.</string>
+    <string name="error_settings_unreadable">Kayıtlı ayarlar okunamadı. Değiştirilmeden bırakıldılar.</string>
+</resources>

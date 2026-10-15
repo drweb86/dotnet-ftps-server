@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Sake zaɓi wannan Babban Fayil. Android ba ya ƙara ba da damar shiga ciki.</string>
+    <string name="config_access_info_android">Ana iya samun damar shiga wannan na\'ura a cikin LAN ta sunanta ko adireshin IP.</string>
+    <string name="notification_title">FTPS Server na aiki</string>
+    <string name="notification_text">Canja wurin fayiloci na ci gaba yayin da wannan sanarwar take nunawa.</string>
+    <string name="error_settings_unreadable">Ba a iya karanta saitunan da aka ajiye ba. An bar su kamar yadda suke.</string>
+</resources>

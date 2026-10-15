@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">請再揀一次呢個資料夾。Android 已經唔再俾你存取佢。</string>
+    <string name="config_access_info_android">呢部裝置可以透過名稱或 IP 地址喺區域網絡入面存取。</string>
+    <string name="notification_title">FTPS Server 行緊</string>
+    <string name="notification_text">呢個通知顯示緊嘅時候，檔案傳輸會繼續。</string>
+    <string name="error_settings_unreadable">讀唔到已儲存嘅設定。設定冇被改過。</string>
+</resources>

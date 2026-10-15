@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Yan folda yìí lẹ́ẹ̀kan sí i. Android kò tún gba ààyè láti wọ inú rẹ̀ mọ́.</string>
+    <string name="config_access_info_android">A le wọle si ẹrọ yii ni LAN nipasẹ orukọ rẹ tabi adirẹsi IP rẹ.</string>
+    <string name="notification_title">FTPS Server n ṣiṣẹ</string>
+    <string name="notification_text">Gbigbe faili n tẹsiwaju nigba ti akiyesi yii ba han.</string>
+    <string name="error_settings_unreadable">A ko le ka awọn eto ti a fipamọ. A ko yipada.</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Осы қалтаны қайта таңдаңыз. Android оған кіруге енді рұқсат бермейді.</string>
+    <string name="config_access_info_android">Осы құрылғыға LAN желісінде атауы немесе IP мекенжайы арқылы қатынауға болады.</string>
+    <string name="notification_title">FTPS Server жұмыс істеп тұр</string>
+    <string name="notification_text">Осы хабарлама көрініп тұрғанда файл жіберу жалғасады.</string>
+    <string name="error_settings_unreadable">Сақталған параметрлерді оқу мүмкін болмады. Олар өзгертілмеді.</string>
+</resources>

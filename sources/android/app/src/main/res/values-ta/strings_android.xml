@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">இந்தக் கோப்புறையை மீண்டும் தேர்ந்தெடுக்கவும். Android இனி இதற்கான அணுகலை அனுமதிக்காது.</string>
+    <string name="config_access_info_android">இந்தச் சாதனத்தை LAN-ல் அதன் பெயர் அல்லது IP முகவரி மூலம் அணுகலாம்.</string>
+    <string name="notification_title">FTPS Server இயங்குகிறது</string>
+    <string name="notification_text">இந்த அறிவிப்பு காட்டப்படும் வரை கோப்பு பரிமாற்றங்கள் தொடரும்.</string>
+    <string name="error_settings_unreadable">சேமித்த அமைப்புகளைப் படிக்க முடியவில்லை. அவை மாற்றப்படவில்லை.</string>
+</resources>

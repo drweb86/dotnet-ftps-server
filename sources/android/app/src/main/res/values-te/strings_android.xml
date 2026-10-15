@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">ఈ ఫోల్డర్‌ను మళ్లీ ఎంచుకోండి. Android ఇకపై దీనికి ప్రాప్యతను అనుమతించదు.</string>
+    <string name="config_access_info_android">ఈ పరికరాన్ని LAN లో దాని పేరు లేదా IP అడ్రస్ ద్వారా యాక్సెస్ చేయవచ్చు.</string>
+    <string name="notification_title">FTPS Server నడుస్తోంది</string>
+    <string name="notification_text">ఈ నోటిఫికేషన్ కనిపించేంత వరకు ఫైల్ బదిలీలు కొనసాగుతాయి.</string>
+    <string name="error_settings_unreadable">సేవ్ చేసిన సెట్టింగ్‌లను చదవలేకపోయాం. అవి మార్చబడలేదు.</string>
+</resources>

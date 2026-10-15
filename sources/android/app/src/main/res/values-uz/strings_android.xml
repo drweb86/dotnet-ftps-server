@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Bu papkani qayta tanlang. Android endi unga kirishga ruxsat bermaydi.</string>
+    <string name="config_access_info_android">Bu qurilmaga LAN tarmog\'ida uning nomi yoki IP manzili orqali kirish mumkin.</string>
+    <string name="notification_title">FTPS Server ishlamoqda</string>
+    <string name="notification_text">Bu bildirishnoma ko\'rinib turganda fayl uzatish davom etadi.</string>
+    <string name="error_settings_unreadable">Saqlangan sozlamalarni o\'qib bo\'lmadi. Ular o\'zgartirilmay qoldirildi.</string>
+</resources>

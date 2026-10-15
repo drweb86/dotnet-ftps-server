@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">اس فولڈر کو دوبارہ منتخب کریں۔ Android اب اس تک رسائی کی اجازت نہیں دیتا۔</string>
+    <string name="config_access_info_android">اس ڈیوائس تک LAN میں اس کے نام یا IP ایڈریس سے رسائی حاصل کی جا سکتی ہے۔</string>
+    <string name="notification_title">FTPS Server چل رہا ہے</string>
+    <string name="notification_text">جب تک یہ اطلاع نظر آتی ہے، فائل کی منتقلی جاری رہتی ہے۔</string>
+    <string name="error_settings_unreadable">محفوظ کردہ سیٹنگز پڑھی نہیں جا سکیں۔ انہیں بغیر تبدیلی چھوڑ دیا گیا۔</string>
+</resources>

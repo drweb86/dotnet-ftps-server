@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">ይህን ፎልደር እንደገና ይምረጡ። Android ከእንግዲህ መድረሻ አይፈቅድም።</string>
+    <string name="config_access_info_android">ይህ መሣሪያ በ LAN ውስጥ በስሙ ወይም በ IP አድራሻው ሊደረስ ይችላል።</string>
+    <string name="notification_title">FTPS Server እየሰራ ነው</string>
+    <string name="notification_text">ይህ ማሳወቂያ እስከሚታይ ድረስ የፋይል ዝውውሮች ይቀጥላሉ።</string>
+    <string name="error_settings_unreadable">የተቀመጡ ቅንብሮችን ማንበብ አልተቻለም። ሳይቀየሩ ቀርተዋል።</string>
+</resources>

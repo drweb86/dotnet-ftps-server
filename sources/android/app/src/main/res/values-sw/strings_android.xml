@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Chagua folda hii tena. Android hairuhusu tena kuifikia.</string>
+    <string name="config_access_info_android">Kifaa hiki kinaweza kufikiwa kwenye LAN kwa jina lake au anwani ya IP.</string>
+    <string name="notification_title">FTPS Server inaendeshwa</string>
+    <string name="notification_text">Uhamishaji wa faili unaendelea wakati arifa hii inaonekana.</string>
+    <string name="error_settings_unreadable">Mipangilio iliyohifadhiwa haikusomwa. Haikubadilishwa.</string>
+</resources>

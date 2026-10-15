@@ -1,7 +1,6 @@
 package com.siarheikuchuk.ftpsserver.ui
 
 import android.app.Application
-import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.util.Log
@@ -17,6 +16,7 @@ import com.siarheikuchuk.ftpsserver.server.FtpsServerSettings
 import com.siarheikuchuk.ftpsserver.server.LoadedCertificate
 import com.siarheikuchuk.ftpsserver.service.FtpsForegroundService
 import com.siarheikuchuk.ftpsserver.service.ServerEvents
+import com.siarheikuchuk.ftpsserver.storage.PersistedFolderGrant
 import java.net.NetworkInterface
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -70,19 +70,39 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     init {
         try {
             val loaded = repo.load()
+            val checked = loaded.users.map { user ->
+                val live = PersistedFolderGrant.liveUri(application, user.folderUri, needsWrite = !user.readonly)
+                val updated = if (live != null && live != user.folderUri) user.copy(folderUri = live) else user
+                val folderError = if (user.folderUri.isNotBlank() && live == null) {
+                    application.getString(R.string.user_folder_access_lost)
+                } else {
+                    null
+                }
+                updated to folderError
+            }
+            val users = checked.map { it.first }
+            val userErrors = checked.map { UserFieldErrors(folder = it.second) }
             _state.value = UiState(
                 port = loaded.serverPort,
                 maxConnections = loaded.maxConnections,
                 useSelfSigned = loaded.useSelfSigned,
                 certificatePath = loaded.certificatePath,
                 certificatePassword = loaded.certificatePassword,
-                users = loaded.users.toList(),
-                userErrors = List(loaded.users.size) { UserFieldErrors() },
+                users = users,
+                userErrors = userErrors,
+                error = userErrors.firstNotNullOfOrNull { it.folder },
                 running = ServerEvents.isRunning.value,
                 networks = localNetworks(),
                 hostName = Build.MODEL ?: "Android",
                 certificate = ServerEvents.loadedCertificate.value,
             )
+            if (users.zip(loaded.users).any { (updated, original) -> updated.folderUri != original.folderUri }) {
+                try {
+                    save()
+                } catch (e: Exception) {
+                    Log.e(TAG, "Updated folder grant could not be saved", e)
+                }
+            }
         } catch (e: Exception) {
             canPersistSettings = false
             Log.e(TAG, "Saved settings could not be read", e)
@@ -146,12 +166,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun removeUser(index: Int) {
+        val removed = _state.value.users.getOrNull(index)?.folderUri.orEmpty()
         _state.update {
             it.copy(
                 users = it.users.toMutableList().also { list -> list.removeAt(index) },
                 userErrors = it.userErrors.toMutableList().also { list -> if (index < list.size) list.removeAt(index) },
             )
         }
+        PersistedFolderGrant.releaseUnused(getApplication(), removed, _state.value.users.map { it.folderUri })
     }
 
     fun updateUser(index: Int, transform: (UserAccount) -> UserAccount) {
@@ -166,9 +188,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun setFolder(index: Int, uri: Uri, name: String) {
-        val cr = getApplication<Application>().contentResolver
-        cr.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-        updateUser(index) { it.copy(folderName = name, folderUri = uri.toString()) }
+        val app = getApplication<Application>()
+        val stored = PersistedFolderGrant.take(app, uri)
+        if (stored == null) {
+            val message = app.getString(R.string.user_folder_access_lost)
+            _state.update { state ->
+                val errors = state.userErrors.toMutableList()
+                while (errors.size <= index) errors.add(UserFieldErrors())
+                errors[index] = errors[index].copy(folder = message)
+                state.copy(userErrors = errors, error = message, usersExpanded = true)
+            }
+            return
+        }
+        val previous = _state.value.users.getOrNull(index)?.folderUri.orEmpty()
+        updateUser(index) { it.copy(folderName = name, folderUri = stored) }
+        PersistedFolderGrant.releaseUnused(app, previous, _state.value.users.map { it.folderUri })
+        save()
     }
 
     fun setCertificateFile(path: String) {
@@ -223,7 +258,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             UserFieldErrors(
                 login = if (user.login.isBlank()) app.getString(R.string.user_username_validation) else null,
                 password = if (user.password.isBlank()) app.getString(R.string.user_password_validation) else null,
-                folder = if (user.folderUri.isBlank()) app.getString(R.string.user_folder_validation) else null,
+                folder = folderMessage(user),
             )
         }
         val usersBanner = when {
@@ -244,6 +279,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             )
         }
         return banner == null
+    }
+
+    private fun folderMessage(user: UserAccount): String? {
+        val app = getApplication<Application>()
+        if (user.folderUri.isBlank()) return app.getString(R.string.user_folder_validation)
+        val live = PersistedFolderGrant.liveUri(app, user.folderUri, needsWrite = !user.readonly)
+        return if (live == null) app.getString(R.string.user_folder_access_lost) else null
     }
 
     private fun stop() {

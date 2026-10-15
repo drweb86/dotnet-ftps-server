@@ -3,8 +3,9 @@
     <string name="app_label" translatable="false">FTPS Server</string>
     <string name="developer_name" translatable="false">Siarhei Kuchuk</string>
     <string name="config_access_info_android">This device can be accessed on the LAN by its name or IP address.</string>
-    <string name="notification_channel">FTPS Server</string>
+    <string name="notification_channel" translatable="false">FTPS Server</string>
     <string name="notification_title">FTPS Server is running</string>
     <string name="notification_text">File transfers stay active while this notification is shown.</string>
     <string name="error_settings_unreadable">Saved settings could not be read. They were left unchanged.</string>
+    <string name="user_folder_access_lost">Choose this folder again. Android no longer allows access to it.</string>
 </resources>

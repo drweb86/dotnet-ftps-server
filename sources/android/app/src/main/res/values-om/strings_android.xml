@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Dirree kana ammas filadhu. Android ammaan booda qaqqabummaa hin hayyamu.</string>
+    <string name="config_access_info_android">Meeshaan kun LAN keessatti maqaa isaa yookiin teessoo IP isaa fayyadamuun argamuu danda\'a.</string>
+    <string name="notification_title">FTPS Server hojii irra jira</string>
+    <string name="notification_text">Yeroo beeksisa kun mul\'atu dabarsa faayilaa itti fufa.</string>
+    <string name="error_settings_unreadable">Qindaa\'inoota kuufaman dubbisuu hin dandeenye. Hin jijjiiramne.</string>
+</resources>

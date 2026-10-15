@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Họrọ folda a ọzọ. Android anaghị ekwe ka enweta ya ọzọ.</string>
+    <string name="config_access_info_android">Enwere ike ịnweta ngwaọrụ a na LAN site n\'aha ya ma ọ bụ adreesị IP ya.</string>
+    <string name="notification_title">FTPS Server na-arụ ọrụ</string>
+    <string name="notification_text">Mbufe faịlụ na-aga n\'ihu mgbe a na-egosi ọkwa a.</string>
+    <string name="error_settings_unreadable">Enweghị ike ịgụ ntọala echekwara. A hapụrụ ha ka ha dị.</string>
+</resources>

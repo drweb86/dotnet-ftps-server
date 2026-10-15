@@ -17,10 +17,14 @@ class SafFileSystemProvider(private val context: Context) : FileSystemProvider {
         const val MIME_BINARY = "application/octet-stream"
     }
 
+    private val liveUris = HashMap<String, String>()
+
     private fun root(uriString: String): DocumentFile {
-        val uri = Uri.parse(uriString)
-        return DocumentFile.fromTreeUri(context, uri)
-            ?: throw FileNotFoundException("Cannot access folder: $uriString")
+        val live = liveUris[uriString]
+            ?: PersistedFolderGrant.liveUri(context, uriString, needsWrite = false)?.also { liveUris[uriString] = it }
+            ?: throw SecurityException("Folder access is no longer granted")
+        return DocumentFile.fromTreeUri(context, Uri.parse(live))
+            ?: throw SecurityException("Folder access is no longer granted")
     }
 
     private fun navigateFolder(uriString: String, parts: List<String>): DocumentFile {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Pilih folder ini lagi. Android tidak lagi mengizinkan akses ke folder ini.</string>
+    <string name="config_access_info_android">Perangkat ini dapat diakses di LAN melalui nama atau alamat IP-nya.</string>
+    <string name="notification_title">FTPS Server sedang berjalan</string>
+    <string name="notification_text">Transfer file tetap berjalan selama notifikasi ini ditampilkan.</string>
+    <string name="error_settings_unreadable">Setelan yang tersimpan tidak dapat dibaca. Setelan itu tidak diubah.</string>
+</resources>

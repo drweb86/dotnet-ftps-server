@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">اختر هذا المجلد مرة أخرى. لم يعد Android يسمح بالوصول إليه.</string>
+    <string name="config_access_info_android">يمكن الوصول إلى هذا الجهاز في الشبكة المحلية عبر اسمه أو عنوان IP الخاص به.</string>
+    <string name="notification_title">FTPS Server قيد التشغيل</string>
+    <string name="notification_text">تبقى عمليات نقل الملفات نشطة ما دام هذا الإشعار ظاهرًا.</string>
+    <string name="error_settings_unreadable">تعذرت قراءة الإعدادات المحفوظة. ولم يتم تغييرها.</string>
+</resources>

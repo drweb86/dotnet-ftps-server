@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">이 폴더를 다시 선택하세요. Android가 더 이상 이 폴더에 대한 액세스를 허용하지 않습니다.</string>
+    <string name="config_access_info_android">이 기기는 LAN에서 이름 또는 IP 주소로 액세스할 수 있습니다.</string>
+    <string name="notification_title">FTPS Server가 실행 중입니다</string>
+    <string name="notification_text">이 알림이 표시되는 동안 파일 전송이 계속됩니다.</string>
+    <string name="error_settings_unreadable">저장된 설정을 읽을 수 없습니다. 설정은 변경되지 않았습니다.</string>
+</resources>

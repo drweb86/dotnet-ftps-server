@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">Знову оберіть цю папку. Android більше не дозволяє доступ до неї.</string>
+    <string name="config_access_info_android">Цей пристрій доступний у локальній мережі за його іменем або IP-адресою.</string>
+    <string name="notification_title">FTPS Server працює</string>
+    <string name="notification_text">Передавання файлів триває, доки показано це сповіщення.</string>
+    <string name="error_settings_unreadable">Не вдалося прочитати збережені налаштування. Їх залишено без змін.</string>
+</resources>

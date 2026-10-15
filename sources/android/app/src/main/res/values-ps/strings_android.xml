@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_folder_access_lost">دا فولډر بیا وټاکئ. Android نور دې ته لاسرسی نه ورکوي.</string>
+    <string name="config_access_info_android">دې وسیلې ته په LAN کې د هغې د نوم یا IP پتې له لارې لاسرسی ممکن دی.</string>
+    <string name="notification_title">FTPS Server روان دی</string>
+    <string name="notification_text">تر هغه چې دا خبرتیا ښکاري، د فایل لېږد روان وي.</string>
+    <string name="error_settings_unreadable">خوندي شوي تنظیمات ونه لوستل شول. هغوی بدل نه شول.</string>
+</resources>

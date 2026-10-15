@@ -59,6 +59,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.siarheikuchuk.ftpsserver.BuildConfig
 import com.siarheikuchuk.ftpsserver.R
+import com.siarheikuchuk.ftpsserver.storage.PersistableOpenDocumentTree
+import com.siarheikuchuk.ftpsserver.storage.PersistedFolderGrant
 
 @Composable
 private fun PasswordField(
@@ -452,7 +454,8 @@ private fun UserCard(
     errors: UserFieldErrors,
     viewModel: MainViewModel,
 ) {
-    val folderPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
+    val folderContract = remember { PersistableOpenDocumentTree() }
+    val folderPicker = rememberLauncherForActivityResult(folderContract) { uri ->
         if (uri != null) {
             val name = uri.lastPathSegment?.substringAfterLast(':') ?: uri.toString()
             viewModel.setFolder(index, uri, name)
@@ -489,7 +492,7 @@ private fun UserCard(
             isError = errors.folder != null,
             supportingText = { errors.folder?.let { Text(it) } },
             trailingIcon = {
-                TextButton(onClick = { folderPicker.launch(null) }) {
+                TextButton(onClick = { folderPicker.launch(PersistedFolderGrant.pickerUri(user.folderUri)) }) {
                     Text(stringResource(R.string.config_browse), color = AppColors.accent)
                 }
             },
