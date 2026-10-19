@@ -3,6 +3,7 @@
 
 ## Changes
 - Console: localized.
+- Windows, Avalonia, Android: the server log section starts collapsed. While it is collapsed the screen is not updated and only the last two lines are kept in memory. While it is open the screen shows the last 100 lines. Windows and Avalonia still write every line to the log file.
 
 ## Bug Fixes
 - Android: Fix lost access to chosen paths.

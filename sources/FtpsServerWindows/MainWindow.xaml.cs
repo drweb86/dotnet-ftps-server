@@ -11,7 +11,6 @@ using FtpsServerLibrary;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -104,11 +103,10 @@ namespace FtpsServerWindows
             _uiLog = new UiLog(_logEntries);
             UsersItemsControl.ItemsSource = _users;
             LogItemsControl.ItemsSource = _logEntries;
-            _logEntries.CollectionChanged += (_, e) =>
-            {
-                if (e.Action == NotifyCollectionChangedAction.Add)
-                    LogScrollViewer.ScrollToEnd();
-            };
+            _uiLog.ViewUpdated += (_, _) => LogScrollViewer.ScrollToEnd();
+            LogsExpander.Expanded += (_, _) => _uiLog.ShowInUi = true;
+            LogsExpander.Collapsed += (_, _) => _uiLog.ShowInUi = false;
+            _uiLog.ShowInUi = LogsExpander.IsExpanded;
 
             // Initialize DependencyProperties from settings
             Port = _settings.ServerPort;
@@ -318,7 +316,7 @@ namespace FtpsServerWindows
 
         private void ClearLogs_Click(object sender, RoutedEventArgs e)
         {
-            _logEntries.Clear();
+            _uiLog.Clear();
         }
 
         protected override void OnClosed(EventArgs e)

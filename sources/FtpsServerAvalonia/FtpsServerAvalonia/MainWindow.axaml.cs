@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
@@ -14,7 +15,6 @@ using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 
 namespace FtpsServerAvalonia
 {
@@ -109,11 +109,13 @@ namespace FtpsServerAvalonia
             _uiLog = new UiLog(_logEntries);
             UsersItemsControl.ItemsSource = _users;
             LogItemsControl.ItemsSource = _logEntries;
-            _logEntries.CollectionChanged += (_, e) =>
+            _uiLog.ViewUpdated += (_, _) => LogScrollViewer.ScrollToEnd();
+            LogsExpander.PropertyChanged += (_, e) =>
             {
-                if (e.Action == NotifyCollectionChangedAction.Add)
-                    LogScrollViewer.ScrollToEnd();
+                if (e.Property == Expander.IsExpandedProperty)
+                    _uiLog.ShowInUi = LogsExpander.IsExpanded;
             };
+            _uiLog.ShowInUi = LogsExpander.IsExpanded;
 
             // Initialize DependencyProperties from settings
             Port = _settings.ServerPort;
@@ -294,7 +296,7 @@ namespace FtpsServerAvalonia
 
         private void ClearLogs_Click(object? sender, RoutedEventArgs e)
         {
-            _logEntries.Clear();
+            _uiLog.Clear();
         }
 
         protected override void OnClosed(EventArgs e)

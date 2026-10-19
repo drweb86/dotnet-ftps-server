@@ -90,7 +90,7 @@
 						</StackPanel>
 					</Expander>
 
-					<Expander x:Name="LogsExpander" Classes="SectionExpander" IsExpanded="True" IsVisible="False">
+					<Expander x:Name="LogsExpander" Classes="SectionExpander" IsExpanded="False" IsVisible="False">
 						<Expander.Header>
 							<controls:ExpanderHeader Icon="📜" Text="{x:Static res:Strings.LogsTab}" />
 						</Expander.Header>

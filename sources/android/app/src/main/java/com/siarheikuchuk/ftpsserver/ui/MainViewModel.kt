@@ -19,10 +19,15 @@ import com.siarheikuchuk.ftpsserver.service.ServerEvents
 import com.siarheikuchuk.ftpsserver.storage.PersistedFolderGrant
 import java.net.NetworkInterface
 import java.text.SimpleDateFormat
+import java.util.ArrayDeque
 import java.util.Date
 import java.util.Locale
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -47,7 +52,6 @@ data class UiState(
     val users: List<UserAccount> = emptyList(),
     val running: Boolean = false,
     val error: String? = null,
-    val logs: List<LogLine> = emptyList(),
     val networks: List<NetworkRow> = emptyList(),
     val hostName: String = Build.MODEL ?: "Android",
     val certificate: LoadedCertificate? = null,
@@ -58,13 +62,17 @@ data class UiState(
     val configExpanded: Boolean = true,
     val usersExpanded: Boolean = true,
     val connectionExpanded: Boolean = true,
-    val logsExpanded: Boolean = true,
+    val logsExpanded: Boolean = false,
 )
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val repo = SettingsRepository(application)
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state
+    private val retainedLogs = ArrayDeque<LogLine>(MAX_UI_LOG_LINES)
+    private val logPulse = Channel<Unit>(Channel.CONFLATED)
+    private val _uiLogs = MutableStateFlow<List<LogLine>>(emptyList())
+    val uiLogs: StateFlow<List<LogLine>> = _uiLogs.asStateFlow()
     private var canPersistSettings = true
 
     init {
@@ -127,13 +135,24 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 _state.update { it.copy(certificate = cert) }
             }
         }
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.Default) {
             ServerEvents.logs.collect { (level, message) ->
                 val time = SimpleDateFormat("HH:mm:ss", Locale.US).format(Date())
-                _state.update { s ->
-                    val next = (s.logs + LogLine(time, level, message)).takeLast(500)
-                    s.copy(logs = next)
+                var show = false
+                synchronized(retainedLogs) {
+                    show = _state.value.logsExpanded
+                    val limit = if (show) MAX_UI_LOG_LINES else COLLAPSED_LOG_LINES
+                    retainedLogs.addLast(LogLine(time, level, message))
+                    while (retainedLogs.size > limit) retainedLogs.removeFirst()
                 }
+                if (show) logPulse.trySend(Unit)
+            }
+        }
+        viewModelScope.launch {
+            while (true) {
+                logPulse.receive()
+                publishLogs()
+                delay(UI_LOG_INTERVAL_MS)
             }
         }
     }
@@ -149,12 +168,35 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun setUseSelfSigned(value: Boolean) = _state.update { it.copy(useSelfSigned = value, certificatePathError = null) }
     fun setCertificatePassword(value: String) = _state.update { it.copy(certificatePassword = value) }
     fun dismissError() = _state.update { it.copy(error = null) }
-    fun clearLogs() = _state.update { it.copy(logs = emptyList()) }
+
+    fun clearLogs() {
+        synchronized(retainedLogs) {
+            retainedLogs.clear()
+            _uiLogs.value = emptyList()
+        }
+    }
 
     fun toggleConfigExpanded() = _state.update { it.copy(configExpanded = !it.configExpanded) }
     fun toggleUsersExpanded() = _state.update { it.copy(usersExpanded = !it.usersExpanded) }
     fun toggleConnectionExpanded() = _state.update { it.copy(connectionExpanded = !it.connectionExpanded) }
-    fun toggleLogsExpanded() = _state.update { it.copy(logsExpanded = !it.logsExpanded) }
+
+    fun toggleLogsExpanded() {
+        val expanded = !_state.value.logsExpanded
+        _state.update { it.copy(logsExpanded = expanded) }
+        synchronized(retainedLogs) {
+            if (!expanded) {
+                while (retainedLogs.size > COLLAPSED_LOG_LINES) retainedLogs.removeFirst()
+            }
+            _uiLogs.value = if (expanded) retainedLogs.toList() else emptyList()
+        }
+    }
+
+    private fun publishLogs() {
+        synchronized(retainedLogs) {
+            if (!_state.value.logsExpanded) return
+            _uiLogs.value = retainedLogs.toList()
+        }
+    }
 
     fun addUser() {
         _state.update {
@@ -314,6 +356,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     companion object {
         private const val TAG = "MainViewModel"
+        private const val MAX_UI_LOG_LINES = 100
+        private const val COLLAPSED_LOG_LINES = 2
+        private const val UI_LOG_INTERVAL_MS = 150L
         const val PORT_MIN = 2121
         const val PORT_MAX = 65535
         const val MAX_CONNECTIONS_MIN = 2

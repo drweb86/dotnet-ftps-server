@@ -82,7 +82,7 @@
                     </StackPanel>
                 </Expander>
 
-                <Expander x:Name="LogsExpander" Style="{StaticResource SectionExpander}" IsExpanded="True" Visibility="Collapsed">
+                <Expander x:Name="LogsExpander" Style="{StaticResource SectionExpander}" IsExpanded="False" Visibility="Collapsed">
                     <Expander.Header>
                         <controls:ExpanderHeader Icon="📜" Text="{x:Static res:Strings.LogsTab}" />
                     </Expander.Header>
