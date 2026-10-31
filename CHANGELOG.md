@@ -7,6 +7,8 @@
 
 ## Bug Fixes
 - Android: Fix lost access to chosen paths.
+- Library: an upload that closes TCP on a TLS record boundary without `close_notify` is rejected, and the partial file is removed. Before, that close looked like a normal end, the server answered `226 Transfer complete`, and the short file was kept.
+- Android: the same truncated upload is rejected, and the partial file is removed. Before, Conscrypt reported that TCP close as the end of the file and the server answered `226 Transfer complete`.
 
 # 2026.10.08
 

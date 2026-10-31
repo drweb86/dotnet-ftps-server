@@ -1248,28 +1248,54 @@ class FtpsServerClientSession(
 
         await SendResponseAsync(150, $"Opening data connection for {ftpsPath}");
 
+        var created = false;
         try
         {
-            using (dataClient)
+            try
             {
-                System.IO.Stream dataStream = dataClient.GetStream();
-
-                // Apply SSL/TLS if protection is enabled
-                dataStream = await ProtectDataConnectionAsync(dataStream);
-
-                using (dataStream)
-                using (var fileStream = await fileSystemProvider.FileCreate(_user!.Folder, path.Segments))
+                using (dataClient)
                 {
-                    await CopyWithIdleTimeoutAsync(dataStream, fileStream);
+                    System.IO.Stream dataStream = dataClient.GetStream();
+                    // SslStream reports a bare TCP close as a normal end when it falls between TLS
+                    // records. FTP would be finished then; FTPS is finished only after close_notify.
+                    var transport = IsDataConnectionEncrypted() && _certificate != null
+                        ? new TransportEofStream(dataStream)
+                        : null;
+                    if (transport != null)
+                        dataStream = transport;
+
+                    dataStream = await ProtectDataConnectionAsync(dataStream);
+
+                    using (dataStream)
+                    using (var fileStream = await fileSystemProvider.FileCreate(_user!.Folder, path.Segments))
+                    {
+                        created = true;
+                        await CopyWithIdleTimeoutAsync(dataStream, fileStream);
+                        if (transport is { SawTransportEof: true })
+                            throw new System.IO.IOException("Data connection closed before a TLS close_notify.");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                if (created)
+                {
+                    try
+                    {
+                        await fileSystemProvider.FileDelete(_user!.Folder, path.Segments);
+                    }
+                    catch (Exception deleteEx)
+                    {
+                        LogError(deleteEx, $"Failed to remove incomplete upload: {ftpsPath}");
+                    }
+                }
+
+                LogError(ex, $"Upload failed: {ftpsPath}");
+                await SendResponseAsync(550, "Transfer failed");
+                return;
             }
 
             await SendResponseAsync(226, "Transfer complete");
-        }
-        catch (Exception ex)
-        {
-            LogError(ex, $"Upload failed: {ftpsPath}");
-            await SendResponseAsync(550, "Transfer failed");
         }
         finally
         {
@@ -1562,6 +1588,76 @@ class FtpsServerClientSession(
                 throw new TimeoutException("Data connection idle timeout while writing.");
             }
         }
+    }
+
+    // Remembers a zero-byte TCP read so an upload can tell a TLS close_notify from a socket
+    // close that happened to land on a record boundary. SslStream returns 0 for both.
+    private sealed class TransportEofStream(System.IO.Stream inner) : System.IO.Stream
+    {
+        public bool SawTransportEof { get; private set; }
+
+        public override bool CanRead => inner.CanRead;
+        public override bool CanSeek => false;
+        public override bool CanWrite => inner.CanWrite;
+        public override bool CanTimeout => inner.CanTimeout;
+        public override long Length => inner.Length;
+        public override long Position
+        {
+            get => inner.Position;
+            set => inner.Position = value;
+        }
+        public override int ReadTimeout
+        {
+            get => inner.ReadTimeout;
+            set => inner.ReadTimeout = value;
+        }
+        public override int WriteTimeout
+        {
+            get => inner.WriteTimeout;
+            set => inner.WriteTimeout = value;
+        }
+
+        public override void Flush() => inner.Flush();
+        public override Task FlushAsync(CancellationToken cancellationToken) => inner.FlushAsync(cancellationToken);
+        public override long Seek(long offset, System.IO.SeekOrigin origin) => throw new NotSupportedException();
+        public override void SetLength(long value) => inner.SetLength(value);
+        public override void Write(byte[] buffer, int offset, int count) => inner.Write(buffer, offset, count);
+        public override void Write(ReadOnlySpan<byte> buffer) => inner.Write(buffer);
+        public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken) =>
+            inner.WriteAsync(buffer, offset, count, cancellationToken);
+        public override ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default) =>
+            inner.WriteAsync(buffer, cancellationToken);
+
+        public override int Read(byte[] buffer, int offset, int count) => Observe(inner.Read(buffer, offset, count), count);
+        public override int Read(Span<byte> buffer) => Observe(inner.Read(buffer), buffer.Length);
+        public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken) =>
+            ObserveAsync(inner.ReadAsync(buffer, offset, count, cancellationToken), count);
+        public override ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default) =>
+            ObserveAsync(inner.ReadAsync(buffer, cancellationToken), buffer.Length);
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+                inner.Dispose();
+            base.Dispose(disposing);
+        }
+
+        public override async ValueTask DisposeAsync()
+        {
+            await inner.DisposeAsync();
+            await base.DisposeAsync();
+        }
+
+        private int Observe(int read, int requested)
+        {
+            if (read == 0 && requested > 0)
+                SawTransportEof = true;
+            return read;
+        }
+
+        private async Task<int> ObserveAsync(Task<int> read, int requested) => Observe(await read, requested);
+
+        private async ValueTask<int> ObserveAsync(ValueTask<int> read, int requested) => Observe(await read, requested);
     }
 
     private static async Task WriteWithIdleTimeoutAsync(System.IO.Stream stream, byte[] bytes)
