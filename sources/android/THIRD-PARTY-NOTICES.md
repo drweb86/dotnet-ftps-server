@@ -8,17 +8,17 @@ Debug-only tooling (Compose UI tooling) is not part of the release build and is 
 
 ## Apache-2.0
 
-- **Kotlin standard library** 2.0.21. Copyright © JetBrains. [https://github.com/JetBrains/kotlin](https://github.com/JetBrains/kotlin)
-- **kotlinx-coroutines-android** 1.9.0. Copyright © JetBrains. [https://github.com/Kotlin/kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines)
-- **AndroidX Compose** (UI, Material3, Material icons), versions selected by Compose BOM 2024.10.01. Copyright © The Android Open Source Project. [https://developer.android.com/jetpack/compose](https://developer.android.com/jetpack/compose)
-- **AndroidX Activity Compose** 1.9.3. Copyright © The Android Open Source Project.
-- **AndroidX Lifecycle** 2.8.7 (runtime, ViewModel, ViewModel Compose, service). Copyright © The Android Open Source Project.
-- **AndroidX Core KTX** 1.15.0. Copyright © The Android Open Source Project.
-- **AndroidX DocumentFile** 1.0.1. Copyright © The Android Open Source Project.
+- **Kotlin standard library** 2.4.21. Copyright © JetBrains. [https://github.com/JetBrains/kotlin](https://github.com/JetBrains/kotlin)
+- **kotlinx-coroutines-android** 1.11.0. Copyright © JetBrains. [https://github.com/Kotlin/kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines)
+- **AndroidX Compose** (UI, Material3, Material icons), versions selected by Compose BOM 2026.09.00. Copyright © The Android Open Source Project. [https://developer.android.com/jetpack/compose](https://developer.android.com/jetpack/compose)
+- **AndroidX Activity Compose** 1.13.0. Copyright © The Android Open Source Project.
+- **AndroidX Lifecycle** 2.11.0 (runtime, ViewModel, ViewModel Compose, service). Copyright © The Android Open Source Project.
+- **AndroidX Core KTX** 1.19.1. Copyright © The Android Open Source Project.
+- **AndroidX DocumentFile** 1.1.0. Copyright © The Android Open Source Project.
 
 ## MIT
 
-- **Bouncy Castle PKIX** (org.bouncycastle:bcpkix-jdk18on) 1.79. Copyright © Legion of the Bouncy Castle Inc. [https://www.bouncycastle.org/](https://www.bouncycastle.org/)
+- **Bouncy Castle PKIX** (org.bouncycastle:bcpkix-jdk18on) 1.86. Copyright © Legion of the Bouncy Castle Inc. [https://www.bouncycastle.org/](https://www.bouncycastle.org/)
 
 ## MIT License text
 

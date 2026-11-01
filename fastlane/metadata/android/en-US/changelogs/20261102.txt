@@ -1,0 +1,4 @@
+Console, Windows, Avalonia: NLog 6.2.2, Avalonia 12.1.4, and MessageBox.Avalonia 12.1.0. The third-party notices list those versions.
+Android: Compose BOM 2026.09.00, Kotlin 2.4.21, Android Gradle Plugin 9.5.0, and the libraries listed in the third-party notices.
+Console: localized.
+Windows, Avalonia, Android: the server log section starts collapsed. While it is collapsed the screen is not updated and only the last two lines are kept in memory. While it is open the screen shows the last 100...

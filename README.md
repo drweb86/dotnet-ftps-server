@@ -30,7 +30,13 @@ B. Setup [look for asset **windows_setup.exe**](https://github.com/drweb86/dotne
 
 Setup is good when you can't use Store (no Microsoft Account, etc). Application will check for self-updates however you should manually update the application.
 
-C. Binaries [look for windows_archive.7z](https://github.com/drweb86/dotnet-ftps-server/releases/latest)
+C. Microsoft Win-Get
+
+```
+winget install -e --id SiarheiKuchuk.FtpsServer
+```
+
+D. Binaries [look for windows_archive.7z](https://github.com/drweb86/dotnet-ftps-server/releases/latest)
 
 Binaries are good if setups and zip archives are blocked by corporate policies. Application will check for self-updates however you should manually update the application.
 

@@ -33,11 +33,11 @@ fi
 
 WRAPPER="$ANDROID_ROOT/gradle/wrapper/gradle-wrapper.jar"
 if [ ! -f "$WRAPPER" ]; then
-  curl -fsSL "https://raw.githubusercontent.com/gradle/gradle/v8.11.1/gradle/wrapper/gradle-wrapper.jar" -o "$WRAPPER"
+  curl -fsSL "https://raw.githubusercontent.com/gradle/gradle/v9.6.0/gradle/wrapper/gradle-wrapper.jar" -o "$WRAPPER"
 fi
 
 # Replace the tiny custom launcher with Gradle's official POSIX wrapper (LF, GRADLE_OPTS-safe).
-curl -fsSL "https://raw.githubusercontent.com/gradle/gradle/v8.11.1/gradlew" -o "$ANDROID_ROOT/gradlew"
+curl -fsSL "https://raw.githubusercontent.com/gradle/gradle/v9.6.0/gradlew" -o "$ANDROID_ROOT/gradlew"
 chmod +x "$ANDROID_ROOT/gradlew"
 sed -i 's/\r$//' "$ANDROID_ROOT/gradlew"
 

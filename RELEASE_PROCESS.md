@@ -15,4 +15,4 @@ D. Distribute:
 - NUGet (separate pipeline for that exists), should be done when library is changed.
 - Huawei Store: https://developer.huawei.com/consumer/en/service/josp/agc/index.html#/myApp .
 - Ubuntu: verify that pipeline is green.
-- Win-Get: to be ignroed until they accept app.
+- Win-Get: PR

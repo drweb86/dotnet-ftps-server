@@ -144,7 +144,7 @@ if ($py) {
 $wrapperJar = Join-Path $AndroidRoot "gradle\wrapper\gradle-wrapper.jar"
 if (-not (Test-Path $wrapperJar)) {
     Write-Host "Downloading Gradle wrapper jar..."
-    $url = "https://github.com/gradle/gradle/raw/v8.11.1/gradle/wrapper/gradle-wrapper.jar"
+    $url = "https://github.com/gradle/gradle/raw/v9.6.0/gradle/wrapper/gradle-wrapper.jar"
     Invoke-WebRequest -Uri $url -OutFile $wrapperJar -UseBasicParsing
 }
 

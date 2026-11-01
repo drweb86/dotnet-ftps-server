@@ -48,7 +48,7 @@ if command -v python3 >/dev/null; then python3 "$ANDROID_ROOT/tools/convert_resx
 
 WRAPPER="$ANDROID_ROOT/gradle/wrapper/gradle-wrapper.jar"
 if [ ! -f "$WRAPPER" ]; then
-  curl -L "https://github.com/gradle/gradle/raw/v8.11.1/gradle/wrapper/gradle-wrapper.jar" -o "$WRAPPER"
+  curl -L "https://github.com/gradle/gradle/raw/v9.6.0/gradle/wrapper/gradle-wrapper.jar" -o "$WRAPPER"
 fi
 
 TASK=assembleGeneralDebug

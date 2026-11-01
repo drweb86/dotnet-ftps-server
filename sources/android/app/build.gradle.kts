@@ -1,6 +1,5 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
@@ -8,21 +7,20 @@ val screenshots = findProperty("screenshots")?.toString() == "true"
 
 android {
     namespace = "com.siarheikuchuk.ftpsserver"
-    compileSdk = 36
+    compileSdk = 37
     buildToolsVersion = "36.0.0"
 
     defaultConfig {
         applicationId = "com.siarheikuchuk.ftpsserver"
         minSdk = 23
         targetSdk = 36
-        val defaultVersionCode = 20261008
-        val defaultVersionName = "2026.10.08"
+        val defaultVersionCode = 20261102
+        val defaultVersionName = "2026.11.02"
         versionCode = findProperty("appVersionCode")?.toString()?.toIntOrNull() ?: defaultVersionCode
         versionName = findProperty("appVersionName")?.toString()?.takeIf { it.isNotBlank() } ?: defaultVersionName
         buildConfigField("boolean", "SCREENSHOTS", if (screenshots) "true" else "false")
         if (screenshots) {
             applicationIdSuffix = ".screenshots"
-            resConfigs("en")
             resValue("string", "app_label", "FTPS Server (screenshots)")
         }
     }
@@ -77,16 +75,21 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+    if (screenshots) {
+        androidResources {
+            localeFilters += "en"
+        }
     }
     buildFeatures {
         compose = true
         buildConfig = true
+        resValues = true
     }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/NOTICE.md"
             excludes += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
             pickFirsts += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
         }
@@ -101,7 +104,7 @@ android {
 
 // F-Droid: AGP ArtProfile output (assets/dexopt/baseline.prof{,m}) is not
 // bit-reproducible across builders, so signature copying fails.
-tasks.whenTaskAdded {
+tasks.configureEach {
     if (name.contains("ArtProfile")) {
         enabled = false
     }
@@ -206,20 +209,20 @@ androidComponents {
 }
 
 dependencies {
-    val composeBom = platform("androidx.compose:compose-bom:2024.10.01")
+    val composeBom = platform("androidx.compose:compose-bom:2026.09.00")
     implementation(composeBom)
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-core")
-    implementation("androidx.activity:activity-compose:1.9.3")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-service:2.8.7")
-    implementation("androidx.core:core-ktx:1.15.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
-    implementation("androidx.documentfile:documentfile:1.0.1")
-    implementation("org.bouncycastle:bcpkix-jdk18on:1.79")
+    implementation("androidx.activity:activity-compose:1.13.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.11.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.11.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0")
+    implementation("androidx.lifecycle:lifecycle-service:2.11.0")
+    implementation("androidx.core:core-ktx:1.19.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
+    implementation("androidx.documentfile:documentfile:1.1.0")
+    implementation("org.bouncycastle:bcpkix-jdk18on:1.86")
     debugImplementation("androidx.compose.ui:ui-tooling")
 }
