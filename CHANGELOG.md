@@ -1,4 +1,4 @@
-# 2026.11.02
+# 2026.11.03
 
 ## Changes
 - Console, Windows, Avalonia: NLog 6.2.2, Avalonia 12.1.4, and MessageBox.Avalonia 12.1.0. The third-party notices list those versions.
