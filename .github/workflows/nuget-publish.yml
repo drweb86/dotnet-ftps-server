@@ -10,6 +10,9 @@ jobs:
   publish-nuget:
     runs-on: ubuntu-latest
     environment: nuget-publish
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -37,6 +40,12 @@ jobs:
             "/p:AssemblyVersion=$v" \
             /p:Configuration=Release
 
+      - name: NuGet login
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: Siarhei_Kuchuk
+
       - name: Push to NuGet.org
         run: |
           pkg=$(find output/nuget-package -name '*.nupkg' | head -1)
@@ -46,5 +55,5 @@ jobs:
           fi
           echo "Pushing $pkg"
           dotnet nuget push "$pkg" \
-            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" \
             --source https://api.nuget.org/v3/index.json
