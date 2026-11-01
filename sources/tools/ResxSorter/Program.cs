@@ -170,7 +170,7 @@ namespace Codice.SortResX
                 var outputPath = Path.Combine(wingetPkgsDir, outputFileName);
 
                 using var writer = new StreamWriter(outputPath, false, new UTF8Encoding(false));
-                writer.WriteLine($"# yaml-language-server: $schema=https://aka.ms/winget-manifest.{schemaType}.1.12.0.schema.json");
+                writer.WriteLine($"# yaml-language-server: $schema=https://aka.ms/winget-manifest.{schemaType}.1.28.0.schema.json");
                 writer.WriteLine();
                 writer.WriteLine("PackageIdentifier: SiarheiKuchuk.FtpsServer");
                 writer.WriteLine("PackageVersion: APP_VERSION_STRING");
@@ -203,7 +203,7 @@ namespace Codice.SortResX
                 writer.WriteLine("- file-sharing");
                 writer.WriteLine("ReleaseNotesUrl: https://raw.githubusercontent.com/drweb86/dotnet-ftps-server/refs/heads/main/CHANGELOG.md");
                 writer.WriteLine($"ManifestType: {manifestType}");
-                writer.WriteLine("ManifestVersion: 1.12.0");
+                writer.WriteLine("ManifestVersion: 1.28.0");
 
                 Console.WriteLine($"Generated {outputPath}");
             }
