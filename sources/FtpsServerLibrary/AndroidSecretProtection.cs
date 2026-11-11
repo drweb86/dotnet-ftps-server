@@ -4,7 +4,7 @@ namespace FtpsServerLibrary;
 
 /// <summary>
 /// Android Keystore hooks registered by the Android app before secrets are read.
-/// The shared libraries target net10.0 and cannot reference the Android SDK.
+/// The shared libraries target net10.0 and net11.0 and cannot reference the Android SDK.
 /// </summary>
 public static class AndroidSecretProtection
 {

@@ -1,5 +1,4 @@
-# 2026.11.11
-(unpublished)
+# 2026.11.12
 
 ## Changes
 - Console, Windows, Avalonia: the applications target .NET 11, and runtime async is enabled. Avalonia is 12.1.6. NLog.Extensions.Logging is 6.3.0. NLog stays 6.2.2. The third-party notices list those versions.
