@@ -928,8 +928,7 @@ class FtpsServerClientSession(
                 {
                     if (await fileSystemProvider.DirectoryExists(_user!.Folder, path.Segments))
                     {
-                        var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_user!.Folder, path.Segments);
-                        foreach (var entry in entries)
+                        await foreach (var entry in fileSystemProvider.DirectoryGetFileSystemEntries(_user!.Folder, path.Segments))
                         {
                             var permissions = entry.IsDirectory ? "drwxr-xr-x" : "-rw-r--r--";
                             var size = entry.IsDirectory ? "0" : entry.Length.ToString();
@@ -990,8 +989,7 @@ class FtpsServerClientSession(
 
                 using (dataStream)
                 {
-                    var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_user.Folder, path.Segments);
-                    foreach (var entry in entries)
+                    await foreach (var entry in fileSystemProvider.DirectoryGetFileSystemEntries(_user.Folder, path.Segments))
                     {
                         var line = FormatMlsRecord(
                             MlsTypeForName(entry.FileName, entry.IsDirectory),
@@ -1037,8 +1035,14 @@ class FtpsServerClientSession(
 
         if (await fileSystemProvider.DirectoryExists(_user.Folder, path.Segments))
         {
-            var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_user.Folder, path.Segments);
-            var self = entries.FirstOrDefault(e => e.FileName == ".");
+            FtpsServerFileSystemEntry? self = null;
+            await foreach (var entry in fileSystemProvider.DirectoryGetFileSystemEntries(_user.Folder, path.Segments))
+            {
+                if (entry.FileName != ".")
+                    continue;
+                self = entry;
+                break;
+            }
             lastWriteTime = self?.LastWriteTime ?? DateTime.UtcNow;
             length = 0;
             isDirectory = true;
@@ -1155,9 +1159,7 @@ class FtpsServerClientSession(
                 {
                     if (await fileSystemProvider.DirectoryExists(_user.Folder, path.Segments))
                     {
-                        var entries = await fileSystemProvider.DirectoryGetFileSystemEntries(_user!.Folder, path.Segments);
-
-                        foreach (var entry in entries)
+                        await foreach (var entry in fileSystemProvider.DirectoryGetFileSystemEntries(_user!.Folder, path.Segments))
                         {
                             await WriteWithIdleTimeoutAsync(dataStream, Encoding.UTF8.GetBytes(entry.FileName + "\r\n"));
                         }
@@ -1669,6 +1671,7 @@ class FtpsServerClientSession(
         try
         {
             await stream.WriteAsync(bytes, idle.Token);
+            await stream.FlushAsync(idle.Token);
         }
         catch (OperationCanceledException)
         {

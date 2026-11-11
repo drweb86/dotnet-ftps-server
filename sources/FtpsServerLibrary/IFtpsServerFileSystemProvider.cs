@@ -27,7 +27,9 @@ public interface IFtpsServerFileSystemProvider
 
     Task<string> GetFileName(string pickerFile);
 
-    Task<IEnumerable<FtpsServerFileSystemEntry>> DirectoryGetFileSystemEntries(string userFolder, IEnumerable<string> parts);
+    // Produced as the directory is read. A listing writes each entry before asking for the next,
+    // so a large folder is not held until every name, size, and date has been collected.
+    IAsyncEnumerable<FtpsServerFileSystemEntry> DirectoryGetFileSystemEntries(string userFolder, IEnumerable<string> parts);
 }
 
 public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
@@ -100,42 +102,38 @@ public class FtpsServerFileSystemProvider: IFtpsServerFileSystemProvider
         return Task.CompletedTask;
     }
 
-    public Task<IEnumerable<FtpsServerFileSystemEntry>> DirectoryGetFileSystemEntries(string userFolder, IEnumerable<string> parts)
+    // No await: each name is read from the disk and handed to the caller before the next one.
+#pragma warning disable CS1998
+    public async IAsyncEnumerable<FtpsServerFileSystemEntry> DirectoryGetFileSystemEntries(string userFolder, IEnumerable<string> parts)
     {
-        var folder = GetRealPath(userFolder, parts);
+        var partList = parts as IReadOnlyCollection<string> ?? parts.ToList();
+        var folder = GetRealPath(userFolder, partList);
         var normalizedBase = NormalizeBase(userFolder);
-        var result = new List<FtpsServerFileSystemEntry>();
-
         var folderInfo = new DirectoryInfo(folder);
-        var parentFolderInfo = folderInfo;
-        if (parts.Any())
-            parentFolderInfo = folderInfo.Parent ?? folderInfo;
+        var parentFolderInfo = partList.Count > 0 ? folderInfo.Parent ?? folderInfo : folderInfo;
 
-        result.Add(new FtpsServerFileSystemEntry(".", folderInfo.LastWriteTimeUtc, 0, true));
-        result.Add(new FtpsServerFileSystemEntry("..", parentFolderInfo.LastWriteTimeUtc, 0, true));
+        yield return new FtpsServerFileSystemEntry(".", folderInfo.LastWriteTimeUtc, 0, true);
+        yield return new FtpsServerFileSystemEntry("..", parentFolderInfo.LastWriteTimeUtc, 0, true);
 
+        foreach (var path in Directory.EnumerateFileSystemEntries(folder))
+        {
+            if (!TryFollowLink(userFolder, normalizedBase, path, out _) || IsHiddenSystemDirectory(path))
+                continue;
 
-        result.AddRange(Directory
-            .GetFileSystemEntries(folder)
-            .Where(x => TryFollowLink(userFolder, normalizedBase, x, out _) && !IsHiddenSystemDirectory(x))
-            .Select(x =>
+            // Keeps the previous shape: a name that is not a file is listed as a directory.
+            if (File.Exists(path))
             {
-                var fullName = Path.Combine(folder, x);
-                if (File.Exists(fullName))
-                {
-                    var info = new FileInfo(x);
-                    return new FtpsServerFileSystemEntry(Path.GetFileName(x), info.LastWriteTimeUtc, info.Length, false);
-                }
-                else
-                {
-                    var info = new DirectoryInfo(x);
-                    return new FtpsServerFileSystemEntry(Path.GetFileName(x), info.LastWriteTimeUtc, 0, true);
-                }
-            }));
-
-        IEnumerable<FtpsServerFileSystemEntry> result2 = result;
-        return Task.FromResult(result2);
+                var info = new FileInfo(path);
+                yield return new FtpsServerFileSystemEntry(info.Name, info.LastWriteTimeUtc, info.Length, false);
+            }
+            else
+            {
+                var info = new DirectoryInfo(path);
+                yield return new FtpsServerFileSystemEntry(info.Name, info.LastWriteTimeUtc, 0, true);
+            }
+        }
     }
+#pragma warning restore CS1998
 
     public Task<string> GetFileName(string pickerFile)
     {

@@ -207,31 +207,25 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
         return Task.FromResult(Path.GetFileName(pickerFile));
     }
 
-    public async Task<IEnumerable<FtpsServerFileSystemEntry>> DirectoryGetFileSystemEntries(string serializedFolderBookmark, IEnumerable<string> parts)
+    public async IAsyncEnumerable<FtpsServerFileSystemEntry> DirectoryGetFileSystemEntries(string serializedFolderBookmark, IEnumerable<string> parts)
     {
         var folder = await NavigateToFolder(serializedFolderBookmark, parts);
-        var result = new List<FtpsServerFileSystemEntry>();
-
-        // Add current directory entry
         var folderProperties = await folder.GetBasicPropertiesAsync();
-        result.Add(new FtpsServerFileSystemEntry(".", folderProperties.DateModified?.UtcDateTime ?? folderProperties.DateCreated?.UtcDateTime ?? DateTime.Now, 0, true));
+        var folderTime = folderProperties.DateModified?.UtcDateTime ?? folderProperties.DateCreated?.UtcDateTime ?? DateTime.UtcNow;
+        yield return new FtpsServerFileSystemEntry(".", folderTime, 0, true);
 
-        // Add parent directory entry
         var parent = await folder.GetParentAsync();
         if (parent != null)
         {
             var parentProperties = await parent.GetBasicPropertiesAsync();
-            result.Add(new FtpsServerFileSystemEntry("..", parentProperties.DateModified?.UtcDateTime ?? parentProperties.DateCreated?.UtcDateTime ?? DateTime.Now, 0, true));
+            yield return new FtpsServerFileSystemEntry("..", parentProperties.DateModified?.UtcDateTime ?? parentProperties.DateCreated?.UtcDateTime ?? DateTime.UtcNow, 0, true);
         }
         else
         {
-            result.Add(new FtpsServerFileSystemEntry("..", folderProperties.DateModified?.UtcDateTime ?? folderProperties.DateCreated?.UtcDateTime ?? DateTime.Now, 0, true));
+            yield return new FtpsServerFileSystemEntry("..", folderTime, 0, true);
         }
 
-        // Get all items in the folder
-        var items = await folder.GetItemsAsync().ToListAsync();
-
-        foreach (var item in items)
+        await foreach (var item in folder.GetItemsAsync())
         {
             var properties = await item.GetBasicPropertiesAsync();
             var lastWriteTime = properties.DateModified?.UtcDateTime ?? properties.DateCreated?.UtcDateTime ?? DateTime.UtcNow;
@@ -239,14 +233,12 @@ public class AndroidFtpsServerFileSystemProvider(IStorageProvider storageProvide
             if (item is IStorageFile)
             {
                 var size = (long)(properties.Size ?? 0);
-                result.Add(new FtpsServerFileSystemEntry(item.Name, lastWriteTime, size, false));
+                yield return new FtpsServerFileSystemEntry(item.Name, lastWriteTime, size, false);
             }
             else if (item is IStorageFolder)
             {
-                result.Add(new FtpsServerFileSystemEntry(item.Name, lastWriteTime, 0, true));
+                yield return new FtpsServerFileSystemEntry(item.Name, lastWriteTime, 0, true);
             }
         }
-
-        return result;
     }
 }

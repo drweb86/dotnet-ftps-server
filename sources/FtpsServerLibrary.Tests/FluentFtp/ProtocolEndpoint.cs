@@ -208,10 +208,14 @@ static class FluentFtpProtocolSuite
         }
 
         var listing = await client.GetListing(remoteDir, FtpListOption.Auto);
+        var unix = await client.GetListing(remoteDir, FtpListOption.ForceList);
+        var names = await client.GetNameListing(remoteDir);
         for (var i = 0; i < transfers; i++)
         {
             var name = Path.GetFileName(paths[i]);
             Assert.Contains(listing, item => item.Name == name && item.Type == FtpObjectType.File);
+            Assert.Contains(unix, item => item.Name == name && item.Type == FtpObjectType.File);
+            Assert.Contains(names, listed => listed.Replace('\\', '/').TrimEnd('/').EndsWith(name, StringComparison.Ordinal));
             Assert.Equal(payload, await DownloadAsync(client, paths[i]));
             await client.DeleteFile(paths[i]);
         }

@@ -20,6 +20,6 @@ Hosts, each with its own TLS 1.2 fact and TLS 1.3 fact:
 
 A skipped Linux or Android fact is not a pass of that host. Run it when the host is available.
 
-On one login the suite does more than ten protected data transfers, so a TLS session that expires after a handful of resumes still has to complete. It also uploads, lists, renames, and deletes UTF-8 file names and UTF-8 folder names. It checks `FEAT`, a shorter overwrite, a wrong password, a `close_notify` upload, and a bare TCP close that must be rejected.
+On one login the suite does more than ten protected data transfers, so a TLS session that expires after a handful of resumes still has to complete. It also uploads, lists, renames, and deletes UTF-8 file names and UTF-8 folder names. A folder of several files is listed with MLSD, LIST, and NLST. It checks `FEAT`, a shorter overwrite, a wrong password, a `close_notify` upload, and a bare TCP close that must be rejected.
 
 The three hosts share one xUnit collection. Schannel resumes TLS sessions by host name, so overlapping clients make a TLS 1.2 data connection fail the server session check.

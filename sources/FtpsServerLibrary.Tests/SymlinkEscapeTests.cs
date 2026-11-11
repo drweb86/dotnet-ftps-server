@@ -86,8 +86,9 @@ public sealed class SymlinkEscapeTests : IDisposable
     {
         CreateDirectoryLink(Path.Combine(_share, "escape"), _outside);
 
-        var entries = await _provider.DirectoryGetFileSystemEntries(_share, []);
-        var names = entries.Select(entry => entry.FileName).ToList();
+        var names = new List<string>();
+        await foreach (var entry in _provider.DirectoryGetFileSystemEntries(_share, []))
+            names.Add(entry.FileName);
 
         Assert.Contains("inside.txt", names);
         Assert.DoesNotContain("escape", names);

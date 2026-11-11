@@ -660,11 +660,12 @@ class FtpsClientSession(
                     if (fileSystem.directoryExists(user!!.folder, p.parts)) {
                         beginTransferWatchdog(dataClient)
                         try {
-                            for (entry in fileSystem.directoryEntries(user!!.folder, p.parts)) {
+                            fileSystem.forEachDirectoryEntry(user!!.folder, p.parts) { entry ->
                                 val permissions = if (entry.isDirectory) "drwxr-xr-x" else "-rw-r--r--"
                                 val size = if (entry.isDirectory) "0" else entry.length.toString()
                                 val modified = formatUnixListDate(entry.lastWriteTimeMillis)
                                 out.write("$permissions 1 owner group ${size.padStart(15)} $modified ${entry.fileName}\r\n")
+                                out.flush()
                                 transferProgressMs = System.currentTimeMillis()
                             }
                             out.flush()
@@ -702,8 +703,9 @@ class FtpsClientSession(
                 OutputStreamWriter(link.output, StandardCharsets.UTF_8).use { out ->
                     beginTransferWatchdog(dataClient)
                     try {
-                        for (entry in fileSystem.directoryEntries(user!!.folder, p.parts)) {
+                        fileSystem.forEachDirectoryEntry(user!!.folder, p.parts) { entry ->
                             out.write(formatMlsRecord(mlsType(entry.fileName, entry.isDirectory), entry.lastWriteTimeMillis, entry.length, entry.isDirectory, entry.fileName) + "\r\n")
+                            out.flush()
                             transferProgressMs = System.currentTimeMillis()
                         }
                         out.flush()
@@ -731,12 +733,12 @@ class FtpsClientSession(
         info("mlst", ftpsPath)
         when {
             fileSystem.directoryExists(user!!.folder, p.parts) -> {
-                val self = fileSystem.directoryEntries(user!!.folder, p.parts).firstOrNull { it.fileName == "." }
+                val modified = fileSystem.directoryLastWriteTimeMillis(user!!.folder, p.parts)
                 val isCurrent = pathname.isBlank() || pathname == "." || pathname == "./"
                 val type = if (isCurrent) "cdir" else "dir"
                 val display = if (isCurrent) ftpsPath else pathname
                 sendLine("250-Listing $ftpsPath")
-                sendLine(" " + formatMlsRecord(type, self?.lastWriteTimeMillis ?: System.currentTimeMillis(), 0, true, display))
+                sendLine(" " + formatMlsRecord(type, modified, 0, true, display))
                 send(250, "End")
             }
             fileSystem.fileExists(user!!.folder, p.parts) -> {
@@ -772,8 +774,9 @@ class FtpsClientSession(
                     if (fileSystem.directoryExists(user!!.folder, p.parts)) {
                         beginTransferWatchdog(dataClient)
                         try {
-                            for (entry in fileSystem.directoryEntries(user!!.folder, p.parts)) {
+                            fileSystem.forEachDirectoryEntry(user!!.folder, p.parts) { entry ->
                                 out.write(entry.fileName + "\r\n")
+                                out.flush()
                                 transferProgressMs = System.currentTimeMillis()
                             }
                             out.flush()
