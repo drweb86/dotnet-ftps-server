@@ -28,12 +28,30 @@ jobs:
           echo "version=$version" >> $GITHUB_OUTPUT
           echo "Version: $version"
 
+      - name: Extract release notes
+        run: |
+          # Take the first CHANGELOG.md section (lines after the first "# version" header up to the next one),
+          # skip the "(unpublished)" marker, and trim leading/trailing blank lines.
+          mkdir -p output
+          sed '1s/^\xEF\xBB\xBF//' CHANGELOG.md \
+            | awk 'NR==1{next} /^# /{exit} /^\(unpublished\)[[:space:]]*$/{next}
+                   /^[[:space:]]*$/{if(started)blank++; next}
+                   {started=1; while(blank>0){print ""; blank--} print}' \
+            > output/release-notes.md
+          if [ ! -s output/release-notes.md ]; then
+            echo "Error: no release notes found for the first CHANGELOG.md section"
+            exit 1
+          fi
+          printf '\nFull changelog: https://github.com/drweb86/dotnet-ftps-server/blob/main/CHANGELOG.md\n' >> output/release-notes.md
+          cat output/release-notes.md
+
       - name: Pack
         run: |
           v="${{ steps.version.outputs.version }}"
           dotnet pack sources/FtpsServerLibrary/FtpsServerLibrary.csproj \
             -c Release \
             -o output/nuget-package \
+            "/p:PackageReleaseNotesFile=$GITHUB_WORKSPACE/output/release-notes.md" \
             "/p:InformationalVersion=$v" \
             "/p:VersionPrefix=$v" \
             "/p:Version=$v" \
