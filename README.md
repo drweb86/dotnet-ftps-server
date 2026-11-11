@@ -1,7 +1,7 @@
 ﻿# Sharing files via FTPS betweeen devices over network.
 
 Desktop app has WPF and Avalonia versions.
-Console app is written in C# (.NET 10).
+Console app is written in C# (.NET 11).
 Android app has Avalonia and Kotlin versions.
 
 <details>

@@ -1,6 +1,11 @@
 # 2026.11.11
 (unpublished)
 
+## Changes
+- Console, Windows, Avalonia: the applications target .NET 11, and runtime async is enabled. Avalonia is 12.1.6. NLog.Extensions.Logging is 6.3.0. NLog stays 6.2.2. The third-party notices list those versions.
+- Library: the NuGet package targets .NET 10 and .NET 11. An application that stays on .NET 10 can keep using it. The .NET 11 build enables runtime async.
+- Android: Bouncy Castle PKIX 1.87 and Android Gradle Plugin 9.5.1. Kotlin 2.4.21 and Compose BOM 2026.09.00 are unchanged. The Android notice lists the APK libraries on their own.
+
 ## Bug Fixes
 - Library, Android: a directory listing sends each name as it is read. Before, LIST, NLST, and MLSD built the whole list and wrote nothing until that finished. On Android each file was a separate documents query, so a Camera folder of about 1400 files produced no bytes for 20 seconds and the client closed the data connection (`MLSD failed`, broken pipe).
 - Library: a Linux or macOS data connection can resume the control session again. Passing a cipher-suite policy made .NET turn the OpenSSL session cache off, `SSL_get0_session` is only a macro so the session could not be read, and the id length was read as 8 bytes so it came out empty. Schannel's TLS 1.2 resume keeps the master secret with an empty id, and that secret has to match. Schannel's TLS 1.3 resume replaces the id and then stops resuming, so a TLS 1.3 data connection is accepted as it is on Windows. A TLS 1.2 handshake that is not a resume is still refused. A suite that is not forward-secret AEAD is still rejected after the handshake.

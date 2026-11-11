@@ -345,14 +345,6 @@ sealed class ConsoleProcess : IDisposable
 
     public void Dispose()
     {
-        try
-        {
-            File.WriteAllText(Path.Combine(Path.GetTempPath(), "ftps-last-console.log"), Log());
-        }
-        catch (IOException)
-        {
-        }
-
         if (_wslKill != null)
         {
             try

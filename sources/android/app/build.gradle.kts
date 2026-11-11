@@ -223,6 +223,6 @@ dependencies {
     implementation("androidx.core:core-ktx:1.19.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
     implementation("androidx.documentfile:documentfile:1.1.0")
-    implementation("org.bouncycastle:bcpkix-jdk18on:1.86")
+    implementation("org.bouncycastle:bcpkix-jdk18on:1.87")
     debugImplementation("androidx.compose.ui:ui-tooling")
 }

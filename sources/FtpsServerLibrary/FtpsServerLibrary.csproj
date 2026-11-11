@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFrameworks>net10.0;net11.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <PackageId>Siarhei_Kuchuk.$(AssemblyName)</PackageId>
     <Title>Siarhei_Kuchuk.$(AssemblyName)</Title>
     <Authors>Siarhei_Kuchuk</Authors>
     <Company />
-    <Description>A FTPS (FTP over TLS) server implementation in C# with logging, user permissions, and flexible configuration options. Aimed for Windows, Linux, or macOS platforms.</Description>
+    <Description>A FTPS (FTP over TLS) server implementation in C# with logging, user permissions, and flexible configuration options. Aimed for Windows, Linux, or macOS platforms. Targets .NET 10 and .NET 11.</Description>
     <PackageProjectUrl>https://github.com/drweb86/dotnet-ftps-server</PackageProjectUrl>
     <Copyright>(c) 2025-2026 Siarhei Kuchuk</Copyright>
     <PackageLicenseExpression>CC0-1.0</PackageLicenseExpression>
@@ -17,6 +17,10 @@
     <PackageReleaseNotes>See https://github.com/drweb86/dotnet-ftps-server/blob/main/CHANGELOG.md</PackageReleaseNotes>
     <PackageReleaseNotes Condition="'$(PackageReleaseNotesFile)' != '' And Exists('$(PackageReleaseNotesFile)')">$([MSBuild]::Escape($([System.IO.File]::ReadAllText('$(PackageReleaseNotesFile)'))))</PackageReleaseNotes>
     <PackageReadmeFile>README_NUGET.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net11.0'">
+    <Features>runtime-async=on</Features>
   </PropertyGroup>
 
   <ItemGroup>

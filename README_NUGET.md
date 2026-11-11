@@ -1,4 +1,4 @@
-﻿## Open-source free C# FTPS Server .Net 10 Library without dependencies
+﻿## Open-source free C# FTPS Server library for .NET 10 and .NET 11, without dependencies
 
 A FTPS (FTP over TLS) server implementation in C# with logging, user permissions, and flexible configuration options. Aimed for Windows, Linux, Android and macOS, and for embedding in other .NET apps.
 

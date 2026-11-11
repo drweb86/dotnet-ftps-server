@@ -10,7 +10,7 @@ NLog.Schema is an XML schema used by the IDE. It is not copied into the publishe
 
 ## BSD-2-Clause
 
-- **NLog.Extensions.Logging** 6.2.2. Copyright (c) 2004-2026 NLog Project. [https://github.com/NLog/NLog.Extensions.Logging](https://github.com/NLog/NLog.Extensions.Logging)
+- **NLog.Extensions.Logging** 6.3.0. Copyright (c) 2004-2026 NLog Project. [https://github.com/NLog/NLog.Extensions.Logging](https://github.com/NLog/NLog.Extensions.Logging)
 
 ## BSD-3-Clause
 
@@ -18,14 +18,14 @@ NLog.Schema is an XML schema used by the IDE. It is not copied into the publishe
 
 ## MIT
 
-- **.NET Runtime** 10. Copyright (c) .NET Foundation and Contributors. [https://dot.net/](https://dot.net/)
-- **Microsoft.Extensions.Configuration.Abstractions** 10.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
-- **Microsoft.Extensions.DependencyInjection** 10.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
-- **Microsoft.Extensions.DependencyInjection.Abstractions** 10.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
-- **Microsoft.Extensions.Logging** 10.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
-- **Microsoft.Extensions.Logging.Abstractions** 10.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
-- **Microsoft.Extensions.Options** 10.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
-- **Microsoft.Extensions.Primitives** 10.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
+- **.NET Runtime** 11. Copyright (c) .NET Foundation and Contributors. [https://dot.net/](https://dot.net/)
+- **Microsoft.Extensions.Configuration.Abstractions** 11.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
+- **Microsoft.Extensions.DependencyInjection** 11.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
+- **Microsoft.Extensions.DependencyInjection.Abstractions** 11.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
+- **Microsoft.Extensions.Logging** 11.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
+- **Microsoft.Extensions.Logging.Abstractions** 11.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
+- **Microsoft.Extensions.Options** 11.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
+- **Microsoft.Extensions.Primitives** 11.0.0. © Microsoft Corporation. All rights reserved. [https://dot.net/](https://dot.net/)
 
 ## BSD 2-Clause License text
 

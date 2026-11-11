@@ -18,7 +18,7 @@ Debug-only tooling (Compose UI tooling) is not part of the release build and is 
 
 ## MIT
 
-- **Bouncy Castle PKIX** (org.bouncycastle:bcpkix-jdk18on) 1.86. Copyright © Legion of the Bouncy Castle Inc. [https://www.bouncycastle.org/](https://www.bouncycastle.org/)
+- **Bouncy Castle PKIX** (org.bouncycastle:bcpkix-jdk18on) 1.87. Copyright © Legion of the Bouncy Castle Inc. [https://www.bouncycastle.org/](https://www.bouncycastle.org/)
 
 ## MIT License text
 
