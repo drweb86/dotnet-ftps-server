@@ -19,10 +19,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup .NET 10
+      - name: Setup .NET 10 and .NET 11
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: |
+            10.0.x
+            11.0.x
 
       - name: Install fpm
         run: |
@@ -69,10 +71,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup .NET 10
+      - name: Setup .NET 10 and .NET 11
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: |
+            10.0.x
+            11.0.x
 
       - name: Get version
         id: version
@@ -332,10 +336,12 @@ jobs:
             fastlane/metadata/android
             fastlane/metadata/winget
 
-      - name: Setup .NET 10
+      - name: Setup .NET 10 and .NET 11
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: |
+            10.0.x
+            11.0.x
 
       - name: Generate winget locale files
         working-directory: sources/tools/ResxSorter
