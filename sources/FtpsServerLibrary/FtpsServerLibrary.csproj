@@ -13,7 +13,9 @@
     <PackageLicenseExpression>CC0-1.0</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/drweb86/dotnet-ftps-server</RepositoryUrl>
     <PackageTags>c#;dotnet;ftps server;ftps</PackageTags>
-    <PackageReleaseNotes>Initial version</PackageReleaseNotes>
+    <!-- CI passes PackageReleaseNotesFile with the current CHANGELOG.md section (see .github/workflows/nuget-publish.yml). -->
+    <PackageReleaseNotes>See https://github.com/drweb86/dotnet-ftps-server/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    <PackageReleaseNotes Condition="'$(PackageReleaseNotesFile)' != '' And Exists('$(PackageReleaseNotesFile)')">$([MSBuild]::Escape($([System.IO.File]::ReadAllText('$(PackageReleaseNotesFile)'))))</PackageReleaseNotes>
     <PackageReadmeFile>README_NUGET.md</PackageReadmeFile>
   </PropertyGroup>
 

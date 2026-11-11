@@ -38,6 +38,9 @@ class FtpsServerClientSession(
     private System.IO.StreamReader? _reader;
     private System.IO.StreamWriter? _writer;
     private SslStream? _sslStream;
+    // One context for this control connection and its data connections. A new context
+    // per handshake keeps a separate session cache, so a TLS 1.2 resume gets a new id.
+    private SslStreamCertificateContext? _tlsContext;
 
     private int _pushedChar = -1;
     private string? _username;
@@ -1417,9 +1420,10 @@ class FtpsServerClientSession(
 
     private async Task AuthenticateServerAsync(SslStream sslStream, CancellationToken cancellationToken = default)
     {
+        _tlsContext ??= SslStreamCertificateContext.Create(_certificate!, additionalCertificates: null, offline: true);
         await sslStream.AuthenticateAsServerAsync(new SslServerAuthenticationOptions
         {
-            ServerCertificate = _certificate,
+            ServerCertificateContext = _tlsContext,
             ClientCertificateRequired = false,
             EnabledSslProtocols = SslProtocols.Tls12 | SslProtocols.Tls13,
             CertificateRevocationCheckMode = X509RevocationMode.NoCheck,

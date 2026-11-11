@@ -4,6 +4,7 @@
     <File Path="../LICENSE" />
     <File Path="../README.md" />
     <File Path="../README_NUGET.md" />
+    <File Path="../RELEASE_PROCESS.md" />
   </Folder>
   <Folder Name="/Other/">
     <File Path="../CHANGELOG.md" />

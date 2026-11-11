@@ -1,3 +1,12 @@
+# 2026.11.11
+(unpublished)
+
+## Bug Fixes
+- Android: the control connection and every protected data connection now use one SSLEngine from the same SSLContext. Before, login used SSLSocket and upload used SSLEngine, so those two caches never shared a session id. A TLS 1.2 client such as FluentFTP on Windows 10 could list and download, and STOR was rejected. A missing close_notify is still rejected.
+- Console: a process with no console keeps running until it is stopped. Before, `Console.ReadKey` threw and the server shut down, so a test host or `wsl.exe` without a terminal could not keep it up.
+- Library: the control connection and its data connections now share one SslStreamCertificateContext. A new context per handshake keeps a separate session cache, so a TLS 1.2 data connection can fail to resume the login session.
+- Library: NUGet package version changes were incorrect.
+
 # 2026.11.03
 
 ## Changes

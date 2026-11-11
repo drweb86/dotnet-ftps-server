@@ -52,7 +52,7 @@ class Program
             DescribeCertificate(server);
 
             CliPrompt.Note(Strings.ConsolePressQ);
-            while (Console.ReadKey(true).Key != ConsoleKey.Q) { }
+            await WaitUntilStoppedAsync();
 
             Logger.Info(Strings.ConsoleShuttingDown);
             server.Stop();
@@ -134,5 +134,25 @@ class Program
         Logger.Info(Strings.Format(Strings.ConsoleCertSerial, certInfo.SerialNumber));
         Logger.Info(Strings.Format(Strings.ConsoleCertSha256, certInfo.Sha256Fingerprint));
         Logger.Info(Strings.Format(Strings.ConsoleCertSha1, certInfo.Sha1Fingerprint));
+    }
+
+    // A console waits for Q. A redirected or missing console, such as a test host or wsl.exe
+    // without a terminal, keeps the process until it is stopped.
+    static async Task WaitUntilStoppedAsync()
+    {
+        try
+        {
+            if (Console.IsInputRedirected)
+            {
+                await Task.Delay(Timeout.Infinite);
+                return;
+            }
+
+            while (Console.ReadKey(true).Key != ConsoleKey.Q) { }
+        }
+        catch (InvalidOperationException)
+        {
+            await Task.Delay(Timeout.Infinite);
+        }
     }
 }
