@@ -43,7 +43,7 @@ public sealed class WindowsConsoleFixture : IAsyncLifetime
             _process = linux
                 ? await LinuxConsole.StartAsync(port, cert, writeRoot, readRoot)
                 : WindowsConsole.Start(port, cert, writeRoot, readRoot);
-            await _process.WaitForBannerAsync();
+            await _process.WaitForBannerAsync(linux ? TimeSpan.FromMinutes(3) : TimeSpan.FromSeconds(40));
             Endpoint = new ProtocolEndpoint
             {
                 Name = linux ? "Linux console" : "Windows console",
@@ -158,29 +158,52 @@ static class WindowsConsole
 
 static class LinuxConsole
 {
+    const int PassiveFirst = 40000;
+    const int PassiveLast = 40199;
+
     public static async Task<ConsoleProcess> StartAsync(int port, string cert, string writeRoot, string readRoot)
     {
         var published = Path.Combine(Path.GetTempPath(), "ftps-console-linux-x64");
         await PublishAsync(published);
-        var scriptPath = Path.Combine(Path.GetDirectoryName(cert)!, "start-ftps.sh");
-        var remotePublish = "/tmp/ftps-console-linux";
-        var lines = new[]
+        var root = Path.GetDirectoryName(cert)!;
+        if (!writeRoot.StartsWith(root, StringComparison.OrdinalIgnoreCase)
+            || !readRoot.StartsWith(root, StringComparison.OrdinalIgnoreCase))
+            throw new InvalidOperationException("Linux share folders must sit next to the certificate.");
+        var scriptPath = Path.Combine(root, "start-ftps.sh");
+        var portText = port.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        var script = string.Join('\n', new[]
         {
-            "#!/bin/sh",
+            "#!/bin/bash",
             "set -eu",
-            "rm -rf " + remotePublish,
-            "mkdir -p " + remotePublish,
-            "cp -a " + Quote(WslPath(published)) + "/. " + remotePublish + "/",
-            "chmod +x " + remotePublish + "/ftps-server",
-            "echo $$ > /tmp/ftps-it-" + port.ToString(System.Globalization.CultureInfo.InvariantCulture) + ".pid",
-            "cd " + remotePublish,
-            "exec ./ftps-server " + string.Join(' ', ServerWords(port, WslPath(cert), WslPath(writeRoot), WslPath(readRoot))),
-        };
-        await File.WriteAllTextAsync(scriptPath, string.Join('\n', lines) + "\n", new UTF8Encoding(false));
+            "export DEBIAN_FRONTEND=noninteractive",
+            "mount -o remount,rw /proc/sys",
+            "printf '%s\\n' '" + PassiveFirst + " " + PassiveLast + "' > /proc/sys/net/ipv4/ip_local_port_range",
+            "apt-get update -qq",
+            "pkg=$(apt-cache search --names-only '^libicu[0-9]+$' | awk 'NR==1 { print $1 }')",
+            "test -n \"$pkg\"",
+            "apt-get install -y -qq \"$pkg\"",
+            "rm -rf /tmp/ftps",
+            "mkdir -p /tmp/ftps",
+            "cp -a /opt/ftps/. /tmp/ftps/",
+            "chmod +x /tmp/ftps/ftps-server",
+            "exec /tmp/ftps/ftps-server --ip 0.0.0.0 --port " + portText
+                + " --cert /data/server.pfx --certpass " + TestCertificate.Password
+                + " --user writer#writer-pass#/data/write#RW --user reader#reader-pass#/data/read#R",
+        }) + "\n";
+        await File.WriteAllTextAsync(scriptPath, script, new UTF8Encoding(false));
+
+        var name = "ftps-it-" + portText;
+        try
+        {
+            HostProbe.Run("wslc.exe", "rm -f " + name, Encoding.UTF8, TimeSpan.FromSeconds(20));
+        }
+        catch (Exception ex) when (ex is IOException or InvalidOperationException or TimeoutException or System.ComponentModel.Win32Exception)
+        {
+        }
 
         var process = new Process
         {
-            StartInfo = new ProcessStartInfo("wsl.exe")
+            StartInfo = new ProcessStartInfo("wslc.exe")
             {
                 UseShellExecute = false,
                 CreateNoWindow = true,
@@ -189,29 +212,24 @@ static class LinuxConsole
                 RedirectStandardError = true,
             }
         };
-        process.StartInfo.ArgumentList.Add("-u");
-        process.StartInfo.ArgumentList.Add("root");
-        process.StartInfo.ArgumentList.Add("--");
+        process.StartInfo.ArgumentList.Add("run");
+        process.StartInfo.ArgumentList.Add("--rm");
+        process.StartInfo.ArgumentList.Add("--name");
+        process.StartInfo.ArgumentList.Add(name);
+        process.StartInfo.ArgumentList.Add("--cap-add");
+        process.StartInfo.ArgumentList.Add("SYS_ADMIN");
+        process.StartInfo.ArgumentList.Add("-p");
+        process.StartInfo.ArgumentList.Add("127.0.0.1:" + portText + ":" + portText);
+        process.StartInfo.ArgumentList.Add("-p");
+        process.StartInfo.ArgumentList.Add("127.0.0.1:" + PassiveFirst + "-" + PassiveLast + ":" + PassiveFirst + "-" + PassiveLast);
+        process.StartInfo.ArgumentList.Add("-v");
+        process.StartInfo.ArgumentList.Add(published + ":/opt/ftps");
+        process.StartInfo.ArgumentList.Add("-v");
+        process.StartInfo.ArgumentList.Add(root + ":/data");
+        process.StartInfo.ArgumentList.Add("ubuntu:latest");
         process.StartInfo.ArgumentList.Add("bash");
-        process.StartInfo.ArgumentList.Add(WslPath(scriptPath));
-        var kill = "bash -lc \"kill -9 $(cat /tmp/ftps-it-" + port.ToString(System.Globalization.CultureInfo.InvariantCulture) + ".pid) 2>/dev/null || true\"";
-        return new ConsoleProcess(process, port, kill);
-    }
-
-    static IEnumerable<string> ServerWords(int port, string cert, string writeRoot, string readRoot)
-    {
-        yield return "--ip";
-        yield return "127.0.0.1";
-        yield return "--port";
-        yield return port.ToString(System.Globalization.CultureInfo.InvariantCulture);
-        yield return "--cert";
-        yield return Quote(cert);
-        yield return "--certpass";
-        yield return Quote(TestCertificate.Password);
-        yield return "--user";
-        yield return Quote("writer#writer-pass#" + writeRoot + "#RW");
-        yield return "--user";
-        yield return Quote("reader#reader-pass#" + readRoot + "#R");
+        process.StartInfo.ArgumentList.Add("/data/start-ftps.sh");
+        return new ConsoleProcess(process, port, "kill " + name);
     }
 
     internal static async Task PublishAsync(string output)
@@ -247,12 +265,16 @@ static class LinuxConsole
         process.StartInfo.ArgumentList.Add("-o");
         process.StartInfo.ArgumentList.Add(output);
         process.StartInfo.ArgumentList.Add("--nologo");
+        process.StartInfo.ArgumentList.Add("-nodeReuse:false");
+        process.StartInfo.Environment["MSBUILDDISABLENODEREUSE"] = "1";
+        process.StartInfo.Environment["DOTNET_CLI_DO_NOT_USE_MSBUILD_SERVER"] = "1";
         process.Start();
         var stdoutTask = process.StandardOutput.ReadToEndAsync();
         var stderrTask = process.StandardError.ReadToEndAsync();
-        await process.WaitForExitAsync().WaitAsync(TimeSpan.FromMinutes(5));
-        var stdout = await stdoutTask;
-        var stderr = await stderrTask;
+        using var publishTimeout = new CancellationTokenSource(TimeSpan.FromMinutes(3));
+        await process.WaitForExitAsync(publishTimeout.Token);
+        var stdout = await stdoutTask.WaitAsync(TimeSpan.FromSeconds(10));
+        var stderr = await stderrTask.WaitAsync(TimeSpan.FromSeconds(10));
         if (process.ExitCode != 0)
             throw new InvalidOperationException("linux-x64 publish failed.\n" + stdout + "\n" + stderr);
     }
@@ -271,14 +293,6 @@ static class LinuxConsole
         throw new FileNotFoundException("FtpsServerConsole.csproj was not found above the test output.");
     }
 
-    public static string WslPath(string windowsPath)
-    {
-        var full = Path.GetFullPath(windowsPath);
-        var drive = char.ToLowerInvariant(full[0]);
-        return "/mnt/" + drive + full[2..].Replace('\\', '/');
-    }
-
-    static string Quote(string value) => "'" + value.Replace("'", "'\\''") + "'";
 }
 
 sealed class ConsoleProcess : IDisposable
@@ -301,9 +315,9 @@ sealed class ConsoleProcess : IDisposable
         _process.BeginErrorReadLine();
     }
 
-    public async Task WaitForBannerAsync()
+    public async Task WaitForBannerAsync(TimeSpan timeout)
     {
-        var deadline = DateTime.UtcNow.AddSeconds(40);
+        var deadline = DateTime.UtcNow.Add(timeout);
         while (DateTime.UtcNow < deadline)
         {
             if (_process.HasExited)
@@ -311,17 +325,15 @@ sealed class ConsoleProcess : IDisposable
             try
             {
                 using var tcp = new TcpClient();
-                await tcp.ConnectAsync("127.0.0.1", _port);
+                using var attempt = new CancellationTokenSource(TimeSpan.FromSeconds(2));
+                await tcp.ConnectAsync("127.0.0.1", _port, attempt.Token);
                 var buffer = new byte[128];
-                var read = await tcp.GetStream().ReadAsync(buffer);
+                var read = await tcp.GetStream().ReadAsync(buffer, attempt.Token);
                 var line = Encoding.ASCII.GetString(buffer, 0, read);
                 if (line.StartsWith("220", StringComparison.Ordinal))
                     return;
             }
-            catch (SocketException)
-            {
-            }
-            catch (IOException)
+            catch (Exception ex) when (ex is SocketException or IOException or OperationCanceledException)
             {
             }
 
@@ -337,7 +349,7 @@ sealed class ConsoleProcess : IDisposable
         {
             try
             {
-                HostProbe.Run("wsl.exe", "-u root -- " + _wslKill, Encoding.UTF8, TimeSpan.FromSeconds(10));
+                HostProbe.Run("wslc.exe", _wslKill, Encoding.UTF8, TimeSpan.FromSeconds(15));
             }
             catch (Exception ex) when (ex is IOException or InvalidOperationException or TimeoutException or System.ComponentModel.Win32Exception)
             {

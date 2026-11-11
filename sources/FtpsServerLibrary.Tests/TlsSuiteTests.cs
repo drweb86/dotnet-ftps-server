@@ -39,17 +39,4 @@ public class TlsSuiteTests
         Assert.False(FtpsTlsSuites.IsAllowed(suite));
     }
 
-    [Fact]
-    public void SuiteListIsOfferedOnlyWhereThePlatformHonorsIt()
-    {
-        if (OperatingSystem.IsWindows() || OperatingSystem.IsAndroid())
-        {
-            Assert.Null(FtpsTlsSuites.Policy);
-            return;
-        }
-
-        var policy = FtpsTlsSuites.Policy;
-        Assert.NotNull(policy);
-        Assert.Equal(Allowed.OrderBy(suite => suite), policy.AllowedCipherSuites.OrderBy(suite => suite));
-    }
 }

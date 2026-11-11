@@ -15,7 +15,7 @@ dotnet test sources/FtpsServerLibrary.Tests/FtpsServerLibrary.Tests.csproj --fil
 Hosts, each with its own TLS 1.2 fact and TLS 1.3 fact:
 
 - FTPS server console on Windows. It starts `ftps-server.dll` from the test output.
-- FTPS server console on Linux, started through `wsl.exe`. It publishes `linux-x64` and runs that binary. If `wsl.exe --list --quiet` has no distribution, or the distribution does not accept a command, the facts skip. Install one with `wsl.exe --install -d Ubuntu-24.04` and run the filter again.
+- FTPS server console on Linux, started with `wslc run --rm ubuntu:latest`. It publishes `linux-x64`, installs libicu in the container, and publishes the control port plus the passive range. If `wslc.exe` is missing, the facts skip.
 - FTPS server APK on an Android emulator (`com.siarheikuchuk.ftpsserver.debug`) through adb. Install the current debug APK and leave an emulator online. The account is `u1` / `FtpTest55` on port 2121 unless `FTPS_ANDROID_USER`, `FTPS_ANDROID_PASSWORD`, or `FTPS_ANDROID_PORT` is set.
 
 A skipped Linux or Android fact is not a pass of that host. Run it when the host is available.

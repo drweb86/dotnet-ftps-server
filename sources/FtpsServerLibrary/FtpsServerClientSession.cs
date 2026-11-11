@@ -1427,7 +1427,6 @@ class FtpsServerClientSession(
             ClientCertificateRequired = false,
             EnabledSslProtocols = SslProtocols.Tls12 | SslProtocols.Tls13,
             CertificateRevocationCheckMode = X509RevocationMode.NoCheck,
-            CipherSuitesPolicy = FtpsTlsSuites.Policy,
         }, cancellationToken);
 
         if (FtpsTlsSuites.IsAllowed(sslStream.NegotiatedCipherSuite))

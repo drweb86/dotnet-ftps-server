@@ -1,4 +1,3 @@
-using System;
 using System.Net.Security;
 
 namespace FtpsServerLibrary;
@@ -21,10 +20,10 @@ static class FtpsTlsSuites
         TlsCipherSuite.TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
     ];
 
-    // Windows and Android cannot apply a per-connection suite list. Those platforms
-    // still refuse a negotiated suite that is not in Allowed.
-    public static CipherSuitesPolicy? Policy { get; } = CreatePolicy();
-
+    // A CipherSuitesPolicy is not installed on any platform. .NET's OpenSSL backend
+    // turns the TLS session cache off when one is set, and a protected data connection
+    // has to resume the control connection. The negotiated suite is still checked
+    // against Allowed after the handshake, on Linux and macOS as well as Windows.
     public static bool IsAllowed(TlsCipherSuite suite)
     {
         foreach (var allowed in Allowed)
@@ -34,22 +33,5 @@ static class FtpsTlsSuites
         }
 
         return false;
-    }
-
-    private static CipherSuitesPolicy? CreatePolicy()
-    {
-        if (OperatingSystem.IsWindows() || OperatingSystem.IsAndroid())
-            return null;
-        if (!OperatingSystem.IsLinux() && !OperatingSystem.IsMacOS())
-            return null;
-
-        try
-        {
-            return new CipherSuitesPolicy(Allowed);
-        }
-        catch (PlatformNotSupportedException)
-        {
-            return null;
-        }
     }
 }

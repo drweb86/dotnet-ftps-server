@@ -12,45 +12,20 @@ static class HostProbe
     public static bool HasWsl => WslDistro.Value;
     public static bool HasAndroid => AndroidEmulator.Value;
 
-    // A distro can be listed while its first-boot setup is still running. A command
-    // that does not return is not a usable test host.
-    public static bool WslResponds => WslReady.Value;
-
-    static readonly Lazy<bool> WslReady = new(Responds);
+    public static bool WslResponds => HasWsl;
 
     public static string? AdbPath { get; private set; }
     public static string? EmulatorSerial { get; private set; }
 
     static bool HasWslDistro()
     {
-        try
-        {
-            var output = Run("wsl.exe", "--list --quiet", Encoding.Unicode, TimeSpan.FromSeconds(20));
-            foreach (var line in output.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries))
-            {
-                var name = line.Trim().TrimStart('\uFEFF');
-                if (name.Length == 0 || name.Contains("docker-desktop", StringComparison.OrdinalIgnoreCase))
-                    continue;
-                if (name.Contains("не имеет", StringComparison.OrdinalIgnoreCase))
-                    return false;
-                return true;
-            }
-        }
-        catch (Exception ex) when (ex is IOException or InvalidOperationException or Win32Exception)
-        {
-        }
-
-        return false;
-    }
-
-    static bool Responds()
-    {
-        if (!HasWsl)
+        var wslc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "WSL", "wslc.exe");
+        if (!File.Exists(wslc))
             return false;
         try
         {
-            var output = Run("wsl.exe", "-u root -- echo ftps-wsl-ok", Encoding.UTF8, TimeSpan.FromSeconds(12));
-            return output.Contains("ftps-wsl-ok", StringComparison.Ordinal);
+            Run(wslc, "info", Encoding.UTF8, TimeSpan.FromSeconds(20));
+            return true;
         }
         catch (Exception ex) when (ex is IOException or InvalidOperationException or Win32Exception or TimeoutException)
         {
@@ -141,9 +116,7 @@ sealed class WslFactAttribute : FactAttribute
     {
         Timeout = 300000;
         if (!HostProbe.HasWsl)
-            Skip = "wsl.exe has no Linux distribution. Install one with: wsl.exe --install -d Ubuntu-24.04";
-        else if (!HostProbe.WslResponds)
-            Skip = "WSL listed a distribution, but it did not accept a command.";
+            Skip = "wslc.exe is not available. Linux tests run with: wslc run --rm ubuntu:latest";
     }
 }
 

@@ -21,8 +21,18 @@ static class FtpsTlsSession
                 OperatingSystem.IsAndroid(), OperatingSystem.IsWindows());
         }
 
-        return SessionsMatch(true, controlId, dataId, dataResumed, control.SslProtocol, data.SslProtocol,
-            OperatingSystem.IsAndroid(), OperatingSystem.IsWindows());
+        if (SessionsMatch(true, controlId, dataId, dataResumed, control.SslProtocol, data.SslProtocol,
+            OperatingSystem.IsAndroid(), OperatingSystem.IsWindows()))
+            return true;
+
+        // Schannel resumes an OpenSSL TLS 1.2 session with an empty id and the same master
+        // secret. TLS 1.3 gets a new id, and after a few transfers Schannel stops resuming
+        // altogether, so a TLS 1.3 data connection is accepted the way it is on Windows.
+        // The peer address is checked separately. A TLS 1.2 full handshake is still refused.
+        if (dataResumed && SameResumedSecret(control, data))
+            return true;
+
+        return control.SslProtocol == SslProtocols.Tls13 && data.SslProtocol == SslProtocols.Tls13;
     }
 
     // acceptUnreadableSession is Android. acceptAnyResumedTls13 is Windows: Schannel gives a
@@ -183,7 +193,7 @@ static class FtpsTlsSession
             var idPointer = OpenSsl.SessionId(session, out var length);
             if (idPointer != IntPtr.Zero && length > 0 && length <= 32)
             {
-                sessionId = new byte[length];
+                sessionId = new byte[(int)length];
                 Marshal.Copy(idPointer, sessionId, 0, (int)length);
                 if (IsAllZero(sessionId))
                     sessionId = [];
@@ -197,6 +207,46 @@ static class FtpsTlsSession
 
         resumed = reused;
         return true;
+    }
+
+    private static bool SameResumedSecret(SslStream control, SslStream data)
+    {
+        if (!OpenSsl.IsAvailable)
+            return false;
+        if (FindContext(control) is not SafeHandle controlHandle || controlHandle.IsInvalid || controlHandle.IsClosed)
+            return false;
+        if (FindContext(data) is not SafeHandle dataHandle || dataHandle.IsInvalid || dataHandle.IsClosed)
+            return false;
+
+        var controlRef = false;
+        var dataRef = false;
+        controlHandle.DangerousAddRef(ref controlRef);
+        dataHandle.DangerousAddRef(ref dataRef);
+        try
+        {
+            var controlSession = OpenSsl.GetSession(controlHandle.DangerousGetHandle());
+            var dataSession = OpenSsl.GetSession(dataHandle.DangerousGetHandle());
+            if (controlSession == IntPtr.Zero || dataSession == IntPtr.Zero)
+                return false;
+            if (controlSession == dataSession)
+                return true;
+
+            var controlKey = OpenSsl.MasterKey(controlSession);
+            var dataKey = OpenSsl.MasterKey(dataSession);
+            if (controlKey.Length > 0 && controlKey.AsSpan().SequenceEqual(dataKey))
+                return true;
+
+            var controlTicket = OpenSsl.Ticket(controlSession);
+            var dataTicket = OpenSsl.Ticket(dataSession);
+            return controlTicket.Length > 0 && controlTicket.AsSpan().SequenceEqual(dataTicket);
+        }
+        finally
+        {
+            if (dataRef)
+                dataHandle.DangerousRelease();
+            if (controlRef)
+                controlHandle.DangerousRelease();
+        }
     }
 
     private static bool IsAllZero(byte[] value)
@@ -226,6 +276,8 @@ static class FtpsTlsSession
         private static readonly SessionReusedDelegate? SessionReusedImpl;
         private static readonly GetSessionDelegate? GetSessionImpl;
         private static readonly SessionIdDelegate? SessionIdImpl;
+        private static readonly MasterKeyDelegate? MasterKeyImpl;
+        private static readonly TicketDelegate? TicketImpl;
 
         static OpenSsl()
         {
@@ -237,15 +289,23 @@ static class FtpsTlsSession
                 if (!NativeLibrary.TryLoad(name, out var library))
                     continue;
 
-                if (NativeLibrary.TryGetExport(library, "SSL_session_reused", out var reused) &&
-                    NativeLibrary.TryGetExport(library, "SSL_get0_session", out var session) &&
-                    NativeLibrary.TryGetExport(library, "SSL_SESSION_get_id", out var sessionId))
-                {
-                    SessionReusedImpl = Marshal.GetDelegateForFunctionPointer<SessionReusedDelegate>(reused);
-                    GetSessionImpl = Marshal.GetDelegateForFunctionPointer<GetSessionDelegate>(session);
-                    SessionIdImpl = Marshal.GetDelegateForFunctionPointer<SessionIdDelegate>(sessionId);
-                    return;
-                }
+                if (!NativeLibrary.TryGetExport(library, "SSL_session_reused", out var reused) ||
+                    !NativeLibrary.TryGetExport(library, "SSL_SESSION_get_id", out var sessionId))
+                    continue;
+
+                // OpenSSL exports SSL_get_session. SSL_get0_session is only a macro for it.
+                if (!NativeLibrary.TryGetExport(library, "SSL_get0_session", out var session) &&
+                    !NativeLibrary.TryGetExport(library, "SSL_get_session", out session))
+                    continue;
+
+                SessionReusedImpl = Marshal.GetDelegateForFunctionPointer<SessionReusedDelegate>(reused);
+                GetSessionImpl = Marshal.GetDelegateForFunctionPointer<GetSessionDelegate>(session);
+                SessionIdImpl = Marshal.GetDelegateForFunctionPointer<SessionIdDelegate>(sessionId);
+                if (NativeLibrary.TryGetExport(library, "SSL_SESSION_get_master_key", out var masterKey))
+                    MasterKeyImpl = Marshal.GetDelegateForFunctionPointer<MasterKeyDelegate>(masterKey);
+                if (NativeLibrary.TryGetExport(library, "SSL_SESSION_get0_ticket", out var ticket))
+                    TicketImpl = Marshal.GetDelegateForFunctionPointer<TicketDelegate>(ticket);
+                return;
             }
         }
 
@@ -255,7 +315,43 @@ static class FtpsTlsSession
 
         public static IntPtr GetSession(IntPtr ssl) => GetSessionImpl!(ssl);
 
-        public static IntPtr SessionId(IntPtr session, out nuint length) => SessionIdImpl!(session, out length);
+        public static byte[] MasterKey(IntPtr session)
+        {
+            if (MasterKeyImpl == null || session == IntPtr.Zero)
+                return [];
+
+            var buffer = Marshal.AllocHGlobal(64);
+            try
+            {
+                var length = MasterKeyImpl(session, buffer, 64);
+                if (length == 0 || length > 64)
+                    return [];
+
+                var key = new byte[(int)length];
+                Marshal.Copy(buffer, key, 0, key.Length);
+                return key;
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(buffer);
+            }
+        }
+
+        public static byte[] Ticket(IntPtr session)
+        {
+            if (TicketImpl == null || session == IntPtr.Zero)
+                return [];
+
+            TicketImpl(session, out var pointer, out var length);
+            if (pointer == IntPtr.Zero || length == 0 || length > 8192)
+                return [];
+
+            var ticket = new byte[(int)length];
+            Marshal.Copy(pointer, ticket, 0, ticket.Length);
+            return ticket;
+        }
+
+        public static IntPtr SessionId(IntPtr session, out uint length) => SessionIdImpl!(session, out length);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate int SessionReusedDelegate(IntPtr ssl);
@@ -264,6 +360,13 @@ static class FtpsTlsSession
         private delegate IntPtr GetSessionDelegate(IntPtr ssl);
 
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate IntPtr SessionIdDelegate(IntPtr session, out nuint length);
+        private delegate nuint MasterKeyDelegate(IntPtr session, IntPtr output, nuint outputLength);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate void TicketDelegate(IntPtr session, out IntPtr ticket, out nuint length);
+
+        // OpenSSL writes an unsigned int, which is 4 bytes on the platforms this runs on.
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        private delegate IntPtr SessionIdDelegate(IntPtr session, out uint length);
     }
 }

@@ -2,6 +2,7 @@
 (unpublished)
 
 ## Bug Fixes
+- Library: a Linux or macOS data connection can resume the control session again. Passing a cipher-suite policy made .NET turn the OpenSSL session cache off, `SSL_get0_session` is only a macro so the session could not be read, and the id length was read as 8 bytes so it came out empty. Schannel's TLS 1.2 resume keeps the master secret with an empty id, and that secret has to match. Schannel's TLS 1.3 resume replaces the id and then stops resuming, so a TLS 1.3 data connection is accepted as it is on Windows. A TLS 1.2 handshake that is not a resume is still refused. A suite that is not forward-secret AEAD is still rejected after the handshake.
 - Android: the control connection and every protected data connection now use one SSLEngine from the same SSLContext. Before, login used SSLSocket and upload used SSLEngine, so those two caches never shared a session id. A TLS 1.2 client such as FluentFTP on Windows 10 could list and download, and STOR was rejected. A missing close_notify is still rejected.
 - Console: a process with no console keeps running until it is stopped. Before, `Console.ReadKey` threw and the server shut down, so a test host or `wsl.exe` without a terminal could not keep it up.
 - Library: the control connection and its data connections now share one SslStreamCertificateContext. A new context per handshake keeps a separate session cache, so a TLS 1.2 data connection can fail to resume the login session.
